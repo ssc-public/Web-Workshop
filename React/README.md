@@ -29,6 +29,67 @@
 
 # راه‌اندازی پروژه
 
+مزیت استفاده از پکیج `create-react-app` این است که ما هر بار نیاز به configure کردن پروژه React از ابتدا نداریم و این پکیج به صورت اتوماتیک configuration خاصی از پروژه را می‌سازد.
+
+<div dir="ltr">
+
+    create-react-app <app-name>
+
+</div>
+
+ساختار پروژه‌ای که با استفاده از این پکیج ساخته می‌شود به شکل زیر است:
+<div dir='ltr'>
+
+```
+app-name
+├── public
+|    ├── favicon.ico
+|    ├── index.html
+|    └── manifest.json
+├── src
+|   ├── App.js
+|   ├── App.css
+|   ├── App.test.js
+|   ├── index.js
+|   ├── index.css
+|   └── serviceWorker.js
+├── .env
+├── .gitignore
+├── package.json
+└── package.lock.json
+```
+</div>
+
+که در ادامه برای راحتی هر چه بیش‌تر کار و دسترسی راحت‌تر به فایل‌ها در صورت بزرگ‌شدن پروژه از ساختار زیر استفاده می‌کنیم:
+
+<div dir='ltr'>
+
+```
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
+├── README.md
+├── src
+│   ├── component
+│   ├── index.js
+│   ├── serviceWorker.js
+│   └── static
+│       ├── css
+│       │   └── some-css.css
+│       └── fonts
+│           ├── some-fonts.eot
+```
+</div>
+
+نمونه‌ای از ساختار بالا را می‌توانید در [این‌جا][6] مشاهده کنید.
+
+‌‌‌**پی‌نوشت:** برای آشنایی با configure کردن پروژه بدون استفاده از پکیج create-react-app می‌توانید لینک‌های زیر را ببینید:
+
+[لینک یک][3] | [لینک دو][4] | [لینک سه][5]
+
 
 
 # JSX
@@ -49,3 +110,7 @@
 
 [1]: https://nodejs.org/en/download/
 [2]: https://github.com/pnpm/pnpm
+[3]: https://dev.to/kris/how-to-set-up-a-react-project-from-scratch-4ob
+[4]: https://hackernoon.com/how-to-build-a-react-project-from-scratch-using-webpack-4-and-babel-56d4a26afd32
+[5]: https://codeburst.io/setting-up-a-react-project-from-scratch-d62f38ab6d97
+[6]: https://github.com/mostafaghadimi/reactstarter
