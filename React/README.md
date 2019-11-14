@@ -91,8 +91,65 @@ app-name
 [لینک یک][3] | [لینک دو][4] | [لینک سه][5]
 
 
+# اشنایی با فولدر/فایل‌های پروژه
+
+//TODO:
+
+## package.json
+
+## node-modules
+
+## index.html
+
+## serviceWorker.js
+
+## manifest.json
+
+## gitignore.
+
+## .env
 
 # JSX
+
+نه کد HTML هست و نه String. در واقع می‌توانیم داخل `{}` از بسیاری از قابلیت‌های جاوا اسکریپت استفاده کنیم. به عبارت دیگر داخل آن می‌تواند:
+
+۱. اسم متغیر باشد. 
+
+<div dir="ltr">
+
+```Javascript
+var tutorialName = "React"
+...
+
+<div>
+    Let's say hello {tutorialName}!
+</div>
+```
+</div>
+
+۲. تابع صدا زده شود. 
+
+<div dir="ltr">
+
+```Javascript
+function formatName(user) {
+  return user.firstName + ' ' + user.lastName;
+}
+
+const user = {
+  firstName: 'Harper',
+  lastName: 'Perez'
+};
+
+const element = (
+  <h1>
+    Hello, {formatName(user)}!
+  </h1>
+);
+```
+</div>
+
+مطالب بیش‌تر در مورد JSX را می‌توانید [این‌جا][7] بخوانید.
 
 # Component
 
@@ -114,3 +171,4 @@ app-name
 [4]: https://hackernoon.com/how-to-build-a-react-project-from-scratch-using-webpack-4-and-babel-56d4a26afd32
 [5]: https://codeburst.io/setting-up-a-react-project-from-scratch-d62f38ab6d97
 [6]: https://github.com/mostafaghadimi/reactstarter
+[7]: https://reactjs.org/docs/introducing-jsx.html
