@@ -153,7 +153,42 @@ const element = (
 
 # Component
 
-# Prop
+ Component به ما کمک می‌کند تا رابط کاربری را به اجزا مستقل و قابل استفاده مجدد تقسیم کنیم و در مورد هر کدام به صورت جداگانه تصمیم بگیریم و دسترسی داشته باشیم.
+
+ Componentها به  دو صورت می‌توانند تعریف شوند:
+
+ ۱. تابعی
+
+ <div dir="ltr">
+
+```Javascript
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+```
+</div>
+
+ ۲. به ارث بردن از کلاس Component
+
+ <div dir="ltr">
+
+```Javascript
+import {Component} from 'react'
+
+class Welcome extends Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+```
+
+</div>
+
+> حرف اول اسم Component حتما باید بزرگ نوشته شود تا با تگ‌ها اشتباه گرفته نشود.
+
+# Props
+
+به componentها می‌توان یک object پاس داد که به آن `(Props (Properties` گفته می‌شود. در Componentهای اول با `{<props.<prop-name}` می‌توانیم به prop مورد نظر دسترسی پیدا کنیم. اما در component نوع دوم باید از ‍‍‍`{<this.props.<prop-name}` استفاده کنیم.
 
 # State
 
