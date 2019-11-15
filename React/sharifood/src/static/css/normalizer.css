@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Yekan';
+    text-decoration: none;
+    outline: none;
+}
+
+a {
+    color: inherit;
+}
+
+
+@font-face {
+    font-family: 'Yekan';
+    src: url('../fonts/Yekan.eot');
+    src: url('../fonts/Yekan.eot?#iefix') format('embedded-opentype'), url('../fonts/Yekan.woff') format('woff'), url('../fonts/Yekan.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    direction: rtl;
+}
