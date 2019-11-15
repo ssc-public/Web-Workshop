@@ -27,6 +27,13 @@
 
 </div>
 
+در صورتی که از سیستم‌عامل Ubuntu استفاده می‌کنید برای این که بتوانید پکیج‌ها را به صورت global نصب کنید، باید کاربر super user باشید:
+
+<div dir="ltr">
+
+    sudo su
+
+</div>
 # راه‌اندازی پروژه
 
 مزیت استفاده از پکیج `create-react-app` این است که ما هر بار نیاز به configure کردن پروژه React از ابتدا نداریم و این پکیج به صورت اتوماتیک configuration خاصی از پروژه را می‌سازد.
@@ -40,7 +47,7 @@
 ساختار پروژه‌ای که با استفاده از این پکیج ساخته می‌شود به شکل زیر است:
 <div dir='ltr'>
 
-```
+```bash
 app-name
 ├── public
 |    ├── favicon.ico
@@ -60,11 +67,36 @@ app-name
 ```
 </div>
 
-که در ادامه برای راحتی هر چه بیش‌تر کار و دسترسی راحت‌تر به فایل‌ها در صورت بزرگ‌شدن پروژه از ساختار زیر استفاده می‌کنیم:
+این ساختار بسته به نوع پروژه ممکن است مناسب نباشد و برای دسترسی راحت‌تر به فایل‌ها هنگام انجام پروژه، می‌توان ساختار‌هایی را در نظر گرفت مانند:
+
+<div dir="ltr">
+
+```bash
+src
+├── components
+├── assets
+|   ├── images
+|   ├── audios
+|   └── videos
+├── lib
+|   ├── api
+|   ├── utils
+|   └── validation
+├── views
+├── App.js
+├── App.css
+├── App.test.js
+├── index.js
+├── index.css
+└── serviceWorker.js
+```
+</div>
+
+و 
 
 <div dir='ltr'>
 
-```
+```bash
 ├── package.json
 ├── public
 │   ├── favicon.ico
@@ -93,21 +125,28 @@ app-name
 
 # اشنایی با فولدر/فایل‌های پروژه
 
-//TODO:
 
 ## package.json
+package.json فایلی است که برای ذخیره meta-dataها، لیست dependencyها، تعریف script و... از آن استفاده می‌شود.
 
 ## node-modules
-
-## index.html
+این فولدر شامل پکیج‌هایی است که با استفاده از دستور `npm i` یا `npm install` نصب شده‌اند. 
 
 ## serviceWorker.js
+Service Worker یک اسکریپت است که مرورگر شما به صورت مستقل از صفحه وب در background اجرا می‌کند و ویژگی‌هایی مثل push notification، background sync و ... را اضافه کرده است. 
+
+برای آشنایی بیش‌تر می‌توانید[این لینک][8] را نگاه کنید.
 
 ## manifest.json
+اطلاعات وب اپلیکیشن مثل نام، نویسنده، آیکون‌های برنامه، توضیحات و... در این فایل ذخیره می‌شود. 
+
+برای آشنایی بیش‌تر می‌توانید[این لینک][8] را نگاه کنید.
 
 ## gitignore.
+آدرس یا نام فایل‌هایی که قرار نیست روی گیت آپلود شوند، در این فایل قرار می‌گیرد.
 
-## .env
+## env. 
+//TODO: add description with example
 
 # JSX
 
@@ -190,6 +229,27 @@ class Welcome extends Component {
 
 به componentها می‌توان یک object پاس داد که به آن `(Props (Properties` گفته می‌شود. در Componentهای اول با `{<props.<prop-name}` می‌توانیم به prop مورد نظر دسترسی پیدا کنیم. اما در component نوع دوم باید از ‍‍‍`{<this.props.<prop-name}` استفاده کنیم.
 
+برای Type-Checking می‌توان نوع prop را با PropTypes مشخص کرد.
+
+<div dir="ltr">
+
+```javascript
+import PropTypes from 'prop-types';
+
+class Greeting extends React.Component {
+  render() {
+    return (
+      <h1>Hello, {this.props.name}</h1>
+    );
+  }
+}
+
+Greeting.propTypes = {
+  name: PropTypes.string
+};
+```
+</div>
+
 # State
 
 # Life Cycle
@@ -207,3 +267,4 @@ class Welcome extends Component {
 [5]: https://codeburst.io/setting-up-a-react-project-from-scratch-d62f38ab6d97
 [6]: https://github.com/mostafaghadimi/reactstarter
 [7]: https://reactjs.org/docs/introducing-jsx.html
+[8]: https://github.com/mostafaghadimi/PWA/blob/master/PWA.pdf
