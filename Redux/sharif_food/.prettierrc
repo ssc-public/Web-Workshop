@@ -1,0 +1,44 @@
+{
+    "useTabs": false,
+    "printWidth": 140,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "jsxBracketSameLine": true,
+    "noSemi": false,
+    "semi": false,
+    "rcVerbose": true,
+    "overrides": [
+        {
+            "files": "*.scss",
+            "options": {
+                "parser": "scss"
+            }
+        },
+        {
+            "files": "*.css",
+            "options": {
+                "parser": "css"
+            }
+        },
+        {
+            "files": "*.html",
+            "options": {
+                "parser": "html"
+            }
+        },
+        {
+            "files": "*.js",
+            "options": {
+                "semi": true,
+                "parser": "babel"
+            }
+        },
+        {
+            "files": "*.json",
+            "options": {
+                "parser": "json"
+            }
+        }
+    ]
+}
