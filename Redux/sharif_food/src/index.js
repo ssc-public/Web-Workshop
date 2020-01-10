@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import './index.css';
-import App from './components/app/App';
 import * as serviceWorker from './serviceWorker';
 import store from './store';
 import './components/common/styles/normalizer.scss';
+import RootRouter from './components/router/Router';
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <RootRouter />
     </Provider>,
     document.getElementById('root'),
 );
