@@ -24,14 +24,52 @@ Folder: {React, Redux, Rest, CI/CD, Docker}
 Type: {Dev, Author}
 ```
 </div>
- نام فولدرهایکی از فولدرهای ریپازیتوری است و منظور از Type، توسعه‌ی بخش پیاده‌سازی (Dev) و یا بخش آموزش (Author) است. 
+ نام فولدر هایکی از فولدرهای ریپازیتوری است و منظور از Type، توسعه‌ی بخش پیاده‌سازی (Dev) و یا بخش آموزش (Author) است. 
   
   برای نمونه یک کامیت در ادامه آمده است.
 
 <div dir="ltr">
 
 ```
-“[React] [Author] Hook ُTutorial Added”
+“[React] [Author] Hook Tutorial Added”
+```
+</div>
+
+# مسیر توسعه‌دهنده سمت کاربر شدن (Front-End Developer) 
+
+<div dir="ltr">
+
+```
+  TODO://
+```
+</div>
+
+# مسیر توسعه‌دهنده سمت سرور شدن (Back-End Developer) 
+
+<div dir="ltr">
+
+```
+  TODO://
+```
+</div>
+
+
+# مسیر توسعه‌دهنده تمام‌سمت شدن (Full-Stack Developer) 
+
+<div dir="ltr">
+
+```
+  TODO://
+```
+</div>
+
+
+# مسیر مهندس DevOps شدن  
+
+<div dir="ltr">
+
+```
+  TODO://
 ```
 </div>
 </div>
