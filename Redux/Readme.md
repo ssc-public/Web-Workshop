@@ -1,4 +1,5 @@
 <div dir = 'rtl'>
+
 <div dir = 'rtl'>
 # Action 
 
@@ -29,7 +30,7 @@ import ADD_TUDO from './types.js';
 غیر از ویژگی type, مابقی ساختار یک action به عهده شماست. 
 </div>
 
-<div dir = 'rtl' style = "margin-top: 20px;">
+<div dir = 'rtl' style = "color: green;">
   
 # Action Creator
 Action creator ها تابع هایی هستند که action می سازند (یا به عبارتی یک action را به عنوان خروجی بر‌می‌گردانند).
