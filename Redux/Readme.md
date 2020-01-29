@@ -25,6 +25,7 @@ const action_sample = {
 import ADD_TUDO from './types.js';
 ```
 </div>
+
 غیر از ویژگی type, مابقی ساختار یک action به عهده شماست. 
 
 </div>
