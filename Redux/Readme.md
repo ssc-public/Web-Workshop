@@ -28,4 +28,19 @@ import ADD_TUDO from './types.js';
 
 غیر از ویژگی type, مابقی ساختار یک action به عهده شماست. 
 
+# Action Creator
+Action creator ها تابع هایی هستند که action می سازند (یا به عبارتی یک action را به عنوان خروجی بر‌می‌گردانند).
+
+<div dir = 'rtl'>
+```
+const makeTodo(text) => {
+  const action = {
+    type: ADD_TUDO,
+    text
+  }
+  return action
+}
+```
+</div>
+
 </div>
