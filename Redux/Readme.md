@@ -50,7 +50,12 @@ const makeTodo(text) => {
   ```
   dispatch(makeTodo(text));
   ```
-  
   </div>
+  
+  # Reducer
+  
+  Reducer ها, در واکنش به action هایی که به store منتقل می‌شوند, نحوه‌ی تغییر حالت برنامه 
+(application's state) را مشخص می کنند. در واقع action ها, تنها رخ دادن اتفاقی را توصیف می کنند, اما نحوه‌ی تغییر حالت برنامه  به ازای آن action را Reducer ها  توصیف می کنند.
+
   
 </div>
