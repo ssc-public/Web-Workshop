@@ -17,5 +17,14 @@ const action_sample = {
  }
 ```
 </div>
+حال می‌توانید خط اول را با کد زیر جایگزین کنید, بدین معنی که آن‌ را از یک فایل دیگر import کنید.
+
+<div dir = 'ltr'>
+
+```
+import ADD_TUDO from './types.js';
+```
+</div>
+غیر از ویژگی type, مابقی ساختار یک action به عهده شماست. 
 
 </div>
