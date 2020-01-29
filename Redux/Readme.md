@@ -43,5 +43,13 @@ const makeTodo(text) => {
 }
 ```
 </div>
+و برای dispatch کردن یک action نیز می‌توان از action creator آن استفاده کرد
 
+<div dir = 'ltr'>
+  
+  ```
+  dispatch(makeTodo(text));
+  ```
+  
+  </div>
 </div>
