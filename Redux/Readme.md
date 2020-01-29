@@ -31,7 +31,7 @@ import ADD_TUDO from './types.js';
 # Action Creator
 Action creator ها تابع هایی هستند که action می سازند (یا به عبارتی یک action را به عنوان خروجی بر‌می‌گردانند).
 
-<div dir = 'rtl'>
+<div dir = 'ltr'>
 
 ```
 const makeTodo(text) => {
