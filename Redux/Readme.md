@@ -1,4 +1,3 @@
 <div dir = 'rtl'>
-Redux action
-
+Action
 </div>
