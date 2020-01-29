@@ -28,6 +28,17 @@ import ADD_TUDO from './types.js';
 
 غیر از ویژگی type, مابقی ساختار یک action به عهده شماست. 
 
+
+
+
+
+
+
+
+
+
+
+
 # Action Creator
 Action creator ها تابع هایی هستند که action می سازند (یا به عبارتی یک action را به عنوان خروجی بر‌می‌گردانند).
 
