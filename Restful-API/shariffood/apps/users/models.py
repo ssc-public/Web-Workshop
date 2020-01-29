@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 # from jsonfield import JSONField
 from django.db import models
+from jsonfield import JSONField
 
 # Create your models here.
 class Profile(models.Model):
@@ -9,7 +10,7 @@ class Profile(models.Model):
     is_activated = models.BooleanField(default=False, verbose_name="active")
     phone_no = models.CharField(max_length=10)
     credit = models.FloatField(default=0)
-    # cart = JSONField()
+    cart = JSONField()
 
     def __str__(self):
         return self.user.username
