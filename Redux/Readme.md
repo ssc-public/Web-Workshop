@@ -1,5 +1,5 @@
 <div dir = 'rtl'>
-
+<div dir = 'rtl'>
 # Action 
 
 Action ها , بارهای اطلاعاتی هستند که اطلاعات مربوط به application های شما را به store منتقل می کنند. آنها تنها منبع اطلاعات store هستند و با استفاده از  () store.dispatch به store منتقل می‌شوند.
@@ -27,18 +27,10 @@ import ADD_TUDO from './types.js';
 </div>
 
 غیر از ویژگی type, مابقی ساختار یک action به عهده شماست. 
+</div>
 
-
-
-
-
-
-
-
-
-
-
-
+<div dir = 'rtl' style = "margin-top: 20px;">
+  
 # Action Creator
 Action creator ها تابع هایی هستند که action می سازند (یا به عبارتی یک action را به عنوان خروجی بر‌می‌گردانند).
 
@@ -61,6 +53,8 @@ const makeTodo(text) => {
   ```
   dispatch(makeTodo(text));
   ```
+  
+  </div>
   
   </div>
 </div>
