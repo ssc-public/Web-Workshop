@@ -67,11 +67,8 @@ const makeTodo(text) => {
 store, آبجکتی است که این‌ها را کنار هم می‌آورد که مسئولیت‌های زیر را دارا می‌باشد:
 
 ۱. قابلیت دسترسی به state برنامه با استفاده از `()getState`
-
 ۲. قابلیت به‌روز‌رسانی state برنامه بااستفاده از <span dir = 'ltr'> `dispatch(action)` </span>
-
 ۳. قابلیت گوش دادن (subscribe) بعد از هر به‌روز‌‌رسانی state برنامه با استفاده از <span dir = 'ltr'> `subscribe(listener)` </span> که listener, تابع می‌باشد.
-
 ۴. غیر فعال‌کردن subscribe تعریف‌‌ شده
 
 در صورت داشتن reducer, ساختن store راحت خواهد بود. از قسمت reducer, می‌دانیم بااستفاده از <span dir = 'ltr'> `combineReducer()` </span> می‌توان چندین reducer را ترکیب کرد و یک reducer واحد ساخت. در اینجا آبجکت todoApp که بااستفاده از ()combineReducers ساخته‌شده‌است را import می‌کنیم.
@@ -86,7 +83,7 @@ const store = createStore(todoApp);
 
 </div>
 
-در نمونه کد زیر با استفاده از action, dispatch ساخته شده توسط makeTodo که یک actionCreator می‌باشد, state برنامه را عوض می‌کند. 
+در نمونه کد زیر با استفاده از action, dispatch ساخته شده توسط makeTodo که یک actionCreator می‌باشد, state برنامه را عوض می‌کند.
 
 <div dir = 'ltr'>
 
@@ -97,6 +94,7 @@ import todoApp from './reducers';
 const store = createStore(todoApp);
 store.dispatch(makeTodo('hello world'));
 ```
+
 </div>
 
 در نمونه کد زیر subscribeای تعریف شده است که پس از هر به‌روز‌رسانی state, صدا زده می‌شود و state برنامه را نشان‌می‌دهد.
@@ -122,4 +120,42 @@ subscription(); //deActivate subscription
 ```
 
 </div>
+
+# Data Flow
+
+چرخه‌ی کار هر برنامه‌ی ‌redux از ۴ مرحله تشکیل شده است:‌
+
+۱. در مرحله‌ی اول یک action که از جنس plainObject است و رخ دادن اتفاقی را توصیف می‌کند, توسط dispatch فرستاده می‌شود.
+
+<div dir = 'ltr'>
+
+```
+const action = {
+  type: 'MAKE_TODO',
+  text: 'hello world'
+};
+store.dispatch(action);
+```
+
+</div>
+
+۲. action فرستاده‌شده با استفاده از dispatch, به rootReducer برنامه فرستاده می‌شود تا تغییرات لازم با توجه به action فرستاده‌شده, به state برنامه اعمال شود. منظور از rootReducer, آبجکت ساخته‌شده توسط <span dir = 'ltr'> `combineReducers()` </span> می‌باشد که action فرستاده‌شده را به همه‌ی reducer ها ارسال می‌کند.
+
+<div dir = 'ltr'>
+
+```
+// homeReducer file
+initialState = {...}
+
+export default const homeReducer = (state = initialState, action) => {
+  switch(action.type) {
+    ...
+  }
+}
+
+```
+</div>
+۳. rootReducer تعریف‌ شده, خروجی حاصل از همه‌ی reducer ها را ترکیب می‌کند و به صورت یک state واحد در می‌آورد.
+
+۴. در نهایت, state جدید در store ذخیره می‌شود. پس از ذخیره‌سازی state جدید, subscribe های تعریف شده برای store صدا زده می‌شوند.
 </div>
