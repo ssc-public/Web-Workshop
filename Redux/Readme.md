@@ -71,7 +71,8 @@ const reducer = (state, action) => nextState;
 
 reducer ها, pure function هستند. بدین معنی که state فعلی به همراه action را گرفته و بدون کار اضافی, state بعدی را تولید می‌کنند.
 
-منظور از کار های اضافی, کارهایی اعم از: 
+منظور از کار های اضافی, کارهایی اعم از:
+
 ۱. تغییر دادن آرگومان‌های تابع
 
 ۲. صدا‌زدن api ها یا انتقال در routing
@@ -228,7 +229,9 @@ export const reducer2 = (state = initialState2, action) => {
       return {
         ...state,
         time: action.time
-      }
+      };
+    default:
+      return state;
   }
 }
 ```
