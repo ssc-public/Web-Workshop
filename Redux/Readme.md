@@ -10,9 +10,9 @@ Action ها , بارهای اطلاعاتی هستند که اطلاعات مر�
 <div dir = 'ltr'>
 
 ```
-const ADD_TUDO = 'ADD_TUDO';
+const MAKE_TODO = 'MAKE_TODO';
 const action_sample = {
-  type: ADD_TUDO,
+  type: MAKE_TODO,
   text: 'hello world'
  }
 ```
@@ -23,7 +23,7 @@ const action_sample = {
 <div dir = 'ltr'>
 
 ```
-import ADD_TUDO from './types.js';
+import MAKE_TODO from './types.js';
 ```
 
 </div>
@@ -39,7 +39,7 @@ Action creator ها تابع هایی هستند که action می سازند (ی
 ```
 const makeTodo(text) => {
   const action = {
-    type: ADD_TUDO,
+    type: MAKE_TODO,
     text
   }
   return action
@@ -59,7 +59,199 @@ const makeTodo(text) => {
   # Reducer
   
   Reducer ها, در واکنش به action هایی که به store منتقل می‌شوند, نحوه‌ی تغییر حالت برنامه 
-(application's state) را مشخص می کنند. در واقع action ها, تنها رخ دادن اتفاقی را توصیف می کنند, اما نحوه‌ی تغییر حالت برنامه  به ازای آن action را Reducer ها  توصیف می کنند.
+(application's state) را مشخص می کنند. در واقع action ها, تنها رخ دادن اتفاقی را توصیف می کنند, اما نحوه‌ی تغییر حالت برنامه  به ازای آنaction را Reducer ها  توصیف می کنند.
+
+
+<div dir = 'ltr'>
+
+```
+const reducer = (state, action) => nextState;
+```
+</div>
+
+reducer ها, pure function هستند. بدین معنی که state فعلی به همراه action را گرفته و بدون کار اضافی, state بعدی را تولید می‌کنند.
+
+منظور از کار های اضافی, کارهایی اعم از: 
+۱. تغییر دادن آرگومان‌های تابع
+
+۲. صدا‌زدن api ها یا انتقال در routing
+
+۳. صدا‌کردن function هایی که pure نیستند. مانند <span dir = 'ltr'> ``` Math.random()``` </span>
+
+حال میخواهیم یک reducer بسازیم. در ابتدا initialState تعریف می‌کنیم که حالت اولیه state را نشان می‌دهد. در واقع در ابتدای کار , state تعریف‌نشده است و در این حالت, initialState را باز‌می‌گردانیم.
+
+<div dir = 'ltr'>
+
+```
+import makeTodo from './actions';
+
+const initialState = {
+  situation: 'not started yet!'
+}
+
+const sampleReducer = (state, action) => {
+  if (!state) {
+    return initialState;
+  }
+
+  return state;
+}
+```
+</div>
+
+البته می‌توان مقدار پیش‌فرض state را در خود آرگومان تابع, مقدار‌دهی کرد.
+
+<div dir = 'ltr'>
+
+```
+const sampleReducer = (state = initialState, action) => {
+  return state;
+}
+```
+
+</div>
+حال می‌خواهیم state برنامه را با توجه به action داده‌شده, تغییر‌دهیم.
+
+<div dir = 'ltr'>
+
+```
+import makeTodo from './actions';
+
+const initialState = {
+  situation: 'not started yet'
+}
+
+const sampleReducer = (state = initialState, action) => {
+  switch(action.type) {
+    case 'MAKE_TODO':
+      return Object.assign({}, state, {
+        situation: action.text
+      })
+    default: 
+      return state;
+  }
+}
+
+```
+</div>
+
+برای تغییر state برنامه, گفته‌شده‌بود که نباید آرگومان‌های reducer را تغییر داد. در نتیجه برای عوض کردن المان‌های state, از Object.assign استفاده می کنیم تا از state فعلی یک copy بگیریم و سپس تغییرات لازمه را به آبجکت  جدید وارد می کنیم. به‌عبارتی یک آبجکت جدید برای state جدید می‌سازیم بدون اینکه state فعلی را تغییر دهیم. می‌توان کد تغییر‌دادن state را به شکل زیر باز‌نویسی کرد.
+
+<div dir = 'ltr'>
+
+```
+ case 'MAKE_TODO':
+    return {
+      ...state,
+      situation: action.text
+    }
+```
+</div>
+
+همچنین اگر action داده‌شده, ناشناخته بود, همان state فعلی را در default بر‌می‌گردانیم.
+
+در کد زیر, کمی state برنامه و تعداد actionها را بیشتر کرده‌ایم.
+
+<div dir = 'ltr'>
+
+```
+import {makeTodo, changeTime} from './actions';
+
+{/*
+suppose that changeTime is = {type: 'CHANGE_TIME', time: 'now'};
+*/}
+
+
+const initialState = {
+  situation: 'not started yet!',
+  time: 'yesterday'
+}
+
+const sampleReducer = (state = initialState, action) => {
+  switch(action.type) {
+    case 'MAKE_TODO':
+      return {
+        ...state,
+        situation: action.text
+      };
+    case 'CHANGE_TIME':
+      return {
+        ...state,
+        time: action.time
+      }
+  }
+}
+
+```
+</div>
+
+همان‌طور که ملاحظه ‌می‌کنید, ممکن است به‌مرور زمان, reducer تعریف‌‌شده بزرگ شود و readability کد پائین بیاید. برای رفع این مشکل, می‌توان چندین reducer تعریف کرد و در نهایت آنها‌ را ‌ترکیب کرده و به‌عنوان reducer واحد (به اصطلاح rootReducer) به store برنامه داد.
+
+به قطعه کد زیر که reducer تعریف شده در کد بالا را به ۲ قسمت جدا تقسیم کرده‌است, توجه کنید.
+
+<div dir = 'ltr'>
+
+```
+//reducers.js
+
+import {makeTodo, changeTime} from './actions';
+
+{/*
+suppose that changeTime is = {type: 'CHANGE_TIME', time: 'now'};
+*/}
+
+//reducer1 configuration
+const initialState1 = {
+  situation: 'not started yet!'
+}
+
+export const reducer1 = (state = initialState1, action) => {
+  switch(action.type) {
+    case 'MAKE_TODO':
+      return {
+        ...state,
+        situation: action.text
+      };
+    default:
+      return state;
+  }
+}
+
+//reducer2 configuration
+const initialState2 = {
+  time: 'yesterday'
+}
+
+export const reducer2 = (state = initialState2, action) => {
+  switch(action.type) {
+    case 'CHANGE_TIME':
+      return {
+        ...state,
+        time: action.time
+      }
+  }
+}
+```
+</div>
+
+و در نهایت با‌استفاده از <span dir = 'ltr'> ``` combineReducers() ``` </span> آنها را با‌هم ترکیب کرد و ترکیب آنها را به store, به عنوان reducer واحد داد.
+
+<div dir = 'ltr'>
+
+```
+//rootReducer.js
+
+import {reducer1, reducer2} from './reducers';
+import {combineReducers} from 'redux';
+
+const rootReducer = combineReducers({
+  reducer1,
+  reducer2
+})
+
+export default rootReducer;
+```
+</div>
 
 # Store
 
@@ -67,11 +259,8 @@ const makeTodo(text) => {
 store, آبجکتی است که این‌ها را کنار هم می‌آورد که مسئولیت‌های زیر را دارا می‌باشد:
 
 ۱. قابلیت دسترسی به state برنامه با استفاده از `()getState`
-
 ۲. قابلیت به‌روز‌رسانی state برنامه بااستفاده از <span dir = 'ltr'> `dispatch(action)` </span>
-
 ۳. قابلیت گوش دادن (subscribe) بعد از هر به‌روز‌‌رسانی state برنامه با استفاده از <span dir = 'ltr'> `subscribe(listener)` </span> که listener, تابع می‌باشد.
-
 ۴. غیر فعال‌کردن subscribe تعریف‌‌ شده
 
 در صورت داشتن reducer, ساختن store راحت خواهد بود. از قسمت reducer, می‌دانیم بااستفاده از <span dir = 'ltr'> `combineReducer()` </span> می‌توان چندین reducer را ترکیب کرد و یک reducer واحد ساخت. در اینجا آبجکت todoApp که بااستفاده از ()combineReducers ساخته‌شده‌است را import می‌کنیم.
