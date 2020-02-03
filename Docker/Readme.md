@@ -1,71 +1,226 @@
 <div dir="rtl">
 
-#داکر چیست و چگونه کار میکند؟
+#آشنایی به زبان ساده#
+اولین نکته که باید مورد توجه قرار بگیره اینه که داکر هم مثل بقیه تکنولوژی ها تا وقتی که ازش دوریم خیلی سخت به نظر میاد اما وقتی شروع به کار کردن و مطالعه میکنیم ، میبینیم که چقدر ابزار کاربردی و راحتی است.
 
-در واقع داکر (Docker) یک پلتفرم متن باز است که مبتنی بر سیستم‌عامل لینوکس راه‌اندازی شده است؛ و بر روی سایت سیستم عامل های مطرح جهان نیز کار می کند.
+#داکر چه مشکلی رو حل میکنه؟#
+مشخصا داکر مشکلات زیادی را حل میکند اما یکی از مهم ترین آن ها improve consistency (بهبود ثبات یا استقرار ) میباشد
 
-بر روی سخت افزار خب یک سیستم عامل نصب میشه (مثلا لینوکس، ویندوز و ...)؛ بعد داکر مستقیم بر روی سیستم عامل نصب میشه، و از اون موقع به بعد شما داکر رو تقسیم بندی میکنی و هر بخشش رو واسه یه پروژه مجزا اختصاص میدی. پس این لایه ها رو داریم: 
+وقتی گروهی از افراد روی یک پروژه کار میکنند ، میتونه تفاوت هایی در سیستم عامل ها و تنظیمات وجود داشته باشه که باعث بروز یک سری از مشکلات بشه و همچنین ممکنه در بالا آوردن اپلیکیشن روی کامپیوتر خودمون و محیط production (عملیاتی ) هم تناقضاتی وجود داشته باشه .
 
+تمامی اینها شما رو از حل کردن مشکلات اصلی که در حقیقت build کردن پروژه تون هست دور میکنه.
 
+##چگونه حل میکنه؟
+داکر یه چیزی داره به عنوان container که مانند ماشین های مجازی لینوکس هستند با این تفاوت که اونها خیلی کارآمد تر هستند و منابع کمتری مصرف میکنند و اپلیکیشن شما رو در یک محیط (container) ایزوله و پایدار اجرا میکنه.
 
-<div dir="ltr">
+کانتینر (container) که اپلیکیشن شما رو داخل خودش داره متونه روی ویندوز ، مک او اس و لینوکس اجرا بشه و همین قضیه مشکل دولوپر های مختلف با سیستم های عامل متفاوت را حل میکند.
 
-    Infrastructure > Operation System > Docker > Container > App A
+قابلیت docker برای ساحت و نگهداری محیطی استوار باعث portable شدن اپلیکیشن شما میشه.
 
-    Infrastructure > Operation System > Docker > Container > App B
-
-    Infrastructure > Operation System > Docker > Container > App C 
-
-    ...
-</div>
 
 ![docker-pic](https://lamtakam.com/img/uploaded_images/1/1540452189.png)
 
-#داکر چه کاربردی دارد؟
-اصلی ترین هدف داکر ساخت و ایجاد یک فضای ایزوله برای اپلیکیشن هایی هست که داریم؛ تا بتونیم به صورت مستقل از هم اجراشون کنیم و برای هر اپلیکیشن تمام وابستگی هاشو (dependencies) کنارش نصب کنیم؛ که خب این باعث میشه اپلیکیشن (کلا پروژه ما) یک ماژول (که توی داکر بهش می گن container) مجزا که خب یعنی یک اپلیکیشن قابل حمل بر روی هر سرور و کامپیوتر دیگه بدون نصب دوباره هیچ چیزی؛ چرا که تمام نیازمندی های پروژه توی container یکبار نصب شدن.
-
-مثال: شما یک وب سایت طراحی کردی، وقتی می بری روی سرور، باید php رو نصب کنی، mysql یا sqlserver یا هر دیتابیس دیگه ای رو برای پروژه نصب کنی، کلی افزونه نیاز هست که باید نصب کنی و ... !
-
-در صورتی که تو می تونی پروژت رو تویه یک container در بستر داکر docker قرار بدی و از اون موقع به بعد اون container رو هرجایی که می خوای ببری و دیگه بدون نصب هیچ چیزی اجراش کنی؛ شایان ذکره که خیلی از پروژه ها روی ورژن های خاصی از مثلا php کار می کنن که در این صورت باز هم داکر فوق العادس که همون ورژن رو یک بار نصب می کنی و هیچوقت مشکل آپدیت شدن ورژن جدید حین نصب (که منجر میشه که عدم اجرا شدن پروژه) رو نخواهید داشت.
-
-
-
-#فرق داکر با سایر مجازی سازها
-
-یکی از مجازی سازهایی که معمولا داکر رو باهاش مقایسه می کنن VMware هستش که خب اونم یک نرم افزار مجازی سازه سخت افزار رو تقسیم می کنه و میشه روش پروژه های متفاوتی رو به صورت جداگانه بالا آورد. خب به طور کلی اره میشه گفت مشابه هست خروجی کارشون. ولی، معماری VMware متفاوته؛ یعنی میاد در لایه ی سخت افزار میشینه و اون رو چندین بخش می کنه، بعد روی هر کدوم از بخش ها سیستم عامل جداگانه و مختص به خودش رو نصب می کنه و بعد هم پروژه رو گانفیگ میکنه و نهایتا پروژه بالا میاد.
-
-در صورتی که داکر روی لایه ی سیستم عامل میشینه؛ یعنی سخت افزار اختصاص داده شده، سیستم عامل یک بار نصب شده، و بعد ما میایم یک سری container میسازیم و پروژه هامون رو بالا میاریم. این تصویری هست از معماری VMware:
-
 ![vmware-pic](https://lamtakam.com/img/uploaded_images/1/1540452647.png)
 
-و این هم یک تصویر مقایسه ای از داکر و سایر مجازی سازها:
 
-![vmware-vs-docker-pic](https://lamtakam.com/img/uploaded_images/1/1540452835.jpeg)
+#اما این container ها رو باید از کجا پیدا کرد ؟#
+داکر یه جایی داره که شما میتونید خیلی از این container ها رو اونجا پیدا کنید و ازشون استفاده کنید به نام docker hub که در زیر آدرس اون رو قرار میدم . البته توجه داشته باشید که داکر به آی پی ایران سرویس نمیده و برای نصب کردن و استفاده از docker hub باید از وی پی ان استفاده کنید.
 
-##سه مفهوم اصلی در داکر:
-###Image
+https://hub.docker.com
 
-Image‌ها را در داکر پس از دریافت اجرا می‌کنیم. همانطور که در تصویر پایین می‌بینید یک Base Image مانند Debian روی این داکر نصب شده است و روی آن Image‌های دیگر را نصب کرده ایم.
+تا زمانی که شما container مورد نظر خودتون رو بسازید میتونید از اینجا موارد مشابه ای رو پیدا کنید و سرعت ساخت اپلیکیشنتون رو بالاتر ببرید.
 
-در واقع Image‌ها پس از پایان به حالت اولیه خود باز می‌گردند چرا که همانطور از نام آن‌ها مشخص است تنها یک تصویری از پکیج اصلی هستند. برای حذف تغییرات Image می‌توان حالت آن‌ها را با دستورات خاصی ذخیره کرد.
+نمونه هایی از container هایی که میتونید از داکر هاب دانلود و استفاده کنید را در زیر نمایش میدهیم
 
-![image](https://lamtakam.com/img/uploaded_images/1/1540453046.jpeg)
+Node.js , MySQL , Ubunto
 
-###Hub
-هاب یک سرویس اشتراک گذاری تهیه شده توسط خود شرکت Docker است که شامل مخزنی از image‌های آماده برای Docker است. این مخزن حاوی چندین هزار برنامه و سیستم عامل است که می‌توان به آن image‌هایی را هم اضافه کرد.
+#نصب داکر!
+:یکی از راحت ترین روش های نصب استفاده از اسکریپت ارائه شده توسط خود داکره
 
-###Container
-همانطور که پیش تر هم به صورت خلاصه در رابطه با کانتینرها گفته شد، می‌توان گفت Container ظرفی است که Image‌ها را در آن اجرا می‌کنند. Container‌ها از روی Image‌ها ایجاد می‌شوند و به وظایف خود عمل می‌کنند. به عنوان مثال تصور کنید از یک Centos چند Container می‌سازیم و در هر کدام تغییرات متفاوتی اعمال می‌کنیم.
+<div dir="ltr">
+
+    curl -sSL https://get.docker.com/ | sh    
+
+</div>
+
+پس از آن میتوانید برای اینکه بتونید بدون استفاده از دسترسی superuser (sudo) از داکر استفاده کنید، user خودتون رو به گروه داکر اضافه کنید:
 
 
 <div dir="ltr">
 
-    sudo apt install docker.io docker-compose
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    newgrp docker 
+    
+</div>
+
+برای اطمینان یک بار logout کنید و سپس دوباره وارد شید تا دسترسی ها آپدیت شن.
+
+حال برای تست کردن میتوانید دستور زیر را اجرا کنید:
+
+<div dir="ltr">
+
+    docker run hello-world
+    
+</div>
+
+که خروجی مشابه زیره:
+
+<div dir="ltr">
+
+    // Unable to find image 'hello-world:latest' locally
+    // latest: Pulling from library/hello-world
+    // ca4f61b1923c: Pull complete
+    // Digest: sha256:ca0eeb6fb05351dfc8759c20733c91def84cb8007aa89a5bf606bc8b315b9fc7
+    // Status: Downloaded newer image for hello-world:latest
+    // Hello from Docker!   
+    // This message shows that your installation appears to be working correctly.
     
 </div>
 
 
+##چگونه باید اپلیکیشن خودمون رو به یک container اضافه کنیم ؟
 
+زمانی که شما container مورد نظر خودتون رو پیدا کردید قطعا میخواهید اون رو customize کنید و dependency های خودتون رو بهش اضافه کنید . اینجا جاییه که Dockerfile میاد سر کار.
+
+داکر فایل (Dockerfile) به طور خلاصه توضیح میده که شما از داکر میخواین چطور برای بار اول container اتون رو بالا بیاره
+
+به عنوان مثال یک نمونه از Dockerfile رو در زیر براتون قرار میدم.
+
+```dockerfile
+    # Use the official Node.js runtime as a base image
+    FROM node:alpine
+
+    # Set the directory of my web application to /app
+    WORKDIR /app
+
+    # Copy over my project’s directory into the container /app folder
+     Add . /app
+
+    # Install all the dependencies for my web application
+     RUN yarn install
+
+    # Make the port 3000 accessible outside of Docker
+     EXPOSE 3000
+
+    # Execute the command yarn start
+     CMD ["yarn", "start"]  
+
+```
+این Dockerfile هر وقت که یک instance ازش ساخته بشه اجرا میشه . هنوز برای ساخت یک container شما نیازمند docker image هستید . هر وقت شما یک Image بسازید متوانید از روی اون به هر تعدادی که دلتون میخواد container بسازید.
+
+در حقیقت شما از داکر هاب ایمیج های داکری آماده را دانلود میکنید که میتوانید به کمک آن ها هر تعداد container ای که لازم دارید را بسازید . همچنین میتوانید تنظیمات شخصی خود را بر روی کانتینری که ساخته اید اعمال کنید و دوباره از آن container یک Image جدید بسازید تا برای ساخت کانتینر هر بار نیازمند انجام تنظیمات قبلی نباشید و container های خودتون رو بر اساس Image جدیدی که ساخته اید ، تولید کنید
+
+
+##مثال
+
+برای آشنایی بیشتر یک image برای راه اندازی یک پروژه جنگو میسازیم:
+برای ساخت یک image ابتدا لازم است تا یک Dockerfile بسازیم و درون آن با نوشتن دستوراتی چگونگی ساهتن image را به docker نشان دهیم. در واقع image دلخواه خود را برای docker توصیف میکنیم.
+
+<div dir="ltr">
+
+    FROM python:3.6
+    ENV PYTHONUNBUFFERED 1
+    RUN mkdir /my_app_dir
+    WORKDIR /my_app_dir
+    ADD requirements.txt /my_app_dir/
+    RUN pip install — upgrade pip && pip install -r requirements.txt
+    ADD . /my_app_dir/
+    
+</div>
+
+در خط دوم با کلید واژه ENV میتوایم Environment Variable ها را برای app جنگو خود set کنیم. در واقع با این دستور درون کانتینر خود مقدار Environment Variable ای با نام PYTHONUNBUFFERED را برابر ۱ قرار میدهیم.
+
+
+از آنجایی که به یک دیتابیس هم نیاز داریم میتونیم از یک image آماده mysql استفاده کنیم.
+وقتی تعداد کانتینر هامون زیاد میشه باید از ابزاری به اسم docker-compose استفاده کنیم.
+
+میتونید به راحتی نصبش کنید:
+```$bash
+    sudo apt install docker-compose
+```
+
+حالا یک فایل به نام docker-compose.yml میسازیم با محتوای زیر:
+```docker-compose
+version: '3'
+
+services:
+  db:
+     # Use the official mysql version 5.7 as a base image
+    image: mysql:5.7
+
+    # Mapping port 3306 inside container to port 3306 in our os network
+    ports:
+      - '3306:3306'
+
+    # Setting environment variables
+    environment:
+       MYSQL_DATABASE: 'my-app-db'
+       MYSQL_USER: 'root'
+       MYSQL_PASSWORD: 'password'
+       MYSQL_ROOT_PASSWORD: 'password'
+
+  web:
+    # Choosing the directory containing our Dockerfile
+    build: .
+
+    # Running this command every time we run our container
+    command: python manage.py runserver 0.0.0.0:8000
+
+    # Mounting current directory into container's /my_app_dir directory
+    volumes:
+      - .:/my_app_dir
+    ports:
+      - "8000:8000"
+
+    # web Container will run after db
+    depends_on:
+      - db
+```
+
+
+حالا کافیه بقیه تنظیمات پروژه رو انجام بدیم.
+ فایل requirements.txt در دایرکتوری روت پروژه جنگو :
+ ```
+Django==1.11.5
+mysqlclient==1.3.12
+django-mysql==2.2.0
+... (whatever else your app requires) ...
+```
+
+my_app_dir/settings.py :
+```
+
+...
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'my-app-db',
+        'USER': 'root',
+        'PASSWORD': 'password',
+        'HOST': 'db',
+        'PORT': 3306,
+    }
+}
+...
+
+```
+
+و در آخر:
+```
+    # building images from Dockerfiles
+    docker-compose build
+
+    # running your containers
+    docker-compose up -d
+```
+
+و برای migrate کردن دیتابیس درحالی که کانتینر ها در حال کار کردن هستند به صورت زیر میتونید دستور migrate رو درون کانتینر در حال اجرا، اجرا کنید.
+```dockerfile
+    
+    docker-compose run web python manage.py migrate
+
+```
 
 
 
