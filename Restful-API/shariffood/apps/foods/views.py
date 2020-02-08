@@ -17,4 +17,3 @@ class FoodsListAPIView(GenericAPIView):
     def get(self, request):
         data = self.get_serializer(self.get_queryset(), many=True).data
         return Response(data={'foods': data}, status=status.HTTP_200_OK)
-
