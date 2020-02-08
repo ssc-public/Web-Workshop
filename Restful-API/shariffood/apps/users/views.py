@@ -5,7 +5,7 @@ import secrets
 from django.shortcuts import redirect
 
 from .models import ForgotPasswordToken, Profile, ActivateUserToken
-from .serializers import ForgotPasswordSerializer, ChangePasswordSerializer, UserSerializer
+from .serializers import ForgotPasswordSerializer, ChangePasswordSerializer, UserSerializer, ProfileSerializer
 from django.utils import timezone
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -86,3 +86,13 @@ class ActivateView(GenericAPIView):
         user.save()
 
         return redirect('http://shariffood.ir/login')
+
+
+class LogoutView(GenericAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request):
+        request.user.auth_token.delete()
+        return Response(status=status.HTTP_200_OK)
