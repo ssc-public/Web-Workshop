@@ -1,7 +1,8 @@
 from django.contrib.postgres.fields import ArrayField
 # from django.contrib.auth.models import User
-from apps.users.models import Profile
+from ..users.models import Profile
 from django.db import models
+
 
 class Restaurants(models.Model):
     owner = models.OneToOneField(Profile, on_delete=models.CASCADE, null=False, default=0)
