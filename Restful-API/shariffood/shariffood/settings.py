@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'apps.rates',
     'apps.restaurants',
     'apps.users',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
