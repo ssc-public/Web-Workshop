@@ -4,6 +4,7 @@ from django.db import models
 from jsonfield import JSONField
 
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     address = models.CharField(max_length=200, default="")
@@ -25,3 +26,4 @@ class ForgotPasswordToken(models.Model):
 class ActivateUserToken(models.Model):
     token = models.CharField(max_length=100)
     eid = models.CharField(max_length=100, null=True)
+

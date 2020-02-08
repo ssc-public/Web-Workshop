@@ -1,4 +1,4 @@
-from apps.foods.models import Foods
+from ..foods.models import Foods
 
 from django.db import models
 
@@ -9,10 +9,9 @@ ORDER_STATUS = (
     (4, 'ارسال شده')
 )
 
+
 class Orders(models.Model):
     foods = models.ManyToManyField(Foods)
-    # TODO: complete Orders model
-    status = models.IntegerField(default = 1, choices=ORDER_STATUS)
+    owner = models.ForeignKey('users.Profile', related_name='orders', on_delete=models.CASCADE)
+    status = models.IntegerField(default=1, choices=ORDER_STATUS)
     date = models.DateTimeField(auto_now=True)
-
-

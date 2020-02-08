@@ -1,5 +1,6 @@
 from django.db import models
-from apps.restaurants.models import Restaurants
+from ..restaurants.models import Restaurants
+
 
 class Foods(models.Model):
     CATEGORIES = (
@@ -9,5 +10,5 @@ class Foods(models.Model):
         (3, 'پیش‌غذا')
     )
     name = models.CharField(max_length=50)
-    restaurant = models.ForeignKey(Restaurants, on_delete=models.CASCADE)
+    restaurant = models.ForeignKey(Restaurants, related_name='foods', on_delete=models.CASCADE)
     category = models.IntegerField(max_length=1, choices=CATEGORIES, default=0)
