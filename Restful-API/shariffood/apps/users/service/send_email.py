@@ -7,7 +7,7 @@ class SendEmail:
         self.reset_password = reset_password
         self.user = user
 
-    def send_email(self):
+    def send_email(self, html_path, text_path):
         context = {
             'domain': 'http://shariffood.ir',
             'username': self.user.username,

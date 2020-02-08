@@ -12,5 +12,6 @@ urlpatterns = [
          name='token_refresh'),
     path('password-update', views.ChangePassword.as_view(), name='password_update'),
     path('password/reset', views.ForgotPasswordView.as_view()),
+    path('activate/<slug:eid>/<slug:token>', views.ActivateView.as_view()),
 
 ]

@@ -1,11 +1,14 @@
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 import secrets
-from .models import ForgotPasswordToken, Profile
+
+from django.shortcuts import redirect
+
+from .models import ForgotPasswordToken, Profile, ActivateUserToken
 from .serializers import ForgotPasswordSerializer, ChangePasswordSerializer, UserSerializer
 from django.utils import timezone
 from django.utils.encoding import force_bytes
-from django.utils.http import urlsafe_base64_encode
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from rest_framework.generics import GenericAPIView, get_object_or_404
 from rest_framework.response import Response
 from .service import send_email
@@ -26,7 +29,9 @@ class ForgotPasswordView(GenericAPIView):
             expiration_date=timezone.now() + timezone.timedelta(hours=24),
         )
         email = send_email.SendEmail(reset_password_token, user)
-        email.send_email()
+        email.send_email(
+            '/home/rez/PycharmProjects/web_workshop/Restful-API/shariffood/apps/users/service/forget_password.html',
+            '/home/rez/PycharmProjects/web_workshop/Restful-API/shariffood/apps/users/service/forget_password.txt')
         reset_password_token.save()
         return Response({'detail': 'Successfully Sent Reset Password Email'}, status=200)
 
@@ -59,33 +64,25 @@ class SignUpView(GenericAPIView):
                 eid=urlsafe_base64_encode(force_bytes(serializer.validated_data['email'])),
             )
             activate_user_token.save()
-
-            context = {
-                'domain': 'shariffood',
-                'eid': activate_user_token.eid,
-                'token': activate_user_token.token,
-            }
-            email_html_message = render_to_string('accounts/email/user_activate_email.html', context)
-            email_plaintext_message = render_to_string('accounts/email/user_activate_email.txt', context)
-            msg = EmailMultiAlternatives(
-                _("Activate Account for {title}".format(title="AI Challenge")),
-                email_plaintext_message,
-                "sharif.aichallenge@gmail.com",
-                [serializer.validated_data['email']]
-            )
-            msg.attach_alternative(email_html_message, "text/html")
-            try:
-                msg.send()
-
-                serializer.save()
-                serializer.instance.is_active = False
-                serializer.instance.save()
-            except Exception as e:
-                print(e)
-                print(serializer.validated_data['email'])
-                return Response({'detail': _('Invalid email or user has not been saved.')}, status=406)
-
-            return Response({'detail': _('User created successfully. Check your email for confirmation link')},
+            email = send_email.SendEmail(activate_user_token, request.user)
+            email.send_email(
+                '/home/rez/PycharmProjects/web_workshop/Restful-API/shariffood/apps/users/service/activate_user.html',
+                '/home/rez/PycharmProjects/web_workshop/Restful-API/shariffood/apps/users/service/activate_user.txt')
+            return Response({'detail': 'User created successfully. Check your email for confirmation link'},
                             status=200)
         else:
-            return Response({'error': _('Error occurred during User creation')}, status=500)
+            return Response({'error': 'Error occurred during User creation'}, status=500)
+
+
+class ActivateView(GenericAPIView):
+
+    def get(self, request, eid, token):
+        activate_user_token = get_object_or_404(ActivateUserToken,
+                                                eid=eid, token=token)
+
+        email = urlsafe_base64_decode(activate_user_token.eid).decode('utf-8')
+        user = get_object_or_404(User, email=email)
+        user.is_active = True
+        user.save()
+
+        return redirect('http://shariffood.ir/login')
