@@ -4,6 +4,10 @@ from .models import Foods
 
 
 class FoodsSerializer(serializers.ModelSerializer):
+    from ..restaurants.serializers import RestaurantsSerializer
+
+    restaurant = RestaurantsSerializer()
+
     class Meta:
         model = Foods
-        fields = ['name', 'category']
+        fields = ['name', 'restaurant', 'category']
