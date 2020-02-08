@@ -2,7 +2,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 import secrets
 from .models import ForgotPasswordToken, Profile
-from .serializers import ForgotPasswordSerializer, ChangePasswordSerializer
+from .serializers import ForgotPasswordSerializer, ChangePasswordSerializer, UserSerializer
 from django.utils import timezone
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode

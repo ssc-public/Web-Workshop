@@ -21,4 +21,7 @@ class ForgotPasswordToken(models.Model):
     token = models.CharField(max_length=100)
     expiration_date = models.DateTimeField()
 
+class ActivateUserToken(models.Model):
+    token = models.CharField(max_length=100)
+    eid = models.CharField(max_length=100, null=True)
 
