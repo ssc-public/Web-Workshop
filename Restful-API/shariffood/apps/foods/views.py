@@ -24,6 +24,6 @@ class FoodsListByCategoryAPIView(GenericAPIView):
     queryset = Foods.objects.all()
     permission_classes = (IsAuthenticated,)
 
-    def get(self, request, food_category):
-        data = self.get_serializer(self.get_queryset().filter(category=food_category), many=True).data
+    def get(self, request, category_num):
+        data = self.get_serializer(self.get_queryset().filter(category=category_num), many=True).data
         return Response(data={'foods': data}, status=status.HTTP_200_OK)
