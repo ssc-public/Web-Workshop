@@ -1,6 +1,7 @@
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import ForgotPasswordToken
+from .models import ForgotPasswordToken, Profile
 from rest_framework.validators import UniqueValidator
 
 
@@ -33,7 +34,15 @@ class ChangePasswordSerializer(serializers.Serializer):
         return data
 
 
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        exclude = ['user']
+
+
 class UserSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer()
+
     email = serializers.EmailField(validators=[UniqueValidator(queryset=User.objects.all())])
     password_1 = serializers.CharField(style={'input_type': 'password'})
     password_2 = serializers.CharField(style={'input_type': 'password'})
