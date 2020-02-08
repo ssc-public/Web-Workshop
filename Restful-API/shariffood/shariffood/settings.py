@@ -38,6 +38,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'apps.restaurant',
     'apps.food',
+    'apps.comments',
+    'apps.foods',
+    'apps.orders',
+    'apps.rates',
+    'apps.restaurants',
+    'apps.users',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +81,12 @@ WSGI_APPLICATION = 'shariffood.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'mydb',
+        'USER': 'test',
+        'PASSWORD': 'test',
+        'HOST': 'localhost',
+        'PORT': '',  
     }
 }
 
