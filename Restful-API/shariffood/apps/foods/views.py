@@ -17,3 +17,13 @@ class FoodsListAPIView(GenericAPIView):
     def get(self, request):
         data = self.get_serializer(self.get_queryset(), many=True).data
         return Response(data={'foods': data}, status=status.HTTP_200_OK)
+
+
+class FoodsListByCategoryAPIView(GenericAPIView):
+    serializer_class = FoodsSerializer
+    queryset = Foods.objects.all()
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, food_category):
+        data = self.get_serializer(self.get_queryset().filter(category=food_category), many=True).data
+        return Response(data={'foods': data}, status=status.HTTP_200_OK)

@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from jsonfield import JSONField
 
+
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
@@ -14,4 +15,3 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-    
