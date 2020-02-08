@@ -28,3 +28,28 @@ body {
 .food-card:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+.resturant-info {
+  position: absolute;
+  top: 200px;
+  left: 25%;
+  width: 50%;
+  background-color: white;
+  padding: 30px;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 12px 27px 0 rgba(0, 0, 0, 0.19);
+}
+
+.resturant {
+  position: relative;
+}
+
+.checked {
+  color: orange;
+}
+
+.foods {
+  position: absolute;
+  top: 500px;
+  left: 25%;
+  width: 50%;
+}
