@@ -4,7 +4,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .models import Restaurants
-from .serializers import RestaurantsSerializer
+from .serializers import RestaurantsSerializer, RestaurantWithItsFoodsSerializer
 
 
 # Create your views here.
@@ -21,7 +21,7 @@ class RestaurantsListAPIView(GenericAPIView):
 
 
 class RestaurantWithItsFoodsListAPIView(GenericAPIView):
-    serializer_class = RestaurantsSerializer
+    serializer_class = RestaurantWithItsFoodsSerializer
     queryset = Restaurants.objects.all()
     permission_classes = (IsAuthenticated,)
 
