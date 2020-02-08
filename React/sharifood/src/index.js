@@ -5,16 +5,15 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import * as serviceWorker from './serviceWorker';
 import './static/css/normalizer.css'
+import ResturantPage from './component/resturant/ResturantPage';
 
 export default class App extends Component {
     render() {
         return (
             <Switch>
                 <Route exact path="/" render={() => (
-                    <div>
-                        سلام
-                    </div>
-                )}/>
+                    <ResturantPage />
+                )} />
                 {/*<Route exact path="/sth" component={}/>*/}
             </Switch>
         )
