@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from jsonfield import JSONField
 
-# Create your models here.
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     address = models.CharField(max_length=200, default="")
@@ -14,4 +14,11 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
-    
+
+
+class ForgotPasswordToken(models.Model):
+    uid = models.CharField(max_length=100)
+    token = models.CharField(max_length=100)
+    expiration_date = models.DateTimeField()
+
+
