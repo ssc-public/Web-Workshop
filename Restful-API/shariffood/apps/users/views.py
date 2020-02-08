@@ -1,7 +1,7 @@
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 import secrets
-from .models import ForgotPasswordToken
+from .models import ForgotPasswordToken, Profile
 from .serializers import ForgotPasswordSerializer, ChangePasswordSerializer
 from django.utils import timezone
 from django.utils.encoding import force_bytes
@@ -44,3 +44,48 @@ class ChangePassword(GenericAPIView):
         request.user.password = make_password(data['new_password'])
         request.user.save()
         return Response(data={'detail': 'password changed successfully'}, status=status.HTTP_200_OK)
+
+
+class SignUpView(GenericAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = UserSerializer
+
+    def post(self, request):
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+
+            activate_user_token = ActivateUserToken(
+                token=secrets.token_urlsafe(32),
+                eid=urlsafe_base64_encode(force_bytes(serializer.validated_data['email'])),
+            )
+            activate_user_token.save()
+
+            context = {
+                'domain': 'shariffood',
+                'eid': activate_user_token.eid,
+                'token': activate_user_token.token,
+            }
+            email_html_message = render_to_string('accounts/email/user_activate_email.html', context)
+            email_plaintext_message = render_to_string('accounts/email/user_activate_email.txt', context)
+            msg = EmailMultiAlternatives(
+                _("Activate Account for {title}".format(title="AI Challenge")),
+                email_plaintext_message,
+                "sharif.aichallenge@gmail.com",
+                [serializer.validated_data['email']]
+            )
+            msg.attach_alternative(email_html_message, "text/html")
+            try:
+                msg.send()
+
+                serializer.save()
+                serializer.instance.is_active = False
+                serializer.instance.save()
+            except Exception as e:
+                print(e)
+                print(serializer.validated_data['email'])
+                return Response({'detail': _('Invalid email or user has not been saved.')}, status=406)
+
+            return Response({'detail': _('User created successfully. Check your email for confirmation link')},
+                            status=200)
+        else:
+            return Response({'error': _('Error occurred during User creation')}, status=500)
