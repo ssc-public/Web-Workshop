@@ -256,7 +256,13 @@ Greeting.propTypes = {
 
 # Event Handlers and Forms
 
+# Single Page Application and React Router
+
+# Higher Order Component
+
 # Refs
+
+
 
 </div>
 
