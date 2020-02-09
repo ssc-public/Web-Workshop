@@ -54,8 +54,23 @@ body {
   color: orange;
 }
 
-.foods {
+.search {
   margin-top: 100px;
+}
+
+.active-pink-2 input[type="text"]:focus:not([readonly]) {
+  border-bottom: 1px solid #f48fb1;
+  box-shadow: 0 1px 0 0 #f48fb1;
+}
+.active-pink input[type="text"] {
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid grey;
+  box-shadow: 0 1px 0 0 black;
+}
+
+.foods {
+  margin-top: 20px;
 }
 
 .layout {

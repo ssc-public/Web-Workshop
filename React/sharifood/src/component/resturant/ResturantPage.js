@@ -5,6 +5,7 @@ import ResturantInfo from './ResturantInfo'
 import Foods from '../food/Foods'
 import Comments from '../common/Comments'
 import CommentBox from '../common/CommentBox'
+import Search from '../common/Search'
 
 class ResturantPage extends Component {
     render() {
@@ -13,7 +14,7 @@ class ResturantPage extends Component {
                 <div className="resturant-img"></div>
                 <ResturantInfo />
                 <div className="layout mt-5">
-
+                    <Search />
                     <Foods />
                     <CommentBox />
                     <Comments />
