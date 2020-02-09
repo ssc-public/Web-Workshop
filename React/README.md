@@ -225,6 +225,30 @@ class Welcome extends Component {
 
 > حرف اول اسم Component حتما باید بزرگ نوشته شود تا با تگ‌ها اشتباه گرفته نشود.
 
+پس از تعریف کردن یک Component، در Component های دیگر میتوانیم از آن استفاده کنیم:
+
+<div dir="ltr">
+
+```Javascript
+import {Component} from 'react'
+import Welcome from './Welcome'
+
+class MainPage extends Component {
+  render() {
+    return (
+      <Welcome name="Asghar"/>
+      <Welcome name="Showkat"/>
+      <Welcome name="Fahime"/>
+    )
+  }
+}
+```
+
+</div>
+
+توصیه میشود که صفحه های مختلف و همچنین اجزای مختلف هر صفحه را در Component های متفاوت پیاده سازی و استفاده کنید.
+
+
 # Props
 
 به componentها می‌توان یک object پاس داد که به آن `(Props (Properties` گفته می‌شود. در Componentهای اول با `{<props.<prop-name}` می‌توانیم به prop مورد نظر دسترسی پیدا کنیم. اما در component نوع دوم باید از ‍‍‍`{<this.props.<prop-name}` استفاده کنیم.
