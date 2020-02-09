@@ -30,8 +30,8 @@ class ForgotPasswordView(GenericAPIView):
         )
         email = send_email.SendEmail(reset_password_token, user)
         email.send_email(
-            '/home/rez/PycharmProjects/web_workshop/Restful-API/shariffood/apps/users/service/forget_password.html',
-            '/home/rez/PycharmProjects/web_workshop/Restful-API/shariffood/apps/users/service/forget_password.txt')
+            'Restful-API/shariffood/apps/users/service/forget_password.html',
+            'Restful-API/shariffood/apps/users/service/forget_password.txt')
         reset_password_token.save()
         return Response({'detail': 'Successfully Sent Reset Password Email'}, status=200)
 
@@ -66,8 +66,8 @@ class SignUpView(GenericAPIView):
             activate_user_token.save()
             email = send_email.SendEmail(activate_user_token, request.user)
             email.send_email(
-                '/home/rez/PycharmProjects/web_workshop/Restful-API/shariffood/apps/users/service/activate_user.html',
-                '/home/rez/PycharmProjects/web_workshop/Restful-API/shariffood/apps/users/service/activate_user.txt')
+                'Restful-API/shariffood/apps/users/service/activate_user.html',
+                'Restful-API/shariffood/apps/users/service/activate_user.txt')
             return Response({'detail': 'User created successfully. Check your email for confirmation link'},
                             status=200)
         else:

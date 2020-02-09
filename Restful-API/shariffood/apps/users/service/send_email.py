@@ -15,10 +15,10 @@ class SendEmail:
             'token': self.reset_password.token,
         }
         email_html_message = render_to_string(
-            '/home/rez/PycharmProjects/web_workshop/Restful-API/shariffood/apps/users/service/forget_password.html',
+            html_path,
             context)
         email_plaintext_message = render_to_string(
-            '/home/rez/PycharmProjects/web_workshop/Restful-API/shariffood/apps/users/service/forget_password.txt',
+            text_path,
             context)
 
         message = EmailMultiAlternatives(
