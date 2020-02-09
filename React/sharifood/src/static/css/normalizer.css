@@ -48,7 +48,6 @@ body {
   height: 250px;
   background-image: url("../images/resturant.jpeg");
   background-size: cover;
-  border: 1px solid red;
 }
 
 .checked {
@@ -63,7 +62,4 @@ body {
   position: absolute;
   left: 20%;
   width: 60%;
-}
-
-.comment {
 }

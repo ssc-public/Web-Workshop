@@ -14,7 +14,7 @@ class CommentBox extends Component {
                     </small>
                 </p>
                 <div style={{ zoom: '140%' }}>
-                    <Rating />
+                    <Rating rate="3.1" />
                 </div>
                 <hr />
                 <div className="container mt-4" style={{ width: "70%" }}>

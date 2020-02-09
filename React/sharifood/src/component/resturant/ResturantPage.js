@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import resturantImage from '../../static/images/resturant.jpeg'
 import ResturantInfo from './ResturantInfo'
 import Foods from '../food/Foods'
-import Comment from '../common/Comment'
+import Comments from '../common/Comments'
 import CommentBox from '../common/CommentBox'
 
 class ResturantPage extends Component {
@@ -16,9 +16,7 @@ class ResturantPage extends Component {
 
                     <Foods />
                     <CommentBox />
-                    <Comment />
-                    <Comment />
-                    <Comment />
+                    <Comments />
                 </div>
 
             </div>
