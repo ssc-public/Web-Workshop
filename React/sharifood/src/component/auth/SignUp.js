@@ -29,7 +29,7 @@ class SignUp extends Component {
         if (this.state.isRegistered)
             return <Redirect to="/signin" />;
         return (
-            <div className="col-md-6 mb-4 container" >
+            <div className="col-md-6 mb-4 container text-right" >
                 <div className="card">
                     <div className="card-body">
                         <form onSubmit={this.onSubmit}>
@@ -51,10 +51,10 @@ class SignUp extends Component {
                             </div>
                             <br />
                             <div className="text-center">
-                                <button className="btn btn-info btn-sm">ثبت نام<i className="fa fa-angle-double-right pl-2" aria-hidden="true"></i></button>
+                                <button className="btn btn-info btn-sm">ثبت نام</button>
                             </div>
                             <div className="text-center">
-                                <p>اگر قبلا ثبت نام کرده  اید  <Link to="/signin">وارد شوید</Link></p>
+                                <p>   قبلا ثبت نام کرده اید؟   <Link to="/signin"> <p className="text-info">ورود به شریف فود</p></Link></p>
                             </div>
                         </form>
                     </div>

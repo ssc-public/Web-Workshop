@@ -32,10 +32,14 @@ class Comments extends Component {
         ]
     }
 
+    componentDidMount() {
+
+    }
+
     render() {
         return (
             <div>
-                {this.state.comments.map(comment => <Comment comment={comment} />)}
+                {this.state.comments.map(comment => <Comment comment={comment} key={comment.id} />)}
             </div>
         )
     }

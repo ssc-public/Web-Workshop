@@ -8,13 +8,15 @@ import './static/css/normalizer.css'
 import ResturantPage from './component/resturant/ResturantPage';
 import SignIn from './component/auth/SignIn'
 import SignUp from './component/auth/SignUp'
+import Navbar from './component/common/Navbar';
 
 export default class App extends Component {
     render() {
         return (
             <div>
+                <Navbar />
                 <Switch>
-                    <Route exact path='/resturants/:resturant_name' component={ResturantPage} />
+                    <Route exact path='/resturant/:resturant_name' component={ResturantPage} />
                     <Route exact path='/signin' component={SignIn} />
                     <Route exact path='/signup' component={SignUp} />
                 </Switch>

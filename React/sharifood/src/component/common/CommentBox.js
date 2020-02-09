@@ -20,29 +20,29 @@ class CommentBox extends Component {
                 <div className="container mt-4" style={{ width: "70%" }}>
                     <div className="row d-flex justify-content-between">
                         <div className="text-muted">کیفیف غذا</div>
-                        <div class="progress d-flex flex-row-reverse rounded-pill mt-2" style={{ width: "50%", zoom: "60%" }}>
-                            <div class="progress-bar bg-warning" role="progressbar" style={{ width: "40%" }} aria-valuemin="0" aria-valuemax="100"></div>
+                        <div className="progress d-flex flex-row-reverse rounded-pill mt-2" style={{ width: "50%", zoom: "60%" }}>
+                            <div className="progress-bar bg-warning" role="progressbar" style={{ width: "40%" }} aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <hr />
                     <div className="row d-flex justify-content-between">
                         <div className="text-muted">کیفیف بسته بندی</div>
-                        <div class="progress d-flex flex-row-reverse rounded-pill mt-2" style={{ width: "50%", zoom: "60%" }}>
-                            <div class="progress-bar bg-warning" role="progressbar" style={{ width: "50%" }} aria-valuemin="0" aria-valuemax="100"></div>
+                        <div className="progress d-flex flex-row-reverse rounded-pill mt-2" style={{ width: "50%", zoom: "60%" }}>
+                            <div className="progress-bar bg-warning" role="progressbar" style={{ width: "50%" }} aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <hr />
                     <div className="row d-flex justify-content-between">
                         <div className="text-muted">سرعت ارسال پیک</div>
-                        <div class="progress d-flex flex-row-reverse rounded-pill mt-2" style={{ width: "50%", zoom: "60%" }}>
-                            <div class="progress-bar bg-warning" role="progressbar" style={{ width: "70%" }} aria-valuemin="0" aria-valuemax="100"></div>
+                        <div className="progress d-flex flex-row-reverse rounded-pill mt-2" style={{ width: "50%", zoom: "60%" }}>
+                            <div className="progress-bar bg-warning" role="progressbar" style={{ width: "70%" }} aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <hr />
                     <div className="row d-flex justify-content-between">
                         <div className="text-muted">برخورد پیک</div>
-                        <div class="progress d-flex flex-row-reverse rounded-pill mt-2" style={{ width: "50%", zoom: "60%" }}>
-                            <div class="progress-bar bg-warning" role="progressbar" style={{ width: "90%" }} aria-valuemin="0" aria-valuemax="100"></div>
+                        <div className="progress d-flex flex-row-reverse rounded-pill mt-2" style={{ width: "50%", zoom: "60%" }}>
+                            <div className="progress-bar bg-warning" role="progressbar" style={{ width: "90%" }} aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
                     </div>
                     <hr />

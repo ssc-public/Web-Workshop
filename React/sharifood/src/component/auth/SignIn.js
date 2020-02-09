@@ -37,7 +37,7 @@ class SignIn extends Component {
             return <Redirect to="/" />;
 
         return (
-            <div className="col-md-6 mb-4 container">
+            <div className="col-md-6 mb-4 container text-right">
                 <div className="card">
                     <form className="card-body" onSubmit={this.onSubmit}>
                         <h3 className="text-center default-text py-3"><i className="fa fa-lock"></i> Login</h3>
@@ -56,7 +56,7 @@ class SignIn extends Component {
                             <button className="btn btn-sm btn-info">SignIn</button>
                         </div>
                         <a className="btn btn-sm text-secondary" role="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            forget password?
+                            forget password
                             </a>
                     </form>
                     <div className="collapse" id="collapseExample">
