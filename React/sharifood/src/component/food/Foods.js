@@ -8,6 +8,10 @@ class Foods extends Component {
             <div className="foods">
                 <h3 className="text-right"><strong>پیتزا</strong></h3>
                 <div className="row justify-content-between">
+                    {/* <FoodCard className="col-md-6" />
+                    <FoodCard className="col-md-6" />
+                    <FoodCard className="col-md-6" />
+                    <FoodCard className="col-md-6" /> */}
                     <div className="col-md-6">
                         <FoodCard />
                     </div>
