@@ -66,7 +66,7 @@ body {
   border: none;
   border-radius: 0px;
   border-bottom: 1px solid grey;
-  box-shadow: 0 1px 0 0 black;
+  box-shadow: 0 1px 0 0 grey;
 }
 
 .foods {
@@ -77,4 +77,24 @@ body {
   position: absolute;
   left: 20%;
   width: 60%;
+}
+
+.background {
+  background: url("../images/signup.webp") no-repeat center fixed;
+  background-size: cover;
+  margin-top: 0px;
+  min-height: 92vh;
+  width: 100%;
+}
+
+.input-border {
+  width: 85%;
+  margin-top: 30px;
+  border: none;
+  border-radius: 0px;
+  border-bottom: 1px solid grey;
+}
+
+.input-border:focus:not([readonly]) {
+  border-bottom: 1px solid #f53877;
 }
