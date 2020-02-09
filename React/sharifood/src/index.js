@@ -6,16 +6,19 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import './static/css/normalizer.css'
 import ResturantPage from './component/resturant/ResturantPage';
+import SignIn from './component/auth/SignIn'
+import SignUp from './component/auth/SignUp'
 
 export default class App extends Component {
     render() {
         return (
-            <Switch>
-                <Route exact path="/" render={() => (
-                    <ResturantPage />
-                )} />
-                {/*<Route exact path="/sth" component={}/>*/}
-            </Switch>
+            <div>
+                <Switch>
+                    <Route exact path='/resturants/:resturant_name' component={ResturantPage} />
+                    <Route exact path='/signin' component={SignIn} />
+                    <Route exact path='/signup' component={SignUp} />
+                </Switch>
+            </div>
         )
     }
 }
