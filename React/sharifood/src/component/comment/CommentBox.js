@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Rating from './Rating'
+import Rating from '../common/Rating'
 
 class CommentBox extends Component {
     render() {

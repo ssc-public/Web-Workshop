@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Rating from './Rating'
+import Rating from '../common/Rating'
 
 class Comment extends Component {
     render() {
