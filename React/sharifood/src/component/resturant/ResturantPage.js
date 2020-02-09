@@ -12,7 +12,11 @@ class ResturantPage extends Component {
             <div className="resturant">
                 <img src={resturantImage} height="auto" width="100%" />
                 <ResturantInfo />
-                <Foods />
+                <div className="layout">
+
+                    <Foods />
+                </div>
+
             </div>
         )
     }
