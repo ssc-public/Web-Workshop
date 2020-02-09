@@ -27,3 +27,4 @@ class TokenAuth(TokenAuthentication):
                 return stored_token.user, stored_token
 
         raise exceptions.AuthenticationFailed('is not valid')
+
