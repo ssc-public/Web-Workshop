@@ -622,9 +622,89 @@ class NameForm extends React.Component {
 
 #Single Page Application(SPA) and React Router
 ری‌اکت یک ابزار قدرتمند برای ساخت SPA میباشد اما SPA به چه معناست؟
-در برخی از سایت ها که در صفحات مختلفشان معمولا دارای front نسبتا یک نواختی هستند چیزی که ما با آن مواجه میباشیم در واقع یک SPA میباشد که یعنی در این سایت تنها یک صفحه وجود دارد که به حد بسیار خوبی dynamic میباشد 
+
+تفاوت عمده SPA ها با دیگر سایت ها در عدم load کردن دوباره صفحه است که این تجربه بهتری را برای کاربر به همراه دارد و در واقع صفحه وب شما مانند یک desktop application به نظر خواهد آمد.
+
+اگر سایت شما زیاد بزرگ نباشد شاید بتوانید به سادگی آن را به صورت یک SPA پیاده سازی کنید اما وقتی کمی سایت بزرگتر شود و تعداد Component ها زیاد شود این باعث میشود که نتوان به سادگی همه‌ی آن ها را در کنار هم نشان داد.
+
+برای چنین مواقعی ابزاری در React وجود دارد که این موضوع را برای ما حل خواهد کرد و آن هم react-router میباشد.
+
+ما به کمک این ازار میتوانیم url های مختلف را به Component هایمان لینک کنیم که این کار به صورت زیر انجام میشود
+
+<div dir="ltr">
+
+```javascript
+import React, {Component} from "react";
+import {BrowserRouter, Route} from "react-router-dom";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
+import ForgotPassword from "./ForgotPassword";
+import Main from "./Main";
+import Home from "./Home";
+import Posts from "./Posts";
+
+
+class MainRoute extends Component {
+
+    render() {
+        return (
+            <BrowserRouter>
+                <div> صفحه ها </div>
+                <Route path="/sign-in" component={SignIn} />
+                <Route path="/sign-up" component={SignUp} />
+                <Route path="/forgot-password" component={ForgotPassword} />
+                <Route exact path="/" component={Main} />
+                <Route exact path="/home" component={Home} />
+                <Route path="/home/posts" component={Posts} />
+            </BrowserRouter>
+        );
+    }
+}
+```
+
+</div>
+
+در مثال های بالا به ازای هر url یک کامپوننت خاص render میشود که به کمک path آدرس آن مشخص شده است
+
+* کلمه exact برای این است که component فقط با همان url نشان داده شود و در غیر این صورت کامپوننت برای url های مکمل نیز نشان داده خواهد شد
+ 
+در مثال بالا همانطور که میبینید از BrowserRouter به عنوان پدر تام Route ها استفاده شده است و 
+ باید این را بدانید که ‌BrowserRouter کافیست تنها پدر و یا یکی از اجداد یک Route باشد تا Route به درستی کارکند
+بنابر این کافیست در ابتدا فقط یکبار پدر تمام Component ها را به کمک آن Wrap کنیم و سپس در هر جایی که بخواهیم میتوانیم از Route استفاده کنیم
 
 #Higher Order Component(HOC)
+گاهی اوقات ما یک Component را به کمک Component دیگری Wrap میکنیم و به کمک آن تعدادی prop به props آن اضافه خواهیم کرد به این Component که در نقش Wrapper ضاهر میشود، Higher Order Component یا به اختصار HOC گفته میشود.
+
+* در حالت کلی HOC ها معمولا در نقش یک تابع ظاهر میشوند که Component اولیه را به عنوان ورودی میگیرند و آن را به صورت Wrap شده خروجی میدهند
+
+یکی ازاین HOC ها withRouter میباشد که بعد از Wrap کردن Component یک field با نام history به props آن اضافه میکنند که آن field توابع مهمی را در اختیار ما قرا میده که به کمک آن ها میتوانیم با url در ارتباط باشیم.
+
+به عنوان مثال تابع push یک url میگیرد و صفحه را به آدرس آن redirect میکند.
+
+<div dir="ltr">
+
+```javascript
+import React, {Component} from "react";
+import { withRouter } from "react-router";
+
+class BrowserRouterChild extends Component {
+    
+    render() {
+        return (
+            <input type="text" value="redirect" onClick={() => this.props.history.push("/home")}/>
+        );
+    }
+}
+
+export default withRouter(BrowserRouterChild);
+
+```
+
+</div>
+
+* فقط به این موضوع دقت کنید که از withRouter تنها در Component هایی میتوان استفاده کرد از قرزندان ویا نوادگان BrowserRouter باشند
+
+توضیحات بیشتر در [اینجا][101] و [اینجا][102]
 
 # Refs
 
@@ -639,3 +719,5 @@ class NameForm extends React.Component {
 [7]: https://reactjs.org/docs/introducing-jsx.html
 [8]: https://github.com/mostafaghadimi/PWA/blob/master/PWA.pdf
 [100]: https://reactjs.org/docs/forms.html
+[101]: https://reactjs.org/docs/higher-order-components.html
+[102]: https://medium.com/javascript-scene/do-react-hooks-replace-higher-order-components-hocs-7ae4a08b7b58
