@@ -317,7 +317,7 @@ class Text extends Component {
 ```
 </div>
 
-> برای استفاده از یک state از `{<this.state.<state-name}` و برای مقدار دهی به یک state در برنامه، از `{<this.setState({<state-name>:<state-value}` استفاده میشود.
+> برای استفاده از یک state از `{<this.state.<state-name}` و برای مقدار دهی به یک state در برنامه، از `{{this.setState({<state-name>:<state-value>}` استفاده میشود.
 
 
 
