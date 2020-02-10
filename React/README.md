@@ -146,7 +146,7 @@ Service Worker یک اسکریپت است که مرورگر شما به صورت
 آدرس یا نام فایل‌هایی که قرار نیست روی گیت آپلود شوند، در این فایل قرار می‌گیرد.
 
 ## env. 
-//TODO: add description with example
+برای Customize کردن مقادیر بر اساس نوع انتشار برنامه (production, development, ...) و نگه داشتن اطلاعات مهم و حساس مانند پسوورد ها و API Key ها استفاده میشود. این فایل در gitignore قرار داده میشود تا بقیه به اطلاعات آن دسترسی نداشته باشند.
 
 # JSX
 
@@ -251,7 +251,7 @@ class MainPage extends Component {
 
 # Props
 
-به componentها می‌توان یک object پاس داد که به آن `(Props (Properties` گفته می‌شود. در Componentهای اول با `{<props.<prop-name}` می‌توانیم به prop مورد نظر دسترسی پیدا کنیم. اما در component نوع دوم باید از ‍‍‍`{<this.props.<prop-name}` استفاده کنیم.
+به Componentها می‌توان یک object پاس داد که به آن `(Props (Properties` گفته می‌شود. در Componentهای اول با `{<props.<prop-name}` می‌توانیم به prop مورد نظر دسترسی پیدا کنیم. اما در Component نوع دوم باید از ‍‍‍`{<this.props.<prop-name}` استفاده کنیم.
 
 برای Type-Checking می‌توان نوع prop را با PropTypes مشخص کرد.
 
@@ -279,6 +279,47 @@ Greeting.propTypes = {
 در React یک Component نباید props خودش را تغییر دهد.
 
 # State
+
+تا اینجای کار، یاد گرفتیم که صفحه هایی بسازیم و در آنها اجزایی قرار دهیم که با استفاده از props، میتوانستیم این اجزا و چگونگی قرار گرفتن آنها در صفحه را مشخص کنیم. امروزه سایت های زیادی را مشاهده میکنیم که بخش های مختلف سایت، طبق عملیات های کاربر تغییر میکنند و به اصطلاح interactive اند.
+
+از این رو احساس نیاز ما برای اینکه صفحه مان حالات مختلفی داشته باشد که بنابر اطلاعات و عمل های مختلف کاربر تغییر کنند. در React، state ها این وظیفه را بر عهده دارند. state را میتوان به شکل یک object در نظر گرفت که وضعیت صفحه را مشخص میکند. برای مثال اگر بخواهیم یک جزء لامپ داشته باشیم که روشن یا خاموش باشد، در state متغیری به نام isLit در state میگیریم و به آن مقادیر True و False میدهیم.
+
+به عنوان مثالی ساده، کد زیر هر چیزی که در InputField تایپ کنیم را در پاراگراف زیرش نیز نشان میدهد:
+
+<div dir="ltr">
+
+```javascript
+import {Component} from 'react'
+
+class Text extends Component {
+  state={
+    text:"Default Value",
+  }
+  
+  constructor(props){
+    super(props)
+    this.setText=this.setText.bind(this)
+  }
+  
+  setText(e){
+      this.setState({ text:e.target.value })
+  }
+
+  render() {
+    return (
+      <div>
+        <input type="text" onChange={ this.setText } value={ this.state.text } />
+        <p>{ this.state.text }</p>
+      </div>
+    );
+  }
+}
+```
+</div>
+
+> برای استفاده از یک state از `{<this.state.<state-name}` و برای مقدار دهی به یک state در برنامه، از `{<this.setState({<state-name>:<state-value}` استفاده میشود.
+
+
 
 # Life Cycle
 
