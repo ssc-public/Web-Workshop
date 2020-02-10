@@ -15,5 +15,6 @@ urlpatterns = [
     path('password/reset/confirm', views.ForgetPasswordConfirmView.as_view()),
     path('activate/<slug:eid>/<slug:token>', views.ActivateView.as_view()),
     path('logout', views.LogoutView.as_view()),
+    path('signup', views.SignUpView.as_view()),
 
 ]
