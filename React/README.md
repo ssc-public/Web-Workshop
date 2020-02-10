@@ -1,4 +1,4 @@
-<div dir="rtl">
+﻿<div dir="rtl">
 
 # پیش‌نیازها
 
@@ -99,20 +99,20 @@ src
 ```bash
 ├── package.json
 ├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── manifest.json
-│   └── robots.txt
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
 ├── README.md
 ├── src
-│   ├── component
-│   ├── index.js
-│   ├── serviceWorker.js
-│   └── static
-│       ├── css
-│       │   └── some-css.css
-│       └── fonts
-│           ├── some-fonts.eot
+│   ├── component
+│   ├── index.js
+│   ├── serviceWorker.js
+│   └── static
+│       ├── css
+│       │   └── some-css.css
+│       └── fonts
+│           ├── some-fonts.eot
 ```
 </div>
 
@@ -273,6 +273,10 @@ Greeting.propTypes = {
 };
 ```
 </div>
+
+با استفاده از props میتوانیم توابعی که در یک Component تعریف شده اند را نیز به Component های دیگر منتقل کرده و از آنها استفاده کنیم. برای مثال اگر بخواهیم تغییری در Component های بالاتر ایجاد کنیم، میتوانیم تابعی برای این تغییر را از آن Component ها به پایین از طریق props انتقال دهیم.
+
+در React یک Component نباید props خودش را تغییر دهد.
 
 # State
 
