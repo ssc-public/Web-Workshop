@@ -295,20 +295,11 @@ class Text extends Component {
   state={
     text:"Default Value",
   }
-  
-  constructor(props){
-    super(props)
-    this.setText=this.setText.bind(this)
-  }
-  
-  setText(e){
-      this.setState({ text:e.target.value })
-  }
 
   render() {
     return (
       <div>
-        <input type="text" onChange={ this.setText } value={ this.state.text } />
+        <input type="text" onChange={ (e) => { this.setState({ text:e.target.value }) } } value={ this.state.text } />
         <p>{ this.state.text }</p>
       </div>
     );
@@ -317,7 +308,7 @@ class Text extends Component {
 ```
 </div>
 
-> برای استفاده از یک state از `{<this.state.<state-name}` و برای مقدار دهی به یک state در برنامه، از `this.setState({<state-name>:<state-value>})` استفاده میشود. در مورد عبارت استفاده شده bind در ادامه توضیح داده میشود.
+> برای استفاده از یک state از `{<this.state.<state-name}` و برای مقدار دهی به یک state در برنامه، از `this.setState({<state-name>:<state-value>})` استفاده میشود.
 
 Component های از نوع function، از مفهوم Hooks استفاده میکنند که به نسبت ساده و تمیز است. مثالی از آن را در کد زیر میبینید:
 
@@ -345,6 +336,19 @@ function Example() {
 برای آشنایی بیشتر با Hooks میتوانید از [این لینک][9] استفاده کنید.
 
 # Life Cycle
+
+هر Component در React یک LifeCycle دارد که به سه فاز Mounting، Updating و Unmounting تقسیم میشود. در هر فاز، تعدادی از توابع در Component صدا زده میشوند که وظیفه ی ما قرار دادن کدمان در تابع مناسب برای کاریست که میخواهیم انجام دهیم.
+
+در فاز Mount توابع زیر به ترتیب اجرا میشوند:
+
+
+<ul>
+    <li>constructor() : در این تابع مقدار دهی اولیه به state انجام داده میشود. ورودی تابع props است بنابراین میتوانیم مقدار دهی را با استفاده از props انجام دهیم. در ابتدای تابع باید super(props) را صدا کنیم.</li>
+    <li>render() : خروجی این تابع صفحه ایست که میخواهیم نشان داده شود.</li>
+    <li>componentDidMount(): در این تابع کارهایی که نیاز به render شدن صفحه مثلا دسترسی به DOM را دارند، انجام میدهیم.</li>
+</ul>
+
+<img src = "./LifeCycle.png">
 
 # Event Handlers and Forms
 
