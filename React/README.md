@@ -317,9 +317,32 @@ class Text extends Component {
 ```
 </div>
 
-> برای استفاده از یک state از `{<this.state.<state-name}` و برای مقدار دهی به یک state در برنامه، از `this.setState({<state-name>:<state-value>})` استفاده میشود.
+> برای استفاده از یک state از `{<this.state.<state-name}` و برای مقدار دهی به یک state در برنامه، از `this.setState({<state-name>:<state-value>})` استفاده میشود. در مورد عبارت استفاده شده bind در ادامه توضیح داده میشود.
 
+Component های از نوع function، از مفهوم Hooks استفاده میکنند که به نسبت ساده و تمیز است. مثالی از آن را در کد زیر میبینید:
 
+<div dir="ltr">
+
+```javascript
+import React, { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+</div>
+
+برای آشنایی بیشتر با Hooks میتوانید از [این لینک][9] استفاده کنید.
 
 # Life Cycle
 
@@ -343,3 +366,4 @@ class Text extends Component {
 [6]: https://github.com/mostafaghadimi/reactstarter
 [7]: https://reactjs.org/docs/introducing-jsx.html
 [8]: https://github.com/mostafaghadimi/PWA/blob/master/PWA.pdf
+[9]: https://www.telerik.com/kendo-react-ui/react-hooks-guide/
