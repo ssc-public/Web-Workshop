@@ -260,6 +260,32 @@ class Comp extends React.Component {
 
 با این که شاید همه چیز رو از دوتا کد آخر متوجه نشده باشید اما انگار که تو این دوتا کد نسبت به دوتا کد قبلی یه نظم عجیبی وجود داره و این نظم دقیقا از اونجایی میاد که ما میتونیم همزمان و در کنار هم از html و  هم از جاوا اسکریپت استفاده کنیم(که البته به این نوع کد `JSX` گفته میشه که قراره باهاش بیشتر آشناشیم) 
 
+# ساخت اولین صفحه
+
+با ساخت پروژه React، یک فایل index.html ساخته میشود که در آن یک المنت با id=root قرار دارد. کاری که ما قرار است انجام دهیم، قرار دادن اجزا در این المنت است. برای اینکار یک فایل index.js در src قرار میگیرد که کد درون آن بدین شکل است:
+
+<div dir="ltr">
+
+```javascript
+ReactDOM.render((
+    <h1> Hello </h1>
+), document.getElementById('root'));
+```
+</div>
+
+با اجرای این کد عبارت Hello در صفحه نشان داده میشود.
+
+کاری که React در آن به ما کمک میکند این است که بجای استفاده از المان های پیشفرض در HTML، میتوانیم خودمون تعدادی Component تعریف کنیم و از آنها استفاده کنیم. با Component ها در ادامه آشنا میشویم. اگر یک Component کلی، مثلا با نام App برای پروژه مان تعریف کنیم، اینگونه میتوانیم آنرا در کد قرار دهیم تا در صفحه نشان داده شود:
+
+
+```javascript
+ReactDOM.render((
+    <App/>
+), document.getElementById('root'));
+```
+</div>
+
+
 # JSX
 
  نه جاوا اسکریپته، نه کد HTML و نه String.
@@ -365,22 +391,22 @@ const matn = <p dir="rtl"> { pooya } یک متن </p>;
  <div dir="ltr">
 
 ```Javascript
-function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+function Welcome() {
+  return <h1> Hello </h1>;
 }
 ```
 </div>
 
  ۲. به ارث بردن از کلاس Component
 
- <div dir="ltr">
+<div dir="ltr">
 
 ```Javascript
 import {Component} from 'react'
 
 class Welcome extends Component {
   render() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return <h1> Hello </h1>;
   }
 }
 ```
@@ -389,7 +415,73 @@ class Welcome extends Component {
 
 > حرف اول اسم Component حتما باید بزرگ نوشته شود تا با تگ‌ها اشتباه گرفته نشود.
 
+برای Component ها میتوان constructor تعریف کرد و عملیات های اولیه مانند مقدار دهی ها را در آن انجام داد. کد زیر مثالی برای استفاده از constructor است:
+
+<div dir="ltr">
+
+```Javascript
+import {Component} from 'react'
+
+class Welcome extends Component {
+  constructor(){
+    this.name="Mohammad"
+  }
+  
+  render() {
+    return <h1> Hello {this.name} </h1>;
+  }
+}
+```
+
+</div>
+
 پس از تعریف کردن یک Component، در Component های دیگر میتوانیم از آن استفاده کنیم:
+
+<div dir="ltr">
+
+```Javascript
+import {Component} from 'react'
+
+class Welcome extends Component {  
+  render() {
+    return <h1> Hello {this.props.name} </h1>;
+  }
+}
+
+
+class MainPage extends Component {
+  render() {
+    return (
+      <Welcome name="Asghar"/>
+      <Welcome name="Showkat"/>
+      <Welcome name="Fahime"/>
+    )
+  }
+}
+```
+
+</div>
+> در مورد props استفاده شده در کد بالا در بخش بعدی توضیح خواهیم داد.
+
+توصیه میشود که صفحه های مختلف و همچنین اجزای مختلف هر صفحه را در Component های متفاوت پیاده سازی و استفاده کنید.
+
+برای استفاده از یک Component در Component های دیگر، باید آنرا در مبدا export و در Component های مقصد import کنیم:
+
+<div dir="ltr">
+
+```Javascript
+import {Component} from 'react'
+
+class Welcome extends Component {  
+  render() {
+    return <h1> Hello {this.props.name} </h1>;
+  }
+}
+
+export default Welcome
+```
+
+</div>
 
 <div dir="ltr">
 
@@ -409,8 +501,6 @@ class MainPage extends Component {
 ```
 
 </div>
-
-توصیه میشود که صفحه های مختلف و همچنین اجزای مختلف هر صفحه را در Component های متفاوت پیاده سازی و استفاده کنید.
 
 
 # Props
