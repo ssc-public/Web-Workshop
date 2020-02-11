@@ -1,4 +1,4 @@
-<div dir="rtl">
+﻿<div dir="rtl">
 
 # پیش‌نیازها
 
@@ -99,20 +99,20 @@ src
 ```bash
 ├── package.json
 ├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   ├── manifest.json
-│   └── robots.txt
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── manifest.json
+│   └── robots.txt
 ├── README.md
 ├── src
-│   ├── component
-│   ├── index.js
-│   ├── serviceWorker.js
-│   └── static
-│       ├── css
-│       │   └── some-css.css
-│       └── fonts
-│           ├── some-fonts.eot
+│   ├── component
+│   ├── index.js
+│   ├── serviceWorker.js
+│   └── static
+│       ├── css
+│       │   └── some-css.css
+│       └── fonts
+│           ├── some-fonts.eot
 ```
 </div>
 
@@ -146,7 +146,7 @@ Service Worker یک اسکریپت است که مرورگر شما به صورت
 آدرس یا نام فایل‌هایی که قرار نیست روی گیت آپلود شوند، در این فایل قرار می‌گیرد.
 
 ## env. 
-//TODO: add description with example
+برای Customize کردن مقادیر بر اساس نوع انتشار برنامه (production, development, ...) و نگه داشتن اطلاعات مهم و حساس مانند پسوورد ها و API Key ها استفاده میشود. این فایل در gitignore قرار داده میشود تا بقیه به اطلاعات آن دسترسی نداشته باشند.
 
 # What is React?!
 این که واقعا React چیه، داره چیکار‌میکنه و چرا باید ازش استفاده کنیم سوالایی هستند که نمیشه به راحتی به اونا جواب داد اما اگه شاید یبار تلاش کنیم React رو تعریف کنیم بتونیم راحت تر باهاش کنار بیایم
@@ -260,6 +260,33 @@ class Comp extends React.Component {
 
 با این که شاید همه چیز رو از دوتا کد آخر متوجه نشده باشید اما انگار که تو این دوتا کد نسبت به دوتا کد قبلی یه نظم عجیبی وجود داره و این نظم دقیقا از اونجایی میاد که ما میتونیم همزمان و در کنار هم از html و  هم از جاوا اسکریپت استفاده کنیم(که البته به این نوع کد `JSX` گفته میشه که قراره باهاش بیشتر آشناشیم) 
 
+# ساخت اولین صفحه
+
+با ساخت پروژه React، یک فایل index.html ساخته میشود که در آن یک المنت با id=root قرار دارد. کاری که ما قرار است انجام دهیم، قرار دادن اجزا در این المنت است. برای اینکار یک فایل index.js در src قرار میگیرد که کد درون آن بدین شکل است:
+
+<div dir="ltr">
+
+```javascript
+ReactDOM.render((
+    <h1> Hello </h1>
+), document.getElementById('root'));
+```
+</div>
+
+با اجرای این کد عبارت Hello در صفحه نشان داده میشود.
+
+کاری که React در آن به ما کمک میکند این است که بجای استفاده از المان های پیشفرض در HTML، میتوانیم خودمون تعدادی Component تعریف کنیم و از آنها استفاده کنیم. با Component ها در ادامه آشنا میشویم. اگر یک Component کلی، مثلا با نام App برای پروژه مان تعریف کنیم، اینگونه میتوانیم آنرا در کد قرار دهیم تا در صفحه نشان داده شود:
+
+<div dir="ltr">
+
+```javascript
+ReactDOM.render((
+    <App/>
+), document.getElementById('root'));
+```
+</div>
+
+
 # JSX
 
  نه جاوا اسکریپته، نه کد HTML و نه String.
@@ -365,22 +392,22 @@ const matn = <p dir="rtl"> { pooya } یک متن </p>;
  <div dir="ltr">
 
 ```Javascript
-function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+function Welcome() {
+  return <h1> Hello </h1>;
 }
 ```
 </div>
 
  ۲. به ارث بردن از کلاس Component
 
- <div dir="ltr">
+<div dir="ltr">
 
 ```Javascript
 import {Component} from 'react'
 
 class Welcome extends Component {
   render() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return <h1> Hello </h1>;
   }
 }
 ```
@@ -389,19 +416,121 @@ class Welcome extends Component {
 
 > حرف اول اسم Component حتما باید بزرگ نوشته شود تا با تگ‌ها اشتباه گرفته نشود.
 
+برای Component ها میتوان constructor تعریف کرد و عملیات های اولیه مانند مقدار دهی ها را در آن انجام داد. کد زیر مثالی برای استفاده از constructor است:
+
+<div dir="ltr">
+
+```Javascript
+import {Component} from 'react'
+
+class Welcome extends Component {
+  constructor(){
+    this.name="Mohammad"
+  }
+  
+  render() {
+    return <h1> Hello {this.name} </h1>;
+  }
+}
+```
+
+</div>
+
+پس از تعریف کردن یک Component، در Component های دیگر میتوانیم از آن استفاده کنیم:
+
+<div dir="ltr">
+
+```Javascript
+import {Component} from 'react'
+
+class Welcome extends Component {  
+  render() {
+    return <h1> Hello {this.props.name} </h1>;
+  }
+}
+
+
+class MainPage extends Component {
+  render() {
+    return (
+      <Welcome name="Asghar"/>
+      <Welcome name="Showkat"/>
+      <Welcome name="Fahime"/>
+    )
+  }
+}
+
+ReactDOM.render((
+    <MainPage/>
+), document.getElementById('root'));
+```
+
+</div>
+
+> در مورد props استفاده شده در کد بالا در بخش بعدی توضیح خواهیم داد.
+
+توصیه میشود که صفحه های مختلف و همچنین اجزای مختلف هر صفحه را در Component های متفاوت پیاده سازی و استفاده کنید.
+
+برای استفاده از یک Component در Component های دیگر، باید آنرا در مبدا export و در Component های مقصد import کنیم:
+
+<div dir="ltr">
+
+```Javascript
+import {Component} from 'react'
+
+class Welcome extends Component {  
+  render() {
+    return <h1> Hello {this.props.name} </h1>;
+  }
+}
+
+export default Welcome
+```
+
+</div>
+
+<div dir="ltr">
+
+```Javascript
+import {Component} from 'react'
+import Welcome from './Welcome'
+
+class MainPage extends Component {
+  render() {
+    return (
+      <div>
+        <Welcome name="Asghar"/>
+        <Welcome name="Showkat"/>
+        <Welcome name="Fahime"/>
+      </div>
+    )
+  }
+}
+```
+
+</div>
+
+
 # Props
 
-به componentها می‌توان یک object پاس داد که به آن `(Props (Properties` گفته می‌شود. در Componentهای اول با `{<props.<prop-name}` می‌توانیم به prop مورد نظر دسترسی پیدا کنیم. اما در component نوع دوم باید از ‍‍‍`{<this.props.<prop-name}` استفاده کنیم.
+به Componentها می‌توان یک object پاس داد که به آن `(Props (Properties` گفته می‌شود. در Componentهای اول با `{<props.<prop-name}` می‌توانیم به prop مورد نظر دسترسی پیدا کنیم. اما در Component نوع دوم باید از ‍‍‍`{<this.props.<prop-name}` استفاده کنیم.
 
 برای Type-Checking می‌توان نوع prop را با PropTypes مشخص کرد.
 
 <div dir="ltr">
 
 ```javascript
+import {Component} from 'react'
 import PropTypes from 'prop-types';
 
-class Greeting extends React.Component {
-  render() {
+class MainPage extends Component {
+  render(){
+    return <Greeting name="Ali"/>
+  }
+}
+
+class Greeting extends Component {
+  render(){
     return (
       <h1>Hello, {this.props.name}</h1>
     );
@@ -414,9 +543,151 @@ Greeting.propTypes = {
 ```
 </div>
 
+با استفاده از props میتوانیم توابعی که در یک Component تعریف شده اند را نیز به Component های دیگر منتقل کرده و از آنها استفاده کنیم. برای مثال اگر بخواهیم تغییری در Component های بالاتر ایجاد کنیم، میتوانیم تابعی برای این تغییر را از آن Component ها به پایین از طریق props انتقال دهیم.
+
+<div dir="ltr">
+
+```Javascript
+import {Component} from 'react'
+
+class MainPage extends Component {
+  clicked = () => {
+    console.log("Button Clicked")
+  }
+  render() {
+    return <SomeComponent func={this.clicked}/>;
+  }
+}
+
+class SomeComponent extends Component {
+  constructor(props){
+    super(props)
+    this.props.func()
+  }
+  render() {
+    return <div>Doesn't Matter</div>;
+  }
+}
+```
+
+</div>
+
+> اگر در Component از props استفاده شود و constructor را نیز پیاده سازی کرده باشیم، در ورودی constructor باید props گرفته شود و در خط اول آن به super پاس داده شود.
+
+
+در React یک Component نباید props خودش را تغییر دهد.
+
 # State
 
+تا اینجای کار، یاد گرفتیم که صفحه هایی بسازیم و در آنها اجزایی قرار دهیم که با استفاده از props، میتوانستیم این اجزا و چگونگی قرار گرفتن آنها در صفحه را مشخص کنیم. امروزه سایت های زیادی را مشاهده میکنیم که بخش های مختلف سایت، طبق عملیات های کاربر تغییر میکنند و به اصطلاح interactive اند.
+
+از این رو احساس نیاز ما برای اینکه صفحه مان حالات مختلفی داشته باشد که بنابر اطلاعات و عمل های مختلف کاربر تغییر کنند. در React، state ها این وظیفه را بر عهده دارند. state را میتوان به شکل یک object در نظر گرفت که وضعیت صفحه را مشخص میکند. برای مثال اگر بخواهیم یک جزء لامپ داشته باشیم که روشن یا خاموش باشد، در state متغیری به نام isLit در state میگیریم و به آن مقادیر True و False میدهیم.
+
+به عنوان مثالی ساده، کد زیر هر چیزی که در InputField تایپ کنیم را در پاراگراف زیرش نیز نشان میدهد:
+
+<div dir="ltr">
+
+```javascript
+import {Component} from 'react'
+
+class Text extends Component {
+  state={
+    text:"Default Value",
+  }
+
+  render() {
+    return (
+      <div>
+        <input type="text" onChange={ (e) => { this.setState({ text:e.target.value }) } } value={ this.state.text } />
+        <p>{ this.state.text }</p>
+      </div>
+    );
+  }
+}
+```
+</div>
+
+> برای استفاده از یک state از `this.state.<state-name>` و برای مقدار دهی به یک state در برنامه، از `this.setState({<state-name>:<state-value>})` استفاده میشود.
+
+علاوه بر مقدار دهی اولیه state در بدنه Component، در constructor نیز میتوان با `this.state={<state-name>:<state-value>}` به آن مقدار دهی کرد. اما در بخش های دیگر باید از setState استفاده کرد.
+
+دقت کنید که پس از استفاده از setState، مقدار state در همان لحظه تغییر نمیکند، در بخش بعدی که LifeCycle است با طرز کار state بیشتر آشنا میشویم.
+
+Component های از نوع function، از مفهوم Hooks استفاده میکنند که به نسبت ساده و تمیز است. مثالی از آن را در کد زیر میبینید:
+
+<div dir="ltr">
+
+```javascript
+import React, { useState } from 'react';
+
+function Example() {
+  // Declare a new state variable, which we'll call "count"
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+</div>
+
+برای استفاده از Hooks باید از useState استفاده کنیم به عنوان ورودی به آن مقدار اولیه state را بدهیم. این تابع دو خروجی میدهد که اولی همان متغییر یا state مان است و دومی تابعیست که با آن میتوانیم state مان را تغییر دهیم (مانند setState).
+
+
+برای آشنایی بیشتر با Hooks میتوانید از [این لینک][9] استفاده کنید.
+
 # Life Cycle
+
+هر Component در React یک LifeCycle دارد که به سه فاز Mounting، Updating و Unmounting تقسیم میشود. در هر فاز، تعدادی از توابع در Component صدا زده میشوند که وظیفه ی ما قرار دادن کدمان در تابع مناسب برای کاریست که میخواهیم انجام دهیم.
+
+در فاز Mount توابع زیر به ترتیب اجرا میشوند:
+
+<ul>
+    <li>constructor : در این تابع مقدار دهی اولیه به state انجام داده میشود. ورودی تابع props است بنابراین میتوانیم مقدار دهی را با استفاده از props انجام دهیم. در ابتدای تابع باید super(props) را صدا کنیم.</li>
+    <li>render : خروجی این تابع صفحه ایست که میخواهیم نشان داده شود.</li>
+    <li>componentDidMount : در این تابع کارهایی که نیاز به render شدن صفحه مثلا دسترسی به DOM را دارند، انجام میدهیم.</li>
+</ul>
+
+اگر تغییری در props یا state ایجاد شود، فاز Updating شروع میشود و توابع زیر به ترتیب اجرا میشوند:
+
+<ul>
+    <li>shouldComponentUpdate : یک Boolean خروجی میدهد بدین معنا که آیا بقیه توابع Updating صدا زده بشوند یا که فاز Updating متوقف شود. در صورت عدم پیاده سازی این تابع خروجی آن همیشه True خواهد بود.</li>
+    <li>render : خروجی این تابع صفحه ایست که میخواهیم نشان داده شود.</li>
+    <li>getSnapshotBeforeUpdate : در این تابع به props و state های قبل از Update دسترسی داریم و میتوانیم از آنها استفاده کنیم. ورودی های تابع را میتوان به صورت prevProps و prevState در نظر گرفت. در صورت پیاده سازی این تابع، تابع componentDidUpdate نیز باید پیاده سازی شود.</li>
+    <li>componentDidUpdate : در این تابع عملیات های بعد از render شدن صفحه را انجام میدهیم.</li>
+</ul>
+
+وقتی که Component مورد نظر از DOM خارج میشود (دیگر در صفحه حاظر نیست)، فاز Unmounting اجرا میشود و تابع componentWillUnmount صدا زده میشود.
+
+هنگامی که از functional Component ها و Hooks استفاده میکنیم، بجای تمام توابع componentDidMount، componentDidUpdate و componentWillUnmount میتوانیم تنها از useEffect استفاده کنیم:
+
+<div dir="ltr">
+
+```javascript
+import { useState, useEffect } from "react";
+
+export default function useFetch(url) {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => setData(data));
+  }, []);
+
+  return data;
+}
+```
+</div>
+
+> کد بالا یک url به عنوان ورودی میگیرد و اطلاعات دریافتی از آن را خروجی میدهد. گفتیم که تابع useEffect در هر 3 فاز اجرا میشود، اما ما فقط میخواهیم در فاز اول اجرا شود، به همین دلیل ورودی دومش را آرایه ای خالی داده ایم. ورودی دوم useEffect در حالت کلی state هایی است که میخواهیم با تغییر آنها فاز Updating انجام شود.
+
+<img src = "./LifeCycle.png">
 
 # Event Handlers and Forms
 تمام event هایی که برای تگ‌ها‌ی داخل فرم html تعریف شده، در React نیز برای این تگ ها تعریف شده است، فقط با این تفاوت که در اینجا نام آن ها باید به صورت  lowerCamelCase بکار برده شود
@@ -711,7 +982,6 @@ export default withRouter(BrowserRouterChild);
 
 توضیحات بیشتر در [اینجا][101] و [اینجا][102]
 
-# Refs
 
 </div>
 
@@ -723,6 +993,7 @@ export default withRouter(BrowserRouterChild);
 [6]: https://github.com/mostafaghadimi/reactstarter
 [7]: https://reactjs.org/docs/introducing-jsx.html
 [8]: https://github.com/mostafaghadimi/PWA/blob/master/PWA.pdf
+[9]: https://www.telerik.com/kendo-react-ui/react-hooks-guide/
 [100]: https://reactjs.org/docs/forms.html
 [101]: https://reactjs.org/docs/higher-order-components.html
 [102]: https://medium.com/javascript-scene/do-react-hooks-replace-higher-order-components-hocs-7ae4a08b7b58
