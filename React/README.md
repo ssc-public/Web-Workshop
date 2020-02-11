@@ -636,6 +636,9 @@ function Example() {
 ```
 </div>
 
+برای استفاده از Hooks باید از useState استفاده کنیم به عنوان ورودی به آن مقدار اولیه state را بدهیم. این تابع دو خروجی میدهد که اولی همان متغییر یا state مان است و دومی تابعیست که با آن میتوانیم state مان را تغییر دهیم (مانند setState).
+
+
 برای آشنایی بیشتر با Hooks میتوانید از [این لینک][9] استفاده کنید.
 
 # Life Cycle
@@ -660,6 +663,29 @@ function Example() {
 </ul>
 
 وقتی که Component مورد نظر از DOM خارج میشود (دیگر در صفحه حاظر نیست)، فاز Unmounting اجرا میشود و تابع componentWillUnmount صدا زده میشود.
+
+هنگامی که از functional Component ها و Hooks استفاده میکنیم، بجای تمام توابع componentDidMount، componentDidUpdate و componentWillUnmount میتوانیم تنها از useEffect استفاده کنیم:
+
+<div dir="ltr">
+
+```javascript
+import { useState, useEffect } from "react";
+
+export default function useFetch(url) {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => setData(data));
+  }, []);
+
+  return data;
+}
+```
+</div>
+
+> کد بالا یک url به عنوان ورودی میگیرد و اطلاعات دریافتی از آن را خروجی میدهد. گفتیم که تابع useEffect در هر 3 فاز اجرا میشود، اما ما فقط میخواهیم در فاز اول اجرا شود، به همین دلیل ورودی دومش را آرایه ای خالی داده ایم. ورودی دوم useEffect در حالت کلی state هایی است که میخواهیم با تغییر آنها فاز Updating انجام شود.
 
 <img src = "./LifeCycle.png">
 
@@ -955,13 +981,6 @@ export default withRouter(BrowserRouterChild);
 * فقط به این موضوع دقت کنید که از withRouter تنها در Component هایی میتوان استفاده کرد از قرزندان ویا نوادگان BrowserRouter باشند
 
 توضیحات بیشتر در [اینجا][101] و [اینجا][102]
-
-# Single Page Application and React Router
-
-# Higher Order Component
-
-# Refs
-
 
 
 </div>
