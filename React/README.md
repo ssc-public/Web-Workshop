@@ -459,6 +459,10 @@ class MainPage extends Component {
     )
   }
 }
+
+ReactDOM.render((
+    <MainPage/>
+), document.getElementById('root'));
 ```
 
 </div>
@@ -493,9 +497,11 @@ import Welcome from './Welcome'
 class MainPage extends Component {
   render() {
     return (
-      <Welcome name="Asghar"/>
-      <Welcome name="Showkat"/>
-      <Welcome name="Fahime"/>
+      <div>
+        <Welcome name="Asghar"/>
+        <Welcome name="Showkat"/>
+        <Welcome name="Fahime"/>
+      </div>
     )
   }
 }
@@ -513,10 +519,17 @@ class MainPage extends Component {
 <div dir="ltr">
 
 ```javascript
+import {Component} from 'react'
 import PropTypes from 'prop-types';
 
-class Greeting extends React.Component {
-  render() {
+class MainPage extends Component {
+  render(){
+    return <Greeting name="Ali"/>
+  }
+}
+
+class Greeting extends Component {
+  render(){
     return (
       <h1>Hello, {this.props.name}</h1>
     );
@@ -530,6 +543,35 @@ Greeting.propTypes = {
 </div>
 
 با استفاده از props میتوانیم توابعی که در یک Component تعریف شده اند را نیز به Component های دیگر منتقل کرده و از آنها استفاده کنیم. برای مثال اگر بخواهیم تغییری در Component های بالاتر ایجاد کنیم، میتوانیم تابعی برای این تغییر را از آن Component ها به پایین از طریق props انتقال دهیم.
+
+<div dir="ltr">
+
+```Javascript
+import {Component} from 'react'
+
+class MainPage extends Component {
+  clicked = () => {
+    console.log("Button Clicked")
+  }
+  render() {
+    return <SomeComponent func={this.clicked}/>;
+  }
+}
+
+class SomeComponent extends Component {
+  constructor(props){
+    super(props)
+    this.props.func()
+  }
+  render() {
+    return <div>Doesn't Matter</div>;
+  }
+}
+```
+
+</div>
+> اگر در Component از props استفاده شود و constructor را نیز پیاده سازی کرده باشیم، در ورودی constructor باید props گرفته شود و در خط اول آن به super پاس داده شود.
+
 
 در React یک Component نباید props خودش را تغییر دهد.
 
@@ -563,7 +605,11 @@ class Text extends Component {
 ```
 </div>
 
-> برای استفاده از یک state از `{<this.state.<state-name}` و برای مقدار دهی به یک state در برنامه، از `this.setState({<state-name>:<state-value>})` استفاده میشود.
+> برای استفاده از یک state از `this.state.<state-name>` و برای مقدار دهی به یک state در برنامه، از `this.setState({<state-name>:<state-value>})` استفاده میشود.
+
+علاوه بر مقدار دهی اولیه state در بدنه Component، در constructor نیز میتوان با `this.state={<state-name>:<state-value>}` به آن مقدار دهی کرد. اما در بخش های دیگر باید از setState استفاده کرد.
+
+دقت کنید که پس از استفاده از setState، مقدار state در همان لحظه تغییر نمیکند، در بخش بعدی که LifeCycle است با طرز کار state بیشتر آشنا میشویم.
 
 Component های از نوع function، از مفهوم Hooks استفاده میکنند که به نسبت ساده و تمیز است. مثالی از آن را در کد زیر میبینید:
 
