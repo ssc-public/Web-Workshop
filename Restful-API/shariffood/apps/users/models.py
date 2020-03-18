@@ -64,4 +64,3 @@ class Token(models.Model):
     class Meta:
         verbose_name = 'token'
         verbose_name_plural = 'tokens'
-        ordering = ['-created']
