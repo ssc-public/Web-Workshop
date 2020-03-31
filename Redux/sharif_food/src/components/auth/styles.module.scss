@@ -1,0 +1,32 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+
+    .wrapper {
+        width: 100%;
+        max-width: 1100px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 80%;
+            max-width: 400px;
+
+            .input {
+                direction: ltr;
+            }
+
+            .submit-button {
+                margin-top: 60px;
+                width: 80%;
+            }
+        }
+    }
+}
