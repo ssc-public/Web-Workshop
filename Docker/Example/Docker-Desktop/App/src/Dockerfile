@@ -1,7 +1,7 @@
 # FROM debian:latest
 From node:latest
 
-RUN mkdir -P /app/src
+RUN mkdir -p /app/src
 # creating the src directory inside the container 
 
 WORKDIR /app/src
@@ -18,7 +18,7 @@ COPY . .
 EXPOSE 3000
 #the port it uses to listen! 
 
-CMD "node index.js" 
+CMD ["yarn", "start"]
 #the command to start the app
 
 #use docker build {path to this file's directory} -t {tag name for app} 
