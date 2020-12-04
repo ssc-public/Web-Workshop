@@ -32,5 +32,8 @@
   #docker build {path to this file's directory} -t {tag name for app} 
 </div>
 
+اجرا شدن این دستور ممکن است چند دقیقه‌ای طول بکشد. وقتی که تمام شد وارد اپلیکیشن دسکتاپ می‌شویم و image ساخته شده را آنجا می‌بینیم:
+![docker-image](readme_images/2.png)
+کافیست RUN را فشار دهیم تا اپلیکیشن زیبایمان را در حال اجرا ببینیم
 
 </div>
