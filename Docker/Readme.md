@@ -137,10 +137,12 @@ Container یک Instance قابل اجرای  یک Image است. میتوان ی�
     
 </div>
 
-## نصب داکر روی مک
+## نصب داکر ورژن دسکتاپ روی مک و ویندوز
 داکر یک ورژن دسکتاپ برای مک و ویندوز دارد که کار را برای مدیریت container ها و app های مختلف بسیار آسان تر می‌کند که می‌توانید آن را برای مک از این لینک دانلود کنید:
 <div dir="ltr">
-    https://download.docker.com/mac/stable/Docker.dmg
+    
+    https://docker.com/products/docker-desktop
+    
 </div>
 
 ## چگونه باید اپلیکیشن خودمون رو به یک container اضافه کنیم ؟
