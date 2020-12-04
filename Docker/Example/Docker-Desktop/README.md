@@ -27,7 +27,7 @@
 توضیحات کامل در فایل app/src/Dockerfile موجود است.
 
 بعد از این که فایل Dockerfile را کامل کردیم با دستور زیر image خود را می‌سازیم و زندگی آسان تر می‌شود:
-<div dir="ltr>
+<div dir="ltr">
   docker build . -t dockersample
   #docker build {path to this file's directory} -t {tag name for app} 
 </div>
