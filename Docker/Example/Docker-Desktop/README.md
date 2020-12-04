@@ -15,12 +15,12 @@
 پس از نصب Docker-Desktop به این لینک رفته و image مورد نیاز برای پروژه را (رد کیس ما nginx و Node را پیدا کنید)
 <div dir="ltr">
 
-  hub.docker.com
+  https://hub.docker.com
 
 </div>
 توجه: برای استفاده از این داکر باید یک اکانت داشته باشید. ساختن اکانت رایگان است و در همین صفحه لینک مربوطه را می‌توانید پیدا کنید.
 
-![hub.docker.com](readme_images/1.PNG)
+![hub.docker.com](readme_images/1.png)
 ابتدا image دبیان، سپس node و بعد هم nginx را در hub.docker پیدا می‌کنیم و با توجه به توضیحات هر image به dockerfile خود اضافه‌شان می‌کنیم.
 نکته: همانطور که میبینید خط مربوط به debian کامنت شده برای این که طبق توضیحات داخل صفحه‌ی مربوط به node، خود این image بیس لینوکس را در خود دارد و دیگر نیازی به جداگانه گرفتن debian نیست.
 
@@ -28,10 +28,8 @@
 
 بعد از این که فایل Dockerfile را کامل کردیم با دستور زیر image خود را می‌سازیم و زندگی آسان تر می‌شود:
 <div dir="ltr>
-
   docker build . -t dockersample
   #docker build {path to this file's directory} -t {tag name for app} 
-
 </div>
 
 
