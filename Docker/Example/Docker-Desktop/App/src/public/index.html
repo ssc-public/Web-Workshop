@@ -51,7 +51,7 @@
         <button style="height: 20%;" id="bt">Click me to see the time</button>
 
         <div style="height: 80%;">
-            <h1>this is where the time is supposed to be shown!</h1>
+            <h1 id="time">this is where the time is supposed to be shown!</h1>
             <p style="color: white;">it's coming from the server i swear !</p>
         </div>
 
@@ -61,14 +61,13 @@
 
     <script type="text/javascript">
         document.getElementById('bt').addEventListener("click", () => {
-            var hostip = window.location.hostname;
+            var hostip = window.location.host;
             fetch(`http://${hostip}/getTime`, {
                 method: "GET"
             }).then(res => {
                 res.json().then(res => {
                     console.log(res)
-                    document.getElementById('result').innerHTML = res.c
-                    document.getElementById('result').classList.remove('error')
+                    document.getElementById('time').innerHTML = res;
                 }).catch(error => { /* handle */ })
             }).catch(error => { /* handle */ })
         })

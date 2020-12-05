@@ -1,4 +1,5 @@
 # FROM debian:latest
+From nginx:latest
 From node:latest
 
 RUN mkdir -p /app/src
@@ -10,10 +11,12 @@ WORKDIR /app/src
 COPY package.json .
 # . = /app/src = work directory
 
+COPY . .
+#copies everything to the workdir in the container
+
 RUN yarn install
 
-COPY . .
-#copies everything inside this directory to the workdir in the container
+COPY nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 3000
 #the port it uses to listen! 
