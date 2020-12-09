@@ -165,11 +165,56 @@ var Chart = require('chart.js');
 
 </div>
 
-### تقرب سوم: Bundler 
+### تقرب سوم: Bundler (مانند Webpack یا Rollup یا ...) 
 <div dir="ltr">
 
 ```
 import Chart from 'chart.js';
+```
+
+</div>
+
+در صورتی که از این روش استفاده می کنید، به صورت خودکار moment.js اضافه خواهد شد. میتوانید با استفاده از externals برای Webpack و یا external برای Rollup، تنظیم کنید تا Moment.js اضافه نشود.
+<br/><br/>
+
+<div dir="ltr">
+
+Webpack:
+```
+{
+    externals: {
+        moment: 'moment'
+    }
+}
+```
+
+</div>
+
+<div dir="ltr">
+
+Rollup:
+```
+{
+    external: ['moment']
+}
+```
+
+</div>
+
+### سیاست امنیت محتوا 
+در صورتی که از Content Security Policy (CSP) استفاده بکنید، Chart.js برای بارگیری CSS های مربوطه نیاز به تنظیمات بیشتر دارد. در این صورت باید در تنظیمات دسترسی `style-src 'unsafe-inline'` داده شود. برای سیاست های بسته‌تر لازم است که به صورت دستی CSS به پروژه اضافه شود:
+<div dir="ltr">
+
+```
+<link rel="stylesheet" type="text/css" href="path/to/chartjs/dist/Chart.min.css">
+```
+
+</div>
+اگر از این روش استفاده می کنید باید قبل از رسم اولین نمودار style injection را خاموش کنید:
+<div dir="ltr">
+
+```
+Chart.platform.disableCSSInjection = true;
 ```
 
 </div>
