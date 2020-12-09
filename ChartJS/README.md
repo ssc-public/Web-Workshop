@@ -542,6 +542,59 @@ type: ''
 
 همان طور که مشاهده می کنید، در این مثال font را نیز تغییر دادیم.
 
+## مثال سوم
+ایده مونته کارلو: یک ایده مناسب برای محاسبه انتگرال معین توابع، این است که بازه مورد نظر را یک مسطتیل در نظر بگیریم، سپس در این مستطیل تعداد زیادی نقطه تصادفی به صورت uniform بدست آوریم. احتمال اینکه نقطه مورد نظر زیر نمودار باشد، برابر نسبت مساحت زیر نمودار به مساحت کل مستطیل است. بنابرین اگر تعداد نقاطی که زیر نمودار است را بشماریم و نسبت آن را به تعداد کل نقاط محاسبه کنیم، با ضرب این مقدار در مساحت مستطیل میتوانیم انتگرال مورد نظر را به صورت تقریبی پیدا کنیم.
+<br/>
+ماموریت این است که یک نمودار مناسب برای استفاده از این ایده برای محاسبه انتگرال تابع مجذور در بازه 0 تا 4 رسم کنید. دقت کنید در این مثال از Scriptable بودن color استفاده کرده ایم.
+
+<div dir="ltr">
+
+```
+<canvas id="chart"></canvas>
+<script>
+function getRandomizedPoints(xLowerBound, xUpperBound, yLowerBound, yUpperBound, count) {
+    let points = [];
+    for (let i = 0; i < count; i++) {
+        points.push({
+            x: (Math.random() * (xUpperBound - xLowerBound)) + xLowerBound,
+            y: (Math.random() * (yUpperBound - yLowerBound)) + yLowerBound
+        })
+    }
+    return points;
+}
+
+let ctx = document.getElementById("chart");
+let conf = {
+    type: "scatter",
+    data: {
+        datasets: [{
+            data: getRandomizedPoints(0, 4, 0, 16, 20000),
+            pointBackgroundColor: function (context) {
+                let index = context.dataIndex;
+                let value = context.dataset.data[index];
+                if (value.y >= value.x ** 2) {
+                    return 'red';
+                } else {
+                    return 'blue';
+                }
+            }
+        }]
+    }
+}
+
+new Chart(ctx, conf);
+</script>
+```
+
+</div>
+
+نتیجه
+
+<p align="center">
+<img title="Example Math" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_math/ex_math.png" alt="Example Math">
+</p>
+
+
 ## تنظیمات
 
 ### انیمیشن 
