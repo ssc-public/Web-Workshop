@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+<canvas id="myPieChart"></canvas>
+<script>
+
+</script>
+<canvas id="myDoughnutChart"></canvas>
+<script>
+    let ctx = document.getElementById("myDoughnutChart");
+    let confDoughnut = {
+        type: "doughnut",
+        data: {
+            labels: ["فورد", "تویوتا", "شورولت", "هوندا", "نیسان", "جیپ", "رم", "سوبارو", "هیوندای", "کیا"],
+            datasets: [{
+                label: "Brand",
+                data: [2284425, 2085206, 1942039, 1450985, 1227973, 923292, 703023, 700117, 688771, 614613],
+                backgroundColor: ["rgb(20,89,133)", "rgb(226,22,22)", "rgb(205,154,40)", "rgb(91,5,5)",
+                    "rgb(139,210,62)", "rgb(150,36,221)", "rgb(207,90,36)", "rgb(255, 99, 132)",
+                    "rgb(54, 162, 235)", "rgb(255, 205, 86)",]
+            }]
+        }
+    };
+    new Chart(ctx, confDoughnut);
+</script>
+<canvas id="myPolarChart"></canvas>
+<script>
+
+</script>
+</body>
+</html>
