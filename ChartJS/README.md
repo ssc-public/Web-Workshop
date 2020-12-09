@@ -64,7 +64,38 @@ var chart = new Chart(ctx, {
 
 </div>
 
-خروجی کد های فوق برابر خواهد بود با:
+خروجی کد های فوق برابر خواهد بود با: (مثال 1)
 <img title="Example 1" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex1/ex1.png" alt="Example 1">
+
+## نصب و ادغام 
+
+## انواع نمودار در Chart.js 
+مدل های (type) اصلی نمودار در این کتابخانه عبارتند از:
+- خطی (line)
+- ستونی (bar)
+- راداری (radar)
+- دوناتی (doughnut) و دایره ای (pie)
+- حلقوی (polar area)
+- حبابی (bubble)
+- نقطه ای (scatter)
+
+در رابطه با هر کدام، توضیحاتی را مطرح خواهیم کرد و مثال هایی را برای فهم بهتر ارائه خواهیم داد.
+
+### خطی (line) 
+
+### ستونی (bar) 
+
+### راداری (radar) 
+
+### دوناتی (doughnut) و دایره ای (pie) 
+
+### حلقوی (polar area) 
+
+### حبابی (bubble) 
+
+### نقطه ای (scatter) 
+
+
+## تنظیمات و ویژگی ها 
 
 </div>
