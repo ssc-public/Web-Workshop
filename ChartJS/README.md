@@ -333,7 +333,7 @@ type: ''
 ### مثال اول: 
 نمودار های مربوط به امتیاز بندی این دو بزرگوار زمین فوتبال را تحت نمودار راداری و نمودار ستونی رسم کنید.
 
-<img title="Example Messi vs Ronaldo" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_messiVsRonaldo/image.png" alt="Example Messi vs Ronaldo">
+<img align="center" title="Example Messi vs Ronaldo" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_messiVsRonaldo/image.png" alt="Example Messi vs Ronaldo">
 
 نمودار راداری
 <div dir="ltr">
@@ -376,8 +376,6 @@ type: ''
 
 </div>
 
-خروجی کد های فوق برابر خواهد بود با: (مثال مسی و رونالدو)
-
 نمودار ستونی
 <div dir="ltr">
 
@@ -415,7 +413,7 @@ type: ''
 
 خروجی کد های فوق برابر خواهد بود با: (مثال مسی و رونالدو)
 
-<img title="Example Messi vs Ronaldo Plot" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_messiVsRonaldo/ex_messiVsRonaldo.png" alt="Example Messi vs Ronaldo Plot">
+<img align="center" title="Example Messi vs Ronaldo Plot" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_messiVsRonaldo/ex_messiVsRonaldo.png" alt="Example Messi vs Ronaldo Plot">
 
 ## تنظیمات
 
