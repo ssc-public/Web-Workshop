@@ -31,7 +31,7 @@ Chart.js یک کتابخانه متن باز JavaScript برای بصری ساز
 <div dir="ltr">
 
 ```
-<canvas id="myFirstChart></canvas>
+<canvas id="myChart></canvas>
 ```
 
 </div>
@@ -60,5 +60,7 @@ var chart = new Chart(ctx, {
 ```
 
 </div>
+
+
 
 </div>
