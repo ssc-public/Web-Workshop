@@ -245,23 +245,179 @@ conf = {
 
 </div>
 
-تنظیمات مربوط به نمودار در فیلد option و دیتای مربوط و تنظیمات مربوط در فیلد data قرار میگیرد. همانگونه که در مثال اول قابل مشاهده است، تنظیمات مربوط به رنگ دیتاها در فیلد دیتا قرار میگیرد. در ادامه صرفا ویژگی های مربوط به هر نمودار را بررسی می کنیم، سپس با استفاده از چند مثال، آموخته ها را به کار میبندیم.
+تنظیمات مربوط به نمودار در فیلد option و دیتای مربوط و تنظیمات مربوط در فیلد data قرار میگیرد. همانگونه که در مثال اول قابل مشاهده است، تنظیمات مربوط به رنگ دیتاها در فیلد دیتا قرار میگیرد.
+<br/>
+سپس می توانیم با پاس دادن این فیلد به کانستراکتور، نمودار مورد نظر را بسازیم.
+<div dir="ltr">
+
+```
+let chart = new Chart(document.getElementById("chartID"), conf);
+```
+
+</div>
+در ادامه صرفا ویژگی های مربوط به هر نمودار را بررسی می کنیم، سپس در انتها با استفاده از چند مثال، آموخته ها را به کار میبندیم.
 
 ### خطی (line) 
 
+<div dir="ltr">
+
+```
+type: 'line'
+```
+
+</div>
+
 ### ستونی (bar) 
+
+<div dir="ltr">
+
+```
+type: 'bar'
+```
+
+</div>
 
 ### راداری (radar) 
 
+<div dir="ltr">
+
+```
+type: 'radar'
+```
+
+</div>
+
+
+
 ### دوناتی (doughnut) و دایره ای (pie) 
+
+<div dir="ltr">
+
+```
+type: ''
+```
+
+</div>
 
 ### حلقوی (polar area) 
 
+<div dir="ltr">
+
+```
+type: ''
+```
+
+</div>
+
 ### حبابی (bubble) 
+
+<div dir="ltr">
+
+```
+type: ''
+```
+
+</div>
 
 ### نقطه ای (scatter) 
 
-## تنظیمات 
+<div dir="ltr">
+
+```
+type: ''
+```
+
+</div>
+
+## مثال ها
+### مثال اول: 
+نمودار های مربوط به امتیاز بندی این دو بزرگوار زمین فوتبال را تحت نمودار راداری و نمودار ستونی رسم کنید.
+
+<img title="Example Messi vs Ronaldo" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_messiVsRonaldo/image.png" alt="Example Messi vs Ronaldo">
+
+نمودار راداری
+<div dir="ltr">
+
+```
+<canvas id="myRadarChart"></canvas>
+<script>
+    let ctxRadar = document.getElementById('myRadarChart').getContext('2d');
+    let confRadar = {
+        type: 'radar',
+        data: {
+            labels: ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'],
+            datasets: [{
+                label: "Messi",
+                data: [85, 92, 91, 95, 38, 65],
+                fill: true,
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                borderColor: "rgb(255, 99, 132)",
+                pointBackgroundColor: "rgb(255, 99, 132)",
+                pointBorderColor: "#fff",
+                pointHoverBackgroundColor: "#fff",
+                pointHoverBorderColor: "rgb(255, 99, 132)"
+            }, {
+                label: "Ronaldo",
+                data: [89, 93, 81, 89, 35, 77],
+                fill: true,
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgb(54, 162, 235)",
+                pointBackgroundColor: "rgb(54, 162, 235)",
+                pointBorderColor: "#fff",
+                pointHoverBackgroundColor: "#fff",
+                pointHoverBorderColor: "rgb(54, 162, 235)"
+            }]
+        },
+        options: {}
+    }
+    new Chart(ctxRadar, confRadar);
+</script>
+```
+
+</div>
+
+خروجی کد های فوق برابر خواهد بود با: (مثال مسی و رونالدو)
+
+نمودار ستونی
+<div dir="ltr">
+
+```
+<canvas id="myBarChart"></canvas>
+<script>
+    let ctxBar = document.getElementById("myBarChart")
+    let confBar = {
+        type: "bar",
+        data: {
+            labels: ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'],
+            datasets: [{
+                label: "Messi",
+                data: [85, 92, 91, 95, 38, 65],
+                fill: false,
+                backgroundColor: "rgba(255, 99, 132, 0.2)",
+                borderColor: "rgb(255,99,132)",
+                borderWidth: 1
+            }, {
+                label: "Ronaldo",
+                data: [89, 93, 81, 89, 35, 77],
+                fill: false,
+                backgroundColor: "rgba(54, 162, 235, 0.2)",
+                borderColor: "rgb(54, 162, 235)",
+                borderWidth: 1
+            }]
+        },
+        options: {"scales": {"yAxes": [{"ticks": {"beginAtZero": true}}]}}
+    }
+    new Chart(ctxBar, confBar);
+</script>
+```
+
+</div>
+
+خروجی کد های فوق برابر خواهد بود با: (مثال مسی و رونالدو)
+
+<img title="Example Messi vs Ronaldo Plot" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_messiVsRonaldo/ex_messiVsRonaldo.png" alt="Example Messi vs Ronaldo Plot">
+
+## تنظیمات
 
 ### انیمیشن 
 
