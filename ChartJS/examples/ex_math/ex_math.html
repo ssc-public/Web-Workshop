@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title>Example</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+        <canvas id="chart"></canvas>
+        <script>
+            function getRandomizedPoints(xLowerBound, xUpperBound, yLowerBound, yUpperBound, count) {
+                let points = [];
+                for (let i = 0; i < count; i++) {
+                    points.push({
+                        x: (Math.random() * (xUpperBound - xLowerBound)) + xLowerBound,
+                        y: (Math.random() * (yUpperBound - yLowerBound)) + yLowerBound
+                    })
+                }
+                return points;
+            }
+
+            let ctx = document.getElementById("chart");
+            let conf = {
+                type: "scatter",
+                data: {
+                    datasets: [{
+                        data: getRandomizedPoints(0, 4, 0, 16, 20000),
+                        pointBackgroundColor: function (context) {
+                            let index = context.dataIndex;
+                            let value = context.dataset.data[index];
+                            if (value.y >= value.x ** 2) {
+                                return 'red';
+                            } else {
+                                return 'blue';
+                            }
+                        }
+                    }]
+                }
+            }
+
+            new Chart(ctx, conf);
+        </script>
+    </body>
+</html>
