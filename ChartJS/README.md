@@ -13,6 +13,9 @@
 ## مقدمه 
 Chart.js یک کتابخانه متن باز JavaScript برای بصری سازی و نمایش داده ها در صفحات HTML وب به کمک JavaScript است. در این مقاله Chart.js را معرفی میکنیم و استفاده دقیق و اصولی از آن را کمک مثال هی متنوع با سندیت بر مستندات Chart.js بیان می کنیم. سعی میکنیم ابتدا برای بدست آوردن کلیت یک مثال ساده را مطرح کنیم. سپس در ادامه به سمت اصول این کتابخانه میرویم.
 
+## تصاویر 
+کدهایی که منجر به خروجی های نمایش داده شده در این مقاله هستند، در پوشه examples قرار داده شده اند.
+
 ## یک مثال ساده 
 ابتدا باید این کتابخانه را به مستند HTML مورد نظر اضافه کنیم. راه های مختلقی برای اینکار وجود دارد، به عنوان مثال:
 
@@ -61,6 +64,7 @@ var chart = new Chart(ctx, {
 
 </div>
 
-![Example 1](https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex1/ex1.png)
+خروجی کد های فوق برابر خواهد بود با:
+<img title="Example 1" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex1/ex1.png" alt="Example 1">
 
 </div>
