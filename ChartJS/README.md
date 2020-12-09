@@ -419,6 +419,126 @@ type: ''
 </p>
 
 ## مثال دوم 
+جدول زیر تعداد فروش 10 خودروساز پرفروش سال 2019 در ایالات متحده است. نمودار های دایره ای، دوناتی و قطبی این داده ها را رسم کنید. (مثال خودرو)
+
+| نام شرکت          | میزان فروش        |
+| :---------------: | :---------------: |
+| فورد              | 2284425           |
+| تویوتا            | 2085206           |
+| شورولت            | 1942039           |
+| هوندا             | 1450985           |
+| نیسان             | 1227973           |
+| جیپ               | 923292            |
+| رم                | 703023            |
+| سوبارو            | 700117            |
+| هیوندای           | 688771            |
+| کیا               | 614613            |
+
+نمودار دایره ای
+<div dir="ltr">
+
+```
+<canvas id="myPieChart"></canvas>
+<script>
+    let ctxPie = document.getElementById("myPieChart");
+    let confPie = {
+        type: "pie",
+        data: {
+            labels: ["فورد", "تویوتا", "شورولت", "هوندا", "نیسان", "جیپ", "رم", "سوبارو", "هیوندای", "کیا"],
+            datasets: [{
+                label: "Brand",
+                data: [2284425, 2085206, 1942039, 1450985, 1227973, 923292, 703023, 700117, 688771, 614613],
+                backgroundColor: ["rgb(20,89,133)", "rgb(226,22,22)", "rgb(205,154,40)", "rgb(91,5,5)",
+                    "rgb(139,210,62)", "rgb(150,36,221)", "rgb(207,90,36)", "rgb(255, 99, 132)",
+                    "rgb(54, 162, 235)", "rgb(255, 205, 86)",]
+            }]
+        },
+        options: {
+            legend: {
+                labels: {
+                    fontSize: 20,
+                    fontFamily: "Adobe Arabic"
+                }
+            }
+        }
+    };
+    new Chart(ctxPie, confPie);
+</script>
+```
+
+</div>
+
+نمودار دوناتی
+<div dir="ltr">
+
+```
+<canvas id="myDoughnutChart"></canvas>
+<script>
+    let ctxDoughnut = document.getElementById("myDoughnutChart");
+    let confDoughnut = {
+        type: "doughnut",
+        data: {
+            labels: ["فورد", "تویوتا", "شورولت", "هوندا", "نیسان", "جیپ", "رم", "سوبارو", "هیوندای", "کیا"],
+            datasets: [{
+                label: "Brand",
+                data: [2284425, 2085206, 1942039, 1450985, 1227973, 923292, 703023, 700117, 688771, 614613],
+                backgroundColor: ["rgb(20,89,133)", "rgb(226,22,22)", "rgb(205,154,40)", "rgb(91,5,5)",
+                    "rgb(139,210,62)", "rgb(150,36,221)", "rgb(207,90,36)", "rgb(255, 99, 132)",
+                    "rgb(54, 162, 235)", "rgb(255, 205, 86)",]
+            }]
+        },
+        options: {
+            legend: {
+                labels: {
+                    fontSize: 20,
+                    fontFamily: "Adobe Arabic"
+                }
+            }
+        }
+    };
+    new Chart(ctxDoughnut, confDoughnut);
+</script>
+```
+
+</div>
+
+نمودار قطبی
+<div dir="ltr">
+
+```
+<canvas id="myPolarChart"></canvas>
+<script>
+    let ctxPolar = document.getElementById("myPolarChart");
+    let confPolar = {
+        type: "polarArea",
+        data: {
+            labels: ["فورد", "تویوتا", "شورولت", "هوندا", "نیسان", "جیپ", "رم", "سوبارو", "هیوندای", "کیا"],
+            datasets: [{
+                label: "Brand",
+                data: [2284425, 2085206, 1942039, 1450985, 1227973, 923292, 703023, 700117, 688771, 614613],
+                backgroundColor: ["rgb(20,89,133)", "rgb(226,22,22)", "rgb(205,154,40)", "rgb(91,5,5)",
+                    "rgb(139,210,62)", "rgb(150,36,221)", "rgb(207,90,36)", "rgb(255, 99, 132)",
+                    "rgb(54, 162, 235)", "rgb(255, 205, 86)",]
+            }]
+        },
+        options: {
+            legend: {
+                labels: {
+                   fontSize: 20,
+                    fontFamily: "Adobe Arabic"
+                }
+            }
+        }
+    };
+    new Chart(ctxPolar, confPolar);
+</script>
+```
+
+</div>
+
+<p align="center">
+<img title="Example Cars" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_cars/ex_cars.png" alt="Example Cars">
+</p>
 
 
 ## تنظیمات
