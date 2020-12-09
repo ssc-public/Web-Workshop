@@ -61,6 +61,6 @@ var chart = new Chart(ctx, {
 
 </div>
 
-
+<img src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex1/ex1.png" alt="Example 1">
 
 </div>
