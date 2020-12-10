@@ -101,7 +101,7 @@ dist/Chart.bundle.min.js
 #### انتخاب ساخت مناسب 
 اگر از ویژگی های محور زمانی استفاده نمیکنید، استفاده از stan-alone توصیه میشود. اگر از این ویژگی استفاده میکنید میتوانید از ساخت bundled استفاده کنید. اما توجه کنید که اگر به دلیل دیگری از کتابخانه moment.js استفاده میکنید، بهتر است که از همان ساخت stand-alone استفاده کنید چرا که در صورت استفاده از bundled در حقیقت دوبار moment.js به پروژه اضافه میشود و این موضوع می تواند موجب افزایش زمان بارگیری صفحه و بار شبکه بشود. لازم به ذکر است که کتابخانه moment.js در ساخت bundled به صورت خصوصی به پروژه اضافه خواهد شد و از moment.js که توسط ساخت bundled به پروژه اضافه شده است، نمی توان برای منظور دیگری استفاده کرد.
 
-### تقرب اول: npm 
+### رویکرد اول: npm 
 
 <div dir="ltr">
 
@@ -111,7 +111,7 @@ npm install chart.js --save
 
 </div>
 
-### تقرب دوم: Bower 
+### رویکرد دوم: Bower 
 
 <div dir="ltr">
 
@@ -121,7 +121,7 @@ bower install chart.js --save
 
 </div>
 
-### تقرب سوم: CDNJS 
+### رویکرد سوم: CDNJS 
 فایل های ساخت (built files) این کتابخانه در آدرس زیر موجود است.
 <div dir="ltr">
 
@@ -131,7 +131,7 @@ https://cdnjs.com/libraries/Chart.js
 
 </div>
 
-### تقرب چهارم: jsDeliver 
+### رویکرد چهارم: jsDeliver 
 فایل های ساخت (built files) این کتابخانه در آدرس زیر موجود است.
 <div dir="ltr">
 
@@ -141,12 +141,12 @@ https://www.jsdelivr.com/package/npm/chart.js?path=dist
 
 </div>
 
-### تقرب پنجم: دانلود مستقیم [GitHub](https://github.com/chartjs/Chart.js/releases/tag/v2.9.4) 
+### رویکرد پنجم: دانلود مستقیم [GitHub](https://github.com/chartjs/Chart.js/releases/tag/v2.9.4) 
 میتوانید آخرین نسخه از Chart.js را به صورت مستقیم از صفحه GitHub این پروژه دانلود کنید. توجه کنید که در صورت استفاده از این روش باید پروژه را Build کنید تا فایل های dist برای استفاده بدست بیایند. لذا استفاده از روش جایگزین قویا توصیه میشود.
 
 با روش های مختلف، جاوااسکیریپ خام و یا Module Loader های مختلف میتوانیم Chart.js را در پروژه ادغام کنیم.
 
-### تقرب اول: Script Tag 
+### رویکرد اول: Script Tag 
 <div dir="ltr">
 
 ```
@@ -155,7 +155,7 @@ https://www.jsdelivr.com/package/npm/chart.js?path=dist
 
 </div>
 
-### تقرب دوم: Common JS 
+### رویکرد دوم: Common JS 
 <div dir="ltr">
 
 ```
@@ -164,7 +164,7 @@ var Chart = require('chart.js');
 
 </div>
 
-### تقرب سوم: Bundler (مانند Webpack یا Rollup یا ...) 
+###رویکرد سوم: Bundler (مانند Webpack یا Rollup یا ...) 
 <div dir="ltr">
 
 ```
@@ -294,37 +294,165 @@ type: 'radar'
 <div dir="ltr">
 
 ```
-type: ''
+type: 'pie'
+```
+
+```
+type: 'doughnut'
 ```
 
 </div>
+
+
+| نام فیلد             | نوع      | اسکیریپ پذیر | ایندکس پذیر | مقدار پیشفرض       |
+|----------------------|----------|--------------|-------------|--------------------|
+| backgroundColor      | Color    | بله          | بله         | rgba(0, 0, 0, 0.1) |
+| borderAlign          | string   | بله          | بله         | center             |
+| borderColor          | Color    | بله          | بله         | #fff               |
+| borderWidth          | number   | بله          | بله         | 2                  |
+| data                 | number[] | خیر          | خیر         | required           |
+| hoverBackgroundColor | Color    | بله          | بله         | undefined          |
+| hoverBorderColor     | Color    | بله          | بله         | undefined          |
+| hoverBorderWidth     | number   | بله          | بله         | undefined          |
+| weight               | number   | خیر          | خیر         | 1                  |
+
+| نام فیلد        | توضیحات                                                                                         |
+|-----------------|-------------------------------------------------------------------------------------------------|
+| backgroundColor | رنگ زمینه قطاع.                                                                                 |
+| borderColor     | زنگ مرز قطاع                                                                                    |
+| borderWidth     | ضخامت مرز قطاع بر مبنای px.                                                                     |
+| weight          | ضخامت نسبی دیتاست که مقدار دهی به آن باعث میشود دیتاست ها با یک ضخامت نسبی نسبت به هم چاپ شوند. |
+
+| نام فیلد             | توضیحات                                                    |
+|----------------------|------------------------------------------------------------|
+| hoverBackgroundColor | رنگ زمینه قطاع هنگامی که نشانگر بر روی آن است.             |
+| hoverBorderColor     | رنگ مرز قطاع هنگامی که نشانگر بر روی آن است                |
+| hoverBorderWidth     | ضخامت مرز قطاع هنگامی که نشانگر بر روی آن است بر مبنای px. |
+
+| نام فیلد                | نوع     | مقدار پیشفرض            | توضیحات                                                      |
+|-------------------------|---------|-------------------------|--------------------------------------------------------------|
+| cutoutPercentage        | number  | دایره ای: 0، دوناتی: 50 | درصد مساحت خالی میانی                                        |
+| rotation                | number  | -0.5 * Math.PI          | زاویه شروع رسم اولین قطاع                                    |
+| circumference           | number  | 2 * Math.PI             | زاویه کل قطاع ها، 2Pi برابر دایره کامل است.                  |
+| animation.animateRotate | boolean | TRUE                    | در صورت درست بودن نمودار با انیمیشن دورانی نمایش داده میشود. |
+| animation.animateScale  | boolean | FALSE                   | در صورت درست بودن، نمودار با انیمیشین از مرکز بزرگ میشود.    |
+
 
 ### حلقوی (polar area) 
 
 <div dir="ltr">
 
 ```
-type: ''
+type: 'polarArea'
 ```
 
 </div>
+
+| نام فیلد             | نوع      | اسکیریپ پذیر | ایندکس پذیر | مقدار پیشفرض       |
+|----------------------|----------|--------------|-------------|--------------------|
+| backgroundColor      | Color    | بله          | بله         | rgba(0, 0, 0, 0.1) |
+| borderAlign          | string   | بله          | بله         | center             |
+| borderColor          | Color    | بله          | بله         | '#fff'             |
+| borderWidth          | number   | بله          | بله         | 2                  |
+| data                 | number[] | خیر          | خیر         | required           |
+| hoverBackgroundColor | Color    | بله          | بله         | undefined          |
+| hoverBorderColor     | Color    | بله          | بله         | undefined          |
+| hoverBorderWidth     | number   | بله          | بله         | undefined          |
+
+| نام فیلد        | توضیحات                     |
+|-----------------|-----------------------------|
+| backgroundColor | رنگ زمینه قطاع.             |
+| borderColor     | رنگ مرز قطاع.               |
+| borderWidth     | ضخامت مرز قطاع بر مبنای px. |
+
+| نام فیلد             | توضیحات                                                    |
+|----------------------|------------------------------------------------------------|
+| hoverBackgroundColor | رنگ زمینه قطاع هنگامی که نشانگر بر روی آن است.             |
+| hoverBorderColor     | رنگ مرز قطاع هنگامی که نشانگر بر روی آن است                |
+| hoverBorderWidth     | ضخامت مرز قطاع هنگامی که نشانگر بر روی آن است بر مبنای px. |
+
+| نام                     | نوع     | مقدار پیشفرض   | توضیحات                                                      |
+|-------------------------|---------|----------------|--------------------------------------------------------------|
+| startAngle              | number  | -0.5 * Math.PI | زاویه شروع رسم اولین قطاع                                    |
+| animation.animateRotate | boolean | TRUE           | در صورت درست بودن نمودار با انیمیشن دورانی نمایش داده میشود. |
+| animation.animateScale  | boolean | TRUE           | در صورت درست بودن، نمودار با انیمیشین از مرکز بزرگ میشود.    |
 
 ### حبابی (bubble) 
 
 <div dir="ltr">
 
 ```
-type: ''
+type: 'bubble'
 ```
 
 </div>
+
+#### داده ها: 
+در این نمودار داده های باید آرایه ای از ابجکت ها باشد که 3 فیلد در آنها وجود داشته دارد. مختصه x و y و شعاع حباب مورد نظر
+
+<div dir="ltr">
+
+```
+{
+    x: number, // X value
+    y: number, // Y value
+    r: number  // Bubble radius
+}
+```
+
+</div>
+
+توجه کنید که x و y با توجه به اندازه نمایش نمودار مقیاس بندی میشوند ولی r یک عدد بر مبنای pixel است و مستقل از اندازه نمایش نمودار است.
+
+| نام فیلد             | نوع فیلد | اسکیریپ پذیر | ایندکس پذیر | مقدار پیشفرض       |
+|----------------------|----------|--------------|-------------|--------------------|
+| backgroundColor      | Color    | بله          | بله         | rgba(0, 0, 0, 0.1) |
+| borderColor          | Color    | بله          | بله         | rgba(0, 0, 0, 0.1) |
+| borderWidth          | number   | بله          | بله         | 3                  |
+| data                 | object[] | خیر          | خیر         | required           |
+| hoverBackgroundColor | Color    | بله          | بله         | undefined          |
+| hoverBorderColor     | Color    | بله          | بله         | undefined          |
+| hoverBorderWidth     | number   | بله          | بله         | 1                  |
+| hoverRadius          | number   | بله          | بله         | 4                  |
+| hitRadius            | number   | بله          | بله         | 1                  |
+| label                | string   | خیر          | خیر         | undefined          |
+| order                | number   | خیر          | خیر         | 0                  |
+| pointStyle           | string   | بله          | بله         | circle             |
+| rotation             | number   | بله          | بله         | 0                  |
+| radius               | number   | بله          | بله         | 3                  |
+
+
+| نام فیلد | توضیحات                                                       |
+|----------|---------------------------------------------------------------|
+| label    | برچسب (label) دیتاست که در legend و tooltip نمایش داده میشود. |
+| order    | الویت رسم دیتاست.                                             |
+
+
+| نام فیلد        | توضیحات                        |
+|-----------------|--------------------------------|
+| backgroundColor | رنگ زمینه حباب ها.             |
+| borderColor     | رنگ مرز حباب ها.               |
+| borderWidth     | ضخامت مرز حباب ها بر مبنای px. |
+| pointStyle      | شکل حباب ها.                   |
+| rotation        | دوران حباب ها (بر مینای درجه). |
+| radius          | شعاع حباب ها.                  |
+
+
+| نام فیلد             | توضیحات                                                    |
+|----------------------|------------------------------------------------------------|
+| hoverBackgroundColor | رنگ زمینه حباب ها هنگامی که نشانگر بر روی آن است.          |
+| hoverBorderColor     | رنگ مرز حباب ها هنگامی که نشانگر بر روی آن است.            |
+| hoverBorderWidth     | ضخامت مرز حباب ها هنگامی که نشانگر بر روی آن است.          |
+| hoverRadius          | شعاع مازاد حباب ها حباب ها هنگامی که نشانگر بر روی آن است. |
+| hitRadius            | شعاع اضافی حباب ها هنگامی که بر آن ضربه زده میشود.         |
+
 
 ### نقطه ای (scatter) 
 
 <div dir="ltr">
 
 ```
-type: ''
+type: 'scatter'
 ```
 
 </div>
@@ -417,6 +545,8 @@ type: ''
 <p align="center">
 <img title="Example Messi vs Ronaldo Plot" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_messiVsRonaldo/ex_messiVsRonaldo.png" alt="Example Messi vs Ronaldo Plot">
 </p>
+
+همان طور که مشاهده می کنید، میتوانیم به یک نمودار چند dataset اضافه کنیم.
 
 ## مثال دوم 
 جدول زیر تعداد فروش 10 خودروساز پرفروش سال 2019 در ایالات متحده است. نمودار های دایره ای، دوناتی و قطبی این داده ها را رسم کنید. (مثال خودرو)
