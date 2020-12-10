@@ -267,6 +267,74 @@ type: 'line'
 
 </div>
 
+| نام فیلد                  | نوع            | اسکیریپ پذیر | ایندکس پذیر | مقدار پیشفرض       |
+|---------------------------|----------------|--------------|-------------|--------------------|
+| backgroundColor           | Color          | بله          | خیر         | rgba(0, 0, 0, 0.1) |
+| borderCapStyle            | string         | بله          | خیر         | butt               |
+| borderColor               | Color          | بله          | خیر         | rgba(0, 0, 0, 0.1) |
+| borderDash                | number[]       | بله          | خیر         | []                 |
+| borderDashOffset          | number         | بله          | خیر         | 0                  |
+| borderJoinStyle           | string         | بله          | خیر         | miter              |
+| borderWidth               | number         | بله          | خیر         | 3                  |
+| cubicInterpolationMode    | string         | بله          | خیر         | default            |
+| clip                      | number|object  | خیر          | خیر         | borderWidth / 2    |
+| fill                      | boolean|string | بله          | خیر         | TRUE               |
+| hoverBackgroundColor      | Color          | بله          | خیر         | undefined          |
+| hoverBorderCapStyle       | string         | بله          | خیر         | undefined          |
+| hoverBorderColor          | Color          | بله          | خیر         | undefined          |
+| hoverBorderDash           | number[]       | بله          | خیر         | undefined          |
+| hoverBorderDashOffset     | number         | بله          | خیر         | undefined          |
+| hoverBorderJoinStyle      | string         | بله          | خیر         | undefined          |
+| hoverBorderWidth          | number         | بله          | خیر         | undefined          |
+| label                     | string         | خیر          | خیر         | ''                 |
+| lineTension               | number         | خیر          | خیر         | 0.4                |
+| order                     | number         | خیر          | خیر         | 0                  |
+| pointBackgroundColor      | Color          | بله          | بله         | rgba(0, 0, 0, 0.1) |
+| pointBorderColor          | Color          | بله          | بله         | rgba(0, 0, 0, 0.1) |
+| pointBorderWidth          | number         | بله          | بله         | 1                  |
+| pointHitRadius            | number         | بله          | بله         | 1                  |
+| pointHoverBackgroundColor | Color          | بله          | بله         | undefined          |
+| pointHoverBorderColor     | Color          | بله          | بله         | undefined          |
+| pointHoverBorderWidth     | number         | بله          | بله         | 1                  |
+| pointHoverRadius          | number         | بله          | بله         | 4                  |
+| pointRadius               | number         | بله          | بله         | 3                  |
+| pointRotation             | number         | بله          | بله         | 0                  |
+| pointStyle                | string|Image   | بله          | بله         | Circle             |
+| showLine                  | boolean        | خیر          | خیر         | undefined          |
+| spanGaps                  | boolean        | خیر          | خیر         | undefined          |
+| steppedLine               | boolean|string | خیر          | خیر         | FALSE              |
+| xAxisID                   | string         | خیر          | خیر         | first x axis       |
+| yAxisID                   | string         | خیر          | خیر         | first y axis       |
+
+| نام فیلد | توضیحات                                                                         |
+|----------|---------------------------------------------------------------------------------|
+| label    | برچسب (label) دیتاست که در legend و tooltip نمایش داده میشود.                   |
+| order    | الویت رسم دیتاست. توجه کنید که این الویت بر legend و tooltip نیز تاثیر میگذارد. |
+| xAxisID  | شناسه محور X این این دیتاست بر روی آن نمودار میشود (برای نمودار های چند محوره)  |
+| yAxisID  | شناسه محور Y این این دیتاست بر روی آن نمودار میشود (برای نمودار های چند محوره)  |
+
+| نام فیلد             | توضیحات                                                                |
+|----------------------|------------------------------------------------------------------------|
+| pointBackgroundColor | رنگ پرکننده نقاط.                                                      |
+| pointBorderColor     | رنگ مرز نقاط.                                                          |
+| pointBorderWidth     | ضحامت مرز نقاط بر مبنای px.                                            |
+| pointHitRadius       | سایر پیکسلی نقاط نمایش داده نشده برای واکنش نشان دادن به حرکات نشانگر. |
+| pointRadius          | شعاع نقاط. اگر صفر باشد نقطه نمایش داده نخواهد شد.                     |
+| pointRotation        | میزان دوران نقاط                                                       |
+| pointStyle           | شکل نقاط                                                               |
+
+| نام فیلد                  | توضیحات                                         |
+|---------------------------|-------------------------------------------------|
+| pointHoverBackgroundColor | رنگ پرکننده نقاط زمانی که نشانگر بر روی آن است. |
+| pointHoverBorderColor     | رنگ مرز نقاط زمانی که نشانگر بر روی آن است.     |
+| pointHoverBorderWidth     | ضخامت مرز نقاط زمانی که نشانگر بر روی آن است.   |
+| pointHoverRadius          | شعاع نقاط زمانی که نشانگر بر روی آن است.        |
+
+| نام       | نوع     | مقدار پیشفرض | توضیحات                                           |
+|-----------|---------|--------------|---------------------------------------------------|
+| showLines | boolean | TRUE         | آیا خط واصل نقاط رسم شود یا نه.                   |
+| spanGaps  | boolean | FALSE        | آیا NaN در خط واصل نقاط شکستگی ایجاد کند یا نکند. |
+
 ### ستونی (bar) 
 
 <div dir="ltr">
