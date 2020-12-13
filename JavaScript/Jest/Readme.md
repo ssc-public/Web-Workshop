@@ -818,5 +818,478 @@ promise
 هیچ‌کدام از روش‌های بالا مزیتی نسبت به دیگری ندارند و فقط بستگی به این دارد که به نظر شما کدام یک از روش های بالا	تست های‌تان را ساده‌تر می‌کند. 
 
 
+# Mock Functions
+توابع ساختگی
+(Mock functions)
+به شما این امکان را می‌دهد که با پاک‌کردن پیاده‌سازی اصلی‌ی یک تابع، کنترل‌کردن فراخوانی‌های تابع(و پارامتر‌های استفاده شده)، کنترل‌کردن نمونه‌هایی که با دستور 
+`new`
+به‌وسیله‌ی توابع سازنده ساخته شده‌اند و امکان پیکربندی مقادیر خروجی در زمان تست، به تست کردن ارتباطات در کد بپردازید.
+ 
+ دو راه برای 
+ mock
+ کردن توابع وجود دارد:ساخت یک
+ mock function
+ برای استفاده در کد یا، نوشتن یک
+ [`manual mock`](https://jestjs.io/docs/en/manual-mocks)
+برای
+override
+کردن وابستگی‌های یک ماژول.
+
+## استفاده از mock function
+فرض کنید که ما می‌خواهیم یک پیاده سازی از یک تابع 
+`forEach`
+را تست کنیم که برای هر آیتم در ارایه‌ی داده شده تابع
+callback
+را بر روی آن اجرا کند.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+function forEach(items, callback) {
+  for (let index = 0; index < items.length; index++) {
+    callback(items[index]);
+  }
+}
+```
+
+</div>
+
+برای تست‌کردن این تابع ما می‌توانیم از یک
+mock function 
+استفاده کنیم و حالت 
+mock
+شده را بررسی کنیم تا مطمئن شویم که 
+callback
+مطابق انتظار فراخوانی شده باشد.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+const mockCallback = jest.fn(x => 42 + x);
+forEach([0, 1], mockCallback);
+
+// The mock function is called twice
+expect(mockCallback.mock.calls.length).toBe(2);
+
+// The first argument of the first call to the function was 0
+expect(mockCallback.mock.calls[0][0]).toBe(0);
+
+// The first argument of the second call to the function was 1
+expect(mockCallback.mock.calls[1][0]).toBe(1);
+
+// The return value of the first call to the function was 42
+expect(mockCallback.mock.results[0].value).toBe(42);
+
+```
+
+</div>
+
+## `mock` property 
+تمام 
+mock function
+ها
+property
+ی
+`.mock`
+را دارند که تمام اطلاعات مربوط به اینکه تابع چگونه صدا زده شده است و مقادیر خروجی چه بوده است را نگه می‌دارد.
+property
+ی
+`.mock`
+همچنین مقدار
+`this`
+را برای هر بار فراخوانی تابع نگه می‌دارد، که این کار باعث می‌شود این بررسی بهتر انجام شود.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+const myMock = jest.fn();
+
+const a = new myMock();
+const b = {};
+const bound = myMock.bind(b);
+bound();
+
+console.log(myMock.mock.instances);
+// > [ <a>, <b> ]
+```
+
+</div>
+
+این قابلیت‌های 
+mock
+در هنگام تست بسیار کاربردی است  وقتی که بخواهیم در تست، طریقه‌ی صدا زده شدن تابع، نحوه‌ی نمونه‌گیری و یا مقادیر خروجی‌ای که برگردانده است را 
+assert
+کنیم.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+// The function was called exactly once
+expect(someMockFunction.mock.calls.length).toBe(1);
+
+// The first arg of the first call to the function was 'first arg'
+expect(someMockFunction.mock.calls[0][0]).toBe('first arg');
+
+// The second arg of the first call to the function was 'second arg'
+expect(someMockFunction.mock.calls[0][1]).toBe('second arg');
+
+// The return value of the first call to the function was 'return value'
+expect(someMockFunction.mock.results[0].value).toBe('return value');
+
+// This function was instantiated exactly twice
+expect(someMockFunction.mock.instances.length).toBe(2);
+
+// The object returned by the first instantiation of this function
+// had a `name` property whose value was set to 'test'
+expect(someMockFunction.mock.instances[0].name).toEqual('test');
+```
+
+</div>
+
+## Mock Return Values
+همچنین از 
+mock function 
+ها می‌توان برای اضافه‌کردن مقدار‌تست به کد در زمان اجرای تست استفاده کرد.
+
+
+<div dir='ltr' align='justify'>
+ 
+```js
+const myMock = jest.fn();
+console.log(myMock());
+// > undefined
+
+myMock.mockReturnValueOnce(10).mockReturnValueOnce('x').mockReturnValue(true);
+
+console.log(myMock(), myMock(), myMock(), myMock());
+// > 10, 'x', true, true
+```
+
+</div>
+
+mock function
+ها بسیار در کد کارا هستند وقتی که ما از یک تابع با استایل 
+continuation-passing
+استفاده می‌کنیم.نوشتن کد به این شیوه برای تست باعث می‌شود ما از نوشتن کدی که بیاید یک رفتار پیچیده را بسازد جلوگیری کنیم. برای این کار به راحتی می‌توانیم مقادیر خروجی را قبل از استفاده به صورت مستقیم به تابع 
+mock
+شده، تزریق
+(inject)
+کنیم.
+
+
+
+<div dir='ltr' align='justify'>
+ 
+```js
+const filterTestFn = jest.fn();
+
+// Make the mock return `true` for the first call,
+// and `false` for the second call
+filterTestFn.mockReturnValueOnce(true).mockReturnValueOnce(false);
+
+const result = [11, 12].filter(num => filterTestFn(num));
+
+console.log(result);
+// > [11]
+console.log(filterTestFn.mock.calls);
+// > [ [11], [12] ]
+```
+
+</div>
+
+
+در اکثر مثال‌های دنیای واقعی شما درگیر نگه‌داری 
+mock function
+هستید ولی در این روش به‌جای آنکه درگیر پیاده سازی تابعی شوید که قصد تست کردن آن را ندارید به راحتی می‌توانید مقادیر خروجی را به آن بدهید و به تست کردن بخش مورد نظر بپردازید.
+
+
+## Mocking Modules
+فرض کنید که یک کلاس داریم که 
+users 
+را از 
+API
+ی مان می‌گیرد. کلاس ما از 
+[axios](https://github.com/axios/axios)
+برای صدا زدن
+API
+استفاده می‌کند و سپس
+`data`
+را که شامل تمام
+user
+ها است باز می‌گردانیم.
+
+
+<div dir='ltr' align='justify'>
+ 
+```js
+// users.js
+import axios from 'axios';
+
+class Users {
+  static all() {
+    return axios.get('/users.json').then(resp => resp.data);
+  }
+}
+
+export default Users;
+
+```
+
+</div>
+
+حال ما می‌خواهیم بدون فراخوانی
+API
+متدمان را تست کنیم. در این‌جا ما می‌توانیم از 
+`(...)jest.mock`
+استفاده کنیم تا ماژول
+axios
+به صورت خودکار 
+mock
+شود.
+
+
+در ابتدا با استفاده از 
+`mockResolvedValue`
+می‌گوییم که خروجی 
+`.get`
+را دیتایی قرار دهد که ما به آن می‌دهیم. در واقع ما می‌خواهیم که خروجی
+`axios.get('/uses.json')`
+داده‌ی
+fake
+ای باشد که ما به آن داده‌ایم.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+// users.test.js
+import axios from 'axios';
+import Users from './users';
+
+jest.mock('axios');
+
+test('should fetch users', () => {
+  const users = [{name: 'Bob'}];
+  const resp = {data: users};
+  axios.get.mockResolvedValue(resp);
+
+  // or you could use the following depending on your use case:
+  // axios.get.mockImplementation(() => Promise.resolve(resp))
+
+  return Users.all().then(data => expect(data).toEqual(users));
+});
+```
+
+</div>
+
+## Mock Implementations
+مواردی وجود دارد که در آن مشخص کردن مقدار خروجی به تنهایی کافی نیست و نیاز است که در آن تابع 
+mock
+شده، پیاده‌سازی جدیدی را بگیرد. این کار با استفاده از
+`jest.fn`
+یا
+`mockImplementationOnce`
+قابل انجام است.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+const myMockFn = jest.fn(cb => cb(null, true));
+
+myMockFn((err, val) => console.log(val));
+// > true
+```
+
+</div>
+
+متد
+`mockImplementation`
+زمانی مفید است که شما به پیاده‌سازی پیشفرض از یک تابع
+mock
+که از یک ماژول دیگر آمده است، نیاز داشته باشید.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+// foo.js
+module.exports = function () {
+  // some implementation;
+};
+
+// test.js
+jest.mock('../foo'); // this happens automatically with automocking
+const foo = require('../foo');
+
+// foo is a mock function
+foo.mockImplementation(() => 42);
+foo();
+// > 42
+```
+
+</div>
+
+زمانی که شما به ایجاد رفتار پیچیده از یک 
+mock function
+نیاز دارید که در آن فراخوانی‌ها، خروجی‌های گوناگون تولید می‌کنند،
+`mockImplementationOnec`
+به‌کار شما می‌آید.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+const myMockFn = jest
+  .fn()
+  .mockImplementationOnce(cb => cb(null, true))
+  .mockImplementationOnce(cb => cb(null, false));
+
+myMockFn((err, val) => console.log(val));
+// > true
+
+myMockFn((err, val) => console.log(val));
+// > false
+```
+
+</div>
+
+زمانی که پیاده‌سازی‌های اضافه شده به‌وسیله‌ی
+`mockImplementationOnce`
+تمام می‌شود، پیاده‌سازی پیشفرض که با
+`jest.fn`
+تعریف شده‌است ، اجرا می‌شود.
+(در صورت تعریف).
+
+<div dir='ltr' align='justify'>
+ 
+```js
+const myMockFn = jest
+  .fn(() => 'default')
+  .mockImplementationOnce(() => 'first call')
+  .mockImplementationOnce(() => 'second call');
+
+console.log(myMockFn(), myMockFn(), myMockFn(), myMockFn());
+// > 'first call', 'second call', 'default', 'default'
+```
+
+</div>
+
+در مواردی که ما متد‌هایی داریم که به هم زنجیر شده اند
+(یعنی در همیشه
+`this`
+را برمی‌گردانند)،
+ما می‌توانیم از یک 
+API
+جالب برای ساده‌سازی استفاده کنیم.
+این ساده سازی به‌وسیله‌ی 
+`mockReturnThis`
+انجام می‌شود.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+const myObj = {
+  myMethod: jest.fn().mockReturnThis(),
+};
+
+// is the same as
+
+const otherObj = {
+  myMethod: jest.fn(function () {
+    return this;
+  }),
+};
+```
+
+</div>
+
+## Mock Names
+شما می‌توانی به صورت اختیاری یک نام به تابع
+mock
+شده‌ی تان اختصاص دهید، که در هنگام مشکل در خروجی‌ی تست به‌جای
+"jest.jn()"
+نمایش داده شود.با این کار شما سریع‌تر می‌توانید 
+mock function
+ای را که سبب خطا شده است را پیدا کنید.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+const myMockFn = jest
+  .fn()
+  .mockReturnValue('default')
+  .mockImplementation(scalar => 42 + scalar)
+  .mockName('add42');
+```
+
+</div>
+
+## Custom Matchers
+در نهایت، برای اینکه چک کردن فراخوانی‌های 
+mock function
+ها آسان‌تر شود، می‌توانید از 
+matcher function
+هایی که دراختیارتان قرارگرفته است استفاده کنید.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+// The mock function was called at least once
+expect(mockFunc).toHaveBeenCalled();
+
+// The mock function was called at least once with the specified args
+expect(mockFunc).toHaveBeenCalledWith(arg1, arg2);
+
+// The last call to the mock function was called with the specified args
+expect(mockFunc).toHaveBeenLastCalledWith(arg1, arg2);
+
+// All calls and the name of the mock is written as a snapshot
+expect(mockFunc).toMatchSnapshot();
+```
+
+</div>
+
+این 
+matcher
+ها برای بررسی‌های رایج از 
+property
+ی
+`mock.`
+بسیار لذت‌بخش هستند.
+
+شما می‌توانید به صورت دستی نیز این کارها را انجام دهید، اگر انجام دستی‌ی آنها برای شما لذت‌بخش تر است یا اینکه می‌خواهید کارهای خاص دیگری انجام دهید.
+
+
+<div dir='ltr' align='justify'>
+ 
+```js
+// The mock function was called at least once
+expect(mockFunc.mock.calls.length).toBeGreaterThan(0);
+
+// The mock function was called at least once with the specified args
+expect(mockFunc.mock.calls).toContainEqual([arg1, arg2]);
+
+// The last call to the mock function was called with the specified args
+expect(mockFunc.mock.calls[mockFunc.mock.calls.length - 1]).toEqual([
+  arg1,
+  arg2,
+]);
+
+// The first arg of the last call to the mock function was `42`
+// (note that there is no sugar helper for this specific of an assertion)
+expect(mockFunc.mock.calls[mockFunc.mock.calls.length - 1][0]).toBe(42);
+
+// A snapshot will check that a mock was invoked the same number of times,
+// in the same order, with the same arguments. It will also assert on the name.
+expect(mockFunc.mock.calls).toEqual([[arg1, arg2]]);
+expect(mockFunc.getMockName()).toBe('a mock name');
+```
+
+</div>
+
+برای دیدن لیست کامل این 
+matcher
+ها می‌توانید 
+[داک اصلی](https://jestjs.io/docs/en/expect)
+را چک کنید
+
+
 
 </div>
