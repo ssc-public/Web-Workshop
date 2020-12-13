@@ -173,7 +173,7 @@ jest my-test --notify --config=config.json
 </div>
 
 فلگ
-`--notify`
+`notify--`
 موجب می‌شود تا پس از اجرای کامند، یک پیغام اطلاع‌رسانی نشان‌داده شود.
 
 ## تنظیمات اضافی
@@ -258,7 +258,7 @@ test('two plus two is four', () => {
 Matcher
 ها روی آن‌ها.
 در کد بالا،
-`.toBe(4)`
+`toBe(4).`
 یک
 Matcher
 می‌باشد.
@@ -383,6 +383,7 @@ test('two plus two', () => {
 });
 ```
 </div>
+
 برای تست برابری در مقادیر اعشاری به‌جای
 `toEqual`
 از
@@ -532,6 +533,7 @@ test('the data is peanut butter', () => {
 });
 ```
 </div>
+
 مشکل تست بالا این است که به محض‌اینکه 
 `fetchData`
 کامل می‌شود؛ قبل از اینکه 
@@ -570,7 +572,7 @@ test('the data is peanut butter', done => {
 </div>
 
 اگر
-`done()`
+`()done`
 فراخوانی نشود، تست
 fail
 می‌شود که همان رفتار موردانتظار ماست.
@@ -582,7 +584,7 @@ fail
 شود؛ یک 
 exception
 پرتاب خواهد‌کرد و 
-`done()`
+`()done`
 فراخوانی نخواهدشد.اگر می‌خواهیم در لاگ تست ببینیم که چرا تست 
 fail
 شده‌است؛َ باید عبارت
@@ -654,7 +656,7 @@ promise
 خروجی‌داده‌شده از
 `fetchData`
 نتیجه بدهد و توسط
-`then()`
+`()then`
 استفاده شود، به‌اتمام می‌رسد.
 
 اگر انتظار دارید یک
@@ -662,7 +664,7 @@ promise
 بدون موفقیت انجام شود و
 reject
 شود، از تابع
-`.catch`
+`catch.`
 استفاده کنید.
 مطمئن شوید که 
 `expect.assertions`
@@ -685,9 +687,9 @@ test('the fetch fails with an error', () => {
 ```
 </div>
 
-### `.resolves` / `.rejects`
+### `resolves.` / `rejects.`
 شما همچنین می‌توانید از تابع
-`.resolves`
+`resolves.`
 در عبارت
 `expect`
 استفاده کنید و 
@@ -721,7 +723,7 @@ promise
 خروجی‌داده‌شده از
 `fetchData`
 نتیجه بدهد و توسط
-`then()`
+`()then`
 استفاده شود، به‌اتمام می‌رسد.
 
 اگر انتظار دارید که 
@@ -729,9 +731,9 @@ promise
 موردنظر ما 
 reject 
 شود؛ از تابع
-`.rejects`
+`rejects.`
 استفاده کنید. این تابع از نظر منطقی مانند
-`.resolves`
+`resolves.`
 رفتار می‌کند. اگر 
 promise
 موردنظر ما 
@@ -786,9 +788,9 @@ test('the fetch fails with an error', async () => {
 و
 `await`
 را به‌صورت ترکیبی با
-`.resolves`
+`resolves.`
 و
-`.rejects`
+`rejects.`
 استفاده کرد.
 <div dir='ltr' align='justify'>
 
