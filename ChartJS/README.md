@@ -164,7 +164,8 @@ var Chart = require('chart.js');
 
 </div>
 
-###رویکرد سوم: Bundler (مانند Webpack یا Rollup یا ...) 
+### رویکرد سوم: Bundler (مانند Webpack یا Rollup یا ...) 
+
 <div dir="ltr">
 
 ```
@@ -348,51 +349,51 @@ Chart.defaults.line
 #### تنظیمات مربوط به Dataset ها
 برای هر دیتاست، میتوانیم تنظیماتی را در نمودار های خطی کنترل کنیم، تنظیماتی اعم از نحوه نمایش، الویت رسم و نحوه پاسخگویی به وقایع (event). در جداول زیر این موارد را نام میبریم. توجه کنید که این تنظیمات میتوانند به صورت جداگانه برای هر Dataset  انجام شود.
 
-| نام فیلد                  | نوع            | اسکیریپ پذیر | ایندکس پذیر | مقدار پیشفرض       |
-|---------------------------|----------------|--------------|-------------|--------------------|
-| backgroundColor           | Color          | بله          | خیر         | rgba(0, 0, 0, 0.1) |
-| borderCapStyle            | string         | بله          | خیر         | butt               |
-| borderColor               | Color          | بله          | خیر         | rgba(0, 0, 0, 0.1) |
-| borderDash                | number[]       | بله          | خیر         | []                 |
-| borderDashOffset          | number         | بله          | خیر         | 0                  |
-| borderJoinStyle           | string         | بله          | خیر         | miter              |
-| borderWidth               | number         | بله          | خیر         | 3                  |
-| cubicInterpolationMode    | string         | بله          | خیر         | default            |
-| clip                      | number|object  | خیر          | خیر         | borderWidth / 2    |
-| fill                      | boolean|string | بله          | خیر         | TRUE               |
-| hoverBackgroundColor      | Color          | بله          | خیر         | undefined          |
-| hoverBorderCapStyle       | string         | بله          | خیر         | undefined          |
-| hoverBorderColor          | Color          | بله          | خیر         | undefined          |
-| hoverBorderDash           | number[]       | بله          | خیر         | undefined          |
-| hoverBorderDashOffset     | number         | بله          | خیر         | undefined          |
-| hoverBorderJoinStyle      | string         | بله          | خیر         | undefined          |
-| hoverBorderWidth          | number         | بله          | خیر         | undefined          |
-| label                     | string         | خیر          | خیر         | ''                 |
-| lineTension               | number         | خیر          | خیر         | 0.4                |
-| order                     | number         | خیر          | خیر         | 0                  |
-| pointBackgroundColor      | Color          | بله          | بله         | rgba(0, 0, 0, 0.1) |
-| pointBorderColor          | Color          | بله          | بله         | rgba(0, 0, 0, 0.1) |
-| pointBorderWidth          | number         | بله          | بله         | 1                  |
-| pointHitRadius            | number         | بله          | بله         | 1                  |
-| pointHoverBackgroundColor | Color          | بله          | بله         | undefined          |
-| pointHoverBorderColor     | Color          | بله          | بله         | undefined          |
-| pointHoverBorderWidth     | number         | بله          | بله         | 1                  |
-| pointHoverRadius          | number         | بله          | بله         | 4                  |
-| pointRadius               | number         | بله          | بله         | 3                  |
-| pointRotation             | number         | بله          | بله         | 0                  |
-| pointStyle                | string|Image   | بله          | بله         | Circle             |
-| showLine                  | boolean        | خیر          | خیر         | undefined          |
-| spanGaps                  | boolean        | خیر          | خیر         | undefined          |
-| steppedLine               | boolean|string | خیر          | خیر         | FALSE              |
-| xAxisID                   | string         | خیر          | خیر         | first x axis       |
-| yAxisID                   | string         | خیر          | خیر         | first y axis       |
+| نام فیلد                  | نوع      | اسکیریپ پذیر | ایندکس پذیر | مقدار پیشفرض       |
+| ------------------------- | -------- | ------------ | ----------- | ------------------ |
+| backgroundColor           | Color    | بله          | خیر         | rgba(0, 0, 0, 0.1) |
+| borderCapStyle            | string   | بله          | خیر         | butt               |
+| borderColor               | Color    | بله          | خیر         | rgba(0, 0, 0, 0.1) |
+| borderDash                | number[] | بله          | خیر         | []                 |
+| borderDashOffset          | number   | بله          | خیر         | 0                  |
+| borderJoinStyle           | string   | بله          | خیر         | miter              |
+| borderWidth               | number   | بله          | خیر         | 3                  |
+| cubicInterpolationMode    | string   | بله          | خیر         | default            |
+| clip                      | number   | object       | خیر         | خیر                | borderWidth / 2 |
+| fill                      | boolean  | string       | بله         | خیر                | TRUE            |
+| hoverBackgroundColor      | Color    | بله          | خیر         | undefined          |
+| hoverBorderCapStyle       | string   | بله          | خیر         | undefined          |
+| hoverBorderColor          | Color    | بله          | خیر         | undefined          |
+| hoverBorderDash           | number[] | بله          | خیر         | undefined          |
+| hoverBorderDashOffset     | number   | بله          | خیر         | undefined          |
+| hoverBorderJoinStyle      | string   | بله          | خیر         | undefined          |
+| hoverBorderWidth          | number   | بله          | خیر         | undefined          |
+| label                     | string   | خیر          | خیر         | ''                 |
+| lineTension               | number   | خیر          | خیر         | 0.4                |
+| order                     | number   | خیر          | خیر         | 0                  |
+| pointBackgroundColor      | Color    | بله          | بله         | rgba(0, 0, 0, 0.1) |
+| pointBorderColor          | Color    | بله          | بله         | rgba(0, 0, 0, 0.1) |
+| pointBorderWidth          | number   | بله          | بله         | 1                  |
+| pointHitRadius            | number   | بله          | بله         | 1                  |
+| pointHoverBackgroundColor | Color    | بله          | بله         | undefined          |
+| pointHoverBorderColor     | Color    | بله          | بله         | undefined          |
+| pointHoverBorderWidth     | number   | بله          | بله         | 1                  |
+| pointHoverRadius          | number   | بله          | بله         | 4                  |
+| pointRadius               | number   | بله          | بله         | 3                  |
+| pointRotation             | number   | بله          | بله         | 0                  |
+| pointStyle                | string   | Image        | بله         | بله                | Circle          |
+| showLine                  | boolean  | خیر          | خیر         | undefined          |
+| spanGaps                  | boolean  | خیر          | خیر         | undefined          |
+| steppedLine               | boolean  | string       | خیر         | خیر                | FALSE           |
+| xAxisID                   | string   | خیر          | خیر         | first x axis       |
+| yAxisID                   | string   | خیر          | خیر         | first y axis       |
 
 توضیحات بیشتر درباره موارد فوق را میتوانید در جداول زیر مشاهده کنید.
 
 #### عمومی
 
 | نام فیلد | توضیحات                                                                         |
-|----------|---------------------------------------------------------------------------------|
+| -------- | ------------------------------------------------------------------------------- |
 | label    | برچسب (label) دیتاست که در legend و tooltip نمایش داده میشود.                   |
 | order    | الویت رسم دیتاست. توجه کنید که این الویت بر legend و tooltip نیز تاثیر میگذارد. |
 | xAxisID  | شناسه محور X این این دیتاست بر روی آن نمودار میشود (برای نمودار های چند محوره)  |
@@ -401,7 +402,7 @@ Chart.defaults.line
 #### ظاهر نقاط
 
 | نام فیلد             | توضیحات                                                                |
-|----------------------|------------------------------------------------------------------------|
+| -------------------- | ---------------------------------------------------------------------- |
 | pointBackgroundColor | رنگ پرکننده نقاط.                                                      |
 | pointBorderColor     | رنگ مرز نقاط.                                                          |
 | pointBorderWidth     | ضحامت مرز نقاط بر مبنای px.                                            |
@@ -413,7 +414,7 @@ Chart.defaults.line
 #### پاسخ به وقایع
 
 | نام فیلد                  | توضیحات                                         |
-|---------------------------|-------------------------------------------------|
+| ------------------------- | ----------------------------------------------- |
 | pointHoverBackgroundColor | رنگ پرکننده نقاط زمانی که نشانگر بر روی آن است. |
 | pointHoverBorderColor     | رنگ مرز نقاط زمانی که نشانگر بر روی آن است.     |
 | pointHoverBorderWidth     | ضخامت مرز نقاط زمانی که نشانگر بر روی آن است.   |
@@ -422,7 +423,7 @@ Chart.defaults.line
 #### ظاهر خطوط
 
 | نام فیلد         | توضیحات                                                                                                                |
-|------------------|------------------------------------------------------------------------------------------------------------------------|
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | backgroundColor  | رنگ پر کننده خط                                                                                                        |
 | borderCapStyle   | ظاهر انتهای خط                                                                                                         |
 | borderColor      | رنگ خط                                                                                                                 |
@@ -438,7 +439,7 @@ Chart.defaults.line
 از موارد فوق میتوان به عنوان option استفاده کرد تا نمودار مطلوب را بدست آورد.
 
 | نام       | نوع     | مقدار پیشفرض | توضیحات                                           |
-|-----------|---------|--------------|---------------------------------------------------|
+| --------- | ------- | ------------ | ------------------------------------------------- |
 | showLines | boolean | TRUE         | آیا خط واصل نقاط رسم شود یا نه.                   |
 | spanGaps  | boolean | FALSE        | آیا NaN در خط واصل نقاط شکستگی ایجاد کند یا نکند. |
 
@@ -574,64 +575,64 @@ Chart.defaults.radar
 #### تنظیمات مربوط به Dataset ها
 برای هر دیتاست، میتوانیم تنظیماتی را در نمودار های راداری کنترل کنیم، تنظیماتی اعم از نحوه نمایش، الویت رسم و نحوه پاسخگویی به وقایع (event). در جداول زیر این موارد را نام میبریم. توجه کنید که این تنظیمات میتوانند به صورت جداگانه برای هر Dataset  انجام شود.
 
-| نام فیلد                  | نوع            | اسکیریپ پذیر | ایندکس پذیر | مقدار پیشفرض       |
-|---------------------------|----------------|--------------|-------------|--------------------|
-| backgroundColor           | Color          | بله          | خیر         | rgba(0, 0, 0, 0.1) |
-| borderCapStyle            | string         | بله          | خیر         | butt               |
-| borderColor               | Color          | بله          | خیر         | rgba(0, 0, 0, 0.1) |
-| borderDash                | number[]       | بله          | خیر         | []                 |
-| borderDashOffset          | number         | بله          | خیر         | 0                  |
-| borderJoinStyle           | string         | بله          | خیر         | miter              |
-| borderWidth               | number         | بله          | خیر         | 3                  |
-| hoverBackgroundColor      | Color          | بله          | خیر         | undefined          |
-| hoverBorderCapStyle       | string         | بله          | خیر         | undefined          |
-| hoverBorderColor          | Color          | بله          | خیر         | undefined          |
-| hoverBorderDash           | number[]       | بله          | خیر         | undefined          |
-| hoverBorderDashOffset     | number         | بله          | خیر         | undefined          |
-| hoverBorderJoinStyle      | string         | بله          | خیر         | undefined          |
-| hoverBorderWidth          | number         | بله          | خیر         | undefined          |
-| fill                      | boolean|string | بله          | خیر         | TRUE               |
-| label                     | string         | خیر          | خیر         | empty string       |
-| order                     | number         | خیر          | خیر         | 0                  |
-| lineTension               | number         | خیر          | خیر         | 0                  |
-| pointBackgroundColor      | Color          | بله          | بله         | rgba(0, 0, 0, 0.1) |
-| pointBorderColor          | Color          | بله          | بله         | rgba(0, 0, 0, 0.1) |
-| pointBorderWidth          | number         | بله          | بله         | 1                  |
-| pointHitRadius            | number         | بله          | بله         | 1                  |
-| pointHoverBackgroundColor | Color          | بله          | بله         | undefined          |
-| pointHoverBorderColor     | Color          | بله          | بله         | undefined          |
-| pointHoverBorderWidth     | number         | بله          | بله         | 1                  |
-| pointHoverRadius          | number         | بله          | بله         | 4                  |
-| pointRadius               | number         | بله          | بله         | 3                  |
-| pointRotation             | number         | بله          | بله         | 0                  |
-| pointStyle                | string|Image   | بله          | بله         | circle             |
-| spanGaps                  | boolean        | خیر          | خیر         | undefined          |
+| نام فیلد                  | نوع      | اسکیریپ پذیر | ایندکس پذیر | مقدار پیشفرض       |
+| ------------------------- | -------- | ------------ | ----------- | ------------------ |
+| backgroundColor           | Color    | بله          | خیر         | rgba(0, 0, 0, 0.1) |
+| borderCapStyle            | string   | بله          | خیر         | butt               |
+| borderColor               | Color    | بله          | خیر         | rgba(0, 0, 0, 0.1) |
+| borderDash                | number[] | بله          | خیر         | []                 |
+| borderDashOffset          | number   | بله          | خیر         | 0                  |
+| borderJoinStyle           | string   | بله          | خیر         | miter              |
+| borderWidth               | number   | بله          | خیر         | 3                  |
+| hoverBackgroundColor      | Color    | بله          | خیر         | undefined          |
+| hoverBorderCapStyle       | string   | بله          | خیر         | undefined          |
+| hoverBorderColor          | Color    | بله          | خیر         | undefined          |
+| hoverBorderDash           | number[] | بله          | خیر         | undefined          |
+| hoverBorderDashOffset     | number   | بله          | خیر         | undefined          |
+| hoverBorderJoinStyle      | string   | بله          | خیر         | undefined          |
+| hoverBorderWidth          | number   | بله          | خیر         | undefined          |
+| fill                      | boolean  | string       | بله         | خیر                | TRUE   |
+| label                     | string   | خیر          | خیر         | empty string       |
+| order                     | number   | خیر          | خیر         | 0                  |
+| lineTension               | number   | خیر          | خیر         | 0                  |
+| pointBackgroundColor      | Color    | بله          | بله         | rgba(0, 0, 0, 0.1) |
+| pointBorderColor          | Color    | بله          | بله         | rgba(0, 0, 0, 0.1) |
+| pointBorderWidth          | number   | بله          | بله         | 1                  |
+| pointHitRadius            | number   | بله          | بله         | 1                  |
+| pointHoverBackgroundColor | Color    | بله          | بله         | undefined          |
+| pointHoverBorderColor     | Color    | بله          | بله         | undefined          |
+| pointHoverBorderWidth     | number   | بله          | بله         | 1                  |
+| pointHoverRadius          | number   | بله          | بله         | 4                  |
+| pointRadius               | number   | بله          | بله         | 3                  |
+| pointRotation             | number   | بله          | بله         | 0                  |
+| pointStyle                | string   | Image        | بله         | بله                | circle |
+| spanGaps                  | boolean  | خیر          | خیر         | undefined          |
 
 توضیحات بیشتر درباره موارد فوق را میتوانید در جداول زیر مشاهده کنید.
 
 #### عمومی
 
 | نام فیلد | توضیحات                                       |
-|----------|-----------------------------------------------|
+| -------- | --------------------------------------------- |
 | label    | نام دیتاست که در legend و tooltip ظاهر میشود. |
 | order    | الویت رسم.                                    |
 
 #### ظاهر نقاط
 
 | نام فیلد             | توضیحات                                               |
-|----------------------|-------------------------------------------------------|
+| -------------------- | ----------------------------------------------------- |
 | pointBackgroundColor | رنگ پرکننده نقاط                                      |
 | pointBorderColor     | رنگ مرزی نقاط                                         |
 | pointBorderWidth     | ضخامت مرز نقاط                                        |
 | pointHitRadius       | اندازه پیکسلی نقاط نمایش داده نشده برای واکنش به ماوس |
-| pointRadius          | شعاع نقاط، اگر صفر باشد نقطه نمایش داده نمیشود      |
+| pointRadius          | شعاع نقاط، اگر صفر باشد نقطه نمایش داده نمیشود        |
 | pointRotation        | دوران نقاط                                            |
 | pointStyle           | شکل نقاط                                              |
 
 #### ظاهر خطوط
 
 | Name            | Description                                                                                              |
-|-----------------|----------------------------------------------------------------------------------------------------------|
+| --------------- | -------------------------------------------------------------------------------------------------------- |
 | backgroundColor | رنگ پرکننده خطوط                                                                                         |
 | borderCapStyle  | شکل انتهایی خطوط                                                                                         |
 | borderColor     | رنگ خطوط                                                                                                 |
@@ -645,7 +646,7 @@ Chart.defaults.radar
 #### پاسخ به وقایع
 
 | نام فیلد                  | توضیحات                                   |
-|---------------------------|-------------------------------------------|
+| ------------------------- | ----------------------------------------- |
 | pointHoverBackgroundColor | رنگ زمینه نقاط وقتی نشانگر بر روی آن است. |
 | pointHoverBorderColor     | رنگ مرز نقاط وقتی نشانگر بر روی آن است.   |
 | pointHoverBorderWidth     | ضخامت مرز نقاط وقتی نشانگر بر روی آن است. |
@@ -709,7 +710,7 @@ Chart.defaults.doughnut
 برای هر دیتاست، میتوانیم تنظیماتی را در نمودار های دایره ای و دوناتی کنترل کنیم، تنظیماتی اعم از نحوه نمایش، الویت رسم و نحوه پاسخگویی به وقایع (event). در جداول زیر این موارد را نام میبریم. توجه کنید که این تنظیمات میتوانند به صورت جداگانه برای هر Dataset  انجام شود.
 
 | نام فیلد             | نوع      | اسکیریپ پذیر | ایندکس پذیر | مقدار پیشفرض       |
-|----------------------|----------|--------------|-------------|--------------------|
+| -------------------- | -------- | ------------ | ----------- | ------------------ |
 | backgroundColor      | Color    | بله          | بله         | rgba(0, 0, 0, 0.1) |
 | borderAlign          | string   | بله          | بله         | center             |
 | borderColor          | Color    | بله          | بله         | #fff               |
@@ -724,7 +725,7 @@ Chart.defaults.doughnut
 
 #### ظاهری
 | نام فیلد        | توضیحات                                                                                         |
-|-----------------|-------------------------------------------------------------------------------------------------|
+| --------------- | ----------------------------------------------------------------------------------------------- |
 | backgroundColor | رنگ زمینه قطاع.                                                                                 |
 | borderColor     | زنگ مرز قطاع                                                                                    |
 | borderWidth     | ضخامت مرز قطاع بر مبنای px.                                                                     |
@@ -732,7 +733,7 @@ Chart.defaults.doughnut
 
 #### پاسخ به وقایع
 | نام فیلد             | توضیحات                                                    |
-|----------------------|------------------------------------------------------------|
+| -------------------- | ---------------------------------------------------------- |
 | hoverBackgroundColor | رنگ زمینه قطاع هنگامی که نشانگر بر روی آن است.             |
 | hoverBorderColor     | رنگ مرز قطاع هنگامی که نشانگر بر روی آن است                |
 | hoverBorderWidth     | ضخامت مرز قطاع هنگامی که نشانگر بر روی آن است بر مبنای px. |
@@ -741,7 +742,7 @@ Chart.defaults.doughnut
 از موارد فوق میتوان به عنوان option استفاده کرد تا نمودار مطلوب را بدست آورد.
 
 | نام فیلد                | نوع     | مقدار پیشفرض            | توضیحات                                                      |
-|-------------------------|---------|-------------------------|--------------------------------------------------------------|
+| ----------------------- | ------- | ----------------------- | ------------------------------------------------------------ |
 | cutoutPercentage        | number  | دایره ای: 0، دوناتی: 50 | درصد مساحت خالی میانی                                        |
 | rotation                | number  | -0.5 * Math.PI          | زاویه شروع رسم اولین قطاع                                    |
 | circumference           | number  | 2 * Math.PI             | زاویه کل قطاع ها، 2Pi برابر دایره کامل است.                  |
@@ -821,7 +822,7 @@ Chart.defaults.polarArea.animation.animateScale = false;
 برای هر دیتاست، میتوانیم تنظیماتی را در نمودار های قطبی کنترل کنیم، تنظیماتی اعم از نحوه نمایش، الویت رسم و نحوه پاسخگویی به وقایع (event). در جداول زیر این موارد را نام میبریم. توجه کنید که این تنظیمات میتوانند به صورت جداگانه برای هر Dataset  انجام شود.
 
 | نام فیلد             | نوع      | اسکیریپ پذیر | ایندکس پذیر | مقدار پیشفرض       |
-|----------------------|----------|--------------|-------------|--------------------|
+| -------------------- | -------- | ------------ | ----------- | ------------------ |
 | backgroundColor      | Color    | بله          | بله         | rgba(0, 0, 0, 0.1) |
 | borderAlign          | string   | بله          | بله         | center             |
 | borderColor          | Color    | بله          | بله         | '#fff'             |
@@ -835,14 +836,14 @@ Chart.defaults.polarArea.animation.animateScale = false;
 
 #### ظاهری
 | نام فیلد        | توضیحات                     |
-|-----------------|-----------------------------|
+| --------------- | --------------------------- |
 | backgroundColor | رنگ زمینه قطاع.             |
 | borderColor     | رنگ مرز قطاع.               |
 | borderWidth     | ضخامت مرز قطاع بر مبنای px. |
 
 #### پاسخ به وقایع
 | نام فیلد             | توضیحات                                                    |
-|----------------------|------------------------------------------------------------|
+| -------------------- | ---------------------------------------------------------- |
 | hoverBackgroundColor | رنگ زمینه قطاع هنگامی که نشانگر بر روی آن است.             |
 | hoverBorderColor     | رنگ مرز قطاع هنگامی که نشانگر بر روی آن است                |
 | hoverBorderWidth     | ضخامت مرز قطاع هنگامی که نشانگر بر روی آن است بر مبنای px. |
@@ -850,7 +851,7 @@ Chart.defaults.polarArea.animation.animateScale = false;
 #### تنظیمات پیکربندی
 از موارد فوق میتوان به عنوان option استفاده کرد تا نمودار مطلوب را بدست آورد.
 | نام                     | نوع     | مقدار پیشفرض   | توضیحات                                                      |
-|-------------------------|---------|----------------|--------------------------------------------------------------|
+| ----------------------- | ------- | -------------- | ------------------------------------------------------------ |
 | startAngle              | number  | -0.5 * Math.PI | زاویه شروع رسم اولین قطاع                                    |
 | animation.animateRotate | boolean | TRUE           | در صورت درست بودن نمودار با انیمیشن دورانی نمایش داده میشود. |
 | animation.animateScale  | boolean | TRUE           | در صورت درست بودن، نمودار با انیمیشین از مرکز بزرگ میشود.    |
@@ -918,7 +919,7 @@ Chart.defaults.bubble
 برای هر دیتاست، میتوانیم تنظیماتی را در نمودار های حبابی کنترل کنیم، تنظیماتی اعم از نحوه نمایش، الویت رسم و نحوه پاسخگویی به وقایع (event). در جداول زیر این موارد را نام میبریم. توجه کنید که این تنظیمات میتوانند به صورت جداگانه برای هر Dataset  انجام شود.
 
 | نام فیلد             | نوع فیلد | اسکیریپ پذیر | ایندکس پذیر | مقدار پیشفرض       |
-|----------------------|----------|--------------|-------------|--------------------|
+| -------------------- | -------- | ------------ | ----------- | ------------------ |
 | backgroundColor      | Color    | بله          | بله         | rgba(0, 0, 0, 0.1) |
 | borderColor          | Color    | بله          | بله         | rgba(0, 0, 0, 0.1) |
 | borderWidth          | number   | بله          | بله         | 3                  |
@@ -938,13 +939,13 @@ Chart.defaults.bubble
 
 #### عمومی
 | نام فیلد | توضیحات                                                       |
-|----------|---------------------------------------------------------------|
+| -------- | ------------------------------------------------------------- |
 | label    | برچسب (label) دیتاست که در legend و tooltip نمایش داده میشود. |
 | order    | الویت رسم دیتاست.                                             |
 
 #### ظاهری
 | نام فیلد        | توضیحات                        |
-|-----------------|--------------------------------|
+| --------------- | ------------------------------ |
 | backgroundColor | رنگ زمینه حباب ها.             |
 | borderColor     | رنگ مرز حباب ها.               |
 | borderWidth     | ضخامت مرز حباب ها بر مبنای px. |
@@ -954,7 +955,7 @@ Chart.defaults.bubble
 
 #### پاسخ به وقایع
 | نام فیلد             | توضیحات                                                    |
-|----------------------|------------------------------------------------------------|
+| -------------------- | ---------------------------------------------------------- |
 | hoverBackgroundColor | رنگ زمینه حباب ها هنگامی که نشانگر بر روی آن است.          |
 | hoverBorderColor     | رنگ مرز حباب ها هنگامی که نشانگر بر روی آن است.            |
 | hoverBorderWidth     | ضخامت مرز حباب ها هنگامی که نشانگر بر روی آن است.          |
@@ -1083,18 +1084,18 @@ type: 'scatter'
 ## مثال دوم 
 جدول زیر تعداد فروش 10 خودروساز پرفروش سال 2019 در ایالات متحده است. نمودار های دایره ای، دوناتی و قطبی این داده ها را رسم کنید. (مثال خودرو)
 
-| نام شرکت          | میزان فروش        |
-| :---------------: | :---------------: |
-| فورد              | 2284425           |
-| تویوتا            | 2085206           |
-| شورولت            | 1942039           |
-| هوندا             | 1450985           |
-| نیسان             | 1227973           |
-| جیپ               | 923292            |
-| رم                | 703023            |
-| سوبارو            | 700117            |
-| هیوندای           | 688771            |
-| کیا               | 614613            |
+| نام شرکت | میزان فروش |
+| :------: | :--------: |
+|   فورد   |  2284425   |
+|  تویوتا  |  2085206   |
+|  شورولت  |  1942039   |
+|  هوندا   |  1450985   |
+|  نیسان   |  1227973   |
+|   جیپ    |   923292   |
+|    رم    |   703023   |
+|  سوبارو  |   700117   |
+| هیوندای  |   688771   |
+|   کیا    |   614613   |
 
 نمودار دایره ای
 <div dir="ltr">
