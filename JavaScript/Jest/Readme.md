@@ -1,7 +1,22 @@
 
 <div dir='rtl' align='justify'>
 
-# راه‌اندازی و شروع
+# عناوین
+
+- [راه‌اندازی و شروع](#راهاندازی-و-شروع)
+- [اجرا از طریق command line](#اجرا-از-طریق-command-line)
+- [تنظیمات اضافی](#تنظیمات-اضافی)
+  - [ایجاد فایل با تنظیمات اولیه](#ایجاد-یک-فایل-تنظیمات-اولیه)
+  - [اضافه‌کردن Babel](#اضافهکردن-babel)
+  - [Using Webpack](#using-webpack)
+  - [Using Parcel](#using-parcel)
+  - [Using Typescript](#using-typescript)
+- [Matchers](#matchers)
+  - [Matcher های رایج](#matcher-های-رایج)
+  - [truthiness](#truthiness)
+  - [Numbers](#numbers)
+
+## راه‌اندازی و شروع
 در ابتدا 
 Jest
 را با
@@ -203,7 +218,7 @@ module.exports = {
 ```
 </div>
 
-# Matchers
+## Matchers
 توابعی هستند که به ما اجازه می‌دهند مقادیر را در با روش های متفاوت تست کنیم.
 این‌قسمت به معرفی چند عدد از پرکاربردترین 
 Matcher
@@ -211,7 +226,7 @@ Matcher
 [`expect` API doc](ExpectAPI.md)
 مراجعه کنید.
 
-## Matcher های رایج
+### Matcher های رایج
 ساده‌ترین راه برای تست یک مقدار، استفاده از تساوی می‌باشد.
 <div dir='ltr' align='justify'>
 
@@ -292,7 +307,7 @@ test('adding positive numbers is not zero', () => {
 ```
 </div>
 
-## Truthiness
+### Truthiness
 بعضی‌مواقع نیاز داریم تا در تست ها بین
 `undefined`, `null` 
 و
@@ -338,7 +353,7 @@ test('zero', () => {
 Matcher
 ی استفاده کنید که دقیقاً با کاری که می خواهید کد شما انجام دهد تطابق داشته‌باشد.
 
-## Numbers
+### Numbers
 بیشتر روش‌های مقایسه‌ی اعداد
 </div>
 
