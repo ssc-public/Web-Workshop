@@ -1,6 +1,8 @@
 
 <div dir='rtl' align='justify'>
-
+<p align="center"><img src="https://github.com/facebook/jest/blob/master/website/static/img/jest-readme-headline.png" width="80%"/></p>
+<h2 align="center">Jest</h2>
+  
 # عناوین
 
 - [راه‌اندازی و شروع](#راهاندازی-و-شروع)
