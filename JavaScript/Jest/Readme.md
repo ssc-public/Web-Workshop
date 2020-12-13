@@ -1290,6 +1290,333 @@ matcher
 [داک اصلی](https://jestjs.io/docs/en/expect)
 را چک کنید
 
+# Setup and Teardown
+
+معمولا درهنگام نوشتن تست‌ها نیاز است که کارهایی قبل از انجام تست و هنچنین بعد از اجرای تست انجام شود.
+jest
+برای شما توابع کمکی‌ای را فراهم کرده است که این کار را انجام دهند.
+
+## Repeating Setup For Many Tests
+
+اگر شما نیاز دارید تا بعضی کارها به صورت تکراری برای بسیاری از تست ها انجام شود می‌توانید از
+`boforeEach`
+و
+`afterEach`
+استفاده کنید.
+
+
+به عنوان مثال شما می‌خواهید تعدادی تست را که با دیتابیسی از شهر‌ها در ارتباط است تست کنید.
+شما نیاز دارید که در ابتدا تابع
+`()initializeCityDatabase`
+را پیش از هر تست صدا کنید و همچنین متد
+`()clearCityDatabase`
+را بعد از پایان هر تست اجرا کنید.
+شما می‌توانید این کار را به صورت زیر انجام دهید.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+beforeEach(() => {
+  initializeCityDatabase();
+});
+
+afterEach(() => {
+  clearCityDatabase();
+});
+
+test('city database has Vienna', () => {
+  expect(isCity('Vienna')).toBeTruthy();
+});
+
+test('city database has San Juan', () => {
+  expect(isCity('San Juan')).toBeTruthy();
+});
+```
+
+</div>
+
+`beforeEach`
+و
+`afterEach`
+می‌توانند کد هارا به همان شیوه‌ی
+[test can handle asynchronous code TODO](a)
+و به صورت ناهمگام
+(asynchronous)
+مدیریت کنند.
+آن‌ها همچنین می‌توانند یک
+پارامتر
+`done`
+بگیرند و یا یک
+`promise`
+را به عنوان خروجی برگردانند.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+beforeEach(() => {
+  return initializeCityDatabase();
+});
+```
+
+</div>
+
+## one-Time Setup
+در بعضی موارد شما نیاز دارید که فقط یکبار و در ابتدای فایل، 
+setup
+را انجام دهید. یان کار می‌تواند اذاردهنده باشد اگر این
+setup
+به صورت ناهمگام
+(asynchronous)
+باشد، پس بنابر این شما نمی‌توانید به صورت 
+ inline
+ این کار را انجام دهید.
+ jest
+ برای انجام این کار
+ `beforeAll`
+ و
+ `afterAll`
+ را فراهم کرده است تا این شرایط را مدیریت کنید.
+ 
+ 
+ برای مثال، اگر دو متر
+ `initializeCityDatabase`
+ و
+ `clearCityDatabase`
+ به ما
+ `promise`
+ برگردانند، و 
+`city database`
+قابل استفاده مجدد در طول تست باشد، ما می‌توانیم تست‌هایمان را به صورت زیر تغییر دهیم:
+
+<div dir='ltr' align='justify'>
+ 
+```js
+beforeAll(() => {
+  return initializeCityDatabase();
+});
+
+afterAll(() => {
+  return clearCityDatabase();
+});
+
+test('city database has Vienna', () => {
+  expect(isCity('Vienna')).toBeTruthy();
+});
+
+test('city database has San Juan', () => {
+  expect(isCity('San Juan')).toBeTruthy();
+});
+```
+
+</div>
+
+## Scoping
+به صورت پیشفرض
+`before`
+و
+`after`
+برای همه‌ی تست‌ها به‌کار گرفته می‌شود. شما می‌توانید تست‌ها را با استفاده از 
+`describe`
+گروه‌بندی کنید.
+وقتی که آنها داخل یک بلاک از
+`describe`
+قرار می‌گیرند،
+`before`
+و
+`after`
+فقط برای تست‌های داخل آن بلاک
+`describe`
+به‌کار گرفته می‌شود.
+
+<div dir='ltr' align='justify'>
+ 
+```js
+// Applies to all tests in this file
+beforeEach(() => {
+  return initializeCityDatabase();
+});
+
+test('city database has Vienna', () => {
+  expect(isCity('Vienna')).toBeTruthy();
+});
+
+test('city database has San Juan', () => {
+  expect(isCity('San Juan')).toBeTruthy();
+});
+
+describe('matching cities to foods', () => {
+  // Applies only to tests in this describe block
+  beforeEach(() => {
+    return initializeFoodDatabase();
+  });
+
+  test('Vienna <3 sausage', () => {
+    expect(isValidCityFoodPair('Vienna', 'Wiener Schnitzel')).toBe(true);
+  });
+
+  test('San Juan <3 plantains', () => {
+    expect(isValidCityFoodPair('San Juan', 'Mofongo')).toBe(true);
+  });
+});
+
+```
+
+</div>
+
+توجه داشته‌باشید که 
+`beforeEach`
+ ای که در سطح بالا
+ (top-level)
+ قرار دارد قبل از
+ `beforeEach`
+ ای که داخل بلاک
+ `describe`
+ قرار دارد اجرا می‌شود.
+ کد زیر می‌تواند ترتیب اجرا را به شما نشان دهد.
+ 
+ <div dir='ltr' align='justify'>
+ 
+```js
+beforeAll(() => console.log('1 - beforeAll'));
+afterAll(() => console.log('1 - afterAll'));
+beforeEach(() => console.log('1 - beforeEach'));
+afterEach(() => console.log('1 - afterEach'));
+test('', () => console.log('1 - test'));
+describe('Scoped / Nested block', () => {
+  beforeAll(() => console.log('2 - beforeAll'));
+  afterAll(() => console.log('2 - afterAll'));
+  beforeEach(() => console.log('2 - beforeEach'));
+  afterEach(() => console.log('2 - afterEach'));
+  test('', () => console.log('2 - test'));
+});
+
+// 1 - beforeAll
+// 1 - beforeEach
+// 1 - test
+// 1 - afterEach
+// 2 - beforeAll
+// 1 - beforeEach
+// 2 - beforeEach
+// 2 - test
+// 2 - afterEach
+// 1 - afterEach
+// 2 - afterAll
+// 1 - afterAll
+```
+
+</div>
+
+## Order of execution of describe and test blocks
+jest
+در یک فایل تست، تمام
+describe handler
+ها را قبل از تست‌ها اجرا می‌کند.
+این دلیل دیگری است که 
+setup
+و
+teardown
+ها را به‌جای قرار دادن داخل بلاک
+describe
+در داخل
+`before*`
+و
+`after*`
+ها قرار دهید.
+به صورت پیشفرض در ابتدا بلاک‌های
+describe
+کامل می‌شوند و سپس 
+jest 
+تست‌ها را به صورت متوالی با توجه به ترتیبی که می‌بیند اجرا می‌کند و صبر می‌کند تا آن تست اجرا شود سپس سراغ تست بعدی می‌رود.
+
+
+برای فهم بهتر به فایل تست زیر و خروجی آن توجه کنید:
+
+ <div dir='ltr' align='justify'>
+ 
+```js
+describe('outer', () => {
+  console.log('describe outer-a');
+
+  describe('describe inner 1', () => {
+    console.log('describe inner 1');
+    test('test 1', () => {
+      console.log('test for describe inner 1');
+      expect(true).toEqual(true);
+    });
+  });
+
+  console.log('describe outer-b');
+
+  test('test 1', () => {
+    console.log('test for describe outer');
+    expect(true).toEqual(true);
+  });
+
+  describe('describe inner 2', () => {
+    console.log('describe inner 2');
+    test('test for describe inner 2', () => {
+      console.log('test for describe inner 2');
+      expect(false).toEqual(false);
+    });
+  });
+
+  console.log('describe outer-c');
+});
+
+// describe outer-a
+// describe inner 1
+// describe outer-b
+// describe inner 2
+// describe outer-c
+// test for describe inner 1
+// test for describe outer
+// test for describe inner 2
+```
+
+</div>
+
+
+## General Advice
+اگر یک تست 
+fail
+شد، یکی از مواردی که بهتر است در ابتدا چک شود این است که آیا اگر آن تست به تنهایی اجرا شود باز هم 
+fail
+می‌شود یا خیر. برای اینکه در
+jest
+فقط یک تست اجرا شود می‌توانید به صورت موقت
+`test`
+را به
+`test.only`
+تغییر دهید.
+
+ <div dir='ltr' align='justify'>
+ 
+```js
+test.only('this will be the only test that runs', () => {
+  expect(true).toBe(false);
+});
+
+test('this test will not run', () => {
+  expect('A').toBe('A');
+});
+```
+
+</div>
+
+اینکه یک تست وقتی که با بقیه‌ی تست‌ها اجرا می‌شود 
+fail
+می‌شود ولی وقتی که به تنهایی اجرا می‌شود مشکلی ندارد نشان می‌دهد که این تست با تست دیگری تداخل دارد که این مشکل ایجاد شده است.
+شما معمولی می‌توانید این مشکل را با جذف حالات اشتراکی
+(shared state)
+به وسیله‌ی 
+`beforeEach`
+رفع کنید.
+اگر شما شک دارید که بعضی از حالات اشتراکی
+(shared stae)
+در طول تست تغییر می‌کنند یا نه می‌توانید با
+`beforeEach`
+این حالات را لاگ کرده و بررسی‌ی لازم را انجام دهید.
+
 
 
 </div>
