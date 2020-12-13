@@ -16,7 +16,7 @@
   - [truthiness](#truthiness)
   - [Numbers](#numbers)
   - [Strings](#strings)
-  - [Arrays and Iterables](#arrays-and-itertables)
+  - [Arrays and Iterables](#arrays-and-iterables)
   - [Exceptions](#exceptions)
   - [And More](#and-more)
   
@@ -474,7 +474,6 @@ test('compiling android goes as expected', () => {
 > را ایجاد می‌کند نیاز دارد تا توسط یک تابع دیگر فراخوانی شود همانند مثال بالا که تابع موردنظرمان را با یک 
 > arrow function
 > فراخوانی کرده‌ایم 
-</div>
 
 ### And More
 توابع معرفی‌شده در بالا تنها بخشی از توابعی است که 
