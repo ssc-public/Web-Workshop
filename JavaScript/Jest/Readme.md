@@ -24,7 +24,14 @@
   - [Promises](#promises)
   - [resolves / rejects](#resolves--rejects)
   - [Async/Await](#asyncawait)
-  
+- [Setup and Teardown](#Setup-and-Teardown)
+  - [Repeating Setup For Many Tests](#Repeating-Setup-For-Many-Tests)
+  - [one-Time Setup](#one-Time-Setup)
+  - [Scoping](#Scoping)
+  - [Order of execution of describe and test blocks](#Order-of-execution-of-describe-and-test-blocks)
+  - [General Advice](#General-Advice)
+- [Mock Functions](#Mock-Functions)
+  - [استفاده از mock function](استفاده-از-mock-function)
 
 ## راه‌اندازی و شروع
 در ابتدا 
