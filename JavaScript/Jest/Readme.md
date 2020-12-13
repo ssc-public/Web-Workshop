@@ -19,8 +19,11 @@
   - [Arrays and Iterables](#arrays-and-iterables)
   - [Exceptions](#exceptions)
   - [And More](#and-more)
-  
-  
+- [Testing Asynchronous Code](#testing-asynchronous-code)
+  - [Callbacks](#callbacks)
+  - [Promises](#promises)
+  - [.resolves / .rejects](#resolves--rejects)
+  - [Async/Await](#asyncawait)
   
 
 ## راه‌اندازی و شروع
@@ -482,7 +485,335 @@ Jest
 [اینجا](https://jestjs.io/docs/en/expect)
 مراجعه کنید.
 
+## Testing Asynchronous Code
+با توجه به 
+single thread
+بودن 
+JavaScript
+و رایج بودن 
+asynchronous programming
+در این زبان، احتیاج به ابزاری داریم که بتوانیم کد های
+asynchronous
+ را تست کنیم.
+ Jest
+ این نیاز را برای ما برطرف می‌کند.
+ Jest
+ چند راه مختلف برای تست کردن این نوع توابع دارد.
 
+### Callbacks
+callback
+ ها رایج‌ترین شیوه‌‌ی نوشتن کد 
+asynchronous
+می‌باشند.
+برای مثال فرض کنیم تابع
+`fetchData(callback)`
+داریم که اطلاعاتی را دریافت کرده و زمانی که کامل می‌شود 
+`callback(data)`
+را فراخوانی می‌کند. می‌خواهیم تست کنیم که
+data
+‌ی خروجی داده‌شده رشته‌ی
+`'peanut butter'`
+می‌باشد.
+
+به‌طور پیشفرض تست‌های
+Jest
+وقتی به پایان اجرای خود می‌رسند، تمام می‌شوند.
+در نتیجه، این تست آن‌طور که انتظار داریم؛ انجام نمی‌شود.
+<div dir='ltr' align='justify'>
+
+```js
+// Don't do this!
+test('the data is peanut butter', () => {
+  function callback(data) {
+    expect(data).toBe('peanut butter');
+  }
+
+  fetchData(callback);
+});
+```
+</div>
+مشکل تست بالا این است که به محض‌اینکه 
+`fetchData`
+کامل می‌شود؛ قبل از اینکه 
+`callback`
+فراخوانی شود؛ تست تمام می‌شود.
+
+یک فرم جایگزین از
+`test`
+ وجود دارد که این مشکل را حل می‌کند. به‌جای قرار دادن 
+ `test`
+ در یک تابع با آرگومان خالی ، از یک آرگومان با نام 
+ `done`
+ استفاده کنید.
+ Jest
+ تا زمانی
+ `done`
+ اجرا نشود صبر خواهد کرد و پس از اجرای کامل
+ `done`
+ تست به‌پایان می‌رسد.
+ <div dir='ltr' align='justify'>
+
+```js
+test('the data is peanut butter', done => {
+  function callback(data) {
+    try {
+      expect(data).toBe('peanut butter');
+      done();
+    } catch (error) {
+      done(error);
+    }
+  }
+
+  fetchData(callback);
+});
+```
+</div>
+
+اگر
+`done()`
+فراخوانی نشود، تست
+fail
+می‌شود که همان رفتار موردانتظار ماست.
+
+اگر
+`expect`
+در تست بالا
+fail
+شود؛ یک 
+exception
+پرتاب خواهد‌کرد و 
+`done()`
+فراخوانی نخواهدشد.اگر می‌خواهیم در لاگ تست ببینیم که چرا تست 
+fail
+شده‌است؛َ باید عبارت
+`expect`
+را درون 
+`try`
+بگذاریم و 
+error
+در قسمت
+catch
+را به‌عنوان آرگومان به 
+`done`
+ بدهیم. درغیر اینصورت با یک 
+ timeout error
+  مبهم روبرو خواهیم شد که مشخص نمی‌کند 
+  `expect(data)`
+  چه مقداری را دریافت کرده‌است.
+### Promises
+اگر کدتان از
+promise
+ها استفاده می‌کند، یک راه ساده‌تر برای هندل کردن تست‌های 
+asynchronous
+وجود دارد. یک 
+promise
+را به‌عنوان خروجی تست
+return
+کنید، 
+Jest
+تا زمانی که 
+promise
+خروجی‌داده‌شده
+resolve
+نشود صبر می‌کند. اگر 
+promise
+خروجی‌دادشده
+reject
+شود تست به صورت خورکار 
+fail
+می‌شود.
+
+برای مثال فرض کینم
+`fetchData`
+به‌جای استفاده از
+callback
+یک 
+promise
+برمی‌گرداند که 
+resolve
+شده و رشته‌ی 
+`'peanut butter'`
+را به عنوان جواب دارد:
+<div dir='ltr' align='justify'>
+
+```js
+test('the data is peanut butter', () => {
+  return fetchData().then(data => {
+    expect(data).toBe('peanut butter');
+  });
+});
+```
+</div>
+
+اطمینان حاصل کنید که حتما یک
+promise
+را برگردانید. اگر عبارت
+`return`
+را از قلم بیندازید، تست‌تان قبل از اینکه
+promise
+خروجی‌داده‌شده از
+`fetchData`
+نتیجه بدهد و توسط
+`then()`
+استفاده شود، به‌اتمام می‌رسد.
+
+اگر انتظار دارید یک
+promise
+بدون موفقیت انجام شود و
+reject
+شود، از تابع
+`.catch`
+استفاده کنید.
+مطمئن شوید که 
+`expect.assertions`
+را برای اینکه بررسی کنید تعداد مشخصی از 
+assertion
+ها فراخوانی شده‌اند، به کدتان اضافه کنید. درغیراینصورت یک
+promise
+با نتیجه‌ی 
+fulfilled
+تست زیر را 
+fail
+نخواهد کرد.
+<div dir='ltr' align='justify'>
+
+```js
+test('the fetch fails with an error', () => {
+  expect.assertions(1);
+  return fetchData().catch(e => expect(e).toMatch('error'));
+});
+```
+</div>
+
+### `.resolves` / `.rejects`
+شما همچنین می‌توانید از تابع
+`.resolves`
+در عبارت
+`expect`
+استفاده کنید و 
+Jest
+تا زمانی که 
+promise
+موردنظر ما
+resolve 
+نشود، صبر خواهد کرد. اگر 
+promise
+موردنظر ما
+reject
+شود؛ تست به صورت خودکار
+fail
+می‌شود:
+<div dir='ltr' align='justify'>
+
+```js
+test('the data is peanut butter', () => {
+  return expect(fetchData()).resolves.toBe('peanut butter');
+});
+```
+</div>
+
+اطمینان حاصل کنید که حتما عبارت
+assertion
+را برگردانید. اگر عبارت
+`return`
+را از قلم بیندازید، تست‌تان قبل از اینکه
+promise
+خروجی‌داده‌شده از
+`fetchData`
+نتیجه بدهد و توسط
+`then()`
+استفاده شود، به‌اتمام می‌رسد.
+
+اگر انتظار دارید که 
+promise
+موردنظر ما 
+reject 
+شود؛ از تابع
+`.rejects`
+استفاده کنید. این تابع از نظر منطقی مانند
+`.resolves`
+رفتار می‌کند. اگر 
+promise
+موردنظر ما 
+fulfilled
+شود؛ تست به‌صورت خودکار 
+fail
+می‌شود.
+<div dir='ltr' align='justify'>
+
+```js
+test('the fetch fails with an error', () => {
+  return expect(fetchData()).rejects.toMatch('error');
+});
+```
+</div>
+
+### Async/Await
+همچنین می‌توانید از
+`async`
+و
+`await`
+در تست‌هایتان استفاده کنید. برای نوشتن یک تست
+async
+از کلیدواژه‌ی 
+`async`
+قبل از تابعی که به
+`test`
+پاس می‌دهید استفاده کنید. برای مثال همان تابع
+`fetchData`
+را این‌بار به این‌روش تست می‌کنیم:
+<div dir='ltr' align='justify'>
+
+```js
+test('the data is peanut butter', async () => {
+  const data = await fetchData();
+  expect(data).toBe('peanut butter');
+});
+
+test('the fetch fails with an error', async () => {
+  expect.assertions(1);
+  try {
+    await fetchData();
+  } catch (e) {
+    expect(e).toMatch('error');
+  }
+});
+```
+</div>
+
+همچنین می‌توان
+`async`
+و
+`await`
+را به‌صورت ترکیبی با
+`.resolves`
+و
+`.rejects`
+استفاده کرد.
+<div dir='ltr' align='justify'>
+
+```js
+test('the data is peanut butter', async () => {
+  await expect(fetchData()).resolves.toBe('peanut butter');
+});
+
+test('the fetch fails with an error', async () => {
+  await expect(fetchData()).rejects.toThrow('error');
+});
+```
+</div>
+
+در این موارد
+`async`
+و
+`await`
+فقط
+syntactic sugar
+برای همان منطقی هستند که درمثال های 
+promise
+دیدم.
+
+هیچ‌کدام از روش‌های بالا مزیتی نسبت به دیگری ندارند و فقط بستگی به این دارد که به نظر شما کدام یک از روش های بالا	تست های‌تان را ساده‌تر می‌کند. 
 
 
 
