@@ -489,6 +489,18 @@ data: [[0, 2], [1, 3], [2, 4], [1, 3]]
 
 </div>
 
+#### نمودار افقی
+
+نمودار افقی کاملا مشابه نمودار عمودی عمل می کند. برای افقی کردن نمودار کافی است که type نمودار را عوض کنیم.
+
+<div dir="ltr">
+
+```
+Chart.defaults.horizontalBar
+```
+
+</div>
+
 #### مقادیر پیشفرض
 میتوانیم مقادیر پیشفرض رسم این نوع نمودار را از آدرس
 
@@ -501,6 +513,16 @@ Chart.defaults.bar
 </div>
 
 تغییر دهیم. 
+
+همچنین توجه کنید که تنظیمات مربوط به نمودار های افقی را می توانیم از آدرس زیر تغییر دهیم. توجه کنید که محور عمودی و افقی در این دو نمودار جایجا هستند.
+
+<div dir="ltr">
+
+```
+Chart.defaults.horizontalBar
+```
+
+</div>
 
 بعد از تغییر، نمودار های جدید با مقادیر پیشفرض جدید رسم میشوند، اما نمودار هایی که پیشتر تولید شده اند، بدون تغییر میمانند.
 
@@ -519,7 +541,20 @@ type: 'radar'
 نمودار های راداری اغلب برای مقایسه چند مجموعه داده مرتبط به هم به کار میروند.
 
 #### داده ها
-داده های هر Dataset در نمودار های راداری، آرایه ای از اعداد است.
+داده های هر Dataset در نمودار های راداری، آرایه ای از اعداد است. که به label هم index مربوط میشود. مثال:
+
+<div dir="ltr">
+
+```
+data: {
+    labels: [A, B, C]
+    datasets: [{
+        data: [1, 2, 3]
+    }]
+}
+```
+
+</div>
 
 #### مقادیر پیشفرض
 میتوانیم مقادیر پیشفرض رسم این نوع نمودار را از آدرس
@@ -535,6 +570,86 @@ Chart.defaults.radar
 تغییر دهیم. 
 
 بعد از تغییر، نمودار های جدید با مقادیر پیشفرض جدید رسم میشوند، اما نمودار هایی که پیشتر تولید شده اند، بدون تغییر میمانند.
+
+#### تنظیمات مربوط به Dataset ها
+برای هر دیتاست، میتوانیم تنظیماتی را در نمودار های راداری کنترل کنیم، تنظیماتی اعم از نحوه نمایش، الویت رسم و نحوه پاسخگویی به وقایع (event). در جداول زیر این موارد را نام میبریم. توجه کنید که این تنظیمات میتوانند به صورت جداگانه برای هر Dataset  انجام شود.
+
+| نام فیلد                  | نوع            | اسکیریپ پذیر | ایندکس پذیر | مقدار پیشفرض       |
+|---------------------------|----------------|--------------|-------------|--------------------|
+| backgroundColor           | Color          | بله          | خیر         | rgba(0, 0, 0, 0.1) |
+| borderCapStyle            | string         | بله          | خیر         | butt               |
+| borderColor               | Color          | بله          | خیر         | rgba(0, 0, 0, 0.1) |
+| borderDash                | number[]       | بله          | خیر         | []                 |
+| borderDashOffset          | number         | بله          | خیر         | 0                  |
+| borderJoinStyle           | string         | بله          | خیر         | miter              |
+| borderWidth               | number         | بله          | خیر         | 3                  |
+| hoverBackgroundColor      | Color          | بله          | خیر         | undefined          |
+| hoverBorderCapStyle       | string         | بله          | خیر         | undefined          |
+| hoverBorderColor          | Color          | بله          | خیر         | undefined          |
+| hoverBorderDash           | number[]       | بله          | خیر         | undefined          |
+| hoverBorderDashOffset     | number         | بله          | خیر         | undefined          |
+| hoverBorderJoinStyle      | string         | بله          | خیر         | undefined          |
+| hoverBorderWidth          | number         | بله          | خیر         | undefined          |
+| fill                      | boolean|string | بله          | خیر         | TRUE               |
+| label                     | string         | خیر          | خیر         | empty string       |
+| order                     | number         | خیر          | خیر         | 0                  |
+| lineTension               | number         | خیر          | خیر         | 0                  |
+| pointBackgroundColor      | Color          | بله          | بله         | rgba(0, 0, 0, 0.1) |
+| pointBorderColor          | Color          | بله          | بله         | rgba(0, 0, 0, 0.1) |
+| pointBorderWidth          | number         | بله          | بله         | 1                  |
+| pointHitRadius            | number         | بله          | بله         | 1                  |
+| pointHoverBackgroundColor | Color          | بله          | بله         | undefined          |
+| pointHoverBorderColor     | Color          | بله          | بله         | undefined          |
+| pointHoverBorderWidth     | number         | بله          | بله         | 1                  |
+| pointHoverRadius          | number         | بله          | بله         | 4                  |
+| pointRadius               | number         | بله          | بله         | 3                  |
+| pointRotation             | number         | بله          | بله         | 0                  |
+| pointStyle                | string|Image   | بله          | بله         | circle             |
+| spanGaps                  | boolean        | خیر          | خیر         | undefined          |
+
+توضیحات بیشتر درباره موارد فوق را میتوانید در جداول زیر مشاهده کنید.
+
+#### عمومی
+
+| نام فیلد | توضیحات                                       |
+|----------|-----------------------------------------------|
+| label    | نام دیتاست که در legend و tooltip ظاهر میشود. |
+| order    | الویت رسم.                                    |
+
+#### ظاهر نقاط
+
+| نام فیلد             | توضیحات                                               |
+|----------------------|-------------------------------------------------------|
+| pointBackgroundColor | رنگ پرکننده نقاط                                      |
+| pointBorderColor     | رنگ مرزی نقاط                                         |
+| pointBorderWidth     | ضخامت مرز نقاط                                        |
+| pointHitRadius       | اندازه پیکسلی نقاط نمایش داده نشده برای واکنش به ماوس |
+| pointRadius          | شعاع نقاط، اگر صفر باشد نقطه نمایش داده نمیشود      |
+| pointRotation        | دوران نقاط                                            |
+| pointStyle           | شکل نقاط                                              |
+
+#### ظاهر خطوط
+
+| Name            | Description                                                                                              |
+|-----------------|----------------------------------------------------------------------------------------------------------|
+| backgroundColor | رنگ پرکننده خطوط                                                                                         |
+| borderCapStyle  | شکل انتهایی خطوط                                                                                         |
+| borderColor     | رنگ خطوط                                                                                                 |
+| borderDash      | طول و فاصله خط تیره ها (در صورت نیاز)                                                                    |
+| borderWidth     | ضخامت خطوط بر مبنای پیکسل                                                                                |
+| fill            | پر کردن زیر خط                                                                                           |
+| spanGaps        | اگر false باشد، دیتای NaN یا Null موجب شکستگی در خط میشود، در غیر این صورت، خط پیوستگی خود را حفظ میکند. |
+
+توجه کنید که spanGaps را options نیز میتوانیم تعریف کنیم.
+
+#### پاسخ به وقایع
+
+| نام فیلد                  | توضیحات                                   |
+|---------------------------|-------------------------------------------|
+| pointHoverBackgroundColor | رنگ زمینه نقاط وقتی نشانگر بر روی آن است. |
+| pointHoverBorderColor     | رنگ مرز نقاط وقتی نشانگر بر روی آن است.   |
+| pointHoverBorderWidth     | ضخامت مرز نقاط وقتی نشانگر بر روی آن است. |
+| pointHoverRadius          | شعاع نقاط وقتی نشانگر بر روی آن است.      |
 
 ### دوناتی (doughnut) و دایره ای (pie) 
 
