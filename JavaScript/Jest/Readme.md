@@ -31,7 +31,7 @@
   - [Order of execution of describe and test blocks](#Order-of-execution-of-describe-and-test-blocks)
   - [General Advice](#General-Advice)
 - [Mock Functions](#Mock-Functions)
-  - [استفاده از mock function](استفاده-از-mock-function)
+  - [استفاده از mock function](#استفاده-از-mock-function)
 
 ## راه‌اندازی و شروع
 در ابتدا 
