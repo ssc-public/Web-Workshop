@@ -22,7 +22,7 @@
 - [Testing Asynchronous Code](#testing-asynchronous-code)
   - [Callbacks](#callbacks)
   - [Promises](#promises)
-  - [.resolves / .rejects](#resolves--rejects)
+  - [resolves / rejects](#resolves--rejects)
   - [Async/Await](#asyncawait)
   
 
@@ -687,7 +687,7 @@ test('the fetch fails with an error', () => {
 ```
 </div>
 
-### `.resolves` / `.rejects`
+### `resolves` / `rejects`
 شما همچنین می‌توانید از تابع
 `resolves.`
 در عبارت
