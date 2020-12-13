@@ -8,9 +8,6 @@
 - [تنظیمات اضافی](#تنظیمات-اضافی)
   - [ایجاد فایل با تنظیمات اولیه](#ایجاد-یک-فایل-تنظیمات-اولیه)
   - [اضافه‌کردن Babel](#اضافهکردن-babel)
-  - [Using Webpack](#using-webpack)
-  - [Using Parcel](#using-parcel)
-  - [Using Typescript](#using-typescript)
 - [Matchers](#matchers)
   - [Matcher های رایج](#matcher-های-رایج)
   - [truthiness](#truthiness)
@@ -39,7 +36,7 @@
   - [Mock Names](#Mock-Names)
   - [Custom Matchers](#Custom-Matchers)
   
-## راه‌اندازی و شروع
+# راه‌اندازی و شروع
 در ابتدا 
 Jest
 را با
@@ -145,7 +142,7 @@ Jest
 [Matchers](#Matchers)
 مراجعه کنید.
 
-## اجرا از طریق command line
+# اجرا از طریق command line
 
 شما می‌توانید
 Jest
@@ -189,9 +186,9 @@ jest my-test --notify --config=config.json
 `notify--`
 موجب می‌شود تا پس از اجرای کامند، یک پیغام اطلاع‌رسانی نشان‌داده شود.
 
-## تنظیمات اضافی
+# تنظیمات اضافی
 
-### ایجاد یک فایل تنظیمات اولیه
+## ایجاد یک فایل تنظیمات اولیه
 
 با اجرای دستور زیر،
 Jest
@@ -203,7 +200,7 @@ jest --init
 ```
 </div>
 
-### اضافه‌کردن Babel
+## اضافه‌کردن Babel
 
 برای استفاده از 
 [Babel](https://babeljs.io/)
@@ -241,7 +238,7 @@ module.exports = {
 ```
 </div>
 
-## Matchers
+# Matchers
 توابعی هستند که به ما اجازه می‌دهند مقادیر را در با روش های متفاوت تست کنیم.
 این‌قسمت به معرفی چند عدد از پرکاربردترین 
 Matcher
@@ -249,7 +246,7 @@ Matcher
 [`expect` API doc](ExpectAPI.md)
 مراجعه کنید.
 
-### Matcher های رایج
+## Matcher های رایج
 ساده‌ترین راه برای تست یک مقدار، استفاده از تساوی می‌باشد.
 <div dir='ltr' align='justify'>
 
@@ -330,7 +327,7 @@ test('adding positive numbers is not zero', () => {
 ```
 </div>
 
-### Truthiness
+## Truthiness
 بعضی‌مواقع نیاز داریم تا در تست ها بین
 `undefined`, `null` 
 و
@@ -376,7 +373,7 @@ test('zero', () => {
 Matcher
 ی استفاده کنید که دقیقاً با کاری که می خواهید کد شما انجام دهد تطابق داشته‌باشد.
 
-### Numbers
+## Numbers
 برای اکثر روش‌های مقایسه‌ی اعداد، تابع
 Matcher
 مناسب وجود دارد که می‌توان برای تست کردن از آن ها استفاده کرد.
@@ -413,7 +410,7 @@ test('adding floating point numbers', () => {
 ```
 </div>
 
-### Strings
+## Strings
 برای چک کردن تطابق
 string
 با یک 
@@ -434,7 +431,7 @@ test('but there is a "stop" in Christoph', () => {
 ```
 </div>
 
-### Arrays and Iterables
+## Arrays and Iterables
 برای چک کردن اینکه یک
 item
 خاص در یک
@@ -462,7 +459,7 @@ test('the shopping list has milk on it', () => {
 ```
 </div>
 
-### Exceptions
+## Exceptions
 برای چک کردن اینکه یک تابع خاص هنگام فراخوانی
 exception
 پرتاب می‌کند یا نه، می‌توانیم از
@@ -492,14 +489,14 @@ exception
 arrow function
 فراخوانی کرده‌ایم. 
 
-### And More
+## And More
 توابع معرفی‌شده در بالا تنها بخشی از توابعی است که 
 Jest
 برای تست کردن در اختیار ما قرار می‌دهد.برای مطالعه‌ی بیشتر می‌توانید به 
 [اینجا](https://jestjs.io/docs/en/expect)
 مراجعه کنید.
 
-## Testing Asynchronous Code
+# Testing Asynchronous Code
 با توجه به 
 single thread
 بودن 
@@ -514,7 +511,7 @@ asynchronous
  Jest
  چند راه مختلف برای تست کردن این نوع توابع دارد.
 
-### Callbacks
+## Callbacks
 callback
  ها رایج‌ترین شیوه‌‌ی نوشتن کد 
 asynchronous
@@ -615,7 +612,7 @@ catch
   مبهم روبرو خواهیم شد که مشخص نمی‌کند 
   `expect(data)`
   چه مقداری را دریافت کرده‌است.
-### Promises
+## Promises
 اگر کدتان از
 promise
 ها استفاده می‌کند، یک راه ساده‌تر برای هندل کردن تست‌های 
@@ -700,7 +697,7 @@ test('the fetch fails with an error', () => {
 ```
 </div>
 
-### `resolves` / `rejects`
+## `resolves` / `rejects`
 شما همچنین می‌توانید از تابع
 `resolves.`
 در عبارت
@@ -763,7 +760,7 @@ test('the fetch fails with an error', () => {
 ```
 </div>
 
-### Async/Await
+## Async/Await
 همچنین می‌توانید از
 `async`
 و
@@ -1231,11 +1228,11 @@ mock function
 ها
 property
 ی
-`.mock`
+`mock.`
 را دارند که تمام اطلاعات مربوط به اینکه تابع چگونه صدا زده شده است و مقادیر خروجی چه بوده است را نگه می‌دارد.
 property
 ی
-`.mock`
+`mock.`
 همچنین مقدار
 `this`
 را برای هر بار فراخوانی تابع نگه می‌دارد، که این کار باعث می‌شود این بررسی بهتر انجام شود.
@@ -1392,7 +1389,7 @@ mock
 در ابتدا با استفاده از 
 `mockResolvedValue`
 می‌گوییم که خروجی 
-`.get`
+`get.`
 را دیتایی قرار دهد که ما به آن می‌دهیم. در واقع ما می‌خواهیم که خروجی
 `axios.get('/uses.json')`
 داده‌ی
@@ -1545,7 +1542,7 @@ const otherObj = {
 شما می‌توانی به صورت اختیاری یک نام به تابع
 mock
 شده‌ی تان اختصاص دهید، که در هنگام مشکل در خروجی‌ی تست به‌جای
-"jest.jn()"
+`jest.jn()`
 نمایش داده شود.با این کار شما سریع‌تر می‌توانید 
 mock function
 ای را که سبب خطا شده است را پیدا کنید.
