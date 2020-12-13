@@ -32,7 +32,13 @@
   - [General Advice](#General-Advice)
 - [Mock Functions](#Mock-Functions)
   - [استفاده از mock function](#استفاده-از-mock-function)
-
+  - [mock property](#mock-property)
+  - [Mock Return Values](#Mock-Return-Values)
+  - [Mocking Modules](#Mocking-Modules)
+  - [Mock Implementations](#Mock-Implementations)
+  - [Mock Names](#Mock-Names)
+  - [Custom Matchers](#Custom-Matchers)
+  
 ## راه‌اندازی و شروع
 در ابتدا 
 Jest
