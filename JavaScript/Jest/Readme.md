@@ -867,7 +867,7 @@ test('city database has San Juan', () => {
 و
 `afterEach`
 می‌توانند کد هارا به همان شیوه‌ی
-[test can handle asynchronous code TODO](a)
+[test can handle asynchronous code TODO](#testing-asynchronous-code)
 و به صورت ناهمگام
 (asynchronous)
 مدیریت کنند.
