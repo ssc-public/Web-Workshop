@@ -15,6 +15,13 @@
   - [Matcher های رایج](#matcher-های-رایج)
   - [truthiness](#truthiness)
   - [Numbers](#numbers)
+  - [Strings](#strings)
+  - [Arrays and Iterables](#arrays-and-itertables)
+  - [Exceptions](#exceptions)
+  - [And More](#and-more)
+  
+  
+  
 
 ## راه‌اندازی و شروع
 در ابتدا 
@@ -354,8 +361,127 @@ Matcher
 ی استفاده کنید که دقیقاً با کاری که می خواهید کد شما انجام دهد تطابق داشته‌باشد.
 
 ### Numbers
-بیشتر روش‌های مقایسه‌ی اعداد
+برای اکثر روش‌های مقایسه‌ی اعداد، تابع
+Matcher
+مناسب وجود دارد که می‌توان برای تست کردن از آن ها استفاده کرد.
+<div dir='ltr' align='justify'>
+
+```js
+test('two plus two', () => {
+  const value = 2 + 2;
+  expect(value).toBeGreaterThan(3);
+  expect(value).toBeGreaterThanOrEqual(3.5);
+  expect(value).toBeLessThan(5);
+  expect(value).toBeLessThanOrEqual(4.5);
+
+  // toBe and toEqual are equivalent for numbers
+  expect(value).toBe(4);
+  expect(value).toEqual(4);
+});
+```
 </div>
+برای تست برابری در مقادیر اعشاری به‌جای
+`toEqual`
+از
+`toBeCloseTo`
+استفاده کنید زیرا نمی‌خواهیم که تست به خطای کوچک مقادیر اعشاری وابسته باشد.
+<div dir='ltr' align='justify'>
+
+```js
+test('adding floating point numbers', () => {
+  const value = 0.1 + 0.2;
+  //expect(value).toBe(0.3);           This won't work because of rounding error
+  expect(value).toBeCloseTo(0.3); // This works.
+});
+```
+</div>
+
+### Strings
+برای چک کردن تطابق
+string
+با یک 
+regular expression
+می‌توانیم از 
+`toMatch`
+استفاده کنیم:
+<div dir='ltr' align='justify'>
+
+```js
+test('there is no I in team', () => {
+  expect('team').not.toMatch(/I/);
+});
+
+test('but there is a "stop" in Christoph', () => {
+  expect('Christoph').toMatch(/stop/);
+});
+```
+</div>
+
+### Arrays and Iterables
+برای چک کردن اینکه یک
+item
+خاص در یک
+array
+یا یک
+iterable
+قرار دارد می‌توانیم از
+`toContain`
+استفاده کنیم:
+<div dir='ltr' align='justify'>
+
+```js
+const shoppingList = [
+  'diapers',
+  'kleenex',
+  'trash bags',
+  'paper towels',
+  'milk',
+];
+
+test('the shopping list has milk on it', () => {
+  expect(shoppingList).toContain('milk');
+  expect(new Set(shoppingList)).toContain('milk');
+});
+```
+</div>
+
+### Exceptions
+برای چک کردن اینکه یک تابع خاص هنگام فراخوانی
+exception
+پرتاب می‌کند یا نه، می‌توانیم از
+`toThrow`
+استفاده کنیم:
+<div dir='ltr' align='justify'>
+
+```js
+function compileAndroidCode() {
+  throw new Error('you are using the wrong JDK');
+}
+
+test('compiling android goes as expected', () => {
+  expect(() => compileAndroidCode()).toThrow();
+  expect(() => compileAndroidCode()).toThrow(Error);
+
+  // You can also use the exact error message or a regexp
+  expect(() => compileAndroidCode()).toThrow('you are using the wrong JDK');
+  expect(() => compileAndroidCode()).toThrow(/JDK/);
+});
+```
+</div>
+
+> تابعی که 
+> exception
+> را ایجاد می‌کند نیاز دارد تا توسط یک تابع دیگر فراخوانی شود همانند مثال بالا که تابع موردنظرمان را با یک 
+> arrow function
+> فراخوانی کرده‌ایم 
+</div>
+
+### And More
+توابع معرفی‌شده در بالا تنها بخشی از توابعی است که 
+Jest
+برای تست کردن در اختیار ما قرار می‌دهد.برای مطالعه‌ی بیشتر می‌توانید به 
+[اینجا](https://jestjs.io/docs/en/expect)
+مراجعه کنید.
 
 
 
