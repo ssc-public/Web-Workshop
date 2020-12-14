@@ -1,6 +1,7 @@
-<div dir = 'rtl'>
+<div dir = 'rtl' style='text-align:justify'>
 
 # داکر ( Docker )
+## (بخش اول)
 
 داکر یک پلتفرم متن باز برای توسعه، جابجا کردن و اجرای اپلیکیشن هاست. داکر به شما اجازه میدهد تا اپلیکیشن خود را از زیرساخت (infrastructure) جدا کنید تا بتوانید سریع تر  نرم افزار خود را توسعه دهید. با داکر میتوانید زیرساخت خود را همانند اپلیکیشن خود مدیریت کنید.
 
@@ -246,133 +247,5 @@ Container یک Instance قابل اجرای  یک Image است. میتوان ی�
 دستور FROM باید به یک OS و یا یک IMAGE دیگر اشاره کند. تمامی داکرفایل‌ها باید با دستور FROM شروع شوند.
 دستور RUN دستوری که به عنوان ARGUMENT به آن داده می‌شود را اجرا می‌کند.
 دستور COPY فایل‌ها را لوکال‌سیستم به IMAGE کپی می‌کند.
-
-
-
-## مثال دیگر (آشنایی با docker-compose)
-
-
-برای آشنایی بیشتر یک image برای راه اندازی یک پروژه جنگو میسازیم:
-برای ساخت یک image ابتدا لازم است تا یک Dockerfile بسازیم و درون آن با نوشتن دستوراتی چگونگی ساختن image را به docker نشان دهیم. در واقع image دلخواه خود را برای docker توصیف میکنیم.
-
-<div dir="ltr">
-
-    FROM python:3.6
-    ENV PYTHONUNBUFFERED 1
-    RUN mkdir /my_app_dir
-    WORKDIR /my_app_dir
-    ADD requirements.txt /my_app_dir/
-    RUN pip install — upgrade pip && pip install -r requirements.txt
-    ADD . /my_app_dir/
-    
-</div>
-
-در خط دوم با کلید واژه ENV میتوایم Environment Variable ها را برای app جنگو خود set کنیم. در واقع با این دستور درون کانتینر خود مقدار Environment Variable ای با نام PYTHONUNBUFFERED را برابر ۱ قرار میدهیم.
-
-از آنجایی که به یک دیتابیس هم نیاز داریم میتونیم از یک image آماده mysql استفاده کنیم.
-وقتی تعداد کانتینر ها زیاد میشود باید از ابزاری به اسم docker-compose استفاده کنیم.
-
-این ابزار به راحتی قابل نصب است:
-<div dir="ltr">
-
-```$bash
-    sudo apt install docker-compose
-```
-</div>
-حال یک فایل به نام docker-compose.yml میسازیم با محتوای زیر:
-
-<div dir="ltr">
-
-```docker-compose
-version: '3'
-
-services:
-  db:
-     # Use the official mysql version 5.7 as a base image
-    image: mysql:5.7
-
-    # Mapping port 3306 inside container to port 3306 in our os network
-    ports:
-      - '3306:3306'
-
-    # Setting environment variables
-    environment:
-       MYSQL_DATABASE: 'my-app-db'
-       MYSQL_USER: 'root'
-       MYSQL_PASSWORD: 'password'
-       MYSQL_ROOT_PASSWORD: 'password'
-
-  web:
-    # Choosing the directory containing our Dockerfile
-    build: .
-
-    # Running this command every time we run our container
-    command: python manage.py runserver 0.0.0.0:8000
-
-    # Mounting current directory into container's /my_app_dir directory
-    volumes:
-      - .:/my_app_dir
-    ports:
-      - "8000:8000"
-
-    # web Container will run after db
-    depends_on:
-      - db
-```
-</div>
-
-درواقع هر کدام از سرویس هایی که درون docker-compose.yml تعریف میکنیم نشان دهنده یک کانتینر است که به وسیله این فایل میتوانیم آنها را به یکدیگر متصل کرده و فایل ها و شبکه های آن ها را با هم به اشتراک بگذاریم.
-
-حال کافیست بقیه تنظیمات پروژه را انجام دهیم.
- فایل requirements.txt در دایرکتوری root پروژه جنگو :
- <div dir="ltr">
-
- ```
-Django==1.11.5
-mysqlclient==1.3.12
-django-mysql==2.2.0
-... (whatever else your app requires) ...
-```
-</div>
-
-فایل my_app_dir/settings.py :
-<div dir="ltr">
-
-```
-...
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'my-app-db',
-        'USER': 'root',
-        'PASSWORD': 'password',
-        'HOST': 'db',
-        'PORT': 3306,
-    }
-}
-...
-```
-</div>
-
-و در آخر:
-
-<div dir="ltr">
-
-```
-    # building images from Dockerfiles
-    docker-compose build
-
-    # running your containers
-    docker-compose up -d
-```
-</div>
-
-و برای migrate کردن دیتابیس درحالی که کانتینر ها در حال کار کردن هستند به صورت زیر میتونید دستور migrate را درون کانتینر در حال اجرا، اجرا کنید.
-<div dir="ltr">
-
-```dockerfile
-    docker-compose run web python manage.py migrate
-```
-</div>
 
 </div>
