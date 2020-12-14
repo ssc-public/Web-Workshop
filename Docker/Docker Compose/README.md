@@ -129,5 +129,5 @@ volumes:
 
 ## منبع
 <div dir='rtl'>
-<strong> این پروژه و اکثر توضیحاتِ داده‌شده از<a href="https://medium.com/@cakmak.ok/how-to-deploy-django-rest-framework-and-react-redux-application-with-docker-fa902a611abf"> این مقاله </a> گرفته شده است. </strong> <br/>
+<strong> کد این پروژه و اکثر توضیحاتِ داده‌شده از<a href="https://medium.com/@cakmak.ok/how-to-deploy-django-rest-framework-and-react-redux-application-with-docker-fa902a611abf"> این مقاله </a> گرفته شده است. </strong> <br/>
 </div>
