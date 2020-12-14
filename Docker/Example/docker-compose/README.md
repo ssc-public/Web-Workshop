@@ -124,3 +124,10 @@ volumes:
 و در مرحله‌ی بعد، با اجرای دستور `docker-compose up`، همه‌ی containerها با هم اجرا می‌شوند.
 
 در این مثال وبلاگ، پس از اجرای دستور `docker-compose up`، سرویس فرانت بر روی `localhost` قرار می‌گیرد و برای دسترسی به apiهای ارائه‌شده توسط سرویس بک نیز می‌توانیم به آدرس `localhost/api/posts` درخواست بزنیم.
+
+<br/>
+
+## منبع
+<div dir='rtl'>
+<strong> این پروژه و توضیحات مربوط به آن از<a href="https://medium.com/@cakmak.ok/how-to-deploy-django-rest-framework-and-react-redux-application-with-docker-fa902a611abf"> این مقاله </a> گرفته شده است. </strong> <br/>
+</div>
