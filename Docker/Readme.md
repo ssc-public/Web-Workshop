@@ -1,4 +1,4 @@
-<div dir = 'rtl' style='text-align:justify'>
+<div dir = 'rtl' style='text-align:justify !important'>
 
 # داکر ( Docker )
 ## (بخش اول)
