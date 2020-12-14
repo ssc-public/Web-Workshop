@@ -1,6 +1,6 @@
 <div dir = 'rtl' style='text-align:justify'>
     
-# docker-compose (بخش دوم)
+# Docker Compose (بخش دوم)
 
 در این نوشته قرار است تا **وبلاگ ساده‌ای** را که بکِ آن با جنگو رست و فرانتش با ری‌اکت زده‌شده، به وسیله‌ی docker-compose اجرا کنیم.
 
