@@ -1,6 +1,5 @@
 <div dir = 'rtl' style='text-align:justify'>
-https://medium.com/swlh/how-to-deploy-django-rest-framework-and-react-redux-application-with-docker-fa902a611abf
-# docker-compose
+# docker-compose (بخش دوم)
 
 در این نوشته قرار است تا **وبلاگ ساده‌ای** را که بکِ آن با جنگو رست و فرانتش با ری‌اکت زده‌شده، به وسیله‌ی docker-compose اجرا کنیم.
 
