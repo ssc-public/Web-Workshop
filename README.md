@@ -109,6 +109,7 @@
 
 لیست نام‌های توسعه‌دهندگان به همراه لینک پروفایل گیت‌هاب آن به ترتیب حروف الفبا به شرح زیر است:
 - [عرشیا اخوان](https://github.com/ArshiAAkhavan)
+- [ابوالفضل اسد](https://github.com/abolfazlasad)
 - [رضا امینی‌مجد](https://github.com/rezaaminimajd)
 - [محمد مهدی جراحی](https://github.com/Jarrahi-MM)
 - [نگین جعفری](https://github.com/neginjafariii)
@@ -120,7 +121,8 @@
 - [امیر مهدی دیگبری](https://github.com/amdigbari)
 - [پارسا رستمی](https://github.com/parsarsm)
 - [علی‌رضا شاطری](https://github.com/ShAlireza)
-- [مهرداد صابری](https://github.com/Sa1378) 
+- [مهرداد صابری](https://github.com/Sa1378)
+- [علیرضا ضیائی](https://github.com/alrz1999)
 - [محمدرضا عبدی](https://github.com/baharkhd)
 - [مصطفی قدیمی](https://github.com/mostafaghadimi)
 - [امیر معینی](https://github.com/amir-mi)

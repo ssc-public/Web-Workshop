@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title> TuToRiAl </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@100&display=swap"
+        rel="stylesheet">
+    <style media="screen">
+        body {
+            background-color: #333;
+        }
+
+        main {
+            font-family: 'Big Shoulders Stencil Text', cursive;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 200px;
+            color: white;
+        }
+
+        p {
+            text-align: center;
+            font-size: 40px;
+        }
+
+        button {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+            margin-top: 10px;
+            width: 400px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <button style="height: 20%;" id="bt">Click me to see the time</button>
+
+        <div style="height: 80%;">
+            <h1 id="time">this is where the time is supposed to be shown!</h1>
+            <p style="color: white;">it's coming from the server i swear !</p>
+        </div>
+
+
+    </main>
+
+
+    <script type="text/javascript">
+        document.getElementById('bt').addEventListener("click", () => {
+            var hostip = window.location.host;
+            fetch(`http://${hostip}/getTime`, {
+                method: "GET"
+            }).then(res => {
+                res.json().then(res => {
+                    console.log(res)
+                    document.getElementById('time').innerHTML = res;
+                }).catch(error => { /* handle */ })
+            }).catch(error => { /* handle */ })
+        })
+    </script>
+
+</body>
+
+</html>
