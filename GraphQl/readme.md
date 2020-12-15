@@ -1,13 +1,18 @@
 # GraphQL
 
+
+<p align=center>
+
 ![graphql](https://upload.wikimedia.org/wikipedia/commons/1/17/GraphQL_Logo.svg)
-## Members
-    ArshiA Akhavan          97110422
-    Mohamadreza Abdi        97110285
-    bahar khodabakhshian    97105906
 
+</p>
 
-# GraphQl
+<p align='center'>
+ ارشیا اخوان،بهار خدابخشیان و محمدرضا عبدی
+
+</p>
+
+# What is GraphQl?
 <p dir="rtl" style="position:right;">
 GraphQl یک استاندارد تازه برای توصیف (Application Programing Interface) API می‌باشد که توسط facebook  توسعه و متن باز شده است.
 </p>
