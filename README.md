@@ -1,5 +1,26 @@
 
+<h1 align="center">
+کارگاه برنامه‌نویسی وب دانشگاه صنعتی شریف
+</h1>
+
+
 <div align="center">
+
+
+<img src="./Statics/web_workshop.png" alt="Sharif Web Programming Workshop"> 
+<div dir="rtl">
+    اساتید:  
+    <a href="https://github.com/behnamhatami">
+    بهنام حاتمی ورزنه
+    </a>،
+    <a href="https://github.com/YumcoderCom">
+    امید جعفرنژاد
+    </a>
+</div>
+
+<div dir="rtl">
+دستیار آموزشی: مصطفی قدیمی
+</div>
 
 [![Web_Workshop](https://img.shields.io/badge/web-workshop-orange.svg)](https://github.com/mostafaghadimi/web_workshop)
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
@@ -15,9 +36,7 @@
 <div dir="rtl">
 
 <p align="center">
-<h1>
-کارگاه وب دانشگاه صنعتی شریف
-</h1>
+
 </p>
     آموزش جامع و انجام پروژه‌های با سایز کوچک برای یادگیری بهتر مفاهیم، زبان‌ها و تکنولوژی‌های تحت وب.
 
@@ -87,20 +106,25 @@
 
 
 # ✍️ توسعه دهندگان:
-- [مصطفی قدیمی](https://github.com/mostafaghadimi)
-- [امیرمهدی نامجو](https://github.com/titansarus)
-- [علی‌رضا شاطری](https://github.com/ShAlireza)
-- [علی‌رضا دیزجی](https://github.com/alirezadizaji)
-- [امیر مهدی دیگبری](https://github.com/amdigbari)
-- [مهدی جوان‌مردی غریب‌دوستی](https://github.com/Mjg79)
-- [پارسا رستمی](https://github.com/parsarsm)
+
+لیست نام‌های توسعه‌دهندگان به همراه لینک پروفایل گیت‌هاب آن به ترتیب حروف الفبا به شرح زیر است:
+- [عرشیا اخوان](https://github.com/ArshiAAkhavan)
 - [رضا امینی‌مجد](https://github.com/rezaaminimajd)
-- [محمد جمشیدی](https://github.com/jamshidi799)
-- [مهرداد صابری](https://github.com/Sa1378)
 - [محمد مهدی جراحی](https://github.com/Jarrahi-MM)
 - [نگین جعفری](https://github.com/neginjafariii)
+- [محمد جمشیدی](https://github.com/jamshidi799)
+- [مهدی جوان‌مردی غریب‌دوستی](https://github.com/Mjg79)
 - [علی جوانی](https://github.com/AliJavanJ1)
+- [بهار خدابخشیان](https://github.com/baharkhd)
+- [علی‌رضا دیزجی](https://github.com/alirezadizaji)
+- [امیر مهدی دیگبری](https://github.com/amdigbari)
+- [پارسا رستمی](https://github.com/parsarsm)
+- [علی‌رضا شاطری](https://github.com/ShAlireza)
+- [مهرداد صابری](https://github.com/Sa1378) 
+- [محمدرضا عبدی](https://github.com/baharkhd)
+- [مصطفی قدیمی](https://github.com/mostafaghadimi)
 - [امیر معینی](https://github.com/amir-mi)
+- [امیرمهدی نامجو](https://github.com/titansarus)
 
 
 # نحوه مشارکت
