@@ -111,11 +111,13 @@ GraphQl به کلاینت این اجازه را می‌دهد که request خو
 مثلا برای زمانی که front-end و back-end به صورت جدا و موازی در حال توسعه هستند و نیاز است تا یک قرارداد ثابت (GraphQl Schema) بین front-end و back-end وجود داشته باشد تا هر کدام بتوانند به صورت آزادانه به توسعه‌ی خود ادامه دهند و دغدغه دیگری را نداشته باشند </li>
 </ol>
  
- # End of the jurney?
-
-+ [GraphQl core concepts](/core.md)
-+ [simple back-end based on GraphQl using Go](/back/readme.md)
-+ [simple front-end based on GraphQl using apollo + react](/front/readme.md)
+ # End of the journey?
+ <p dir="rtl" style="position:right;">برای مشاهده‌ی توضیحات بیش‌تر در همین ریپازیتوری لینک‌های زیر را مشاهده نمایید:
+ </p>
+ 
++ [GraphQl core concepts](./core.md)
++ [simple back-end based on GraphQl using Go](./back/readme.md)
++ [simple front-end based on GraphQl using apollo + react](./front/readme.md)
 
 
  
