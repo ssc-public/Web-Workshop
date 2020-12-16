@@ -111,6 +111,7 @@
 - [عرشیا اخوان](https://github.com/ArshiAAkhavan)
 - [ابوالفضل اسد](https://github.com/abolfazlasad)
 - [رضا امینی‌مجد](https://github.com/rezaaminimajd)
+- [علیرضا تاجمیرریاحی](https://github.com/AlirezaT99)
 - [محمد مهدی جراحی](https://github.com/Jarrahi-MM)
 - [نگین جعفری](https://github.com/neginjafariii)
 - [محمد جمشیدی](https://github.com/jamshidi799)
@@ -120,8 +121,11 @@
 - [علی‌رضا دیزجی](https://github.com/alirezadizaji)
 - [امیر مهدی دیگبری](https://github.com/amdigbari)
 - [پارسا رستمی](https://github.com/parsarsm)
+- [آتنا ساقی](https://github.com/atenasadat)
 - [علی‌رضا شاطری](https://github.com/ShAlireza)
 - [مهرداد صابری](https://github.com/Sa1378)
+- [پرهام صارمی](https://github.com/parhamsaremi)
+- [سپهر صفری](https://github.com/sepehrs1378)
 - [علیرضا ضیائی](https://github.com/alrz1999)
 - [محمدرضا عبدی](https://github.com/baharkhd)
 - [مصطفی قدیمی](https://github.com/mostafaghadimi)
@@ -129,11 +133,12 @@
 - [امیرمهدی نامجو](https://github.com/titansarus)
 
 
+
 # نحوه مشارکت
 
 - ابتدا باید این ریپازیتوری را fork کنید.
 - سپس باید  pull request به این ریپازیتوری بزنید.
-- در نهایت کامیت شما باید به فرمت زیر باشد:
+-  کامیت شما باید به فرمت زیر باشد:
 
 <div dir="ltr">
 

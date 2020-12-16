@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  # سرویس اول
+  backend:
+    build:
+      # هنگامی که دستور بیلد داده شد، از همین‌جایی که هستی به آدرس زیر برو
+      # و دستورات داکرفایلی را که آن جا است، اجرا کن
+      context: ./blog_backend
+      # هنگامی که دستور بیلد داده شد، آرگومان‌های زیر را به محیط کانتینرِ بک پاس بده
+      args:
+        DJANGO_ALLOWED_HOSTS: localhost, api
+        DJANGO_SECRET_KEY: 'A_RANDOM_SECRET_KEY'
+        DJANGO_CORS_ORIGIN_WHITELIST: http://localhost
+    # پس از بیلد شدنِ کانتینرِ بک‌اند، دستور زیر را اجرا کن 
+    command: gunicorn blog_backend.wsgi --bind 0.0.0.0:8000
+    # پورت‌های درون کانتینر را با پورت‌های شبکه‌ی سیستم‌عامل نظیر کن
+    ports:
+      - "8000:8000"
+
+  # سرویس دوم
+  frontend:
+    build:
+      context: ./blog_frontend
+      args:
+        API_URL: http://localhost
+    # یک فضای مشترک با سرویسِ ان‌جین‌ایکس ایجاد کن و از طریق این فضا با ان‌جین‌ایکس در ارتباط باش
+    volumes:
+      - build_folder:/frontend/build
+
+  # سرویس سوم
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:8080
+    volumes:
+      - ./webserver/nginx-proxy.conf:/etc/nginx/conf.d/default.conf:ro
+      - build_folder:/var/www/frontend
+    # صبر کن تا اول دو سرویس دیگر اجرا شوند، سپس این سرویس را اجرا کن
+    depends_on:
+      - backend
+      - frontend
+volumes:
+  build_folder:
