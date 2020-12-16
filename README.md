@@ -120,6 +120,7 @@
 - [علی‌رضا دیزجی](https://github.com/alirezadizaji)
 - [امیر مهدی دیگبری](https://github.com/amdigbari)
 - [پارسا رستمی](https://github.com/parsarsm)
+- [آتنا ساقی](https://github.com/atenasadat)
 - [علی‌رضا شاطری](https://github.com/ShAlireza)
 - [مهرداد صابری](https://github.com/Sa1378)
 - [علیرضا ضیائی](https://github.com/alrz1999)
@@ -127,7 +128,7 @@
 - [مصطفی قدیمی](https://github.com/mostafaghadimi)
 - [امیر معینی](https://github.com/amir-mi)
 - [امیرمهدی نامجو](https://github.com/titansarus)
-- [آتنا ساقی](https://github.com/atenasadat)
+
 
 
 # نحوه مشارکت
