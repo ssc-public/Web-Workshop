@@ -2,6 +2,16 @@
 
 # Kubernetes
 
+
+<div align="center">
+
+<img src="../Statics/kubernetes.png" alt="Sharif Web Programming Workshop"> 
+
+تهیه‌کننده: آتنا ساقی
+</div>
+
+<hr>
+
 برای آشنایی با مفهوم kubernetes ابتدا بهتره با container ها آشنایی داشته باشیم.
 
 container ها شکل مجازی از سیستمهای عامل هستند . یک container ممکن برای اجرای microservice کوچک￼
