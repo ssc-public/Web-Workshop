@@ -1,0 +1,43 @@
+version: '3.3'
+services: 
+  aspnetcore:
+    image: amadev/aspnetcore
+    container_name: amadev-aspnetcore
+    build: ./aspnetcore/
+    depends_on:
+      - database
+    environment: 
+      - DOTNET_DB_HOST=database
+      - DOTNET_DB_USER=root
+      - DOTNET_DB_DATABASE=amadev_database
+      - DOTNET_DB_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - DOTNET_URLS=http://*
+  database:
+    image: mysql:latest
+    container_name: amadev-mysql
+    environment: 
+      - MYSQL_ROOT_PASSWORD
+    volumes:
+      - ./db-data:/var/lib/mysql
+  php:
+    container_name: amadev-php
+    build:
+      context: ./php/
+    depends_on:
+      - aspnetcore
+      - redis
+    ports:
+      - 10:80
+    volumes:
+      - ./php/src:/var/www/html/
+  composer:
+    container_name: amadev-composer
+    image: composer:1.9
+    command: ["composer", "install"]
+    depends_on:
+      - php
+    volumes:
+      - ./php/src:/app
+  redis:
+    container_name: amadev-redis
+    image: redis:latest
