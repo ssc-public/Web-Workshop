@@ -1447,13 +1447,11 @@ var chartDifferentHoverMode = new Chart(ctx, {
 }
 ```
 ### چیدمان 
-
 تنظیمات چیدمان به نیم‌اسپیس options.layout پاس داده می‌شود. تنظیمات پیشفرض این قسمت در Chart.defaults.global.layout قرار داده شده است.
 
 | نام     | نوع    | حالت پیشفرض | توضیحات |
 | ------- | ------ | ----------- | ------- | ------------------- |
 | padding | number | object      | 0       | فاصله از کادر درونی |
-|         |        |             |         |
 
 #### حاشیه درونی (Padding)
 
@@ -1534,7 +1532,6 @@ let chart = new Chart(ctx, {
 #### تنظیمات عنوان گذاری
 
 تنظیمات عنوان گذاری به نیم‌اسپیس options.title پاس داده می‌شود. تنظیمات سراسری آن نیز در Chart.defaults.global.title واقع شده است.
-
 | نام        | نوع             | حالت پیشفرض                                          | توضیحات                    |
 |------------|-----------------|------------------------------------------------------|----------------------------|
 | display    | boolean         | FALSE                                                | آیا عنوان نمیان است؟       |
@@ -1544,8 +1541,8 @@ let chart = new Chart(ctx, {
 | fontColor  | Color           | '#666'                                               | رنگ فونت                   |
 | fontStyle  | string          | 'bold'                                               | استایل فونت                |
 | padding    | number          | 10                                                   | حاشیه درونی                |
-| lineHeight | number|string   | 1.2                                                  | ارتفاع یک خط               |
-| text       | string|string[] | ''                                                   | متنی که نمایش داده می‌شود. |
+| lineHeight | number/string   | 1.2                                                  | ارتفاع یک خط               |
+| text       | string/string[] | ''                                                   | متنی که نمایش داده میشود. |
 
 #### موقعیت (Position)
 
