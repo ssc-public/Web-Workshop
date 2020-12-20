@@ -1660,4 +1660,26 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
 
 ## ویژگی های کلی 
 
+### دسترسی (Accessibility)
+
+کتابخانه Chart.Js تماما توسط المان های موجود در canvas ساخته شده است و نحوه ساختن نمودار کاملا به کاربر بستگی دارد. المان canvas نیز در تمامی مرورگر ها پشتیبانی می‌شود اما محتوای آن برای صفحه‌خوان ها در دسترس نیست. <br>
+
+#### مثال
+
+نمونه هایی از المان های قابل دسترسی canvas
+<br>
+با ست کردن role و aria-label، این canvas یک نام قابل دسترس دارد.
+
+```
+<canvas id="goodCanvas1" width="400" height="100" aria-label="Hello ARIA World" role="img"></canvas>
+```
+
+المان canvas یک متن جایگزین نیز دارد که توسط محتوای fallback تعیین می‌شود.
+
+```
+<canvas id="okCanvas2" width="400" height="100">
+    <p>Hello Fallback World</p>
+</canvas>
+```
+
 </div>
