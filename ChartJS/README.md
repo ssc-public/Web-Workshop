@@ -1722,4 +1722,43 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
 
 لازم به ذکر است با استفاده از event ها می توان این موارد را بهتر و بیشتر نیز کنترل کرد. همچنین مطالعه حالت هایی که گراف می‌تواند در آن قرار داشته باشد در این امر کمک شایانی به ما می‌کند.
 
+### امکانات (Options)
+
+#### امکانات اسکریپت پذیر (Scriptable Options)
+
+امکانات اسکریپت پذیر تابعی دارند که برای هر یک از مقادیر داده صدا زده می‌شود و یک آرگومان context به عنوان ورودی می‌گیرد.
+
+```
+color: function(context) {
+    var index = context.dataIndex;
+    var value = context.dataset.data[index];
+    return value < 0 ? 'red' :  // draw negative values in red
+        index % 2 ? 'blue' :    // else, alternate values in blue and green
+        'green';
+}
+```
+
+#### امکانات اشاره پذیر (Indexable Options)
+
+امکانات اشاره پذیر آرایه ای میگیرند که هر المان به ایندکس متناظر آن لینک شده است. توجه کنید که در این شیوه باید تعداد داده ها با آیتم ها برابر باشد. به طور کلی استفاده از توابع راه منطقی تری است.
+
+```
+color: [
+    'red',    // color for data at index 0
+    'blue',   // color for data at index 1
+    'green',  // color for data at index 2
+    'black',  // color for data at index 3
+    //...
+]
+```
+
+#### مفاد امکانات (Options Context)
+
+این شی دارای ویژگی های زیر است.
+
+-   chart: نمودار مورد نظر
+-   dataIndex: ایندکس داده فعلی
+-   dataset: دیتاست موجود در ایندکس
+-   datasetIndex: ایندکس دیتاست فعلی
+-   hover: فعال در صورت hover شدن
 </div>
