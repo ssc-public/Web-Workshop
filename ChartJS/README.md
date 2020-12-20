@@ -1348,6 +1348,7 @@ new Chart(ctx, conf);
 قطعه کد زیر نحوه hover را برای تمامی نمودارهایی که به طور جداگانه تنظیم نشده‌اند را روی nearest تنظیم می‌کند.
 
 <div dir="ltr">
+    
 ```
 Chart.defaults.global.hover.mode = 'nearest';
 
@@ -1370,6 +1371,7 @@ var chartDifferentHoverMode = new Chart(ctx, {
 });
 ```
 </div>
+
 ### انیمیشن 
 لایبرری Chart.Js به طور پیشفرق نمودار ها را انیمیت می‌کند. تعدادی ابزار در این کتابخانه فراهم شده تا ظاهر، طول و نحوه نمایش این نمودار ها قایل شخصی سازی باشد.
 
@@ -1462,6 +1464,7 @@ var chartDifferentHoverMode = new Chart(ctx, {
 #### حاشیه درونی (Padding)
 
 اگر مقدار یک عدد باشد نتیجه بر هر چهار طرف نمودار اعمال می‌شود. اگر مقدار یک شی باشد هر کدام از موارد left, right, top, bottom به ترتیب حاشیه از چپ، راست، بالا و پایین رو مشخص می‌کنند.
+
 <div dir="ltr">
 
 ```
@@ -1480,6 +1483,7 @@ let chart = new Chart(ctx, {
     }
 });
 ```
+
 </div>
 
 ### حاشیه نویسی (legend)
@@ -1566,6 +1570,7 @@ let chart = new Chart(ctx, {
 تکه کد زیر عنوان 'Custom Chart Title' را برای عنوان نمودار نشان می‌دهد.
 
 <div dir="ltr">
+    
 ```
 var chart = new Chart(ctx, {
     type: 'line',
@@ -1578,6 +1583,7 @@ var chart = new Chart(ctx, {
     }
 });
 ```
+
 </div>
 
 
@@ -1681,14 +1687,17 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
 نمونه هایی از المان های قابل دسترسی canvas
 <br>
 با ست کردن role و aria-label، این canvas یک نام قابل دسترس دارد.
+
 <div dir="ltr">
 
 ```
 <canvas id="goodCanvas1" width="400" height="100" aria-label="Hello ARIA World" role="img"></canvas>
 ```
+
 </div>
 
 المان canvas یک متن جایگزین نیز دارد که توسط محتوای fallback تعیین می‌شود.
+
 <div dir="ltr">
 
 ```
@@ -1696,7 +1705,9 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
     <p>Hello Fallback World</p>
 </canvas>
 ```
+
 </div>
+
 ### واکنش گرا (Responsive)
 
 وقتی صحبت از تغییر سایز نمودار بر حسب طول صفحه می‌شود، یکی زا بزرگترین محدودیت هایی که به سراغ ما می‌آید این است که مقادیر طول و ارتفاع canvas نمی‌تواند با مقادیر نسبی شرح داده شود. به همین دلیل سایز صفحه از سایز canvas مستقل است و نمودار به صورت خودکار نمی‌تواند سایز خود را تغییر دهد و این صفحه ما را به نحوی نامتناسب می‌کند. <br>
@@ -1743,6 +1754,7 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
 #### امکانات اسکریپت پذیر (Scriptable Options)
 
 امکانات اسکریپت پذیر تابعی دارند که برای هر یک از مقادیر داده صدا زده می‌شود و یک آرگومان context به عنوان ورودی می‌گیرد.
+
 <div dir="ltr">
 
 ```
@@ -1754,10 +1766,14 @@ color: function(context) {
         'green';
 }
 ```
+
 </div>
+
 #### امکانات اشاره پذیر (Indexable Options)
 
 امکانات اشاره پذیر آرایه ای میگیرند که هر المان به ایندکس متناظر آن لینک شده است. توجه کنید که در این شیوه باید تعداد داده ها با آیتم ها برابر باشد. به طور کلی استفاده از توابع راه منطقی تری است.
+
+<div dir="ltr">
 
 ```
 color: [
@@ -1768,6 +1784,8 @@ color: [
     //...
 ]
 ```
+
+</div>
 
 #### مفاد امکانات (Options Context)
 
@@ -1788,6 +1806,7 @@ color: [
 
 یکی از گزینه های جایگزین استفاده از رنگ استفاده از آبجکت های CanvasPattern یا CanvasGradient است. <br>
 برای مثال اگر بخواهیم یک دیتاست را با یک پترن از یک تصویر پر کنیم داریم :
+
 <div dir="ltr">
 
 ```
@@ -1808,9 +1827,12 @@ img.onload = function() {
     });
 };
 ```
+
 </div>
+
 استفاده از پترن ها بعضا می تواند به مخاطبان با ناتوانی چشمی کمک کند.<br>
 با استفاده از کتابخانه Patternomaly می توان پترن تولید کرد و دیتاست ها را با آن پر کرد.
+
 <div dir="ltr">
 
 ```
@@ -1827,6 +1849,7 @@ var chartData = {
     labels: ['Red', 'Blue', 'Purple', 'Yellow']
 };
 ```
+
 </div>
 
 ### فونت ها
@@ -1835,6 +1858,7 @@ var chartData = {
 برای مثال در کد زیر تمام متن ها به جز حاشیه نویسی ها قرمز هستند.
 
 <div dir="ltr">
+    
 ```
 Chart.defaults.global.defaultFontColor = 'red';
 let chart = new Chart(ctx, {
@@ -1850,6 +1874,7 @@ let chart = new Chart(ctx, {
     }
 });
 ```
+
 </div>
 
 | نام               | نوع    | حالت پیشفرض                                          | توضیحات                 |
