@@ -1531,6 +1531,47 @@ let chart = new Chart(ctx, {
 | filter                          | function | null                                                 | حاشیه نویسی ها را فیلتر می‌کند.
 
 ### عنوان گذاری 
+#### تنظیمات عنوان گذاری
+
+تنظیمات عنوان گذاری به نیم‌اسپیس options.title پاس داده می‌شود. تنظیمات سراسری آن نیز در Chart.defaults.global.title واقع شده است.
+
+| نام        | نوع     | حالت پیشفرض                                          | توضیحات              |
+| ---------- | ------- | ---------------------------------------------------- | -------------------- | -------------------------- |
+| display    | boolean | FALSE                                                | آیا عنوان نمیان است؟ |
+| position   | string  | 'top'                                                | موقعیت عنوان         |
+| fontSize   | number  | 12                                                   | سایز فونت عنوان      |
+| fontFamily | string  | "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif" | نام فونت عنوان       |
+| fontColor  | Color   | '#666'                                               | رنگ فونت             |
+| fontStyle  | string  | 'bold'                                               | استایل فونت          |
+| padding    | number  | 10                                                   | حاشیه درونی          |
+| lineHeight | number  | string                                               | 1.2                  | ارتفاع یک خط               |
+| text       | string  | string[]                                             | ''                   | متنی که نمایش داده می‌شود. |
+
+#### موقعیت (Position)
+
+مکان های ممکن برای عنوان عبارت‌اند از:
+
+-   'top'
+-   'left'
+-   'bottom'
+-   'right'
+
+#### مثال
+
+تکه کد زیر عنوان 'Custom Chart Title' را برای نمودار نشان می‌دهد.
+
+```
+var chart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: {
+        title: {
+            display: true,
+            text: 'Custom Chart Title'
+        }
+    }
+});
+```
 
 ### Tooltip
 
