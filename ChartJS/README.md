@@ -1558,7 +1558,7 @@ let chart = new Chart(ctx, {
 
 #### مثال
 
-تکه کد زیر عنوان 'Custom Chart Title' را برای نمودار نشان می‌دهد.
+تکه کد زیر عنوان 'Custom Chart Title' را برای عنوان نمودار نشان می‌دهد.
 
 ```
 var chart = new Chart(ctx, {
@@ -1573,7 +1573,6 @@ var chart = new Chart(ctx, {
 });
 ```
 
-### Tooltip
 
 ### المان ها 
 
