@@ -1761,4 +1761,53 @@ color: [
 -   dataset: دیتاست موجود در ایندکس
 -   datasetIndex: ایندکس دیتاست فعلی
 -   hover: فعال در صورت hover شدن
+
+
+### رنگ ها (Colors)
+
+در هنگام استفاده از امکانات نمودار، فرمت های متفاوتی وجود دارد که میتوان به کمک آن‌ها رنگ را تعیین کرد. اگر بخشی نیاز به رنگ داشت و رنگی مشخص نشده بود، chart.js از مقدار پیشفرض که رنگ سیاه است استفاده می‌کند.
+
+#### پترن ها و گرادیان ها (Patterns & Gradients)
+
+یکی از گزینه های جایگزین استفاده از رنگ استفاده از آبجکت های CanvasPattern یا CanvasGradient است. <br>
+برای مثال اگر بخواهیم یک دیتاست را با یک پترن از یک تصویر پر کنیم داریم :
+
+```
+var img = new Image();
+img.src = 'https://example.com/my_image.png';
+img.onload = function() {
+    var ctx = document.getElementById('canvas').getContext('2d');
+    var fillPattern = ctx.createPattern(img, 'repeat');
+
+    var chart = new Chart(ctx, {
+        data: {
+            labels: ['Item 1', 'Item 2', 'Item 3'],
+            datasets: [{
+                data: [10, 20, 30],
+                backgroundColor: fillPattern
+            }]
+        }
+    });
+};
+```
+
+استفاده از پترن ها بعضا می تواند به مخاطبان با ناتوانی چشمی کمک کند.<br>
+با استفاده از کتابخانه Patternomaly می توان پترن تولید کرد و دیتاست ها را با آن پر کرد.
+
+```
+var chartData = {
+    datasets: [{
+        data: [45, 25, 20, 10],
+        backgroundColor: [
+            pattern.draw('square', '#ff6384'),
+            pattern.draw('circle', '#36a2eb'),
+            pattern.draw('diamond', '#cc65fe'),
+            pattern.draw('triangle', '#ffce56')
+        ]
+    }],
+    labels: ['Red', 'Blue', 'Purple', 'Yellow']
+};
+```
+
 </div>
+
