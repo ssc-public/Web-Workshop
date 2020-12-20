@@ -1602,6 +1602,9 @@ var chart = new Chart(ctx, {
 Chart.defaults.global.elements.rectangle.borderWidth = 2;
 ```
 
+</div>
+
+
 #### تنظیمات نقاط
 
 امکانات سراسری موجود برای این ویژگی که در Chart.defaults.global.elements.point وجود دارد عبارتند از:
