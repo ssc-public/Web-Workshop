@@ -1834,7 +1834,7 @@ let chart = new Chart(ctx, {
 | defaultFontColor  | Color  | '#666'                                               | رنگ پیشفرض تمام متن ها  |
 | defaultFontFamily | string | "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif" | فونت پیشفرض تمام متن ها |
 | defaultFontSize   | number | 12                                                   | سایز پیشفرض فونت ها     |
-| defaultFontStyle  | string | 'normal'                                             | استایب پیشفرض فونت ها   |
+| defaultFontStyle  | string | 'normal'                                             | استایل پیشفرض فونت ها   |
 
 
 </div>
