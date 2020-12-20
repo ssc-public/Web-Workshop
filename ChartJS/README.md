@@ -1591,17 +1591,17 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
 
 امکانات سراسری موجود برای این ویژگی که در Chart.defaults.global.elements.point وجود دارد عبارتند از:
 
-| نام              | نوع    | حالت پیشفرض          | توضیحات                            |
-| ---------------- | ------ | -------------------- | ---------------------------------- | ----------- |
-| radius           | number | 3                    | شعاع نقطه                          |
-| pointStyle       | string | Image                | 'circle'                           | استایل نقطه |
-| rotation         | number | 0                    | چرخش نقطه                          |
-| backgroundColor  | Color  | 'rgba(0, 0, 0, 0.1)' | رنگ درونی نقطه                     |
-| borderWidth      | number | 1                    | ضخامت خط دور نقطه                  |
-| borderColor      | Color  | 'rgba(0, 0, 0, 0.1)' | رنگ خط دور نقطه                    |
-| hitRadius        | number | 1                    | شعاع نقطه پس از فشرده شدن          |
-| hoverRadius      | number | 4                    | شعاع نقطه هنگام عبور از آن         |
-| hoverBorderWidth | number | 1                    | ضخامت خط دور نقطه هنگام عبور از آن |
+| نام              | نوع          | حالت پیشفرض          | توضیحات                            |
+|------------------|--------------|----------------------|------------------------------------|
+| radius           | number       | 3                    | شعاع نقطه                          |
+| pointStyle       | string|Image | 'circle'             | استایل نقطه                        |
+| rotation         | number       | 0                    | چرخش نقطه                          |
+| backgroundColor  | Color        | 'rgba(0, 0, 0, 0.1)' | رنگ درونی نقطه                     |
+| borderWidth      | number       | 1                    | ضخامت خط دور نقطه                  |
+| borderColor      | Color        | 'rgba(0, 0, 0, 0.1)' | رنگ خط دور نقطه                    |
+| hitRadius        | number       | 1                    | شعاع نقطه پس از فشرده شدن          |
+| hoverRadius      | number       | 4                    | شعاع نقطه هنگام عبور از آن         |
+| hoverBorderWidth | number       | 1                    | ضخامت خط دور نقطه هنگام عبور از آن |
 
 #### استایل های نقاط
 
@@ -1619,11 +1619,11 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
 -   'triangle'
 
 #### تنظیمات خط‌ها
+خط ها در رسم نمودار ها استفاده می‌شوند. امکانات تنظیم آن‌ها در Chart.defaults.global.elements.line فراهم شده.
 
-    خط ها در رسم نمودار ها استفاده می‌شوند. امکانات تنظیم آن‌ها در Chart.defaults.global.elements.line فراهم شده.
-
-| tension          | number         | 0.4                  | منحنی بزیور                                       |
+| نام              | نوع            | حالت پیشفرض          | توضیحات                                           |
 |------------------|----------------|----------------------|---------------------------------------------------|
+| tension          | number         | 0.4                  | منحنی بزیور                                       |
 | backgroundColor  | Color          | 'rgba(0, 0, 0, 0.1)' | رنگ داخلی خط                                      |
 | borderWidth      | number         | 3                    | ضخامت خط حاشیه‌ای خط                              |
 | borderColor      | Color          | 'rgba(0, 0, 0, 0.1)' | رنگ خط حاشیه‌ای خط                                |
@@ -1635,6 +1635,7 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
 | stepped          | boolean        | FALSE                | در صورت فعال بودن خط به سورت پله‌ای کشیده می‌شود. |
 | fill             | boolean|string | TRUE                 | نحوه پر شدن ناحیه زیر خط                          |
 | stepped          | boolean        | FALSE                | در صورت فعال بودن خط به سورت پله‌ای کشیده می‌شود. |
+
 
 #### تنظیمات مستطیل‌ها
 
