@@ -1370,7 +1370,82 @@ var chartDifferentHoverMode = new Chart(ctx, {
 ```
 
 ### انیمیشن 
+لایبرری Chart.Js به طور پیشفرق نمودار ها را انیمیت می‌کند. تعدادی ابزار در این کتابخانه فراهم شده تا ظاهر، طول و نحوه نمایش این نمودار ها قایل شخصی سازی باشد.
 
+#### تنظیمات انیمیشن
+
+موارد قید شده در جدول زیر از امکانات انیمیشن‌ها در این متابخانه است.
+| نام | نوع | پیشفرض | توضیحات |
+|------------|----------|----------------|-------------------------------------------------------|
+| duration | number | 1000 | The number of milliseconds an animation takes. |
+| easing | string | 'easeOutQuart' | Easing function to use. more... |
+| onProgress | function | null | Callback called on each step of an animation. more... |
+| onComplete | function | null | Callback called at the end of an animation. more... |
+
+#### محو شدن
+
+موارد قابل دسترس عبارتند از :
+
+-   'linear'
+-   'easeInQuad'
+-   'easeOutQuad'
+-   'easeInOutQuad'
+-   'easeInCubic'
+-   'easeOutCubic'
+-   'easeInOutCubic'
+-   'easeInQuart'
+-   'easeOutQuart'
+-   'easeInOutQuart'
+-   'easeInQuint'
+-   'easeOutQuint'
+-   'easeInOutQuint'
+-   'easeInSine'
+-   'easeOutSine'
+-   'easeInOutSine'
+-   'easeInExpo'
+-   'easeOutExpo'
+-   'easeInOutExpo'
+-   'easeInCirc'
+-   'easeOutCirc'
+-   'easeInOutCirc'
+-   'easeInElastic'
+-   'easeOutElastic'
+-   'easeInOutElastic'
+-   'easeInBack'
+-   'easeOutBack'
+-   'easeInOutBack'
+-   'easeInBounce'
+-   'easeOutBounce'
+-   'easeInOutBounce'
+
+#### کال‌بک انیمیشن
+
+کال‌بک های `onComplete` و `onProgress` برای هماهنگ کردن یک حط خارج از نمودار بسیار مناسب‌اند. این کال‌بک ها به نمونه `chart.Animation` پاس داده می‌شود.
+
+```
+{
+    // Chart object
+    chart: Chart,
+
+    // Current Animation frame number
+    currentStep: number,
+
+    // Number of animation frames
+    numSteps: number,
+
+    // Animation easing to use
+    easing: string,
+
+    // Function that renders the chart
+    render: function,
+
+    // User callback
+    onAnimationProgress: function,
+
+    // User callback
+    onAnimationComplete: function
+}
+```
 ### چیدمان 
 
 ### حاشیه نویسی (legend) 
