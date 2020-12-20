@@ -219,6 +219,222 @@ Chart.platform.disableCSSInjection = true;
 
 </div>
 
+## ویژگی های کلی 
+
+### دسترسی (Accessibility)
+
+کتابخانه Chart.Js تماما توسط المان های موجود در canvas ساخته شده است و نحوه ساختن نمودار کاملا به کاربر بستگی دارد. المان canvas نیز در تمامی مرورگر ها پشتیبانی می‌شود اما محتوای آن برای صفحه‌خوان ها در دسترس نیست. <br>
+
+#### مثال
+
+نمونه هایی از المان های قابل دسترسی canvas
+<br>
+با ست کردن role و aria-label، این canvas یک نام قابل دسترس دارد.
+
+<div dir="ltr">
+
+```
+<canvas id="goodCanvas1" width="400" height="100" aria-label="Hello ARIA World" role="img"></canvas>
+```
+
+</div>
+
+المان canvas یک متن جایگزین نیز دارد که توسط محتوای fallback تعیین می‌شود.
+
+<div dir="ltr">
+
+```
+<canvas id="okCanvas2" width="400" height="100">
+    <p>Hello Fallback World</p>
+</canvas>
+```
+
+</div>
+
+### واکنش گرا (Responsive)
+
+وقتی صحبت از تغییر سایز نمودار بر حسب طول صفحه می‌شود، یکی زا بزرگترین محدودیت هایی که به سراغ ما می‌آید این است که مقادیر طول و ارتفاع canvas نمی‌تواند با مقادیر نسبی شرح داده شود. به همین دلیل سایز صفحه از سایز canvas مستقل است و نمودار به صورت خودکار نمی‌تواند سایز خود را تغییر دهد و این صفحه ما را به نحوی نامتناسب می‌کند. <br>
+لایبرری Chart.Js امکاناتی فراهم کرده که به ما امکان
+واکنش‌گرایی و تغییر سایز نمودار بر اساس سایز صفحه را می‌دهد.
+
+#### امکانات واکنش‌گرایی
+
+| نام                         | نوع      | حالت پیشفرض | توضیحات                                                            |
+| --------------------------- | -------- | ----------- | ------------------------------------------------------------------ |
+| responsive                  | boolean  | TRUE        | بوم نمودار را وقتی که container آن تغییر اندازه دهد، ریسایز میکند. |
+| responsiveAnimationDuration | number   | 0           | مدت زمانی که انیمیشن تغییر سایز طول می کشد.                        |
+| maintainAspectRatio         | boolean  | TRUE        | در صورت فعال بودن نسبت ارتفاع و طول را با تغییر اندازه حفظ می کند. |
+| aspectRatio                 | number   | 2           | نسبت طول تصویر بر ارتفاع                                           |
+| onResize                    | function | null        | در هنگام تغییر سایز فراخوانده می شود                               |
+
+### نسبت پیکسل (Pixel Ratio)
+
+در حالت پیشفرض canvas نسبت پیکسل یک به یک دارد. در مواقعی که نمودار به bitmap صفحه‌ای با dpi بالاتر این امکان وجود دارد که آن را رزولوشنی بالاتر از حد معمول استخراج کرد.<br>
+تنظیم کردن مقدار devicePixelRatio بر مقداری غیر از 1، canvas را مجبور به تغییر ابعاد می‌کند.
+مقداری که وابسته به ابعاد container است.
+
+#### امکانات نسبت پیکسل
+
+| نام              | نوع    | حالت پیشفرض             | توضیحات                          |
+| ---------------- | ------ | ----------------------- | -------------------------------- |
+| devicePixelRatio | number | window.devicePixelRatio | رونویسی مقدار پیشفرض نسبت پیکسلی |
+
+### تعامل (Interaction)
+
+تنظیمات hover به نیم‌اسپیس options.hover پاس داده شده است. همچنین تنظیمات سراسری این بخش در قسمت Chart.defaults.global.hover جای داده شده است.
+
+| نام               | نوع     | حالت پیشفرض | توضیحات                                                                                              |
+| ----------------- | ------- | ----------- | ---------------------------------------------------------------------------------------------------- |
+| mode              | string  | 'nearest'   | تعیین میکند کدام المان ها در tooltip قرار داده میتوضیحاتشوند.                                        |
+| intersect         | boolean | TRUE        | در صورت فعال بودن افکت hover تنها در صورتی عمل می کند که المان با چارت اشتراکتداخل داشته باشد.       |
+| axis              | string  | 'x'         | می تواند به مقادیر 'x', 'y' یا 'xy' ست شود تا تعیین کند کدام جهت در محاسبه فاصله ها استفاده شده است. |
+| animationDuration | number  | 400         | مدت زمانی که انیمیشن hover طول میکشد به میلی ثانیه.                                                  |
+
+لازم به ذکر است با استفاده از event ها می توان این موارد را بهتر و بیشتر نیز کنترل کرد. همچنین مطالعه حالت هایی که گراف می‌تواند در آن قرار داشته باشد در این امر کمک شایانی به ما می‌کند.
+
+### امکانات (Options)
+
+#### امکانات اسکریپت پذیر (Scriptable Options)
+
+امکانات اسکریپت پذیر تابعی دارند که برای هر یک از مقادیر داده صدا زده می‌شود و یک آرگومان context به عنوان ورودی می‌گیرد.
+
+<div dir="ltr">
+
+```
+color: function(context) {
+    var index = context.dataIndex;
+    var value = context.dataset.data[index];
+    return value < 0 ? 'red' :  // draw negative values in red
+        index % 2 ? 'blue' :    // else, alternate values in blue and green
+        'green';
+}
+```
+
+</div>
+
+#### امکانات اشاره پذیر (Indexable Options)
+
+امکانات اشاره پذیر آرایه ای میگیرند که هر المان به ایندکس متناظر آن لینک شده است. توجه کنید که در این شیوه باید تعداد داده ها با آیتم ها برابر باشد. به طور کلی استفاده از توابع راه منطقی تری است.
+
+<div dir="ltr">
+
+```
+color: [
+    'red',    // color for data at index 0
+    'blue',   // color for data at index 1
+    'green',  // color for data at index 2
+    'black',  // color for data at index 3
+    //...
+]
+```
+
+</div>
+
+#### مفاد امکانات (Options Context)
+
+این شی دارای ویژگی های زیر است.
+
+-   chart: نمودار مورد نظر
+-   dataIndex: ایندکس داده فعلی
+-   dataset: دیتاست موجود در ایندکس
+-   datasetIndex: ایندکس دیتاست فعلی
+-   hover: فعال در صورت hover شدن
+
+
+### رنگ ها (Colors)
+
+در هنگام استفاده از امکانات نمودار، فرمت های متفاوتی وجود دارد که میتوان به کمک آن‌ها رنگ را تعیین کرد. اگر بخشی نیاز به رنگ داشت و رنگی مشخص نشده بود، chart.js از مقدار پیشفرض که رنگ سیاه است استفاده می‌کند.
+
+#### پترن ها و گرادیان ها (Patterns & Gradients)
+
+یکی از گزینه های جایگزین استفاده از رنگ استفاده از آبجکت های CanvasPattern یا CanvasGradient است. <br>
+برای مثال اگر بخواهیم یک دیتاست را با یک پترن از یک تصویر پر کنیم داریم :
+
+<div dir="ltr">
+
+```
+var img = new Image();
+img.src = 'https://example.com/my_image.png';
+img.onload = function() {
+    var ctx = document.getElementById('canvas').getContext('2d');
+    var fillPattern = ctx.createPattern(img, 'repeat');
+
+    var chart = new Chart(ctx, {
+        data: {
+            labels: ['Item 1', 'Item 2', 'Item 3'],
+            datasets: [{
+                data: [10, 20, 30],
+                backgroundColor: fillPattern
+            }]
+        }
+    });
+};
+```
+
+</div>
+
+استفاده از پترن ها بعضا می تواند به مخاطبان با ناتوانی چشمی کمک کند.<br>
+با استفاده از کتابخانه Patternomaly می توان پترن تولید کرد و دیتاست ها را با آن پر کرد.
+
+<div dir="ltr">
+
+```
+var chartData = {
+    datasets: [{
+        data: [45, 25, 20, 10],
+        backgroundColor: [
+            pattern.draw('square', '#ff6384'),
+            pattern.draw('circle', '#36a2eb'),
+            pattern.draw('diamond', '#cc65fe'),
+            pattern.draw('triangle', '#ffce56')
+        ]
+    }],
+    labels: ['Red', 'Blue', 'Purple', 'Yellow']
+};
+```
+
+</div>
+
+### فونت ها
+
+به طور کلی 4 نوع حالت پیشفرض موجود است که به کمک آن می‌توان فونت داده ها را عوض کرد. این حالت ها در Chart.defaults.global قرار دارند.<br>
+برای مثال در کد زیر تمام متن ها به جز حاشیه نویسی ها قرمز هستند.
+
+<div dir="ltr">
+    
+```
+Chart.defaults.global.defaultFontColor = 'red';
+let chart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: {
+        legend: {
+            labels: {
+                // This more specific font property overrides the global property
+                fontColor: 'black'
+            }
+        }
+    }
+});
+```
+
+</div>
+
+| نام               | نوع    | حالت پیشفرض                                          | توضیحات                 |
+| ----------------- | ------ | ---------------------------------------------------- | ----------------------- |
+| defaultFontColor  | Color  | '#666'                                               | رنگ پیشفرض تمام متن ها  |
+| defaultFontFamily | string | "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif" | فونت پیشفرض تمام متن ها |
+| defaultFontSize   | number | 12                                                   | سایز پیشفرض فونت ها     |
+| defaultFontStyle  | string | 'normal'                                             | استایل پیشفرض فونت ها   |
+
+### کارایی (Performance)
+
+نمودارهای Chart.js در المان canvas رندر می‌شوند که این فرایند را بسیار سزیع می‌سازد.<br>
+
+برای دیتاست های بزرگ و حجیم نیز که سرعت برنامه در آن حائذ اهمیت است می توانیم با انجام کارهایی مانند غیر فعال کردن انمیشن، فشرده سازی داده، غیر فعال کردن منحنی ها و غیر فعال کردن کشیدن خط، کارایی برنامه را تا حد قابل توجهی افزایش دهیم.
+
+
+
 ## انواع نمودار در Chart.js 
 مدل های (type) اصلی نمودار در این کتابخانه عبارتند از:
 - خطی (line)
@@ -1678,220 +1894,6 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
 | borderAlign            | string | 'center'                    | چینش خط بیرونی کمان  |
 | borderColor            | Color  | '#fff'                      | رنگ خط بیرونی کمان   |
 | borderWidth            | number | 2                           | ضخامت خط بیرونی کمان |
-
-## ویژگی های کلی 
-
-### دسترسی (Accessibility)
-
-کتابخانه Chart.Js تماما توسط المان های موجود در canvas ساخته شده است و نحوه ساختن نمودار کاملا به کاربر بستگی دارد. المان canvas نیز در تمامی مرورگر ها پشتیبانی می‌شود اما محتوای آن برای صفحه‌خوان ها در دسترس نیست. <br>
-
-#### مثال
-
-نمونه هایی از المان های قابل دسترسی canvas
-<br>
-با ست کردن role و aria-label، این canvas یک نام قابل دسترس دارد.
-
-<div dir="ltr">
-
-```
-<canvas id="goodCanvas1" width="400" height="100" aria-label="Hello ARIA World" role="img"></canvas>
-```
-
-</div>
-
-المان canvas یک متن جایگزین نیز دارد که توسط محتوای fallback تعیین می‌شود.
-
-<div dir="ltr">
-
-```
-<canvas id="okCanvas2" width="400" height="100">
-    <p>Hello Fallback World</p>
-</canvas>
-```
-
-</div>
-
-### واکنش گرا (Responsive)
-
-وقتی صحبت از تغییر سایز نمودار بر حسب طول صفحه می‌شود، یکی زا بزرگترین محدودیت هایی که به سراغ ما می‌آید این است که مقادیر طول و ارتفاع canvas نمی‌تواند با مقادیر نسبی شرح داده شود. به همین دلیل سایز صفحه از سایز canvas مستقل است و نمودار به صورت خودکار نمی‌تواند سایز خود را تغییر دهد و این صفحه ما را به نحوی نامتناسب می‌کند. <br>
-لایبرری Chart.Js امکاناتی فراهم کرده که به ما امکان
-واکنش‌گرایی و تغییر سایز نمودار بر اساس سایز صفحه را می‌دهد.
-
-#### امکانات واکنش‌گرایی
-
-| نام                         | نوع      | حالت پیشفرض | توضیحات                                                            |
-| --------------------------- | -------- | ----------- | ------------------------------------------------------------------ |
-| responsive                  | boolean  | TRUE        | بوم نمودار را وقتی که container آن تغییر اندازه دهد، ریسایز میکند. |
-| responsiveAnimationDuration | number   | 0           | مدت زمانی که انیمیشن تغییر سایز طول می کشد.                        |
-| maintainAspectRatio         | boolean  | TRUE        | در صورت فعال بودن نسبت ارتفاع و طول را با تغییر اندازه حفظ می کند. |
-| aspectRatio                 | number   | 2           | نسبت طول تصویر بر ارتفاع                                           |
-| onResize                    | function | null        | در هنگام تغییر سایز فراخوانده می شود                               |
-
-### نسبت پیکسل (Pixel Ratio)
-
-در حالت پیشفرض canvas نسبت پیکسل یک به یک دارد. در مواقعی که نمودار به bitmap صفحه‌ای با dpi بالاتر این امکان وجود دارد که آن را رزولوشنی بالاتر از حد معمول استخراج کرد.<br>
-تنظیم کردن مقدار devicePixelRatio بر مقداری غیر از 1، canvas را مجبور به تغییر ابعاد می‌کند.
-مقداری که وابسته به ابعاد container است.
-
-#### امکانات نسبت پیکسل
-
-| نام              | نوع    | حالت پیشفرض             | توضیحات                          |
-| ---------------- | ------ | ----------------------- | -------------------------------- |
-| devicePixelRatio | number | window.devicePixelRatio | رونویسی مقدار پیشفرض نسبت پیکسلی |
-
-### تعامل (Interaction)
-
-تنظیمات hover به نیم‌اسپیس options.hover پاس داده شده است. همچنین تنظیمات سراسری این بخش در قسمت Chart.defaults.global.hover جای داده شده است.
-
-| نام               | نوع     | حالت پیشفرض | توضیحات                                                                                              |
-| ----------------- | ------- | ----------- | ---------------------------------------------------------------------------------------------------- |
-| mode              | string  | 'nearest'   | تعیین میکند کدام المان ها در tooltip قرار داده میتوضیحاتشوند.                                        |
-| intersect         | boolean | TRUE        | در صورت فعال بودن افکت hover تنها در صورتی عمل می کند که المان با چارت اشتراکتداخل داشته باشد.       |
-| axis              | string  | 'x'         | می تواند به مقادیر 'x', 'y' یا 'xy' ست شود تا تعیین کند کدام جهت در محاسبه فاصله ها استفاده شده است. |
-| animationDuration | number  | 400         | مدت زمانی که انیمیشن hover طول میکشد به میلی ثانیه.                                                  |
-
-لازم به ذکر است با استفاده از event ها می توان این موارد را بهتر و بیشتر نیز کنترل کرد. همچنین مطالعه حالت هایی که گراف می‌تواند در آن قرار داشته باشد در این امر کمک شایانی به ما می‌کند.
-
-### امکانات (Options)
-
-#### امکانات اسکریپت پذیر (Scriptable Options)
-
-امکانات اسکریپت پذیر تابعی دارند که برای هر یک از مقادیر داده صدا زده می‌شود و یک آرگومان context به عنوان ورودی می‌گیرد.
-
-<div dir="ltr">
-
-```
-color: function(context) {
-    var index = context.dataIndex;
-    var value = context.dataset.data[index];
-    return value < 0 ? 'red' :  // draw negative values in red
-        index % 2 ? 'blue' :    // else, alternate values in blue and green
-        'green';
-}
-```
-
-</div>
-
-#### امکانات اشاره پذیر (Indexable Options)
-
-امکانات اشاره پذیر آرایه ای میگیرند که هر المان به ایندکس متناظر آن لینک شده است. توجه کنید که در این شیوه باید تعداد داده ها با آیتم ها برابر باشد. به طور کلی استفاده از توابع راه منطقی تری است.
-
-<div dir="ltr">
-
-```
-color: [
-    'red',    // color for data at index 0
-    'blue',   // color for data at index 1
-    'green',  // color for data at index 2
-    'black',  // color for data at index 3
-    //...
-]
-```
-
-</div>
-
-#### مفاد امکانات (Options Context)
-
-این شی دارای ویژگی های زیر است.
-
--   chart: نمودار مورد نظر
--   dataIndex: ایندکس داده فعلی
--   dataset: دیتاست موجود در ایندکس
--   datasetIndex: ایندکس دیتاست فعلی
--   hover: فعال در صورت hover شدن
-
-
-### رنگ ها (Colors)
-
-در هنگام استفاده از امکانات نمودار، فرمت های متفاوتی وجود دارد که میتوان به کمک آن‌ها رنگ را تعیین کرد. اگر بخشی نیاز به رنگ داشت و رنگی مشخص نشده بود، chart.js از مقدار پیشفرض که رنگ سیاه است استفاده می‌کند.
-
-#### پترن ها و گرادیان ها (Patterns & Gradients)
-
-یکی از گزینه های جایگزین استفاده از رنگ استفاده از آبجکت های CanvasPattern یا CanvasGradient است. <br>
-برای مثال اگر بخواهیم یک دیتاست را با یک پترن از یک تصویر پر کنیم داریم :
-
-<div dir="ltr">
-
-```
-var img = new Image();
-img.src = 'https://example.com/my_image.png';
-img.onload = function() {
-    var ctx = document.getElementById('canvas').getContext('2d');
-    var fillPattern = ctx.createPattern(img, 'repeat');
-
-    var chart = new Chart(ctx, {
-        data: {
-            labels: ['Item 1', 'Item 2', 'Item 3'],
-            datasets: [{
-                data: [10, 20, 30],
-                backgroundColor: fillPattern
-            }]
-        }
-    });
-};
-```
-
-</div>
-
-استفاده از پترن ها بعضا می تواند به مخاطبان با ناتوانی چشمی کمک کند.<br>
-با استفاده از کتابخانه Patternomaly می توان پترن تولید کرد و دیتاست ها را با آن پر کرد.
-
-<div dir="ltr">
-
-```
-var chartData = {
-    datasets: [{
-        data: [45, 25, 20, 10],
-        backgroundColor: [
-            pattern.draw('square', '#ff6384'),
-            pattern.draw('circle', '#36a2eb'),
-            pattern.draw('diamond', '#cc65fe'),
-            pattern.draw('triangle', '#ffce56')
-        ]
-    }],
-    labels: ['Red', 'Blue', 'Purple', 'Yellow']
-};
-```
-
-</div>
-
-### فونت ها
-
-به طور کلی 4 نوع حالت پیشفرض موجود است که به کمک آن می‌توان فونت داده ها را عوض کرد. این حالت ها در Chart.defaults.global قرار دارند.<br>
-برای مثال در کد زیر تمام متن ها به جز حاشیه نویسی ها قرمز هستند.
-
-<div dir="ltr">
-    
-```
-Chart.defaults.global.defaultFontColor = 'red';
-let chart = new Chart(ctx, {
-    type: 'line',
-    data: data,
-    options: {
-        legend: {
-            labels: {
-                // This more specific font property overrides the global property
-                fontColor: 'black'
-            }
-        }
-    }
-});
-```
-
-</div>
-
-| نام               | نوع    | حالت پیشفرض                                          | توضیحات                 |
-| ----------------- | ------ | ---------------------------------------------------- | ----------------------- |
-| defaultFontColor  | Color  | '#666'                                               | رنگ پیشفرض تمام متن ها  |
-| defaultFontFamily | string | "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif" | فونت پیشفرض تمام متن ها |
-| defaultFontSize   | number | 12                                                   | سایز پیشفرض فونت ها     |
-| defaultFontStyle  | string | 'normal'                                             | استایل پیشفرض فونت ها   |
-
-### کارایی (Performance)
-
-نمودارهای Chart.js در المان canvas رندر می‌شوند که این فرایند را بسیار سزیع می‌سازد.<br>
-
-برای دیتاست های بزرگ و حجیم نیز که سرعت برنامه در آن حائذ اهمیت است می توانیم با انجام کارهایی مانند غیر فعال کردن انمیشن، فشرده سازی داده، غیر فعال کردن منحنی ها و غیر فعال کردن کشیدن خط، کارایی برنامه را تا حد قابل توجهی افزایش دهیم.
 
 
 </div>
