@@ -1455,6 +1455,26 @@ var chartDifferentHoverMode = new Chart(ctx, {
 | padding | number | object      | 0       | فاصله از کادر درونی |
 |         |        |             |         |
 
+#### حاشیه درونی (Padding)
+
+اگر مقدار یک عدد باشد نتیجه بر هر چهار طرف نمودار اعمال می‌شود. اگر مقدار یک شی باشد هر کدام از موارد left, right, top, bottom به ترتیب حاشیه از چپ، راست، بالا و پایین رو مشخص می‌کنند.
+
+```
+let chart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: {
+        layout: {
+            padding: {
+                left: 50,
+                right: 0,
+                top: 0,
+                bottom: 0
+            }
+        }
+    }
+});
+```
 
 ### حاشیه نویسی (legend) 
 
