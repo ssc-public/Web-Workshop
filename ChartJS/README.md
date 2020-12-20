@@ -1622,18 +1622,19 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
 
     خط ها در رسم نمودار ها استفاده می‌شوند. امکانات تنظیم آن‌ها در Chart.defaults.global.elements.line فراهم شده.
 
-| نام              | نوع      | حالت پیشفرض          | توضیحات                                           |
-| ---------------- | -------- | -------------------- | ------------------------------------------------- | ------------------------ |
-| tension          | number   | 0.4                  | منحنی بزیور                                       |
-| backgroundColor  | Color    | 'rgba(0, 0, 0, 0.1)' | رنگ داخلی خط                                      |
-| borderWidth      | number   | 3                    | ضخامت خط حاشیه‌ای خط                              |
-| borderColor      | Color    | 'rgba(0, 0, 0, 0.1)' | رنگ خط حاشیه‌ای خط                                |
-| borderCapStyle   | string   | 'butt'               | استایل cap خط                                     |
-| borderDash       | number[] | []                   | حاشیه خط‌چین                                      |
-| borderDashOffset | number   | 0                    | میزان Offset خط                                   |
-| borderJoinStyle  | string   | 'miter'              | نحوه پیوستن خط‌ها                                 |
-| fill             | boolean  | string               | نحوه پر شدن ناحیه زیر خط                          | نحوه پر شدن ناحیه زیر خط |
-| stepped          | boolean  | FALSE                | در صورت فعال بودن خط به سورت پله‌ای کشیده می‌شود. |
+| tension          | number         | 0.4                  | منحنی بزیور                                       |
+|------------------|----------------|----------------------|---------------------------------------------------|
+| backgroundColor  | Color          | 'rgba(0, 0, 0, 0.1)' | رنگ داخلی خط                                      |
+| borderWidth      | number         | 3                    | ضخامت خط حاشیه‌ای خط                              |
+| borderColor      | Color          | 'rgba(0, 0, 0, 0.1)' | رنگ خط حاشیه‌ای خط                                |
+| borderCapStyle   | string         | 'butt'               | استایل cap خط                                     |
+| borderDash       | number[]       | []                   | حاشیه خط‌چین                                      |
+| borderDashOffset | number         | 0                    | میزان Offset خط                                   |
+| borderJoinStyle  | string         | 'miter'              | نحوه پیوستن خط‌ها                                 |
+| fill             | boolean|string | TRUE                 | نحوه پر شدن ناحیه زیر خط                          |
+| stepped          | boolean        | FALSE                | در صورت فعال بودن خط به سورت پله‌ای کشیده می‌شود. |
+| fill             | boolean|string | TRUE                 | نحوه پر شدن ناحیه زیر خط                          |
+| stepped          | boolean        | FALSE                | در صورت فعال بودن خط به سورت پله‌ای کشیده می‌شود. |
 
 #### تنظیمات مستطیل‌ها
 
