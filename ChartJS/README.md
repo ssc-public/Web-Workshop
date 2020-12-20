@@ -1336,6 +1336,39 @@ new Chart(ctx, conf);
 
 ## تنظیمات
 
+تنظیمات بدین منظور استفاده می‌شود که نحوه رفتار نمودار را کنترل کند.
+در این قسمت ابزاری وجود دارد که به کمک آن‌ها می‌توان استایل، فونت و ... نمودار را تنظیم کرد.
+
+### تنظیمات سراسری
+
+این ویژگی در نسخه 1.0 معرفی شد و هدف آن این بود که کاربر بتواند به سادگی ویژگی‌ای را در تمام نمودار های موجود تنظیم کند و نیازی به تغییر آن برای هر نمودار نباشد.
+<br>
+این کتابخانه به طور خودکار تنظیمات سراسری را با ویژگی های خواسته شده کاربر تطبیق می‌دهد و در صورت نیاز نیز می‌توان هر نمودار را به صورت جدا گانه تنظیم کرد.
+<br>
+قطعه کد زیر نحوه hover را برای تمامی نمودارهایی که به طور جداگانه تنظیم نشده‌اند را روی nearest تنظیم می‌کند.
+
+```
+Chart.defaults.global.hover.mode = 'nearest';
+
+// Hover mode is set to nearest because it was not overridden here
+var chartHoverModeNearest = new Chart(ctx, {
+    type: 'line',
+    data: data
+});
+
+// This chart would have the hover mode that was passed in
+var chartDifferentHoverMode = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: {
+        hover: {
+            // Overrides the global setting
+            mode: 'index'
+        }
+    }
+});
+```
+
 ### انیمیشن 
 
 ### چیدمان 
