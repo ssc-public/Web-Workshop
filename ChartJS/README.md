@@ -1808,6 +1808,34 @@ var chartData = {
     labels: ['Red', 'Blue', 'Purple', 'Yellow']
 };
 ```
+### فونت ها
+
+به طور کلی 4 نوع حالت پیشفرض موجود است که به کمک آن می‌توان فونت داده ها را عوض کرد. این حالت ها در Chart.defaults.global قرار دارند.<br>
+برای مثال در کد زیر تمام متن ها به جز حاشیه نویسی ها قرمز هستند.
+
+```
+Chart.defaults.global.defaultFontColor = 'red';
+let chart = new Chart(ctx, {
+    type: 'line',
+    data: data,
+    options: {
+        legend: {
+            labels: {
+                // This more specific font property overrides the global property
+                fontColor: 'black'
+            }
+        }
+    }
+});
+```
+
+| نام               | نوع    | حالت پیشفرض                                          | توضیحات                 |
+| ----------------- | ------ | ---------------------------------------------------- | ----------------------- |
+| defaultFontColor  | Color  | '#666'                                               | رنگ پیشفرض تمام متن ها  |
+| defaultFontFamily | string | "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif" | فونت پیشفرض تمام متن ها |
+| defaultFontSize   | number | 12                                                   | سایز پیشفرض فونت ها     |
+| defaultFontStyle  | string | 'normal'                                             | استایب پیشفرض فونت ها   |
+
 
 </div>
 
