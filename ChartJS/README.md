@@ -1528,8 +1528,7 @@ let chart = new Chart(ctx, {
 | fontFamily                      | string   | "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif" | نام فونت                                   |
 | padding                         | number   | 10                                                   | حاشیه‌درونی جعبه                           |
 | generateLabels                  | function |                                                      | برای هر حاشیه‌نویسی یک برچسب تشکیل می‌دهد. |
-| filter                          | function | null                                                 |
-| حاشیه نویسی ها را فیلتر می‌کند. |
+| filter                          | function | null                                                 | حاشیه نویسی ها را فیلتر می‌کند.
 
 ### عنوان گذاری 
 
