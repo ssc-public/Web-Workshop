@@ -101,8 +101,7 @@
 - [نگین جعفری](https://github.com/neginjafariii)
 - [علی جوانی](https://github.com/AliJavanJ1)
 - [امیر معینی](https://github.com/amir-mi)
-- [آرین احدی نیا](https://github.com/AryanAhadinia)
-- [محمد جعفری](https://github.com/Mohammadjafari80)
+
 
 # نحوه مشارکت
 
