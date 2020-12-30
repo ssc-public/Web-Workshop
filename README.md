@@ -113,6 +113,7 @@
 # ✍️ توسعه‌دهندگان
 
 اسامی توسعه‌دهندگان به ترتیب حروف الفبا به شرح زیر است:
+- [آرین احدی نیا](https://github.com/AryanAhadinia)
 - [عرشیا اخوان](https://github.com/ArshiAAkhavan)
 - [ابوالفضل اسد](https://github.com/abolfazlasad)
 - [رضا امینی‌مجد](https://github.com/rezaaminimajd)
@@ -121,6 +122,7 @@
 - [مبینا پورنعمت](https://github.com/Mobinapournemat)
 - [علیرضا تاجمیرریاحی](https://github.com/AlirezaT99)
 - [محمد مهدی جراحی](https://github.com/Jarrahi-MM)
+- [محمد جعفری](https://github.com/Mohammadjafari80)
 - [نگین جعفری](https://github.com/neginjafariii)
 - [محمد جمشیدی](https://github.com/jamshidi799)
 - [مهدی جوان‌مردی غریب‌دوستی](https://github.com/Mjg79)
