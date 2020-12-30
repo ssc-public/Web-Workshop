@@ -144,7 +144,9 @@
 - [مصطفی قدیمی](https://github.com/mostafaghadimi)
 - [امیر معینی](https://github.com/amir-mi)
 - [امیرمهدی نامجو](https://github.com/titansarus)
-
+- [مجتبی جعفری](https://github.com/mjafaari)
+- [مهسا شیخی](https://github.com/mahsaShv)
+- [علی بابایی](https://github.com/iamalibabaei)
 
 
 # نحوه مشارکت
