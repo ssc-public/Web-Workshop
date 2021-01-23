@@ -73,6 +73,8 @@
   - Django
   - Go
   - NodeJS
+  - Laravel
+  - ...
 ```
 </div>
 هم‌چنین دو ساختار برای توسعه‌ی آن‌ها وجود دارد که RestFul و GraphQL است. 
