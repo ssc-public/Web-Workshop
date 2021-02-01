@@ -1,0 +1,7 @@
+---
+- name: .:(Debian):. unistalling the cassandra
+  apt:
+    name: datastax-ddc
+    state: absent
+  ignore_errors: yes
+    

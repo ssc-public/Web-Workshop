@@ -1,0 +1,46 @@
+---
+
+- name: .:(RHEL):. installing the firewall
+  yum:
+    name: firewalld
+    state: present
+
+- name: .:(RHEL):. allowing ssh 
+  firewalld:
+    port: '{{ansible_ssh_port}}/tcp'
+    permanent: yes
+    state: enabled
+
+- name: .:(RHEL):. ensure that the firewall is up and running
+  systemd:
+    enabled: true
+    state: started
+    name: firewalld
+
+- name: .:(RHEL):. opening nodes ip for each other
+  firewalld:
+    rich_rule: rule family="ipv4" source address="{{item}}" accept
+    permanent: yes
+    state: enabled
+  with_inventory_hostnames:
+  - all
+
+
+- name: .:(RHEL):. Allow all access to node_exporter tcp port 9100
+  firewalld:
+    port: 9100/tcp
+    permanent: yes
+    state: enabled
+    immediate: yes
+  when: allow_node_exporter_install == true
+
+- name: .:(RHEL):. Allow all access to cassandra_exporter tcp port 8080
+  firewalld:
+    port: 8080/tcp
+    permanent: yes
+    state: enabled
+    immediate: yes
+  when: allow_cassandra_exporter_install == true
+
+- name: .:(RHEL):. reloading the firewall
+  command: firewall-cmd --reload 

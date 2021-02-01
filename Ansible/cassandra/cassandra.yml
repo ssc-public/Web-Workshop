@@ -1,0 +1,38 @@
+---
+- name: prerequisites setup
+  hosts: Nodes
+  tasks:
+  - import_role:
+      name: prerequisites
+    when: apply_prerequisites == 'true'
+
+- name: installation
+  hosts: Nodes
+  tasks:
+  - import_role:
+      name: install
+    when: allow_install=='true'
+    vars:
+      allow_systemd_downgrade: allow_systemd_downgrade
+
+- name: configuration
+  hosts: Nodes
+  tasks:
+  - import_role:
+      name: config 
+    when: allow_config=='true'
+
+- name: starting the cluster(seed nodes)
+  hosts: Nodes
+  tasks:
+  - import_role:
+      name: run
+    when: "allow_run=='true' and 'Seed_Nodes' in group_names"
+
+- name: starting the cluster(rest of the nodes)
+  hosts: Nodes, !Seed_Nodes
+  serial: 1
+  tasks:
+  - import_role:
+      name: run
+    when: allow_run=='true'

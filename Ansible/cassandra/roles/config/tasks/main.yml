@@ -1,0 +1,37 @@
+---
+# tasks file for config
+- name: making sure the log directory exist and is owned by cassandra
+  file:
+    path: /var/log/cassandra
+    owner: cassandra
+    group: cassandra
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: making sure the data directory exist and is owned by cassandra
+  file:
+    path: /var/lib/cassandra
+    owner: cassandra
+    group: cassandra
+    recurse: yes
+    state: directory
+    mode: '0755'
+
+- name: cassandra.yaml template
+  template:
+    src: templates/cassandra_config.j2
+    dest: /etc/cassandra/default.conf/cassandra.yaml
+    force: yes
+
+- name: removing the extra "," in 'seeds:",...'
+  replace:
+    path: /etc/cassandra/conf/cassandra.yaml
+    regexp: '^(.*- seeds\: "),(.*")$'
+    replace: '\1\2'
+
+- name: cassandra-rackdc.properties template
+  template:
+    src: templates/cassandra_rackdc.j2
+    dest: /etc/cassandra/conf/cassandra-rackdc.properties
+    force: yes

@@ -1,0 +1,28 @@
+X 1) passing the firewall status via commandline
+X 2) seeds
+X 3) endpoint_snitch:
+X 4) rack and datacenter
+X 5) ask for firewall permition
+6) debain base OS
+
+seed_provider:
+    # Addresses of hosts that are deemed contact points. 
+    # Cassandra nodes use this list of hosts to find each other and learn
+    # the topology of the ring.  You must change this if you are running
+    # multiple nodes!
+    - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+      parameters:
+          # seeds is actually a comma-delimited list of addresses.
+          # Ex: "<ip1>,<ip2>,<ip3>"
+          - seeds: "127.0.0.1"
+
+dc=dc1
+rack=rack1
+
+
+[cassandra]
+name=Apache Cassandra
+baseurl=https://www.apache.org/dist/cassandra/redhat/311x/
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://www.apache.org/dist/cassandra/KEYS
