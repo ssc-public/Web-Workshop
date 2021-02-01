@@ -1,0 +1,44 @@
+---
+# tasks file for roles/prerequisites
+
+- name: setting up the proxy
+  import_tasks: proxy.yml
+  when: allow_proxy_config == true 
+
+- name: disabling swap
+  import_tasks: swap.yml
+  when: disable_swap == true
+
+- name: adding external disk
+  import_tasks: mount_disk.yml
+  when: allow_disk_mount == true
+
+- name: sysctl config
+  import_tasks: sysctl.yml
+
+- name: firewall configuration
+  import_role: 
+    name: firewall
+  when: allow_firewall_config == true
+
+- name: removeing the footprints of previous setups
+  import_role:
+    name: clean_up
+  when: allow_clean_up == true 
+ 
+- set_fact:
+    firewall_config: "{{allow_firewall_config}}"
+
+- name: node_exporter installation
+  import_role:
+    name: node_exporter
+  when: allow_node_exporter_install == true
+  vars:
+    allow_firewall_config: "{{firewall_config}}"
+
+- name: cassandra_exporter installation
+  import_role:
+    name: cassandra_exporter
+  when: allow_cassandra_exporter_install == true
+  vars:
+    allow_firewall_config: "{{firewall_config}}"

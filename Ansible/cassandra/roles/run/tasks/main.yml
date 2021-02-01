@@ -1,0 +1,13 @@
+---
+# tasks file for run
+
+- name: starting the nodes
+  systemd:
+    state: restarted
+    name: cassandra
+  ignore_errors: yes
+
+- name: ensuring that the cassandra node is up and joined to the cluster
+  wait_for:
+    port: 7199
+    delay: 30
