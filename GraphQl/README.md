@@ -116,8 +116,8 @@ GraphQl به کلاینت این اجازه را می‌دهد که request خو
  </p>
  
 + [GraphQl core concepts](./core.md)
-+ [simple back-end based on GraphQl using Go](./back/readme.md)
-+ [simple front-end based on GraphQl using apollo + react](./front/readme.md)
++ [simple back-end based on GraphQl using Go](./back/README.md)
++ [simple front-end based on GraphQl using apollo + react](./front/README.md)
 
 
  
