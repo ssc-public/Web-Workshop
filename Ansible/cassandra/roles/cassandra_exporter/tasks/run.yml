@@ -1,0 +1,18 @@
+---
+# tasks file for run
+- name: systemctl daemon-reload
+  systemd:
+    daemon_reload: yes
+
+- name: Starting the cassandra exporter
+  systemd:
+    state: started
+    name: cassandra_exporter
+    enabled: yes
+  ignore_errors: yes
+
+- name: Ensuring that the cassandra exporter is up
+  wait_for:
+    port: 8080
+    delay: 10
+

@@ -1,0 +1,18 @@
+---
+# tasks file for config
+- name: Cassandra exporter config file
+  template:
+    src: templates/cassandra_config.yml
+    dest: /opt/cassandra_exporter/cassandra_config.yml
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Cassandra exporter service file
+  template:
+    src: templates/cassandra_exporter.service
+    dest: /etc/systemd/system/cassandra_exporter.service
+    owner: root
+    group: root
+    mode: 0644
+
