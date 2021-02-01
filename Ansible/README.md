@@ -97,99 +97,11 @@ module ها قطعه کد هایی هستند که ماشین را از حالت
   hosts: all
   tasks:
   # first task
-  - name: Create filesystem on disk
-    # first module
-    filesystem:
-      fstype: 'ext4'
-      dev: '/dev/sdb'
-
-  - name: mounting the disk
-    mount:
-      path: '/mnt/'
-      src: '/dev/sdb'
-      fstype: 'ext4'
-      state: mounted
-
-  - name: configuring the ownership
-    file:
-      path: '/mnt/'
-      state: directory
-      owner: root
-      group: root
-      mode: '0644'
-
-```
-<p dir="rtl" style="position:right;">
-برای اجرای playbook بالا تنها کافیست کامند زیر را کنید
-
-```
-ansible-playbook playbook-file-name.yml 
-```
-
-
-
-### Ansible Roles
-<p dir="rtl" style="position:right;">
-role ها در انسیبل مجموعه‌ای کامل شامل یک سری task به همراه تمام فایل‌ها و متغیر‌های مورد نیاز آن‌ها می‌باشد.
-از role می‌توان به صورت مستقیم در play استفاده کرد و ایزوله بودن role ها باعث می‌شود بتوان از آن ها به راحتی در ansible مختلف استفاده نمود.
-
-<p dir="rtl" style="position:right;">
-با دستور زیر می‌توان یک role ساخت:
-
-```
-ansible-galaxy role init "role-name"
-```
-<p dir="rtl" style="position:right;">
-مثالی از یک play که از چندین role مختلف برای آماده سازی ماشین مقصد استقاده می‌کند:
-
-```yaml
----
-- name: disk setup
-  hosts: all
-  tasks:
-  - name: setting up the proxy
-    import_role:
-      name: proxy
-    when: allow_proxy_config == true
-
-  - name: disabling swap
-    import_role:
-      name: swap
-    when: disable_swap == true
-
-  - name: adding external disk
-    import_role:
-      name: mount_disk
-    when: allow_disk_mount == true
-
-  - name: sysctl config
-    import_role:
-      name: sysctl
-
-  - name: firewall configuration
-    import_role:
-      name: firewall
-    when: allow_firewall_config == true
-```
-
-# Ansible ad-hoc
-<p dir="rtl" style="position:right;">
-با اینکه ansible playbook راه مناسبی برای automate کردن کار های تکراری است، با این حال برای زمان هایی که می‌خواهیم یک کار کوچک را برای تعدادی ماشین انجام دهیم مناسب نیست زیرا باید برای کاری که می‌خواهیم تنها یک بار انجام دهیم یک فایل ansible playbook آماده کنیم.
-
-<p dir="rtl" style="position:right;">
-در چنین مواقعی بهترین گزینه ansible ad-hoc است که به شما اجازه می‌دهد از طریق ترمینال یک module خاص را بر روی ماشین های مقصد اجرا کنید!
-
-<p dir="rtl" style="position:right;">
-مثالی از یک ansible ad-hoc که بررسی می‌کند آیا port 2181 بر روی ماشین هایی که بر روی آنها apache zookeeper نصب شده است در حال listen شدن می‌باشد یا نه:
-
-```
-ansible zookeepers -m raw -a "netstat -nltp | grep 2181"
-```
-<p dir="rtl" style="position:right;">
-در کامند بالا ما بر روی تمام ماشین هایی که در فایل ansible hosts در گروه "zookeepers" قرار دارند ماژول "raw" را به همراه پارامتر های مورد نظر (هر آنچه بعد از -a آمده است) اجرا می‌کنیم
 
 
 # end of the journey?
+
++ [an Ansible playbook for deploying a cassandra cluster](./cassandra/README.md)
 
 ## resources
 >https://www.docs.ansible.com/
