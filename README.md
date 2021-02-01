@@ -73,6 +73,8 @@
   - Django
   - Go
   - NodeJS
+  - Laravel
+  - ...
 ```
 </div>
 هم‌چنین دو ساختار برای توسعه‌ی آن‌ها وجود دارد که RestFul و GraphQL است. 
@@ -129,9 +131,11 @@
 - [علی جوانی](https://github.com/AliJavanJ1)
 - [بهار خدابخشیان](https://github.com/baharkhd)
 - [علی‌رضا دیزجی](https://github.com/alirezadizaji)
+- [بهراد ذبیحی](https://github.com/8ehrad)
 - [امیر مهدی دیگبری](https://github.com/amdigbari)
 - [پارسا رستمی](https://github.com/parsarsm)
 - [آرمان زارعی](https://github.com/ArmanZarei)
+- [سپهر زمانی](https://github.com/sepzame)
 - [آتنا ساقی](https://github.com/atenasadat)
 - [احمد سلیمی](https://github.com/ahmadsalimi)
 - [علی‌رضا شاطری](https://github.com/ShAlireza)
@@ -141,6 +145,7 @@
 - [علیرضا ضیائی](https://github.com/alrz1999)
 - [محمدرضا عبدی](https://github.com/baharkhd)
 - [محمد فتاح](https://github.com/mohammad-fattah)
+- [عرفان فرهادی](https://github.com/farhadi-erfan)
 - [مصطفی قدیمی](https://github.com/mostafaghadimi)
 - [امیر معینی](https://github.com/amir-mi)
 - [امیرمهدی نامجو](https://github.com/titansarus)
