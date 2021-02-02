@@ -535,4 +535,388 @@ TTL temp                => -1
 
 </div>
 
+## داده ساختار ها در ردیس
+
+در ردیس داده ساختار های متعددی وجود دارد. چند مورد از این داده ساختار ها و دستورات مربوط به آن را به اختصار معرفی خواهیم کرد.
+
+### لیست (list)
+
+لیست یک توالی ترتیب دار از المان های است.
+دستورات اصلی داده ساختار لیست عبارتند از:
+
+با استفاده از این دستور به سر سمت راست لیست، عنصر اضافه میشود.
+پاسخ این دستور طول لیست پس از عملیات خواهد بود.
+<div dir="ltr">
+
+```
+RPUSH
+```
+```
+> RPUSH mylist Aryan
+1
+> RPUSH mylist Avina
+2
+```
+</div>
+
+با استفاده از این دستور به سر سمت چپ لیست، عنصر اضافه میشود.
+پاسخ این دستور طول لیست پس از عملیات خواهد بود.
+<div dir="ltr">
+
+```
+LPUSH
+```
+```
+> LPUSH mylist Hamid
+1
+```
+</div>
+
+توجه کنید که با اولین باری که یک تابع لیستی را بر روی یک کلید آزاد صدا کنید، مقدار آن کلید تعریف به عنوان لیست تعریف میشود.
+
+با استفاده از این دستور میتوانیم طول لیست را دریافت کنیم.
+
+<div dir="ltr">
+
+```
+LLEN
+```
+```
+> RPUSH mylist Aryan
+1
+> RPUSH mylist Avina
+2
+> LLEN mylist
+2
+> LPUSH mylist Hamid
+3
+> LLEN mylist
+3
+```
+</div>
+
+با استفاده از این دستور میتوانیم عناصر قرار گرفته بین دو ایندکس را دریافت کنیم.
+به عنوان ورودی این دستور دو عدد دریافت می شود که اولی به معنای شروع بازه و دومی به معنی پایان بازه میباشد.
+هر دو ایندکس شروع و پایان در نتیجه نهایی قرار میگیرند.
+توجه کنید که ایندکس گذاری در این داده ساختار نیز مشابه اکثر زبان های برنامه نویسی از صفر است.
+بنابرین یک لیست n تایی از صفر تا n-1 ایندکس بندی میشود. همچنین مکمل دهم هر ایندکس نیز معادل همان ایندکس خواهد بود.
+به عبارت دیگر عناصر متناظرا از 1- تا n- از انتهای لیست ایندکس بندی میشوند. بنابرین هر دو ایندکس n-1 و 1-، اشاره به عنصر آخر لیست دارند.
+<div dir="ltr">
+
+```
+LRANGE
+```
+```
+> RPUSH mylist Aryan
+1
+> RPUSH mylist Avina
+2
+> LPUSH mylist Sara
+3
+> LPUSH mylist Hamid
+4
+> LRANGE mylist 1 3
+1) "Sara"
+2) "Aryan"
+3) "Avina"
+> LRANGE mylist 0 2
+1) "Hamid"
+2) "Sara"
+3) "Aryan"
+> LRANGE mylist 0 3
+1) "Hamid"
+2) "Sara"
+3) "Aryan"
+4) "Avina"
+> LRANGE mylist 0 -1
+1) "Hamid"
+2) "Sara"
+3) "Aryan"
+4) "Avina"
+> LRANGE mylist 1 -2
+1) "Sara"
+2) "Aryan"
+```
+</div>
+
+با استفاده از این دو دستور، عنصر سر راست یا جپ لیست حذف و برگردانده میشود.
+
+<div dir="ltr">
+
+```
+RPOP
+```
+```
+LPOP
+```
+```
+> RPUSH mylist Aryan
+1
+> RPUSH mylist Avina
+2
+> LPUSH mylist Sara
+3
+> LPUSH mylist Hamid
+4
+> LRANGE mylist 0 -1
+1) "Hamid"
+2) "Sara"
+3) "Aryan"
+4) "Avina"
+> LPOP mylist
+Hamid
+> RPOP mylist
+Avina
+> LRANGE mylist 0 -1
+1) "Sara"
+2) "Aryan"
+```
+</div>
+
+در نهایت توجه شما را به variadic بودن دستورات PUSH جلب می کنم. به این صورت که همزمان چند عنصر را می توان با استفاده از این دستور به لیست اضافه کرد.
+
+<div dir="ltr">
+
+```
+> RPUSH mylist Hamid Sara Aryan Avina
+> LRANGE mylist 0 3
+1) "Hamid"
+2) "Sara"
+3) "Aryan"
+4) "Avina"
+```
+</div>
+
+### مجموعه (Set)
+
+یک داده ساختار معروف دیگر در ردیس، مجموعه است. مزیت مجموعه این است که با سرعت بسیار بالا می توان بررسی کرد که آیا
+یک المان در آن وجود دارد یا خیر. توجه کنید که همانند تعریف ریاضی مجموعه، ترتیب خاصی در مجموعه حاکم نیست و المان ها به ترتیب شبه تصادفی در مجموعه قرار می گیرند.
+
+دستورات مجموعه عبارتند از:
+
+با استفاده از این دستور میتوانیم یک عنصر به مجموعه اضافه کنیم. مشابه لیست این دستور نیز میتواند چند ورودی همزمان دریافت کند.
+
+<div dir="ltr">
+
+```
+SADD
+```
+```
+> SADD airlines "Iran Air"
+1
+> SADD airlines "Lufthansa" "British Airways" "United Airliens"
+4
+```
+</div>
+
+با استفاده از دستور زیر می توانیم المانی را از لیست حذف کنیم. توجه کنید پاسخ این دستور صفر و یک است. اگر صفر باشد، یعنی اصلا این عنصر وجود نداشته و تغییری در لیست نیز ایجاد نشده است.
+اگر یک باشد به این معنی است که آن المان وجود داشته و حذف شده است. توجه کنید که تکرر در مجموعه معنی ندارد و یک عنصر یا وجود دارد یا ندارد. یک عنصر نمی تواند دوبار در یک مجموعه باشد.
+
+<div dir="ltr">
+
+```
+SREM
+```
+```
+> SADD airlines "Iran Air" "Lufthansa" "British Airways" "United Airliens"
+3
+> SREM airlines "Lufthansa"
+1
+> SREM airliens "Lufthansa"
+0
+```
+</div>
+
+با استفاده از دستور زیر، میتوانیم وجود یا عدم وجود یک المان را در مجموعه بسنجیم.
+
+<div dir="ltr">
+
+```
+SISMEMBER
+```
+```
+> SADD airlines "Iran Air" "Lufthansa" "British Airways" "United Airliens"
+3
+> SISMEMBER airlines "Lufthansa"
+1
+> SISMEMBER airlines "Air France"
+0
+```
+</div>
+
+با استفاده از دستور زیر، می توانید تمام اعضای یک مجموعه را دریافت کنید. توجه کنید که ترتیب خاصی در برگرداندن اعضا وجود ندارد.
+
+<div dir="ltr">
+
+```
+SMEMBERS
+```
+```
+> SADD airlines "Iran Air" "Lufthansa" "British Airways" "United Airliens"
+3
+> SISMEMBERS airlines
+1) Lufthansa
+2) British Airways
+3) Iran Air
+4) United Airliens
+```
+</div>
+
+با استفاده از دستور `SRANDMEMBER` میتوانید یک عنصر رندم را از مجموعه دریافت کنید. در صورتی که نیاز به چند عدد رندم دارید. میتوانید تعداد مورد نیاز را به عنوان پارامتر ورودی به این تابع بدهید.
+
+<div dir="ltr">
+
+```
+SRANDMEMBER
+```
+```
+> SADD airlines "Iran Air" "Lufthansa" "British Airways" "United Airliens"
+3
+> SRANDMEMBER airlines
+"Lufthansa"
+> SRANDMEMBER airlines 2
+1) "British Airways"
+2) "Iran Air"
+```
+</div>
+
+در صورتی که میخواهید عناصر خروجی گرفته شده از دستور `SRANDMEMBER` حذف شود، میتوانید به جای این دستور از دستور زیر استفاده کنید.
+
+<div dir="ltr">
+
+```
+SPOP
+```
+```
+> SADD airlines "Iran Air" "Lufthansa" "British Airways" "United Airliens"
+3
+> SPOP airlines 2
+1) "British Airways"
+2) "Iran Air"
+> SMEMBERS airlines
+1) Lufthansa
+```
+</div>
+
+### مجموعه مرتب (Sorted List)
+
+مجموعه های مرتب مشابه مجموعه های عادی هستند. با این تفاوت که در تناظر با هر عنصر یک امتیاز عددی قرار می گیرد که مبنای مرتب‌سازی عناصر خواهد بود. این داده ساختار با `Z` مشخص می شود.
+برای یادگیری این داده ساختار، کافی است که به دستورات لیست و مجموعه مسلط باشید.
+مثال:
+
+<div dir="ltr">
+
+```
+> ZADD hackers 1940 "Alan Kay"
+1
+> ZADD hackers 1906 "Grace Hopper"
+1
+> ZADD hackers 1953 "Richard Stallman"
+1
+> ZADD hackers 1965 "Yukihiro Matsumoto"
+1
+> ZADD hackers 1916 "Claude Shannon"
+1
+> ZADD hackers 1969 "Linus Torvalds"
+1
+> ZADD hackers 1957 "Sophie Wilson"
+1
+> ZADD hackers 1912 "Alan Turing"
+1
+> ZRANGE hackers 2 4
+1) "Claude Shannon", 2) "Alan Kay", 3) "Richard Stallman"
+```
+</div>
+
+### هش (Hash)
+
+هش یک مپ بین کلید ها و مقادیر رشته ای یا عددی است.
+با استفاده از دستور `HSET` میتوانیم به هر کلید یک مقدار نسبت بدهیم.
+مقدار خروجی مشابه مجموعه است. اگر آن کلید قبلا مقدار دهی نشده باشد 1 و در غیر این صورت صفر خواهد بود.
+<div dir="ltr">
+
+```
+HSET
+```
+```
+> HSET user:1000 name "John Smith"
+1
+> HSET user:1000 email "john.smith@example.com"
+1
+> HSET user:1000 password "s3cret"
+1
+```
+</div>
+
+همچنین می توانیم با استفاده از دستور زیر مقدار نسبت داده شده به یک کلید را استخراج کنیم.
+
+<div dir="ltr">
+
+```
+HGET
+```
+```
+> HSET user:1000 name "John Smith"
+1
+> HSET user:1000 email "john.smith@example.com"
+1
+> HSET user:1000 password "s3cret"
+1
+> HGET user:1000 name
+"John Smith"
+```
+</div>
+
+همچنین می تونیم با استفاده از دستور زیر همزمان چند کلید را مقداردهی کنیم.
+
+<div dir="ltr">
+
+```
+HMSET
+```
+```
+> HMSET user:1001 name "Mary Jones" password "hidden" email "mjones@example.com"
+OK
+> HGET user:1002 name
+"Mary Jones"
+```
+</div>
+
+همچنین با استفاده از دستور زیر می توانیم که تمامی کلید های مقدار دهی شده ی یک هش را دریافت کنیم.
+
+<div dir="ltr">
+
+```
+HGETALL
+```
+```
+> HMSET user:1001 name "Mary Jones" password "hidden" email "mjones@example.com"
+OK
+> HGETALL user:1001
+1) "name"
+2) "Mary Jones"
+3) "password"
+4) "hidden"
+5) "email"
+6) "mjones@example.com"
+```
+</div>
+
+توجه کنید که برای مقادیر عددی، دستورات INCR و ... به صورت atomic وجود دارند. لزوم استفاده از این دستورات را پیشتر توضیح دادیم.
+
+<div dir="ltr">
+
+```
+HINCRBY
+```
+```
+> HMSET user:1002 name "Aryan" sessions 1
+OK
+> HINCRBY user:1002 sessions 1
+2
+> HINCRBY user:1002 sessions 1
+3
+```
+</div>
+
 </div>
