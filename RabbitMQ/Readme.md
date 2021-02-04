@@ -1,6 +1,11 @@
 <div dir='rtl' align='justify'>
-<h2 align="center">RabbitMQ</h2>
+<p align="center"><img src="https://www.rabbitmq.com/img/logo-rabbitmq.svg"/></p>
   
+<p align="center">
+    گردآوردندگان: علیرضا ضیائی، ابوالفضل اسد
+</p>
+ 
+
 # پیشنیاز‌ها
 این آموزش فرض می‌کند که 
 ``RabbitMQ``
