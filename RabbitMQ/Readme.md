@@ -1,5 +1,23 @@
 <div dir='rtl' align='justify'>
 <h2 align="center">RabbitMQ</h2>
+  
+  # عناوین
+
+- [Work Queues](#Work Queues)
+  - [Preparation](#Preparation)
+  - [Round-robin dispatching](#Round-robin dispatching)
+  - [Message acknowledgment](#Message acknowledgment)
+  - [Message durability](#Message durability)
+  - [Fair dispatch](#Fair dispatch)
+  - [Putting it all together](#Putting it all together)
+- [Routing](#Routing)
+  - [Bindings](#Bindings)
+  - [Direct exchange](#Direct exchange)
+  - [Multiple bindings](#Multiple bindings)
+  - [Emitting logs](#Emitting logs)
+  - [Subscribing](#Subscribing)
+  - [Putting it all together](#Putting it all together)
+  
 
   # Work Queues
   در قسمت قبل برنامه‌هایی نوشتیم تا پیام‌ها را به یک صف با نام مشخص ارسال کنیم و در برنامه‌ی دیگر این پیام‌ها را از این صف دریافت کنیم. در این قسمت میخواهیم یک
