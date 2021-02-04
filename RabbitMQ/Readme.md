@@ -399,7 +399,6 @@ sudo rabbitmqctl list_queues
 
 
   # Work Queues
-  https://www.rabbitmq.com/img/tutorials/python-two.png
   <p align="center"><img src="https://www.rabbitmq.com/img/tutorials/python-two.png"/></p>
 
 در قسمت قبل برنامه‌هایی نوشتیم تا پیام‌ها را به یک صف با نام مشخص ارسال کنیم و در برنامه‌ی دیگر این پیام‌ها را از این صف دریافت کنیم. در این قسمت میخواهیم یک
@@ -1175,8 +1174,7 @@ rabbitmqctl list_bindings
 
 ## putting it all together
 
-<p align="center"><img src="<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/bindings.png"/></p>
-"/></p>
+<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/bindings.png"/></p>
 
 برنامه‌ی تولید کننده
 (producer)
@@ -1653,7 +1651,7 @@ exchange
 
   اگر می خواهید فقط 
   log
-  های  
+  های
   warning
   و 
   error
