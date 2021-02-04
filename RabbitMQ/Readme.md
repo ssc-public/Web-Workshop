@@ -399,7 +399,10 @@ sudo rabbitmqctl list_queues
 
 
   # Work Queues
-  در قسمت قبل برنامه‌هایی نوشتیم تا پیام‌ها را به یک صف با نام مشخص ارسال کنیم و در برنامه‌ی دیگر این پیام‌ها را از این صف دریافت کنیم. در این قسمت میخواهیم یک
+  https://www.rabbitmq.com/img/tutorials/python-two.png
+  <p align="center"><img src="https://www.rabbitmq.com/img/tutorials/python-two.png"/></p>
+
+در قسمت قبل برنامه‌هایی نوشتیم تا پیام‌ها را به یک صف با نام مشخص ارسال کنیم و در برنامه‌ی دیگر این پیام‌ها را از این صف دریافت کنیم. در این قسمت میخواهیم یک
   Work Queue
   ایجاد کنیم که از آن برای پخش کردن کارها و 
   request
@@ -821,7 +824,7 @@ sudo rabbitmqctl list_queues
   امین 
   consumer
   ارسال می کند.
-  ![enter image description here](https://www.rabbitmq.com/img/tutorials/prefetch-count.png)
+  <p align="center"><img src="https://www.rabbitmq.com/img/tutorials/prefetch-count.png"/></p>
   برای مقابله با این مشکل می توانیم از تابع 
   `prefetch`
   با مقدار`1` استفاده کنیم. این به 
@@ -1442,7 +1445,8 @@ exchange
     پیام مطابقت دارد.
 
   برای نشان دادن این ، تنظیمات زیر را در نظر بگیرید:
-  ![enter image description here](https://www.rabbitmq.com/img/tutorials/direct-exchange.png)
+  <p align="center"><img src="https://www.rabbitmq.com/img/tutorials/direct-exchange.png"/></p>
+ 
 
   در این تنظیمات ، می توان 
   `direct` exchange  
@@ -1469,8 +1473,8 @@ exchange
     ارسال می شوند. همه پیام های دیگر کنار گذاشته می شوند و از دست می‌روند.
 
   ## Multiple bindings
-  ![enter image description here](https://www.rabbitmq.com/img/tutorials/direct-exchange-multiple.png)
-
+  <p align="center"><img src="https://www.rabbitmq.com/img/tutorials/direct-exchange-multiple.png"/></p>
+  
   اتصال صف های متعدد با 
   binding key
   کاملاً درست و کاربردی است. به عنوان مثال ما می توانیم یک اتصال بین 
@@ -1555,7 +1559,7 @@ exchange
 
   ## Putting it all together
 
-  ![enter image description here](https://www.rabbitmq.com/img/tutorials/python-four.png)
+  <p align="center"><img src="https://www.rabbitmq.com/img/tutorials/python-four.png"/></p>
 
   کد نهایی
   `emit_log_direct.js`:
