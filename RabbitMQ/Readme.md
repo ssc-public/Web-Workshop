@@ -3,20 +3,20 @@
   
   # عناوین
 
-- [Work Queues](#Work Queues)
-  - [Preparation](#Preparation)
-  - [Round-robin dispatching](#Round-robin dispatching)
-  - [Message acknowledgment](#Message acknowledgment)
-  - [Message durability](#Message durability)
-  - [Fair dispatch](#Fair dispatch)
-  - [Putting it all together](#Putting it all together)
-- [Routing](#Routing)
-  - [Bindings](#Bindings)
-  - [Direct exchange](#Direct exchange)
-  - [Multiple bindings](#Multiple bindings)
-  - [Emitting logs](#Emitting logs)
-  - [Subscribing](#Subscribing)
-  - [Putting it all together](#Putting it all together)
+- [Work Queues](#work-queues)
+  - [Preparation](#preparation)
+  - [Round-robin dispatching](#round-robin-dispatching)
+  - [Message acknowledgment](#message-acknowledgment)
+  - [Message durability](#message-durability)
+  - [Fair dispatch](#fair-dispatch)
+  - [Putting it all together](#putting-it-all-together)
+- [Routing](#routing)
+  - [Bindings](#bindings)
+  - [Direct exchange](#direct-exchange)
+  - [Multiple bindings](#multiple-bindings)
+  - [Emitting logs](#emitting-logs)
+  - [Subscribing](#subscribing)
+  - [Putting it all together](#putting-it-all-together-1)
   
 
   # Work Queues
