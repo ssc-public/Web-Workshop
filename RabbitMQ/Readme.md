@@ -33,7 +33,7 @@
   - [Message durability](#message-durability)
   - [Fair dispatch](#fair-dispatch)
   - [Putting it all together](#putting-it-all-together-1)
-- [Publish/Subscribe](#Publish/Subscribe)
+- [Publish/Subscribe](#PublishSubscribe)
   - [Exchanges](#exchanges)
   - [Temporary queues](#temporary-queues)
   - [Bindings](#bindings)
