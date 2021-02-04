@@ -1,23 +1,402 @@
 <div dir='rtl' align='justify'>
 <h2 align="center">RabbitMQ</h2>
   
+# پیشنیاز‌ها
+این آموزش فرض می‌کند که 
+``RabbitMQ``
+نصب شده است و در 
+``localhost``
+بر روی پورت استاندارد
+``5672``
+در حال اجرا می‌باشد.
+در غیر این صورت تغییرات لازم را خودتان اعمال کنید.
+
+# کجا کمک بگیریم؟
+اگر در این آموزش به مشکل برخوردید می‌توانید از طزیق
+[mailing list](https://groups.google.com/forum/#!forum/rabbitmq-users)
+و یا
+[RabbitMQ community Slack](https://rabbitmq-slack.herokuapp.com/)
+مشکلاتتان را با ما در میان بگذارید.
+
+
+
   # عناوین
 
+- [Hello World](#Hello-World)
+  - [Sending](#sending)
+  - [Receiving](#receiving)
+  - [Putting it all together](#putting-it-all-together)
 - [Work Queues](#work-queues)
   - [Preparation](#preparation)
   - [Round-robin dispatching](#round-robin-dispatching)
   - [Message acknowledgment](#message-acknowledgment)
   - [Message durability](#message-durability)
   - [Fair dispatch](#fair-dispatch)
-  - [Putting it all together](#putting-it-all-together)
-- [Routing](#routing)
+  - [Putting it all together](#putting-it-all-together-1)
+- [Publish/Subscribe](#Publish/Subscribe)
+  - [Exchanges](#exchanges)
+  - [Temporary queues](#temporary-queues)
   - [Bindings](#bindings)
+  - [Putting it all together](#putting-it-all-together-2)
+- [Routing](#routing)
+  - [Bindings](#bindings-1)
   - [Direct exchange](#direct-exchange)
   - [Multiple bindings](#multiple-bindings)
   - [Emitting logs](#emitting-logs)
   - [Subscribing](#subscribing)
-  - [Putting it all together](#putting-it-all-together-1)
+  - [Putting it all together](#putting-it-all-together-3)
   
+  
+  
+  # Hello World
+RabbitMQ
+یک توزیع کننده‌ی پیام است که پیام‌ها را می‌گیرد و به جلو می‌فرستد.برای فهم بهتر می‌توانید انتقال یک پیام پستی را در نظر بگیرید که در آن فرد الف می‌خواهد یک پیام را برای فرد ب ارسال کند.فرد الف پیام را در صندوق پستی می‌گذارد و پست‌چی پیام را به فرد ب می‌رساند. در این‌جا 
+RabbitMQ
+نقش صندوق پست، اداره پست و پست‌چی را انجام می‌دهد.
+
+فرق اصلی 
+RabbitMQ
+و اداره‌ی پست این است که به‌جای اینکه با کاغذها و نامه‌ها کار کند با داده‌ها و پیام‌های باینری کار می‌کند و آن‌ها را می‌گیرد، ذخیره می‌کند و در نهایت ارسال می‌کند.
+
+بعضی از اصطلاحات مورد استفاده در 
+RabbitMQ:
+
++ پیام (Message) داده‌ای است که قرار است ارسال شود.
++ تولید کردن (producing) چیزی جز ارسال پیام نیست. یک برنامه که پیام ارسال می‌کند یک تولیدکننده (producer) است.
+<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/producer.png"/></p>
+
++ یک صف (queue) یک نام برای صندوق پستی است که در داخل 
+RabbitMq
+تعبیه شده‌است.همچنین جریان پیام‌هایی که از 
+RabbitMq 
+و برنامه‌ی شما می‌گذرد باید در یک صف ذخیره شوند. محدودیت صف را میزان فضای حافظه و دیسک سیستم میزبان مشخص می‌کند.
+این صف‌ها اصولا یک بافر بزرگ از پیام‌ها می‌باشند.تولید‌کنندگان مختلف پیام‌های خود را در یک صف می‌گذارند و مصرف‌کنندگان 
+(consumers)
+مختلف آن‌ها را دریافت می‌کنند.
+<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/queue.png"/></p>
+
++ مصرف‌کردن
+(consuming)
+مانند دریافت پیام می‌باشد.یک مصرف‌کننده
+(consumer)
+یک برنامه است که معمولا صبر می‌کند تا یک پیام را دریافت کند.
+<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/consumer.png"/></p>
+
+
+توجه شود که تولید‌کننده
+(producer)
+مصرف‌کننده،
+(consumer)
+و توزیع‌کننده
+(broker)
+می‌تواند داخل یک میزبان نباشد. همچنین یک اپلیکیشن می‌تواند هم تولید کننده و هم مصرف‌کننده باشد.
+
+<div dir='ltr'>
+
+**hello world**
+
+</div>
+
+
+(
+با استفاده از 
+amqp.node client
+)
+
+در این بخش از آموزش دو برنامه‌ی کوچک با استفاده از
+javascript
+می‌نویسم. یک تولید کننده
+(producer)
+که یک پیام را ارسال می‌کند. و یک مصرف‌کننده
+(consumer)
+که پیام را دریافت کرده و چاپ می‌کند.
+
+در نمودار زیر
+"p"
+تولیدکننده و
+"C"
+مصرف‌کننده‌ی ما است. جعبه‌ی وسط نیز یک صف است که 
+RabbitMQ
+به عنوان بافر در پیش از مصرف‌کننده نگه می‌دارد.
+
+<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/python-one.png"/></p>
+
+> **کتابخانه‌ی 
+> amqp.node clint**
+> 
+> RabbitMQ
+> با پروتکل‌های مختلف کار می‌کند در این آموزش ما از 
+> AMQP 0-9-1
+> که یک پروتکل متن‌باز و همه‌منظوره برای ارسال پیام است، استفاده می‌کنیم.
+>
+> یک 
+> client
+> در
+> [زبان‌های مختلفی](https://www.rabbitmq.com/devtools.html)
+> برای
+> RabbitMQ
+> وجود دارد.
+> ما در این آموزش از
+> [amqp.node client](http://www.squaremobius.net/amqp.node/)
+> استفاده می‌کنیم.
+
+<div dir='ltr' align='justify'>
+
+```bash
+npm install amqplib
+```
+</div>
+
+در این‌جا 
+amqp.node
+نصب شده است. حال ما می‌توانیم مقداری کد بنویسیم.
+
+## sending
+
+ما با استفاده از
+``send.js``
+فرستنده‌ی خود را صدا کرده و با استفاده از
+``receive.js``
+مصرف‌کننده را فرا می‌خوانیم. فرستنده در ابتدا به 
+RabbitMQ
+وصل خواهد می‌شود ، یک پیام را ارسال می‌کند و در نهایت خارج می‌شود.
+
+در
+[``send.js``](https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/javascript-nodejs/src/send.js)
+ابتدا کتابخانه را اضافه می‌کنیم.
+
+<div dir='ltr' align='justify'>
+
+```javascript
+#!/usr/bin/env node
+
+var amqp = require('amqplib/callback_api');
+```
+
+</div>
+
+سپس به 
+RabbitMQ server
+وصل می‌شویم.
+
+<div dir='ltr' align='justify'>
+
+```javascript
+amqp.connect('amqp://localhost', function(error0, connection) {});
+```
+
+</div>
+
+سپس یک 
+channel
+می‌سازیم. در اینجا بسیاری از 
+API
+هایی که برای انجام کارها نیاز داریم تعبیه شده است.
+
+<div dir='ltr' align='justify'>
+
+```javascript
+amqp.connect('amqp://localhost', function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+  connection.createChannel(function(error1, channel) {});
+});
+```
+
+</div>
+
+برای ارسال ما باید ابتدا یک صف تعریف کرده و سپس پیام را در صف قرار دهیم.
+
+<div dir='ltr' align='justify'>
+
+```javascript
+amqp.connect('amqp://localhost', function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+  connection.createChannel(function(error1, channel) {
+    if (error1) {
+      throw error1;
+    }
+    var queue = 'hello';
+    var msg = 'Hello world';
+
+    channel.assertQueue(queue, {
+      durable: false
+    });
+
+    channel.sendToQueue(queue, Buffer.from(msg));
+    console.log(" [x] Sent %s", msg);
+  });
+});
+```
+
+</div>
+
+تعریف یک صف یک عمل خنثی است. این صف تنها در صورتی ساخته می‌شود که از قبل وجود نداشته باشد. محتوای پیام یک آرایه از بایت‌ها است پس بنابر این شما می‌توانی آنها را به هر صورت که بخواهید 
+encode
+کنید.
+
+و در نهایت ما 
+connection
+را بسته و خارج می‌شویم.
+
+<div dir='ltr' align='justify'>
+
+```javascript
+setTimeout(function() { 
+  connection.close(); 
+  process.exit(0) 
+  }, 500);
+```
+
+</div>
+
+[نسخه‌ی کامل برنامه در این‌جا قرار دارد.](https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/javascript-nodejs/src/send.js)
+
+
+## receiving
+
+در این‌جا مصرف‌کننده ما
+(consmer)
+به گوش می‌ایستد تا پیام‌ها را از 
+RabbitMQ
+بگیرد. پس در اینجا برخلاف ارسال کننده که فقط یک پیام را ارسال می‌کرد،در این جا ما به دریافت ادامه می‌دهیم تا هر پیامی که وجود دارد را دریاف کند و آن را چاپ کند.
+
+<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/receiving.png"/></p>
+
+کد
+([``receive.js``](https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/javascript-nodejs/src/receive.js))
+مانند
+``send``
+به کتابخانه‌ی یکسانی نیاز دارد.
+
+
+<div dir='ltr' align='justify'>
+
+```javascript
+#!/usr/bin/env node
+
+var amqp = require('amqplib/callback_api');
+```
+
+</div>
+
+تنظیمات اولیه مانند فرستنده است. ما یک 
+connection
+و
+channel
+باز می‌کنیم.
+سپس یک صفی که قرار است از آن بخوانیم را تعریف می‌کنیم. توجه شود که این صف باید با صفی که در 
+``sendToQueue``
+استفاده کردیم هم‌نام باشد.
+
+<div dir='ltr' align='justify'>
+
+```javascript
+amqp.connect('amqp://localhost', function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+  connection.createChannel(function(error1, channel) {
+    if (error1) {
+      throw error1;
+    }
+    var queue = 'hello';
+
+    channel.assertQueue(queue, {
+      durable: false
+    });
+  });
+});
+```
+
+</div>
+
+توجه کنید که در اینجا نیز ما صف را تعریف کردیم. این به این دلیل است که ممکن است مصرف کننده 
+(consumer)
+پیش از تولید کننده
+(publisher)
+شروع به کار کند. ما با این کار می‌خواهیم اطمینان حاصل کنیم که صف قبل از تلاش برای گرفتن پیام از آن تعریف شده است.
+
+
+در اینجا ما می‌خواهیم به سرور بگوییم که پیام را از صف به ما بدهد. از آنجا که سرور پیام را به صورت 
+asynchronous
+به سمت ما می‌فرستد ما یک 
+callback
+قرار داده‌ایم تا زمانی که 
+RabbitMq
+پیام را به سمت ما فرستاد اجرا شود.
+
+
+<div dir='ltr' align='justify'>
+
+```javascript
+console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", queue);
+channel.consume(queue, function(msg) {
+  console.log(" [x] Received %s", msg.content.toString());
+}, {
+    noAck: true
+  });
+```
+
+</div>
+
+[نسخه کامل را در این‌جا مشاهده کنید.](https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/javascript-nodejs/src/receive.js)
+
+## putting it all together
+
+حال می‌توانید هر دو کد را اجرا کنید. ابتدا ارسال کننده
+(publisher)
+را اجرا می‌کنیم.
+
+<div dir='ltr' align='justify'>
+
+```bash
+node send.js
+```
+
+</div>
+
+و سپس مصرف‌کننده
+(consumer)
+را اجرا می‌کنیم.
+
+<div dir='ltr' align='justify'>
+
+```bash
+node receive.js
+```
+
+</div>
+
+مصرف‌کننده
+(consumer)
+پیامی که به واسطه‌ی
+RabbitMQ
+از تولید‌کننده
+(publisher)
+گرفته است را چاپ می‌کند.
+
+
+ **لیست‌کردن صف‌ها**
+
+شاید شما بخواهید ببینید که
+RabbitMQ
+چند صف دارد و در هر صف چندین پیام وجود دارد شما این کار را با استفاده از
+``rabbitmqctl``
+می‌توانید انجام دهید
+
+<div dir='ltr' align='justify'>
+
+```bash
+sudo rabbitmqctl list_queues
+```
+
+</div>
+
+
 
   # Work Queues
   در قسمت قبل برنامه‌هایی نوشتیم تا پیام‌ها را به یک صف با نام مشخص ارسال کنیم و در برنامه‌ی دیگر این پیام‌ها را از این صف دریافت کنیم. در این قسمت میخواهیم یک
@@ -539,6 +918,435 @@
   ```
 
   </div>
+
+
+# Publish/Subscribe
+در پیش‌تر ما یک
+work queue
+ساختیم. در آنجا فرض این بود که هر پیام دقیقا به یک 
+worker
+می‌رود. در این بخش ماجرا کمی متفاوت است. ما می‌خواهیم که یک پیام را به چندین مصرف‌کننده ارسال کنیم. به این الگو
+publish/subscribe
+می‌گویند.
+
+برای مشخص شدن ماجرا فرض کنید که می‌خواهیم یک سیستم مدیریت لاگ‌ها بسازیم.
+این سیستم از دو برنامه تشکیل شده است.
+برنامه‌ی اول پیام‌های لاگ تولید کرده و دیگری این پیام‌ها را دریافت کرده و آن‌ها را چاپ می‌کند.
+
+در این سیستم هر کپی از برنامه‌ی دریافت کننده‌ای که اجرا شود پیام‌ها را دریافت خواهد کرد.
+با این روش می‌توانیم یک دریافت‌کننده اجرا کنیم که پیام‌هایی که دریافت می‌کند را در دیست ذخیره کند و یک دریافت‌کننده‌ی دیگر نیز اجرا کنیم که لاگ‌ها را بر روی صفحه،نمایش  دهد.
+
+در اصل ما پیام را به همه‌ی دریافت کننده‌ها
+broadcast
+می‌کنیم.
+
+## exchanges
+
+پیش‌تر ما پیام‌ها را به صف می‌فرستادیم و از آن می‌گرفتیم. حال زمان آن رسیده است که مدل کامل انتقال پیام را در
+Rabbit
+معرفی کنیم.
+
+چیز‌هایی که ما در قبل داشتیم عبارت بود از:
+
++ تولید کننده
+(producer)
+که یک برنامه بود که پیام‌ها را می‌فرستاد
++ یک صف
+(queue)
+که پیام ها در آن ذخیره می‌شد.
++ یک مصرف‌کننده
+(consumer)
+که یک برنامه بود که پیام‌ها را دریافت می‌کرد.
+
+
+ایده‌ی اصلی پشت مدل پیام‌رسانی در 
+RabbitMQ
+این است که تولید‌کننده
+(producer)
+هرگز پیام را مستقیما به یک صف نمی‌فرستد.
+حتی اغلب نمی‌داند که پیام به صفی منتقل شده است یا خیر.
+
+در عوض تولید کننده تنها می‌تواند پیام‌ها را به یک
+exchange
+ارسال کند. یک
+exchange
+یک موجود بسیار ساده است.
+از یک سو پیام‌ها را از فرستنده‌ها دریافت می‌کند. و از سمت دیگر آنها را در صف‌ها قرار می‌دهد.
+یک
+exchange
+باید دقیقا بداند که با یک پیام که دریافت کرده چه کار باید بکند. آیا باید آن را به یک صف خاص اضافه کند؟
+آیا باید آن را در چندین صف قرار دهد؟
+و یا آن را دور بیاندازد.
+این قواعد از روی نوع
+exchange
+مشخص می‌شود.
+
+<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/exchanges.png"/></p>
+
+چندین نوع برای
+exchange
+ها وجود دارد:
+``direct``, ``topic``, ``headers``
+و
+``fanout``.
+در این جا می‌خواهیم بر روی مورد آخر یعنی
+fanout
+تمرکز کنیم.
+بیایید یک 
+exchange
+از این نوع بسازیم، و آن را 
+``logs``
+بنامیم:
+
+<div dir='ltr' align='justify'>
+
+```javascript
+ch.assertExchange('logs', 'fanout', {durable: false})
+```
+
+</div>
+
+exchange
+از نوع
+fanout
+بسیار ساده عمل می‌کند.
+پیام‌هایی که دریافت می‌کند را در تمام صف‌هایی که می‌شناسد
+broadcast
+می‌کند. و این دقیقا همان چیزی است که ما برای یک لاگ کننده
+(logger)
+نیاز داریم.
+
+
+**لیست کردن exchange ها**
+
+برای لیست کردن 
+exchange
+هایی که در سرور وجود دارد می‌توانید دستور زیر را اجرا کنید.
+
+<div dir='ltr' align='justify'>
+
+```bash
+sudo rabbitmqctl list_exchanges
+```
+
+</div>
+
+در این جا چندین
+``amq.*`` exchange
+و یک
+default (unnamed) exchange
+وجود خواهد داشت. آن‌ها به صورت پیش‌فرض ساخته شده‌اند.
+
+**default exchange**
+در بخش‌های قبلی از این آموزش ما چیزی در مورد 
+exchange
+ها نمی‌دانستیم اما هنوز می‌توانستیم که پیام‌ها را به صف‌ها بفرستیم.
+این کار به واسطه‌ی 
+default exchange
+میسر شده بود. چیزی که با رشته‌ی خالی
+(``""``)
+مشخص می‌شود.
+
+به یاد بیاورید که در پیش‌تر چگونه پیام را ارسال می‌کردیم.
+
+<div dir='ltr' align='justify'>
+
+```javascript
+channel.sendToQueue('hello', Buffer.from('Hello World!'));
+```
+
+</div>
+
+در این جا ما از 
+default exchange
+استفاده می‌کردیم. پیام ها به سمت یک صف که به وسیله‌ی نام آن در پارامتر اول مشخص شده بود مسیریابی می‌شد.
+
+حال در عوض ما پیام‌هایمان را به سمت 
+exchange
+مشخصی می‌فرستیم.
+
+<div dir='ltr' align='justify'>
+
+```javascript
+channel.publish('logs', '', Buffer.from('Hello World!'));
+```
+
+</div>
+
+رشته‌ی خالی در پارامتر دوم این معنی را می‌دهد که ما نمی‌خواهیم پیام به صف خاصی منتقل شود.
+بلکه می‌خواهیم پیام ها را در 
+exchange
+ای به نام
+ 'log'
+ منتشر کنیم.
+
+
+## temporary queues
+
+اگر به‌یاد داشته باشید ما از صف‌هایی که نام‌های مشخصی داشتند استفاده می‌کردیم.
+نام‌گذاری صف‌ها یک کار حیاتی بود زیرا ما نیاز داشتیم که 
+worker
+ها را به یک صف خاص وصل کنیم.
+اسم‌گذاری صف زمانی مهم است که شما بخواهید یک صف را بین تولید کننده و مصرف کننده به اشتراک بگذارید.
+
+اما اینجا ما با آن کار نیاز نداریم. ما می‌خواهیم تمام پیام‌ها را دریافت کنیم و و نه تنها زیرمجموعه‌ای از آن را.
+همچنین ما به تنها به پیام‌هایی که اکنون در جریان اند علاقه‌مندیم و با پیام‌های گذشته کاری نداریم. برای این کار ما به دو چیز نیاز داریم.
+
+اول اینکه هر وقت به 
+rabbitMQ
+متصل می‌شویم به یک صف خالی و تازه نیاز داریم. برای اینکار ما می‌توانیم یک صف با نام تصادفی بسازیم. ولی بهتر آن است که به سرور بگوییم که یک نام تصادفی برای ما انتخاب کند.
+ 
+ و دوم اینکه صف ما باید وقتی که اتصال ما قطع شد به طور خودکار پاک شود.
+ 
+ در
+ [amqp.node client](http://www.squaremobius.net/amqp.node/)
+وقتی که ما یک صف با نامی به صورت یک رشته خالی ذخیره می‌کنیم. خودش یک صف موقت با یک نام تصادفی می‌سازد.
+
+
+<div dir='ltr' align='justify'>
+
+```javascript
+channel.assertQueue('', {
+  exclusive: true
+});
+```
+
+</div>
+
+وقتی که متد بازمی‌گردد صف ایجاد شده یک نام تصادفی که توسط دارد.
+به عنوان مثال این نام چیزی شبیه به
+``amq.gen-JzTY20BRgKO-HjmUJj0wLg``
+خواهد داشت.
+
+وقتی که 
+connection
+ای که تعریف شده بود بسته شود. صف پاک خواهد شد زیرا به صورت
+``exclusive``
+تعریف شده است. شما می‌توانید بیشتر در مورد قید
+``exclusive``
+و دیگر ویژگی‌های صف در
+[اینجا](https://www.rabbitmq.com/queues.html)
+بخوانید.
+
+## bindings
+
+<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/bindings.png"/></p>
+
+ما تا این جا یک
+exchange
+از نوع 
+fanout
+و یکه صف ساخت‌ایم. حال نیاز داریم تا به 
+exchange
+بگوییم که پیام‌ها را به صف مورد نظر ارسال کند. این رابطه بین 
+exchange
+و صف
+binding
+نامیده می‌شود.
+
+<div dir='ltr' align='justify'>
+
+```javascript
+channel.bindQueue(queue_name, 'logs', '');
+```
+
+</div>
+
+حال 
+``logs`` exchange
+پیام‌ها را به سمت صف ما ارسال خواهد کرد.
+
+**لیست‌کردن bindings ها**
+
+شما می‌توانید 
+binding
+های موجود را با دستور زیر مشاهده کنید.
+
+<div dir='ltr' align='justify'>
+
+```bash
+rabbitmqctl list_bindings
+```
+
+</div>
+
+## putting it all together
+
+<p align="center"><img src="<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/bindings.png"/></p>
+"/></p>
+
+برنامه‌ی تولید کننده
+(producer)
+که لاگ‌ها را تولید خواهد کرد.خیلی متفاوت از گذشته نخواهد بود.
+تغییر اصلی این است که از این به بعد پیام‌ها را در 
+``logs`` exchange
+به جای 
+default exchange
+ارسال خواهد کرد.
+در اینجا کد
+``emit_log.js``
+را مشاهده می‌کنید.
+
+<div dir='ltr' align='justify'>
+
+```javascript
+#!/usr/bin/env node
+
+var amqp = require('amqplib/callback_api');
+
+amqp.connect('amqp://localhost', function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+  connection.createChannel(function(error1, channel) {
+    if (error1) {
+      throw error1;
+    }
+    var exchange = 'logs';
+    var msg = process.argv.slice(2).join(' ') || 'Hello World!';
+
+    channel.assertExchange(exchange, 'fanout', {
+      durable: false
+    });
+    channel.publish(exchange, '', Buffer.from(msg));
+    console.log(" [x] Sent %s", msg);
+  });
+
+  setTimeout(function() { 
+    connection.close(); 
+    process.exit(0); 
+  }, 500);
+});
+```
+
+</div>
+
+[کد emit_log.js](https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/javascript-nodejs/src/emit_log.js)
+
+همانطور که می‌بینید بعد از ایجاد
+connection
+ما یک 
+exchange
+تعریف کرده‌ایم.
+این کار به این دلیل ضروری است که ارسال پیام به یک
+xchange
+ناموجود، ممنوع است.
+
+پیام‌ها ازدست خواهند رفت اگر صفی به 
+exchange
+متصل
+(bind)
+نشده باشد. اما این برای ما قابل قبول است. اگر مصرف‌کننده‌ای به لاگ‌ها گوش ندهد می‌توانیم بدون مشکل پیام‌ها را دوربیاندازیم.
+
+کد
+``receive_logs.js``
+به صورت زیر است.
+
+<div dir='ltr' align='justify'>
+
+```javascript
+#!/usr/bin/env node
+
+var amqp = require('amqplib/callback_api');
+
+amqp.connect('amqp://localhost', function(error0, connection) {
+  if (error0) {
+    throw error0;
+  }
+  connection.createChannel(function(error1, channel) {
+    if (error1) {
+      throw error1;
+    }
+    var exchange = 'logs';
+
+    channel.assertExchange(exchange, 'fanout', {
+      durable: false
+    });
+
+    channel.assertQueue('', {
+      exclusive: true
+    }, function(error2, q) {
+      if (error2) {
+        throw error2;
+      }
+      console.log(" [*] Waiting for messages in %s. To exit press CTRL+C", q.queue);
+      channel.bindQueue(q.queue, exchange, '');
+
+      channel.consume(q.queue, function(msg) {
+        if(msg.content) {
+            console.log(" [x] %s", msg.content.toString());
+          }
+      }, {
+        noAck: true
+      });
+    });
+  });
+});
+```
+
+</div>
+
+[کد recive_log.js](https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/javascript-nodejs/src/receive_logs.js)
+
+اگر می‌خواهید لاگ‌ها را ذخیره کنید تنها لازم است که یک کنسول باز کرده و تایپ‌ کنید:
+
+<div dir='ltr' align='justify'>
+
+```bash
+./receive_logs.js > logs_from_rabbit.log
+```
+
+</div>
+
+اگر می‌خواهید لاگ‌ها را برروی نمایش‌گر ببینید:
+
+<div dir='ltr' align='justify'>
+
+```bash
+./receive_logs.js
+```
+
+</div>
+
+البته برای تولید لاگ فراموش نشود که :
+
+<div dir='ltr' align='justify'>
+
+```bash
+./emit_log.js
+```
+
+</div>
+
+استفاده از
+``rabbitmqctl list_bindings``
+می‌تواند مشخص کند که
+binding
+مطابق انتظار ما انجام شده است یا خیر.
+با اجرای دو بار
+``receive_logs.js``
+شما باید چیزی مثل این را مشاهده کنید.
+
+<div dir='ltr' align='justify'>
+
+```bash
+sudo rabbitmqctl list_bindings
+# => Listing bindings ...
+# => logs    exchange        amq.gen-JzTY20BRgKO-HjmUJj0wLg  queue           []
+# => logs    exchange        amq.gen-vso0PVvyiRIL2WoV3i48Yg  queue           []
+# => ...done.
+```
+
+</div>
+
+
+تفسیر این نتیجه سرراست است. داده از
+exchange
+مربوط به
+``logs``
+به سمت دو صفی که اسم آنها توسط سرور مشخص شده است می‌رود. این همان چیزی است که ما می‌خواستیم.
+
+
 
 
 
