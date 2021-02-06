@@ -1,0 +1,24 @@
+---
+- name: .:(Debian):. installing the firewall
+  apt:
+    name: ufw
+    update_cache: yes
+
+- name: .:(Debian):. ensuring the ssh connection is up
+  ufw:
+    rule: allow
+    port: item
+    proto: tcp
+  with_items:
+  - ansible_ssh_port
+
+- name: .:(Debian):. enabling the firewall
+  ufw:
+    state: enabled
+- name: .:(Debian):. allowing connection from other nodes
+  ufw:
+    rule: allow
+    from_ip: item
+    from_port: any
+  with_inventory_hostnames:
+    -all
