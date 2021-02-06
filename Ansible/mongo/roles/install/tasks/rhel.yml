@@ -1,0 +1,39 @@
+---
+- name: .:(RHEL):. copying the mongodb repo to the remote
+  copy:
+    src: files/mongodb.repo
+    dest: /etc/yum.repos.d/mongodb-org-4.2.repo
+    owner: root
+    group: root
+    mode: '644' 
+
+- name: .:(RHEL):. installing the mongodb
+  yum:
+    name: mongodb-org
+    state: installed
+
+- name: .:(RHEL):. installing the checkpolicy package
+  yum:
+    name: checkpolicy
+    state: installed
+
+- name: .:(RHEL):. Create the policy directory for mongo policies
+  file:
+    path: /var/lib/mongo/policy
+    state: directory
+    mode: '755'
+
+- name: .:(RHEL):. copying the custom policy made for mongo to the remote
+  copy:
+    src: files/mongodb_cgroup_memory.te
+    dest: /var/lib/mongo/policy/mongodb_cgroup_memory.te
+    owner: mongod
+    group: mongod
+    mode: '644'
+
+- name: .:(RHEL):. applying the policy ---> part 1
+  command: checkmodule -M -m -o /var/lib/mongo/policy/mongodb_cgroup_memory.mod /var/lib/mongo/policy/mongodb_cgroup_memory.te 
+- name: .:(RHEL):. applying the policy ---> part 2
+  command: semodule_package -o /var/lib/mongo/policy/mongodb_cgroup_memory.pp -m /var/lib/mongo/policy/mongodb_cgroup_memory.mod
+- name: .:(RHEL):. applying the policy ---> part 3
+  command: semodule -i /var/lib/mongo/policy/mongodb_cgroup_memory.pp
