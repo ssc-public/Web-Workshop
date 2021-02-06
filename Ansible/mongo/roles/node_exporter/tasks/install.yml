@@ -1,0 +1,14 @@
+---
+
+- name: Create a directory if it does not exist
+  file:
+    path: /opt/node_exporter/
+    state: directory
+    owner: root
+    group: root
+    mode: u+rtwX,g+rwX,o=rX
+
+- name: Unarchive the node exporter file
+  unarchive:
+    src: files/node_exporter-1.0.1.linux-amd64.tar.gz
+    dest:  /opt/node_exporter/

@@ -1,0 +1,16 @@
+---
+
+- name: Check ufw status
+  command: ufw status
+  register: result
+  ignore_errors: yes
+
+- name: showing report
+  debug:
+   var: result
+
+- name: Allow all access to tcp port 9100
+  ufw:
+    rule: allow
+    port: '9100'
+    proto: tcp

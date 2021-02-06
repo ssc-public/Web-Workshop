@@ -1,0 +1,17 @@
+---
+
+- name: systemctl daemon-reload
+  systemd:
+    daemon_reload: yes
+
+- name: starting the node exporter
+  systemd:
+    state: started
+    name: node_exporter
+    enabled: yes
+  # ignore_errors: yes
+
+- name: ensuring that the node exporter is up
+  wait_for:
+    port: 9100
+    delay: 10

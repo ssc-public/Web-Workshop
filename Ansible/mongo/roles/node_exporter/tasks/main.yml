@@ -1,0 +1,15 @@
+---
+# tasks file for install
+- name: Install node exporter
+  import_tasks: install.yml
+
+- name: Configuring the node_exporter
+  import_tasks: config.yml
+  
+- name: starting the node_exporter
+  import_tasks: run.yml
+
+- name: firewall configuration
+  import_tasks: firewall.yml
+  when: allow_firewall_config== true
+  

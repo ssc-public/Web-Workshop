@@ -1,0 +1,18 @@
+[Nodes]		 # joining nodes
+#172.16.11.201
+172.16.11.202
+172.16.11.203
+
+[Primary]	#  inorder to join the rest of the nodes 
+172.16.11.201
+
+[Secondary]
+172.16.11.202
+
+[Arbiter]
+172.16.11.203
+
+[all:vars]
+ansible_connection=ssh
+ansible_user=root
+ansible_ssh_port=22
