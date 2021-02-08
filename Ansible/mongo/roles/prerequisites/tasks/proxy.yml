@@ -1,0 +1,18 @@
+---
+- name: .:(RHEL):.
+  when: ansible_facts['os_family']|lower == 'redhat'
+  block:
+  - name: .:(RHEL):. removing previous proxy from yum.conf
+    replace:
+      path: /etc/yum.conf
+      regexp: '^(proxy=.*)$'
+      replace: '#\1'
+
+  - name: .(RHEL):. adding new proxy to yum.conf
+    lineinfile:
+      path: /etc/yum.conf
+      line: "proxy={{proxy}}"
+      create: yes
+      state: present
+
+

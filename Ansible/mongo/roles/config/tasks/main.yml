@@ -1,0 +1,15 @@
+---
+# tasks file for config
+
+- name: mongodb configuration
+  import_tasks: mongo_config.yml
+
+
+- name: starting the mongod
+  systemd:
+    state: started
+    name: mongod
+
+- name: replicaSet configuration
+  import_tasks: replicaSet_config.yml
+  when: ansible_default_ipv4.address in groups['Primary']

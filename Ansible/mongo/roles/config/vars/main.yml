@@ -1,0 +1,5 @@
+---
+# vars file for config
+# replica set settings
+replicaSet_name: dmp_rs
+

@@ -1,0 +1,18 @@
+---
+
+- name: Ensure that the firewall is up and running in RHEL
+  systemd:
+    enabled: true
+    state: started
+    name: firewalld
+
+- name: open management console port
+  firewalld:
+   port: 8080/tcp
+   permanent: yes
+   state: enabled
+   immediate: yes
+
+- name: Reloading the firewall in RHEL
+  command: firewall-cmd --reload
+

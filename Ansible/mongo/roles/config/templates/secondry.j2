@@ -1,0 +1,8 @@
+{% for hostname in groups['Secondary'] %}
+rs.add("{{ hostname }}:27017");
+{% endfor %}
+
+{% for hostname in groups['Arbiter'] %}
+rs.addArb("{{ hostname }}:27017");
+{% endfor %}
+

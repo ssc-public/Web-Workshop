@@ -1,0 +1,16 @@
+---
+
+- name: Create a directory if it does not exist
+  file:
+    path: /opt/cassandra_exporter/
+    state: directory
+    owner: root
+    group: root
+    mode: u+rtwX,g+rwX,o=rX
+
+- name: Download the cassandra exporter jar file
+  get_url:
+    url: https://github.com/criteo/cassandra_exporter/releases/download/2.2.1/cassandra_exporter-2.2.1-all.jar
+    dest:  /opt/cassandra_exporter/
+
+

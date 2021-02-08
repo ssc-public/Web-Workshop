@@ -1,0 +1,252 @@
+---
+- name: cleaning the previous cassandra footprint
+  hosts: all
+  become: true
+
+  tasks:
+  - name: clean up
+    when: clean_up=="true"
+    block:
+    - name: unistalling the cassandra
+      yum:
+        name: cassandra
+        state: removed
+    
+    - name: deleting the directories --> lib
+      file:
+        path: /var/lib/cassandra
+        state: absent
+    - name: deleting the directories --> log
+      file:
+        path: /var/log/cassandra
+        state: absent
+    - name: deleting the directories --> etc
+      file:
+        path: /etc/cassandra
+        state: absent
+    - name: Get cassandra PID from remote host
+      ignore_errors: yes
+      shell: "ps -few | grep cassandra | awk '{print $2}'"
+      register: cassandra_PID
+ 
+    - name: Kill cassandra
+      ignore_errors: yes
+      shell: "kill {{ item }}"
+      with_items: "{{ cassandra_PID.stdout_lines }}"
+ 
+    - wait_for:
+        path: "/proc/{{ item }}/status"
+        state: absent
+      with_items: "{{ cassandra_PID.stdout_lines }}"
+      ignore_errors: yes
+      register: zombie_cassandra
+ 
+    - name: Force kill stuck processes
+      shell: "kill -9 {{ item }}"
+      ignore_errors: yes
+      with_items: "{{ zombie_cassandra.results | select('failed') | map(attribute='item') | list }}"
+
+    - name: systemctl daemon-reload
+      systemd:
+        daemon_reload: yes
+
+- name: cassandra Prerequisite and installation
+  hosts: all
+  become: true                                  
+
+  tasks:
+  - name: RHEL-based systems
+    when: hostvars[inventory_hostname].OS=="RHEL"
+    block:
+    - name: installing java-jre version 1.8.0
+      yum:
+        name: java-1.8.0-openjdk
+        state: installed
+
+    - name: copying the yum repo for cassandra to the remote
+      copy:
+        src: ./cassandra.repo
+        dest: /etc/yum.repos.d/cassandra.repo
+        owner: root
+        group: root
+        mode: '777'
+
+    - name: installing the cassandra
+      yum:
+        name: cassandra
+        state: installed
+  - name: Debian-based systems
+    when: hostvars[inventory_hostname].OS=="Debain"
+    block:
+    - name: installing java-jre version 1.8.0
+      yum:
+        name: openjdk-8-jdk
+        state: present
+
+    - name: adding the cassandra repo to the remote
+      lineinfile:
+        create: yes
+        path: /etc/apt/sources.list.d/cassandra.sources.list
+        line: 'deb http://debian.datastax.com/datastax-ddc 3.2 main'
+        owner: root
+        group: root
+        mode: '777'
+
+    - name: adding the datastax key
+      shell: curl -L https://debian.datastax.com/debian/repo_key | sudo apt-key add -
+
+    - name: installing cassandra
+      apt:
+        name: datastax-ddc
+        update_cache: yes
+        stat: present
+
+- name: setting up the firewall
+  hosts: all
+  become: true
+      
+  tasks:
+  - name: firewall
+    when: config_firewall=="true"
+    block:
+    - name: RHEL-based systems
+      when: hostvars[inventory_hostname].OS=="RHEL"
+      block:
+      - name: ensure that the firewall is up and running --> installing
+        yum:
+          name: firewalld
+          state: present
+
+      - name: ensure that the firewall is up and running --> up and running
+        systemd:
+          enabled: true
+          state: started
+          name: firewalld
+
+      - name: opening nodes ip for each other
+        firewalld:
+          rich_rule: rule family="ipv4" source address="{{item}}" accept
+          permanent: yes
+          state: enabled
+        with_inventory_hostnames:
+        - all
+
+      - name: reloading the firewall
+        command: firewall-cmd --reload 
+    - name: Debian-based systems
+      when: hostvars[inventory_hostname].OS=="Debian"
+      block:
+      - name: installing the firewall
+        apt:
+          name: ufw
+          update_cache: yes
+      - name: ensuring the ssh connection is up
+        ufw:
+          rule: allow
+          port: ssh
+          proto: tcp
+      - name: enabling the firewall
+        ufw:
+          state: enabled
+      - name: allowing connection from other nodes
+        ufw:
+          rule: allow
+          from_ip: item
+          from_port: any
+        with_inventory_hostnames:
+          -all
+
+- name: cluster config
+  hosts: all
+  become: true                                  
+
+  tasks:  
+  - name: setting the cluster name
+    replace:
+      path: /etc/cassandra/conf/cassandra.yaml
+      regexp: '^cluster_name:.*$'
+      replace: 'cluster_name: "{{cluster_name}}"'
+
+  - name: setting the listen_address
+    replace:
+      path: /etc/cassandra/conf/cassandra.yaml
+      regexp: '^listen_address:.*$'
+      replace: 'listen_address: {{ansible_default_ipv4.address}}'
+  
+  - name: setting the rpc_address for rpc nodes
+    when: ansible_default_ipv4.address in groups['rpc_Nodes']
+    replace:
+      path: /etc/cassandra/conf/cassandra.yaml
+      regexp: '^rpc_address:.*$'
+      replace: 'rpc_address: {{ansible_default_ipv4.address}}'
+
+  - name: setting start_rpc=true for rpc nodes
+    when: ansible_default_ipv4.address in groups['rpc_Nodes']
+    replace:
+      path: /etc/cassandra/conf/cassandra.yaml
+      regexp: '^start_rpc:.*$'
+      replace: 'start_rpc: true'
+
+  - name: reseting the "seeds" value
+    replace:
+      path: /etc/cassandra/conf/cassandra.yaml
+      regexp: '^(.*- seeds\: ")(.*")$'
+      replace: '\1"'
+
+  - name: setting the seed nodes
+    replace: 
+      path: /etc/cassandra/conf/cassandra.yaml
+      regexp: '^(.*- seeds\:.*)(")$'
+      replace: '\1,{{item}}"'
+    with_inventory_hostnames:
+      - Seed_Nodes
+    
+  - name: removing the extra ","
+    replace:
+      path: /etc/cassandra/conf/cassandra.yaml
+      regexp: '^(.*- seeds\: "),(.*")$'
+      replace: '\1\2'
+
+  - name: configuring the gossip strategy
+    replace:
+      path: /etc/cassandra/conf/cassandra.yaml
+      regexp: '^(endpoint_snitch: ).*$'
+      replace: '\1SimpleSnitch'
+  
+  - name: rack and datacenter config --> DC
+    replace:
+      path: /etc/cassandra/conf/cassandra-rackdc.properties
+      regexp: '^(dc=).*$'
+      replace: '\1{{hostvars[inventory_hostname].dc}}'
+
+  - name: rack and datacenter config --> rack
+    replace:
+      path: /etc/cassandra/conf/cassandra-rackdc.properties
+      regexp: '^(rack=).*$'
+      replace: '\1{{hostvars[inventory_hostname].rack}}'    
+
+- name: starting the cluster
+  hosts: all
+  become: true                                  
+
+  tasks:  
+  - name: start cluster
+    when: start_cluster=="true"
+    block:
+    - name: systemctl daemon-reload
+      systemd:
+        daemon_reload: yes
+    
+    - name: starting the seed nodes
+      when: ansible_default_ipv4.address in groups['Seed_Nodes']
+      systemd:
+        state: started
+        name: cassandra
+      ignore_errors: yes
+    
+    - name: starting rest of the nodes
+      when: ansible_default_ipv4.address not in groups['Seed_Nodes']
+      systemd:
+        state: started
+        name: cassandra
+      ignore_errors: yes

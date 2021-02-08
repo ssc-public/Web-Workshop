@@ -1,0 +1,12 @@
+---
+# tasks file for firewall
+- name: firewall configuration for RHEL-based systems
+  import_tasks: rhel.yml
+  when: ansible_facts['os_family']|lower == 'redhat'
+
+- name: firewall configuration for Debian-based systems
+  import_tasks: debian.yml
+  when: ansible_facts['os_family']|lower == 'debian'
+
+
+

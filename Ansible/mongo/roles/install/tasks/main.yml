@@ -1,0 +1,16 @@
+---
+# tasks file for install
+- name: mongodb installation playbook for RHEL-based systems
+  import_tasks: rhel.yml
+  when: ansible_facts['os_family']|lower == 'redhat'
+
+- name: monogdb installation playbook for Debian-based systems
+  import_tasks: debian.yml
+  when: ansible_facts['os_family']|lower == 'debian'
+
+- name: enabling mongodb
+  systemd:
+    name: mongod
+    enabled: yes
+    daemon_reload: yes
+

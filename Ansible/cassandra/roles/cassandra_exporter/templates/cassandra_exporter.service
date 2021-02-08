@@ -1,0 +1,12 @@
+Description=cassandra_exporter
+
+[Service]
+Type=simple
+# Load env vars from /etc/default/ and /etc/sysconfig/ if they exist.
+# Prefixing the path with '-' makes it try to load, but if the file doesn’t
+# exist, it continues onward.
+ExecStart=/usr/bin/java -jar /opt/cassandra_exporter/cassandra_exporter-2.2.1-all.jar /opt/cassandra_exporter/cassandra_config.yml
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

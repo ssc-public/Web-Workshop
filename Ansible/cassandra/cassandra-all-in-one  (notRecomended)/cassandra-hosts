@@ -1,0 +1,14 @@
+[Nodes]
+159.69.91.229	rack=rack1	dc=dc1	OS=RHEL
+94.130.97.241	rack=rack1	dc=dc1	OS=RHEL
+
+[Seed_Nodes]
+94.130.97.241
+
+[rpc_Nodes]
+159.69.91.229
+
+[all:vars]
+ansible_connection=ssh
+ansible_user=root
+ansible_ssh_port=22022

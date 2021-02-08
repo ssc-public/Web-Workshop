@@ -1,0 +1,23 @@
+- name: .:(RHEL):. downgrading systemd to 219-62.el7_6.9
+  shell: yum downgrade -y http://vault.centos.org/7.6.1810/updates/x86_64/Packages/systemd-219-62.el7_6.9.x86_64.rpm http://vault.centos.org/7.6.1810/updates/x86_64/Packages/systemd-libs-219-62.el7_6.9.x86_64.rpm http://vault.centos.org/7.6.1810/updates/x86_64/Packages/systemd-sysv-219-62.el7_6.9.x86_64.rpm | cat  
+  when: allow_systemd_downgrade=='true'
+  
+- name: .:(RHEL):. installing java-jre version 1.8.0
+  yum:
+    name: java-1.8.0-openjdk
+    state: installed
+
+- name: .:(RHEL):. copying the yum repo for cassandra to the remote
+  copy:
+    src: files/cassandra.repo
+    dest: /etc/yum.repos.d/cassandra.repo
+    owner: root
+    group: root
+    mode: '644'
+
+
+  
+- name: .:(RHEL):. installing the cassandra
+  yum:
+    name: cassandra
+    state: installed

@@ -1,0 +1,22 @@
+---
+- name: prerequisites setup
+  hosts: Nodes
+  tasks:
+  - import_role:
+      name: prerequisites
+    when: apply_prerequisites == 'true'
+
+- name: installation
+  hosts: Nodes
+  tasks:
+  - import_role:
+      name: install
+    when: allow_install=='true'
+
+- name: configuration
+  hosts: all
+  tasks:
+  - import_role:
+      name: config 
+    when: allow_config=='true'
+

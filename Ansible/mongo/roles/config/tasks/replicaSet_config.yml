@@ -1,0 +1,24 @@
+---
+
+- name: starting the mongod
+  systemd:
+    state: started
+    name: mongod
+
+- name: primary node config --> copying the template
+  template:
+    src: templates/primary.j2
+    dest: /var/lib/mongo/primary.sh
+    force: yes
+
+- name: primary node config --> runnig the commands
+  shell: mongo < /var/lib/mongo/primary.sh
+
+- name: Secondary and arbiter --> copying the template
+  template:
+    src: templates/secondry.j2
+    dest: /var/lib/mongo/otherNodes.sh
+    force: yes
+
+- name: Secondary and arbiter --> runnig the template
+  shell: mongo < /var/lib/mongo/otherNodes.sh

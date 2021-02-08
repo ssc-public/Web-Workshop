@@ -1,0 +1,16 @@
+---
+# tasks file for cassandra_exporter
+- name: installation
+  import_tasks: install.yml
+
+- name: config
+  import_tasks: config.yml
+
+- name: run
+  import_tasks: run.yml
+
+- name: firewall configuration
+  import_tasks: firewall.yml
+  when: allow_firewall_config== true
+  
+
