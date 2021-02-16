@@ -124,7 +124,6 @@
 - [مبینا پورنعمت](https://github.com/Mobinapournemat)
 - [علیرضا تاجمیرریاحی](https://github.com/AlirezaT99)
 - [محمد مهدی جراحی](https://github.com/Jarrahi-MM)
-- )[مجتبی جعفری](https://github.com/mjafaari)
 - [محمد جعفری](https://github.com/Mohammadjafari80)
 - [نگین جعفری](https://github.com/neginjafariii)
 - [محمد جمشیدی](https://github.com/jamshidi799)
