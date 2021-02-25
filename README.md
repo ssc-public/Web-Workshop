@@ -150,7 +150,9 @@
 - [امیر معینی](https://github.com/amir-mi)
 - [سید محمد پوریا ممتاز اصفهانی](https://github.com/pourya-momtaz)
 - [امیرمهدی نامجو](https://github.com/titansarus)
-
+- [مجتبی جعفری](https://github.com/mjafaari)
+- [مهسا شیخی](https://github.com/mahsaShv)
+- [علی بابایی](https://github.com/iamalibabaei)
 
 
 # نحوه مشارکت
