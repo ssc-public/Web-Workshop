@@ -775,4 +775,111 @@ TypeScript درواقع همان JavaScript است که شی گرایی را س�
  </div>
 
 
+ # More On Interfaces :
+
+ - برای درک کارکرد و مفهوم interface ، به مثال زیر دقت کنید :
+
+ <div dir="ltr">
+
+    function printLabel(labeledObj: { label: string }) {
+        console.log(labeledObj.label);
+    }
+        
+    let myObj = { size: 10, label: "Size 10 Object" };
+    printLabel(myObj);
+ </div>
+
+ در این مثال، تابع ما بعنوان ورودی یک object میگیرد که باید در آن حداقل یک ویژگی با نام label وجود داشته باشد.(که از جنس string است) حالا، سعی میکنیم سبک نوشتن این برنامه را نظام مند تر و مهندسی شده تر کنیم.با interface چنین کاری را ممکن میکنیم ! به قطعه کد زیر دقت کنید:
+
+ <div dir="ltr">
+
+    interface LabeledValue {
+    label: string;
+    }
+    
+    function printLabel(labeledObj: LabeledValue) {
+    console.log(labeledObj.label);
+    }
+    
+    let myObj = { size: 10, label: "Size 10 Object" };
+    printLabel(myObj);
+ </div>
+ دقت کنید که مثل اکثر زبان های دیگر، نیازی نیست که بیان کنیم object مورد نظر ما ، این interface بخصوص را implement میکند ! در واقع اینجا ، صرفا شکل اهمیت دارد! یعنی اگر object ورودی به تابع ما ، مطابق روش توصیف داده شده در interface بود ، آنرا قبول میکنیم !
+
+  - حال ، فرض کنید میخواهیم که بخشی از ویژگی های داخل interface ، اختیاری باشند. یکی از مورد استفاده ترین مکان ها برای چنین امری ، استفاده از دیزاین پترن Option Bags است. در زیر یک پیاده سازی برای این طراحی را میبینیم :
+
+<div dir="ltr">
+    
+    interface SquareConfig {
+        color?: string;
+        width?: number;
+    }
+ 
+    function createSquare(config: SquareConfig): { color: string; area: number } {
+    let newSquare = { color: "white", area: 100 };
+    if (config.color) {
+        newSquare.color = config.color;
+    }
+    if (config.width) {
+        newSquare.area = config.width * config.width;
+    }
+    return newSquare;
+    }
+    
+    let mySquare = createSquare({ color: "black" });
+
+</div> 
+
+ همانطور که مشاهده میشود ، برای نوشتن ویژگی هایی که اختیاری هستند در interface ها ، از ؟ استفاده میشود. این به ما این امکان را میدهد که بتوانیم حالات مختلف یک ورودی را توصیف کنیم و با تک تک حالات برخوردی مناسب داشته باشیم ، بدون اینکه به uncheckedException یا CompileError برخورد کنیم .
+ یکی دیگر از مزایای استفاده از اینترفیس ها ، گرفتن ارور های بامعنا تر و واضخ تر است ( و در نتیجه دیباگینگ راحت تر !). مثلا فرض کنید که ما در کد ، به اشتباه برای دسترسی به ویژگی رنگ یک مربع ، از clor بحای color  استفاده کنیم  (اشتباه تایپی)
+ :
+
+ <div dir="ltr">
+    
+    interface SquareConfig {
+        color?: string;
+        width?: number;
+    }
+    
+    function createSquare(config: SquareConfig): { color: string; area: number } {
+    let newSquare = { color: "white", area: 100 };
+    if (config.clor) {
+    // Error: Property 'clor' does not exist on type 'SquareConfig'. Did you mean 'color'?
+
+        newSquare.color = config.clor;
+    // Error: Property 'clor' does not exist on type 'SquareConfig'. Did you mean 'color'?
+    
+    }
+
+    if (config.width) {
+        newSquare.area = config.width * config.width;
+    }
+    return newSquare;
+    }
+    
+    let mySquare = createSquare({ color: "black" });
+ 
+ </div>
+
+ - برخی موارد نیاز داریم که ویژگی هایی از object ما ، صرفا در زمان ایجاد قابل modify باشند و نه پس از آن ! در اینصورت کافی است که قبل آن ویژگی در اینترفیس مورد نطر ، کلمه ی کلیدی readonly قرار بگیرد:
+
+ <div dir="ltr">
+ 
+    interface Point {
+        readonly x: number;
+        readonly y: number;
+    }
+ 
+ </div>
+
+ حال ، میبینیم که وقت ساخت یک آبجکت با ساختار Point، میتوانیم مقادیر x و y را modify کنیم ولی بعد از آن نمیتوانیم ! مثالی را ببینیم:
+
+ <div dir="ltr">
+ 
+    let p1: Point = { x: 10, y: 20 };
+    p1.x = 5; // error!
+    // Error: Cannot assign to 'x' because it is a read-only property.
+
+ </div>
+
 </div>
