@@ -206,3 +206,57 @@ https://mdbootstrap.com/docs/standard/getting-started/installation/#section-mdb-
 
 - تنظیم مکان متن‌ها (Alignment):
 برای Align کردن متن‌ها به وسط و یا به سمت دیگر، از کلاس‌های کمکی `.text-center` و یا `.text-end` استفاده می‌کنیم. با استفاده از این کلاس‌ها، تمامی متن‌های داخل آن المان (چه مستقیم و چه غیر مستقیم) به سمت وسط و یا انتهای المان منتقل خواهند شد.
+
+# بخش Components
+بخش اصلی کتابخانه MDBootstrap مربوط به کامپوننت‌هایی است که در آن تعریف شده. این کامپوننت‌ها، بلاک‌های اصلی هر وبسایتی می‌باشند که می‌توانند در ظاهر بسیار اثر مثبت داشته باشند. در ادامه‌ی این بخش، تلاش می‌کنیم تا تعدادی از کامپوننت‌ها را تعریف کرده و نحوه‌ی استفاده از آن‌ها را توضیح دهیم.
+
+## آکوردیون (Accordion)
+آکوردیون‌ها المان‌هایی هستند که چندین آیتم شامل «تیتر + متن» را به صورت منو‌های بازشونده نمایش می‌دهند.
+آکوردیون‌ها به صورت یک المان `div` هستند که هر آیتم درون آن‌ها نیز یک `div` می‌باشد. کلاس‌های مورد استفاده در آکوردیون‌ها نیز کلاس‌های زیر می‌باشند:
+`.accordion .accordion-item .accordion-header .accodrion-button .accordion-collapse`
+این کلاس‌ها به ترتیب برای تگ آکوردیون اصلی، تگ آکوردیون مربوط به هر آیتم، تگ تیتر آکوردیون، دکمه‌ی باز و بسته کردن هر آیتم و در نهایت بدنه‌ی هر آیتم می‌باشند.
+به عنوان مثال، قطعه کد زیر مربوط به ساخت یک آکوردیون با یک آیتم می‌باشد:
+```html
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button
+        class="accordion-button"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#collapseOne"
+        aria-expanded="true"
+        aria-controls="collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div
+      id="collapseOne"
+      class="accordion-collapse collapse show"
+      aria-labelledby="headingOne"
+      data-mdb-parent="#accordionExample">
+      
+      <div class="accordion-body">
+        <strong>This is the first item's accordion body.</strong> It is hidden by default,
+        until the collapse plugin adds the appropriate classes that we use to style each
+        element. These classes control the overall appearance, as well as the showing and
+        hiding via CSS transitions. You can modify any of this with custom CSS or
+        overriding our default variables. It's also worth noting that just about any HTML
+        can go within the <strong>.accordion-body</strong>, though the transition does
+        limit overflow.
+      </div>
+    </div>
+  </div>
+ /<div>
+```
+
+## کلید‌ها (Button)
+برای دادن استایل اولیه به یک کلید، کافیست به تگ مورد نظر (ترجیحا تگ `<button>`) کلاس `.btn` را اضافه کنیم. به این صورت یک کلید با رنگ primary استاندارد خواهیم داشت. ویژگی‌های دیگری مانند فونت، تبدیل تمام حروف به UpperCase، سایه و افکت hover نیز به صورت خودکار اعمال خواهند شد.
+#### رنگ‌های پس‌زمینه
+برای ایجاد کلیدها با رنگ‌های متنوع، همانطور که در بخش رنگ‌ها بررسی شد، کافیست کلاس `.btn-ColorName` را در کنار کلاس `.btn` اضافه کنیم. به غیر از ۸ رنگ معرفی شده در بالا، یک نوع دیگر کلید وجود دارد که برای ایجاد لینک  استفاده می‌شود. این نوع کلید هیچ رنگ پس زمینه‌ای ندارد و رنگ نوشته‌ی آن همان رنگ primary می‌باشد. برای ایجاد این کلید کافیست از کلاس `.btn-link` استفاده کنیم.
+#### اشکال مختلف کلیدها
+کلید‌ها می‌توانند توپر (حالت پیش‌فرض) و یا تو خالی (outline) و با شکل‌های مختلف باشند. برای ایجاد یک کلید توخالی با رنگ‌های مختلف، از کلاس `.btn-outline-ColorName` استفاده می‌کنیم. (توجه کنید که در این حالت کلید به شکل لینک که در بخش قبل معرفی شد قابل اعمال نیست). برای تغییر شکل کلیدها و گرد کردن گوشه‌ها و تبدیل شکل دکمه به کپسول، از کلاس‌های rounded استفاده می‌کنیم. به این صورت که کلاس `.btn-rounded` را در کنار کلاس‌های دیگر (کلاس اصلی کلید و کلاس مربوط به رنگ) اضافه می‌کنیم و شکل دکمه تغییر می‌کند. توجه کنید که امکان استفاده از rounded با outline باهم نیز وجود دارد.
+برای ایجاد دکمه‌هایی با ظاهر کاملا دایروی، از کلاس `.btn-floating` استفاده می‌کنیم. تنها مورد قابل ذکر این است که برای اینکه این کلاس به درستی کار کند، در داخل کلید نباید هیچ متنی وجود داشته باشد و تنها از آیکون‌ها (رجوع شود به بخش قبلی) استفاده شود. 
+#### حالات و اندازه‌های مختلف
+کلیدها به طور کلی در سه اندازه مختلف ارائه می‌شوند: کوچک، متوسط (پیش‌فرض) و بزرگ. برای ایجاد دکمه‌های کوچک‌تر از کلاس `.btn-sm` و برای ایجاد دکمه‌های بزرگتر از کلاس `.btn-lg` استفاده می‌کنیم.
+کلیدها در دو حالت نیز می‌توانند باشند: فعال و غیر فعال - که در حالت پیش‌فرض فعال هستند. برای غیر فعال کردن یک کلید، یا کلاس `disabled` را به استایل‌های آن اضافه می‌کنیم و یا ویژگی (attribute) با اسم disabled را در آن المان فعال می‌کنیم. نتیجه‌ی نهایی هر دو روش یکسان خواهد بود.
