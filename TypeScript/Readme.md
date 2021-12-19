@@ -882,4 +882,128 @@ TypeScript درواقع همان JavaScript است که شی گرایی را س�
 
  </div>
 
+ در زبان typeScript شما علاوه بر داشتن داده ساختار Array<T> ، دسترسی به داده ساختار ReadOnlyArray<T> دارید، تنها با این تفاوت که تمامی متد های mutating را حذف کرده است ! که شما پس از مقدار دهی آرایه ، مطمئن باشید که مقدار داده های آن قابل تغییر نیستند !
+
+ 
+ <div dir="ltr">
+ 
+    let a: number[] = [1, 2, 3, 4];
+    let ro: ReadonlyArray<number> = a;
+    
+    ro[0] = 12; // error!
+    // Error_Details: Index signature in type 'readonly number[]' only permits reading.
+
+    ro.push(5); // error!
+    // Error_Details: Property 'push' does not exist on type 'readonly number[]'.
+    
+    ro.length = 100; // error!
+    // Error_Details: Cannot assign to 'length' because it is a read-only property.
+    
+    a = ro; // error!
+    // Error_Details: The type 'readonly number[]' is 'readonly' and cannot be assigned to the mutable type 'number[]'.
+
+ </div>
+
+در خط آخر میتوان دید که شما نمیتوانید یک آرایه ی readOnly را به یک آرایه ی عادی assign کنید ( هر چند دارای type یکسانی هستند)!
+البته اگر بخواهید از readonlyArray خود یک نمونه ی mutable هم داشته باشید ، به راحتی میتوانید این کار را بکنید :
+
+<div dir="ltr">
+
+    let a: number[] = [1, 2, 3, 4];
+    let ro: ReadonlyArray<number> = a;
+    
+    a = ro as number[]; // correct !
+
+</div>
+
+ممکن است این سوال پیش بیاید که باید از readonly استفاده کنیم یا const ؟ جواب به این سوال ساده است . کافی است ببینید که میخواهید با یک variable کار کنید یا یک property ! اگر میخواهید با variable کار کنید ، باید از const برای اینکار استفاده کنید . در غیر این صورت باید از readonly استفاده شود !
+
+ - جزئیاتی در باب Property Checks در interface:
+ <br/>
+ به قطعه کد زیر نگاه کنید :
+
+ <div dir="ltr">
+    
+    interface SquareConfig {
+        color?: string;
+        width?: number;
+    }
+    
+    function createSquare(config: SquareConfig): { color: string; area: number } {
+    return {
+        color: config.color || "red",
+        area: config.width ? config.width * config.width : 20,
+    };
+    }
+    
+    let mySquare = createSquare({ colour: "red", width: 100 });
+
+ </div>
+
+همه چیز بنطر خوب میرسد و برنامه باید بدون مشکل اجرا شود ! اما اینطور نیست . در مرحله ی اجرا ، خطای زیر را دریافت میکنیم :
+
+<div dir="ltr">
+
+    Argument of type '{ colour: string; width: number; }' is not assignable to parameter of type 'SquareConfig'.
+    Object literal may only specify known properties, but 'colour' does not exist in type 'SquareConfig'. Did you mean to write 'color'?
+</div>
+
+همانطور که احتمالا متوجه شده اید ، ما به اشتباه ویژگی color را بصورت colour تایپ کردیم و این باعث ایجاد خطا شده است ! <br/>
+ممکن است اینطور بنظرتان برسد که " چون ویژگی color اختیاری بوده است ، پس تابع ما باید فقط ویژگی width را برمیداشت و به colour بعنوان یک ویژگی اضافی نگاه میکرد "
+این حرف ، کاملا منطقی است ! اما بیایید واقع گرایانه به ماجرا نگاه کنیم ! برای چه باید دو متغیر با نام های اینچنینی رادر برنامه داشته باشم که حاصل یک اشتباه تایپی است و عملا به یک معنا هستند ؟! مشخصا احتمال اینکه من جایی از برنامه تایپ کنم colour ولی منظورم color باشد خیلی زیاد است و این ممکن است باگی ایجاد کند که گیدا کردن آن راحت نیست! <br/><br/>
+در زبان typeScript هم ، با ObjectLiteral ها ، برخورد خاصی میشود زیرا ممکن است باگی در این ناحیه ایجاد شود که پیدا کردن آن سخت باشد!
+در واقع اگر ObjectLiteral مد نظر شما دارای هر property باشد که متغیر مقضد شما آنرا نداشته باشد ، ارور دریافت میکنید. مثلا :
+
+
+<div dir="ltr">
+
+    let mySquare = createSquare({ colour: "red", width: 100 });
+    /* Error: Argument of type '{ colour: string; width: number; }' is not assignable to parameter of type 'SquareConfig'.
+    Object literal may only specify known properties, but 'colour' does not exist in type 'SquareConfig'. Did you mean to write 'color'? */
+
+</div>
+
+ - راه حل چیست ؟
+  ممکن است بگویید " من از کدم اطمینان دارم و میدانم که منظورم از colour با color کاملا متفاوت است ! "<br />
+  برای رفع این مشکلات ، خیلی ساده میتوانید از  typeassertion استفاده کنید :
+
+  <div dir="ltr">
+  
+        let mySquare = createSquare({ width: 100, opacity: 0.5 } as SquareConfig);
+  
+  </div>
+
+  البته راه حل بهتر و منظم تری برای اینکار وجود دارد. اگر object شما قطعا ویژگی های اضافه تری دارد که برای موارد مهم و خاصی استفاده میشوند ، از این راه استفاده میکنیم . فرض کنید که SquareConfig علاوه بر ویژگی های colorو width که اختیاری هستند ، قطعا ویژگی های دیگری هم دارد (مثل همان colour!) . کافی است در اینترفیس خود ، خط زیر را اضافه کنیم :
+
+  <div dir="ltr">
+
+    interface SquareConfig {
+
+    color?: string;
+    width?: number;
+    [propName: string]: any; // this line !
+
+    }
+  </div>
+
+حالا دوباره امتحان میکنیم تا ببینیم colour را ایراد میگیریم یا خیر !
+
+<div dir="ltr">
+
+    let squareOptions = { colour: "red", width: 100 };
+    let mySquare = createSquare(squareOptions);
+    // Congrats! It Works :)
+</div>
+
+ توجه کنید که این روش ، تا زمانی پاسخگو است که یک ویژگی مشترک (حداقل) بین object شما و interface مقصد وجود داشته باشد! مثلا کد زیر همجنان به ارور میخورد:
+
+ <div dir="ltr">
+
+    let squareOptions = { colour: "red" };
+    let mySquare = createSquare(squareOptions);
+    //Error: Type '{ colour: string; }' has no properties in common with type 'SquareConfig'.
+ 
+ </div>
+
+ 
 </div>
