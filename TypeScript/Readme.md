@@ -657,4 +657,122 @@ TypeScript درواقع همان JavaScript است که شی گرایی را س�
 
 </div>
 
+# Testing With Jest :
+- در برنامه نویسی TypeScript هم مانند سایر زبان ها ، یکی از مهمترین نکات ، نوشتن تست برای برنامه جهت اطمینان از Quality برنامه است تا برخی باگ ها قبل از release مشخص و برطرف شوند.
+در ابتدا از دستورات زیر برای نصب jest و ts-jest استفاده میکنیم :
+
+<div dir="ltr">
+
+    npm install jest
+    npm i -D ts-jest @types/jest
+
+</div>
+
+- مرحله دوم این است که یک فایل jest.config.js در همان محل فایل package.json بسازیم. برای اینکار از دستور زیر استفاده میکنیم:
+<br />
+
+<div dir="ltr">
+
+    npx ts-jest config:init
+
+</div>
+فایل ایجاد شده باید حاوی کد زیر باشد :
+
+<div dir="ltr">
+
+    module.exports = {
+    preset: "ts-jest",
+    testEnvironment: "node"
+    };
+
+</div>
+
+- مرحله ی سوم این است که یک فولدر با نام tests در محل فایل package.json بسازیم و فایل های تست خود را در این پوشه فرار دهیم. فرمت نام دهی فایل های تست باید بصورت زیر باشد :
+
+<div dir="ltr">
+
+    (file_name).test.ts
+
+</div>
+حالا ، در فایل package.json خط زیر را اضافه میکنیم :
+
+<div dir="ltr">
+
+    ...
+    "scripts": {
+        ...
+        "test": "jest"
+        },
+    ...
+
+</div>
+
+در نهایت تست های خود را با دستور زیر run میکنیم:
+
+<div dir="ltr">
+
+    npm t
+
+</div>
+
+- مثالی برای تست یک تابع:
+    - فرض کنید یک تابع با نام add داریم که در فایل calc.ts تعریف شده است و 2 ورودی int میگیرد و به ما حاصل جمع این دو را برکیگرداند . میخواهیم تستی بنویسیم تا از ضحت عملکرد این تابع مطمئن شویم :
+
+<div dir="ltr">
+
+    // file name : calc.test.ts
+
+    import { add } from "../src/calc";
+
+        describe("test add function", () => {
+
+            it("should return 15 for add(10,5)", () => {
+                expect(add(10, 5)).toBe(15);
+            }); 
+            // end of testing 15 for 10 + 5
+
+            it("should return 5 for add(2,3)", () => {
+                expect(add(2, 3)).toBe(5);
+            }); 
+            // end of testing 5 for 2 + 3
+
+        }); 
+        // end of describe()
+
+        
+</div>
+
+ - حال، بیایید مثال کمی پیچیده تری بزنیم ! فرض کنید یک تابع با نام foreach نوشته ایم که برای تک تک اعضای یک array ، تابع callback را روی آن صدا میزند:
+
+ 
+ <div dir="ltr">
+    
+    function forEach(items: any[], callback : (a: any[]) => void) {
+        for (let index :int = 0; index < items.length; index++) {
+            callback(items[index]);
+        }
+    }
+ </div>
+
+حالا، فایل تست را برای بررسی این تابع مینویسیم:
+
+ <div dir="ltr">
+
+    const mockCallback = jest.fn(x => 42 + x);
+    forEach([0, 1], mockCallback);
+
+    // The mock function is called twice
+    expect(mockCallback.mock.calls.length).toBe(2);
+
+    // The first argument of the first call to the function was 0
+    expect(mockCallback.mock.calls[0][0]).toBe(0);
+
+    // The first argument of the second call to the function was 1
+    expect(mockCallback.mock.calls[1][0]).toBe(1);
+
+    // The return value of the first call to the function was 42
+    expect(mockCallback.mock.results[0].value).toBe(42);
+ </div>
+
+
 </div>
