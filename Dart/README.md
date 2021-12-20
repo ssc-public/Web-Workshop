@@ -292,8 +292,15 @@ Future<void> printWithDelay(String message) {
 [link](https://dart.dev/samples)
 
 
-## چند نمونه کد
-## بررسی یک پروژه نمونه‌
+## ایجاد و توسعه یک پروژه با دارت
+
+# چرا دارت ارزش استفاده دارد؟
+
+
 # ابزارها
 
 # منابع
+برای کدها از منبع روبرو استفاده شده است.
+<div dir='ltr'>
+https://dart.dev/samples
+</div>
