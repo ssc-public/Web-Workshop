@@ -292,7 +292,9 @@ Future<void> printWithDelay(String message) {
 [link](https://dart.dev/samples)
 
 
-## ایجاد و توسعه یک پروژه با دارت
+## تمرین دارت
+در پوشه `educational-samples` 
+می‌توانید به بررسی عملی و گام به گام یک کد دارت بپردازید که توسط ما پیاده‌سازی شده است.
 
 # چرا دارت ارزش استفاده دارد؟
 
