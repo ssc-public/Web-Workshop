@@ -252,6 +252,8 @@ Future<void> printWithDelay(String message) {
 </div>
 <div dir="rtl">
 
+در پایان در صورت علاقه‌مندی تعدادی نمونه کد در پوشه `easy-samples`
+قرار گرفته است که می‌توان برای بررسی دقیق تر این زبان از آن استفاده کرد.
 برای مطالعه بیشتر می‌توانید به لینک روبرو مراجعه کنید:
 [link](https://dart.dev/samples)
 
