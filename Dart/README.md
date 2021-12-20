@@ -1,5 +1,5 @@
 <div dir='rtl'>
-<div align="center" style="font-size:4rem">
+<div align="center" style="font-size:40px">
  <b>
  به نام خدا
  </b>
