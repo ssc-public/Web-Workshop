@@ -150,8 +150,8 @@
 - [امیر معینی](https://github.com/amir-mi)
 - [سید محمد پوریا ممتاز اصفهانی](https://github.com/pourya-momtaz)
 - [امیرمهدی نامجو](https://github.com/titansarus)
-
-
+- [سجاد فقفور مغربی](https://github.com/sfmqrb)
+  
 
 # نحوه مشارکت
 
