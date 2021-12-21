@@ -285,7 +285,7 @@ D3 شما را قادر می‌سازد تا به صورت پویا عناصر �
 
 [اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-5)
 
-در [این لینک](https://github.com/SMSadegh19/web_workshop/tree/master/D3.js/examples/select.html) مثال‌های بالا گردآوری شده‌اند.
+در [این لینک](https://htmlpreview.github.io/?https://github.com/SMSadegh19/web_workshop/blob/master/D3.js/examples/select.html) مثال‌های بالا گردآوری شده‌اند.
 
 ##تغییر DOM
 
