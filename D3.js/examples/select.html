@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <style>
+        .myclass{
+            color:'red'
+        }
+
+        button {
+            width: 25%
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="one()" style="color: red">
+        d3.select("p").style("color", "red");
+    </button>
+    <br>
+    <button onclick="two()" style="color: green">
+        d3.selectAll("p").style("color", "green");
+    </button>
+
+    <p>First paragraph</p>
+    <p>Second paragraph</p>
+
+    <button onclick="three()" style="color: blue">
+         d3.select("#p2").style("color", "blue");
+    </button>
+    <p id="p1">Tihrd paragraph</p>
+    <p id="p2">Forth paragraph (This is p with id p2)</p>
+
+
+
+    <button onclick="four()" style="color: brown">
+         d3.selectAll(".myclass ").style('color','brown');
+    </button>
+    <p class="myclass ">Fifth paragraph (myclass as class)</p>
+    <p>Sixth paragraph (no class)</p>
+    <p class="myclass ">Seventh paragraph (myclass as class)</p>
+
+    <button onclick="six()" style="background-color: yellow">
+        d3.select("tr").selectAll("td").style('background-color','yellow');
+    </button>
+    <table>
+    <tr>
+        <td>
+            One
+        </td>
+        <td>
+            Two
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Three
+        </td>
+        <td>
+            Four
+        </td>
+    </tr>
+    </table>
+
+    <script>
+        function one() {
+            d3.select("p").style("color", "red");
+        }
+        function two() {
+            d3.selectAll("p").style("color", "green");
+        }
+        function three() {
+             d3.select("#p2").style("color", "blue");
+        }
+        function four() {
+            d3.selectAll(".myclass ").style('color','brown');
+        }
+        function six() {
+            d3.select("tr").selectAll("td").style('background-color','yellow');
+        }
+    </script>
+</body>
+</html>
