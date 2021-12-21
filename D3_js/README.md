@@ -1,8 +1,7 @@
 <div dir="rtl">
 
 # D3
-
-<p align=center><img width=300 src="./Assets/d3-logo.png" /></p>
+![](./assets/d3_logo.png)
 
 ## فهرست
   - [مقدمه](#مقدمه)
@@ -56,10 +55,10 @@ D3 شما را قادر می‌سازد تا به صورت پویا عناصر �
 
 
 ## نمونه
-<p align=center><img width=300 src="./Assets/bar-chart-d3.png" /></p>
-<p align=center><img width=300 src="./Assets/bubble-chart-d3.png" /></p>
-<p align=center><img width=300 src="./Assets/circle-packing-d3.png" /></p>
-<p align=center><img width=300 src="./Assets/streamgraph-d3.png" /></p>
+![](./assets/bar-chart-d3.png.png)
+![](./assets/bubble-chart-d3.png)
+![](./assets/circle-packing-d3.png)
+![](./assets/streamgraph-d3.png)
 
 
 ## نصب
@@ -110,11 +109,179 @@ D3 شما را قادر می‌سازد تا به صورت پویا عناصر �
 </div>
 
 
+##انتخاب DOM
+
+به طور خلاصه هر تگ در یک صفحه html یک Document Object Model یا همان DOM می‌شود که یک پدر دارد و ممکن است صفر، یک یا چند فرزند نیز داشته باشد.
+
+####انتخاب تگ d3.select
+
+با استفاده از دستور 
+<code dir="ltr">d3.select()</code>
+می‌توانید یک DOM را انتخاب و سپس استایل (css) آن را عوض کنید.
+
+برای مثال کد زیر صرفا دوتا پاراگراف است.
 
 
+<div dir="ltr">
+
+```html
+<p>First paragraph</p>
+<p>Second paragraph</p>
+```
+</div>
+
+با دستور 
+<code dir="ltr"> d3.select("p").style("color", "green"); </code>
+می‌توانید پاراگر اول را سبز کنید. دستور 
+<code dir="ltr"> d3.select("p") </code> 
+اولین DOM که تگ آن `p` است را بر می‌گرداند و سپس با
+<code dir="ltr"> style("color", "green")</code> 
+می‌توانید مقدار color آن را به green تغییر دهید.
+
+مثال:
+<div dir="ltr">
+
+```html
+<p>First paragraph</p>
+<p>Second paragraph</p>
+
+<script>
+    d3.select("p").style("color", "green");
+</script>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-1)
+
+####انتخاب تمام DOMها d3.selectAll
+
+اگر بخواهید تمام DOM ها با تگ p را پیدا کنید باید از 
+<code dir="ltr"> d3.selectAll("p") </code>
+استفاده کنید. مثلا کد زیر را اجرا کنید:
 
 
+<div dir="ltr">
 
+```html
+<p>First paragraph</p>
+<p>Second paragraph</p>
+<script>
+    d3.selectAll("p").style("color", "green");
+</script>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-3)
+
+####انتخاب با id
+کد زیر را ببینید:
+
+<div dir="ltr">
+
+```html
+<p id="p1">First paragraph</p>
+<p id="p2">Second paragraph</p>
+
+<script>
+    d3.select("#p2").style("color", "green");
+</script>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-2)
+
+این کد DOM ای که آي‌دی آن p2 است را انتخاب می‌کند و css آن را تغییر می‌دهد. پس با گذاشتن # در ابتدای ورودی مشخص می‌کند که دنبال DOM با id مشخص شده بگرد.  
+
+#### انتخاب با اسم کلاس
+اگر بخواهید تمام DOMهایی که اسم کلاسشان `myclass` است را پیدا کنید با دستور 
+<code dir="ltr"> d3.selectAll(".myclass") </code> 
+ می‌توانید اینکارا انجام دهید. در واقع `.` ابتدای ورودی مشخص می‌کند دنبال کلاس باشد.  
+مثال:
+<div dir="ltr">
+
+```html
+<style>
+    .myclass{
+        color:'red'
+    }
+</style>
+<p class="myclass ">First paragraph</p>
+<p>Second paragraph</p>
+<p class="myclass ">Third paragraph</p>
+
+<script>
+    d3.selectAll(".myclass ").style('color','green');
+</script>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-4)
+
+#### انتخاب تو در تو
+کد زیر را نگاه کنید:
+<div dir="ltr">
+
+```html
+<table>
+<tr>
+    <td>
+        One
+    </td>
+    <td>
+        Two
+    </td>
+</tr>
+<tr>
+    <td>
+        Three
+    </td>
+    <td>
+        Four
+    </td>
+</tr>
+</table>
+```
+</div>
+
+این کد یک جدول است. فرض کنید می‌خواهید استایل تمام tdهای سطر اول را عوض کنید. این کار با استفاده از دستور select و selectAll تو در تو ممکن است.  
+کد زیر را نگاه کنید:
+<code dir="ltr"> d3.select("tr").selectAll("td").style('background-color','yellow'); </code>  
+در این کد، قسمت اول با دستور
+<code dir="ltr"> d3.select("tr") </code>
+اولین tr را انتخاب کرده است و سپس با دستور 
+<code dir="ltr"> selectAll("td") </code> 
+روی tr ای که پیدا کرده تمام td‌های آن را پیدا کرده است.
+
+مثال:
+<div dir="ltr">
+
+```html
+<table>
+<tr>
+    <td>
+        One
+    </td>
+    <td>
+        Two
+    </td>
+</tr>
+<tr>
+    <td>
+        Three
+    </td>
+    <td>
+        Four
+    </td>
+</tr>
+</table>
+
+<script>
+    d3.select("tr").selectAll("td").style('background-color','yellow');
+</script>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-5)
 
 
 
