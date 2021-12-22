@@ -315,6 +315,17 @@ d3.select(".class_name")
 
 حالا می‌خواهیم بعد از انتخاب DOM آن را تغییر دهیم. به طور خلاصه در جدول زیر انواع مختلف تغییرات نوشته شده است:
 
+| تابع                       | توضیح                                            |
+|----------------------------|--------------------------------------------------|
+| text("content")            | تغییر متن                                        |
+| append("element name")     | یک DOM به قبل از آخر DOM انتخاب شده اضافه می‌کند. |
+| insert("element name")     | یک DOM به DOM انتخاب شده اضافه می‌کند.            |
+| remove()                   | یک DOM را پاک می‌کند.                             |
+| html("content")            | محتوای html یک DOM را عوض می‌کند.                 |
+| attr("name", "value")      | مقدار یک ویژگی (attribute) را عوض می‌کند.         |
+| property("name", "value")  | مقدار یک صفت (property) را عوض می‌کند.            |
+| style("name", "value")     | استایل DOM انتخاب شده را عوض می‌کند.              |
+| classed("css class", bool) | یک کلاس را به DOM اضافه یا حذف می‌کند.            |
 
 ### text
 
@@ -559,6 +570,173 @@ d3.select(".class_name")
 </div>
 
 دقت کنید اگر DOM کلاس را نداشت و آن را حذف کردید یا کلاس را داشت و دوباره آن را اضافه کردید به مشکل نمی‌خورید.
+
+
+## زنجیر کردن تابع‌ها
+
+همانطور که در قسمت‌های قبل دیدید متدهای D3 که مربوط یه انتخاب یا تغییر بودند به صورت زنجیر وار صدا می‌شدند.  
+این نوع طراحی در JQuery نیز دیده می‌شود. برای مثال:
+
+<code dir="ltr"> $("#myDiv").text("Some text").attr("style", "color:red") </code>
+
+این کد ابتدا DOM ای که ای‌دی‌اش برابر myDiv است را انتخاب می‌کند و سپس متن آن را عوض می‌کند و درنهایت استایل آن را عوض میکند.  
+معادل این کد با D3 به شکل زیر است.
+
+<code dir="ltr"> d3.select("#myDiv").text("Some text").style("color", "red") </code>
+
+بهتر است برای خوانایی بیشتر هر قسمت را در یک خط بنویسید مانند مثال زیر:
+
+<div dir="ltr">
+
+```html
+d3.select("#myDiv")
+  .text("Some text")
+  .style("color", "red")
+```
+</div>
+
+## تابع روی دیتا
+
+فرض کنید ۳ تا تگ p دارید و یک آرایه به طول ۳ از ۱۰۰، ۲۰۰ و ۳۰۰ و می‌خواهید این ۳ مقدار را در ۳ پاراگراف (p) قرار بدهید.
+
+برای اینکار ابتدا با دستور 
+`selectAll("p")`
+باید تمام pها را انتخاب کنید. سپس با دستور زیر می‌توانید کار گفته شده را انجام دهید:
+
+<div dir="ltr">
+
+```html
+var data = [100, 200, 300];
+selectAll("p")
+.data(data)
+.text(function (d, i) {
+    console.log("d: " + d);
+    console.log("i: " + i);
+    console.log("this: " + this);
+
+    return d;
+});
+```
+</div>
+
+[اجرای کد
+](https://www.tutorialsteacher.com/codeeditor?cid=d3-16)
+
+در کل بالا تابع داخل text روی تمام اعضای data و p به ترتیب اجرا می‌شود.  
+یعنی دیتای اول برای اولین p، دیتای دوم برای دومین p و ...  
+داخل تابع d برابر مقدار data است و i اندیس دیتای داخل آرایه و در نهایت this به پاراگراف اشاره می‌کند.
+
+در قسمت‌های بعد توضیحات بیشتری راجع به تابع data داده خواهد شد.
+
+#### مقدار داینامیک
+
+فرض کنید چند پاراگراف دارید و می‌خواهید اگر کلمه `Error` داخل آن بود رنگش را قرمز و اگر کلمه `Warning` داخل آن بود زرد کنید.  
+برای اینکار باید از تابع `style` استفاده کرد با این تفاوت که به جای مقدار ثابت باید به آن تابع ورودی داد. به شکل زیر:
+
+<div dir="ltr">
+
+```html
+<p>Error: This is error.</p>
+<p>Warning:This is warning.</p>
+
+<script>
+    d3.selectAll("p").style("color", function() {
+            var text = this.innerText;
+        
+            if (text.indexOf("Error") >= 0) {
+                return "red";
+            } else if (text.indexOf("Warning") >= 0) {
+                return "yellow";
+            }
+    });
+</script>
+```
+</div>
+
+[اجرای کد
+](https://www.tutorialsteacher.com/codeeditor?cid=d3-17)
+
+در کد بالا ورودی `style` به جای مقدار ثابت یک تابع است لایبری d3 برای هر پاراگراف آن را به تابع می‌دهد  
+متغیر this به پاراگرافی که تابع روش صدا زده شده رفرنس داده شده است.
+
+
+## Events handling
+
+فرض کنید می‌خواهید زمانی که موس بر روی یک DOM رفت تغییر مشخصی در DOMها بدهید.  
+در واقع به اینکار Event handling می‌گویند. یعنی زمانی که یک اتفاق یا event رخ داد عملیات مشخصی انجام دهیم.  
+این کار با استفاده از تابع`on` در d3 ممکن است.  
+مثال:
+
+<div dir="ltr">
+
+```html
+<!doctype html>
+<html>
+<head>
+    <style>
+        div {
+            height: 100px;
+            width: 100px;
+            background-color: steelblue;
+            margin:5px;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+<div> </div>
+<script>
+    d3.selectAll("div")
+      .on("mouseover", function(){
+          d3.select(this)
+            .style("background-color", "orange");
+
+          // Get current event info
+          console.log(d3.event);
+          
+          // Get x & y co-ordinates
+          console.log(d3.mouse(this));
+      })
+      .on("mouseout", function(){
+          d3.select(this)
+            .style("background-color", "steelblue")
+      });
+</script>
+</body>
+</html>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-18)
+
+در این کد ابتدا با `d3.selectAll("div")` تمام divها انتخاب شدند.  
+سپس با دستور `on("mouseover", f)` زمانی که موس روی divها قرار بگیرد تابع f را صدا می‌زند.  
+تابع f به صورت inline تعریف شده و به شکل زیر است:  
+<div dir="ltr">
+
+```js
+function(){
+  d3.select(this)
+    .style("background-color", "orange");
+
+  // Get current event info
+  console.log(d3.event);
+  
+  // Get x & y co-ordinates
+  console.log(d3.mouse(this));
+}
+```
+</div>
+
+در کد بالا this رفرنس به divای است که موس روش رفته‌است و با `d3.select(this)` آن را انتخاب کرده و با `style("background-color", "orange")` رنگ بکگراندش را نارنجی کرده‌است.  
+با `d3.event` اطلاعات اتفاق رخ داده شده را می‌توان به دست آورد.  
+با `d3.mouse(this)` مختصات موس  را بر می‌گرداند.
+
+
+
+## انیمیشن
+
+
 
 <hr>
 
