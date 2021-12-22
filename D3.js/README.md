@@ -33,6 +33,9 @@
     - [مقدار داینامیک](#مقدار-داینامیک)
   - [Events handling](#Events-handling)
   - [انیمیشن](#انیمیشن)
+    - [transition](#transition)
+    - [ease](#ease)
+    - [delay](#delay)
 
 ## ️نویسندگان
   - [سید مهدی صادق شبیری](https://github.com/SmsS4)
@@ -739,6 +742,147 @@ function(){
 
 
 ## انیمیشن
+
+#### transition
+با استفاده از تابع `transition` می‌توانید یک تغییر در DOM انجام دهید.  
+همچنین با استفاده از دستور `duration` نیز می‌توانید زمان یک انیمیشن را مشخص کنید.
+
+مثال:
+
+
+<div dir="ltr">
+
+```html
+<!doctype html>
+<html>
+<head>
+<style>
+    #container {
+        height: 100px;
+        width: 100px;
+        background-color: black;
+    }
+</style>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+        d3.select("#container")
+          .transition()
+          .duration(1000)
+          .style("background-color", "red");
+    </script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-19)
+
+در کد بالا ابتدا div سیاه است (به خاطر css) و در طول ۱۰۰۰ میلی ثانیه قرمز می‌شود.  
+با استفاده از `d3.select("#container")` دیو انتخاب شده است. سپس با `transition` مشخص شده است که انیمیشنی قرار است رخ بدهد و مدت زمانش نیز با دستور `duration` مشخص می‌شود. برای مثال `duration(1000)` یعنی در مدت ۱۰۰۰ میلی‌ثانیه تغییر انجام شود. در آخر نیز تغیییری که قرار است انجام شود گذاشته شده است.
+
+#### ease
+
+با استفاده از دستور `ease` می‌توانید سرعت و شتاب تغییر را مشخص کنید.  
+مثال:
+
+<div dir="ltr">
+
+```html
+<!doctype html>
+<html>
+<head>
+<style>
+    #container {
+        height: 100px;
+        width: 100px;
+        background-color: black;
+    }
+</style>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+
+    <script>
+        d3.select("#container")
+          .transition()
+          .duration(1000)
+          .ease(d3.easeCircle)
+          .style("background-color", "red");
+    </script>
+</body>
+```
+</div>
+
+تغییری که نسبت به کد قبل شده است وجود `ease(d3.easeCircle)`است که باعث می‌شود ابتدا و انتهای تغییر کند و وسط تغییر تندتر باشد. (هرچند در نهایت باز ۱۰۰۰ میلی ثانیه طول می‌کشد)
+
+تعدادی از easeهای مختلف در لیست زیر آمده است.
+- d3.easeElastic
+- d3.easeBounce
+- d3.easeLinear
+- d3.easeSin
+- d3.easeQuad
+- d3.easeCubic
+- d3.easePoly
+- d3.easeCircle
+- d3.easeExp
+- d3.easeBack
+
+#### delay
+با استفاده از تابع `delay` می‌توانید انیمیشن را با تاخیر شروع کنید.  
+مثال:
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    var svg = d3.select("body")
+        .append("svg")
+        .attr("width", 500)
+        .attr("height", 500);
+
+
+    var bar1 = svg.append("rect")
+        .attr("fill", "blue")
+        .attr("x", 100)
+        .attr("y", 20)
+        .attr("height", 20)
+        .attr("width", 10)
+
+    var bar2 = svg.append("rect")
+        .attr("fill", "blue")
+        .attr("x", 120)
+        .attr("y", 20)
+        .attr("height", 20)
+        .attr("width", 10)
+
+    update();
+
+function update() {
+    bar1.transition()
+        .ease(d3.easeLinear)
+        .duration(2000)
+        .attr("height",100)
+
+    bar2.transition()
+        .ease(d3.easeLinear)
+        .duration(2000)
+        .delay(2000)
+        .attr("height",100)
+}
+</script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-20)
+
+در کد بالا به خاطر وجود `delay(2000)` در انیمیشن دوم، ۲ ثانیه (۲۰۰۰ میلی ثانیه) دیرتر اجرا می‌شود.  
+در هر دو اینیمیشن ease برابر `d3.easeLinear` دارند که یعنی خطی است و با سرعت ثابت انیمیشن انجام می‌شود.
 
 
 
