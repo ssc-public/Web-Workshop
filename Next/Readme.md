@@ -62,7 +62,130 @@ yarn dev
 * جدا سازی کد و ایمپورت پویا (code-splitting - dynamic imports) 
 * بخش API Routes برای ارتباط با سرور ها
 * بهینه سازی فایل های استاتیک مانند عکس ها
+
+## فچ کردن داده‌ها
+دو روش برای پیش رندر کردن (pre-rendering) در Next داریم و بر اساس هر کدام توابعی برای گرفتن داده ها در اختیار ماست:
+* static generation: در این روش در هنگام بیلد شدن page ساخته می‌شود.
+    * getStaticProps: هنگامی که محتویات صفحه به داده های خارجی وابسته است.
+    * getStaticPaths: هنگامی که مسیر url  صفحه به داده های خارجی وابسته است.‌<br/>(معمولا با استفاده از  dynamic routing)
+* SSR (server side rendering): در این روش با هر درخواست page ساخته می‌شود.
+    * getServerSideProps: با هر ریکوئست داده ها نیز گرفته می‌شوند.
+
+برای دیدن نحوه عملکرد این توابع ابتدا یک سرور بکند ساده برای گرفتن داده ها می سازیم.
+<br/>
+برای اینکار از [Flask][flask]
+استفاده می کنیم. برای نصب flask و ایجاد venv کافیست دستورات زیر را اجرا کنید:
+<div style="direction:ltr">
+
+```
+mkdir sandbox
+cd sandbox
+virtualenv .venv
+source .venv/bin/activate
+pip install Flask
+touch server.py
+
+export FLASK_ENV=development
+export FLASK_APP=server.py
+```
 </div>
+سپس کد زیر را در فایل server.py کپی کنید:
+<div style="direction:ltr">
+
+```
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return 'Server Works!'
+
+@app.route('/users')
+def get_users():
+    return {'result': [
+        {"id": 1, "name": "Masih"},
+        {"id": 2, "name": "Amin"},
+        {"id": 3, "name": "Ali"}
+    ]}
+```
+</div>
+با اجرای دستور زیر سرور بکند شروع به کار می کند:
+<div style="direction:ltr">
+
+```
+flask run
+```
+</div>
+پس از راه اندازی سرور می توانید در http://localhost:5000/users به داده های داده شده دسترسی داشته باشید.
+<br/>
+
+## تابع getStaticProps (Static Generation)
+ برای استفاده از تابع مورد نظر یک فولدر با نام users در فولدر pages پروژه نکست ایجاد کنید.
+در این فولدر فایل index.jsx بسازید و درون آن قطعه کد زیر را کپی کنید. (با توجه به سیستم روتینگ نکست این کد در ادرس http://localhost:3000/users  رندر خواهد شد)
+
+<div style="direction:ltr">
+
+```
+function User({ users }) {
+  return (
+    <ul>
+      {users.map(user => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  );
+}
+
+export async function getStaticProps(context) {
+  const res = await fetch("http://localhost:5000/users");
+  console.log(res);
+  const responseJson = await res.json()
+
+  const users = responseJson.result
+
+  return {
+    props: {
+      users,
+    },
+  };
+}
+
+export default User;
+```
+</div>
+این تابع هنگام build شدن پروژه کال می شود و می تواند یک آبجکت ورودی داشته باشد و یک آبجکت خروجی دارد.
+خروجی props می‌تواند شامل یک آبجکت باشد که به عنوان ورودی کامپوننت این فایل مورد استفاده قرار می گیرد. 
+<br/>
+در این مرحله از کد build گرفته و سپس آنرا start کنید. مشاهده می کنید که داده های صفحه users شامل ۳ اسم خواهد بود. حال اگر یک اسم به این داده ها اضافه کنید و سرور Flask را ری استارت کنید (ctrl+C و ران کردن دوباره) و صفحه را رفرش کنید مشاهده می شود که تغییری در داده ها ایجاد نمی ‌شود و لازم است دوباره سرور نکست بیلد بگیرید و آنرا اجرا کنید تا اسم اضافه شده نمایش داده شود.<br/>
+به صورت خلاصه:
+
+<div style="direction:ltr">
+
+```
+yarn run build
+yarn run start
+# or npm instead of yarn
+# visit http://localhost:3000/users/
+# add {"id": 4, "name": "New"} to get_users() result list
+# restart Flask: ctrl+C + run flask
+# visit Flask server http://localhost:5000/users/ to see New user
+# visit Next page http://localhost:3000/users/
+# No user named New :)
+# stop server and do these again
+yarn run build
+yarn run start
+# or npm instead of yarn
+# New user appears!
+```
+</div>
+با توجه به نحوه عملکرد این تابع بهتر است زمانی از این تابع استفاده کنیم که داده های مورد استفاده کاربر قبل درخواست او و در زمان بیلد موجود است.
+<br/>
+همچنین در مواردی که داده برای SEO حائز اهمیت است و یا بهتر است کش شود نیز این روش توصیه می‌شود. این داده ها به صورت عمومی کش می‌شود و بر اساس هر کابر نیست.
+
+</div>
+
 
 [React-research]: https://github.com/mostafaghadimi/web_workshop/tree/master/React
 [node.js]: https://nodejs.org
+[flask]: https://flask.palletsprojects.com/en/2.0.x/
+[flask-doc]: https://medium.com/@onejohi/building-a-simple-rest-api-with-python-and-flask-b404371dc699
