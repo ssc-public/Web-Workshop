@@ -335,6 +335,46 @@ def get_user(user_id):
 </div>
 مشاهده می‌شود که صفحات بعد از مدتی loading... دیده شده و از آن به بعد مثل صفحات زمان build سریع اند.
 
+
+## تابع getServerSideProps (Server-side Rendering)
+این تابع مشابه getStaticProps است با این تفاوت که رندر با هر ریکوئست انجام می شود.
+<br/>
+برای دیدن عملکرد این تابع از server.py و همان فایل index در فولدر pages/users استفاده می کنیم.
+<br/>
+قطعه کد مقابل را در فایل index.jsx کپی کنید:
+ 
+<div style="direction:ltr">
+
+```
+function User({ users }) {
+  return (
+    <ul>
+      {users.map(user => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  );
+}
+
+export async function getServerSideProps(context) {
+  const res = await fetch("http://localhost:5000/users");
+  const responseJson = await res.json();
+
+  const users = responseJson.result;
+
+  return {
+    props: {
+      users,
+    },
+  };
+}
+
+export default User;
+```
+</div>
+حال اگر مثل کاری که با تابع getStaticProps کردیم در اینجا نیز به dummy_users عضو جدید اضافه کنیم. بر خلاف آنجا با هر رفرش کردن عضو های جدید دیده می‌شوند.
+<br/>
+بر اساس شرایط و کاربرد های مختلف هر کدام از روش های مطرح شده می ‌تواند سودمند باشد و کارایی و SEO را  بهبود بخشد.
 </div>
 
 
