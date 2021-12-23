@@ -54,7 +54,14 @@ yarn dev
 در واقع فریمورک اسکلت را مشخص می کند و با استفاده از لایبراری می توانیم دور این اسکلت را پر کنیم.
 <br/>
 <br/>
-تفاوت اصلی React و Next ، لایبراری بودن React و فریمورک بودن Next است که این فریمورک بودن با اینجاد ساختار مناسب قابلیت های زیادی ایجاد کرده مانند (Server Side Rendering) SSR که مزیت اصلی Next  است و هم (Search Engine optimiztion) SEO را بهبود می دهد. هم جابه‌جایی بین صفحات و فچ کردن داده ها را سریعتر می‌کند.  
+تفاوت اصلی React و Next ، لایبراری بودن React و فریمورک بودن Next است که این فریمورک بودن با اینجاد ساختار مناسب قابلیت های زیادی ایجاد کرده مانند (Server Side Rendering) SSR که مزیت اصلی Next  است و هم (Search Engine optimiztion) SEO را بهبود می دهد. هم جابه‌جایی بین صفحات و فچ کردن داده ها را سریعتر می‌کند.
+<br/>
+دیگر امکانات Next که در React نیست:
+<br/>
+* سیستم روتینگ built-in بدون نیاز لایبراری مجزا
+* جدا سازی کد و ایمپورت پویا (code-splitting - dynamic imports) 
+* بخش API Routes برای ارتباط با سرور ها
+* بهینه سازی فایل های استاتیک مانند عکس ها
 </div>
 
 [React-research]: https://github.com/mostafaghadimi/web_workshop/tree/master/React
