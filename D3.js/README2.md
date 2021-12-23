@@ -221,3 +221,100 @@
 ```
 
 برای کسب اطلاعات بیشتر در مورد اتصال داده‌ها به عناصر DOM، می‌توانید [این بخش از مستندات D3](https://github.com/d3/d3-selection/blob/master/README.md#joining-data) را مطالعه کنید.
+
+
+## خواندن داده‌ها از فایل در D3
+
+در بخش قبلی کار کردن با داده‌ها و متغیرهای محلی را یاد گرفتیم. در این بخش load کردن داده‌ها از نوع فایل‌های مختلف و bind کردن آن‌ها به عناصر DOM را یاد می‌گیریم.
+
+کتاب‌خانه D3 توابعِ csv, json, tsv و xml را در اختیار ما قرار می‌دهد.
+
+### تابع ()d3.csv
+
+ما می‌توانیم یک فایل csv را با این تابع load کنیم.
+
+```
+Signature:
+d3.csv(url[, row, callback]);
+```
+
+پارامتر اول آدرسِ فایل csv یا web api یا web serviceی است که csv بر می‌گرداند. پارامتر دوم و سوم اختیاری هستند. پارامتر دوم، یک تابع است که به شما اجازه می‌دهد شیوه‌ی نمایش داده‌ها را عوض کنید. پارامتر سوم، یک تابع callback است که هنگامی که load شدن داده‌ی شما به پایان می‌رسد اجرا می‌شود. دیتای load شده نیز به عنوان یک پارامتر به تابع callback ورودی داده می‌شود.
+
+یک مثال را با هم بررسی می‌کنیم.
+
+```
+Name, Age
+John, 30
+Jane, 32
+```
+
+فرض کنید نوشته‌ی بالا را درون فایل csv به نام employees قرار دادیم. سپس کد زیر را اجرا می‌کنیم.
+
+```
+<script>
+d3.csv("/data/employees.csv", function(data) {
+    for (var i = 0; i < data.length; i++) {
+        console.log(data[i].Name);
+        console.log(data[i].Age);
+    }
+});
+</script>
+```
+
+نتیجه به این صورت خواهد بود:
+
+![image](https://user-images.githubusercontent.com/45296858/147279472-13a563e6-c2fd-45f4-be0f-574fd3ec0e9e.png)
+
+توجه کنید که سطر اول فایل csv چاپ نمی‌شود؛ زیرا آیتم‌های سطر اول نشان‌دهنده‌ی نام هر ستون هستند و به عنوان key در آرایه‌ی لود شده در نظر گرفته می‌شود.
+
+اگر به جای حلقه‌ی for، صرفا یک بار کل data را چاپ کنیم، چه چیزی را مشاهده خواهیم کرد؟
+
+```
+d3.csv("/data/employees.csv", function(data) {
+    console.log(data);
+});
+```
+
+![image](https://user-images.githubusercontent.com/45296858/147279656-f3d53806-9e5c-48bd-a557-61e8e6cf080c.png)
+
+خروجی به شکل بالا خواهد بود. تابع d3.csv() داده را به صورت یک object برمی‌گرداند. این object یک آرایه از objectهاست که هر کدام از آن‌ها نشان‌دهنده‌ی یک سطر از فایل csv است.
+
+کدی که در بالا مشاهده کردیم
+```
+d3.csv("/data/employees.csv", function(data) { }
+```
+معادل کد زیر است:
+
+```
+d3.csv("/data/employees.csv")
+  .get(function(data) {
+        console.log(data);
+  });
+```
+
+هم‌چنین می‌توانیم به جای d3.csv از d3.request() هم استفاده کنیم:
+
+```
+d3.request("/data/employees.csv")
+  .mimeType("text/csv")
+  .response(function (xhr) { return d3.csvParse(xhr.responseText); })
+  .get(function(data) {
+      console.log(data);
+  });
+```
+
+با پارامتر یا تابع row می‌توانیم نمایش خروجی داده‌های لودشونده را عوض کنیم، در مثال زیر همه‌ی نام‌ها را upper case می‌کنیم.
+
+```
+d3.csv("/data/employees.csv")
+  .row(function(d) {
+        return {
+            age: d.age,
+            name: d.name.toUpperCase() // converting name to upper case 
+        }; 
+   })
+  .get(function(data) {
+      console.log(data);
+  });
+```
+
