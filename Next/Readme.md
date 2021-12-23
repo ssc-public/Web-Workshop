@@ -42,6 +42,76 @@ yarn dev
 # then visit http://localhost:3000
 ```
 </div>
+<br/>
+
+### بررسی فایل‌ها و دایرکتوری‌های ایجاد شده
+<br/>
+
+**public:**
+<br/>
+این دایرکتوری حاوی فایل‌های static است. به طور مثال اگر فایل img.png در این دایرکتوری وجود داشته باشد، برای دسترسی به آن در کد، می‌توانید به صورت زیر عمل کنید:
+
+<div dir="ltr">
+
+``` js
+import Image from 'next/image'
+
+function Avatar() {
+  return <Image src="/img.png"/>
+}
+
+export default Avatar
+```
+</div>
+فایل‌های موجود در این دایرکتوری از طریق browser قابل دسترسی هستند. به طور مثال میتوانید از http://localhost:3000/img.png این فایل را مشاهده کنید.
+<br/>
+<br/>
+
+**styles:**
+<br/>
+فایل‌های css در این دایرکتوری قرار می‌گیرند. 
+<br/>
+globals.css بر روی همه‌ی صفحات و اجزاء اعمال می‌شود، این فایل در ```pages/_app.js``` استفاده شده است.
+<br/>
+سایر فایل‌های css باید به صورت 
+<div dir="ltr">
+
+```
+[name].module.css
+```
+</div>
+
+نام‌گذاری شود. (next از [CSS Modules][CSS-Modules] پشتیبانی می‌کند)
+<br/>
+
+**pages:**
+<br/>
+هر page یک component ری‌اکت است که باید در دایرکتوری pages قرار بگیرد. نام‌گذاری فایل‌ها مهم است زیرا در routing استفاده می‌شود.(این موضوع در بخش routing بیشتر توضیح داده شده است.)
+<br/>
+به طور مثال اگر فایل pages/about.js را بسازید میتوانید محتوای آن را در /about مشاهده کنید. همچنین فایل index.js به عنوان صفحه نخست وبسایت شما نمایش داده می‌شود.
+<br/>
+زمانی که از Next.js استفاده می‌کنید، ممکن است بخواهید کامپوننت App را دوباره بنویسید تا مواردی مانند persisting state یا global layouts را اعمال کنید. این کار را می‌توانید در فایل _app.js انجام دهید. 
+<br/>
+به طور مثال در کد زیر یک Layout دلخواه بر روی همه‌ی صفحات اعمال می‌شود:
+
+<div dir="ltr">
+
+``` js
+import Layout from "../components/layouts/"
+
+const MyApp = ({ Component, pageProps, auth }) => {
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  )
+}
+
+export default MyApp
+```
+</div>
+<br/>
+
 
 ## تفاوت های React و Next
 
@@ -49,3 +119,4 @@ yarn dev
 
 [React-research]: https://github.com/mostafaghadimi/web_workshop/tree/master/React
 [node.js]: https://nodejs.org
+[CSS-Modules]: https://github.com/css-modules/css-modules
