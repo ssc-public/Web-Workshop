@@ -488,7 +488,29 @@ d3.json("/data/users.json", function(error, data) {
 
 نحوه‌ی اجرای این کد را در قسمت Data Binding با هم بررسی کردیم. پارامتر error نکته‌ی جدیدی است که در بخش بعد آن را بررسی می‌کنیم.
 
+### مدیریت خطاها
 
+کتاب‌خانه D3 هنگام لود کردن داده از منبع خارجی (external)، یک آرگومان error برمی‌گرداند که با بررسی آن می‌توانیم بفهمیم که داده به درستی لود شده یا خیر.
+
+```
+d3.json("/data/users.json", function(error, data) {
+    
+    if (error) {
+        return console.warn(error);
+    }
+
+    d3.select("body")
+            .selectAll("p")
+            .data(data)
+            .enter()
+            .append("p")
+            .text(function(d) {
+                return d.name + ", " + d.location;
+            });
+    });
+```
+
+ممکن است فایل مورد نظر وجود نداشته باشد یا داده‌ها بدشکل باشند و طبق فرمت خواسته شده نباشند. در این صورت می‌توانیم با این پارامتر آگاه شویم و تصمیم بگیریم.
 
 
 
