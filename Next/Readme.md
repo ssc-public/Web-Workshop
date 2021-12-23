@@ -7,8 +7,8 @@
 به طور خلاصه React یک کتابخونه javascript برای کد های frontend هست، که هدفش بهبود دادن ساخت user interface هاست و اینکارو با فیچر هایی مثل کامپوننت ها و هوک و ... انجام میده، Next هم یک فریمورک بر اساس React هست که کارش اسکیل پذیر کردن و راحت کردن کار برای پروژه های سنگینِ Reactی است.
 <br/>
 به  همین دلیل Next خودش را یک فریمورک React برای پروداکشن
-می داند، زیرا فیچر های متعددی دارد که ساخت اپ های React توسعه پذیر را ساده می کند.
-
+می داند، زیرا فیچر های متعددی دارد که ساخت اپ های React توسعه پذیر را ساده کرده و بهبود می‌بخشد.
+<img src="./images/whats_nextjs_academind.png" style="display: block;padding:5px; auto;padding-top:10px; width: 90%; margin-left: auto;margin-right: auto;">
 ## تفاوت های React و Next
 
 </div>
