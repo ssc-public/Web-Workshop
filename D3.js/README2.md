@@ -438,9 +438,55 @@ d3.xml("\data\employees.xml", function(data) {
 
 ![image](https://user-images.githubusercontent.com/45296858/147281713-c6142bbc-e397-4f2c-8627-81840d93f7a7.png)
 
+### بایند کردن داده‌های Load شده
 
+با یک مثال شروع به توضیح می‌کنیم. فرض کنیم آرایه‌ای از userها را درون یک فایل json داریم:
 
+```
+[{
+    "name": "Jon",
+    "age": 30,
+    "location": "The Wall"
+},
+{
+    "name": "Arya",
+    "age": 12,
+    "location": "Braavos"
+},
+{
+    "name": "Cersei",
+    "age": 42,
+    "location": "Kings Landing"
+},
+{
+    "name": "Tyrion",
+    "age": 40,
+    "location": "Kings Landing "
+}]
+```
 
+حال می‌خواهیم با استفاده از d3.json آن را لود کنیم و داده‌مان را به عناصر وب bind کنیم:
+
+```
+d3.json("/data/users.json", function(error, data) {
+    
+    d3.select("body")
+        .selectAll("p")
+        .data(data)
+        .enter()
+        .append("p")
+        .text(function(d) {
+            return d.name + ", " + d.location;
+        });
+
+});
+```
+
+نتیجه به صورت زیر مشاهده می‌شود:
+
+![image](https://user-images.githubusercontent.com/45296858/147282888-13104982-8847-47ae-a847-6fc06459096a.png)
+
+نحوه‌ی اجرای این کد را در قسمت Data Binding با هم بررسی کردیم. پارامتر error نکته‌ی جدیدی است که در بخش بعد آن را بررسی می‌کنیم.
 
 
 
