@@ -378,3 +378,25 @@ d3.json("/data/users.json", function(data) {
 ![image](https://user-images.githubusercontent.com/45296858/147280577-9674b431-a91d-47dc-8e5c-caa80ffc09c2.png)
 
 
+### تابع ()d3.tsv 
+
+به طریق مشابه csv، تابع d3.tsv یک فایل tsv را ورودی می‌گیرد و بعد از پردازش فایل، یک object را برمی‌گرداند. به طور مثال کار با یک فایل به آدرس employees.tsv را می‌بینید.
+
+```
+Name    Age
+John    30
+Jane    32
+```
+
+```
+d3.tsv("/data/employees.tsv", function(data) {
+    for (var i = 0; i < data.length; i++) {
+        console.log(data[i].Name);
+        console.log(data[i].Age);
+    }
+});
+```
+
+![image](https://user-images.githubusercontent.com/45296858/147280909-5344cbd1-6be4-4a46-b31d-a521b982730e.png)
+
+
