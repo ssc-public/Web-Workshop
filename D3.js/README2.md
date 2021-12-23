@@ -400,3 +400,51 @@ d3.tsv("/data/employees.tsv", function(data) {
 ![image](https://user-images.githubusercontent.com/45296858/147280909-5344cbd1-6be4-4a46-b31d-a521b982730e.png)
 
 
+### تابع ()d3.xml
+
+تابع d3.xml نیز فایل را می‌خواند و یک object را پس از پردازش برمی‌گرداند.
+
+به عنوان یک مثال فرض کنید فایل زیر به آدرس employees.xml موجود است.
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<row>
+    <Name>John</Name>
+    <Age>30</Age>
+</row>
+<row>
+    <Name>Jane</Name>
+    <Age>32</Age>
+</row>
+</root>
+```
+
+```
+d3.xml("/data/employees.xml", function(data) {
+        console.log(data);
+});
+```
+
+ما می‌توانیم پس از parse کردن xml بالا، ساختار درختی آن را نیز به صورت زیر پیمایش کنیم. (با توابع مربوط به documentElement)
+
+```
+d3.xml("\data\employees.xml", function(data) {
+        console.log(xml.documentElement.getElementsByTagName("Name", "));
+});
+```
+
+در خروجی می‌توانیم tag های name را مشاهده کنیم:
+
+![image](https://user-images.githubusercontent.com/45296858/147281713-c6142bbc-e397-4f2c-8627-81840d93f7a7.png)
+
+
+
+
+
+
+
+
+
+
+
