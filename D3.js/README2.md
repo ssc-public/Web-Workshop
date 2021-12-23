@@ -318,3 +318,63 @@ d3.csv("/data/employees.csv")
   });
 ```
 
+### تابع ()d3.json
+
+داده‌ی json می‌تواند یک آبجکت تنها یا آرایه‌ای از json object ها باشد:
+
+```
+var nameObj = {
+    "name": "John",
+    "age": 30,
+    "city": "New York"
+};
+```
+
+```
+var nameArray = [{
+    "name": "John",
+    "age": 30,
+    "city": "New York"
+},
+{
+    "name": "Jane",
+    "age": 20,
+    "city": "San Francisco"
+}];
+```
+
+فایل json نیز مشابه csv کار می‌کند.
+
+```
+Signature:
+d3.json(url, callback);
+```
+
+پارامتر اول آدرس فایل و پارامتر دوم، یک callback است که هنگامی که لود شدن فایل json به پایان می‌رسد، یک بار اجرا می‌شود. دیتای لود شده نیز به عنوان ورودی به تابع callback داده می‌شود.
+
+یک مثال را بررسی کنیم. فرض کنید نوشته‌ی زیر را در فایل users.json قرار دادیم.
+
+```
+[{
+    "name": "John",
+    "age": 30,
+    "city": "New York"
+},
+{
+    "name": "Jane",
+    "age": 20,
+    "city": "San Francisco"
+}];
+```
+
+```
+d3.json("/data/users.json", function(data) {
+    console.log(data);
+});
+```
+
+خروجی به صورت زیر نمایش می‌یابد.
+
+![image](https://user-images.githubusercontent.com/45296858/147280577-9674b431-a91d-47dc-8e5c-caa80ffc09c2.png)
+
+
