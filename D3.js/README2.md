@@ -201,4 +201,23 @@
 آن‌ها حذف می‌شوند.
 
 
+### تابع ()datum
 
+تابع datum() برای مصورسازی‌های ثابت (static) استفاده می‌شود که به آپدیت نیاز ندارند. این تابع داده را مستقیم به یک عنصر bind می‌کند.
+
+```
+<body>
+    <p>D3 Tutorials</p>
+    <script>
+
+    d3.select("body")
+        .select("p")
+        .datum(100)
+        .text(function (d, i) {
+            return d;
+        });
+    </script>
+</body>
+```
+
+برای کسب اطلاعات بیشتر در مورد اتصال داده‌ها به عناصر DOM، می‌توانید [این بخش از مستندات D3](https://github.com/d3/d3-selection/blob/master/README.md#joining-data) را مطالعه کنید.
