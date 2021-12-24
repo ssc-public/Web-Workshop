@@ -4,33 +4,174 @@
 </p>
 
 ## نصب و راه‌اندازی
-1. If you haven't install Vue CLI. Run following command. You can also visit [this page](https://cli.vuejs.org/guide/installation.html)
+1. در صورتی که Vue CLI را نصب نکرده‌اید با استفاده از دستور زیر نصب کنید همچنین برای مطالعه بیشتر [اینجا](https://cli.vuejs.org/guide/installation.html) را مطالعه کنید.
 ```
 npm install -g @vue/cli
 ```
-2. create a new directory and navigate to it.
-3. create vue app 
+1. یک directory جدید بسازید و به آن بروید.
+3. یک vue app با استفاده از دستور زیر بسازید.
 ```
 vue create your-app-name
 ```
-4. we use bootstrap for easier and much more beatiful template. install bootstrap with CDN add following code to head tag in `your-app-name/public/index.html` 
+4. برای راحتی کار از بوت استرپ استفاده می‌کنیم. بوت استرپ را با استفاده از CDN و قرار دادن کد زیر در تگ head در مسیر `your-app-name/public/index.html` انجام می‌دهیم.
 ```
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 ```
-&nbsp; &nbsp; &nbsp; and add following code at the bottom of body tag
+&nbsp; &nbsp; &nbsp; و کد زیر را در انتهای تگ body قرار می دهیم.
 ```
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 ```
-5. we will install Apollo automatically. First run the following command
+5. سپس Apollo را به صورت زیر نصب می‌کنیم.
 ```
 vue add apollo
 ```
-6. create an Apollo instance, install Apollo client into vue, add Apollo Provider and add it to your app in `your-app-name/src/main.js` as explianed in video, now you use Apollo in all your child components
-7. for using Apollo in our app, Apollo has object that it used to trigger it in components
-8. we make query to fetch our data in `your-app-name/src/components/HellowWorld.vue` and we show our fetched data
-9. we also add mutution so we sent our mutution with following code and other description about mutation has ben explained in video
+6. از Apollo یک instance می‌گیریم، Apollo client و Apollo provider را در مسیر زیر مطابق کد زیر قرار می‌دهیم. در این صورت تمام child component ها می‌توانند از Apollo استفاده کنند.
+```
+import Vue from 'vue'
+import App from './App.vue'
+
+import VueApollo from 'vue-apollo'
+Vue.use(VueApollo)
+
+
+import { ApolloClient } from 'apollo-client'
+import { createHttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:4000',
+})
+
+const cache = new InMemoryCache()
+
+const apolloClient = new ApolloClient({
+  link: httpLink,
+  cache,
+})
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient,
+})
+
+Vue.config.productionTip = false
+
+new Vue({
+  apolloProvider,
+  render: h => h(App),
+}).$mount('#app')
+```
+
+7. برای استفاده از Apollo، باید از object آن استفاده کرد.
+```
+<script>
+export default {
+  apollo: {
+  }
+}
+</script>
+```
+8. سپس برای ایجاد کوئری‌مان مطابق با syntax های GraphQl باید در مسیر `src/components/HelloWorld.vue` کدی مشابه کد زیر قرار دهیم.
+```
+import gql from 'graphql-tag'
+
+export default {
+  name: 'mainApp',
+  data(){
+    return{
+      foods:'',
+    }
+  },
+
+  apollo:{
+    foods:{
+      query: gql`
+        query {
+          foods{
+            food,
+            price,
+            description
+          }
+        }
+      `,
+    }
+  },
+```
+&nbsp; &nbsp; &nbsp; ابتدا آبجکت Apollo را قرار می‌دهیم سپس باید توجه داشته باشیم که نام آبجکتی که در کوئری‌مان است هم‌نام متغیری که تعریف کرده‌ایم باشد.
+
+9. در نهایت دیتا داده شده را در صفحه نمایش می‌دهیم.
+```
+    <div class="row">
+      <div class="container mt-4">
+        <div v-for="food in foods" :key="food.id">
+          <div class="col-md-8 mx-auto">
+            <div class="">
+                <div class="card">
+                  <div class="card-body">
+                    Title:{{food.food}}
+                    <hr>
+                    Author:{{food.price}}
+                    Descroption{{food.description}}
+                  </div>
+                </div>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+```
+10. همانطور که در [این بخش](../back/README.md) گفته‌شد برای ارسال mutation از کد زیر استفاده می‌کنیم.
 ```
 this.$apollo.mutate()
+```
+11. پیاده‌سازی کامل mutation آن به صورت زیر است
+```
+this.$apollo.mutate({
+        mutation: gql`
+            mutation createFood($food:String!, $price:String!, $description:String!){
+              createFood(food: $food, price: $price, description: $description){
+                food,
+                price,
+                description
+              }
+            }
+          `,
+          variables: {
+            food: this.food,
+            price: this.price,
+            description: this.description
+          }
+      })
+      .then(response => {
+        this.foods = response.data.createFood
+        location.reload()
+      })
+```
+12. برای عملکرد mutation یک فرم مانند زیر ایجاد می‌کنیم.
+```
+    <div class="row">
+      <div class="container">
+        <div class="col-md-8 mx-auto">
+          <h1>Menu</h1>
+          <form >
+            <div class="form-group">
+              <input type="text" v-model="food" class="form-control" id="title" placeholder="name">
+            </div>
+            <div class="form-group">
+              <input type="text" v-model="price"  class="form-control" id="author" placeholder="price">
+            </div>
+            <div class="form-group">
+              <textarea v-model="description" class="form-control" id="description"  placeholder="description" rows="3"></textarea>
+            </div>
+            <button @click="createFood" type="button" class="btn btn-secondary btn-lg btn-block">Add Food</button>
+          </form>
+        </div>
+      </div>
+    </div>
+```
+13. در نهایت با دستور زیر ران می‌کنیم (توجه کنید باید سرور پیاده‌سازی شده ران شده باشد)
+```
+npm run serve
 ```
