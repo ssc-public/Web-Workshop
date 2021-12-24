@@ -1,3 +1,4 @@
+// https://github.com/tc39/proposal-iterator-helpers
 require('../modules/esnext.async-iterator.constructor');
 require('../modules/esnext.async-iterator.as-indexed-pairs');
 require('../modules/esnext.async-iterator.drop');
@@ -26,3 +27,4 @@ require('../modules/esnext.iterator.reduce');
 require('../modules/esnext.iterator.some');
 require('../modules/esnext.iterator.take');
 require('../modules/esnext.iterator.to-array');
+require('../modules/esnext.iterator.to-async');

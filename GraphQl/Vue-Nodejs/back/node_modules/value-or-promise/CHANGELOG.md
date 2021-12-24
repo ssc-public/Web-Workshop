@@ -1,5 +1,11 @@
 # value-or-promise
 
+## 1.0.11
+
+### Patch Changes
+
+- 81274d4: fix(ValueOrPromise.all): sync code should error first
+
 ## 1.0.10
 
 ### Patch Changes

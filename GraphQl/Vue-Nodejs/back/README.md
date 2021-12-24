@@ -1,23 +1,76 @@
-# Implementing GraphQl server with node js
-an image go here
-## How to start
-1. create a new directory and navigate to it
-2. initialize node js project. If you don't know how does the following commad work, visit [this page](https://docs.npmjs.com/cli/v8/commands/npm-init) 
+# پیاده‌سازی GraphQl با node js
+<p align="center" width="100%">
+<img width="397" alt="Screen Shot 1400-10-03 at 15 25 41" src="https://user-images.githubusercontent.com/59199865/147351150-d6fd731c-9583-4b27-a7cd-bde53ef13727.png">
+</p>
+
+## نصب و راه‌اندازی 
+1. یک directory جدید بسازید و به آن بروید.
+2. یک پروژه node js ایجاد کنید. در صورتی که تا حالا از دستور زیر استفاده نکرده‌اید، این [داک](https://docs.npmjs.com/cli/v8/commands/npm-init) را مطالعه کنید.
 ```
 npm init --yes
 ```
-3. as you know we want to work with GraphQl and Apollo Server so we need to install dependecies
+3. برای کار با GraphQl و Apollo باید dependencies مربوطه را با استفاده از دستور زیر نصب کنیم.
 ```
 npm install apollo-server graphql
 ```
-4. create an index.js file in root of project
-5. define your GraphQl schema in index.js as explained in video
-6. for our example we hard code our data
-7. define resolver in index.js as explained in video
-8. GraphQl doesnt have diffrent routes like REST API (get, post, delete, ...). It only has two routes. If you want to changing the state of in GraphQl Server you should sent it through a mutations so we modify our mutation in index.js as explained in video
-9. create an instance of Apollo Server as explained in video
-10. run your server
+<p dir='rtl' align='right'>4. یک فایل index.js در root پروژه بسازید.</p>
+
+<p dir='rtl' align='right'>5. برای خود یک GraphQl schema در فایل index.js به صورت زیر بسازید.</p>
+
+```
+const { ApolloServer, gql } = require('apollo-server');
+
+const typeDefs = gql`
+  type Food {
+    food: String
+    price: String
+    description: String
+  }
+
+  type Query {
+    foods: [Food]
+  }
+`;
+```
+6. برای مثال ما دیتا مورد نیاز را hard code می‌کنیم
+```
+const foods = [
+  {
+    food: 'Steak',
+    price: '100$',
+    description: 'Well done'
+  },
+  {
+    food: 'Pasta',
+    price: '80$',
+    description: 'Spicy'
+  },
+  {
+    food: 'French Fries',
+    price: '10$',
+    description: 'Waffle style'
+  }
+];
+```
+7. یک resolver تعریف می‌کنیم. در واقع resolver به Apollo GraphQl می گوید که چگونه داده های مرتبط با یک نوع داده خاص را fetch کند.
+```
+const resolvers = {
+  Query: {
+    foods: () => foods,
+  },
+};
+```
+8. سپس از Apollo Server یک instance می‌گیریم.
+```
+const server = new ApolloServer({ typeDefs, resolvers });
+
+server.listen().then(({ url }) => {
+  console.log(`Server ready at ${url}`);
+});
+```
+9. از آنجا که GraphQl برخلاف REST API که دارای متد‌های get, post, delete, ... تنها دو روش دارد. در صورتی که بخواهیم state را تغییر دهیم از mutation  استفاده می‌کنیم. کد موجود در [این بخش](https://github.com/nonaghazizadeh/web_workshop/blob/master/GraphQl/Vue-Nodejs/back/index.js) پیاده‌سازی کامل با mutation است.
+10. سرور را با دستور زیر ران می‌کنیم.
 ```
 node index.js
 ```
-10. finally you server is ready at given url in console
+11. در نهایت سرور در یک url .که در کنسول آمده است، بالا میاید
