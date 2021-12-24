@@ -15,8 +15,11 @@
  محمد نامدار
 </div>
 
+<p align=center>
 
-# فهرست
+![dart logo](https://www.scottbrady91.com/img/logos/dart.svg)
+
+</p>
 
 # توضیحات کلی
 دارت یک زبان متن باز بهینه سازی شده برای کلاینت به هدف توسعه برنامه های سریع در پلتفرم های گوناگون است که توسط گوگل در سال 2013 توسعه داده شده است .
@@ -87,7 +90,9 @@
 dart2native
 کامپایلر می‌شود از این روش هم استفاده کرد.. 
 
-## نصب و استفاده
+</br>
+
+# نصب و استفاده
 
 </br>
 </br>
@@ -138,7 +143,7 @@ dart first.dart
 </br>
 </br>
 
-## آموزش دارت
+# آموزش دارت
 
 </br>
 </br>
@@ -364,7 +369,28 @@ Future<void> printWithDelay(String message) {
 <li>Vim </li>
 
 # منابع
+برای بخش documentation از لینک های زیر استفاده شده است.
+<div dir='ltr'>
+https://dart.dev/guides
+</div>
+<div dir='ltr'>
+https://dart.dev/overview
+</div>
+<div dir='ltr'>
+https://dart.dev/codelabs
+</div>
+<div dir='ltr'>
+https://www.youtube.com/watch?v=huawCRlo9H4&t=1810s
+</div>
+
+
+</br>
+</br>
+
 برای کدها از منبع روبرو استفاده شده است.
 <div dir='ltr'>
 https://dart.dev/samples
+</div>
+<div dir='ltr'>
+https://www.youtube.com/watch?v=Ej_Pcr4uC2Q
 </div>
