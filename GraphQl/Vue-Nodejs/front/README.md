@@ -149,4 +149,26 @@ this.$apollo.mutate({
         location.reload()
       })
 ```
-12.
+12. برای عملکرد mutation یک فرم مانند زیر ایحاد می‌کنیم.
+```
+    <div class="row">
+      <div class="container">
+        <div class="col-md-8 mx-auto">
+          <h1>Menu</h1>
+          <form >
+            <div class="form-group">
+              <input type="text" v-model="food" class="form-control" id="title" placeholder="name">
+            </div>
+            <div class="form-group">
+              <input type="text" v-model="price"  class="form-control" id="author" placeholder="price">
+            </div>
+            <div class="form-group">
+              <textarea v-model="description" class="form-control" id="description"  placeholder="description" rows="3"></textarea>
+            </div>
+            <button @click="createFood" type="button" class="btn btn-secondary btn-lg btn-block">Add Food</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    ```
+  
