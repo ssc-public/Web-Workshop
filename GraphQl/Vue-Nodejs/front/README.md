@@ -1,6 +1,9 @@
-# Implementing GraphQl front with vue.js
+# پیاده‌سازی GraphQl با vue js
+<p align="center" width="100%">
+<img width="795" alt="Screen Shot 1400-10-03 at 19 43 04" src="https://user-images.githubusercontent.com/59199865/147364109-6df4c013-5f17-47b5-bb6b-203ba760d0a9.png">
+</p>
 
-## How to start
+## نصب و راه‌اندازی
 1. If you haven't install Vue CLI. Run following command. You can also visit [this page](https://cli.vuejs.org/guide/installation.html)
 ```
 npm install -g @vue/cli
