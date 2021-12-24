@@ -61,25 +61,26 @@
 
 <div dir="ltr">
 	
-   	// JS🟨
-	class User {
-	    #name
-	    constructor(name) {
-	        this.#name = name;
-	    }
-	}
-	const user = new User('Tom');
-	
-	// TS🟦
-	class User {
-	    #name: string 
-	    constructor(name: string) {
-	        this.#name = name;
-	    }
-	}
-	const user = new User('Tom')
-
-	
+```javascript
+// JS
+class User {
+    #name
+    constructor(name) {
+        this.#name = name;
+    }
+}
+const user = new User('Tom');
+```
+```typescript
+// TS
+class User {
+    #name: string 
+    constructor(name: string) {
+        this.#name = name;
+    }
+}
+const user = new User('Tom')
+```
 </div>
 
 تنها تفاوت در تعریف متغیر name است که در ts باید نوع آن‌را مشخص کرد.
@@ -90,66 +91,54 @@
 
 <div dir="ltr">
 
-TS:
-
-</div>
-
-<div dir="ltr">
-
-    s = "ali";
-    console.log(s); // error s not defined
-    s = 12;
-    console.log(s); // error s not defined
-
-</div>
-
-<div dir="ltr">
-
-Js:
-
-</div>
-
-<div dir="ltr">
-
-    s = "ali";
-    console.log(s); //ali
-    s = 12;
-    console.log(s); //12
-
+```typescript
+// TS
+s = "ali";
+console.log(s); // error s not defined
+s = 12;
+console.log(s); // error s not defined
+```
+```javascript
+// JS
+s = "ali";
+console.log(s); //ali
+s = 12;
+console.log(s); //12
+```
 </div>
 
 - در ts ما برای annotation به شکل زیر عمل میکنیم:
 
 <div dir="ltr">
 
-    var variableName: TypeAnnotation = value;  
-
+```typescript
+var variableName: TypeAnnotation = value;  
+```
 </div>
 
 مثلا: 
 
 <div dir="ltr">
 
-    var age: number = 44;         // number variable  
-    var name: string = "Ali";     // string variable  
-
-
+```typescript
+var age: number = 44;         // number variable  
+var name: string = "Ali";     // string variable  
+```
 </div>
 
 اگر در ادامه به متغیر name مقداری عددی تخصیص دهیم به ارور میخوریم ولی در js این ویژگی وجود ندارد.
 
 <div dir="ltr">
 
-    // JS🟨
-    var name = “Ali”;
-    name = 44 ; // valid
+```typescript
+// JS
+var name = “Ali”;
+name = 44 ; // valid
 
-    // TS🟦
-    var name = “Ali”;
-    name = 44 ; // error
-
-
-
+// TS
+var name = “Ali”;
+name = 44 ; // error
+```
 </div>
 
 # TypeScript basic syntax
@@ -170,20 +159,22 @@ Js:
 
 <div dir="ltr">
 
-    //this is single line comment 
-	 
-    /* This is a  
-    Multi-line comment 
-    */
-
+```typescript
+//this is single line comment 
+    
+/* This is a  
+Multi-line comment 
+*/
+```
 </div>
 
 - برای پرینت یک پیام از سینتکس زیر استفاده میشود:
 
 <div dir="ltr">
 	
+```typescript
     console.log("hello world")
-    
+```
 </div>
 
 # type
@@ -208,8 +199,9 @@ Js:
 
 <div dir="ltr">
 	
-    var score: number = 50;
-    
+```typescript
+var score: number = 50;
+```
 </div>
 
 # Condition و Loop
@@ -218,12 +210,13 @@ Js:
 
 <div dir="ltr">
 	
-    if (num % 2==0) { 
-        console.log("Even"); 
-    } else {
-        console.log("Odd"); 
-    }
-    
+```typescript
+if (num % 2==0) { 
+    console.log("Even"); 
+} else {
+    console.log("Odd"); 
+}
+```
 </div>
 
 ۳ روش برای ایجاد حلقه در جهت اجرای چند باره یک بخش از کد وجود دارد:
@@ -231,31 +224,34 @@ Js:
 - for loop:
 
 <div dir="ltr">
-	
-    for (initial_count_value; termination-condition; step) {
-        //statements 
-    }
-    
+
+```typescript	
+for (initial_count_value; termination-condition; step) {
+    //statements 
+}
+```
 </div>
     
 - while loop:
 
 <div dir="ltr">
-	
-    while(condition) { 
-        // statements if the condition is true 
-    }
 
+```typescript
+while(condition) { 
+    // statements if the condition is true 
+}
+```
 </div>
 
 - do… while:
 
 <div dir="ltr">
-	
-    do {
-        //statements 
-    } while(condition)
-    
+
+```typescript
+do {
+    //statements 
+} while(condition)
+```
 </div>	
 
 # Function
@@ -266,10 +262,11 @@ Js:
 
 <div dir="ltr">
 
-    function func_name( param1 [:datatype], param2 [:datatype]…) { 
-        // function body   
-    }
-
+```typescript
+function func_name( param1 [:datatype], param2 [:datatype]…) { 
+    // function body   
+}
+```
 </div>
 
 که وجود پارامتر ها اختیاری است.
@@ -278,23 +275,25 @@ Js:
 
 <div dir="ltr">
 
-    function_name(param1 , param2…)
-
+```typescript
+function_name(param1 , param2…)
+```
 </div>
 
 -یک نمونه کد برای ایجاد یک فانکشن و صدا زدن آن:
 
 <div dir="ltr">
 
-    function disp_details(id, name, mail_id) {
-        console.log("ID:", id);
-        console.log("Name", name);
-	
-    if (mail_id != undefined)
-        console.log("Email Id", mail_id);
-    }
-    disp_details(123, "John");
+```typescript
+function disp_details(id, name, mail_id) {
+    console.log("ID:", id);
+    console.log("Name", name);
 
+if (mail_id != undefined)
+    console.log("Email Id", mail_id);
+}
+disp_details(123, "John");
+```
 </div>
 
 ### توابع بازگشتی:
@@ -305,15 +304,16 @@ Js:
 
 <div dir="ltr">
 
-    function factorial(number) {
-        if (number <= 0) {         // termination case
-            return 1; 
-        } else {     
-            return (number * factorial(number - 1));     // function invokes itself
-        } 
-    }; 
-    console.log(factorial(6));      // outputs 720 
-
+```typescript
+function factorial(number) {
+    if (number <= 0) {         // termination case
+        return 1; 
+    } else {     
+        return (number * factorial(number - 1));     // function invokes itself
+    } 
+}; 
+console.log(factorial(6));      // outputs 720 
+```
 </div>
 
 # Numbers
@@ -324,8 +324,9 @@ TypeScript مانند JavaScript مقادیر عددی را بصورت اشیا 
 
 <div dir="ltr">
 
-    var var_name = new Number(value)
-
+```typescript
+var var_name = new Number(value)
+```
 </div>
 
 -بعضی از property های شی Number در زیر لیست شده اند:
@@ -351,17 +352,21 @@ TypeScript مانند JavaScript مقادیر عددی را بصورت اشیا 
 
 <div dir="ltr">
 
-    var var_name = new String(string);
-
+```typescript
+var var_name = new String(string);
+```
 </div>
 
 -یک مثال کد از کاربرد این شی همراه با متد دسترسی به طول رشته:
 
 
 <div dir="ltr">
+
+```typescript
     var uname = new String("Hello World") 
     console.log(uname) 
     console.log("Length "+uname.length) 
+```
 </div>
 
 -برخی method های شی String در زیر لیست شده اند:
@@ -383,9 +388,10 @@ TypeScript مانند JavaScript مقادیر عددی را بصورت اشیا 
 
 <div dir="ltr">
 
-    var array_name[:datatype];        //declaration 
-    array_name = [val1,val2,valn..]   //initialization
-
+```typescript
+var array_name[:datatype];        //declaration 
+array_name = [val1,val2,valn..]   //initialization
+```
 </div>
 
 برخی از method هایی که در TypeScript برای آرایه وجود دارند در زیر لیست شده اند:
@@ -426,26 +432,29 @@ Tuple ها برای زمانی که احتیاج داریم یک مجموعه ا
 
 <div dir="ltr">
 
-    var tuple_name = [value1,value2,value3,…value n]
-
+```typescript
+var tuple_name = [value1,value2,value3,…value n]
+```
 </div>
 
 -مثال:
 
 <div dir="ltr">
-	
-    var mytuple = [10,"Hello"];
-    
+
+```typescript
+var mytuple = [10,"Hello"];
+```
 </div>
 
 دسترسی به اعضای tuple هم به شکل زیر صورت میگیرد:
 
 <div dir="ltr">
 	
-    var tup = [] 
-    tup[0] = 12 
-    tup[1] = 23 
-    
+```typescript
+var tup = [] 
+tup[0] = 12 
+tup[1] = 23 
+```
 </div>
 
 -دو تا از عملگر هایی که روی یک tuple قابل انجام است در زیر توضیح داده شده اند:
@@ -459,11 +468,12 @@ Tuple ها برای زمانی که احتیاج داریم یک مجموعه ا
 
 <div dir="ltr">
 	
-    var a =[10,"hello"] 
-    var [b,c] = a 
-    console.log( b )   //10 
-    console.log( c )   //hello
-    
+```typescript
+var a =[10,"hello"] 
+var [b,c] = a 
+console.log( b )   //10 
+console.log( c )   //hello
+```
 </div>
 
 # Union
@@ -474,7 +484,9 @@ TypeScript این قابلیت را به برنامه میدهد که یک یا 
 
 <div dir="ltr">
 
-    Type1|Type2|Type3 
+```typescript
+Type1|Type2|Type3 
+```
 
 </div>
 
@@ -482,52 +494,55 @@ TypeScript این قابلیت را به برنامه میدهد که یک یا 
 
 <div dir="ltr">
 
-    var val:string|number 
-    val = 12 
-    console.log("numeric value of val "+val) 
-    val = "This is a string" 
-    console.log("string value of val "+val)
-
+```typescript
+var val:string|number 
+val = 12 
+console.log("numeric value of val "+val) 
+val = "This is a string" 
+console.log("string value of val "+val)
+```
 </div>
 
 -یک مورد استفاده دیگر union type ها به عنوان پارامتر فانکشن هاست:
 
 <div dir="ltr">
 
-    function disp(name:string|string[]) { 
-        if(typeof name == "string") { 
-            console.log(name) 
-        } else { 
-            var i; 
-      
-            for(i = 0;i<name.length;i++) { 
-                console.log(name[i])
-            } 
+```typescript
+function disp(name:string|string[]) { 
+    if(typeof name == "string") { 
+        console.log(name) 
+    } else { 
+        var i; 
+    
+        for(i = 0;i<name.length;i++) { 
+            console.log(name[i])
         } 
     } 
-
+} 
+```
 </div>
 
 Union تایپ ها همچنین میتوانند در آرایه ها یا اینترفیس ها مورد استفاده واقع شوند:
 
 <div dir="ltr">
 
-    var arr:number[]|string[]; 
-    var i:number; 
-    arr = [1,2,4] 
-    console.log("**numeric array**")  
+```typescript
+var arr:number[]|string[]; 
+var i:number; 
+arr = [1,2,4] 
+console.log("**numeric array**")  
 
-    for(i = 0;i<arr.length;i++) { 
-        console.log(arr[i]) 
-    }  
+for(i = 0;i<arr.length;i++) { 
+    console.log(arr[i]) 
+}  
 
-    arr = ["Mumbai","Pune","Delhi"] 
-    console.log("**string array**")  
+arr = ["Mumbai","Pune","Delhi"] 
+console.log("**string array**")  
 
-    for(i = 0;i<arr.length;i++) { 
-        console.log(arr[i]) 
-    } 
-
+for(i = 0;i<arr.length;i++) { 
+    console.log(arr[i]) 
+} 
+```
 </div>
 
 در این قطعه کد اعضای آرایه میتوانند از نوع رشته یا عددی باشند.
@@ -546,28 +561,30 @@ Union تایپ ها همچنین میتوانند در آرایه ها یا ای
 
 <div dir="ltr">
 
-    interface interface_name { 
-        ...
-    }
-
+```typescript
+interface interface_name { 
+    ...
+}
+```
 </div>
 
 -یک مثال از تعریف و پیاده سازی یک اینترفیس توسط یک کلاس:
 
 <div dir="ltr">
 
-    interface IPerson { 
-        firstName:string, 
-        lastName:string, 
-        sayHi: ()=>string 
-    } 
+```typescript
+interface IPerson { 
+    firstName:string, 
+    lastName:string, 
+    sayHi: ()=>string 
+} 
 
-    var customer:IPerson = { 
-        firstName:"Tom",
-        lastName:"Hanks", 
-        sayHi: ():string =>{return "Hi there"} 
-    } 
-
+var customer:IPerson = { 
+    firstName:"Tom",
+    lastName:"Hanks", 
+    sayHi: ():string =>{return "Hi there"} 
+} 
+```
 </div>
 
 # Class
@@ -576,10 +593,11 @@ TypeScript درواقع همان JavaScript است که شی گرایی را س�
 
 <div dir="ltr">
 	
-    class class_name {
-        //class scope 
-    }
-
+```typescript
+class class_name {
+    //class scope 
+}
+```
 </div>
 
 یک کلاس میتواند ۳ بخش زیر را شامل شود:
@@ -592,21 +610,22 @@ TypeScript درواقع همان JavaScript است که شی گرایی را س�
 
 <div dir="ltr">
 
-    class Car { 
-        //field 
-        engine:string; 
- 
-        //constructor 
-        constructor(engine:string) { 
-            this.engine = engine 
-        }  
+```typescript
+class Car { 
+    //field 
+    engine:string; 
 
-        //function 
-        disp():void { 
-            console.log("Engine is  :   "+this.engine) 
-        } 
-    }
+    //constructor 
+    constructor(engine:string) { 
+        this.engine = engine 
+    }  
 
+    //function 
+    disp():void { 
+        console.log("Engine is  :   "+this.engine) 
+    } 
+}
+```
 </div>
 
 # Object
@@ -617,44 +636,79 @@ TypeScript درواقع همان JavaScript است که شی گرایی را س�
 
 <div dir="ltr">
 
-    var object_name = { 
-        key1: “value1”, //scalar value 
-        key2: “value”,  
-        key3: function() {
-             //functions 
-        }, 
-        key4:[“content1”, “content2”] //collection  
-    };
-
+```typescript
+var object_name = { 
+    key1: “value1”, //scalar value 
+    key2: “value”,  
+    key3: function() {
+            //functions 
+    }, 
+    key4:[“content1”, “content2”] //collection  
+};
+```
 </div>
 
 -یک نمونه کد برای تعریف یک object و دسترسی به اعضای آن:
 
 <div dir="ltr">
 
-    var person = { 
-        firstname:"Tom", 
-        lastname:"Hanks" 
-    }; 
-    //access the object values 
-    console.log(person.firstname) 
-    console.log(person.lastname)
-
+```typescript
+var person = { 
+    firstname:"Tom", 
+    lastname:"Hanks" 
+}; 
+//access the object values 
+console.log(person.firstname) 
+console.log(person.lastname)
+```
 </div>
 
 همچنین در صورتی که بخواهیم مقادیری را به object اضافه کنیم. TypeScript با استفاده از تعریف یک method template این اجازه را به ما میدهد. مثلا در قطعه کد زیر ما یک فانکشن را به شی person اضافه میکنیم:
 
 <div dir="ltr">
 
-    var person = {
-        firstName:"Tom", 
-        lastName:"Hanks", 
-        sayHello:function() {  }  //Type template 
-    } 
-    person.sayHello = function() {  
-        console.log("hello "+person.firstName)
-    } 
-
+```typescript
+var person = {
+    firstName:"Tom", 
+    lastName:"Hanks", 
+    sayHello:function() {  }  //Type template 
+} 
+person.sayHello = function() {  
+    console.log("hello "+person.firstName)
+} 
+```
 </div>
+
+# Generics
+با استفاده از Generic ها می توان کد های منعطفی تولید کرد.
+
+<div dir="ltr">
+
+```typescript
+function getRandomNumber(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomNumericElement<T extends number>(elements: T[]): T {
+    if (elements.length) {
+        return elements[getRandomNumber(0, elements.length)];
+    }
+    throw new Error("Empty Array");
+}
+
+let scores = [20, 18, 16, 17, 19];
+console.log(getRandomNumericElement(scores));
+
+let scoresString = ["20", "18", "16", "17", "19"];
+console.log(getRandomNumericElement(scoresString));
+// Argument of type 'string[]' is not assignable to parameter of type 'number[]'.
+// Type 'string' is not assignable to type 'number'.
+// can be solved if T extends (number|string)
+```
+</div>
+
+در اینجا تابعی با جنریک ها ساختیم که تنها به شرطی که آرایه ورودی از نوع عددی یا کلاس هایی که از ان ارث بری می کنند باشد یک عنصر تصادفی از آن را خروجی دهد.
+
+ترکیب جنریک ها با union type ها و ابزار های دیگر تایپ که در ادامه با آن ها آشنا می شویم از نقاط منعطف TypeScript است.
 
 </div>
