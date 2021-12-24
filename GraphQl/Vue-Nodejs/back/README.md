@@ -68,7 +68,7 @@ server.listen().then(({ url }) => {
   console.log(`Server ready at ${url}`);
 });
 ```
-<p dir='rtl' align='right'>8. GraphQl برخلاف REST API که دارای متد‌های get, post, delete, ... است، تنها دو روش دارد. در صورتی که بخواهیم state را تغییر دهیم از mutation  استفاده می‌کنیم. کد موجود در [این بخش](https://github.com/nonaghazizadeh/web_workshop/blob/master/GraphQl/Vue-Nodejs/back/index.js) پیاده‌سازی کامل با mutation است.</p>
+<p dir='rtl' align='right'>8. GraphQl برخلاف REST API که دارای متد‌های get, post, delete, ... است، تنها دو روش دارد. در صورتی که بخواهیم state را تغییر دهیم از mutation  استفاده می‌کنیم. کد موجود در <a href="https://github.com/nonaghazizadeh/web_workshop/blob/master/GraphQl/Vue-Nodejs/back/index.js">این بخش</a> پیاده‌سازی کامل با mutation است.</p>
 <p dir='rtl' align='right'>9. سرور را با دستور زیر ران می‌کنیم.</p>
 
 ```
