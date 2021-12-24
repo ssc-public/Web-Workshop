@@ -27,7 +27,50 @@ vue create your-app-name
 ```
 vue add apollo
 ```
-6. create an Apollo instance, install Apollo client into vue, add Apollo Provider and add it to your app in `your-app-name/src/main.js` as explianed in video, now you use Apollo in all your child components
-7. for using Apollo in our app, Apollo has object that it used to trigger it in components
-8. we make query to fetch our data in `your-app-name/src/components/HellowWorld.vue` and we show our fetched data
+6. از Apollo یک instance می‌گیریم، Apollo client و Apollo provider را در مسیر زیر مطابق کد زیر قرار می‌دهیم. در این صورت تمام child component ها می‌توانند از Apollo استفاده کنند.
+```
+import Vue from 'vue'
+import App from './App.vue'
+
+import VueApollo from 'vue-apollo'
+Vue.use(VueApollo)
+
+
+import { ApolloClient } from 'apollo-client'
+import { createHttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+
+const httpLink = createHttpLink({
+  uri: 'http://localhost:4000',
+})
+
+const cache = new InMemoryCache()
+
+const apolloClient = new ApolloClient({
+  link: httpLink,
+  cache,
+})
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient,
+})
+
+Vue.config.productionTip = false
+
+new Vue({
+  apolloProvider,
+  render: h => h(App),
+}).$mount('#app')
+```
+
+7. برای استفاده از Apollo، باید از object آن استفاده کرد.
+```
+<script>
+export default {
+  apollo: {
+  }
+}
+</script>
+```
+
 
