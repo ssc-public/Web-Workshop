@@ -72,5 +72,32 @@ export default {
 }
 </script>
 ```
+8. سپس برای ایجاد کوئری‌مان مطابق با syntax های GraphQl باید در مسیر `src/components/HelloWorld.vue` کدی مشابه کد زیر قرار دهیم.
+```
+import gql from 'graphql-tag'
+
+export default {
+  name: 'mainApp',
+  data(){
+    return{
+      foods:'',
+    }
+  },
+
+  apollo:{
+    foods:{
+      query: gql`
+        query {
+          foods{
+            food,
+            price,
+            description
+          }
+        }
+      `,
+    }
+  },
+```
+&nbsp; &nbsp; &nbsp; ابتدا آبجکت Apollo را قرار می‌دهیم سپس باید توجه داشته باشیم که نام آبجکتی که در کوئری‌مان است هم‌نام متغیری که تعریف کرده‌ایم باشد.
 
 
