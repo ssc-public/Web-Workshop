@@ -100,4 +100,53 @@ export default {
 ```
 &nbsp; &nbsp; &nbsp; ابتدا آبجکت Apollo را قرار می‌دهیم سپس باید توجه داشته باشیم که نام آبجکتی که در کوئری‌مان است هم‌نام متغیری که تعریف کرده‌ایم باشد.
 
-
+9. در نهایت دیتا داده شده را در صفحه نمایش می‌دهیم.
+```
+    <div class="row">
+      <div class="container mt-4">
+        <div v-for="food in foods" :key="food.id">
+          <div class="col-md-8 mx-auto">
+            <div class="">
+                <div class="card">
+                  <div class="card-body">
+                    Title:{{food.food}}
+                    <hr>
+                    Author:{{food.price}}
+                    Descroption{{food.description}}
+                  </div>
+                </div>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+```
+10. همانطور که در [این بخش](https://github.com/nonaghazizadeh/web_workshop/blob/master/GraphQl/Vue-Nodejs/back/README.md) گفته‌شد برای ارسال mutation از کد زیر استفاده می‌کنیم.
+```
+this.$apollo.mutate()
+```
+11. پیاده‌سازی کامل mutation آن به صورت زیر است
+```
+this.$apollo.mutate({
+        mutation: gql`
+            mutation createFood($food:String!, $price:String!, $description:String!){
+              createFood(food: $food, price: $price, description: $description){
+                food,
+                price,
+                description
+              }
+            }
+          `,
+          variables: {
+            food: this.food,
+            price: this.price,
+            description: this.description
+          }
+      })
+      .then(response => {
+        this.foods = response.data.createFood
+        location.reload()
+      })
+```
+12.
