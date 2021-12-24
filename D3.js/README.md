@@ -36,9 +36,23 @@
     - [transition](#transition)
     - [ease](#ease)
     - [delay](#delay)
+  - [Data Binding](#data-binding)
+    - [تابع ()data](#تابع-data)
+    - [تابع ()enter](#تابع-enter)
+    - [تابع ()exit](#تابع-exit)
+    - [تابع ()datum](#تابع-datum)
+  - [خواندن داده‌ها از فایل در D3](#خواندن-دادهها-از-فایل-در-d3)
+    - [تابع ()d3.csv](#تابع-d3csv)
+    - [تابع ()d3.json](#تابع-d3json)
+    - [تابع ()d3.tsv](#تابع-d3tsv)
+    - [تابع ()d3.xml](#تابع-d3xml)
+    - [بایند کردن داده‌های Load شده](#بایند-کردن-دادههای-load-شده)
+    - [مدیریت خطاها](#مدیریت-خطاها)
+  - [منابع](#منابع)
 
 ## ️نویسندگان
   - [سید مهدی صادق شبیری](https://github.com/SmsS4)
+  - [محمدصادق سلیمی](https://github.com/SMSadegh19)
 <hr>
 
 ## مقدمه
@@ -1410,4 +1424,4 @@ d3.json("/data/users.json", function(error, data) {
 ## منابع
 
 
-- https://github.com/mostafaghadimi/web_workshop/tree/master/Elasticsearch (Template)
+- https://www.tutorialsteacher.com/d3js/ 
