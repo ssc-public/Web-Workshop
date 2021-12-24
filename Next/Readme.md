@@ -37,6 +37,7 @@
 برای ایجاد پروژه نیازمند [node.js][node.js] خواهید بود.
 <br/>
 پس از نصب node به سادگی می‌توانید با دستورات زیر پروژه Next خود را بسازید:
+
 <div dir="ltr">
 
 ```
@@ -45,7 +46,8 @@ npx create-next-app@latest
 yarn create next-app
 ```
 </div>
-برای ساخت پروژه Typescript نیز از <span style="color:yellow">typescript--</span> استفاده کنید:
+
+برای ساخت پروژه Typescript نیز از <span style="color:#1232b3">typescript--</span> استفاده کنید:
 
 <div dir="ltr">
 
@@ -86,6 +88,7 @@ function Avatar() {
 export default Avatar
 ```
 </div>
+
 فایل‌های موجود در این دایرکتوری از طریق browser قابل دسترسی هستند. به طور مثال میتوانید از http://localhost:3000/img.png این فایل را مشاهده کنید.
 <br/>
 <br/>
@@ -97,6 +100,7 @@ export default Avatar
 globals.css بر روی همه‌ی صفحات و اجزاء اعمال می‌شود، این فایل در ```pages/_app.js``` استفاده شده است.
 <br/>
 سایر فایل‌های css باید به صورت 
+
 <div dir="ltr">
 
 ```
@@ -134,9 +138,6 @@ export default MyApp
 ```
 </div>
 <br/>
-
-
-
 
 ## Routing
 همان‌طور که اشاره شد Next.js سیستم routing بر اساس فایل را پیاده‌سازی کرده است. بدین صورت که با اضافه کردن یک فایل در دایرکتوری pages، به صورت اتوماتیک به عنوان route قابل دسترسی خواهد بود.
@@ -261,16 +262,6 @@ export default Post
 - /post &#8594; { }
 - /post/a &#8594; { "slug": ["a"] }
 - /post/a/b &#8594; { "slug": ["a", "b"] }
-
-
-
-
-
-
-
-
-
-
 
 
 ## فچ کردن داده‌ها
