@@ -1,5 +1,7 @@
 # Implementing GraphQl front with vue.js
-an image goes here
+<p align="center" width="100%">
+<img width="835" alt="Screen Shot 1400-10-03 at 15 17 44" src="https://user-images.githubusercontent.com/59199865/147350464-5db0794f-af12-42cd-98f9-f6aef7c3078e.png">
+</p>
 
 ## How to start
 1. If you haven't install Vue CLI. Run following command. You can also visit [this page](https://cli.vuejs.org/guide/installation.html)
