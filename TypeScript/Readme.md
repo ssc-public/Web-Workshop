@@ -663,6 +663,34 @@ console.log(test.#cantCMe); // error
 </div>
 جالب است که شما کلاس ها را نیز می توانید علاوه بر extend همانند interface ها implement کنید و با این کار در واقع با کلاس همانند interface رفتار کرده اید و ملزم به پیاده سازی تمامی متد های آن هستید. از آنجا که تمامی interface ها پس از کامپایل از بین می روند می توان از این قابلیت برای Dependency Injection استفاده کرد و با implment کردن abstract class ها از آن ها به عنوان interface استفاده کنیم.
 
+برای اعضای کلاس می توان getter و setter نیز به سبک زیر نوشت که نحوه دسترسی به آن اعضا رو تعیین می کند.
+
+<div dir="ltr">
+
+```typescript
+class Test {
+    private _even: number = 0;
+
+    public get even() {
+        return this._even * 2;
+    }
+
+    public set even(x: number) {
+        if (x % 2 == 0) {
+            this._even = x / 2;
+        } else {
+            throw new Error("Odd value!");
+        }
+    }
+}
+
+let test: Test = new Test();
+test.even = 10;
+console.log(test.even); // prints 10
+test.even = 11; // error
+```
+</div>
+
 
 # Object
 
