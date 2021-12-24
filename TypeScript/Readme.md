@@ -837,4 +837,122 @@ handle(req)
 
 2- در interface ها براحتی می توان کلید جدید به خود interface اصلی اضافه کرد اما در تایپ ها پس از تعریف نمی توان در ان تغییری ایجاد کرد.
 
+# Utility Types
+
+## String Manipulation Types
+
+اول با ۴ تا تایپ کمکی مخصوص رشته آشنا می شویم.
+
+1. Uppercase
+
+2. Lowercase
+
+این ۲ تایپ کمکی از نام خود معلوم هستند برای بزرگ کردن و کوچک کردن حروف تایپ استفاده می شود.
+
+3. Capitalize
+
+4. Uncapitalize
+
+این ۲ تایپ در نقش متصضاد همدیگر هستند و Capitalize حرف اول تایپ را بزرگ می کند.
+
+<div dir="ltr">
+
+```typescript
+type odd = 1 | 3 | 5 | 7 | 9;
+type nationality = "iranian" | "chinese" | "american" | "russian";
+type skills = "front-end" | "back-end" | "full-stack";
+type mixed = `${odd | nationality} ${skills} developer`;
+let test: Uppercase<mixed> = "IRANIAN FULL-STACK DEVELOPER";
+let test2: Lowercase<mixed> = "iranian full-stack developer";
+let test3: Capitalize<mixed> = "Iranian full-stack developer";
+```
+</div>
+
+## Nullability Types
+
+با استفاده از **?** می توانیم فیلد های تایپ را nullable کنیم.
+
+* Partial
+* Required
+
+<div dir="ltr">
+
+```typescript
+type Student = {
+    id: number
+    name: string
+    score?: number
+}
+type FullStudent = Required<Student>
+type HalfStudent = Partial<Student>
+let student: Student = {
+    id: 1,
+    name: "Ali"
+}
+let emptyStudent: HalfStudent = {
+    id: 2
+}
+let happyStudent: FullStudent = {
+    id: 3,
+    name: "Ali",
+    score: 19
+}
+```
+</div>
+این دو تایپ متضاد یکدیگر هستند و یکی از آن ها تمام فیلد ها را اجباری می کند و دیگری تمام فیلد ها را اختیاری.
+
+## Readonly Types
+
+* Readonly
+
+با استفاده از این تایپ می توانیم یک تایپ جدید بسازیم که تمامی فیلد های ان readonly هستند.
+
+* Record
+
+با استفاده از این تایپ کمکی می توانید تایپ جدید با استفاده از  کلید های داده شده بسازید.
+
+<div dir="ltr">
+
+``` typescript
+type Student = {
+    id: number
+    name: string
+    score: string
+}
+type StudentPrime = Record<"normal" | "gifted" | "suspended", Student>;
+let student: StudentPrime =  {
+    normal: {id: 1, name: "mamal", score: 16}, 
+    gifted: {id: 2, name: "ali", score: 19},
+    suspended: {id: 3, name: "siavash", score: 12}
+}
+```
+</div>
+
+* Pick
+* Omit
+
+با استقفاده از تایپ Pick می توانیم تعداد از کلید های تایپ اولیه را انتخاب کنیم و با استفاده از ان ها تایپ جدیدی بسازیم.
+
+با استفاده از تایپ Omit می توانیم از تایپ اولیه تعدادی کلید را حذف کنیم و با استفاده از آن تایپ جدیدی بسازیم.
+
+<div dir="ltr">
+
+```typescript
+type Student = {
+    id: number
+    name: string
+    score: number
+}
+type StudentAlpha = Pick<Student, "id" | "score">;
+type StudentBeta = Omit<Student, "name">;
+let student: StudentAlpha = {
+    id: 1,
+    score: 18
+}
+function handle(student: StudentBeta) {
+    console.log(student.id);
+}
+handle(student);
+```
+</div>
 </div>
