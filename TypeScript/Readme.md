@@ -711,4 +711,66 @@ console.log(getRandomNumericElement(scoresString));
 
 ترکیب جنریک ها با union type ها و ابزار های دیگر تایپ که در ادامه با آن ها آشنا می شویم از نقاط منعطف TypeScript است.
 
+# Type Aliases
+
+از آنجا که بسیار پیش می آید که بخواهیم از تایپی که یک جا تعریف می کنیم در جای دیگر استفاده کنیم می توانیم به آن تایپ ها نام بدهیم.
+
+نکته: رشته ها (یا به صورت کلی دیگر مقادیر) می توانند به عنوان تایپ استفاده شوند.
+
+<div dir="ltr">
+
+```typescript
+let one : 1 = 1;
+let skill : "full-stack" = "full-stack";
+let evenNumber: 0 | 2 | 4 | 6 | 8 = 5;
+// Type '5' is not assignable to type '0 | 2 | 4 | 6 | 8'
+
+type odd = 1 | 3 | 5 | 7 | 9;
+type nationality = "iranian" | "chinese" | "american" | "russian";
+let me : nationality = "iranian";
+```
+</div>
+در اینجا با استفاده از union type توانستیم یک تایپ منعطف جدید بسازیم  اما کار همینجا تمامم نمی شود.
+
+<div dir="ltr">
+
+```typescript
+type odd = 1 | 3 | 5 | 7 | 9;
+type nationality = "iranian" | "chinese" | "american" | "russian";
+type skills = "front-end" | "back-end" | "full-stack";
+type mixed = `${odd | nationality} ${skills} developer`;
+let test: mixed = "iranian full-stack developer";
+let test2: mixed = "2 back-end developer"; // error
+```
+</div>
+در اینجا از تایپ ها در ساخت یک تایپ رشته ای جدید استفاده کردیم که ترکیبی از union type های مختلف است .
+
+<div dir="ltr">
+
+```typescript
+type Request = {
+    body: string;
+    method: "GET" | "POST";
+    url: string;
+};
+
+function handle(request: Request) {
+    console.log("request handled");
+}
+
+const req = {
+    body : "",
+    method: "POST" as "POST",
+    url: "google.com"
+}
+handle(req)
+```
+</div>
+
+در اینجا برای اینکه POST به عنوان تایپ POST حساب شود نه string از عبارت as "POST" استفاده کردیم. همانطور که بنظر می آید شباهت های زیادی بین type alias و interface وجود دارد. در اینجا چند تقاوت از آن ها را نام می بریم.
+
+1- شبیه به union type می توان با استفاده از & از intersection type استفاده کرد که  می توان به تایپ ها کلید جدید اضافه کرد اما در interface ها کافی است آن را extend کنیم.
+
+2- در interface ها براحتی می توان کلید جدید به خود interface اصلی اضافه کرد اما در تایپ ها پس از تعریف نمی توان در ان تغییری ایجاد کرد.
+
 </div>
