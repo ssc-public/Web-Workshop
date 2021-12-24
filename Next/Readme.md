@@ -380,6 +380,52 @@ export default User;
 حال اگر مثل کاری که با تابع getStaticProps کردیم در اینجا نیز به dummy_users عضو جدید اضافه کنیم. بر خلاف آنجا با هر رفرش کردن عضو های جدید دیده می‌شوند.
 <br/>
 بر اساس شرایط و کاربرد های مختلف هر کدام از روش های مطرح شده می ‌تواند سودمند باشد و کارایی و SEO را  بهبود بخشد.
+
+### استفاده از revalidate  در getStaticProps
+در این بخش به ISR یا Increamental Static Regeneration می پردازیم، وقتی می‌خوام صفحه ساخته شده در زمان بیلد آپدیت شود از revalidate  در خروجی تابع getStaticProps استفاده می‌کنیم.
+<br/>
+برای دیدن نحوه عملکرد این تابع باز هم از server.py و فایل pages/users/index.js استفاده خواهیم کرد. قطعه کد مقابل را در فایل index.js کپی کنید:
+
+<div style="direction:ltr">
+
+```
+function User({ users }) {
+  return (
+    <ul>
+      {users.map(user => (
+        <li key={user.id}>{user.name}</li>
+      ))}
+    </ul>
+  );
+}
+
+export async function getStaticProps(context) {
+  const res = await fetch("http://localhost:5000/users");
+  const responseJson = await res.json();
+
+  console.log(`at getStaticProps time: ${new Date()}`);
+  const users = responseJson.result;
+
+  return {
+    props: {
+      users,
+    },
+    revalidate: 10,
+  };
+}
+
+export default User;
+```
+</div>
+در این حالت در هنگام build صفحه users با داده های اولیه ساخته می شود سپس اگر تغییری در dummy_users ایجاد کنید و server.py را ریستارت کنید، پس از مدتی اسامی جدید نیز قابل مشاهده خواهند بود.
+<br/>
+کلید revalidate باعث می‌شود با هر درخواست تابع getStaticProps تریگر شده و صفحه را از نو بسازد چون هزینه این عملیات بالاست عدد مقابل revalidate نشان می‌دهد پس از هر درخواست که getStaticProps را تریگر می‌کند چقدر صبر کنیم تا دوباره این تابع تریگر شود.
+<br/>
+به طور مثال اگر در t=0s یک درخواست به سرور بیاید صفحه شروع به ساخته شدن می‌کند پس از ساخته شدن به جای صفحه فعلی نمایش داده خواهد شد مثلا در t=5s صفحه آپدیت شده قابل دیدن خواهد بود حال اگر  تا t=10s هزار درخواست دیگر نیز بیاید پیج دوباره رندر نخواهد شد. و پس از t=10s مثلا در t=11s با درخواست بعدی دوباره باعث ساخت صفحه می‌شود.<br/>
+برای مشاهده این قضیه می  توانید صفحه users را پشت هم به مدت 40-50 ثانیه رفرش کنید سپس اگر لاگ Flask را (همان جایی که flask run زدید) مشاهده کنید رکوئست های 
+به سرور ۱۰ ثانیه یا بیشتر تفاوت دارند  
+.
+همچنین لاگ خود next  نیز بیانگر همین موضوع است.
 </div>
 
 
