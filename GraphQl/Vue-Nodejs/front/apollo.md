@@ -21,10 +21,12 @@
 </p>
 </p>
 
+<p align="center" width="100%">
 <img src="./src/assets/apollo-diagram.png" style="display: flex;
   margin-left: auto;
   margin-right: auto;
   width: 60%;">
+</p>
 
 ## Building Steps
 
@@ -85,11 +87,13 @@ Apollo Client یک کاربر javaScript GraphQl دارای قابلیت customi
 همانطور که پیش‌تر گفته شد با این افزونه شما می‌توانید کارهایتان را در سرویس‌های GraphQl مختلفی تقسیم کنید. این کار را استفاده از یک معماری متحد (federate) می‌نامند. خود Apollo یک معماری متحد شده به نام <a href="https://www.apollographql.com/docs/federation/">Apollo Federation</a> برای این کار تعریف کرده است.
 </p>
 
+<p align="center" width="100%">
 <img src="./src/assets/federate-artitecture.png" style="display: flex;
   margin-left: auto;
   margin-right: auto;
   width: 80%;">
 <br>
+</p>
 
 ## resources
 
