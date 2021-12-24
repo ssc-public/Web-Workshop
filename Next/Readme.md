@@ -115,6 +115,133 @@ export default MyApp
 
 ## تفاوت های React و Next
 
+
+## Routing
+همان‌طور که اشاره شد Next.js سیستم routing بر اساس فایل را پیاده‌سازی کرده است. بدین صورت که با اضافه کردن یک فایل در دایرکتوری pages، به صورت اتوماتیک به عنوان route قابل دسترسی خواهد بود.
+
+### انواع روش‌های routing
+
+1. index routes  
+برای route کردن هر دایرکتوری کافی است از index.js استفاده کنیم.
+- pages/index.js &#8594; /
+- pages/blog/index.js &#8594; /blog
+
+2. nested routes  
+برای داشتن مسیرهای تودرتو می‌توان با ایجاد دایرکتوری‌های مختلف این کار را انجام داد.
+- pages/blog/first.js &#8594; /blog/first
+- pages/user/login/verify.js &#8594; /user/login/verify
+
+3. dynamic routes  
+در موارد مختلف نیاز داریم تا یک مسیر پویا داشته باشیم. به طور مثال فرض کنید بخواهیم پست‌های مختلف یک بلاگ را در صفحات مختلف نمایش دهیم. برای این کار می‌توانیم به صورت زیر عمل کنیم:
+- pages/posts/[id].js &#8594; با /posts/1 و posts/first و موارد مشابه دیگر تطابق خواهد داشت.
+
+همچنین می‌توان از ... استفاده کرد که تنها ابتدای مسیر را بررسی خواهد کرد. به طور مثال pages/user/[...all].js با تمامی مسیرهایی که با /user/ شروع می‌شوند تطابق خواهد داشت.
+
+**توجه:** موارد گفته شده نسبت به هم اولویت دارند. ترتیب اولویت با مثال:  
+- pages/post/create.js &#8594; فقط با  /post/create تطابق دارد.
+- pages/post/[pid].js &#8594; با /post/1 و /post/abc و موارد مشابه تطابق دارد اما با /post/create تطابق ندارد.
+- pages/post/[...slug].js &#8594; با /post/1/2 و /post/a/b/c و موارد مشابه تطابق دارد اما با /post/create و /post/abc تطابق ندارد.  
+
+### وصل کردن صفحات مختلف به یکدیگر
+برای این‌کار می‌توان به صورت زیر عمل کرد:
+
+<div dir="ltr">
+
+``` js
+import Link from 'next/link'
+
+function Home() {
+  return (
+    <ul>
+      <li>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/about">
+          <a>About Us</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/blog/hello-world">
+          <a>Blog Post</a>
+        </Link>
+      </li>
+    </ul>
+  )
+}
+
+export default Home
+```
+</div>
+
+همچنین برای متصل کردن صفحات پویا می‌توان به صورت زیر عمل کرد:
+
+<div dir="ltr">
+
+``` js
+import Link from 'next/link'
+
+function Posts({ posts }) {
+  return (
+    <ul>
+      {posts.map((post) => (
+        <li key={post.id}>
+          <Link
+            href={{
+              pathname: '/blog/[slug]',
+              query: { slug: post.slug },
+            }}
+          >
+            <a>{post.title}</a>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+export default Posts
+```
+</div>
+
+که در اینجا pathname نام صفحه در دایرکتوری pages است و query نیز شامل قسمت‌های پویای لینک می‌باشد.  
+
+سوالی که در اینجا پیش می‌آید این است که چگونه در لینک‌های پویا پارامترها را از لینک بخوانیم. این کار را می‌توان به صورت زیر انجام داد.
+
+<div dir="ltr">
+
+``` js
+import { useRouter } from 'next/router'
+
+const Post = () => {
+  const router = useRouter()
+  const { slug } = router.query
+
+  return <p>Post: {slug}</p>
+}
+
+export default Post
+```
+</div>
+در حقیقت userRouter().query شامل همه‌ی پارامترهای موجود در لینک است.
+
+فرض کنید یک فایل به صورت pages/post/[pid].js داریم. در این صورت query مقادیر زیر را خواهد داشت:
+- /post/abc &#8594; { "pid": "abc" }
+- /post/abc?foo=bar &#8594; { "foo": "bar", "pid": "abc" }
+- /post/abc?pid=123 &#8594; { "pid": "abc" }
+
+همان‌طور که مشاهده می‌شود route parameters مقادیر query parameter را بازنویسی می‌کنند و اولویت بیشتری خواهند داشت.
+
+اگر از ... در routing استفاده کرده باشیم، پارامتر مورد نظر به صورت لیست خواهد بود.  
+به طور مثال برای فایل pages/post/[...slug].js  
+- /post &#8594; { }
+- /post/a &#8594; { "slug": ["a"] }
+- /post/a/b &#8594; { "slug": ["a", "b"] }
+
+
+
 </div>
 
 [React-research]: https://github.com/mostafaghadimi/web_workshop/tree/master/React
