@@ -907,6 +907,8 @@ let happyStudent: FullStudent = {
 
 با استفاده از این تایپ می توانیم یک تایپ جدید بسازیم که تمامی فیلد های ان readonly هستند.
 
+## Others
+
 * Record
 
 با استفاده از این تایپ کمکی می توانید تایپ جدید با استفاده از  کلید های داده شده بسازید.
@@ -953,6 +955,21 @@ function handle(student: StudentBeta) {
     console.log(student.id);
 }
 handle(student);
+```
+</div>
+
+* Extract
+* Exclude
+
+با استفاده از Extract می توانید تایپ هایی را که از بخش اولُ زیر مجموعه تایپ هایی که ثانیوه هستند را استخراج کنیم.
+
+با استفاده از Exclude می توانید تایپ هایی را که از بخش اولُ زیر مجموعه تایپ هایی که ثانیوه هستند را خارج کنیم.
+
+<div dir="ltr">
+
+```typescript
+type ExtractTest = Extract<"a" | "b" | "c", "a" | "f">; // = "a"
+type ExcludeTest = Exclude<"a" | "b" | "c", "a" | "f">; // = "b" | "c"
 ```
 </div>
 </div>
