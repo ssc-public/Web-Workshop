@@ -173,7 +173,7 @@ Multi-line comment
 <div dir="ltr">
 	
 ```typescript
-    console.log("hello world")
+console.log("hello world")
 ```
 </div>
 
@@ -586,6 +586,7 @@ var customer:IPerson = {
 } 
 ```
 </div>
+پس از کامپایل شدن رد پایی از interface ها در جاوااسکریپت باقی نمی ماند و تنها برای تایپ چکینگ در هنگام کامپایل کاربرد دارد.
 
 # Class
 
@@ -627,6 +628,41 @@ class Car {
 }
 ```
 </div>
+
+اعضای کلاس در می توانند public یا protected یا private باشند. به صورت پیش فرض اعضا public هستند و تمام کد های خارج از کلاس به آن ها دسترسی دارند. اعضای protected توسط بچه های ان کلاس قابل دسترس هستند و اعضای private تنها توسط خود کلاس قابل دسترسی است.
+
+از آنجا که TypeScript زبان کامپایلی است در نتیجه پس از تبدیل به JavaScript دیگر اثری از این محدودکننده های دسترسی نیست و در کد های JavaScript دیگرُ اعضای کلاس ما علی رغم private بودن قابل دسترسی هستند و حتی در خود TypeScript هم با اشاره به صورت رشته ای قابل دسترس است.
+
+<div dir="ltr">
+
+```typescript
+class Test {
+    private cantCMe: string = "now you can!";
+}
+
+let test: Test = new Test();
+console.log(test["cantCMe"]); // prints "now you can"
+console.log(test.cantCMe); // error
+// Property 'cantCMe' is private and only accessible within class 'Test'
+```
+</div>
+این مشکل برای مشخصه های private جاوا اسکریپتی که با # تعیین می شوند وجود ندارد.
+
+<div dir="ltr">
+
+```typescript
+class Test {
+    #cantCMe: string = "now you can!";
+}
+
+let test: Test = new Test();
+console.log(test["#cantCMe"]); // Property '#cantCMe' does not exist on type 'Test'.
+console.log(test.#cantCMe); // error
+// Property '#cantCMe' is not accessible outside class 'Test' because it has a private identifier.
+```
+</div>
+جالب است که شما کلاس ها را نیز می توانید علاوه بر extend همانند interface ها implement کنید و با این کار در واقع با کلاس همانند interface رفتار کرده اید و ملزم به پیاده سازی تمامی متد های آن هستید. از آنجا که تمامی interface ها پس از کامپایل از بین می روند می توان از این قابلیت برای Dependency Injection استفاده کرد و با implment کردن abstract class ها از آن ها به عنوان interface استفاده کنیم.
+
 
 # Object
 
