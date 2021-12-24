@@ -1005,5 +1005,137 @@ TypeScript درواقع همان JavaScript است که شی گرایی را س�
  
  </div>
 
+
+
+
+  # Annotations in Typescript :
+ همانند اینترفیس که در قسمت قبل دیدیم ، انوتیشن‌ها نیز سیستمی برای نسبت دادن تایپ به متغیرها هستند.
+ تفاوت اساسی بین انوتیشن‌ها و اینترفیس در نحوه نسبت دادن آنهاست به صورتی که در انوتیشن این کار به صورت دستی و در اینترفیس به صورت اتوماتیک انجام می‌شود.
+ حال چند مثال از این انوتیشن‌ها را با هم بررسی می‌کنیم.
+  <div dir="ltr">
+
+    let age: number = 30; // for numbers
+    let fruit: string = "kiwi"; // for strings
+    let flatEarth: boolean = false; // for booleans
+    let aliens: null = undefined; // for undefined or null values
+
+ </div>
+ در مثال بالا ما برای هریک از تایپ‌های اولیه یک انوتیشن تعریف کردیم.
+ حال همانطور که مشاهده شد این کار در تایپ‌اسکریپت به صورت دستی انجام شده و در صورت تغییر در نوع متغییر با خطا روبه‌رو خواهیم شد.
+ حال انوتیشن به صورت متادیتا این اطلاعات را به کامپایلر داده و در صورت درست نبودن مانع از کامپایل شدن برنامه می‌شود.
+ مثال زیر را مشاهده کنید:
+   <div dir="ltr">
+
+    let counter: number;
+    counter = 'Hello'; // compile error 
+
+
+    Type '"Hello"' is not assignable to type 'number'.
+
+ </div>
+ حال این انوتیشن‌ها می‌توانند برای تعریف ارایه و ابجکت ها نیز به کار .
+ روند
+  <div dir="ltr">
+
+    let person: {
+        name: string;
+         age: number
+    };
+
+    person = {
+         name: 'John',
+         age: 25
+    }; // valid
+
+ </div>
+   <div dir="ltr">
+
+    let arrayName: type[];
+
+ </div>
+
+ # decorators in typescript:
+ حال مثال‌های بالا انواعی از inline annotations بودند اما نوع دیگری از انوتیشن وجود دارد که به آن decorator می‌گوییم
+ البته برخی معتقدند که این دو(انوتیشن و دکوریتور) متفاوت‌اند چرا که ما نمی‌توانیم مشخص کنیم که انوتیشن چگونه به صورت متادیتا به برنامه اضافه شود اما نحوه تفسیر دکوریتور در کامپایلر کاملا به متادیتای داده شده توسط ما بستگی دارد.
+ چند مثال از دکوریتورها با هم ببینیم:
+  <div dir="ltr">
+
+    declare type ClassDecorator = <TFunction extends Function>(target: TFunction) => TFunction | void;
+
+    declare type PropertyDecorator = (target: Object, propertyKey: string |     symbol) => void;
+
+    declare type MethodDecorator = <T>(target: Object, propertyKey: string  | symbol, descriptor: TypedPropertyDescriptor<T>) =>     TypedPropertyDescriptor<T> | void;
+
+    declare type ParameterDecorator = (target: Object, propertyKey: string  | symbol, parameterIndex: number) => void;
+
+ </div>
+ در مثال‌های بالا همانطور که مشاهده می‌شود از دکوریتور برای اضافه کردن متادیتا به :
+ class
+ method
+ property
+ parameter
+ استفاده شده که ما دکوریتور method را بررسی و تحلیل می‌کنیم
  
-</div>
+ # method decorators:
+ به مثال زیر دقت کنید.
+ <div dir="ltr">
+
+    class C {
+    @log
+    foo(n: number) {
+        return n * 2;
+        }
+    }
+
+ </div>
+    در اینجا مشاهده می‌شود که از @log برای انوتیت کردن متود استفاده شده
+    حال نگاهی به متود log بیاندازیم:
+    <div dir="ltr">
+
+    function log(target: Function, key: string, value: any) {
+    return {
+        value: function (...args: any[]) {
+            var a = args.map(a => JSON.stringify(a)).join();
+            var result = value.value.apply(this, args);
+            var r = JSON.stringify(result);
+            console.log(`Call: ${key}(${a}) => ${r}`);
+            return result;
+         }
+        };
+    }
+ </div>
+ مشاهده می‌شود که 3 ارگومان در دکوریتور مورد نظر داریم:
+ target: هدف دکوریتور مورد نظر
+ key:نام متودی که دکوریت می‌شود
+ value:مشخص کننده property در صورت وجود آن در ابجکت اولیه 
+ کد زیر ، کدیست که کامپایلر پس از تفسیر متادیتای موجود در دکوریتور log به ما می‌دهد:
+ <div dir="ltr">
+
+    var C = (function () {
+    function C() {
+    }
+    C.prototype.foo = function (n) {
+        return n * 2;
+    };
+    Object.defineProperty(C.prototype, "foo",
+        __decorate([
+            log
+        ], C.prototype, "foo", Object.getOwnPropertyDescriptor(C.prototype, "foo")));
+    return C;
+    })();
+ </div>
+ در صورت نبودن @log کد داده شده توسط کامپایلر به صورت زیر خواهد بود:
+ <div dir="ltr">
+
+    var C = (function () {
+    function C() {
+    }
+    C.prototype.foo = function (n) {
+        return n * 2;
+    };
+    return C;
+    })();
+ </div>
+ یعنی کامپایلر مدل متفاوتی کد را تفسیر کرده که این مدل تفسیر بستگی به متادیتای داده‌شده توسط ما دارد.
+
+ </div>
