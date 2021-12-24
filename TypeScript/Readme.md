@@ -671,7 +671,7 @@ console.log(test.#cantCMe); // error
 class Test {
     private _even: number = 0;
 
-    public get even() {
+    public get even(): number {
         return this._even * 2;
     }
 
@@ -685,7 +685,7 @@ class Test {
 }
 
 let test: Test = new Test();
-test.even = 10;
+test.even = 10; // sets _even = 5
 console.log(test.even); // prints 10
 test.even = 11; // error
 ```
