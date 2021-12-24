@@ -1,6 +1,6 @@
 # Implementing GraphQl front with vue.js
 <p align="center" width="100%">
-<img width="835" alt="Screen Shot 1400-10-03 at 15 17 44" src="https://user-images.githubusercontent.com/59199865/147350464-5db0794f-af12-42cd-98f9-f6aef7c3078e.png">
+<img width="397" alt="Screen Shot 1400-10-03 at 15 25 41" src="https://user-images.githubusercontent.com/59199865/147351150-d6fd731c-9583-4b27-a7cd-bde53ef13727.png">
 </p>
 
 ## How to start
