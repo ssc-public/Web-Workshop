@@ -970,6 +970,32 @@ handle(student);
 ```typescript
 type ExtractTest = Extract<"a" | "b" | "c", "a" | "f">; // = "a"
 type ExcludeTest = Exclude<"a" | "b" | "c", "a" | "f">; // = "b" | "c"
+
 ```
 </div>
+
+در آخر نیز یک تکه کد جالب از کار با تایپ ها اضافه می کنم.
+
+<div dir="ltr">
+
+```typescript
+const nations = [
+    {name: "iran", code: "IR"},
+    {name: "china", code: "PRC"},
+    {name: "america", code: "US"},
+    {name: "england", code: "UK"}
+] as const;
+type Monoset = typeof nations[number];
+type Superset = {
+    [P in keyof Monoset]: Capitalize<Monoset[P]>;
+}
+const item: Superset = {name: "Iran", code: "US"}
+```
+</div>
+
+در اینجا کلید های آرایه nations را گرفته و مقادیر آن ها را Capitalize کردیم و به تایپی رسیده ایم که تنها به ازای نام Capitalize شده و کد کشور یکی از مقادیر داخل آرایه معتبر به حساب می آید.
+
+در آخر پیشنهاد می کنم برای برررسی میزان یادگیری این تایپ هاُ تایپ Omit را با استفاده از تایپ های Pick و Exclude پیاده سازی کنید.
+
+# tsconfig.json
 </div>
