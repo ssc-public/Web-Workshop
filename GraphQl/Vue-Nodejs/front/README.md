@@ -122,7 +122,7 @@ export default {
       </div>
     </div>
 ```
-10. همانطور که در [این بخش](https://github.com/nonaghazizadeh/web_workshop/blob/master/GraphQl/Vue-Nodejs/back/README.md) گفته‌شد برای ارسال mutation از کد زیر استفاده می‌کنیم.
+10. همانطور که در [این بخش](../back/README.md) گفته‌شد برای ارسال mutation از کد زیر استفاده می‌کنیم.
 ```
 this.$apollo.mutate()
 ```
