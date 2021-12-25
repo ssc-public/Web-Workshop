@@ -1538,7 +1538,275 @@ var xAxisTranslate = height/2 + 10;
   
 ```
   خروچی کد بالا به صورت زیر است:
+  
+  
   ![](./assets/axes_x_y.png)
+  
+## ساختن نمودار میله‌ای
+  <hr>
+  
+  در این قسمت میخواهیم با استفاده از توابعی که تا به اینجا یاد گرفتیم یک نمودار میله‌ای با مقیاس و محور مناسب تولید کنیم
+  
+  ```
+  <!doctype html>
+<html>
+<head>
+    <style>
+        .bar {
+            fill: steelblue;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+<body>
+<svg width="600" height="500"></svg>
+<script>
+
+    var svg = d3.select("svg"),
+        margin = 200,
+        width = svg.attr("width") - margin,
+        height = svg.attr("height") - margin
+
+    svg.append("text")
+       .attr("transform", "translate(100,0)")
+       .attr("x", 50)
+       .attr("y", 50)
+       .attr("font-size", "24px")
+       .text("XYZ Foods Stock Price")
+
+    var xScale = d3.scaleBand().range([0, width]).padding(0.4),
+        yScale = d3.scaleLinear().range([height, 0]);
+
+    var g = svg.append("g")
+               .attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+    d3.csv("XYZ.csv", function(error, data) {
+        if (error) {
+            throw error;
+        }
+
+        xScale.domain(data.map(function(d) { return d.year; }));
+        yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
+
+        g.append("g")
+         .attr("transform", "translate(0," + height + ")")
+         .call(d3.axisBottom(xScale))
+         .append("text")
+         .attr("y", height - 250)
+         .attr("x", width - 100)
+         .attr("text-anchor", "end")
+         .attr("stroke", "black")
+         .text("Year");
+
+        g.append("g")
+         .call(d3.axisLeft(yScale).tickFormat(function(d){
+             return "$" + d;
+         })
+         .ticks(10))
+         .append("text")
+         .attr("transform", "rotate(-90)")
+         .attr("y", 6)
+         .attr("dy", "-5.1em")
+         .attr("text-anchor", "end")
+         .attr("stroke", "black")
+         .text("Stock Price");
+
+        g.selectAll(".bar")
+         .data(data)
+         .enter().append("rect")
+         .attr("class", "bar")
+         .attr("x", function(d) { return xScale(d.year); })
+         .attr("y", function(d) { return yScale(d.value); })
+         .attr("width", xScale.bandwidth())
+         .attr("height", function(d) { return height - yScale(d.value); });
+    });
+</script>
+</body>
+</html>
+  ```
+  
+ در نهایت خروجی به شکل زیر خواهد شد:
+  
+  ![](./assets/bar_chart.png)
+  
+  
+## رسم نمودار دایره‌ای با D3
+ <hr>
+  
+  میخواهیم به صورت مرحله‌ای یک نمودار دایره‌ای را از اول رسم کنیم
+  
+  ### مسیر در SVG
+  
+  SVG path یک سری دستور برای کشیدن مسیر در SVG را میگیرد:
+  
+  ```
+  <body>
+    <svg height="210" width="400">
+        <path d="M150 0 L75 200 L225 200 Z" />
+    </svg>
+</body>
+  ```
+  
+  ### تابع d3.scaleOrdinal
+  
+  این تابع یک مقیاس وصفی با دامنه‌ی خالی و برد مخص شده را تعریف میکند:
+  
+  ```
+  <body>
+<script>
+    var color = d3.scaleOrdinal(['#4daf4a','#377eb8','#ff7f00','#984ea3','#e41a1c']);
+    console.log(color(0))
+    console.log(color(1))
+    console.log(color(2))
+    console.log(color(3))
+    console.log(color(4))
+    console.log(color(5))
+</script>
+</body>
+  ```
+  
+  ### تابع d3.pie
+  
+  این تابع با گرفتن مجموعه داده‌های ورودی به ما اطلاعاتی نظیر درجه‌ی شروع و پایان هر قطعه از نمودار  دایره‌ای را میدهد و ما با استفاده از این اطلاعات نمودار را رسم میکنیم
+  
+  ```
+  <script>
+
+    var data = [2, 4, 8, 10];
+    var pie = d3.pie()
+    console.log(pie(data))
+
+</script>
+  ```
+  
+  ### تابع d3.arc
+  
+  این تابع منحنی تولید میکند و هر منحنی یک درجه‌ی درونی و یک درجه‌ی بیرونی نیاز دارد و برای اینکه نمودار ما دایره‌ای شود باید درجه‌ی درونی را ۰ وارد کنیم
+  و با وارد کردن داده‌هایی که از چند تابع دیگر به دست آورده‌ایم نمودار را رسم میکنیم
+  
+  ```
+  <body>
+<svg width="300" height="200"> </svg>
+<script>
+    var data = [2, 4, 8, 10];
+
+    var svg = d3.select("svg"),
+        width = svg.attr("width"),
+        height = svg.attr("height"),
+        radius = Math.min(width, height) / 2,
+        g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+    var color = d3.scaleOrdinal(['#4daf4a','#377eb8','#ff7f00','#984ea3','#e41a1c']);
+
+    // Generate the pie
+    var pie = d3.pie();
+
+    // Generate the arcs
+    var arc = d3.arc()
+                .innerRadius(0)
+                .outerRadius(radius);
+
+    //Generate groups
+    var arcs = g.selectAll("arc")
+                .data(pie(data))
+                .enter()
+                .append("g")
+                .attr("class", "arc")
+
+    //Draw arc paths
+    arcs.append("path")
+        .attr("fill", function(d, i) {
+            return color(i);
+        })
+        .attr("d", arc);
+</script>
+</body>
+  ```
+  
+  کد نهایی عبارت است از:
+  
+  ```
+  <!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .arc text {
+            font: 10px sans-serif;
+            text-anchor: middle;
+        }
+
+        .arc path {
+            stroke: #fff;
+        }
+
+        .title {
+            fill: teal;
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <svg width="500" height="400"></svg>
+    <script>
+
+        var svg = d3.select("svg"),
+            width = svg.attr("width"),
+            height = svg.attr("height"),
+            radius = Math.min(width, height) / 2;
+        
+        var g = svg.append("g")
+                   .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+        var color = d3.scaleOrdinal(['#4daf4a','#377eb8','#ff7f00','#984ea3','#e41a1c']);
+
+        var pie = d3.pie().value(function(d) { 
+                return d.percent; 
+            });
+
+        var path = d3.arc()
+                     .outerRadius(radius - 10)
+                     .innerRadius(0);
+
+        var label = d3.arc()
+                      .outerRadius(radius)
+                      .innerRadius(radius - 80);
+
+        d3.csv("browseruse.csv", function(error, data) {
+            if (error) {
+                throw error;
+            }
+            var arc = g.selectAll(".arc")
+                       .data(pie(data))
+                       .enter().append("g")
+                       .attr("class", "arc");
+
+            arc.append("path")
+               .attr("d", path)
+               .attr("fill", function(d) { return color(d.data.browser); });
+        
+            console.log(arc)
+        
+            arc.append("text")
+               .attr("transform", function(d) { 
+                        return "translate(" + label.centroid(d) + ")"; 
+                })
+               .text(function(d) { return d.data.browser; });
+            });
+
+            svg.append("g")
+               .attr("transform", "translate(" + (width / 2 - 120) + "," + 20 + ")")
+               .append("text")
+               .text("Browser use statistics - Jan 2017")
+               .attr("class", "title")
+    </script>
+</body>
+</html>
+  ```
+  
+ نمودار تولید شده:
+  
+  ![](./assets/pie.png)
+  
 ## منابع
 
 
