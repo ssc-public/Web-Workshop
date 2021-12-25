@@ -1418,8 +1418,59 @@ d3.json("/data/users.json", function(error, data) {
 ممکن است فایل مورد نظر وجود نداشته باشد یا داده‌ها بدشکل باشند و طبق فرمت خواسته شده نباشند. در این صورت می‌توانیم با این پارامتر آگاه شویم و تصمیم بگیریم.
 
 
-
+## مقیاس در D3`
 <hr>
+  
+در این قسمت یاد میگیریم که چگونه با استفاده از D3 برای نمودارهایمان مقیاس تعریف کرده و با این کار مقادیر داده‌هایمان را به مقادیری که بهتر نشانداده میشوند ،map کنیم.
+  
+ برای مثال فرض کنید دامنه‌ی داده‌های ما از ۱۰۰ تا ۱۰۰۰ باشد اما دامنه‌ی قابل نشان‌دادن ما از ۵۰ تا ۵۰۰ پیکسل باشد، در اینجا قابلیت scale کردن به ما کمک میکند.
+ 
+ ### تابع ()d3.scaleLinear
+  
+ بیایید با استفاده از تابع ()d3.scaleLinear برای مقادیر [100, 400, 300, 900, 850, 1000] نمودار میل‌ای مقیاس بندی شده رسم کنیم:
+  
+ ```
+ <body>
+<script>
+    var data = [100, 400, 300, 900, 850, 1000]
+
+    var width = 500,
+        barHeight = 20,
+        margin = 1;
+
+    var scale = d3.scaleLinear()
+                 .domain([d3.min(data), d3.max(data)])
+                 .range([50, 500]);
+
+    var svg = d3.select("body")
+                  .append("svg")
+                  .attr("width", width)
+                  .attr("height", barHeight * data.length);
+
+    var g = svg.selectAll("g")
+                  .data(data)
+                  .enter()
+                  .append("g")
+                  .attr("transform", function (d, i) {
+                      return "translate(0," + i * barHeight + ")";
+                  });
+
+    g.append("rect")
+       .attr("width", function (d) {
+           return scale(d);
+       })
+       .attr("height", barHeight - margin)
+
+    g.append("text")
+       .attr("x", function (d) { return (scale(d)); })
+       .attr("y", barHeight / 2)
+       .attr("dy", ".35em")
+       .text(function (d) { return d; });
+  
+ ```
+خروچی قطعه کد بالا به صورت زیر میباشد:
+ 
+ ![image](./assets/scale_output.png)
 
 ## منابع
 
