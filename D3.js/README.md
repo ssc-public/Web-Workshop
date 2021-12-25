@@ -1470,8 +1470,75 @@ d3.json("/data/users.json", function(error, data) {
  ```
 خروچی قطعه کد بالا به صورت زیر میباشد:
  
- ![image](./assets/scale_output.png)
+ ![](./assets/scale_output.png)
 
+## محور‌های نمودار در D3
+  <hr>
+ در این قسمت یاد میگیریم که چگونه با استفاده از D3 برای نمودار های خود محور هایی با scale مناسب تعریف کنیم
+ 
+ توابع این قسمت عبارتند از:
+  
+### تابع d3.axisTop
+  
+  یک محور افقی برای بالا درست میکند
+  
+### تابع d3.axisRight
+  
+  یک محور عمودی برای راست تولید میکند
+  
+### تابع d3.axisBottom
+  
+  یک محور افقی برای پایین تولید میکند
+  
+### تابع d3.axisLeft
+  
+  یک محور عمودی برای چپ تولید میکند
+  
+  
+### مثال:
+ 
+  در این مثال میخواهیم دو محور x و y را تولید کنیم:
+ 
+```<body>
+<script>
+var width = 400, height = 100;
+
+var data = [10, 15, 20, 25, 30];
+var svg = d3.select("body")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var xscale = d3.scaleLinear()
+    .domain([0, d3.max(data)])
+    .range([0, width - 100]);
+
+var yscale = d3.scaleLinear()
+        .domain([0, d3.max(data)])
+        .range([height/2, 0]);
+
+var x_axis = d3.axisBottom()
+        .scale(xscale);
+
+var y_axis = d3.axisLeft()
+        .scale(yscale);
+
+    svg.append("g")
+       .attr("transform", "translate(50, 10)")
+       .call(y_axis);
+
+var xAxisTranslate = height/2 + 10;
+
+    svg.append("g")
+            .attr("transform", "translate(50, " + xAxisTranslate  +")")
+            .call(x_axis)
+
+</script>
+</body>
+  
+```
+  خروچی کد بالا به صورت زیر است:
+  ![](./assets/axes_x_y.png)
 ## منابع
 
 
