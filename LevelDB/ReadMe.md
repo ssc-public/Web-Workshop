@@ -14,5 +14,14 @@
 
 # تاریخچه
 
+# ساختار
+
+# عملکرد (Performance)
+
 # روش نصب و راه اندازی
+
+# LevelDB با NodeJS
+
+# LeveDB با GO
+
 </div>
