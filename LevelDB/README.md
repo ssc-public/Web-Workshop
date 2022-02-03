@@ -140,6 +140,28 @@ db->ReleaseSnapshot(options.snapshot);
 
 ## قابلیت logging
 
+قبل از هر درج (insert)، به روز رسانی (update) یا حذف (delete)، سیستم باید پیامی را برای ثبت در فایل لاگ اضافه کند(logging message). در صورت خرابی اطلاعات در یک رشته دسترسی، پیام های لاگ ارسال نشده به هادر دیسک (level_0) را می توان بدست آورد و برای بازیابی اطلاعات مجددا عملیات انجام داد. در واقع هنگام لاگ کردن LevelDB از memtable  ای که اصلاعات را در آن مینویسد یک immutable memtable میسازد که بعدا قابلیت دسترسی مجدد را برای ما فراهم میکند.
+
+کلاس **Logger** تعریف شده در _include/leveldb/env.h_ و پیاده سازی شده در _util/posix_logger.h_ و  یک کلاس لاگ است که اطلاعات قابل خواندن را چاپ می کند. چندین روش برای لاگ نوشتن در سیستم، در _util/logging.h_ اعلام شده است:
+<div dir="ltr">
+
+```c++
+/* add numbers after str */
+extern void AppendNumberTo(std::string* str, uint64_t num);
+/* Add visible string value after str */
+extern void AppendEscapedStringTo(std::string* str, const Slice& value);
+/* number to string */
+extern std::string NumberToString(uint64_t num);
+/* Clear invisible characters in value */
+extern std::string EscapeString(const Slice& value);
+/* If the first character of "in" is the second parameter "c", advance the "in" pointer one step and return true */
+extern bool ConsumeChar(Slice* in, char c);
+/* Consume "in" prefix number */
+extern bool ConsumeDecimalNumber(Slice* in, uint64_t* val);
+```
+
+</div>
+
 ## ساختار Storage
 
 داده ها را بر اساس زمان دسترسی در  یک memtable قرار می دهد و به صورت دوره ای (لاگ ورودی) داده ها را از آن به Immutable memtable منتقل می کند. پس از پر شدن memtable اطلاعات آن را در سطح هارد برده درون SSTable  ها میریزد. به علاوه، از روش فشرده سازی (compaction) برای کاهش داده های نامعتبر در هر سطح دسترسی استفاده می کند و سپس بلوک های جدید در سطح بعدی ایجاد می کند.   
