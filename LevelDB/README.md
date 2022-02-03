@@ -96,7 +96,29 @@ Leveldb فقط به یک فرآیند اجازه می دهد در یک زمان 
 # عملکرد (Performance)
 
 # روش نصب و راه اندازی
+نصب و راه اندازی leveldb در ماشین Linux(Ubuntu):
+- 
+- به روز رسانی نمایه بسته ها:
 
+```$ sudo apt update```
+- نصب و راه اندازی بسته های مورد نیاز (sqlite3):
+
+```apt-get install libsnappy-dev wget curl build-essential cmake gcc sqlite3```
+- بارگیری  leveldb (با توجه به آخرین نسخه در گیت):
+
+```wget https://github.com/google/leveldb/archive/${last_version}.tar.gz -O leveldb.tar.gz```
+- باز کردن بسته بارگیری شده:
+
+```tar xvf leveldb.tar.gz```
+- رفتن به پوشه استخراج شده:
+
+```cd leveldb*/```
+- ایجاد و رفتن به پوشه build:
+
+```mkdir -p build && cd build```
+- نصب نهایی leveldb:
+
+```cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .```
 # LevelDB با NodeJS
 
 # LeveDB با GO
