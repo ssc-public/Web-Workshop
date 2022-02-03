@@ -45,11 +45,11 @@
 
 # تاریخچه
 
-LevelDB یک کاتبخانه ~~منبع آزاد~~ متن باز (open-source) برای ذخیره و دسترسی به اطلاعات است که توسط Google توسعه یافته و __نگهداری میشود__، درواقع LevelDB یک پایگاه داده کامل نیست بلکه کتابخانه است که روش ذخیره و بازیابی اطلاعات را روی سیستم شما مشخص میکند.  
+پایگاه داده LevelDB یک کتابخانه پایگاه داده متن باز (open-source) برای ذخیره و دسترسی به اطلاعات است که توسط Google توسعه یافته است، درواقع LevelDB یک پایگاه داده کامل نیست بلکه کتابخانه است که روش ذخیره و بازیابی اطلاعات را روی سیستم شما مشخص میکند.
 
-در سال 2004 شرکت Google اقدام به توسعه .... به نام Cloud Bigtable کرد که الهام بخش توسعه LevelDB شد.    
-[Bigtable](https://cloud.google.com/bigtable, "Google Cloud Bigtable") یک پایگاه داده NoSQL با سرعت بالا و مقیاس پذیر است که با زیان C++ نوشته شده و به طور خاص برای دخیره و تحلیل داده های حجیم بهینه شده است و به عنوان زیرساخت در اغلب سرویس های گوگل مثل Google map، Google Drive و ... استفاده میشود.   
-[Sanjay Ghemawat](https://research.google/people/SanjayGhemawat/) و [Jeffrey Dean](https://research.google/people/jeff/) ایده اصلی خود برای توسعه LevelDB را از Bigtable گرفتند اما تصمیم داشتند برخلاف آن که در مالکیت گوگل بود و متن باز نبود، پایگاه داده خود را متن باز و تحت مجوز [BSD](https://github.com/google/leveldb/blob/main/LICENSE, "BSD licenses") بسازند. توسعه LevelDB از سال 2011 آغاز و با زبان C++ نوشته شد
+در سال 2004 شرکت Google اقدام به توسعه پایگاه داده ای به نام Cloud Bigtable کرد که الهام بخش توسعه LevelDB شد.  
+[Bigtable](https://cloud.google.com/bigtable, "Google Cloud Bigtable") یک پایگاه داده NoSQL با سرعت بالا و مقیاس پذیر است که با زیان C++ نوشته شده و به طور خاص برای دخیره و تحلیل داده های حجیم بهینه شده است و به عنوان زیرساخت در اغلب سرویس های گوگل مثل Google map، Google Drive و ... استفاده میشود.  
+[Sanjay Ghemawat](https://research.google/people/SanjayGhemawat/) و [Jeffrey Dean](https://research.google/people/jeff/) ایده اصلی خود برای توسعه LevelDB را از Bigtable گرفتند اما تصمیم داشتند برخلاف آن که در مالکیت گوگل بود و متن باز نبود، پایگاه داده خود را متن باز و تحت مجوز [BSD](https://github.com/google/leveldb/blob/main/LICENSE, "BSD licenses") بسازند. توسعه LevelDB از سال 2011 آغاز و با زبان C++ نوشته شد. کد اصلی آخرین ورژن این کتابخانه (v1.23) نیز در گیت هاب در [این آدرس](https://github.com/google/leveldb, "Gtihub LevelDB") قابل دسترسی و برسی است.
 
 # ساختار
 
@@ -71,7 +71,7 @@ LevelDB یک کاتبخانه ~~منبع آزاد~~ متن باز (open-source) 
 
 ## همزمانی
 
-Leveldb فقط به یک فرآیند اجازه می دهد در یک زمان باز شود. سیستم عامل مربوطه از شمای قفل برای جلوگیری از دسترسی همزمان استفاده خواهد کرد. در یک فرآیند، Leveldb می تواند توسط چندین رشته قابل دسترسی باشد. برای چند نویسنده، فقط به اولین نویسنده اجازه می دهد تا در پایگاه داده بنویسد و سایر نویسندگان مسدود خواهند شد. برای تداخل خواندن و نوشتن، خوانندگان می توانند داده ها را از غیرقابل تغییر که از فرآیند نوشتن جدا شده است، بازیابی کنند. نسخه به روز شده در فرآیند فشرده سازی اعمال می شود.
+در اصل Leveldb فقط به یک فرآیند اجازه می دهد در یک زمان باز شود. سیستم عامل مربوطه از شمای قفل برای جلوگیری از دسترسی همزمان استفاده خواهد کرد. در یک فرآیند، Leveldb می تواند توسط چندین رشته قابل دسترسی باشد. برای چند نویسنده، فقط به اولین نویسنده اجازه می دهد تا در پایگاه داده بنویسد و سایر نویسندگان مسدود خواهند شد. برای تداخل خواندن و نوشتن، خوانندگان می توانند داده ها را از غیرقابل تغییر که از فرآیند نوشتن جدا شده است، بازیابی کنند. نسخه به روز شده در فرآیند فشرده سازی اعمال می شود.
 
 اگر کمی تکنیکال تر بخواهیم توضیح دهیم
 
@@ -79,19 +79,110 @@ Leveldb فقط به یک فرآیند اجازه می دهد در یک زمان 
 
 ## فشرده‌سازی
 
+هر بلوک قبل از اینکه در ذخیره سازی دائمی نوشته شود به صورت جداگانه فشرده می شود. فشرده‌سازی به‌طور پیش‌فرض روشن است، زیرا روش فشرده‌سازی پیش‌فرض بسیار سریع است و به‌طور خودکار برای داده‌های غیر قابل فشرده‌سازی غیرفعال می‌شود. در موارد نادر، برنامه‌ها ممکن است بخواهند فشرده‌سازی را به طور کامل غیرفعال کنند که از این پشتیبانی می‌کند.
+
+مربوط به غیرفعال‌سازی:
+
+<div dir="ltr">
+
+```golang
+leveldb::Options options;
+options.compression = leveldb::kNoCompression;
+... leveldb::DB::Open(options, name, ...) ....
+```
+
+<div dir="rtl">
+
 ## مدل‌سازی داده‌ای
+
+ذخیره کلید/مقدار از نگاشت کلید به مقدار مربوطه پشتیبانی می کند. در SSTable شمای کلید و مقدار به شکل دنباله رشته مجاور مدیریت می شود.
+
+ولی SSTABLE چیست؟
+جدول رشته‌های مرتب شده (SSTable) یک فرمت فایل stable است که توسط Scylla، Apache Cassandra و دیگر پایگاه‌های داده NoSQL استفاده می‌شود تا داده‌های درون حافظه ذخیره‌شده در memtable ‌ها را بگیرد، آن‌ها را برای دسترسی سریع مرتب کند، و آن‌ها را روی دیسک به‌صورت دائمی و مرتب ذخیره کند. مجموعه ای از فایل های تغییرناپذیر Immutable به این معنی است که SSTables هرگز اصلاح نمی شوند. آنها بعداً در SSTable های جدید ادغام می شوند یا با به روز رسانی داده ها حذف می شوند.
+
+<img src="./resources/sstable.webp" alt="Sharif Web Programming Workshop">
 
 ## نمایه‌سازی
 
+از skip list در MemTable استفاده می کند. جدای از آن، LSM-tree یکی از انواع B-tree های بهینه شده برای نوشتن است که از جفت های کلید-مقدار تشکیل شده است. LSM-tree یک نوع ذخیره سازی است که برای درج و حذف بهینه شده است. در یک کلام بخواهیم بگوییم LevelDB یک پیاده سازی LSM-tree منبع باز است.
+
+درباره LSM-tree:
+
+| ALGORITHM  | Ave. Case | Worst Case |
+| ---------- | --------- | ---------- |
+| INSERT     | O(1)      | O(1)       |
+| Find-Min   | O(N)      | O(N)       |
+| Delete-Min | O(N)      | O(N)       |
+
 ## سطوح ایزوله
+
+استیت پایگاه داده را در یک نقطه مشخص ذخیره می کند و از ارجاع به آن پشتیبانی می کند. کاربران می توانند داده ها را از اسنپشات فوری خاص در زمان ایجاد اسنپشات بازیابی کنند.
+
+برای توضیح تکنیکال تر:
+
+به شکل کلی Snapshot ها نماهای سازگار read-only را در کل state کلید/مقدار ارائه می کنند. ReadOptions::snapshot ممکن است غیر NULL باشد تا نشان دهد که خواندن باید در نسخه خاصی از وضعیت DB عمل کند. اگر ReadOptions::snapshot NULL باشد، خواندن بر روی یک snapshot ضمنی از وضعیت فعلی عمل خواهد کرد.
+
+به طور کل Snapshot ها توسط متد DB::GetSnapshot ایجاد می شوند:
+
+<div dir="ltr">
+
+```c++
+leveldb::ReadOptions options;
+options.snapshot = db->GetSnapshot();
+... apply some updates to db ...
+leveldb::Iterator* iter = db->NewIterator(options);
+... read using iter to view the state when the snapshot was created ...
+delete iter;
+db->ReleaseSnapshot(options.snapshot);
+```
+
+<div dir="rtl">
 
 ## قابلیت logging
 
+قبل از هر درج (insert)، به روز رسانی (update) یا حذف (delete)، سیستم باید پیامی را برای ثبت در فایل لاگ اضافه کند(logging message). در صورت خرابی اطلاعات در یک رشته دسترسی، پیام های لاگ ارسال نشده به هادر دیسک (level_0) را می توان بدست آورد و برای بازیابی اطلاعات مجددا عملیات انجام داد. در واقع هنگام لاگ کردن LevelDB از memtable  ای که اصلاعات را در آن مینویسد یک immutable memtable میسازد که بعدا قابلیت دسترسی مجدد را برای ما فراهم میکند.
+
+کلاس **Logger** تعریف شده در _include/leveldb/env.h_ و پیاده سازی شده در _util/posix_logger.h_ و  یک کلاس لاگ است که اطلاعات قابل خواندن را چاپ می کند. چندین روش برای لاگ نوشتن در سیستم، در _util/logging.h_ اعلام شده است:
+<div dir="ltr">
+
+```c++
+/* add numbers after str */
+extern void AppendNumberTo(std::string* str, uint64_t num);
+/* Add visible string value after str */
+extern void AppendEscapedStringTo(std::string* str, const Slice& value);
+/* number to string */
+extern std::string NumberToString(uint64_t num);
+/* Clear invisible characters in value */
+extern std::string EscapeString(const Slice& value);
+/* If the first character of "in" is the second parameter "c", advance the "in" pointer one step and return true */
+extern bool ConsumeChar(Slice* in, char c);
+/* Consume "in" prefix number */
+extern bool ConsumeDecimalNumber(Slice* in, uint64_t* val);
+```
+
+</div>
+
 ## ساختار Storage
+
+داده ها را بر اساس زمان دسترسی در  یک memtable قرار می دهد و به صورت دوره ای (لاگ ورودی) داده ها را از آن به Immutable memtable منتقل می کند. پس از پر شدن memtable اطلاعات آن را در سطح هارد برده درون SSTable  ها میریزد. به علاوه، از روش فشرده سازی (compaction) برای کاهش داده های نامعتبر در هر سطح دسترسی استفاده می کند و سپس بلوک های جدید در سطح بعدی ایجاد می کند.   
+برای خواندن از پایگاه داده و کوئری زدن، LevelDB از mmap در سیستم های Unix و از syscall در Windiws برای خواندن SSTable ها و کش کردن آن ها در حافظه RAM استفاده میکند.
 
 ## مدل‌سازی Storage
 
+بخش ذخیره سازی هادر دیسک از بلوک های SSTable تشکیل شده است که از مدل ذخیره سازی N-ary(NSM) پیروی میکنند، به این صورت که در انتهای هر بلوک آدرس شروع بلوک بعدی قرار دارد.   
+
+<img src="./resources/N-aryStorageModel(NSM).jpg" alt="NSM Pic">
+
 ## معماری سیستم
+
+معماری کلی این پایگاه داده در یک نگاه از تصویر زیر بدست می آید.   
+
+<img src="./resources/leveldb-architecture.png" alt="System Architecture">
+
+
+در LevelDB اطلاعات به صورت غیرقابل تغییر(immutable) روی دیسک ذخیره می شود که می تواند توسط رشته های مختلف به اشتراک گذاشته شود. فضای ذخیره متشکل از 7 سطح در هارد دیسک، به اضافه حداکثر دو جدول در حافظه RAM است.  
+پروسه نوشتن اطلاعات را می‌توان به این صورت توصیف کرد که: ابتدا سیستم عملیات نوشتن را در یک جدول درون حافظه، به نام memtable، به طور موقت انجام میدهد و زمانی که این جدول پر می‌شود، داده‌ها را به دیسک منتقل می‌کند. بر روی دیسک، جداول در سطوحی دسته بندی شده اند. هر سطح شامل چندین جدول  SSTable است. سطح های پایین تر ظرفیت بیشتری نسبت به سطح های بالا تر دارند. هنگامی که سطح بالا پر میشود، سیستم باید داده ها را به سطح پایین منتقل کند، که در نتیجه نیاز به خواندن و نوشتن چندین SSTable دارد.
+# عملکرد (Performance)
 
 # عملکرد (Performance)
 
@@ -132,5 +223,7 @@ Leveldb فقط به یک فرآیند اجازه می دهد در یک زمان 
 - [BIGTABLE :: About inspirations of LEVELDB](https://cloud.google.com/bigtable/docs/overview)
 
 - [LEVELDB :: Some more details](https://dbdb.io/db/leveldb)
+
+- [github repo](https://github.com/google/leveldb)
 
 </div>
