@@ -164,4 +164,6 @@ db->ReleaseSnapshot(options.snapshot);
 
 - [LEVELDB :: Some more details](https://dbdb.io/db/leveldb)
 
+- [github repo](https://github.com/google/leveldb)
+
 </div>
