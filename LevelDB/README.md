@@ -147,6 +147,9 @@ db->ReleaseSnapshot(options.snapshot);
 
 ## مدل‌سازی Storage
 
+بخش ذخیره سازی هادر دیسک از بلوک های SSTable تشکیل شده است که از مدل ذخیره سازی N-ary(NSM) پیروی میکنند، به این صورت که در انتهای هر بلوک آدرس شروع بلوک بعدی قرار دارد.   
+<img src="./resources/N-aryStorageModel(NSM).jpg" alt="NSM Pic">
+
 ## معماری سیستم
 
 # عملکرد (Performance)
