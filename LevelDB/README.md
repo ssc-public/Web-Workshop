@@ -252,6 +252,24 @@ pip install level-sublevel
 مثالی از نحوه استفاده leveldb در nodejs در پوشه examples وجود دارد.
 
 # LeveDB با GO
+برای استفاده از leveldb در golang می توان از بسته goleveldb استفاده کرد:
+<div dir="ltr">
+
+```
+    go get github.com/syndtr/goleveldb/leveldb
+ ```
+</div>
+حال می توان با استفاده از این بسته به leveldb متصل شد و عملیات های مختلف را بر روی آن اجرا کرد:
+<div dir="ltr">
+
+```
+  db, err := leveldb.OpenFile("path/to/db", nil)
+  data, err := db.Get([]byte("key"), nil)
+  err = db.Put([]byte("key"), []byte("value"), nil)
+  err = db.Delete([]byte("key"), nil)
+```
+</div>
+مثالی از نحوه استفاده leveldb در nodejs در پوشه examples وجود دارد.
 
 # references
 
@@ -265,4 +283,7 @@ pip install level-sublevel
 
 - [github repo](https://github.com/google/leveldb)
 
+- [github repo goleveldb](https://github.com/syndtr/goleveldb)
+
+- [levelDB usage nodejs](https://devpoint.medium.com/node-js-uses-the-leveldb-ultra-high-performance-kv-storage-engine-for-the-database-cddac3cd307b)
 </div>
