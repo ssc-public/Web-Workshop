@@ -48,4 +48,6 @@ leveldb یک پایگاه داده NoSql است. دقت شود NoSql به معن
 
 - [What is Database?](<https://www.oracle.com/database/what-is-database/#:~:text=A%20database%20is%20an%20organized,database%20management%20system%20(DBMS).&text=Most%20databases%20use%20structured%20query,for%20writing%20and%20querying%20data.>)
 
+- [BIGTABLE :: About inspirations of LEVELDB](https://cloud.google.com/bigtable/docs/overview)
+
 </div>
