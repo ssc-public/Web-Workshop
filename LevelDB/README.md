@@ -211,6 +211,45 @@ extern bool ConsumeDecimalNumber(Slice* in, uint64_t* val);
 
 ```cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .```
 # LevelDB با NodeJS
+برای شروع کار با level db در nodejs ابتدا باید بسته های مورد نیاز را نصب کرد:
+- نصب با استفاده از pip:
+<div dir="ltr">
+
+```
+pip install level
+pip install level-sublevel
+  ```
+</div>
+
+- نصب با اضافه کردن به packages.json:
+<div dir="ltr">
+
+```
+  "dependencies": {
+    "level": "^7.0.1",
+    "level-sublevel": "^6.6.5"
+  }
+  ```
+</div>
+
+سپس می توان با استفاده از این بسته ها پایگاه داده را ایجاد کرد:
+<div dir="ltr">
+
+```
+  this.options = options;
+  this.db = sublevel(level(dbPath, { valueEncoding: "json" }));
+ ```
+</div>
+سپس می توان با استفاده از این اشیائ ایجاد شده می توان با پایگاه داده کار کرد؛ برای مثال:
+<div dir="ltr">
+
+```
+   db.put(key, value, (error) => {
+       callback(error);
+   });
+ ```
+</div>
+مثالی از نحوه استفاده leveldb در nodejs در پوشه examples وجود دارد.
 
 # LeveDB با GO
 
