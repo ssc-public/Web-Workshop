@@ -45,11 +45,7 @@
 
 # تاریخچه
 
-<<<<<<< HEAD
-LevelDB یک کاتبخانه ~~منبع آزاد~~ متن باز (open-source) برای ذخیره و دسترسی به اطلاعات است که توسط Google توسعه یافته و **نگهداری میشود**، درواقع LevelDB یک پایگاه داده کامل نیست بلکه کتابخانه است که روش ذخیره و بازیابی اطلاعات را روی سیستم شما مشخص میکند.
-=======
-LevelDB یک کتابخانه پایگاه داده متن باز (open-source) برای ذخیره و دسترسی به اطلاعات است که توسط Google توسعه یافته و ، درواقع LevelDB یک پایگاه داده کامل نیست بلکه کتابخانه است که روش ذخیره و بازیابی اطلاعات را روی سیستم شما مشخص میکند.  
->>>>>>> 5b14ea2a2f9b80c99b536d59e5e01bcfd2aeb906
+LevelDB یک کتابخانه پایگاه داده متن باز (open-source) برای ذخیره و دسترسی به اطلاعات است که توسط Google توسعه یافته و ، درواقع LevelDB یک پایگاه داده کامل نیست بلکه کتابخانه است که روش ذخیره و بازیابی اطلاعات را روی سیستم شما مشخص میکند.
 
 در سال 2004 شرکت Google اقدام به توسعه .... به نام Cloud Bigtable کرد که الهام بخش توسعه LevelDB شد.  
 [Bigtable](https://cloud.google.com/bigtable, "Google Cloud Bigtable") یک پایگاه داده NoSQL با سرعت بالا و مقیاس پذیر است که با زیان C++ نوشته شده و به طور خاص برای دخیره و تحلیل داده های حجیم بهینه شده است و به عنوان زیرساخت در اغلب سرویس های گوگل مثل Google map، Google Drive و ... استفاده میشود.  
@@ -108,7 +104,39 @@ options.compression = leveldb::kNoCompression;
 
 ## نمایه‌سازی
 
+از skip list در MemTable استفاده می کند. جدای از آن، LSM-tree یکی از انواع B-tree های بهینه شده برای نوشتن است که از جفت های کلید-مقدار تشکیل شده است. LSM-tree یک نوع ذخیره سازی است که برای درج و حذف بهینه شده است. در یک کلام بخواهیم بگوییم LevelDB یک پیاده سازی LSM-tree منبع باز است.
+
+درباره LSM-tree:
+
+| ALGORITHM  | Ave. Case | Worst Case |
+| ---------- | --------- | ---------- |
+| INSERT     | O(1)      | O(1)       |
+| Find-Min   | O(N)      | O(N)       |
+| Delete-Min | O(N)      | O(N)       |
+
 ## سطوح ایزوله
+
+استیت پایگاه داده را در یک نقطه مشخص ذخیره می کند و از ارجاع به آن پشتیبانی می کند. کاربران می توانند داده ها را از اسنپشات فوری خاص در زمان ایجاد اسنپشات بازیابی کنند.
+
+برای توضیح تکنیکال تر:
+
+Snapshot ها نماهای سازگار فقط خوانش‌پذیر را در کل state کلید/مقدار ارائه می کنند. ReadOptions::snapshot ممکن است غیر NULL باشد تا نشان دهد که خواندن باید در نسخه خاصی از وضعیت DB عمل کند. اگر ReadOptions::snapshot NULL باشد، خواندن بر روی یک snapshot ضمنی از وضعیت فعلی عمل خواهد کرد.
+
+Snapshot ها توسط متد DB::GetSnapshot ایجاد می شوند:
+
+<div dir="ltr">
+
+```c++
+leveldb::ReadOptions options;
+options.snapshot = db->GetSnapshot();
+... apply some updates to db ...
+leveldb::Iterator* iter = db->NewIterator(options);
+... read using iter to view the state when the snapshot was created ...
+delete iter;
+db->ReleaseSnapshot(options.snapshot);
+```
+
+<div dir="rtl">
 
 ## قابلیت logging
 
