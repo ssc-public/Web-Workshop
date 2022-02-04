@@ -382,3 +382,14 @@ stage('Deploy') {
 ![](assets/53.png)
 ![](assets/54.png)
 ![](assets/55.png)
+
+
+# منابع
+- https://create-react-app.dev/docs/getting-started/
+- https://stackoverflow.com/questions/50722133/what-exactly-is-the-react-scripts-start-command
+- https://www.twilio.com/blog/react-app-with-node-js-server-proxy
+- https://community.kodekloud.com/t/create-ci-cd-pipeline-with-jenkins-to-deploy-react-app-to-ngnix-server-in-aws-ec2/25688
+- https://medium.com/swlh/setup-a-ci-cd-pipeline-to-automate-react-app-deployment-on-aws-ec2-82bd0c194f77
+- https://www.jenkins.io/doc/tutorials/build-a-node-js-and-react-app-with-npm/
+- https://medium.com/appgambit/ci-cd-pipeline-for-a-nodejs-application-with-jenkins-fa3cc7fad13a
+- https://www.guru99.com/jenkins-tutorial.html
