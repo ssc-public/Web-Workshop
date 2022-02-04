@@ -50,3 +50,62 @@
  
  
 </p>
+
+## انواع الگوهای طراحی
+الگوهای طراحی سازنده (creational) راه‌حلی برای حل مشکلات هنگام ایجاد شیء جدید است. الگوهای طراحی سازنده شامل:
+<p dir="ltr">
+</br>
+Factory Method
+</br>
+Abstract Factory
+</br>
+Builder
+</br>
+Prototype
+</br>
+Singleton
+</p>
+
+الگوهای طراحی ساختاری (structural) راه‌حلی برای حل مشکلات توسعه پذیری ساختار یک برنامه و برای ارتباط میان کلاس ها و شیء ها می‌باشد . الگوهای طراحی ساختاری شامل:
+<p dir="ltr">
+</br>
+Adapter
+</br>
+Bridge
+</br>
+Composite
+</br>
+Decorator
+</br>
+Facade
+</br>
+Flyweight
+</br>
+Proxy
+</p>
+<p dir="rtl">
+الگوهای طراحی رفتاری (behavioral) راه‌حلی برای تعامل اشیا و کلاس‌ها می‌باشد . الگوهای طراحی رفتاری شامل:
+
+</p>
+<p dir="ltr">
+</br>
+Chain of Responsibility
+</br>
+Command
+</br>
+Iterator
+</br>
+Mediator
+</br>
+Memento
+</br>
+Observer
+</br>
+State
+</br>
+Strategy
+</br>
+Template Method
+</br>
+Visitor
+</p>
