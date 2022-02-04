@@ -119,7 +119,6 @@ module ها قطعه کد هایی هستند که ماشین را از حالت
       mode: '0644'
 
 ```
-
 <p dir="rtl" style="position:right;">
 برای اجرای playbook بالا تنها کافیست کامند زیر را کنید
 
@@ -191,6 +190,8 @@ ansible zookeepers -m raw -a "netstat -nltp | grep 2181"
 
 
 # end of the journey?
+
++ [an Ansible playbook for deploying a cassandra cluster](./cassandra/README.md)
 
 ## resources
 >https://www.docs.ansible.com/

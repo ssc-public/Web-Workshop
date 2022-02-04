@@ -1,0 +1,9 @@
+{
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "level": "^7.0.1",
+    "level-sublevel": "^6.6.5"
+  }
+}
