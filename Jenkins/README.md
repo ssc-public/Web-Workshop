@@ -295,3 +295,90 @@ pipeline {
     }
 }
 ```
+
+همانطور که گفته شد stages تعداد stage است که قرار است انجام شود. در فایل بالا فقط یک Stage وجود دارد که stepهای آن نیز نوشته شده است.
+
+این فایل را باید داخل ریپازیتور گیت خود قرار دهید. بهتر است اسم آن را Jenkinsfile بذارید.
+
+```
+stage('Git') {
+    steps {
+        git 'https://github.com/SmsS4/JenkinsProjectExample'
+    }
+}
+```
+در این قسمت گفته می‌شود که از git ریپازیتوری را بگیرد.
+
+```
+stage('Build') { 
+    steps {
+        sh '''
+            cd my-react-app
+            echo "Changed directory"
+            npm install
+        '''
+    }
+}
+```
+در این قسمت مراحل build انجام می‌شود.
+
+```
+stage('Test') {
+    steps {
+        sh 'export CI=True'
+        sh 'cd my-react-app && npm test'
+    }
+}
+```
+در این قسمت مراحل Test انجام می‌شود.
+
+```
+stage('Deploy') {
+    steps {
+          sh 'cd my-react-app && npm run-script build'
+    }
+}
+```
+در نهایت `npm start` صدا زده می‌شود و پروژه deploy می‌شود.
+
+
+![](assets/44.png)
+
+در Dashboard روی New Item کلیک کنید.
+
+![](assets/45.png)
+
+قسمت Pipeline را انتخاب کنید.
+
+![](assets/46.png)
+
+اگر می‌خواهید Jenkinsfile در ریپو باشد  
+از قسمت Definition گزینه Piepline script from SCM را انتخاب کنید.  
+از قسمت SCM گزینه git و آدرس و Credential مورد نظر را بدهید.  
+ولی می‌توانید همانجا Jenkinsfile را بنویسید و از git نگیرید.
+  
+![](assets/47.png)
+
+ مراحل پایپ‌لاین با توجه به Jenkinsfile که در ریپازیتوری قرار دادید اتفاق می‌افتد.
+
+در قسمت Build Configuration اسم فایل جنکیز خود را (که احتمالا همان Jenkinsfile گذاشتید) وارد کنید.
+
+![](assets/48.png)
+
+حالا می‌توانید پایپ‌لاین خود را ببینید
+
+![](assets/50.png)
+
+روی Build Now کلیک کنید تا مراحل پایپ‌لاین انجام شوند.
+
+
+![](assets/51.png)
+
+همانطور که در عکس پایین می‌بینید تاریخچه پایپ‌لاین در سمت چپ و وسط قرار دارد.
+![](assets/52.png)
+
+اگر روی موارد سمت چپ کلیک کنید می‌توانید خروجی کنسول را ببینید.
+
+![](assets/53.png)
+![](assets/54.png)
+![](assets/55.png)
