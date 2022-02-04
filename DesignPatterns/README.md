@@ -110,4 +110,8 @@ Template Method
 Visitor
 </p>
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/59199865/152575141-a07bc151-715f-4deb-ba43-da055ebfcb3b.png" />
+</p>
+
 به طور مثال در ادامه‌ی تحقیق می‌توانید از الگو طراحی سازنده موارد [Singleton](./Creational/Singleton.pdf)  و [Prototype](./Creational/Prototype.pdf)، از الگو طراحی رفتاری مورد [Chain of Resposibility](./Behavioral/Chain%20of%20Responsibility.pdf) واز الگو طراحی ساختاری [Facade](./Structural/Facade.pdf) را مشاهده نمایید.
