@@ -343,8 +343,11 @@ pip install level-sublevel
 
 - [github repo goleveldb](https://github.com/syndtr/goleveldb)
 
+- [LevelDB Windows](https://github.com/happynear/py-leveldb-windows)
+
 - [levelDB usage nodejs](https://devpoint.medium.com/node-js-uses-the-leveldb-ultra-high-performance-kv-storage-engine-for-the-database-cddac3cd307b)
 
 - [LevelDB Benchmarks](http://www.lmdb.tech/bench/microbench/benchmark.html)
+
 
 </div>
