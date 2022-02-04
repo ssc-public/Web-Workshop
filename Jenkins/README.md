@@ -13,11 +13,13 @@
   - [نصب پلاگین](#نصب-پلاگین)
   - [پلاگین گیت](#پلاگین-گیت)
   - [اضافه کردن build](#اضافه-کردن-build)
+  - [پایپ‌لاین](#پایپلاین)
 
 ## ️نویسندگان
 
 - [محمدصادق سلیمی](https://github.com/SMSadegh19)
 - [سید مهدی صادق شبیری](https://github.com/SmsS4)
+- [علیرضا حسین‌پور](https://github.com/@doctorhoseinpour)
 
 ## پیشنیاز
 
@@ -207,3 +209,89 @@ npm install
 
 - با دکمه سمت راست صفحه dashboard نیز می‌توانید پروژه را build کنید.
 ![](assets/41.png)
+
+
+## پایپ‌لاین
+حالا که یاد گرفتیم یک پروژه را build کنیم وقتشه که یک پایپ‌لاین به پروژه اضافه کنیم.  
+
+برای این قسمت باید پلاگین Pipeline را نصب کنید.
+
+![](assets/43.png)
+
+پایپلاین تعدادی مرحله پشت هم است که قرار است به ترتیب انجام شوند.
+
+![](assets/42.png)
+
+برای مثال در عکس بالا پایپلاین ما شامل ۴ بخش است.  
+ابتدا پروژه ساخته می‌شود.  
+سپس deploy می‌شود.  
+سپس تست‌های لازم انجام می‌شود.  
+در نهایت منتشر می‌شود.  
+
+در جنکینز با استفاده از فایل متنی‌ای که به آن JenkinsFile گفته می‌شود، می‌توان یک پایپ‌لاین تعریف کرد.  
+
+در 
+[این](https://github.com/hoto/jenkinsfile-examples)
+لینک می‌توانید مثال‌های مختلفی از Jenkinsfile ببینید.
+
+هر پایپ‌لاین از تعدادی مرحله کلی (مثلا تست کردن، build کردن و ...) ساخته می‌شود که به آن‌ها Stage گفته می‌شود.  
+هر Stage از تعدادی Step یا مرحله تشکیل شده است.
+
+
+برای ران کردن تست در NodeJS باید از دستور زیر استفاده کنید:
+```
+npm test
+```
+از آنجایی که این دستور از کاربر ورودی می‌گیرد باید آن را غیر فعال کنید. چون قرار است test در جنکینز انجام شود. برای همین باید مقدار CI را برابر True گذاشت
+</div>
+
+```
+export CI=True
+npm test
+```
+
+همانطور که قبلا گفته شده بود برای build کردن باید 
+```
+npm install
+```
+
+و برای بالا آوردن سرور react باید از
+```
+npm start
+```
+استفاده کیند.
+
+صدا زده شود و React روی پورت ۳۰۰۰ بالا میاد. پس پایپلاین اولیه به شکل زیر می‌شود:
+```
+pipeline {
+    agent any
+    tools {nodejs "NodeJS"}
+    stages {
+        stage('Git') {
+            steps {
+                git 'https://github.com/SmsS4/JenkinsProjectExample'
+            }
+        }
+        stage('Build') { 
+            steps {
+                sh '''
+                    cd my-react-app
+                    echo "Changed directory"
+                    npm install
+                '''
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'export CI=True'
+                sh 'cd my-react-app && npm test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'cd my-react-app && npm run-script build'
+            }
+        }
+    }
+}
+```
