@@ -183,6 +183,53 @@ extern bool ConsumeDecimalNumber(Slice* in, uint64_t* val);
 در LevelDB اطلاعات به صورت غیرقابل تغییر(immutable) روی دیسک ذخیره می شود که می تواند توسط رشته های مختلف به اشتراک گذاشته شود. فضای ذخیره متشکل از 7 سطح در هارد دیسک، به اضافه حداکثر دو جدول در حافظه RAM است.  
 پروسه نوشتن اطلاعات را می‌توان به این صورت توصیف کرد که: ابتدا سیستم عملیات نوشتن را در یک جدول درون حافظه، به نام memtable، به طور موقت انجام میدهد و زمانی که این جدول پر می‌شود، داده‌ها را به دیسک منتقل می‌کند. بر روی دیسک، جداول در سطوحی دسته بندی شده اند. هر سطح شامل چندین جدول  SSTable است. سطح های پایین تر ظرفیت بیشتری نسبت به سطح های بالا تر دارند. هنگامی که سطح بالا پر میشود، سیستم باید داده ها را به سطح پایین منتقل کند، که در نتیجه نیاز به خواندن و نوشتن چندین SSTable دارد.
 
+
+# عملکرد (Performance)
+
+برای مقایسه سرعت عملکرد LevelDB، گوگل آن را با پایگاه داده های 
+[SQLite3](https://www.sqlite.org/index.html) ورژن 3.7.6.3
+و
+[Kyoto Cabinet's](http://fallabs.com/kyotocabinet/spex.html) ورژن 1.2.67 مورد آزمون قرار داد که نتایج آن به شرح زیر است:
+## 1. عملکرد پایه (Baseline Performance)
+
+شرایط آزمایش:  
+ محدودیت حافظه کش 4Mb  برای همه پایگاه داده ها  
+کلید ها 16 بایتی  
+مقدار متناظر برای کلید ها 100 بایتی  
+
+<img src="./resources/BaseLine.PNG" alt="BaseLine">
+
+
+
+## 2.عملیات نوشتن (Write)  
+### عملیات نوشتن برای مقادیر بزرگ  
+<img src="./resources/Write-Large values.PNG" alt="Large Values">
+
+### عملیات نوشتن دسته داده ها
+<img src="./resources/Write-Batch write.PNG" alt="Batch Write">
+
+### عملیات نوشتن بدون استفاده از فشرده سازی (Compression)
+<img src="./resources/Write-No Compression.PNG" alt="No Compression Write">
+
+### عملیات نوشتن با حافظه کش بیشتر 
+در اینجا محدودیت کش را به 128Mb افزایش دادیم.  
+
+<img src="./resources/Write-Using more memory.PNG" alt="more memory write">
+
+## 3. عملیات خواندن (Read)
+
+### عملیات خواندن با کش بزرگ تر
+در اینجا محدودیت کش را به 128Mb افزایش دادیم.
+
+<img src="./resources/Read-Large Cache.PNG" alt="Large Cache Read">
+
+
+### عملیات خواندن بدون استفاده از فشرده سازی (Compression)
+
+<img src="./resources/Read-No Compression.PNG" alt="No Compression Read">
+
+
+
 # روش نصب و راه اندازی
 نصب و راه اندازی leveldb در ماشین Linux(Ubuntu):
 - 
@@ -283,4 +330,7 @@ pip install level-sublevel
 - [github repo goleveldb](https://github.com/syndtr/goleveldb)
 
 - [levelDB usage nodejs](https://devpoint.medium.com/node-js-uses-the-leveldb-ultra-high-performance-kv-storage-engine-for-the-database-cddac3cd307b)
+
+- [LevelDB Benchmarks](http://www.lmdb.tech/bench/microbench/benchmark.html)
+
 </div>
