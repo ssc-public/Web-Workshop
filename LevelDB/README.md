@@ -207,6 +207,20 @@ extern bool ConsumeDecimalNumber(Slice* in, uint64_t* val);
 - نصب نهایی leveldb:
 
 ```cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .```
+
+نصب و راه اندازی leveldb در ماشین Windows:
+- 
+
+روش های مختلفی برای استفاده از leveldb روی ویندوز وجود دارد که یکی از آن ها استفاده از مخزن 
+[py-leveldb-windows](https://github.com/happynear/py-leveldb-windows) 
+است.
+
+- ابتدا فایل های پیش ساخته پروژه را از 
+[مخزن](https://github.com/happynear/py-leveldb-windows)
+بارگیری کنید.
+
+- سپس فایل ```leveldb.pyd``` را در مسیر ```YOUR_PYTHON_ROOT/Lib/site-packages``` قرار دهید.
+- حالا با دستور ```python ./test-py3-leveldb.py``` نصب خود را تست کنید تا پیام ```hello world db``` را دریافت کنید.
 # LevelDB با NodeJS
 برای شروع کار با level db در nodejs ابتدا باید بسته های مورد نیاز را نصب کرد:
 - نصب با استفاده از pip:
