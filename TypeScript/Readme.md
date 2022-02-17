@@ -657,4 +657,485 @@ TypeScript درواقع همان JavaScript است که شی گرایی را س�
 
 </div>
 
+# Testing With Jest :
+- در برنامه نویسی TypeScript هم مانند سایر زبان ها ، یکی از مهمترین نکات ، نوشتن تست برای برنامه جهت اطمینان از Quality برنامه است تا برخی باگ ها قبل از release مشخص و برطرف شوند.
+در ابتدا از دستورات زیر برای نصب jest و ts-jest استفاده میکنیم :
+
+<div dir="ltr">
+
+    npm install jest
+    npm i -D ts-jest @types/jest
+
 </div>
+
+- مرحله دوم این است که یک فایل jest.config.js در همان محل فایل package.json بسازیم. برای اینکار از دستور زیر استفاده میکنیم:
+<br />
+
+<div dir="ltr">
+
+    npx ts-jest config:init
+
+</div>
+فایل ایجاد شده باید حاوی کد زیر باشد :
+
+<div dir="ltr">
+
+    module.exports = {
+    preset: "ts-jest",
+    testEnvironment: "node"
+    };
+
+</div>
+
+- مرحله ی سوم این است که یک فولدر با نام tests در محل فایل package.json بسازیم و فایل های تست خود را در این پوشه فرار دهیم. فرمت نام دهی فایل های تست باید بصورت زیر باشد :
+
+<div dir="ltr">
+
+    (file_name).test.ts
+
+</div>
+حالا ، در فایل package.json خط زیر را اضافه میکنیم :
+
+<div dir="ltr">
+
+    ...
+    "scripts": {
+        ...
+        "test": "jest"
+        },
+    ...
+
+</div>
+
+در نهایت تست های خود را با دستور زیر run میکنیم:
+
+<div dir="ltr">
+
+    npm t
+
+</div>
+
+- مثالی برای تست یک تابع:
+    - فرض کنید یک تابع با نام add داریم که در فایل calc.ts تعریف شده است و 2 ورودی int میگیرد و به ما حاصل جمع این دو را برکیگرداند . میخواهیم تستی بنویسیم تا از ضحت عملکرد این تابع مطمئن شویم :
+
+<div dir="ltr">
+
+    // file name : calc.test.ts
+
+    import { add } from "../src/calc";
+
+        describe("test add function", () => {
+
+            it("should return 15 for add(10,5)", () => {
+                expect(add(10, 5)).toBe(15);
+            }); 
+            // end of testing 15 for 10 + 5
+
+            it("should return 5 for add(2,3)", () => {
+                expect(add(2, 3)).toBe(5);
+            }); 
+            // end of testing 5 for 2 + 3
+
+        }); 
+        // end of describe()
+
+        
+</div>
+
+ - حال، بیایید مثال کمی پیچیده تری بزنیم ! فرض کنید یک تابع با نام foreach نوشته ایم که برای تک تک اعضای یک array ، تابع callback را روی آن صدا میزند:
+
+ 
+ <div dir="ltr">
+    
+    function forEach(items: any[], callback : (a: any[]) => void) {
+        for (let index :int = 0; index < items.length; index++) {
+            callback(items[index]);
+        }
+    }
+ </div>
+
+حالا، فایل تست را برای بررسی این تابع مینویسیم:
+
+ <div dir="ltr">
+
+    const mockCallback = jest.fn(x => 42 + x);
+    forEach([0, 1], mockCallback);
+
+    // The mock function is called twice
+    expect(mockCallback.mock.calls.length).toBe(2);
+
+    // The first argument of the first call to the function was 0
+    expect(mockCallback.mock.calls[0][0]).toBe(0);
+
+    // The first argument of the second call to the function was 1
+    expect(mockCallback.mock.calls[1][0]).toBe(1);
+
+    // The return value of the first call to the function was 42
+    expect(mockCallback.mock.results[0].value).toBe(42);
+ </div>
+
+
+ # More On Interfaces :
+
+ - برای درک کارکرد و مفهوم interface ، به مثال زیر دقت کنید :
+
+ <div dir="ltr">
+
+    function printLabel(labeledObj: { label: string }) {
+        console.log(labeledObj.label);
+    }
+        
+    let myObj = { size: 10, label: "Size 10 Object" };
+    printLabel(myObj);
+ </div>
+
+ در این مثال، تابع ما بعنوان ورودی یک object میگیرد که باید در آن حداقل یک ویژگی با نام label وجود داشته باشد.(که از جنس string است) حالا، سعی میکنیم سبک نوشتن این برنامه را نظام مند تر و مهندسی شده تر کنیم.با interface چنین کاری را ممکن میکنیم ! به قطعه کد زیر دقت کنید:
+
+ <div dir="ltr">
+
+    interface LabeledValue {
+    label: string;
+    }
+    
+    function printLabel(labeledObj: LabeledValue) {
+    console.log(labeledObj.label);
+    }
+    
+    let myObj = { size: 10, label: "Size 10 Object" };
+    printLabel(myObj);
+ </div>
+ دقت کنید که مثل اکثر زبان های دیگر، نیازی نیست که بیان کنیم object مورد نظر ما ، این interface بخصوص را implement میکند ! در واقع اینجا ، صرفا شکل اهمیت دارد! یعنی اگر object ورودی به تابع ما ، مطابق روش توصیف داده شده در interface بود ، آنرا قبول میکنیم !
+
+  - حال ، فرض کنید میخواهیم که بخشی از ویژگی های داخل interface ، اختیاری باشند. یکی از مورد استفاده ترین مکان ها برای چنین امری ، استفاده از دیزاین پترن Option Bags است. در زیر یک پیاده سازی برای این طراحی را میبینیم :
+
+<div dir="ltr">
+    
+    interface SquareConfig {
+        color?: string;
+        width?: number;
+    }
+ 
+    function createSquare(config: SquareConfig): { color: string; area: number } {
+    let newSquare = { color: "white", area: 100 };
+    if (config.color) {
+        newSquare.color = config.color;
+    }
+    if (config.width) {
+        newSquare.area = config.width * config.width;
+    }
+    return newSquare;
+    }
+    
+    let mySquare = createSquare({ color: "black" });
+
+</div> 
+
+ همانطور که مشاهده میشود ، برای نوشتن ویژگی هایی که اختیاری هستند در interface ها ، از ؟ استفاده میشود. این به ما این امکان را میدهد که بتوانیم حالات مختلف یک ورودی را توصیف کنیم و با تک تک حالات برخوردی مناسب داشته باشیم ، بدون اینکه به uncheckedException یا CompileError برخورد کنیم .
+ یکی دیگر از مزایای استفاده از اینترفیس ها ، گرفتن ارور های بامعنا تر و واضخ تر است ( و در نتیجه دیباگینگ راحت تر !). مثلا فرض کنید که ما در کد ، به اشتباه برای دسترسی به ویژگی رنگ یک مربع ، از clor بحای color  استفاده کنیم  (اشتباه تایپی)
+ :
+
+ <div dir="ltr">
+    
+    interface SquareConfig {
+        color?: string;
+        width?: number;
+    }
+    
+    function createSquare(config: SquareConfig): { color: string; area: number } {
+    let newSquare = { color: "white", area: 100 };
+    if (config.clor) {
+    // Error: Property 'clor' does not exist on type 'SquareConfig'. Did you mean 'color'?
+
+        newSquare.color = config.clor;
+    // Error: Property 'clor' does not exist on type 'SquareConfig'. Did you mean 'color'?
+    
+    }
+
+    if (config.width) {
+        newSquare.area = config.width * config.width;
+    }
+    return newSquare;
+    }
+    
+    let mySquare = createSquare({ color: "black" });
+ 
+ </div>
+
+ - برخی موارد نیاز داریم که ویژگی هایی از object ما ، صرفا در زمان ایجاد قابل modify باشند و نه پس از آن ! در اینصورت کافی است که قبل آن ویژگی در اینترفیس مورد نطر ، کلمه ی کلیدی readonly قرار بگیرد:
+
+ <div dir="ltr">
+ 
+    interface Point {
+        readonly x: number;
+        readonly y: number;
+    }
+ 
+ </div>
+
+ حال ، میبینیم که وقت ساخت یک آبجکت با ساختار Point، میتوانیم مقادیر x و y را modify کنیم ولی بعد از آن نمیتوانیم ! مثالی را ببینیم:
+
+ <div dir="ltr">
+ 
+    let p1: Point = { x: 10, y: 20 };
+    p1.x = 5; // error!
+    // Error: Cannot assign to 'x' because it is a read-only property.
+
+ </div>
+
+ در زبان typeScript شما علاوه بر داشتن داده ساختار Array<T> ، دسترسی به داده ساختار ReadOnlyArray<T> دارید، تنها با این تفاوت که تمامی متد های mutating را حذف کرده است ! که شما پس از مقدار دهی آرایه ، مطمئن باشید که مقدار داده های آن قابل تغییر نیستند !
+
+ 
+ <div dir="ltr">
+ 
+    let a: number[] = [1, 2, 3, 4];
+    let ro: ReadonlyArray<number> = a;
+    
+    ro[0] = 12; // error!
+    // Error_Details: Index signature in type 'readonly number[]' only permits reading.
+
+    ro.push(5); // error!
+    // Error_Details: Property 'push' does not exist on type 'readonly number[]'.
+    
+    ro.length = 100; // error!
+    // Error_Details: Cannot assign to 'length' because it is a read-only property.
+    
+    a = ro; // error!
+    // Error_Details: The type 'readonly number[]' is 'readonly' and cannot be assigned to the mutable type 'number[]'.
+
+ </div>
+
+در خط آخر میتوان دید که شما نمیتوانید یک آرایه ی readOnly را به یک آرایه ی عادی assign کنید ( هر چند دارای type یکسانی هستند)!
+البته اگر بخواهید از readonlyArray خود یک نمونه ی mutable هم داشته باشید ، به راحتی میتوانید این کار را بکنید :
+
+<div dir="ltr">
+
+    let a: number[] = [1, 2, 3, 4];
+    let ro: ReadonlyArray<number> = a;
+    
+    a = ro as number[]; // correct !
+
+</div>
+
+ممکن است این سوال پیش بیاید که باید از readonly استفاده کنیم یا const ؟ جواب به این سوال ساده است . کافی است ببینید که میخواهید با یک variable کار کنید یا یک property ! اگر میخواهید با variable کار کنید ، باید از const برای اینکار استفاده کنید . در غیر این صورت باید از readonly استفاده شود !
+
+ - جزئیاتی در باب Property Checks در interface:
+ <br/>
+ به قطعه کد زیر نگاه کنید :
+
+ <div dir="ltr">
+    
+    interface SquareConfig {
+        color?: string;
+        width?: number;
+    }
+    
+    function createSquare(config: SquareConfig): { color: string; area: number } {
+    return {
+        color: config.color || "red",
+        area: config.width ? config.width * config.width : 20,
+    };
+    }
+    
+    let mySquare = createSquare({ colour: "red", width: 100 });
+
+ </div>
+
+همه چیز بنطر خوب میرسد و برنامه باید بدون مشکل اجرا شود ! اما اینطور نیست . در مرحله ی اجرا ، خطای زیر را دریافت میکنیم :
+
+<div dir="ltr">
+
+    Argument of type '{ colour: string; width: number; }' is not assignable to parameter of type 'SquareConfig'.
+    Object literal may only specify known properties, but 'colour' does not exist in type 'SquareConfig'. Did you mean to write 'color'?
+</div>
+
+همانطور که احتمالا متوجه شده اید ، ما به اشتباه ویژگی color را بصورت colour تایپ کردیم و این باعث ایجاد خطا شده است ! <br/>
+ممکن است اینطور بنظرتان برسد که " چون ویژگی color اختیاری بوده است ، پس تابع ما باید فقط ویژگی width را برمیداشت و به colour بعنوان یک ویژگی اضافی نگاه میکرد "
+این حرف ، کاملا منطقی است ! اما بیایید واقع گرایانه به ماجرا نگاه کنیم ! برای چه باید دو متغیر با نام های اینچنینی رادر برنامه داشته باشم که حاصل یک اشتباه تایپی است و عملا به یک معنا هستند ؟! مشخصا احتمال اینکه من جایی از برنامه تایپ کنم colour ولی منظورم color باشد خیلی زیاد است و این ممکن است باگی ایجاد کند که گیدا کردن آن راحت نیست! <br/><br/>
+در زبان typeScript هم ، با ObjectLiteral ها ، برخورد خاصی میشود زیرا ممکن است باگی در این ناحیه ایجاد شود که پیدا کردن آن سخت باشد!
+در واقع اگر ObjectLiteral مد نظر شما دارای هر property باشد که متغیر مقضد شما آنرا نداشته باشد ، ارور دریافت میکنید. مثلا :
+
+
+<div dir="ltr">
+
+    let mySquare = createSquare({ colour: "red", width: 100 });
+    /* Error: Argument of type '{ colour: string; width: number; }' is not assignable to parameter of type 'SquareConfig'.
+    Object literal may only specify known properties, but 'colour' does not exist in type 'SquareConfig'. Did you mean to write 'color'? */
+
+</div>
+
+ - راه حل چیست ؟
+  ممکن است بگویید " من از کدم اطمینان دارم و میدانم که منظورم از colour با color کاملا متفاوت است ! "<br />
+  برای رفع این مشکلات ، خیلی ساده میتوانید از  typeassertion استفاده کنید :
+
+  <div dir="ltr">
+  
+        let mySquare = createSquare({ width: 100, opacity: 0.5 } as SquareConfig);
+  
+  </div>
+
+  البته راه حل بهتر و منظم تری برای اینکار وجود دارد. اگر object شما قطعا ویژگی های اضافه تری دارد که برای موارد مهم و خاصی استفاده میشوند ، از این راه استفاده میکنیم . فرض کنید که SquareConfig علاوه بر ویژگی های colorو width که اختیاری هستند ، قطعا ویژگی های دیگری هم دارد (مثل همان colour!) . کافی است در اینترفیس خود ، خط زیر را اضافه کنیم :
+
+  <div dir="ltr">
+
+    interface SquareConfig {
+
+    color?: string;
+    width?: number;
+    [propName: string]: any; // this line !
+
+    }
+  </div>
+
+حالا دوباره امتحان میکنیم تا ببینیم colour را ایراد میگیریم یا خیر !
+
+<div dir="ltr">
+
+    let squareOptions = { colour: "red", width: 100 };
+    let mySquare = createSquare(squareOptions);
+    // Congrats! It Works :)
+</div>
+
+ توجه کنید که این روش ، تا زمانی پاسخگو است که یک ویژگی مشترک (حداقل) بین object شما و interface مقصد وجود داشته باشد! مثلا کد زیر همجنان به ارور میخورد:
+
+ <div dir="ltr">
+
+    let squareOptions = { colour: "red" };
+    let mySquare = createSquare(squareOptions);
+    //Error: Type '{ colour: string; }' has no properties in common with type 'SquareConfig'.
+ 
+ </div>
+
+
+
+
+  # Annotations in Typescript :
+ همانند اینترفیس که در قسمت قبل دیدیم ، انوتیشن‌ها نیز سیستمی برای نسبت دادن تایپ به متغیرها هستند.
+ تفاوت اساسی بین انوتیشن‌ها و اینترفیس در نحوه نسبت دادن آنهاست به صورتی که در انوتیشن این کار به صورت دستی و در اینترفیس به صورت اتوماتیک انجام می‌شود.
+ حال چند مثال از این انوتیشن‌ها را با هم بررسی می‌کنیم.
+  <div dir="ltr">
+
+    let age: number = 30; // for numbers
+    let fruit: string = "kiwi"; // for strings
+    let flatEarth: boolean = false; // for booleans
+    let aliens: null = undefined; // for undefined or null values
+
+ </div>
+ در مثال بالا ما برای هریک از تایپ‌های اولیه یک انوتیشن تعریف کردیم.
+ حال همانطور که مشاهده شد این کار در تایپ‌اسکریپت به صورت دستی انجام شده و در صورت تغییر در نوع متغییر با خطا روبه‌رو خواهیم شد.
+ حال انوتیشن به صورت متادیتا این اطلاعات را به کامپایلر داده و در صورت درست نبودن مانع از کامپایل شدن برنامه می‌شود.
+ مثال زیر را مشاهده کنید:
+   <div dir="ltr">
+
+    let counter: number;
+    counter = 'Hello'; // compile error 
+
+
+    Type '"Hello"' is not assignable to type 'number'.
+
+ </div>
+ حال این انوتیشن‌ها می‌توانند برای تعریف ارایه و ابجکت ها نیز به کار .
+ روند
+  <div dir="ltr">
+
+    let person: {
+        name: string;
+         age: number
+    };
+
+    person = {
+         name: 'John',
+         age: 25
+    }; // valid
+
+ </div>
+   <div dir="ltr">
+
+    let arrayName: type[];
+
+ </div>
+
+ # decorators in typescript:
+ حال مثال‌های بالا انواعی از inline annotations بودند اما نوع دیگری از انوتیشن وجود دارد که به آن decorator می‌گوییم
+ البته برخی معتقدند که این دو(انوتیشن و دکوریتور) متفاوت‌اند چرا که ما نمی‌توانیم مشخص کنیم که انوتیشن چگونه به صورت متادیتا به برنامه اضافه شود اما نحوه تفسیر دکوریتور در کامپایلر کاملا به متادیتای داده شده توسط ما بستگی دارد.
+ چند مثال از دکوریتورها با هم ببینیم:
+  <div dir="ltr">
+
+    declare type ClassDecorator = <TFunction extends Function>(target: TFunction) => TFunction | void;
+
+    declare type PropertyDecorator = (target: Object, propertyKey: string |     symbol) => void;
+
+    declare type MethodDecorator = <T>(target: Object, propertyKey: string  | symbol, descriptor: TypedPropertyDescriptor<T>) =>     TypedPropertyDescriptor<T> | void;
+
+    declare type ParameterDecorator = (target: Object, propertyKey: string  | symbol, parameterIndex: number) => void;
+
+ </div>
+ در مثال‌های بالا همانطور که مشاهده می‌شود از دکوریتور برای اضافه کردن متادیتا به :
+ class
+ method
+ property
+ parameter
+ استفاده شده که ما دکوریتور method را بررسی و تحلیل می‌کنیم
+ 
+ # method decorators:
+ به مثال زیر دقت کنید.
+ <div dir="ltr">
+
+    class C {
+    @log
+    foo(n: number) {
+        return n * 2;
+        }
+    }
+
+ </div>
+    در اینجا مشاهده می‌شود که از @log برای انوتیت کردن متود استفاده شده
+    حال نگاهی به متود log بیاندازیم:
+    <div dir="ltr">
+
+    function log(target: Function, key: string, value: any) {
+    return {
+        value: function (...args: any[]) {
+            var a = args.map(a => JSON.stringify(a)).join();
+            var result = value.value.apply(this, args);
+            var r = JSON.stringify(result);
+            console.log(`Call: ${key}(${a}) => ${r}`);
+            return result;
+         }
+        };
+    }
+ </div>
+ مشاهده می‌شود که 3 ارگومان در دکوریتور مورد نظر داریم:
+ target: هدف دکوریتور مورد نظر
+ key:نام متودی که دکوریت می‌شود
+ value:مشخص کننده property در صورت وجود آن در ابجکت اولیه 
+ کد زیر ، کدیست که کامپایلر پس از تفسیر متادیتای موجود در دکوریتور log به ما می‌دهد:
+ <div dir="ltr">
+
+    var C = (function () {
+    function C() {
+    }
+    C.prototype.foo = function (n) {
+        return n * 2;
+    };
+    Object.defineProperty(C.prototype, "foo",
+        __decorate([
+            log
+        ], C.prototype, "foo", Object.getOwnPropertyDescriptor(C.prototype, "foo")));
+    return C;
+    })();
+ </div>
+ در صورت نبودن @log کد داده شده توسط کامپایلر به صورت زیر خواهد بود:
+ <div dir="ltr">
+
+    var C = (function () {
+    function C() {
+    }
+    C.prototype.foo = function (n) {
+        return n * 2;
+    };
+    return C;
+    })();
+ </div>
+ یعنی کامپایلر مدل متفاوتی کد را تفسیر کرده که این مدل تفسیر بستگی به متادیتای داده‌شده توسط ما دارد.
+
+ </div>

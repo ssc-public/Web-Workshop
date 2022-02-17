@@ -152,6 +152,8 @@
 - [امیر معینی](https://github.com/amir-mi)
 - [سید محمد پوریا ممتاز اصفهانی](https://github.com/pourya-momtaz)
 - [امیرمهدی نامجو](https://github.com/titansarus)
+- [امیرحسین نقی رازلیقی](https://github.com/AmirHossein-nr)
+- [محمدهومان کشوری](https://github.com/bigwhoman)
 - [سجاد فقفور مغربی](https://github.com/sfmqrb)
 - [سیدپارسا نشایی](https://github.com/spneshaei)
 
