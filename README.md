@@ -129,6 +129,7 @@
 - [محمد جمشیدی](https://github.com/jamshidi799)
 - [مهدی جوان‌مردی غریب‌دوستی](https://github.com/Mjg79)
 - [علی جوانی](https://github.com/AliJavanJ1)
+- [محمدطه جهانی‌نژاد](https://github.com/TahaJahani)
 - [بهار خدابخشیان](https://github.com/baharkhd)
 - [علی‌رضا دیزجی](https://github.com/alirezadizaji)
 - [بهراد ذبیحی](https://github.com/8ehrad)
@@ -147,11 +148,12 @@
 - [محمد فتاح](https://github.com/mohammad-fattah)
 - [عرفان فرهادی](https://github.com/farhadi-erfan)
 - [مصطفی قدیمی](https://github.com/mostafaghadimi)
+- [محمدحسین قیصریه](https://github.com/mhgheisarieh)
 - [امیر معینی](https://github.com/amir-mi)
 - [سید محمد پوریا ممتاز اصفهانی](https://github.com/pourya-momtaz)
 - [امیرمهدی نامجو](https://github.com/titansarus)
 - [سجاد فقفور مغربی](https://github.com/sfmqrb)
-  
+- [سیدپارسا نشایی](https://github.com/spneshaei)
 
 # نحوه مشارکت
 
