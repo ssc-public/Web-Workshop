@@ -7,31 +7,16 @@
 <div align="center">
 
 
-<img src="./Statics/web_workshop.png" alt="Sharif Web Programming Workshop"> 
-<div dir="rtl">
-    اساتید:  
-    <a href="https://github.com/behnamhatami">
-    بهنام حاتمی ورزنه
-    </a>،
-    <a href="https://github.com/YumcoderCom">
-    امید جعفرنژاد
-    </a>
-</div>
+<img src="./Statics/web_workshop.png" alt="Sharif Web Programming Workshop">
 
-<div dir="rtl">
-دستیار آموزشی: مصطفی قدیمی
-</div>
-
-[![Web_Workshop](https://img.shields.io/badge/web-workshop-orange.svg)](https://github.com/mostafaghadimi/web_workshop)
+[![Web_Workshop](https://img.shields.io/badge/web-workshop-orange.svg)](https://github.com/ssc-public/Web-Workshop)
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/mostafaghadimi/web_workshop.svg)](https://github.com/mostafaghadimi/web_workshop/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/mostafaghadimi/web_workshop.svg)](https://github.com/mostafaghadimi/web_workshop/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/ssc-public/Web-Workshop.svg)](https://github.com/ssc-public/Web-Workshop/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/ssc-public/Web-Workshop.svg)](https://github.com/ssc-public/Web-Workshop/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
-[![Github Stars](https://img.shields.io/github/stars/mostafaghadimi/web_workshop?style=social)]([https://](https://github.com/mostafaghadimi/web_workshop/stargazers))
+[![Github Stars](https://img.shields.io/github/stars/ssc-public/Web-Workshop?style=social)]([https://](https://github.com/ssc-public/Web-Workshop/stargazers))
+
 </div>
-
-
-
 
 <div dir="rtl">
 
@@ -77,6 +62,7 @@
   - ...
 ```
 </div>
+
 هم‌چنین دو ساختار برای توسعه‌ی آن‌ها وجود دارد که RestFul و GraphQL است. 
 
 
