@@ -317,6 +317,9 @@ function onFrame(event) {
     
 </div> 
 
+![animation1](https://user-images.githubusercontent.com/59171005/211649752-5fe26b02-70dd-458f-9f2c-95f010473e55.gif)
+
+
 ![](https://github.com/rezasoumi/Web-Workshop/tree/master/paperjs/img/animation1.gif)
 
 در قطعه کد زیر یک دایره ساخته شده است و در onFrame handler در هر 1/60 ثانیه مقدار hue یا همان رنگ را یک واحد اضافه می شود. لازم به ذکر است از مقدار صفر به معنای قرمز شروه شده و تا آبی پر رنگ رفته و در 360 دوباره به قرمز برمی گردد.    
@@ -340,6 +343,9 @@ function onFrame(event) {
 ```
     
 </div> 
+
+![animation2](https://user-images.githubusercontent.com/59171005/211649814-184d170c-c479-4bf9-aaea-38b1ab49b7fa.gif)
+
     
 ![](https://github.com/rezasoumi/Web-Workshop/tree/master/paperjs/img/animation2.gif)
 
