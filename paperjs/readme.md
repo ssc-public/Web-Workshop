@@ -317,6 +317,8 @@ function onFrame(event) {
     
 </div> 
 
+![](https://github.com/rezasoumi/Web-Workshop/tree/master/paperjs/img/animation1.gif)
+
 در قطعه کد زیر یک دایره ساخته شده است و در onFrame handler در هر 1/60 ثانیه مقدار hue یا همان رنگ را یک واحد اضافه می شود. لازم به ذکر است از مقدار صفر به معنای قرمز شروه شده و تا آبی پر رنگ رفته و در 360 دوباره به قرمز برمی گردد.    
 
 4<div dir="ltr">
@@ -339,6 +341,7 @@ function onFrame(event) {
     
 </div> 
     
+![](https://github.com/rezasoumi/Web-Workshop/tree/master/paperjs/img/animation2.gif)
 
 در کد زیر ابتدا یک text ساخته می شود و در onFrame مکان این text به destination تغییر میکند و چون در فواصل زمانی کم آپدیت صورت میگیرد تغییر به صورت پیوسته بوده و به صورت گسسته با چشم دیده نمی شود. در اینجا در هر فریم به اندازه 1/30 کل فاصله طی می شود و با افزایش این عدد حرکت از پیوسته به گسسته تغییر خواهد کرد. و هرگاه فاصله کمتر از 5 شد دوباره destination به صورت تصادفی نقطه ای از صفحه مقداردهی می شود.
 
