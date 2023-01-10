@@ -418,14 +418,20 @@ secondPath.style = firstPath.style;
 
 
 
-16<div dir="ltr">
+24<div dir="ltr">
     
 ```
-var myPath = new Path({
-	segments: [[40, 115], [80, 180], [200, 20]]
-});
+var myStyle = {
+	strokeColor: '#00ffff',
+	fillColor: '#000000',
+	strokeWidth: 50
+};
 
-myPath.strokeColor = '#ff0000'; // red
+var myCircle = new Path.Circle({
+	center: [100, 100],
+	radius: 50
+});
+myCircle.style = myStyle;
 ```
     
 </div> 
@@ -433,17 +439,179 @@ myPath.strokeColor = '#ff0000'; // red
 
 
 
-16<div dir="ltr">
+25<div dir="ltr">
     
 ```
-var myPath = new Path({
-	segments: [[40, 115], [80, 180], [200, 20]]
+var path = new Path.Circle({
+	center: new Point(50, 50),
+	radius: 50
 });
+path.fillColor = 'red';
 
-myPath.strokeColor = '#ff0000'; // red
+// Set the fillColor to null to remove it:
+path.fillColor = null;
 ```
     
 </div> 
+
+
+
+
+26<div dir="ltr">
+    
+```
+var path = new Path.Circle({
+	center: [50, 50],
+	radius: 50
+});
+path.style = null;
+```
+    
+</div> 
+
+
+
+
+27<div dir="ltr">
+    
+```
+// Change the current style of the project:
+project.currentStyle = {
+	strokeColor: '#000000',
+	fillColor: '#ff0000',
+	strokeWidth: 3
+};
+
+// This path will inherit the styles we just set:
+var firstPath = new Path.Circle({
+	center: [100, 100],
+	radius: 50
+});
+
+// Change the current stroke width and fill color of the project:
+project.currentStyle.strokeWidth = 8;
+project.currentStyle.fillColor = 'green';
+
+// This path will have a green fill and have a strokeWidth of 8pt:
+var secondPath = new Path.Circle({
+	center: [250, 100],
+	radius: 50
+});
+```
+    
+</div> 
+
+
+
+
+28<div dir="ltr">
+    
+```
+var path;
+
+// The mouse has to drag at least 20pt
+// before the next drag event is fired:
+tool.minDistance = 20;
+
+function onMouseDown(event) {
+	if (path) {
+		path.selected = false;
+	};
+	path = new Path();
+	path.strokeColor = 'black';
+	path.fullySelected = true;
+}
+
+function onMouseDrag(event) {
+	path.add(event.point);
+}
+
+function onMouseUp(event) {
+	path.selected = false;
+	path.smooth();
+}
+```
+    
+</div> 
+
+
+
+
+29<div dir="ltr">
+    
+```
+var path;
+
+var textItem = new PointText(new Point(20, 30));
+textItem.fillColor = 'black';
+textItem.content = 'Click and drag to draw a line.';
+
+function onMouseDown(event) {
+	// If we produced a path before, deselect it:
+	if (path) {
+		path.selected = false;
+	}
+
+	path = new Path();
+	path.strokeColor = 'black';
+	
+	// Select the path, so we can see its segment points:
+	path.fullySelected = true;
+}
+function onMouseDrag(event) {
+	// Every drag event, add a point to the path at the current
+	// position of the mouse:
+	path.add(event.point);
+	
+	textItem.content = 'Segment count: ' + path.segments.length;
+}
+
+function onMouseUp(event) {
+	var segmentCount = path.segments.length;
+	
+	// When the mouse is released, simplify it:
+	path.simplify();
+	
+	// Select the path, so we can see its segments:
+	path.fullySelected = true;
+	
+	var newSegmentCount = path.segments.length;
+	var difference = segmentCount - newSegmentCount;
+	var percentage = 100 - Math.round(newSegmentCount / segmentCount * 100);
+	textItem.content = difference + ' of the ' + segmentCount + ' segments were removed. Saving ' + percentage + '%';
+
+}
+```
+    
+</div> 
+
+
+
+
+30<div dir="ltr">
+    
+```
+// Create a circle shaped path at { x: 80, y: 50 }
+// with a radius of 35:
+var path = new Path.Circle({
+	center: [80, 50],
+	radius: 35
+});
+
+// Select the path, so we can inspect its segments:
+path.selected = true;
+
+// Create a copy of the path and move it by 150 points:
+var copy = path.clone();
+copy.position.x += 150;
+
+// Flatten the copied path, with a maximum error of 4 points:
+copy.flatten(10);
+```
+    
+</div> 
+
+
     
     
     
