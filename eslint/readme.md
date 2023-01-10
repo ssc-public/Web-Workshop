@@ -180,7 +180,7 @@ npm init @eslint/config
 ```
 این قانون اشاره به این دارد که استفاده از یک متغیر قبل از تعریف آن باعث نشان دادن خطا میشود.
 
-در قانون نوشته شده بالا با استفاده از آپشن های زیر میتوان پیام دریافتی مربوط به این قانون را تفییر دهیم
+در قانون نوشته شده بالا با استفاده از آپشن های زیر میتوان پیام دریافتی مربوط به این قانون را تغییر دهیم
 
 با استفاده از off میتوان به طور کلی این قانون را غیرفعال کرد.
 
@@ -237,3 +237,169 @@ export default [
 
 [قوانین پیشنهادی](https://eslint.org/docs/latest/rules)
  این پکیج به طور پیش فرض برای ریپازینتوری شما فعال خواهد شد.
+
+
+---
+
+## برخی از کانفیگ های پیشنهادی برای React
+</br>
+</br>
+
+* **arrow-body-style:**
+```
+Config---------> "arrow-body-style": ["error", "as-needed"],
+
+// Incorrect
+let foo = () => {
+    return 0;
+};
+// Correct
+let foo = () => 0
+```
+<div align="center">
+    <img src="assets/arrow-body.gif">
+</div>
+
+</br>
+</br>
+
+* **react/self-closing-comp:**
+```
+Config--------->
+"react/self-closing-comp": [
+   "error", { 
+     "component": true,
+     "html": true
+   }
+ ]
+----------------
+
+// Incorrect
+<Hello name="John"></Hello>;
+<div className="content"></div>;
+
+// Correct
+<Hello name="John" />
+<div className="content" />
+```
+<div align="center">
+    <img src="assets/reactself-closing-comp.gif">
+</div>
+</br>
+</br>
+
+* **autofix/no-unused-vars:**
+```
+Config--------->
+ "autofix/no-unused-vars": [
+   "error",
+   {
+     "argsIgnorePattern": "^_",
+     "ignoreRestSiblings": true,
+     "destructuredArrayIgnorePattern": "^_"
+   }
+  ]
+----------------
+
+// Incorrect
+function foo(x, y) {
+    return x + 1;
+}
+foo();
+var { foo, ...coords } = data;
+const [a, b] = ["a", "b"];
+console.log(b);
+
+// Correct
+function foo(x, _y) {
+    return x + 1;
+}
+foo();
+var { foo, ...coords } = data;
+const [_a, b] = ["a", "b"];
+console.log(b);
+```
+
+</br>
+</br>
+
+* **@typescript-eslint/consistent-type-imports:**
+```
+Config--------->
+ "@typescript-eslint/consistent-type-imports": [
+   "error",
+   {
+     "prefer": "type-imports",
+   }   
+ ],
+----------------
+
+// Incorrect
+import { useEffect, FC } from "react";
+
+// Correct
+import { useEffect } from "react";
+import type { FC } from "react";
+```
+<div align="center">
+    <img src="assets/consistent-type-imports.gif">
+</div>
+
+</br>
+</br>
+
+* **import/order:**
+```
+Config--------->
+ "import/order": [
+   "error",
+   {        
+     "groups": [
+       "builtin",
+       "external",
+       "parent",
+       "sibling",
+       "index",
+       "object",   
+       "type"
+     ],
+     "pathGroups": [
+       {
+         "pattern": "@/**/**",
+         "group": "parent",
+         "position": "before"
+       }
+     ],
+     "alphabetize": { "order": "asc" }
+   }
+ ],
+----------------
+```
+
+</br>
+</br>
+
+* **no-restricted-imports:**
+```
+Config--------->
+ "no-restricted-imports": [
+   "error",
+   { 
+     "patterns": ["../"] 
+   }
+ ],
+----------------
+```
+<div align="center">
+    <img src="assets/no-restricted.webp">
+</div>
+</br>
+
+> البته لازم به ذکر هست که این تنظیمات پیشنهادی و دیگر تنظیمات در قالب پکیج های npm هم توسعه یافته و در درسترس هستید مانند [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) و بسیاری دیگر
+
+
+
+
+
+
+
