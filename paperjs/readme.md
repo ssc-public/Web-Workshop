@@ -260,7 +260,7 @@ function onMouseUp(event) {
 
 برای ایجاد انیمیشن از onFrame handler استفاده می شود. زمانی که این تابع فراخوانی می شود در هر ثانیه 60 بار توسط paper.js اجرا می شود و پس از هر بار veiw دوباره render می شود. نحوه فراخوانی این تابع را در قطعه کد زیر مشاهده می کنید. 
 
-1<div dir="ltr">
+<div dir="ltr">
     
 ```
 function onFrame(event) {
@@ -276,7 +276,7 @@ function onFrame(event) {
 * متغیر event.delta زمان سپری شده از آخرین frame event 
 معمولا این مقادیر برای ساخت انیمیشن استفاده نمی شوند. در قطعه کد زیر نحوه دسترسی به هرکدام را مشاهده می کنید.
 
-2<div dir="ltr">
+<div dir="ltr">
     
 ```
 function onFrame(event) {
@@ -298,7 +298,7 @@ function onFrame(event) {
 در ادامه مثال هایی را بررسی خواهیم کرد. در قطعه کد زیر یک مربع ساخته شده و در تابع onframe این شکل سه درجه rotate روی آن در هر 1/60 ثانیه صورت می گیرد. با افزایش متغیر زاویه سرعت چرخش مربع نیز افزایش پیدا می کند.
 
 
-3<div dir="ltr">
+<div dir="ltr">
     
 ```
 // Create a rectangle shaped path with its top left point at
@@ -320,11 +320,11 @@ function onFrame(event) {
 ![animation1](https://user-images.githubusercontent.com/59171005/211649752-5fe26b02-70dd-458f-9f2c-95f010473e55.gif)
 
 
-![](https://github.com/rezasoumi/Web-Workshop/tree/master/paperjs/img/animation1.gif)
+![https://github.com/rezasoumi/Web-Workshop/tree/master/paperjs/img/animation1.gif]
 
 در قطعه کد زیر یک دایره ساخته شده است و در onFrame handler در هر 1/60 ثانیه مقدار hue یا همان رنگ را یک واحد اضافه می شود. لازم به ذکر است از مقدار صفر به معنای قرمز شروه شده و تا آبی پر رنگ رفته و در 360 دوباره به قرمز برمی گردد.    
 
-4<div dir="ltr">
+<div dir="ltr">
     
 ```
 // Create a circle shaped path at the center of the view,
@@ -347,12 +347,12 @@ function onFrame(event) {
 ![animation2](https://user-images.githubusercontent.com/59171005/211649814-184d170c-c479-4bf9-aaea-38b1ab49b7fa.gif)
 
     
-![](https://github.com/rezasoumi/Web-Workshop/tree/master/paperjs/img/animation2.gif)
+![https://github.com/rezasoumi/Web-Workshop/tree/master/paperjs/img/animation2.gif]
 
 در کد زیر ابتدا یک text ساخته می شود و در onFrame مکان این text به destination تغییر میکند و چون در فواصل زمانی کم آپدیت صورت میگیرد تغییر به صورت پیوسته بوده و به صورت گسسته با چشم دیده نمی شود. در اینجا در هر فریم به اندازه 1/30 کل فاصله طی می شود و با افزایش این عدد حرکت از پیوسته به گسسته تغییر خواهد کرد. و هرگاه فاصله کمتر از 5 شد دوباره destination به صورت تصادفی نقطه ای از صفحه مقداردهی می شود.
 
 
-5<div dir="ltr">
+<div dir="ltr">
     
 ```
 // Create a centered text item at the center of the view:
@@ -395,11 +395,14 @@ function onFrame(event) {
     
 </div>
 
+![3](https://user-images.githubusercontent.com/59171005/211651908-5c0a1332-548d-4cee-b044-fa2b5bc4547a.gif)
+
+
 
 در قطعه کد زیر 150 دایره ایجاد شده و با استفاده از symbol در جایی از صفحه قرار می گیرد.(ابتدا دایره به سیمبل bind می شود و با دستور symbol.place(center) یک دایره به symbol اضافه می شود) سپس در onFrame handler در یک لوپ دایره ها از طریق لایه های اکتیو project گرفته می شود (متغیرهای موجود در symbol) و مولفه x آنها در صفحه به اندازه 1/20 عرض هرکدام افزایش پیدا می کند و پس از طی کردن صفحه دوباره از سمت چپ سروع به حرکت می کنند. 
 
 
-6<div dir="ltr">
+<div dir="ltr">
     
 ```
 // The amount of circles we want to make:
@@ -446,10 +449,14 @@ function onFrame(event) {
 </div> 
 
 
+![4](https://user-images.githubusercontent.com/59171005/211653185-7bb5ff5b-191a-40b2-9995-aadfe79e44f5.gif)
+
+
+
 قطعه کد زیر یک path با width خاکستری به اندازه 30 ایجاد کرده 5 نقطه روی آن مشخص می کند و به segment های متفاوت تبدیل می شوند و در onFrame یک لوپ روی این 5 عنصر زده می شود بخش مربوطه را دریافت می کند. در ادامه بر اساس event.time (کل زمانی که از اولین فریم تا به اینجا طی شده است) مقدار sin را دریافت کرده و برای هر نقطه این مقدار را در حداکثر ارتفاع مجاز ضرب کرده تا ارتفاع جدید بدست آید. لازم به ذکر است چون به صورت ترتیبی اجرا می شوند مقدار sin برای دو نقطه کنار هم یکسان نبوده و ارتفاع شان به یک میزان تغییر نمی کند و به صورت سینوسی این کار صورت می گیرد.  
 
 
-7<div dir="ltr">
+<div dir="ltr">
     
 ```
 // The amount of segment points we want to create:
@@ -493,5 +500,10 @@ function onFrame(event) {
 ```
     
 </div>  
+
+![5](https://user-images.githubusercontent.com/59171005/211652144-71686156-e2c0-43cb-be4c-7c5a45440c0e.gif)
+
+
+
     
 </div>
