@@ -505,5 +505,85 @@ function onFrame(event) {
 
 
 
+## تعامل با کاربر
+
+ماوس:
+
+تابع های mouse handler یک event دریافت می کنند که اطلاعاتی در رابطه با رخدادهای mouse می دهد که در ادامه بررسی خواهیم کرد.
+
+در قطعه کد زیر هنگام برداشتن mouse، آخرین مکانی که mouse کلیک شده بوده را با event.downPoint می گیرد و مکانی که در حال حاضر mouse رها شده است را نیز می گیرد و خطی بین این دو رسم می کند.
+<div dir="ltr">
     
+```
+function onMouseUp(event) {
+	// Create a path:
+	var path = new Path();
+
+	// Add the mouse down position:
+	path.add(event.downPoint);
+
+	// Add the mouse up position:
+	path.add(event.point);
+}
+```
+    
+</div>
+خروجی کد بالا را در پایین مشاهده می کنید.
+
+![mouse1](https://user-images.githubusercontent.com/59171005/211678229-eb87e533-4a9b-4914-b9cf-b818392c9b7d.gif)
+
+
+
+
+متغیر tool.mindistance برابر 10 قرار داده شده است به این معنی که هنگامی onMouseDrag فراخوانی شود که cursor mouse حداقل 10pt جابجا شده باشد. event.delta وکتور بین مکان حال حاضر mouse و آخرین مکان mouse است که این تابع فراخوانی شده است. سپس زاویه وکتور 90 درجه تغییر داده شده و طول وکتور برابر 5 قرار داده می شود که خروجی را در پایین کد مشاهده می کنید.
+<div dir="ltr">
+    
+```
+// The mouse has to be moved at least 10 pt
+// before the next onMouseDrag event is called:
+tool.minDistance = 10;
+
+function onMouseDrag(event) {
+	var path = new Path();
+	path.strokeColor = 'black';
+	var vector = event.delta;
+
+	// rotate the vector by 90 degrees:
+	vector.angle += 90;
+
+	// change its length to 5 pt:
+	vector.length = 5;
+	
+	path.add(event.middlePoint + vector);
+	path.add(event.middlePoint - vector);
+}
+```
+    
+</div>
+
+![mouse2](https://user-images.githubusercontent.com/59171005/211678189-39f5b5ae-7c3f-48e1-8416-ca136295afaa.gif)
+
+
+
+
+همچنین اگر mindistance ثبت نشود در فاصله زمانی مشخص با تغییر مکان mouse این تابع فراخوانی می شود که با event.delta.length می توان سرعت تغییر mouse را متوجه شد و event.middlepoint به معنای وسط وکتور delta است. خروجی کد را در پایین کد مشاهده می کنید.
+
+    
+<div dir="ltr">
+    
+```
+function onMouseDrag(event) {
+	var radius = event.delta.length / 2;
+	var circle = new Path.Circle(event.middlePoint, radius);
+	circle.fillColor = 'black';
+}
+```
+    
+</div>
+
+![mouse3](https://user-images.githubusercontent.com/59171005/211678153-216f4149-2a8d-403d-b8d6-1f39ec4d0a0c.gif)
+
+
+
+
 </div>
