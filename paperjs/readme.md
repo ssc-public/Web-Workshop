@@ -59,26 +59,6 @@ JSXGraph ابزار مناسبی برای کشیدن گراف های با معا
     
 ## آموزش
 
-1<div dir="ltr">
-    
-```
-var myPath = new Path();
-myPath.strokeColor = 'black';
-myPath.add(new Point(0, 0));
-myPath.add(new Point(100, 50));
-```
-    
-</div>
-    
-2<div dir="ltr">
-    
-```
-var myPath = new Path();
-myPath.strokeColor = 'black';
-myPath.add(new Point(0, 0), new Point(100, 50));
-```
-    
-</div>
 
 
 3<div dir="ltr">
@@ -120,57 +100,6 @@ copy.smooth();
 ```
     
 </div> 
-    
-    
-
-5<div dir="ltr">
-    
-```
-var myPath = new Path();
-myPath.strokeColor = 'black';
-myPath.add(new Point(40, 90));
-myPath.add(new Point(90, 40));
-myPath.add(new Point(140, 90));
-```
-    
-</div>     
-
-
-6<div dir="ltr">
-    
-```
-var myPath = new Path();
-myPath.strokeColor = 'black';
-myPath.add(new Point(40, 90));
-myPath.add(new Point(90, 40));
-myPath.add(new Point(140, 90));
-
-myPath.closed = true;
-```
-    
-</div>  
-
-
-7<div dir="ltr">
-    
-```
-var myCircle = new Path.Circle(new Point(100, 70), 50);
-myCircle.strokeColor = 'black';
-myCircle.selected = true;
-```
-    
-</div>  
-
-    
-8<div dir="ltr">
-    
-```
-var myCircle = new Path.Circle(new Point(100, 70), 50);
-myCircle.strokeColor = 'black';
-myCircle.selected = true;
-```
-    
-</div> 
 
 
 
@@ -182,58 +111,6 @@ myCircle.strokeColor = 'black';
 myCircle.selected = true;
 
 myCircle.removeSegment(0);
-```
-    
-</div> 
-
-
-
-
-10<div dir="ltr">
-    
-```
-var myCircle = new Path.Circle(new Point(100, 100), 50);
-myCircle.fillColor = 'black';
-
-myCircle.remove();
-```
-    
-</div> 
-
-
-
-
-11<div dir="ltr">
-    
-```
-var myCircle = new Path.Circle(new Point(100, 70), 50);
-myCircle.fillColor = 'black';
-```
-    
-</div> 
-
-
-
-12<div dir="ltr">
-    
-```
-var rectangle = new Rectangle(new Point(50, 50), new Point(150, 100));
-var path = new Path.Rectangle(rectangle);
-path.fillColor = '#e9e9ff';
-path.selected = true;
-```
-    
-</div> 
-
-
-
-13<div dir="ltr">
-    
-```
-var rectangle = new Rectangle(new Point(50, 50), new Point(150, 100));
-var radius = new Size(20, 20);
-var path = new Path.Rectangle(rectangle, radius);
-path.fillColor = 'black';
 ```
     
 </div> 
@@ -259,47 +136,6 @@ decagon.selected = true;
 
 
 
-15<div dir="ltr">
-    
-```
-var myPath = new Path({
-	segments: [[40, 115], [80, 180], [200, 20]],
-	selected: true
-});
-```
-    
-</div> 
-
-
-
-16<div dir="ltr">
-    
-```
-var myPath = new Path({
-	segments: [[40, 115], [80, 180], [200, 20]]
-});
-
-myPath.strokeColor = '#ff0000'; // red
-```
-    
-</div> 
-
-
-17<div dir="ltr">
-    
-```
-var myPath = new Path({
-	segments: [[40, 115], [80, 180], [200, 20]]
-});
-
-myPath.strokeColor = new Color(0.5, 0, 0.5);
-```
-    
-</div> 
-
-
-
-
 18<div dir="ltr">
     
 ```
@@ -309,62 +145,6 @@ var myPath = new Path({
 });
 
 myPath.fillColor = '#ff0000';
-```
-    
-</div> 
-
-
-
-
-19<div dir="ltr">
-    
-```
-var myPath = new Path({
-	segments: [[40, 115], [80, 180], [200, 20]]
-});
-
-myPath.strokeColor = '#ff0000';
-
-myPath.strokeWidth = 10;
-```
-    
-</div> 
-
-
-
-
-
-20<div dir="ltr">
-    
-```
-var myPath = new Path({
-	segments: [[40, 115], [80, 180], [200, 20]],
-	selected: true
-});
-
-myPath.strokeColor = '#ff0000';
-myPath.strokeWidth = 10;
-
-myPath.strokeCap = 'round';
-```
-    
-</div> 
-
-
-
-
-21<div dir="ltr">
-    
-```
-var myPath = new Path({
-	segments: [[40, 115], [80, 180], [200, 20]],
-	selected: true
-});
-
-myPath.strokeColor = '#ff0000';
-myPath.strokeWidth = 10;
-
-myPath.strokeJoin = 'round';
 ```
     
 </div> 
@@ -388,87 +168,6 @@ myPath.dashArray = [10, 12];
 ```
     
 </div> 
-
-
-
-
-23<div dir="ltr">
-    
-```
-var firstPath = new Path.Circle({
-	center: [80, 50],
-	radius: 35
-});
-
-firstPath.strokeColor = '#ff0000';
-firstPath.fillColor = 'blue';
-
-// secondPath doesn't have a strokeColor yet:
-var secondPath = new Path.Circle({
-	center: [160, 50],
-	radius: 35
-});
-
-// Apply the style of firstPath to that of secondPath:
-secondPath.style = firstPath.style;
-```
-    
-</div> 
-
-
-
-
-24<div dir="ltr">
-    
-```
-var myStyle = {
-	strokeColor: '#00ffff',
-	fillColor: '#000000',
-	strokeWidth: 50
-};
-
-var myCircle = new Path.Circle({
-	center: [100, 100],
-	radius: 50
-});
-myCircle.style = myStyle;
-```
-    
-</div> 
-
-
-
-
-25<div dir="ltr">
-    
-```
-var path = new Path.Circle({
-	center: new Point(50, 50),
-	radius: 50
-});
-path.fillColor = 'red';
-
-// Set the fillColor to null to remove it:
-path.fillColor = null;
-```
-    
-</div> 
-
-
-
-
-26<div dir="ltr">
-    
-```
-var path = new Path.Circle({
-	center: [50, 50],
-	radius: 50
-});
-path.style = null;
-```
-    
-</div> 
-
 
 
 
@@ -501,38 +200,6 @@ var secondPath = new Path.Circle({
     
 </div> 
 
-
-
-
-28<div dir="ltr">
-    
-```
-var path;
-
-// The mouse has to drag at least 20pt
-// before the next drag event is fired:
-tool.minDistance = 20;
-
-function onMouseDown(event) {
-	if (path) {
-		path.selected = false;
-	};
-	path = new Path();
-	path.strokeColor = 'black';
-	path.fullySelected = true;
-}
-
-function onMouseDrag(event) {
-	path.add(event.point);
-}
-
-function onMouseUp(event) {
-	path.selected = false;
-	path.smooth();
-}
-```
-    
-</div> 
 
 
 
@@ -585,31 +252,6 @@ function onMouseUp(event) {
     
 </div> 
 
-
-
-
-30<div dir="ltr">
-    
-```
-// Create a circle shaped path at { x: 80, y: 50 }
-// with a radius of 35:
-var path = new Path.Circle({
-	center: [80, 50],
-	radius: 35
-});
-
-// Select the path, so we can inspect its segments:
-path.selected = true;
-
-// Create a copy of the path and move it by 150 points:
-var copy = path.clone();
-copy.position.x += 150;
-
-// Flatten the copied path, with a maximum error of 4 points:
-copy.flatten(10);
-```
-    
-</div> 
 
 
     
