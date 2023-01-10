@@ -584,6 +584,83 @@ function onMouseDrag(event) {
 ![mouse3](https://user-images.githubusercontent.com/59171005/211678153-216f4149-2a8d-403d-b8d6-1f39ec4d0a0c.gif)
 
 
+کیبرد:
+
+برای دریافت اطلاعات key ثبت شده در کیبورد از onKeyDown و onKeyUp استفاده می شود. 
+در کد زیر با فشردن و نگه داشتن یک کلید keyboard تابع onKeyDown فراخوانی شده و تا زمانی که نگه داشته شده است پیام موجود در این تابع را مشاهده خواهیم کرد و بلافاصله پس از برداشتن کلید تابع onKeyUp فراخوانی می شود.
+
+<div dir="ltr">
+    
+```
+// Create a centered text item at the center of the view:
+var text = new PointText({
+	point: view.center,
+	content: 'Click here to focus and then press some keys.',
+	justification: 'center',
+	fontSize: 15
+});
+
+function onKeyDown(event) {
+	// When a key is pressed, set the content of the text item:
+	text.content = 'The ' + event.key + ' key was pressed!';
+}
+
+function onKeyUp(event) {
+	// When a key is released, set the content of the text item:
+	text.content = 'The ' + event.key + ' key was released!';
+}
+```
+    
+</div>
+
+خروجی کد بالا را در پایین مشاهده می کنید.
+
+![keyboard1](https://user-images.githubusercontent.com/59171005/211684098-e4230e5f-97e6-47e2-9ef4-ecf02095a2fa.gif)
+
+
+
+کد دیگری را در پایین مشاهده می کنید که یک path ساخته و در هر مرحله با فشردن کلید های awsd به چپ بالا پایین و راست حرکت می کنیم.
+step طول حرکت بوده و در ابتدا از مقدار موجود در متغیر position شروع به حرکت می کنیم. 
+<div dir="ltr">
+    
+```
+// The starting position of the line
+var position = new Point(100, 100);
+
+// The amount we will move when one of the keys is pressed:
+var step = 10;
+
+var path = new Path();
+path.strokeColor = 'black';
+path.add(position);
+
+function onKeyDown(event) {
+	if(event.key == 'a') {
+		position.x -= step;
+	}
+
+	if(event.key == 'd') {
+		position.x += step;
+	}
+
+	if(event.key == 'w') {
+		position.y -= step;
+	}
+
+	if(event.key == 's') {
+		position.y += step;
+	}
+	path.add(position);
+}
+```
+    
+</div>
+
+خروجی کد بالا را در پایین مشاهده می کنید.
+
+![keyboard2](https://user-images.githubusercontent.com/59171005/211684077-2e995dec-6d5f-4f94-ac39-90581d0e61ba.gif)
+
+
 
 
 </div>
