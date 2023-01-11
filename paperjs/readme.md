@@ -1,6 +1,5 @@
-<p align="center">
-    <img src="https://github.com/rezasoumi/Web-Workshop/tree/master/paperjs/img/paperjslogo.jpg">
-</p>
+
+![paperjslogo](https://user-images.githubusercontent.com/59171005/211690897-aac2a411-b4ff-4b10-a250-cca08038034c.jpg)
 
 <p align="center">
     تحقیق میان ترم برنامه سازی وب، دانشگاه صنعتی شریف
