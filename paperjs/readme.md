@@ -320,7 +320,6 @@ function onFrame(event) {
 ![animation1](https://user-images.githubusercontent.com/59171005/211649752-5fe26b02-70dd-458f-9f2c-95f010473e55.gif)
 
 
-![https://github.com/rezasoumi/Web-Workshop/tree/master/paperjs/img/animation1.gif]
 
 در قطعه کد زیر یک دایره ساخته شده است و در onFrame handler در هر 1/60 ثانیه مقدار hue یا همان رنگ را یک واحد اضافه می شود. لازم به ذکر است از مقدار صفر به معنای قرمز شروه شده و تا آبی پر رنگ رفته و در 360 دوباره به قرمز برمی گردد.    
 
@@ -346,8 +345,7 @@ function onFrame(event) {
 
 ![animation2](https://user-images.githubusercontent.com/59171005/211649814-184d170c-c479-4bf9-aaea-38b1ab49b7fa.gif)
 
-    
-![https://github.com/rezasoumi/Web-Workshop/tree/master/paperjs/img/animation2.gif]
+ 
 
 در کد زیر ابتدا یک text ساخته می شود و در onFrame مکان این text به destination تغییر میکند و چون در فواصل زمانی کم آپدیت صورت میگیرد تغییر به صورت پیوسته بوده و به صورت گسسته با چشم دیده نمی شود. در اینجا در هر فریم به اندازه 1/30 کل فاصله طی می شود و با افزایش این عدد حرکت از پیوسته به گسسته تغییر خواهد کرد. و هرگاه فاصله کمتر از 5 شد دوباره destination به صورت تصادفی نقطه ای از صفحه مقداردهی می شود.
 
@@ -534,6 +532,40 @@ function onMouseUp(event) {
 
 
 
+می توان یک خط را نیز به صورت پیوسته کشید که کد زیر این کار را انجام می دهد. onMouseDrag هر زمانی که وکتور delta یک واحد شود فراخوانی شده و این نقطع را به path اضافه می کند (هرچه mindistance کمتر باشد خطوط پیوسته تر خواهند بود). یک نمونه خروجی پایین کد نمایش داده شده است. 
+
+<div dir="ltr">
+    
+```
+// The minimum distance the mouse has to drag
+// before firing the next onMouseDrag event:
+tool.minDistance = 1;
+
+var path;
+
+function onMouseDown(event) {
+	// Create a new path and give it a stroke color:
+	path = new Path();
+	path.strokeColor = '#00000';
+
+	// Add a segment to the path where
+	// you clicked:
+	path.add(event.point);
+}
+
+function onMouseDrag(event) {
+	// Every drag event, add a segment
+	// to the path at the position of the mouse:
+	path.add(event.point);
+}
+```
+    
+</div>
+
+![mouse2_1](https://user-images.githubusercontent.com/59171005/211687162-0e8de3a4-5d1d-4cbd-9341-2d173e2a847b.gif)
+
+
+
 
 متغیر tool.mindistance برابر 10 قرار داده شده است به این معنی که هنگامی onMouseDrag فراخوانی شود که cursor mouse حداقل 10pt جابجا شده باشد. event.delta وکتور بین مکان حال حاضر mouse و آخرین مکان mouse است که این تابع فراخوانی شده است. سپس زاویه وکتور 90 درجه تغییر داده شده و طول وکتور برابر 5 قرار داده می شود که خروجی را در پایین کد مشاهده می کنید.
 <div dir="ltr">
@@ -564,6 +596,47 @@ function onMouseDrag(event) {
 ![mouse2](https://user-images.githubusercontent.com/59171005/211678189-39f5b5ae-7c3f-48e1-8416-ca136295afaa.gif)
 
 
+کد زیر همانند گذشته از delta استفاده کرده و آن را 90 درجه چرخانده است و علاوه یر آن دو خط دیگر از top و bottom آن خط رسم کرده است که بسته به سرعت تغییر می توان فاصله آن حداکثر 45 و حداقل 10 واحد با خط اولیه باشد.
+
+<div dir="ltr">
+    
+```
+tool.minDistance = 10;
+tool.maxDistance = 45;
+
+var path;
+
+function onMouseDown(event) {
+	path = new Path();
+	path.strokeColor = '#00000';
+	path.selected = true;
+
+	path.add(event.point);
+}
+
+function onMouseDrag(event) {
+	var step = event.delta;
+	step.angle += 90;
+
+	var top = event.middlePoint + step;
+	var bottom = event.middlePoint - step;
+	
+	var line = new Path();
+	line.strokeColor = '#000000';
+	line.add(top);
+	line.add(bottom);
+
+	path.add(top);
+	path.insert(0, bottom);
+}
+```
+    
+</div>
+
+![mouse2_2](https://user-images.githubusercontent.com/59171005/211689476-df3b4343-0cd0-4bca-baa7-2d1ca22cb7fc.gif)
+
+
+
 
 
 همچنین اگر mindistance ثبت نشود در فاصله زمانی مشخص با تغییر مکان mouse این تابع فراخوانی می شود که با event.delta.length می توان سرعت تغییر mouse را متوجه شد و event.middlepoint به معنای وسط وکتور delta است. خروجی کد را در پایین کد مشاهده می کنید.
@@ -582,6 +655,54 @@ function onMouseDrag(event) {
 </div>
 
 ![mouse3](https://user-images.githubusercontent.com/59171005/211678153-216f4149-2a8d-403d-b8d6-1f39ec4d0a0c.gif)
+
+
+کد براش و خروجی را نیز در پایین مشاهده می کنید.
+
+
+
+<div dir="ltr">
+    
+```
+tool.minDistance = 10;
+tool.maxDistance = 45;
+
+var path;
+
+function onMouseDown(event) {
+	path = new Path();
+	path.fillColor = {
+		hue: Math.random() * 360,
+		saturation: 1,
+		brightness: 1
+	};
+
+	path.add(event.point);
+}
+
+function onMouseDrag(event) {
+	var step = event.delta / 2;
+	step.angle += 90;
+	
+	var top = event.middlePoint + step;
+	var bottom = event.middlePoint - step;
+	path.add(top);
+	path.insert(0, bottom);
+	path.smooth();
+}
+
+function onMouseUp(event) {
+	path.add(event.point);
+	path.closed = true;
+	path.smooth();
+}
+```
+    
+</div>
+
+![mouse2_3](https://user-images.githubusercontent.com/59171005/211690024-02476e19-b3a2-4fb5-a978-802704c32d7c.gif)
+
+
 
 
 کیبرد:
