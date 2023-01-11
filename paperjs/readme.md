@@ -52,6 +52,7 @@ JSXGraph ابزار مناسبی برای کشیدن گراف های با معا
 </p>
     
 * Three.js
+TODO: COMPARISON WITH THREE.JS
     
 ## Scope project views and tools
 
