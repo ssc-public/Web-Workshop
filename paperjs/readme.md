@@ -42,7 +42,8 @@ npm install paper
 * Simulate dashed strokes that are currently lacking from the Canvas object, at near-native drawing speed.
 Most blend modes known from Illustrator and Photoshop are supported through emulation in JavaScript: multiply, screen, overlay, soft-light, hard-light, color-dodge, * color-burn, darken, lighten, difference, exclusion, hue, saturation, luminosity, color, add, subtract, average & negation.
     
-    
+* TODO: CONVERT ENGLISH TO PERSIAN 
+
  
 ## مقایسه
 * JSXGraph
@@ -53,12 +54,14 @@ JSXGraph ابزار مناسبی برای کشیدن گراف های با معا
 * Three.js
     
 ## Scope project views and tools
-    
+
+TODO: EXPLAIN SCOPE, PROJECT, VIEWS AND TOOLS IN PAPER.JS
     
     
 ## آموزش
 
 
+* TODO: EXPLAIN BASICS
 
 3<div dir="ltr">
     
