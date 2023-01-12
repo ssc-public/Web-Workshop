@@ -43,7 +43,7 @@ progressive web app
 
 <br/>
 
-<img src="images/service worker.jpg" alt="service worker" align="center"> 
+<img src="images/service worker.jpg" alt="service worker" align="center"/> 
 
 
 <br/>
