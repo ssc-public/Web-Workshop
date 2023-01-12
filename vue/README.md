@@ -117,10 +117,13 @@ export default {
 
 هر بخش را در جای خود به شکل کامل توضیح می‌دهیم.
 
-بخش script کامپوننت‌ها را به دو شکل زیر نوشته می‌شوند که هر کدام را در جای مناسب خود توضیح می‌دهیم.
+بخش script کامپوننت‌ها را به دو شکل زیر نوشته می‌شوند.
 در هر کامپوننت می‌توان از هر کدام استفاده کرد و نیازی نیست در کامپوننت‌های یک پروژه از فقط از یکی از آن‌ها استفاده کرد.
 - composition-api
 - options-api
+<br>
+در این مقاله ما به روش options-api
+می‌پردازیم.
 
 <h1>
 بخش‌ها
@@ -129,7 +132,8 @@ export default {
 <div dir="ltr">
 
 [creating a vue application](createApp.md)  
-[template syntax](templateSyntax.md)
+[template syntax](templateSyntax.md)  
+[reactivity fundamentals](reactivityFundamentals.md)  
 
 </div>
 

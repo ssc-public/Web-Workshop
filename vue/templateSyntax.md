@@ -14,7 +14,9 @@
 <div dir="ltr">
 
 ```vue
-<div> your message is: {{ message }} </div>
+<template>
+  <div> your message is: {{ message }} </div>
+</template>
 ```
 </div>
 
@@ -32,7 +34,9 @@
 <div dir="ltr">
 
 ```vue
-<div v-bind:id="yourId"></div>
+<template>
+  <div v-bind:id="yourId"></div>
+</template>
 ```
 </div>
 
@@ -41,11 +45,42 @@
 <div dir="ltr">
 
 ```vue
-<div :id="yourId"></div>
+<template>
+  <div :id="yourId"></div>
+</template>
+```
+
+</div>
+
+می‌دانیم المان‌های مختلف می‌توانند ایونت‌های مختلفی را در صفحه تریگر کنند
+برای دسترسی به این ایونت‌ها از <code>v-on</code>
+استفاده می‌کنیم:
+
+<div dir="ltr">
+
+```vue
+<template>
+ <button v-on:click="doSomething"> click on me! </button>
+</template>
 ```
 </div>
 
+یا به روش ساده‌تر:
 
+<div dir="ltr">
+
+```vue
+<template>
+ <button @click="doSomething"> click on me! </button>
+</template>
+```
+
+</div>
+
+<code>doSomething</code>
+می‌تواند یکی از توابع کامپوننت ما باشد که در 
+[قسمت بعد](reactivityFundamentals.md)
+آن را شرح می‌کنیم.
 
 </div>
 
