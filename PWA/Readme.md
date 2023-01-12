@@ -20,8 +20,8 @@ progressive web app
 ## مقایسه Web platform apps و Platform-specific apps
 
 
-وب اپلیکیشن ها از جهاتی مزیت های زیادی دارند. آن ها شامل یک codebase هستند و کاربران همواره از آخرین نسخه موجود استفاده می کنند. از طرفی اپلیکیشن هایی که مخصوص یک پلتفرم مثل اندروید نوشته می شوند، می توانند از قابلیت های بیشتری بهره مند شوند، مانند خواندن و نوشتن فایل، ارتباط با سخت افزار از طریق USB، استفاده از Bluetooth و غیره. همچنین مثلا با نصب یک اپلیکیشن اندروید به ازای آن یک آیکن در صفحه خانه اضافه می شوند و حتی هنگام متصل نبودن به اینترنت می توانند قسمت هایی از اپلیکیشن که لزوما نیازی به گرفتن داده از اینترنت ندارد را نمایش دهند.
-در این میان PWA ها وارد بازی می شوند. PWA ها در محل تقاطع web app ها و platform app ها قرار دارند و ویژگی های هر دو گروه را شامل می شوند.
+وب اپلیکیشن ها از جهاتی مزیت های زیادی دارند. آن ها شامل یک codebase هستند و کاربران همواره از آخرین نسخه موجود استفاده می کنند. از طرفی اپلیکیشن هایی که مخصوص یک پلتفرم مثل اندروید نوشته می شوند، می توانند از قابلیت های بیشتری بهره مند شوند، مانند خواندن و نوشتن فایل، ارتباط با سخت افزار از طریق USB، استفاده از Bluetooth و غیره. همچنین مثلا با نصب یک اپلیکیشن اندروید یک آیکن در صفحه خانه اضافه می شود و حتی هنگام متصل نبودن به اینترنت می تواند قسمت هایی از اپلیکیشن که لزوما نیازی به گرفتن داده از اینترنت ندارد را نمایش دهد.
+در این میان PWA ها وارد بازی می شوند. PWA ها در بین web app ها و platform app ها قرار دارند و ویژگی های هر دو گروه را شامل می شوند.
 
 - قابل دسترس بدون نیاز به نصب
 - به روزرسانی راحت
@@ -39,30 +39,33 @@ progressive web app
 
 
 # Service workers
-کاربران انتظار دارند که در صورت قطعی و یا کند بودن اینترنت اپلیکیشن کار کند. برای مثال تلگرام اندروید تعدادی از کاربران و پیام ها را حتی در صورت آفلاین بودن نمایش می دهد. از طرفی اگر قسمتی از برنامه نیاز به اتصال به اینترنت داشت انتظار می رود که خطای مناسبی نشان داده شود و نه این که عملکرد برنامه به کلی مختل شود و انتظار می رود که این خطا سریع نشان داده شود. به منظور رفع این مشکلات برای web app ها از service worker ها استفاده می کنیم.
+کاربران انتظار دارند که در صورت قطعی و یا کند بودن اینترنت اپلیکیشن کار کند. برای مثال تلگرام اندروید تعدادی از کاربران و پیام ها را حتی در صورت آفلاین بودن نمایش می دهد. از طرفی اگر قسمتی از برنامه نیاز به اتصال به اینترنت داشت، انتظار می رود که خطای مناسبی نشان داده شود و نه این که عملکرد برنامه به کلی مختل شود. همچنین انتظار می رود که این خطا سریع نشان داده شود. به منظور رفع این مشکلات برای web app ها از service worker ها استفاده می کنیم.
 
+<br/>
 
-<img src="images/service worker.jpg" alt="service worker"> 
+<img src="images/service worker.jpg" alt="service worker" align="center"> 
 
 
 <br/>
 
 
 <span dir="rtl">Service worker</span>
-ها در لایه ای میان PWA و سرور قرار می گیرند. عملکرد آن ها مانند پروکسی است به این صورت که request از PWA به service worker داده میشود، آنگاه service worker تصمیم می گیرد که پاسخ را از روی cache برگرداند و یا همان request را برای سرور بفرستد و سپس جواب سرور را برای PWA. استفاده از این ساختار قابلیت های زیادی به ما می دهد. مثلا service worker می تواند به سرور درخواست بزند و اگر از سرور پس از مدت مشخصی جوابی نرسید، جواب را از cache بخواند و برگرداند. که با همین ایده می توان عملکرد برنامه را در هنگام اختلال در اتصال به اینترنت تضمین کرد.
+ها در لایه ای میان PWA و سرور قرار می گیرند. عملکرد آن ها مانند پروکسی است به این صورت که request از PWA به service worker داده می شود، آنگاه service worker تصمیم می گیرد که پاسخ را از روی cache برگرداند و یا همان request را برای سرور بفرستد و سپس جواب سرور را برای PWA. استفاده از این ساختار قابلیت های زیادی به ما می دهد. مثلا service worker می تواند به سرور درخواست بزند و اگر از سرور پس از مدت مشخصی جوابی نرسید، جواب را از cache بخواند و برگرداند. که با همین ایده می توان عملکرد برنامه را در هنگام اختلال در اتصال به اینترنت تضمین کرد.
 
 
 ## نصب یک service worker
 
 برای این که service worker کنترل برنامه را به دست بگیرد باید برای PWA رجیستر کند. بدین منظور می توانید تکه کد زیرا برای فایل serviceWorker.js اجرا کنید.
 
+<div dir="ltr">
 ```
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register("/serviceworker.js");
 }
 ```
+</div>
 
-همچنان service worker های نصب شده را می توانید در قسمت devtools مشاهده کنید.
+همچنین service worker های نصب شده را می توانید در قسمت devtools مشاهده کنید.
 
 ![Registered service workers](https://web-dev.imgix.net/image/RK2djpBgopg9kzCyJbUSjhEGmnw1/QMsYbKeQ6OJSm0FeqFxG.png?auto=format&w=1252)
 
@@ -78,6 +81,7 @@ if ('serviceWorker' in navigator) {
 <span dir="rtl">Service worker<span>
 ها بی سر و صدا نصب می شوند و برای نصبشان پیامی به کاربر نشان داده نمی شود. Service worker پس از نصب برای این که کنترل client خود را به دست بگیرد، ابتدا باید activate شود. عملیات های فعالسازی و نصب با استفاده از کد زیر قابل listen کردن هستند
 
+<div dir="ltr">
 ```
 self.addEventListener("install", event => {
   console.log("Service worker installed");
@@ -86,6 +90,7 @@ self.addEventListener("activate", event => {
   console.log("Service worker activated");
 });
 ```
+</div>
 
 
 <br/>
@@ -111,6 +116,7 @@ self.addEventListener("activate", event => {
 
 ### Cache api
 
+<div dir="ltr">
 ```
 caches.open("pwa-assets")
 .then(cache => {
@@ -118,8 +124,9 @@ caches.open("pwa-assets")
  cache.addAll(["styles.css", "app.js"]); // it stores two resources
 });
 ```
+</div>
 
-همان طور که در کد مشهود است، برای استفاده از api از آبجکت caches استفاده میشود. متد open برای ساختن و یا باز کردن یک cache جدید استفاده میشود و خروجی آن یک promise است. در تابع ورودی then، از متد add برای cache کردن یک ورودی و از متد addAll برای cache کردن چندین ورودی استفاده شده است.
+همان طور که در کد مشهود است، برای استفاده از api از آبجکت caches استفاده می شود. متد open برای ساختن و یا باز کردن یک cache جدید استفاده می شود و خروجی آن یک promise است. در تابع ورودی then، از متد add برای cache کردن یک ورودی و از متد addAll برای cache کردن چندین ورودی استفاده شده است.
 
 <br/>
 
@@ -129,15 +136,18 @@ caches.open("pwa-assets")
 <span dir="rtl">Fetch event</span> 
 به ما این قابلیت را می دهد که هر request ای که PWA می دهد را از لایه service worker رد کنیم و در آن جا تصمیم بگیریم که مثلا از cache جواب را بخوانیم و یا از سرور. به شکل زیر می توانیم این event را در service worker ها  listen کنیم و با استفاده از تابع respondWith جواب دلخواه خود را به عنوان response بازگردانیم.
 
+<div dir="ltr">
 ```
 self.addEventListener("fetch", event => {
    const response = .... // a response or a Promise of response
    event.respondWith(response);
 });
 ```
+</div>
 
 برای ساخت response می توانیم به شکل زیر عمل کنیم.
 
+<div dir="ltr">
 ```
 const simpleResponse = new Response("Body of the HTTP response");
 
@@ -149,6 +159,7 @@ const options = {
 };
 const htmlResponse = new Response("<b>HTML</b> content", options)
 ```
+</div>
 
 
 همچنین از آن جایی که api cache کلید ها را به صورت url و مقادیر را به صورت http response همراه با header ها و body ذخیره می کند می توان به شکل زیر از cache برای به دست آوردن response استفاده کرد.
@@ -156,6 +167,7 @@ const htmlResponse = new Response("<b>HTML</b> content", options)
 
 
 
+<div dir="ltr">
 ```
 let response = caches.open("pwa-assets").then(cache => {
    cache.match(request).then(response => {
@@ -163,6 +175,7 @@ let response = caches.open("pwa-assets").then(cache => {
  }
 });
 ```
+</div>
 
 
 ## استراتژی های Caching
@@ -171,6 +184,7 @@ let response = caches.open("pwa-assets").then(cache => {
 
 در این روش service worker ابتدا در cache دنبال request می گردد، اگر وجود داشت response ای که cache شده است را برمی گرداند و در غیر این صورت به سرور درخواست می زند. در این روش سرعت را به بروز بودن داده ترجیح می دهیم.
 
+<div dir="ltr">
 ```
 self.addEventListener("fetch", event => {
   event.respondWith(
@@ -182,12 +196,14 @@ self.addEventListener("fetch", event => {
  )
 });
 ```
+</div>
 
 
 ### Network first
 
 در این روش ابتدا سعی می کنیم که response را از سرور دریافت کنیم و اگر خطا خورد از cache آن را می خوانیم در این روش بر خلاف قبلی بروز بودن اولویت بیشتری دارد.
 
+<div dir="ltr">
 ```
 self.addEventListener("fetch", event => {
   event.respondWith(
@@ -198,11 +214,13 @@ self.addEventListener("fetch", event => {
   );
 });
 ```
+</div>
 
 ### Stale while revalidate
 
 در این روش پس از رسیدن درخواست جواب را از cache می خوانیم و تحویل می دهیم ولی بلافاصله به سرور درخواست می زنیم و cache را پر می کنیم. در این روش cache در پشت زمینه بروز می شود و در عین حال سرعت را حفظ کرده ایم.
 
+<div dir="ltr">
 ```
 self.addEventListener("fetch", event => {
     event.respondWith(
@@ -219,17 +237,20 @@ self.addEventListener("fetch", event => {
    )
  });
 ```
+</div>
 
 ### Cache only
 
 
 در cache only فقط از cache می خوانیم. در این روش قبل از این که به assets نیاز پیدا کنیم باید آن ها را cache کنیم که  هنگام نصب کردن service worker ها می تواند زمان مناسبی باشد.
 
+<div dir="ltr">
 ```
 self.addEventListener("fetch", event => {
     event.respondWith(caches.match(event.request));
  });
 ```
+</div>
 
 ## نصب PWA
 
@@ -272,7 +293,7 @@ Icons
  آرایه ای از object های ایکون است که دارای property های src, type , sizes هستند.
 
 #### Start_url
-این ویژگی url ای را تعیین می کند که با اجرای  PWA نصب شده برنامه از آن جا شروع می شود. اگر این ویژگی در manifest نباشد به صورت پیشفرض برابر با url صفحه ای میشود که PWA از آن جا نصب شده است.
+این ویژگی url ای را تعیین می کند که با اجرای  PWA نصب شده برنامه از آن جا شروع می شود. اگر این ویژگی در manifest نباشد به صورت پیشفرض برابر با url صفحه ای می شود که PWA از آن جا نصب شده است.
 Display
 یکی از حالت های fullscreen, standalone, minimal-ui, browser را دارد که اکثرا به حالت standalone قرار می گیرد.
 
@@ -280,6 +301,7 @@ Display
 #### Id
 یک رشته ی یکتا برای شناسایی PWA است.
 
+<div dir="ltr">
 ```
 {
     "name": "Progressive Web App",
@@ -295,6 +317,7 @@ Display
     ]
 }
 ```
+</div>
 
 ### برخی فیلد های دیگر
 
