@@ -135,6 +135,7 @@ export default {
 [template syntax](templateSyntax.md)  
 [reactivity fundamentals](reactivityFundamentals.md)  
 [computed properties](reactivityFundamentals.md)  
+[lifecycle hooks](lifecycleHooks.md)  
 
 </div>
 
