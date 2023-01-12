@@ -85,6 +85,36 @@ Single File Components گفته می‌شود.
 - script (بخش لاجیکال کامپوننت را تشکیل می‌دهد)
 - style (کد‌های استایل در این بخش قرار می‌گیرند)
 
+<div dir="ltr">
+<code>
+App.vue
+</code>
+
+
+```vue
+<template>
+  <div class="font-weight-bold">
+    hello {{ message }}
+  </div>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    message: 'world!' 
+  })
+}
+</script>
+
+<style>
+.font-weight-bold {
+  font-weight: bold;
+}
+</style>
+```
+</div>
+
+
 هر بخش را در جای خود به شکل کامل توضیح می‌دهیم.
 
 بخش script کامپوننت‌ها را به دو شکل زیر نوشته می‌شوند که هر کدام را در جای مناسب خود توضیح می‌دهیم.
