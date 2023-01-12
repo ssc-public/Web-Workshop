@@ -58,6 +58,7 @@ progressive web app
 برای این که service worker کنترل برنامه را به دست بگیرد باید برای PWA رجیستر کند. بدین منظور می توانید تکه کد زیرا برای فایل serviceWorker.js اجرا کنید.
 
 <div dir="ltr">
+
 ```
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register("/serviceworker.js");
@@ -82,6 +83,7 @@ if ('serviceWorker' in navigator) {
 ها بی سر و صدا نصب می شوند و برای نصبشان پیامی به کاربر نشان داده نمی شود. Service worker پس از نصب برای این که کنترل client خود را به دست بگیرد، ابتدا باید activate شود. عملیات های فعالسازی و نصب با استفاده از کد زیر قابل listen کردن هستند
 
 <div dir="ltr">
+
 ```
 self.addEventListener("install", event => {
   console.log("Service worker installed");
@@ -117,6 +119,7 @@ self.addEventListener("activate", event => {
 ### Cache api
 
 <div dir="ltr">
+
 ```
 caches.open("pwa-assets")
 .then(cache => {
@@ -137,6 +140,7 @@ caches.open("pwa-assets")
 به ما این قابلیت را می دهد که هر request ای که PWA می دهد را از لایه service worker رد کنیم و در آن جا تصمیم بگیریم که مثلا از cache جواب را بخوانیم و یا از سرور. به شکل زیر می توانیم این event را در service worker ها  listen کنیم و با استفاده از تابع respondWith جواب دلخواه خود را به عنوان response بازگردانیم.
 
 <div dir="ltr">
+
 ```
 self.addEventListener("fetch", event => {
    const response = .... // a response or a Promise of response
@@ -148,6 +152,7 @@ self.addEventListener("fetch", event => {
 برای ساخت response می توانیم به شکل زیر عمل کنیم.
 
 <div dir="ltr">
+
 ```
 const simpleResponse = new Response("Body of the HTTP response");
 
@@ -168,6 +173,7 @@ const htmlResponse = new Response("<b>HTML</b> content", options)
 
 
 <div dir="ltr">
+
 ```
 let response = caches.open("pwa-assets").then(cache => {
    cache.match(request).then(response => {
@@ -185,6 +191,7 @@ let response = caches.open("pwa-assets").then(cache => {
 در این روش service worker ابتدا در cache دنبال request می گردد، اگر وجود داشت response ای که cache شده است را برمی گرداند و در غیر این صورت به سرور درخواست می زند. در این روش سرعت را به بروز بودن داده ترجیح می دهیم.
 
 <div dir="ltr">
+
 ```
 self.addEventListener("fetch", event => {
   event.respondWith(
@@ -204,6 +211,7 @@ self.addEventListener("fetch", event => {
 در این روش ابتدا سعی می کنیم که response را از سرور دریافت کنیم و اگر خطا خورد از cache آن را می خوانیم در این روش بر خلاف قبلی بروز بودن اولویت بیشتری دارد.
 
 <div dir="ltr">
+
 ```
 self.addEventListener("fetch", event => {
   event.respondWith(
@@ -221,6 +229,7 @@ self.addEventListener("fetch", event => {
 در این روش پس از رسیدن درخواست جواب را از cache می خوانیم و تحویل می دهیم ولی بلافاصله به سرور درخواست می زنیم و cache را پر می کنیم. در این روش cache در پشت زمینه بروز می شود و در عین حال سرعت را حفظ کرده ایم.
 
 <div dir="ltr">
+
 ```
 self.addEventListener("fetch", event => {
     event.respondWith(
@@ -245,6 +254,7 @@ self.addEventListener("fetch", event => {
 در cache only فقط از cache می خوانیم. در این روش قبل از این که به assets نیاز پیدا کنیم باید آن ها را cache کنیم که  هنگام نصب کردن service worker ها می تواند زمان مناسبی باشد.
 
 <div dir="ltr">
+
 ```
 self.addEventListener("fetch", event => {
     event.respondWith(caches.match(event.request));
@@ -302,6 +312,7 @@ Display
 یک رشته ی یکتا برای شناسایی PWA است.
 
 <div dir="ltr">
+
 ```
 {
     "name": "Progressive Web App",
