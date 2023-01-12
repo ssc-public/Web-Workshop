@@ -85,7 +85,10 @@ Single File Components گفته می‌شود.
 - script (بخش لاجیکال کامپوننت را تشکیل می‌دهد)
 - style (کد‌های استایل در این بخش قرار می‌گیرند)
 
+
 <div dir="ltr">
+
+
 <code>App.vue</code>
 
 
