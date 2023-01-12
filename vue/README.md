@@ -86,9 +86,7 @@ Single File Components گفته می‌شود.
 - style (کد‌های استایل در این بخش قرار می‌گیرند)
 
 <div dir="ltr">
-<code>
-App.vue
-</code>
+<code>App.vue</code>
 
 
 ```vue
