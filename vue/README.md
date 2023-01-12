@@ -134,6 +134,7 @@ export default {
 [creating a vue application](createApp.md)  
 [template syntax](templateSyntax.md)  
 [reactivity fundamentals](reactivityFundamentals.md)  
+[computed properties](reactivityFundamentals.md)  
 
 </div>
 
