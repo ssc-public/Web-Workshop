@@ -136,6 +136,7 @@ export default {
 [reactivity fundamentals](reactivityFundamentals.md)  
 [computed properties](reactivityFundamentals.md)  
 [lifecycle hooks](lifecycleHooks.md)  
+[watchers](watchers.md)  
 
 </div>
 
