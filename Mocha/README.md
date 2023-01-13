@@ -314,13 +314,13 @@ package.json افزود.
 
 <table dir="ltr">
     <thead><th>Code</th><th>Description</th></thead>
-    <tr><td>ERR\_MOCHA\_INVALID\_ARG\_TYPE</td><td>wrong type was passed for a given argument</td></tr>
-    <tr><td>ERR\_MOCHA\_INVALID\_ARG\_VALUE</td><td>invalid or unsupported value was passed for a given argument</td></tr>
-    <tr><td>ERR\_MOCHA\_INVALID\_EXCEPTION</td><td>a falsy or otherwise underspecified exception was thrown</td></tr>
-    <tr><td>ERR\_MOCHA\_INVALID\_INTERFACE</td><td>interface specified in options not found</td></tr>
-    <tr><td>ERR\_MOCHA\_INVALID\_REPORTER</td><td>reporter specified in options not found</td></tr>
-    <tr><td>ERR\_MOCHA\_NO\_FILES\_MATCH\_PATTERN</td><td>test file(s) could not be found</td></tr>
-    <tr><td>ERR\_MOCHA\_UNSUPPORTED</td><td>requested behavior, option, or parameter is unsupported</td></tr>
+    <tr><td>ERR_MOCHA_INVALID_ARG_TYPE</td><td>wrong type was passed for a given argument</td></tr>
+    <tr><td>ERR_MOCHA_INVALID_ARG_VALUE</td><td>invalid or unsupported value was passed for a given argument</td></tr>
+    <tr><td>ERR_MOCHA_INVALID_EXCEPTION</td><td>a falsy or otherwise underspecified exception was thrown</td></tr>
+    <tr><td>ERR_MOCHA_INVALID_INTERFACE</td><td>interface specified in options not found</td></tr>
+    <tr><td>ERR_MOCHA_INVALID_REPORTER</td><td>reporter specified in options not found</td></tr>
+    <tr><td>ERR_MOCHA_NO_FILES_MATCH_PATTERN</td><td>test file(s) could not be found</td></tr>
+    <tr><td>ERR_MOCHA_UNSUPPORTED</td><td>requested behavior, option, or parameter is unsupported</td></tr>
 </table>
 
 # افزونه
