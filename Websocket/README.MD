@@ -125,5 +125,15 @@ masking key
 XOR
 کنیم. رمزگشایی و رمزنگاری به همین ترتیب انجام می‌شوند.
 
+## چند نمونه از پکت‌های دیتای وبساکت در wireshark
+### پکت دیتای mask شده
+![masked data](masked-data.jpg)
+
+### پکت دیتای mask نشده
+![masked data](plaintext-data.jpg)
+
+### پکت close
+![masked data](close.jpg)
+
 # مثالی در دنیای واقعی
 # پیاده سازی یک برنامه چت ساده
