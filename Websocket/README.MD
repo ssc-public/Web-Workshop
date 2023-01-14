@@ -285,7 +285,7 @@ server.listen(process.env.PORT || 8888, () => {
 کد کلاینت را در زیر می‌بینید:
 
 ```js
-// creates new WebSocket object with a wss URI as the parameter
+// creates new WebSocket object with a ws/wss URI as the parameter
 const socket = new WebSocket('ws://localhost:8888');
 
 let sendMessage = () => {
