@@ -157,13 +157,19 @@ XOR
 
 ## چند نمونه از پکت‌های دیتای وبساکت در wireshark
 ### پکت دیتای mask شده
-![masked data](masked-data.jpg)
+<div align="center">
+<img src="masked-data.jpg"/>
+</div>
 
 ### پکت دیتای mask نشده
-![masked data](plaintext-data.jpg)
+<div align="center">
+<img src="plaintext-data.jpg"/>
+</div>
 
 ### پکت close
-![masked data](close.jpg)
+<div align="center">
+<img src="close.jpg"/>
+</div>
 
 # مثالی در دنیای واقعی
 # پیاده سازی یک برنامه چت ساده
