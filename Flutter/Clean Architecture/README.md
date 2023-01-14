@@ -52,11 +52,17 @@
 
 برای توضیح بهتر من سه ویدیو که تقریبا همین نوشته‌ها هستند اما بهتر ارائه شده‌اند را برای شما آماده کرده‌ام. این ویدیو‌ها را همراه مطالعه مقاله میتوانید ببینید.
 
-<style>.h_iframe-aparat_embed_frame{position:relative;}.h_iframe-aparat_embed_frame .ratio{display:block;width:100%;height:auto;}.h_iframe-aparat_embed_frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;}</style><div class="h_iframe-aparat_embed_frame"><span style="display: block;padding-top: 57%"></span><iframe src="https://www.aparat.com/video/video/embed/videohash/5dlSJ/vt/frame"  allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe></div>
+<html>
 
-<style>.h_iframe-aparat_embed_frame{position:relative;}.h_iframe-aparat_embed_frame .ratio{display:block;width:100%;height:auto;}.h_iframe-aparat_embed_frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;}</style><div class="h_iframe-aparat_embed_frame"><span style="display: block;padding-top: 57%"></span><iframe src="https://www.aparat.com/video/video/embed/videohash/0ChoS/vt/frame"  allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe></div>
+<style>.h_iframe-aparat_embed_frame{position:relative;}.h_iframe-aparat_embed_frame .ratio{display:block;width:100%;height:auto;}.h_iframe-aparat_embed_frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;}</style>
 
-<style>.h_iframe-aparat_embed_frame{position:relative;}.h_iframe-aparat_embed_frame .ratio{display:block;width:100%;height:auto;}.h_iframe-aparat_embed_frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;}</style><div class="h_iframe-aparat_embed_frame"><span style="display: block;padding-top: 57%"></span><iframe src="https://www.aparat.com/video/video/embed/videohash/2l3mG/vt/frame"  allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe></div>
+<div class="h_iframe-aparat_embed_frame"><span style="display: block;padding-top: 57%"></span><iframe src="https://www.aparat.com/video/video/embed/videohash/5dlSJ/vt/frame"  allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe></div>
+
+<div class="h_iframe-aparat_embed_frame"><span style="display: block;padding-top: 57%"></span><iframe src="https://www.aparat.com/video/video/embed/videohash/0ChoS/vt/frame"  allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe></div>
+
+<div class="h_iframe-aparat_embed_frame"><span style="display: block;padding-top: 57%"></span><iframe src="https://www.aparat.com/video/video/embed/videohash/2l3mG/vt/frame"  allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe></div>
+
+</html>
 
 
 ## راز یک کد قابل نگهداری!
@@ -302,7 +308,9 @@ class FileRepository {
 فولدر روتر شامل قوانینی برای تعریف صفحات است. من در این پروژه از پکیج auto_route استفاده کرده‌ام که یکی از ساده‌ترین و بهترین پکیج‌های روتینگ در فلاتر است که روتینگ صفحات وب را هم میتوانید با همین پکیج هندل کنید. شما میتوانید از روتر دلخواه خود استفاده کنید و یا اگر از Navigator خود فلاتر استفاده میکنید میتوانید اصلا سمت ساختن این فولدر نروید! به هر حال در این آموزش به بحث روتینگ نمی‌پردازیم.
 
 فولدر widgets شامل ویجت‌هایی است که در صفحات مختلف از آنها استفاده میکنیم و برای کمینه کردن duplicated code و همچنین منظم شدن ساختار پروژه این فولدر را برای نگه‌داری ویجت‌ها ساخته‌ایم. نگاهی به اسم ویجت‌هایی که من در این فولدر ساخته‌ام بیندازید خودتان رفته رفته متوجه خواهید شد که چه ویجت‌هایی را باید در یک فایل مستقل به این فولدر انتقال دهید:
+
 ![Widgets folder in clean like architecture](./src/widgets.png)
+
 به تکه کد زیر که پیاده‌سازی یک دکمه شخصی‌سازی شده است هم نگاهی بیندازید:
 
 <div dir="ltr">
@@ -345,8 +353,9 @@ class GBlurButton extends StatelessWidget {
 </div>
 
 این تکه کد یک دکمه است که بک‌گراند آن به صورت محو پیاده شده است. تصویر این دکمه را در شکل زیر میتوانید ببینید. ما در چند قسمت اپلیکیشن خود از این دکمه استفاده کرده‌ایم. (دکمه پخش ویدیو)
-
-![Blured button](./src/blur-button.webp)
+<img src="./src/blur-button.webp" style="max-height:500px; display: block;
+  margin-left: auto;
+  margin-right: auto;"/>
 
 فایل‌های main.dat سرویس لوکیتور و بقیه آپشن‌ها را میتوانیم در کف پروژه قرار دهیم و چندان کار اشتباهی نکرده‌ایم.
 
