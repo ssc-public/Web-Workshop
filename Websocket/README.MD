@@ -187,3 +187,103 @@ XOR
 </div>
 
 ## پیاده سازی یک برنامه چت ساده
+
+حالا می‌خواهیم یک چت‌روم ساده را پیاده‌سازی کنیم.
+کد ما از دو بخش سرور و کلاینت تشکیل شده‌است.
+
+### سرور
+
+سرور یک وب‌سرور express است.
+برای پیاده‌سازی سرور از لایبرری `ws` استفاده می‌کنیم.
+می‌خواهیم که سرور چت‌روم، به کلاینت‌هایی که به آن متصل می‌شوند یک پیام خوش‌آمدگویی بفرستد.
+سپس، هر پیامی که کلاینت‌ها برای سرور ارسال می‌کنند، برای تمام کلاینت‌های حاضر در چت‌روم ارسال می‌شود.
+
+لایبرری `ws` اصطلاحا event-driven است و باید برای eventهای مختلف handler مشخص کنیم.
+
+کد سرور را در زیر می‌بینید:
+
+```js
+let express = require('express')
+let http = require('http')
+let ws = require('ws')
+
+// create the express app
+const app = express();
+
+// create a simple http server
+const server = http.createServer(app);
+
+// initialize the WebSocket server instance
+const wss = new ws.Server({ server });
+
+// the event triggered when a connection is established
+wss.on('connection', (ws) => {
+    // the event triggered when a message is received
+    ws.on('message', (message) => {
+        //log the received message and send it back to the client
+        console.log(`received: ${message}`);
+
+        //send back the message to the other clients
+        wss.clients
+            .forEach(client => {
+                if (client != ws) {
+                    client.send(`${message}`);
+                }
+            });
+    });
+
+    // send a feedback immediately to the incoming connection    
+    ws.send('I am a WebSocket server');
+});
+
+//start our server
+server.listen(process.env.PORT || 8888, () => {
+    console.log(`server started on port ${server.address().port}`);
+});
+```
+
+### کلاینت
+
+برای سادگی، ارسال و نمایش پیام‌ها را در کنسول انجام می‌دهیم.
+
+به‌جای لایبرری‌های third-party از `WebSocket` API متعلق‌به W3C استفاده می‌کنیم.
+این API نیز event-driven است و handlerهای موردنظر خود را با کمک آن ثبت می‌کنیم.
+
+کد کلاینت را در زیر می‌بینید:
+
+```js
+// creates new WebSocket object with a wss URI as the parameter
+const socket = new WebSocket('ws://localhost:8888');
+
+let sendMessage = () => {
+    console.error('please wait until connection is established');
+}
+
+// the event triggered when a connection with a WebSocket is opened
+socket.onopen = function () {
+    sendMessage = message => {
+        socket.send(message);
+    }
+};
+
+// the event triggered when data is received through a WebSocket
+socket.onmessage = function (event) {
+    console.log(`NEW MESSAGE: ${event.data}`);
+};
+
+// the event triggered when a connection with a WebSocket is closed
+socket.onclose = function (event) {
+    console.warn('the connection has been closed');
+    sendMessage = () => {
+        console.error('the connection is closed');
+    }
+};
+
+// the event triggered when a connection with a WebSocket has been closed because of an error
+socket.onerror = function (event) {
+    console.warn('the connection has been closed because of an error');
+    sendMessage = () => {
+        console.error('the connection is closed because of an error');
+    }
+};
+```
