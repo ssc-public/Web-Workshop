@@ -52,15 +52,9 @@
 
 برای توضیح بهتر من سه ویدیو که تقریبا همین نوشته‌ها هستند اما بهتر ارائه شده‌اند را برای شما آماده کرده‌ام. این ویدیو‌ها را همراه مطالعه مقاله میتوانید ببینید.
 
-<div dir="ltr">
-
-<iframe src="https://www.aparat.com/video/video/embed/videohash/5dlSJ/vt/frame"  allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
-
-<iframe src="https://www.aparat.com/video/video/embed/videohash/0ChoS/vt/frame"  allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
-
-<iframe src="https://www.aparat.com/video/video/embed/videohash/2l3mG/vt/frame"  allowFullScreen="true" webkitallowfullscreen="true" mozallowfullscreen="true"></iframe>
-
-</html>
+* [معماری نسبتا تمیز در فلاتر - بخش اول](https://www.aparat.com/v/5dlSJ?playlist=3963473)
+* [معماری نسبتا تمیز در فلاتر - بخش دوم](https://www.aparat.com/v/0ChoS?playlist=3963473)
+* [معماری نسبتا تمیز در فلاتر - بخش سوم](https://www.aparat.com/v/2l3mG?playlist=3963473)
 
 
 ## راز یک کد قابل نگهداری!
