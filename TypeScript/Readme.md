@@ -89,9 +89,9 @@ let listNumbers: number[] = [1,2,3];
 let list: Array<number> = [1,2,3];
 ```
 
-‍‍‍```js
-//builtin types
-let date: Date = new Date();
+```js
+//builtins
+let date: Date = new Date()
 ```
 
 ```js
@@ -223,9 +223,27 @@ let result2 = buildName("David", "Beckham", "Sr."); // Error, too many parameter
 let result3 = buildName("David", "Beckham"); // Ok
 ```
 
-<h2 dir="rtl"></h2>
+<h2 dir="rtl">پارامتر‌های Rest</h2>
 <p dir="rtl">
+	در شرایطی که تعداد پارامتر‌ها مشخص نیست و می‌خواهیم این تعداد توسط کاربر مشخص شود؛ از Rest با گذاشتن سه نقطه قبل از پارامتر استفاده می‌کنیم.
 </p>
+
+```js
+function add(...numbers: number[]) {
+    let sum = 0;
+
+    numbers.forEach(num => {
+        sum += num;
+    });
+
+    return sum;
+}
+
+console.log(add());              // 0
+console.log(add(8));             // 8
+console.log(add(1, 2, 3));       // 6
+console.log(add(1, 2, 3, 4, 5)); // 15
+```
 
 <h2 dir="rtl"></h2>
 <p dir="rtl">
