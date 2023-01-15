@@ -99,6 +99,7 @@
 
 ## منابع
   - [GitHub - cure53/H5SC](https://github.com/cure53/H5SC)
+  - [GitHub - cure53/XSSChallengeWiki](https://github.com/cure53/XSSChallengeWiki/wiki)
   - [XSS: What it is, how it works, and how to prevent it](https://medium.com/codelighthouse/xss-what-it-is-how-it-works-and-how-to-prevent-it-454629e3a0da)
 
 </div>
