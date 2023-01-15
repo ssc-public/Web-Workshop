@@ -98,8 +98,7 @@
 </div>
 
 ## منابع
-  - [Elasticsearch Documentation](https://www.elastic.co/guide/index.html)
-  - [dzone.com](https://dzone.com/articles/elastic-search-advantages-case-studies-amp-books)
-  - مستندات آکادمی ستاره
+  - [GitHub - cure53/H5SC](https://github.com/cure53/H5SC)
+  - [XSS: What it is, how it works, and how to prevent it](https://medium.com/codelighthouse/xss-what-it-is-how-it-works-and-how-to-prevent-it-454629e3a0da)
 
 </div>
