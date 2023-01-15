@@ -72,6 +72,70 @@ let binary: number = 0b1010;
 let octal: number = 0o744;
 ```
 
+```js
+//string
+let name: string = "John Doe";
+let sentence: string = `Hello, my name is ${ name }.
+//boolean
+let isValid: boolean = true;
+```
+
+```js
+//Array
+let listNumbers: number[] = [1,2,3];
+let list: Array<number> = [1, 2, 3];
+```
+
+<p dir="rtl">
+	یکسری از تایپ‌ها builtin هستند:
+</p>
+
+‍‍‍```js
+let data: Date =  new Date();
+```
+
+```js
+//Object literal
+let point: {x:number, y:number} = {
+          x: 10, //if you type string or other types you got error
+          y: 15
+};
+````
+
+```js
+//Classes
+class Door{
+          //some code here  
+}
+let door: Door = new Door();
+```
+
+```js
+//Function
+const printIndex: (i: number) =˃ void = (i: number) =˃ {
+          console.log(i);
+};
+```
+
+<p dir="rtl">
+	Null و Undefined به تنهایی کاربرد خاصی ندارن. این نوع‌ها، زیرنوع (sub type) همه نوع‌های دیگه هستن.
+</p>
+
+```js
+//undefined
+//null
+let x: number;
+x = 10; // ok
+x = undefined; // ok
+x = null; // ok 
+x = "Hi"; // error
+let nothing : undefined = undefined;
+let nothing : null = null;
+```
+
+<p dir="rtl">
+</p>
+
 <h2 dir="rtl"></h2>
 <p dir="rtl">
 </p>
