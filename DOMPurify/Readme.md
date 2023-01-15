@@ -11,7 +11,7 @@
   - [انواع XSS](#انواع-XSS)
   - [کاربردهای XSS Attack](#کاربردهای-XSS-Attack)
   - [تعریف Document Object Model](#تعریف-Document-Object-Model)
-  - [بارگذاری اسناد](#بارگذاری-اسناد)
+  - [حمله‌ی DOM-based XSS](#حمله‌ی-DOM-based-XSS)
   - [امکان ذخیره‌ی انواع مختلف داده‌ها](#امکان-ذخیره-انواع-مختلف-داده)
   - [گریزی به مبحث Mapping](#گریزی-به-مبحث-Mapping)
   - [انواع مختلف Query](#انواع-مختلف-Query)
@@ -72,6 +72,33 @@
 همانطور که می‌دانید، DOM یا Document Object Model مدلی شی‌گرا با ساختاری درختی از اجزای موجود در صفحه می‌باشد. DOM تقریبا، ظاهری مانند تصویر زیر دارد:
 
 <p align=center><img width=1500 src="./assets/DOM.jpg" /></p>
+
+## حمله‌ی DOM-based XSS
+
+این نوع حمله‌ی XSS زمانی رخ می‌دهد که ورودی کاربر به روش خطرناکی توسط جاوا اسکریپت در Document Object Map دستکاری شود.
+برای مثال زمانی می‌تواند رخ دهد که مقداری از یک form خوانده شود و دوباره از جاوا اسکریپت استفاده شود تا مقدار در DOM تغییر یابد. 
+
+برای ارائه‌ی یک حمله Dom based XSS شما باید داده را در یک منبع ذخیره کنید تا در sink پخش و باعث اجرای کد دلخواه شود. رایج‌ترین منبع برای اجرای حمله‌ی Dom based XSS، یک URL می‌باشد که معمولا به شی window.location دسترسی دارد. نفوذگر می‌تواند پیوندی را برای قربانی ارسال نماید و قربانی را به یک صفحه آسیب پذیر همراه یک پیلود در query string هدایت کند.
+
+منابع DOM-based XSS معمولاً شامل تابع eval() و ویژگی innerHTML  می‌باشند و حمله‌ها به واسطه‌ی یک URL انجام می‌شود.
+
+<div dir="ltr">
+  
+  ```js
+  const username = document.getElementById('username_input');
+    const username_box = document.getElementById('username_box');
+    user_name_box.innerHTML = username;
+  ```
+</div>
+
+برای اجرای این حمله، می‌توانید به input اجرا شده، یک کد مخرب اضافه کنید:
+
+<div dir="ltr">
+  
+  ```js
+  <script>window.alert("Cross site scripting has occurred!");</script>
+  ```
+</div>
 
 <div dir="ltr">
   
