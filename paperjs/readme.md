@@ -104,6 +104,27 @@ TODO: EXPLAIN SCOPE, PROJECT, VIEWS AND TOOLS IN PAPER.JS
 </body>
 </html>
 ```
+اگر کد جاوااسکریپت درون خط بالا را در فایل js/myScript.js ذخیره کنیم کد بالا را میتوان به صورت زیر نوشت 
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Load the Paper.js library -->
+<script type="text/javascript" src="js/paper.js"></script>
+<!-- Load external PaperScript and associate it with myCanvas -->
+<script type="text/paperscript" src="js/myScript.js" canvas="myCanvas">
+</script>
+</head>
+<body>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
+```
+
+ویژگی های paper.js در تگ myscript پشتیبانی میشوند
+src="URL" آدرس نسبی فایل PaperScript نسبت به کد html  برای لود خود فایل paperمی باشد
+
 
 توصیه می شود که در هر مثال، کد هدف را خودتان بنویسید یا این که کد داده شده را تست کنید و پارامتر های آن را
 تغییر دهید تا فرایند یادگیری بهتری داشته باشید.
@@ -126,10 +147,11 @@ path.lineTo(start + [ 100, -50 ]);
 ```
 
 ![](img/line.svg)
+	
+همانطور که در بالا مشاهده میکنید با قرار دادن فایل scrpit بالا، یک خط از مختصات (100و100) به آدرس (-50و200) رسم میکند.
+	دقت کنید مختصات(0و0) در بالا ی صفحه سمت چپ قرار دارد.
 
-3<div dir="ltr">
-
-```
+```JS
 var myPath = new Path();
 myPath.strokeColor = 'black';
 myPath.add(new Point(0, 0), new Point(100, 50));
@@ -138,13 +160,23 @@ myPath.add(new Point(0, 0), new Point(100, 50));
 // segments in the path:
 myPath.insert(1, new Point(30, 40));
 ```
-    
-</div>    
-    
-    
-4<div dir="ltr">
-    
-```
+	در قسمت بالا مختصات 3 نقطه داده شده است و از بین آن ها یک خط گزراندیم.
+
+<div dir="ltr">
+<img width="158" alt="stroke-line" src="https://user-images.githubusercontent.com/45296744/212529236-5633a86f-95f6-4d02-8670-0c080e10474c.png">
+</div>
+
+<br>
+در این قسمت با دو تایع آشنا میشویم که در رسم انحنا کمک بسیاری به ما میکنند.
+path.smooth: یک مسیر را با تغییر انحنای خط  بدون افزودن یا حذف نقاط ، خط را
+	هموار می کند
+<br>
+. path.simplify: یک مسیر را با تجزیه و تحلیل نقاط مسیر آن و جایگزینی آن با مجموعه ای بهینه تر از بخش ها، هموار می کند،استفاد هاز این تابع این مزیت را دارد که مصرف حافظه را کاهش می دهد و سرعت ترسیم را افزایش می دهد.
+<br>
+	هموارسازی مسیرها Paper.js به شما امکان می دهد با استفاده از تابع path.smooth () مسیرها را به صورت خودکار هموار کنید. این تابع مقادیر بهینه را برای دسته‌های نقاط یک خط محاسبه می‌کند تا منحنی‌هایی ایجاد کند که به آرامی در آنها جریان داشته باشد. بخش ها جابه جا نمی شوند و تنظیمات بخش های مسیر نادیده گرفته می شوند. در مثال زیر یک مربع ایجاد می کنیم، یک کپی از آن ایجاد می کنیم و شکل کپی را smooth می کنیم. همانطور که می بینید، فقط انحنای مسیر تغییر می کند. دقت شود نقاط اصلی خط بدون تغییر باقی می مانند.
+<br><br>
+	
+```JS
 var path = new Path();
 path.strokeColor = 'black';
 path.add(new Point(30, 75)); 
@@ -163,29 +195,28 @@ copy.position.x += 100;
 
 // Smooth the segments of the copy:
 copy.smooth();
-```
+``` 
+
+<img width="276" alt="smoothing" src="https://user-images.githubusercontent.com/45296744/212532042-a2b1706a-2427-41f7-8fe3-0f75b083b610.png">
+
+
+
+در شکل زیر ابتدا یک دایره ایجاد میکنیم. سپس یکی از نقاط آن را با تابع removeSegment حذف میکنیم. 
     
-</div> 
-
-
-
-9<div dir="ltr">
-    
-```
+```JS
 var myCircle = new Path.Circle(new Point(100, 70), 50);
 myCircle.strokeColor = 'black';
 myCircle.selected = true;
 
 myCircle.removeSegment(0);
 ```
+<img width="217" alt="semiCircle" src="https://user-images.githubusercontent.com/45296744/212532054-6a2d8cde-bf32-44e6-abdc-fe3b3721e5bf.png">
+
+
+
+برای رسم یک چند ضلعی از دستور new Path.RegularPolygon(center, sides, radius) استفاده میکنیم که در آن ابتدا مختصات مرکز را مشخص میکنیم سپس اندازه هر ضلع و درآخر شعاع این چند ضلعی را مشخص میکنیم.
     
-</div> 
-
-
-
-14<div dir="ltr">
-    
-```
+```JS
 // Create a triangle shaped path 
 var triangle = new Path.RegularPolygon(new Point(80, 70), 3, 50);
 triangle.fillColor = '#e9e9ff';
@@ -196,15 +227,11 @@ var decagon = new Path.RegularPolygon(new Point(200, 70), 10, 50);
 decagon.fillColor = '#e9e9ff';
 decagon.selected = true;
 ```
-    
-</div> 
-
-
-
-
-18<div dir="ltr">
-    
-```
+<img width="301" alt="polygon " src="https://user-images.githubusercontent.com/45296744/212534164-2dd3d584-0013-4664-8203-51aa807aa59b.png">
+ 
+   
+در قسمت زیر یک مثلث ایجاد کرده ایم و با دستور fillColor آن را به رنگ قرمز درآورده ایم.
+```JS
 var myPath = new Path({
 	segments: [[40, 115], [80, 180], [200, 20]],
 	selected: true
@@ -212,15 +239,10 @@ var myPath = new Path({
 
 myPath.fillColor = '#ff0000';
 ```
-    
-</div> 
+ <img width="191" alt="triangle" src="https://user-images.githubusercontent.com/45296744/212534695-11768a73-0ccb-446f-b626-4cb42fac930b.png">
 
-
-
-
-22<div dir="ltr">
-    
-```
+در قسمت زیر برای ایجاد خط چین مقدار dashArray را تغییر میدهیم.اولین ورودی این تابع اندازه هر خط چین است و مقدار دوم فاصله ی هر خط از خط بعدی
+```JS
 var myPath = new Path({
 	segments: [[40, 115], [80, 180], [200, 20]],
 	selected: true
@@ -232,14 +254,15 @@ myPath.strokeCap = 'round';
 
 myPath.dashArray = [10, 12];
 ```
+   
+<img width="172" alt="stroke-line2" src="https://user-images.githubusercontent.com/45296744/212534777-438752bb-bec4-4f3b-a4f8-4125f061b02f.png">
+
+در مثال زیر همه موارد جدید ایجاد شده به طور خودکار ویژگی های سبک انحنای فعلی را همانطور که در رابط Illustrator تعریف شده است دریافت می کنند. همچنین می‌توانیم با استفاده از این کدها را از طریق تابع currentStyle تغییر دهیم.
+شی currentStyle که دو ویژگی fillColor و strokeColor آن را می توان تغییر داد.  
+
+مثال زیر ویژگی فعلی project را تغییر می دهد، سپس منحنی ایجاد می کند که آن ویژگی ها را به ارث می برد. سپس strokeWidth و fillColor را تغییر می دهد.
     
-</div> 
-
-
-
-27<div dir="ltr">
-    
-```
+```JS
 // Change the current style of the project:
 project.currentStyle = {
 	strokeColor: '#000000',
@@ -263,16 +286,10 @@ var secondPath = new Path.Circle({
 	radius: 50
 });
 ```
+<img width="245" alt="circle" src="https://user-images.githubusercontent.com/45296744/212535239-08f8f5c6-875f-4a1a-b509-fb7c0f9e79e9.png">
+
     
-</div> 
-
-
-
-
-
-29<div dir="ltr">
-    
-```
+```JS
 var path;
 
 var textItem = new PointText(new Point(20, 30));
@@ -315,8 +332,6 @@ function onMouseUp(event) {
 
 }
 ```
-    
-</div> 
 
 
 
