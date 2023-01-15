@@ -93,8 +93,8 @@ let list: Array<number> = [1, 2, 3];
 	یکسری از تایپ‌ها builtin هستند:
 </p>
 
+
 ‍‍‍```js
-//date
 let data: Date =  new Date();
 ```
 
