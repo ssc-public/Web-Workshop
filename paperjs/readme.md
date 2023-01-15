@@ -229,7 +229,8 @@ myPath.add(new Point(0, 0), new Point(100, 50));
 // segments in the path:
 myPath.insert(1, new Point(30, 40));
 ```
-	در قسمت بالا مختصات 3 نقطه داده شده است و از بین آن ها یک خط گزراندیم.
+	
+در قسمت بالا مختصات 3 نقطه داده شده است و از بین آن ها یک خط گزراندیم.
 
 <div dir="ltr">
 <img width="158" alt="stroke-line" src="https://user-images.githubusercontent.com/45296744/212529236-5633a86f-95f6-4d02-8670-0c080e10474c.png">
