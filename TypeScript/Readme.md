@@ -24,7 +24,7 @@ sudo apt install nodejs
 </p>
 
 <details dir="rtl"><summary dir="rtl">نصب با npm</summary>
-<p dir="rtl">
+<p>
 	
 ```bash
 npm install -g typescript
@@ -33,10 +33,20 @@ npm install -g typescript
 </p>
 </details>
 <details dir="rtl"><summary dir="rtl">نصب با yarn</summary>
-<p dir="rtl">
+<p>
 	
 ```bash
 yarn add typescript
+```
+	
+</p>
+</details>
+<details dir="rtl"><summary dir="rtl">راه‌اندازی پروژه React با تایپ‌اسکریپت</summary>
+<p>
+	
+```bash
+npx create-react-app my-app --template typescript
+yarn create react-app my-app --template typescript
 ```
 	
 </p>
