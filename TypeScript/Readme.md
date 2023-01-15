@@ -91,7 +91,7 @@ let list: Array<number> = [1, 2, 3];
 
 ‍‍‍```js
 //builtin types
-let data: Date =  new Date();
+let data: Date = new Date();
 ```
 
 ```js
