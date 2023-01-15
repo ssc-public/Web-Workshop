@@ -76,6 +76,9 @@ let octal: number = 0o744;
 //string
 let name: string = "John Doe";
 let sentence: string = `Hello, my name is ${ name }.
+```
+
+```js
 //boolean
 let isValid: boolean = true;
 ```
@@ -100,7 +103,7 @@ let point: {x:number, y:number} = {
           x: 10, //if you type string or other types you got error
           y: 15
 };
-````
+```
 
 ```js
 //Classes
