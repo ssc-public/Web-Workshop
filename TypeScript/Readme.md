@@ -23,18 +23,20 @@ sudo apt install nodejs
 سپس با استفاده از دستورات زیر بسته به نیاز خود تایپ‌اسکریپت را بر روی پروژه خود نصب کنید:
 </p>
 
-<details><summary>نصب با npm</summary>
-<p>
+<details dir="rtl"><summary dir="rtl">نصب با npm</summary>
+<p dir="rtl">
 ```bash
 npm install -g typescript
 ```
 </p>
 </details>
 <details><summary>نصب با yarn</summary>
-<p>
+<p dir="rtl">
+	
 ```bash
 yarn add typescript
 ```
+	
 </p>
 </details>
 
