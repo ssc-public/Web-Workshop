@@ -89,12 +89,8 @@ let listNumbers: number[] = [1,2,3];
 let list: Array<number> = [1, 2, 3];
 ```
 
-<p dir="rtl">
-	یکسری از تایپ‌ها builtin هستند:
-</p>
-
-
 ‍‍‍```js
+//builtin types
 let data: Date =  new Date();
 ```
 
