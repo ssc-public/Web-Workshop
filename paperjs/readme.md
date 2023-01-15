@@ -74,7 +74,75 @@ Three.js قابلیت های برداری زیادی ندارد و تمرکز ب
 
 TODO: EXPLAIN SCOPE, PROJECT, VIEWS AND TOOLS IN PAPER.JS
     
-## آموزش
+## آموزش مقدماتی
+برای شروع به کار با paper.js‌ دانش اولیه از هندسه و مختصات لازم است. که در این بخش به طور مختصر اشاره شده است.
+* کلاس Point
+		<br>
+	میتوانیم با داشتنن دو مختصات x و y  یک نقطه بسازیم و از آن برای ایجاد شکل و مسیر استفاده کنیم.
+```JS
+<div dir="rtl">
+var myPoint = new Point(10, 20); 
+console.log(myPoint); // { x: 10, y: 20 }
+</div>
+```
+با داشتن نقاط میتوان از بین آن ها یک منحنی رد کرد. ابتدا کلاس Path را ایجاد کرده سپس نقاط را با تابع add اضافه میکنیم. 
+```JS
+<div dir="rtl">
+var myPath = new Path();
+myPath.add(myPoint);
+</div>
+```	
+در مثال زیر ابتدا یک نقطه را ایجاد میکنیم. سپس نقطه ی دوم را به گونه ای تعریف میکنیم که وی×گی های آن را به ارث برد.
+```JS
+<div dir="rtl">
+var firstPoint = new Point(20, 40);
+var secondPoint = new Point(firstPoint);
+console.log(secondPoint); // { x: 20, y: 40 }
+
+secondPoint.y = 20;
+console.log(secondPoint); // { x: 20, y: 20 }
+
+// Note that firstPoint has not changed:
+console.log(firstPoint); // { x: 20, y: 40 }
+</div>
+```
+* کلاس Size
+	<br>
+برای مشخص کردن سایز شکل به مقدار طول و عرض آن نیاز داریم.
+```JS
+<div dir="rtl">
+var mySize = new Size();
+console.log(mySize); // { width: 0, height: 0 }
+
+mySize.width = 10;
+mySize.height = mySize.width + 10;
+console.log(mySize); // { width: 10, height: 20 }
+</div>
+```
+* ایجاد یک شکل
+		<br>
+در مثال های زیر دو روش ساده برای ایجاد شکل مستطیل داریم.
+در روش اول نقطهی بالا سمت چپ مستطیل مشخص میشود سپس سایز آن را مشخص میکنیم. در انتها با این دو وی×گی مستطیل را میسازیم.
+
+```JS
+<div dir="rtl">
+var topLeft = new Point(10, 20);
+var rectSize = new Size(200, 100);
+var rect = new Rectangle(topLeft, rectSize);
+console.log(rect); // { x: 10, y: 20, width: 200, height: 100 }
+console.log(rect.point); // { x: 10, y: 20 }
+console.log(rect.size); // { width: 200, height: 100 }
+</div>
+```
+در مثال زیر مستطیل را به یک باره هنگام ساختن مقدار دهی کرده ایم.
+```JS	
+<div dir="rtl">
+var rect = new Rectangle(10, 20, 200, 100);
+console.log(rect); // { x: 10, y: 20, width: 200, height: 100 }
+</div>
+```
+	
+## آموزش دو بعدی
 
 
 برای شروع به کار با paper.js می توانید این فایل html را بسازید:
@@ -196,9 +264,9 @@ copy.position.x += 100;
 // Smooth the segments of the copy:
 copy.smooth();
 ``` 
-
+<div dir="ltr">
 <img width="276" alt="smoothing" src="https://user-images.githubusercontent.com/45296744/212532042-a2b1706a-2427-41f7-8fe3-0f75b083b610.png">
-
+</div>
 
 
 در شکل زیر ابتدا یک دایره ایجاد میکنیم. سپس یکی از نقاط آن را با تابع removeSegment حذف میکنیم. 
@@ -210,7 +278,9 @@ myCircle.selected = true;
 
 myCircle.removeSegment(0);
 ```
+<div dir="ltr">
 <img width="217" alt="semiCircle" src="https://user-images.githubusercontent.com/45296744/212532054-6a2d8cde-bf32-44e6-abdc-fe3b3721e5bf.png">
+</div>
 
 
 
@@ -227,8 +297,9 @@ var decagon = new Path.RegularPolygon(new Point(200, 70), 10, 50);
 decagon.fillColor = '#e9e9ff';
 decagon.selected = true;
 ```
+<div dir="ltr">
 <img width="301" alt="polygon " src="https://user-images.githubusercontent.com/45296744/212534164-2dd3d584-0013-4664-8203-51aa807aa59b.png">
- 
+ </div>
    
 در قسمت زیر یک مثلث ایجاد کرده ایم و با دستور fillColor آن را به رنگ قرمز درآورده ایم.
 ```JS
@@ -239,7 +310,9 @@ var myPath = new Path({
 
 myPath.fillColor = '#ff0000';
 ```
+<div dir="ltr">
  <img width="191" alt="triangle" src="https://user-images.githubusercontent.com/45296744/212534695-11768a73-0ccb-446f-b626-4cb42fac930b.png">
+</div>
 
 در قسمت زیر برای ایجاد خط چین مقدار dashArray را تغییر میدهیم.اولین ورودی این تابع اندازه هر خط چین است و مقدار دوم فاصله ی هر خط از خط بعدی
 ```JS
@@ -254,8 +327,9 @@ myPath.strokeCap = 'round';
 
 myPath.dashArray = [10, 12];
 ```
-   
+<div dir="ltr">
 <img width="172" alt="stroke-line2" src="https://user-images.githubusercontent.com/45296744/212534777-438752bb-bec4-4f3b-a4f8-4125f061b02f.png">
+</div>
 
 در مثال زیر همه موارد جدید ایجاد شده به طور خودکار ویژگی های سبک انحنای فعلی را همانطور که در رابط Illustrator تعریف شده است دریافت می کنند. همچنین می‌توانیم با استفاده از این کدها را از طریق تابع currentStyle تغییر دهیم.
 شی currentStyle که دو ویژگی fillColor و strokeColor آن را می توان تغییر داد.  
@@ -286,9 +360,12 @@ var secondPath = new Path.Circle({
 	radius: 50
 });
 ```
+<div dir="ltr">
 <img width="245" alt="circle" src="https://user-images.githubusercontent.com/45296744/212535239-08f8f5c6-875f-4a1a-b509-fb7c0f9e79e9.png">
+</div>
 
-    
+در مثال زیر کار با تابع path.simplify را یاد میگیریم 
+این تابع دارای یک دامنه ی تغییرات است که حداکثر فاصله ای را که الگوریتم simplify مجاز است از مسیر اصلی منحرف کند را مشخص می کند. این مقدار به طور پیش فرض روی 2.5 تنظیم شده است. با تنظیم آن روی مقدار کمتر، مسیر صحیح تری اما با نقاط قطعه بیشتر ایجاد می شود، به نحوی مسیر هموار تر میشود. تنظیم آن بر روی مقدار بالاتر منجر به منحنی صاف تر و نقاط قطعه کمتر می شود، اما شکل مسیرانحراف بیشتری از مسیر اصلی خواهد داشت.
 ```JS
 var path;
 
@@ -507,7 +584,7 @@ for (var i = 0; i < count; i++) {
 
 // The onFrame function is called up to 60 times a second:
 function onFrame(event) {
-	// Run through the active layer's children list and change
+	// Run through the active layer's children list and change'
 	// the position of the placed symbols:
 	for (var i = 0; i < count; i++) {
 		var item = project.activeLayer.children[i];
