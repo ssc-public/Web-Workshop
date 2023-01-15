@@ -2,15 +2,16 @@
 
 هنگامی که با فرم ها در فرانت اند سروکار داریم، اغلب نیاز داریم که حالت عناصر ورودی فرم را با استیت مربوطه در جاوا اسکریپت همگام سازی کنیم. bind کردن مقادیر و تغییر event listener ها بصورت دستی می‌تواند دشوار باشد:
 
-```html
+```vue
 <input
   :value="text"
-  @input="event => text = event.target.value">
+  @input="event => text = event.target.value"
+/>
 ```
 
 دستور v-model به ما کمک می کند تا موارد فوق را ساده کنیم:
-```html
-<input v-model="text">
+```vue
+<input v-model="text" />
 ```
 
   
@@ -18,7 +19,7 @@
   
 عنصر رادیو:
   
-```html
+```vue
 <div>Picked: {{ picked }}</div>
 
 <input type="radio" id="one" value="One" v-model="picked" />
@@ -30,7 +31,7 @@
 
 عنصر سلکت:
   
-```html
+```vue
 <div>Selected: {{ selected }}</div>
 
 <select v-model="selected">
@@ -42,7 +43,7 @@
 ```
 
 انتخاب چندگانه (پیوند به آرایه):
-```html
+```vue
 <div>Selected: {{ selected }}</div>
 
 <select v-model="selected" multiple>
@@ -67,7 +68,9 @@ export default {
   }
 }
 ```
-```html
+
+
+```vue
 <select v-model="selected">
   <option v-for="option in options" :value="option.value">
     {{ option.text }}
@@ -81,7 +84,8 @@ export default {
 بایند کردن مقادیر:
 
 برای رادیو، چک باکس و سلکت آپشن، مقادیر اتصال v-model معمولاً رشته‌های ثابت هستند (یا بولین برای چک باکس):
-```html
+
+```vue
 <!-- `picked` is a string "a" when checked -->
 <input type="radio" v-model="picked" value="a" />
 
@@ -97,21 +101,23 @@ export default {
 اما گاهی اوقات ممکن است بخواهیم مقدار را به یک پروپرتی پویا در نمونه فعال فعلی متصل کنیم. برای رسیدن به آن می توانیم از v-bind استفاده کنیم. علاوه بر این، استفاده از v-bind به ما این امکان را می دهد که مقدار ورودی را به مقادیر غیر رشته ای متصل کنیم.
 
 چک باکس:
-```html
+```vue
 <input
   type="checkbox"
   v-model="toggle"
   true-value="yes"
-  false-value="no" />
+  false-value="no" 
+/>
 ```
 این true-value و false-value ویژگی های مخصوص Vue هستند که فقط با v-model کار می کنند. در اینجا مقدار toggle با تیک زدن yes و در صورت برداشتن تیک،no  تنظیم می شود. همچنین می توانید آنها را با استفاده از v-bind به مقادیر پویا متصل کنید:
 
-```html
+```vue
 <input
   type="checkbox"
   v-model="toggle"
   :true-value="dynamicTrueValue"
-  :false-value="dynamicFalseValue" />
+  :false-value="dynamicFalseValue" 
+/>
 ```
 
 
@@ -119,14 +125,14 @@ export default {
 اتریبیوت ‌های true-value و false-value بر مقدار ورودی تأثیر نمی‌گذارند، زیرا مرورگرها کادرهای بدون علامت را در ارسال‌های فرم درج نمی‌کنند. برای تضمین اینکه یکی از دو مقدار در یک فرم ارسال می شود (به عنوان مثال "بله" یا "خیر")، به جای آن از ورودی های رادیویی استفاده کنید.
 
 ورودی های رادیویی:
-```html
+```vue
 <input type="radio" v-model="pick" :value="first" />
 <input type="radio" v-model="pick" :value="second" />
 ```
 هنگامی که اولین ورودی رادیویی بررسی می شود، انتخاب روی مقدار اول تنظیم می شود و هنگامی که ورودی دوم بررسی می شود روی مقدار دوم تنظیم می شود.
 
 سلکت آپشن:
-```html
+```vue
 <select v-model="selected">
   <!-- inline object literal -->
   <option :value="{ number: 123 }">123</option>

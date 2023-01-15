@@ -10,12 +10,16 @@
 می توانیم از دستور v-for برای رندر لیستی از آیتم ها بر اساس یک آرایه استفاده کنیم. دستور v-for به یک سینتکس خاص به شکل آیتم در آیتم ها نیاز دارد، جایی که آیتم ها آرایه داده مبدا و آیتم نام مستعار عنصر آرایه ای است که در موارد زیر تکرار می شود:
 
 
-```JS
-data() {
-  return {
-    items: [{ message: 'Foo' }, { message: 'Bar' }]
-  }
+```vue
+<script>
+export default {
+    data() {
+      return {
+        items: [{ message: 'Foo' }, { message: 'Bar' }]
+      }
+    }
 }
+</script>
 ```
 ```vue
 <li v-for="item in items">
@@ -25,13 +29,17 @@ data() {
 
 در داخل اسکوپ v-for، عبارات تمپلیت به تمام پراپرتی های اسکوپ والد دسترسی دارند. علاوه بر این، v-for همچنین از نام مستعار اختیاری دوم برای ایندکس آیتم فعلی پشتیبانی می کند:
 
-```JS
-data() {
-  return {
-    parentMessage: 'Parent',
-    items: [{ message: 'Foo' }, { message: 'Bar' }]
-  }
+```vue
+<script>
+export default {
+    data() {
+      return {
+        parentMessage: 'Parent',
+        items: [{ message: 'Foo' }, { message: 'Bar' }]
+      }
+    }
 }
+</script>
 ```
 
 ```vue
@@ -64,16 +72,20 @@ data() {
 </h2>
 شما همچنین می توانید از v-for برای ایتریت روی پراپرتی های یک شی استفاده کنید. ترتیب پیمایش بر اساس نتیجه فراخوانی Object.keys() روی شی خواهد بود:
 
-```JS
-data() {
-  return {
-    myObject: {
-      title: 'How to do lists in Vue',
-      author: 'Jane Doe',
-      publishedAt: '2016-04-10'
+```vue
+<script>
+export default {
+  data() {
+    return {
+      myObject: {
+        title: 'How to do lists in Vue',
+        author: 'Jane Doe',
+        publishedAt: '2016-04-10'
+      }
     }
   }
 }
+</script>
 ```
 ```vue
 <ul>
@@ -142,17 +154,21 @@ this.items = this.items.filter((item) => item.message.match(/Foo/))
 گاهی اوقات می خواهیم یک نسخه فیلتر شده یا مرتب شده از یک آرایه را بدون تغییر یا تنظیم مجدد داده های اصلی نمایش دهیم. در این مورد، می توانید یک پراپرتی محاسبه شده ایجاد کنید که آرایه فیلتر شده یا مرتب شده را برمی گرداند.
 برای مثال:
 
-```js
-data() {
-  return {
-    numbers: [1, 2, 3, 4, 5]
-  }
-},
-computed: {
-  evenNumbers() {
-    return this.numbers.filter(n => n % 2 === 0)
+```vue
+<script>
+export default {
+  data() {
+    return {
+      numbers: [1, 2, 3, 4, 5]
+    }
+  },
+  computed: {
+    evenNumbers() {
+      return this.numbers.filter(n => n % 2 === 0)
+    }
   }
 }
+</script>
 ```
 ```vue
 <li v-for="n in evenNumbers">{{ n }}</li>
@@ -160,17 +176,21 @@ computed: {
 
 در شرایطی که پراپرتی های محاسبه شده قابل دسترسی نیست (به عنوان مثال در داخل حلقه های تو در تو v-for)، می توانید از روش استفاده کنید:
 
-```JS
-data() {
-  return {
-    sets: [[ 1, 2, 3, 4, 5 ], [6, 7, 8, 9, 10]]
-  }
-},
-methods: {
-  even(numbers) {
-    return numbers.filter(number => number % 2 === 0)
+```vue
+<script>
+export default {
+  data() {
+    return {
+      sets: [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]]
+    }
+  },
+  methods: {
+    even(numbers) {
+      return numbers.filter(number => number % 2 === 0)
+    }
   }
 }
+</script>
 ```
 ```vue
 <ul v-for="numbers in sets">
@@ -180,7 +200,7 @@ methods: {
 
 مراقب ()reverse و sort() در یک پراپرتی محاسبه شده باشید! این دو روش آرایه اصلی را تغییر می‌دهند، که باید در دریافت‌کننده‌های محاسبه‌شده اجتناب شود. قبل از فراخوانی این متدها، یک کپی از آرایه اصلی ایجاد کنید:
 
-```JS
+```js
 - return numbers.reverse()
 + return [...numbers].reverse()
 ```

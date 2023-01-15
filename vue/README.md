@@ -136,8 +136,15 @@ export default {
 [template syntax](templateSyntax.md)  
 [reactivity fundamentals](reactivityFundamentals.md)  
 [computed properties](reactivityFundamentals.md)  
+[class and style bindings](classAndStyleBindings.md)  
+[conditional rendering](conditionalRendering.md)  
+[list rendering](listRendering.md)  
+[event handling](eventHandling.md)  
+[form input bindings](forms.md)  
 [lifecycle hooks](lifecycleHooks.md)  
 [watchers](watchers.md)  
+[template refs](template-refs.md)  
+[component basics](component-basics.md)  
 
 </div>
 

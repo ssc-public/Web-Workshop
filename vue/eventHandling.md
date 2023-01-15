@@ -1,4 +1,6 @@
+<h1>
 گوش دادن به رویدادها:
+</h1>
 
 ما می‌توانیم از دستور v-on که معمولاً آن را با نماد @ نشان می‌ دهیم، برای گوش دادن به رویدادهای DOM و اجرای جاوا اسکریپت در هنگام راه‌اندازی استفاده کنیم. بصورت زیر از آن استفاده می کنیم:
    v-on:click="handler"یا با میانبر،  @click="handler" .
@@ -9,7 +11,9 @@
 
 هندلر های متد: نام ویژگی یا مسیری که به متدی تعریف شده در کامپوننت اشاره می کند.
 
+<h2>
 هندلرهای درون خطی:
+</h2>
 
 هندلرهای درون خطی معمولاً در موارد ساده استفاده می شوند، به عنوان مثال:
 
@@ -25,7 +29,9 @@ data() {
 <p>Count is: {{ count }}</p>
 ```
 
+<h2>
 متد هندلرها:
+</h2>
 
 منطق بسیاری از هندلر‌های رویداد پیچیده‌تر خواهد بود، و احتمالاً با کنترل‌کننده‌های درون خطی امکان‌پذیر نیست. به همین دلیل است که v-on همچنین می‌تواند نام یا مسیر متدی را که می‌خواهید فراخوانی کنید، بپذیرد.
 
@@ -113,42 +119,44 @@ methods: {
 •	.once
 •	.passive
 
-```html
+```vue
 <!-- the click event's propagation will be stopped -->
 <a @click.stop="doThis"></a>
 ```
 
-```html
+```vue
 <!-- the submit event will no longer reload the page -->
 <form @submit.prevent="onSubmit"></form>
 ```
 
-```html
+```vue
 <!-- modifiers can be chained -->
 <a @click.stop.prevent="doThat"></a>
 ```
 
-```html
+```vue
 <!-- just the modifier -->
 <form @submit.prevent></form>
 ```
 
-```html
+```vue
 <!-- only trigger handler if event.target is the element itself -->
 <!-- i.e. not from a child element -->
 <div @click.self="doThat">...</div>
 ```
 
+<h2>
 تغییر دهنده کلید :
+</h2>
 هنگام گوش دادن به رویدادهای صفحه کلید، اغلب باید کلیدهای خاصی را بررسی کنیم. Vue اجازه می دهد تا هنگام گوش دادن به رویدادهای کلیدی، modifier های کلیدی برای v-on یا @ اضافه کنید:
 
-```html
+```vue
 <!-- only call `submit` when the `key` is `Enter` -->
 <input @keyup.enter="submit" />
 ```
 
 می‌توانید مستقیماً از هر نام کلید معتبری که از طریق KeyboardEvent.key در معرض دید قرار می‌گیرد، به‌عنوان اصلاح‌کننده با تبدیل آن‌ها به kebab-case  استفاده کنید.
-```html
+```vue
 <input @keyup.page-down="onPageDown" />
 ```
 در مثال بالا، کنترل کننده تنها در صورتی فراخوانی می شود که $event.key برابر با 'PageDown' باشد.
