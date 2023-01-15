@@ -12,15 +12,33 @@
 <h2 dir="rtl">شروع کار با تایپ اسکریپت</h2>
 
 <p dir="rtl">
-ابتدا نیاز است Node.js را از طریق <a href="https://nodejs.org">این لینک</a> دانلود کرده و مراحل نصب را انجام دهید. و یا از دستور زیر استفاده کنید
-</p>
-<p dir="rtl">
-	برای نصب تایپ اسکریپت به <a href="https://nodejs.org">npm</a> نیاز دارید سپس در ترمینال خود دستور زیر را بزنید:
+ابتدا نیاز است Node.js را از طریق <a href="https://nodejs.org">این لینک</a> دانلود کرده و مراحل نصب را انجام دهید. و یا در لینوکس از دستور زیر استفاده کنید:
 </p>
 
 ```bash
+sudo apt install nodejs
+```
+
+<p dir="rtl">
+سپس با استفاده از دستورات زیر بسته به نیاز خود تایپ‌اسکریپت را بر روی پروژه خود نصب کنید:
+</p>
+
+<details><summary>نصب با npm</summary>
+<p>
+```bash
 npm install -g typescript
 ```
+</p>
+</details>
+<details><summary>نصب با yarn</summary>
+<p>
+```bash
+yarn add typescript
+```
+</p>
+</details>
+
+
 
 
 
