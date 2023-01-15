@@ -44,6 +44,7 @@ npm install paper
 
 همچنین می توان از خود سایت نیز این پروژه را دانلود کنید که درون آن مثال های متنوعی نیز وجود دارد.
 [paperjs.org/download](http://paperjs.org/download/)
+پ
 
 ## تعریف
 
@@ -190,7 +191,7 @@ console.log(rect); // { x: 10, y: 20, width: 200, height: 100 }
 </html>
 ```
 
-ویژگی های paper.js در تگ myscript پشتیبانی میشوند
+ویژگی های که میخوایم در paper.js استفاده کنیم در فایل جداگانه myscript نوشته میشوند
 src="URL" آدرس نسبی فایل PaperScript نسبت به کد html  برای لود خود فایل paperمی باشد
 
 
