@@ -70,11 +70,44 @@ JSXGraph ابزار مناسبی برای کشیدن گراف های با معا
 Three.js قابلیت های برداری زیادی ندارد و تمرکز بیشتر آن روی شکل دهی اجسام سه بعدی است. به همین دلیل برای ایجاد انیمیشن ها و تصاویر سه
 بعدی از Three.js استفاده می شود اما برای ایجاد انیمیشن ها و تصاویر دو بعدی Paper.js امکانات بیشتر و رابط کاربری برنامه نویسی ساده تری دارد.
 </p>
-    
-## Scope project views and tools
+   
+## مفاهیم اولیه
 
-TODO: EXPLAIN SCOPE, PROJECT, VIEWS AND TOOLS IN PAPER.JS
-    
+قبل از شروع به کار با paper.js خوب است تعدادی از مفاهیم را در نظر داشته باشید:
+
+* پروژه (Project): همان عضو ریشه است که تمام المان‌های دیگر زیر آن تعریف شده‌اند. از آن جا که کلمهٔ document از قبل توسط مرورگرها استفاده شده است، از Project استفاده می‌کنیم. در پروژه شما می‌توانید styleهای مربوط به المان‌هایی که جدید ساخته می‌شوند را تعریف کنید.
+	
+* دید (View): یک شیٔ View، یک المان Html را در خود جای می‌دهد و وظیفهٔ تعامل با کاربر از طریق موس و کیبورد را به عهده دارد. به عنوان مثال با استفاده از آن می‌توانید در view، بالا و پایین بروید (اسکرول) و می‌توانید ببینید در کدام مختصات از پروژه هستید (یعنی الان کدام قسمت صفحه را می‌بینید).
+* حوزه (Scope): هر scope، پروژه و view مخصوص به خود را دارد که شما می‌توانید از آن استفاده کنید. به عنوان مثال کد زیر را ببینید:
+
+	```JS
+	<script type="text/paperscript" canvas="myCanvas">
+	    // This code is executed within the scope of the project and view associated with the canvas element with id "myCanvas"
+	    var path = new Path();
+	    path.strokeColor = 'black';
+	    path.add(new Point(30, 30));
+	    path.add(new Point(70, 70));
+	</script>
+	```
+	
+در این مثال، تکه کد در حوزهٔ پروژه و دید مربوط به المان myCanvas اجرا می‌شود که در آن یک Path ساخته می‌شود و دو نقطه به آن اضافه می‌شود.
+* ابزار (Tool): با استفاده از Tool شما با کاربر تعامل می‌کنید و با استفاده از View آن را نمایش می‌دهید.
+	```JS
+	var view = new View(document.getElementById('myCanvas'));
+	var tool = new Tool();
+	tool.onMouseDown = function(event) {
+	    var path = new Path();
+	    path.strokeColor = 'black';
+	    path.add(event.point);
+	    view.center = event.point;
+	    view.zoom = 2;
+	}
+	
+	view.draw();
+	```
+	
+	در این مثال، view وظیفهٔ نمایش را دارد و tool تعریف شده، با کاربر تعامل می‌کند. هر tool به هنگام تعریف به صورت خودکار به آخرین view فعال وصل می‌شود.
+	
 ## آموزش مقدماتی
 برای شروع به کار با paper.js‌ دانش اولیه از هندسه و مختصات لازم است. که در این بخش به طور مختصر اشاره شده است.
 * کلاس Point
