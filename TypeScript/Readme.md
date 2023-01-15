@@ -25,12 +25,14 @@ sudo apt install nodejs
 
 <details dir="rtl"><summary dir="rtl">نصب با npm</summary>
 <p dir="rtl">
+	
 ```bash
 npm install -g typescript
 ```
+	
 </p>
 </details>
-<details><summary>نصب با yarn</summary>
+<details dir="rtl"><summary dir="rtl">نصب با yarn</summary>
 <p dir="rtl">
 	
 ```bash
