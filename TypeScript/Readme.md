@@ -86,12 +86,12 @@ let isValid: boolean = true;
 ```js
 //array
 let listNumbers: number[] = [1,2,3];
-let list: Array<number> = [1, 2, 3];
+let list: Array<number> = [1,2,3];
 ```
 
 ‍‍‍```js
 //builtin types
-let data: Date = new Date();
+let date: Date = new Date();
 ```
 
 ```js
@@ -167,6 +167,61 @@ let greeter = new Greeter("world");
 	<li>Constructors: مسئول تخصیص حافظه به اشیاء کلاس هستند.</li>
 	<li>Functions: بیانگر کارهایی هستند که یک شیء انجام می دهد. در بعضی مواقع به Function ها متد نیز گفته می شود.</li>
 </ul>
+
+<h2 dir="rtl">Interface در تایپ‌اسکریت</h2>
+<p dir="rtl">
+	به‌منظور ایجاد اینترفیس در TypeScript، از کلمه کلیدی Interface به‌همراه اسم دلخواه برای Interface استفاده خواهیم کرد و سپس کدهای مدنظر را داخل {} قرار خواهیم داد:
+</p>
+
+```js
+interface PersonInterface {
+    name: string;
+    age: number
+}
+```
+
+<h2 dir="rtl">Function در تایپ‌اسکریپت</h2>
+<p dir="rtl">
+	توی تایپ‌اسکریپت ما میتونیم نوع ورودی‌ها و خروجی‌هامون رو مشخص کنیم.
+</p>
+
+```js
+function add(x: number, y: number): number {
+    return x + y;
+}
+
+let myAdd = function(x: number, y: number): number {
+    return x + y; 
+};
+```
+
+<p dir="rtl">
+	تفاوتی که در تایپ‌اسکریپت و جاوااسکریپت در پارامتر‌های Function وجود دارد این است که در تایپ‌اسکریپت وقتی یک تابعی فراخونی میشه، کامپایلر بررسی میکنه که آیا همه پارامترها مقدار گرفتن یا نه. همچنین بررسی میکنه که آیا تعداد ورودی‌ها برابر با تعداد پارامترهای تعریف شده هست یا نه. اما این مورد در جاوااسکریپت اختیاری است و می‌توانیم جای پارامتر‌ها را خالی بگذاریم و با اروری مواجه نیشم.
+</p>
+
+```js
+function buildName(firstName: string, lastName: string) {
+    return firstName + " " + lastName;
+}
+
+let result1 = buildName("David"); // Error, too few parameters
+let result2 = buildName("David", "Beckham", "Sr."); // Error, too many parameters
+let result3 = buildName("David", "Beckham"); // Ok
+```
+
+<p dir="rtl">
+	با این حال در تایپ‌اسکریپت می‌توان به وسیله یک علامت سوال (?) بعد از اسم، پارامتر اختیاری را مشخص کرد.
+</p>
+
+```js
+function buildName(firstName: string, lastName?: string) {
+    return firstName + " " + lastName;
+}
+
+let result1 = buildName("David"); // Ok
+let result2 = buildName("David", "Beckham", "Sr."); // Error, too many parameters
+let result3 = buildName("David", "Beckham"); // Ok
+```
 
 <h2 dir="rtl"></h2>
 <p dir="rtl">
