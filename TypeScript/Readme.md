@@ -84,7 +84,7 @@ let isValid: boolean = true;
 ```
 
 ```js
-//Array
+//array
 let listNumbers: number[] = [1,2,3];
 let list: Array<number> = [1, 2, 3];
 ```
@@ -98,25 +98,25 @@ let data: Date =  new Date();
 ```
 
 ```js
-//Object literal
+//object literal
 let point: {x:number, y:number} = {
-          x: 10, //if you type string or other types you got error
+          x: 10, 
           y: 15
 };
 ```
 
 ```js
-//Classes
+//classes
 class Door{
-          //some code here  
+	//some code here  
 }
 let door: Door = new Door();
 ```
 
 ```js
-//Function
+//function
 const printIndex: (i: number) =˃ void = (i: number) =˃ {
-          console.log(i);
+	console.log(i);
 };
 ```
 
