@@ -174,7 +174,6 @@ https://youtu.be/5IG4UmULyoA
 
 https://webpack.js.org/concepts/loaders/
 
-https://github.com/webpack/webpack-cli
-
+https://webpack.js.org/api/cli/
 
 </div>
