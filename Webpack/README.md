@@ -47,7 +47,41 @@ library که به آن وابستگی داریم میتواند به library ه�
 ### webpack configuration files
 
 ## loaders
-مقالات webpack ابزار هایی را معرفی میکند که استفاده از آنها در کنار webpack میتواندمفید باشد:
+<p align=right style="text-align: justify;">
+مقالات webpack ابزار هایی را معرفی میکند که استفاده از آنها در کنار webpack میتواند مفید باشد.
+</p>
+<p align=right style="text-align: justify;">
+برای استفاده از این loader ها باید دو property به فایل کانفیگ webpack اضافه کنیم:
+</p>
+
+<ol>
+<li>test:</li>
+<p align=right style="text-align: justify;">
+نشان میدهد کدام فایل ها نیاز است منتقل بشوند.
+</p>
+<li>use:</li>
+<p align=right style="text-align: justify;">
+نشان میدهد از کدام loader باید برای انتقال استفاده کرد.
+</p>
+</ol>
+
+### webpack.config.js
+``` js
+const path = require('path');
+module.exports = {
+  output: {
+    filename: 'my-first-webpack.bundle.js',
+  },
+  module: {
+    rules: [{ test: /\.txt$/, use: 'raw-loader' }],
+  },
+};
+```
+</br>
+
+برخی loader هایی که کنار webpack استفاده میشوند:
+
+
 - responsive-loader:
 </br>
 <p align=right style="text-align: justify;"> از این ابزار برای ساخت صفحات وب responsive استفاده میشود. نحوه عملکرد آن به آن صورت است که از هر عکس سایز های مختلف متناسب با سیستم های مختلف میسازد تا هنگام نمایش در هر platform  به خوبی نشان داده شود. </p>
@@ -70,6 +104,8 @@ https://www.smashingmagazine.com/2021/06/getting-started-webpack/
 https://youtu.be/5IG4UmULyoA
 
 https://webpack.js.org/concepts/loaders/
+
+https://github.com/webpack/webpack-cli
 
 
 </div>
