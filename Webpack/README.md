@@ -42,9 +42,78 @@ browser
 
 <p align=center><img src="./images/webpack-prosite.jpg" ></p>
 
-## نحوه استفاده
-### webpack cli
-### webpack configuration files
+## نحوه استفاده از Webpack CLI
+
+<p align=right style="text-align: justify;">
+برای استفاده از webpack لازم است ابتدا command line interface آن را نصب کنید.
+برای نصب در پروژه، کامند زیر را اجرا کنید:
+
+```bash
+npm install --save-dev webpack webpack-cli
+```
+
+سپس می‌توانید با استفاده از کامندهای زیر، webpack را اجرا کنید:
+
+```bash
+npx webpack
+```
+
+در ساده‌ترین حالت می‌توان ورودی entry را ست کرد تا به وسیله‌ی آن، webpack بتواند نقطه‌ی شروع کار خود را پیدا کند.
+
+```bash
+npx webpack --entry <entry>
+```
+
+برای مثال:
+
+```bash
+npx webpack --entry ./script.js
+```
+
+همچنین می‌توان آدرس و نام فایل خروجی را نیز مشخص کرد:
+
+```bash
+npx webpack --entry <entry> --output-path <output-path>
+```
+
+برای مثال:
+
+```bash
+npx webpack --entry ./script.js --output-path ./dist
+```
+
+اگر این مقدار ست ننشود، به طور پیشفرض نیز آدرس فایل خروجی در پوشه‌ی dist قرار خواهد گرفت.
+
+یکی دیگر از قابلیت‌های Webpack، بروزرسانی خودکار یا hot reloading است که به وسیله‌ی آن می‌توان در محیط developement، بدون نیاز به انجام build مجدد و تنها با ذخیره کردن فایل مورد نظر، Webpack را به طوری راه اندازی کرد که در صورت نیاز خودش مجددا عملیات build را انجام دهد.
+
+برای استفاده از این قابلیت، کافی است از کامند زیر استفاده کنید:
+
+```bash
+npx webpack watch
+```
+
+همچنین می‌توانید هر کدام از option های قسمت قبل را نیز در ادامه‌ی این کامند قرار دهید.
+
+اگرچه می‌توان تنظیمات مورد نظر را با استفاده از option ها در command line انجام داد، اما برای تنظیمات پیچیده‌تر، بهتر است از فایل کانفیگ استفاده کنید.
+در این حالت کافی است همه‌ی تنظیمات مورد نظر را در این فایل قرار داده و کامند اصلی را به شکل زیر اجرا کنید:
+
+```bash
+npx webpack --config <config-file-path>
+```
+
+و چون معمولا این فایل با نام `webpack.config.js` بوده و در پوشه‌ی اصلی قرار دارد، کامند بالا به صورت زیر خواهد بود:
+
+```bash
+npx webpack --config webpack.config.js
+```
+
+البته قبل از اجرای این دستور می‌توان با استفاده از دستور زیر از صحت فایل کانفیگ اطمینان حاصل کرد:
+
+```bash
+npx webpack configtest <config-file-path>
+```
+
+</p>
 
 ## loaders
 <p align=right style="text-align: justify;">
