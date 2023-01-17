@@ -6,6 +6,7 @@
 
 ## فهرست مطالب
 - [مقدمه](#مقدمه)
+- [تاریخچه](#تاریخچه)
 - [نحوه استفاده](#نحوه-استفاده)
   - [ابزار کامندلاین](#webpack-cli)
   - [فایل‌های کانفیگ](#webpack-configuration-files)
@@ -41,6 +42,18 @@ browser
 </br>
 
 <p align=center><img src="./images/webpack-prosite.jpg" ></p>
+
+## تاریخچه
+<p align=right style="text-align: justify;">
+وب پک از اوایل سال 2014 توسعه پیدا کرد و از سال 2016 به محبوبیت رسید و تا این لحظه نیز محبوبیت خود را حفط نموده است.
+مزیت وب پک نسبت به bundler  پیش از خود ترکیب bundling و complie  بود
+که باعث سادگی بیشتر شد.
+webpack مزیت های بیشتری هم دارداز جمله آنکهbundle و transfer فایل های non javascript را هم انجام میدهد. همچینین api های ساده تری نسبت به bundler های پیش از خود ارائه میدهد.( البته bundler های امروزی api  های ساده تری پیاده کرده اند.)
+</p>
+<p align=right style="text-align: justify;">
+امروزه ابزار های بسیاری از قبیل create-react-app و next.js ازwebpack استفاده میکنند.
+</p>
+</br>
 
 ## نحوه استفاده از Webpack CLI
 
@@ -176,4 +189,5 @@ https://webpack.js.org/concepts/loaders/
 
 https://webpack.js.org/api/cli/
 
+https://byteofdev.com/posts/bundlers/
 </div>
