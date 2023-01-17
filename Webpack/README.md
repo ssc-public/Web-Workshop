@@ -1,6 +1,6 @@
 <div dir="rtl">
 
-# webpack
+# Webpack
 
 <p align=center><img src="./images/icon.svg" width="25%" height="25%"></p>
 
@@ -9,7 +9,7 @@
 - [تاریخچه](#تاریخچه)
 - [نحوه استفاده](#نحوه-استفاده)
   - [ابزار کامندلاین](#webpack-cli)
-  - [فایل‌های کانفیگ](#webpack-configuration-files)
+  - [فایل‌های کانفیگ](#مفاهیم-و-نحوه‌ی-استفاده-از-config-file)
 - [لودرها](#loaders)
 - [منابع](#منابع)
 
@@ -36,63 +36,65 @@ browser
 
 برای رفع این مشکلات bundlerها توسعه داده شده‌اند که وظیفه دارند از فایل‌های جاوا اسکریپت پروژه ما bundle file ایجاد کنند و در کنار آن گراف وابستگی‌ها را نیز مدیریت کنند تا خروجی بهینه و قابل فهم برای browser در اختیار کاربر قرار دهیم و درگیر پیچیدگی‌های این‌چنینی که مدیریت آن‌ها سخت است نشویم.
 
-یکی از محبوب‌ترین bundlerها webpack است که یک ابزار open source   و رایگان است و قابلیت مدیریت جاوا اسکریپت،CSS ، HTML و تصاویر را دارد.
+یکی از محبوب‌ترین bundlerها Webpack است که یک ابزار open source   و رایگان است و قابلیت مدیریت جاوا اسکریپت،CSS ، HTML و تصاویر را دارد.
 </p>
 
 </br>
 
-<p align=center><img src="./images/webpack-prosite.jpg" ></p>
+<p align=center><img src="./images/Webpack-prosite.jpg" ></p>
 
 ## تاریخچه
 <p align=right style="text-align: justify;">
 وب پک از اوایل سال 2014 توسعه پیدا کرد و از سال 2016 به محبوبیت رسید و تا این لحظه نیز محبوبیت خود را حفط نموده است.
 مزیت وب پک نسبت به  bundler های  پیش از خود ترکیب bundling و complie  بود
 که باعث سادگی بیشتر می شد.
-webpack مزیت های بیشتری هم دارداز جمله آنکه bundling و transfer فایل های non javascript را هم انجام میدهد. همچینین api های ساده تری نسبت به bundler های پیش از خود ارائه میدهد.( البته bundler های امروزی api  های ساده تری پیاده کرده اند.)
+Webpack مزیت های بیشتری هم دارداز جمله آنکه bundling و transfer فایل های non javascript را هم انجام میدهد. همچینین api های ساده تری نسبت به bundler های پیش از خود ارائه میدهد.( البته bundler های امروزی api  های ساده تری پیاده کرده اند.)
 </p>
 <p align=right style="text-align: justify;">
-امروزه ابزار های بسیاری از قبیل create-react-app و next.js ازwebpack استفاده میکنند.
+امروزه ابزار های بسیاری از قبیل create-react-app و next.js ازWebpack استفاده میکنند.
 </p>
 </br>
 
-## نحوه استفاده از Webpack CLI
+## نحوه استفاده
+
+### Webpack CLI
 
 <p align=right style="text-align: justify;">
-برای استفاده از webpack لازم است ابتدا command line interface آن را نصب کنید.
+برای استفاده از Webpack لازم است ابتدا command line interface آن را نصب کنید.
 برای نصب در پروژه، کامند زیر را اجرا کنید:
 
 ```bash
-npm install --save-dev webpack webpack-cli
+npm install --save-dev Webpack Webpack-cli
 ```
 
-سپس می‌توانید با استفاده از کامندهای زیر، webpack را اجرا کنید:
+سپس می‌توانید با استفاده از کامندهای زیر، Webpack را اجرا کنید:
 
 ```bash
-npx webpack
+npx Webpack
 ```
 
-در ساده‌ترین حالت می‌توان ورودی entry را ست کرد تا به وسیله‌ی آن، webpack بتواند نقطه‌ی شروع کار خود را پیدا کند.
+در ساده‌ترین حالت می‌توان ورودی entry را ست کرد تا به وسیله‌ی آن، Webpack بتواند نقطه‌ی شروع کار خود را پیدا کند.
 
 ```bash
-npx webpack --entry <entry>
+npx Webpack --entry <entry>
 ```
 
 برای مثال:
 
 ```bash
-npx webpack --entry ./script.js
+npx Webpack --entry ./script.js
 ```
 
 همچنین می‌توان آدرس و نام فایل خروجی را نیز مشخص کرد:
 
 ```bash
-npx webpack --entry <entry> --output-path <output-path>
+npx Webpack --entry <entry> --output-path <output-path>
 ```
 
 برای مثال:
 
 ```bash
-npx webpack --entry ./script.js --output-path ./dist
+npx Webpack --entry ./script.js --output-path ./dist
 ```
 
 اگر این مقدار ست ننشود، به طور پیشفرض نیز آدرس فایل خروجی در پوشه‌ی dist قرار خواهد گرفت.
@@ -102,7 +104,7 @@ npx webpack --entry ./script.js --output-path ./dist
 برای استفاده از این قابلیت، کافی است از کامند زیر استفاده کنید:
 
 ```bash
-npx webpack watch
+npx Webpack watch
 ```
 
 همچنین می‌توانید هر کدام از option های قسمت قبل را نیز در ادامه‌ی این کامند قرار دهید.
@@ -111,26 +113,26 @@ npx webpack watch
 در این حالت کافی است همه‌ی تنظیمات مورد نظر را در این فایل قرار داده و کامند اصلی را به شکل زیر اجرا کنید:
 
 ```bash
-npx webpack --config <config-file-path>
+npx Webpack --config <config-file-path>
 ```
 
 و چون معمولا این فایل با نام `webpack.config.js` بوده و در پوشه‌ی اصلی قرار دارد، کامند بالا به صورت زیر خواهد بود:
 
 ```bash
-npx webpack --config webpack.config.js
+npx Webpack --config webpack.config.js
 ```
 
 البته قبل از اجرای این دستور می‌توان با استفاده از دستور زیر از صحت فایل کانفیگ اطمینان حاصل کرد:
 
 ```bash
-npx webpack configtest <config-file-path>
+npx Webpack configtest <config-file-path>
 ```
 
 </p>
 
-## مفاهیم و نحوه‌ی استفاده از Config File
+### مفاهیم و نحوه‌ی استفاده از Config File
 
-### Entry
+#### Entry
 همانطور که در command line نیز می‌توانستیم از `entry` را مشخص کنیم، در فایل کانفیگ نیز می‌توانیم مقدار `entry` استفاده کنیم تا فایل یا فایل‌های اولیه را مشخص کنیم.
 
 برای مثال می‌توانیم فایل زیر را داشته باشیم:
@@ -145,7 +147,7 @@ module.exports = {
 };
 ```
 
-### Output
+#### Output
 در این قسمت می‌توان محل قرار گیری و نام فایل‌های خروجی را مشخص کرد. برای مثال با استفاده از config زیر، ۲ فایل خروجی که از ۲ فایل ورودی ساخته شده‌اند خواهیم داشت.
 
 ### webpack.config.js
@@ -164,12 +166,12 @@ module.exports = {
 
 در این حالت ۲ فایل خروجی با آدرس‌های `dist/app.js` و `dist/search.js` خواهیم داشت.
 
-### Loaders
+## Loaders
 <p align=right style="text-align: justify;">
-مقالات webpack ابزارهایی را معرفی می‌کند که استفاده از آن‌ها در کنار webpack می‌تواند مفید باشد.
+مقالات Webpack ابزارهایی را معرفی می‌کند که استفاده از آن‌ها در کنار Webpack می‌تواند مفید باشد.
 </p>
 <p align=right style="text-align: justify;">
-برای استفاده از این loaderها باید دو property به فایل کانفیگ webpack اضافه کنیم:
+برای استفاده از این loaderها باید دو property به فایل کانفیگ Webpack اضافه کنیم:
 </p>
 
 <ol>
@@ -188,7 +190,7 @@ module.exports = {
 const path = require('path');
 module.exports = {
   output: {
-    filename: 'my-first-webpack.bundle.js',
+    filename: 'my-first-Webpack.bundle.js',
   },
   module: {
     rules: [{ test: /\.txt$/, use: 'raw-loader' }],
@@ -197,7 +199,7 @@ module.exports = {
 ```
 </br>
 
-برخی loaderهایی که کنار webpack استفاده می‌شوند:
+برخی loaderهایی که کنار Webpack استفاده می‌شوند:
 
 
 - responsive-loader:
@@ -217,13 +219,15 @@ module.exports = {
 </p>
 
 ## منابع
-https://www.smashingmagazine.com/2021/06/getting-started-webpack/
+https://www.smashingmagazine.com/2021/06/getting-started-Webpack/
+
+https://webpack.js.org/concepts/
 
 https://youtu.be/5IG4UmULyoA
 
-https://webpack.js.org/concepts/loaders/
+https://Webpack.js.org/concepts/loaders/
 
-https://webpack.js.org/api/cli/
+https://Webpack.js.org/api/cli/
 
 https://byteofdev.com/posts/bundlers/
 </div>
