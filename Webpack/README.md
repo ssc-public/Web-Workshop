@@ -128,6 +128,9 @@ npx webpack configtest <config-file-path>
 
 </p>
 
+## مفاهیم و نحوه‌ی استفاده از Config File
+
+
 ## loaders
 <p align=right style="text-align: justify;">
 مقالات webpack ابزارهایی را معرفی می‌کند که استفاده از آن‌ها در کنار webpack می‌تواند مفید باشد.
