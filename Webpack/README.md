@@ -130,8 +130,41 @@ npx webpack configtest <config-file-path>
 
 ## مفاهیم و نحوه‌ی استفاده از Config File
 
+### Entry
+همانطور که در command line نیز می‌توانستیم از `entry` را مشخص کنیم، در فایل کانفیگ نیز می‌توانیم مقدار `entry` استفاده کنیم تا فایل یا فایل‌های اولیه را مشخص کنیم.
 
-## loaders
+برای مثال می‌توانیم فایل زیر را داشته باشیم:
+
+### webpack.config.js
+```js
+module.exports = {
+  entry: {
+    app: './src/app.js',
+    adminApp: './src/adminApp.js',
+  },
+};
+```
+
+### Output
+در این قسمت می‌توان محل قرار گیری و نام فایل‌های خروجی را مشخص کرد. برای مثال با استفاده از config زیر، ۲ فایل خروجی که از ۲ فایل ورودی ساخته شده‌اند خواهیم داشت.
+
+### webpack.config.js
+```js
+module.exports = {
+  entry: {
+    app: './src/app.js',
+    search: './src/search.js',
+  },
+  output: {
+    filename: '[name].js',
+    path: __dirname + '/dist',
+  },
+};
+```
+
+در این حالت ۲ فایل خروجی با آدرس‌های `dist/app.js` و `dist/search.js` خواهیم داشت.
+
+### Loaders
 <p align=right style="text-align: justify;">
 مقالات webpack ابزارهایی را معرفی می‌کند که استفاده از آن‌ها در کنار webpack می‌تواند مفید باشد.
 </p>
