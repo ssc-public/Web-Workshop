@@ -46,9 +46,9 @@ browser
 ## تاریخچه
 <p align=right style="text-align: justify;">
 وب پک از اوایل سال 2014 توسعه پیدا کرد و از سال 2016 به محبوبیت رسید و تا این لحظه نیز محبوبیت خود را حفط نموده است.
-مزیت وب پک نسبت به bundler  پیش از خود ترکیب bundling و complie  بود
-که باعث سادگی بیشتر شد.
-webpack مزیت های بیشتری هم دارداز جمله آنکهbundle و transfer فایل های non javascript را هم انجام میدهد. همچینین api های ساده تری نسبت به bundler های پیش از خود ارائه میدهد.( البته bundler های امروزی api  های ساده تری پیاده کرده اند.)
+مزیت وب پک نسبت به  bundler های  پیش از خود ترکیب bundling و complie  بود
+که باعث سادگی بیشتر می شد.
+webpack مزیت های بیشتری هم دارداز جمله آنکه bundling و transfer فایل های non javascript را هم انجام میدهد. همچینین api های ساده تری نسبت به bundler های پیش از خود ارائه میدهد.( البته bundler های امروزی api  های ساده تری پیاده کرده اند.)
 </p>
 <p align=right style="text-align: justify;">
 امروزه ابزار های بسیاری از قبیل create-react-app و next.js ازwebpack استفاده میکنند.
