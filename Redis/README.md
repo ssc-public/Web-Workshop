@@ -1903,3 +1903,52 @@ CF.EXISTS key item
 CF.MEXISTS key item [item ...]
 ```
 
+<h3 dir="rtl"> 
+تست چند دستور
+</h3>
+
+<div dir="rtl">
+در این قسمت چند دستور از Bloom Filter ردیس را تست می‌کنیم:
+</div> 
+
+```bash
+ 127.0.0.1:6379> BF.ADD bloom kirk
+ 1) (integer) 1
+ 127.0.0.1:6379> BF.ADD bloom redis
+ 1) (integer) 1
+ 127.0.0.1:6379> BF.EXISTS bloom kirk
+ (integer) 1
+ 127.0.0.1:6379> BF.EXISTS bloom redis
+ (integer) 1
+ 127.0.0.1:6379> BF.EXISTS bloom nonexist
+ (integer) 0
+ 127.0.0.1:6379> BF.EXISTS bloom que?
+ (integer) 0
+ 127.0.0.1:6379>
+ 127.0.0.1:6379> BF.MADD bloom elem1 elem2 elem3
+ 1) (integer) 1
+ 2) (integer) 1
+ 3) (integer) 1
+ 127.0.0.1:6379> BF.MEXISTS bloom elem1 elem2 elem3
+ 1) (integer) 1
+ 2) (integer) 1
+ 3) (integer) 1
+```
+
+<div dir="rtl">
+در این قسمت چند دستور از Cuckoo Filter ردیس را تست می‌کنیم:
+</div> 
+
+
+```bash
+127.0.0.1:6379> CF.ADD newcuckoo redis
+(integer) 1
+127.0.0.1:6379> CF.EXISTS newcuckoo redis
+(integer) 1
+127.0.0.1:6379> CF.EXISTS newcuckoo notpresent
+(integer) 0
+127.0.0.1:6379> CF.DEL newcuckoo redis
+(integer) 1
+```
+
+> توضیحات این دستورات در قسمت‌های قبلی مشخص هستند و همچنین عملکرد هر کدام توضیح داده شده‌اند.
