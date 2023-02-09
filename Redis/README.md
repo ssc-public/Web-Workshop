@@ -1760,8 +1760,7 @@ Bloom Filter
 </div>
 
 ```bash
-BF.RESERVE key error_rate capacity [EXPANSION expansion] 
-  [NONSCALING]
+BF.RESERVE key error_rate capacity [EXPANSION expansion] [NONSCALING]
 ```
 
 <div dir="rtl">
@@ -1806,6 +1805,33 @@ BF.EXISTS key item
 BF.MEXISTS key item [item ...]
 ```
 
+
+<div dir="rtl">
+این دستور ترکیب دو دستور 
+<code>BF.RESERVE</code> و
+<code>BF.ADD</code>
+می‌باشد. در صورتی که این دیتاست با این نام وجود نداشته باشد
+آن را می‌سازد.
+تا آرگومان
+<code>ITEMS</code>
+همان ورودی‌های 
+<code>BF.RESERVE</code>
+است و پس از آن آیتم‌های دیتاست را اضافه می‌کنیم.
+
+توجه کنید آرگومان
+<code>NOCREATE</code>
+در صورتی که چنین دیتاستی وجود نداشته باشد آن را نمی‌سازد
+و ردیس به ما ارور می‌دهد.
+</div>
+
+```bash
+BF.INSERT key [CAPACITY capacity] [ERROR error]
+  [EXPANSION expansion] [NOCREATE] [NONSCALING] ITEMS item [item
+  ...]
+```
+
+
+
 <h3>
 Cuckoo Filter
 </h3>
@@ -1828,8 +1854,7 @@ Cuckoo Filter
 </div>
 
 ```bash
-CF.RESERVE key capacity [BUCKETSIZE bucketsize]
-  [MAXITERATIONS maxiterations] [EXPANSION expansion]
+CF.RESERVE key capacity [BUCKETSIZE bucketsize] [MAXITERATIONS maxiterations] [EXPANSION expansion]
 ```
 
 
