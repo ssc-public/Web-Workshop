@@ -1936,6 +1936,36 @@ CF.MEXISTS key item [item ...]
 ```
 
 <div dir="rtl">
+همچنین می‌توانید دیتا‌ست‌ها و فیلتر‌های مخصوص به خودتان را نیز بسازید.
+</div> 
+
+```bash
+ 127.0.0.1:6379> BF.RESERVE largebloom 0.0001 1000000
+ OK
+ 127.0.0.1:6379> BF.ADD largebloom kirk
+ 1) (integer) 1
+  127.0.0.1:6379> BF.ADD largebloom redis
+ 1) (integer) 1
+ 127.0.0.1:6379> BF.EXISTS largebloom kirk
+ (integer) 1
+ 127.0.0.1:6379> BF.EXISTS largebloom redis
+ (integer) 1
+ 127.0.0.1:6379> BF.EXISTS largebloom nonexist
+ (integer) 0
+
+```
+
+<div dir="rtl">
+حال چند دستور دیگر را بررسی می‌کنیم:
+</div> 
+
+```bash
+127.0.0.1:6379> BF.MEXISTS largebloom redis nonexist
+1) (integer) 1
+2) (integer) 0
+```
+
+<div dir="rtl">
 در این قسمت چند دستور از Cuckoo Filter ردیس را تست می‌کنیم:
 </div> 
 
@@ -1945,10 +1975,19 @@ CF.MEXISTS key item [item ...]
 (integer) 1
 127.0.0.1:6379> CF.EXISTS newcuckoo redis
 (integer) 1
+127.0.0.1:6379> CF.COUNT newcuckoo redis
+(integer) 1
 127.0.0.1:6379> CF.EXISTS newcuckoo notpresent
 (integer) 0
+127.0.0.1:6379> CF.MEXISTS newcuckoo redis notpresent
+1) (integer) 1
+2) (integer) 0
 127.0.0.1:6379> CF.DEL newcuckoo redis
 (integer) 1
+127.0.0.1:6379> CF.EXISTS newcuckoo redis
+(integer) 0
+127.0.0.1:6379> CF.COUNT newcuckoo redis
+(integer) 0
 ```
 
 > توضیحات این دستورات در قسمت‌های قبلی مشخص هستند و همچنین عملکرد هر کدام توضیح داده شده‌اند.
