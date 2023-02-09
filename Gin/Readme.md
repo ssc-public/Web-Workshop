@@ -24,6 +24,11 @@ Martini-like api
 در این مقاله ما با بررسی مثال‌هایی با نحوه استفاده از این فریمورک آشنا خواهیم شد.
 # Basics
 ## اجرا کردن gin
+در ابتدا با اجرای خط زیر gin را نصب کنید:
+```bash
+go get -u github.com/gin-gonic/gin
+```
+سپس برنامه‌ی زیر را در فایلی ذخیره کنید و آنرا اجرا کنید:
 ```go
 package main
 
@@ -178,3 +183,155 @@ func main() {
   router.Run(":8080")
 }
 ```
+## File Upload
+```go
+package main
+
+import (
+	"net/http"
+	"path/filepath"
+
+	"github.com/gin-gonic/gin"
+)
+
+func main() {
+	router := gin.Default()
+	// Set a lower memory limit for multipart forms (default is 32 MiB)
+	router.MaxMultipartMemory = 2 << 23 // 8 MiB
+	router.POST("/upload", func(c *gin.Context) {
+		file, err := c.FormFile("file")
+		if err != nil {
+			c.String(http.StatusBadRequest, "get form err: %s", err.Error())
+			return
+		}
+		filename := filepath.Base(file.Filename)
+		if err := c.SaveUploadedFile(file, filename); err != nil {
+			c.String(http.StatusBadRequest, "upload file err: %s", err.Error())
+			return
+		}
+		c.String(http.StatusOK, "File %s uploaded successfully.", file.Filename)
+	})
+	router.Run(":8080")
+}
+```
+در این مثال ما در ابتدا یک router تعریف می‌کنیم و سپس یک endpoint برای post تعریف می‌کنیم در آدرس
+`/upload`.
+در خطی که
+`MaxMultipartMemory`
+را ست می‌کنیم عملا مموری مورد استفاده برای بافر کردن فایل را مشخص می‌کنیم. هر چه قدر که این عدد بیشتر باشد مصرف مموری برنامه
+در زمان آپلود بیشتر است. کمتر کردن این عدد به معنای محدود کردن حجم فایل نیست. بلکه صرفا به معنای استفاده از بافر کمتر در پشت صحنه است. هر چه قدر که بافر کمتر باشد، سرعت آپلود کند تر می‌شود.
+در تابع post، در ابتدا از دستور
+`FromFile`
+استفاده می‌کنیم تا بتوانیم فایل را از ریکوئست پارس کنیم. سپس چک می‌کنیم که آیا مشکلی در گرفتن فایل وجود دارد یا خیر
+(مثلا ممکن است که فیلد فایل خالی باشد).
+سپس در صورتی که همه چی اوکی بود، به کمک
+`filepath.Base`
+اسم فایل را پیدا می‌کنیم.
+دلیل استفاده از این تابع این است که کاربر می‌تواند اسم فایل را مسیر
+relative
+بگذارد. به عنوان مثال اسم فایل می‌تواند
+`/tmp/hello.txt`
+باشد. در صورتی که از
+`filepath.Base`
+استفاده نکنیم فایل ما دقیقا در همین مسیر نوشته می‌شود. اما در صورت استفاده از
+`filepath.Base`
+اسم فایل برابر
+`hello.txt`
+می‌شود. در نهایت به کمک تابع
+`SaveUploadedFile`
+فایل را در مسیر مشخص شده ذخیره می‌کنیم.
+
+## Middlewares
+Middlewareها
+توابعی هستند که قبل از اجرای تابع اصلی
+endpoint
+اجرا می‌شوند. این توابع می‌توانند که به عنوان مثال قبل از صدا کردن تابع اصلی، کاربر را حراز هویت کنند و user id کاربر را به تابع بعدی خود پاس دهند. Middlwareها قابلیت
+chain
+شدن دارند. بدین منظور که می‌توان چندین تابع را پشت سر هم صدا کرد و از نتیجه‌ی آنها در تابع بعدی استفاده کرد.
+```go
+var userTokens = make(map[string]int)
+
+func Benchmark() gin.HandlerFunc {
+  return func(c *gin.Context) {
+    t := time.Now()
+    c.Next() // This will manually call the next function in middleware chain
+    latency := time.Since(t)
+    log.Print(latency)
+  }
+}
+
+func Auth() gin.HandlerFunc {
+  return func(c *gin.Context) {
+    userID, exists := userTokens[c.Request.Header.Get("Token")]
+    if !exists {
+      c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "empty auth"}) // This will terminate the request
+      return
+    }
+    c.Set("user_id", userID)
+    // Reaching the end of function will automatically call the next function in chain unless Abort is called
+  }
+}
+
+func main() {
+  r := gin.Default()
+  r.Use(Benchmark(), Auth())
+
+  r.GET("/test", func(c *gin.Context) {
+    userID := c.MustGet("user_id").(int)
+    log.Println(userID)
+  })
+
+  r.Run(":8080")
+}
+```
+در ابتدا یک
+middleware
+تعریف کرده‌ایم به اسم
+`Benchmark`.
+در این میان‌افزار می‌خواهیم که زمان هر درخواست را ثبت کنیم. برای این کار در ابتدا زمان فعلی سیستم‌عامل را می‌گیریم و سپس با اجرای
+`c.Next()`
+دستور بعدی در
+middlwareها
+را اجرا می‌کنیم.
+middleware بعدی که اجرا می‌شود 
+`Auth`
+است. در این middleware
+ما مقدار هدر
+`Token`
+را در مپ
+`userTokens`
+جست و جو می‌کند. در صورتی که هیچ کلیدی با این توکن مچ نشد (به عبارتی توکن معتبر نبود) مقدار
+`exists`
+برابر
+false
+می‌شود و وارد
+if
+می‌شویم. در اینجا ما با استفاده از تابع
+`AbortWithStatusJSON`
+علاوه بر اینکه یک جسون به کاربر بر می‌گردانیم،
+کاری می‌کنیم که هیچ کدام از توابع بعدی در
+middleware chain
+اجرا نشود. به عنوان مثال اینجا تابعی که جلوی
+endpoint
+نوشته بودیم به صورت کلی اجرا نمی‌شود.
+در غیر این صورت مقدار
+`userID`
+را در
+reuqest context
+ذخیره می‌کنیم. در انتهای تابع نیز به صورت خودکار به تابع بعدی در
+middleware chain
+می‌رویم. این تابع که تابع انتهایی ما است، تابعی است که جلوی endpoint نوشته بودیم. در این تابع ما صرفا مقدار
+`user_id` را که در middleware `Auth`
+در
+context
+ذخیره کرده بودیم را بر می‌گرداند. نوع متغیر برگشته شده
+`interface{}`
+است. پس نیاز است که آنرا به
+int cast
+کنیم. در نهایت نیز این متغیر را چاپ می‌کنیم. بعد از تمام شدن این تابع و 
+middleware chain،
+تابع
+`Benchmark`
+کار خود را بعد از تابع
+`c.Next()`
+ادامه می‌دهد که باعث می‌شود که زمان گذشته برای انجام درخواست چاپ شود.
