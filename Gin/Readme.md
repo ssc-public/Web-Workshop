@@ -1,17 +1,18 @@
 # فریمورک gin
+
 در این مقاله قرار است به معرفی فریمورک
 gin
 بپردازیم.
-gin 
+gin
 یک فریمورک وب توسعه یافته در زبان golang است.
-این فریمورک یک 
+این فریمورک یک
 Martini-like api
 است با سرعت و کارایی حدود ۴۰ برابر بهتر!
 دلیل این برتری، استفاده از httprouter است.
 درصورتی که به کارایی، سرعت و بازدهی بالا نیاز دارید،‌استفاده از gin به شما توصیه می‌شود.
 کلیدی‌ترین ویژگی‌های قابل اشاره این فریمورک شامل موارد زیر است:
-* Zero allocation router
 
+* Zero allocation router
 * Fast
 * Middleware support
 * Crash-free
@@ -22,19 +23,24 @@ Martini-like api
 * Extendable
 
 در این مقاله ما با بررسی مثال‌هایی با نحوه استفاده از این فریمورک آشنا خواهیم شد.
-# Basics
-## اجرا کردن gin
+
+## Basics
+
+### اجرا کردن gin
+
 در ابتدا با اجرای خط زیر gin را نصب کنید:
+
 ```bash
 go get -u github.com/gin-gonic/gin
 ```
-سپس برنامه‌ی زیر را در فایلی ذخیره کنید و آنرا اجرا کنید:
+
+سپس برنامه‌ی زیر را در فایلی ذخیره کنید و آن را اجرا کنید:
+
 ```go
 package main
 
 import (
   "net/http"
-
   "github.com/gin-gonic/gin"
 )
 
@@ -48,17 +54,20 @@ func main() {
   r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
 ```
-با اجرای کد فوق، برنامه شما روی پورت ۸۰۸۰ 
+
+با اجرای کد فوق، برنامه شما روی پورت 8080
 listen
-می‌کند و در پاسخ ریکوئست‌های get 
-یک جیسون با فیلد message که مقدار pong 
+می‌کند و در پاسخ ریکوئست‌های get
+یک جیسون با فیلد message که مقدار pong
 دارد می‌فرستد.
 به طور دقیق‌تر، r یک روتر است که توسط gin ساخته می‌شود و شما می‌توانید بگویید به ازای مسیرهای مختلف چه کاری انجام شود.
-روتر ساخته شده، روتری‌است که از middlewareهای 
+روتر ساخته شده، روتری‌است که از middlewareهای
 دیفالت gin استفاده می‌کند.
 در ادامه با ساختن  روترها بدون استفاده از این middlewareها
 نیز آشنا می‌شویم.
-## Using GET, POST, PUT, PATCH, DELETE and OPTIONS
+
+### Using GET, POST, PUT, PATCH, DELETE and OPTIONS
+
 ```go
 func main() {
   // Creates a gin router with default middleware:
@@ -79,32 +88,36 @@ func main() {
   // router.Run(":3000") for a hard coded port
 }
 ```
+
 همانطور که مشخص است یک روتر ساخته شده و به ازای درخواست‌های مختلف هندلرها تخصیص داده شده‌اند.
 هندلرها یک ورودی از جنس پوینتر به gin.Context می‌گیرند؛ این ورودی شامل اطلاعات مربوط به ریکوئست شامل
-headers, request data, attachments, response render methods 
+headers, request data, attachments, response render methods
 و ... است.
 به طور دقیق‌تر این استراکت شامل موارد زیر است:
+
 ```go
 type Context struct {
-	Request *http.Request
-	Writer  ResponseWriter
+  Request *http.Request
+  Writer  ResponseWriter
 
-	Params Params
+  Params Params
 
-	// Keys is a key/value pair exclusively for the context of each request.
-	Keys map[string]any
+  // Keys is a key/value pair exclusively for the context of each request.
+  Keys map[string]any
 
-	// Errors is a list of errors attached to all the handlers/middlewares who used this context.
-	Errors errorMsgs
+  // Errors is a list of errors attached to all the handlers/middlewares who used this context.
+  Errors errorMsgs
 
-	// Accepted defines a list of manually accepted formats for content negotiation.
-	Accepted []string
-	// contains filtered or unexported fields
+  // Accepted defines a list of manually accepted formats for content negotiation.
+  Accepted []string
+  // contains filtered or unexported fields
 }
 ```
 
-## Parameters in path
+### Parameters in path
+
 حالات مختلفی برای ارسال پارامتر در path وجود دارد:
+
 ```go
 func main() {
   router := gin.Default()
@@ -140,8 +153,11 @@ func main() {
   router.Run(":8080")
 }
 ```
-## Querystring parameters
+
+### Querystring parameters
+
 دسترسی و استفاده از کوئری پارامترها در این فریمورک به صورت زیر است:
+
 ```go
 func main() {
   router := gin.Default()
@@ -158,8 +174,10 @@ func main() {
 }
 ```
 
-## Grouping Routes
+### Grouping Routes
+
 برای دسته بندی مسیرها و تمیز‌تر شدن کد، می‌توان از قابلیت گروه‌بندی استفاده کرد:
+
 ```go
 func main() {
   router := gin.Default()
@@ -183,37 +201,40 @@ func main() {
   router.Run(":8080")
 }
 ```
-## File Upload
+
+### File Upload
+
 ```go
 package main
 
 import (
-	"net/http"
-	"path/filepath"
+  "net/http"
+  "path/filepath"
 
-	"github.com/gin-gonic/gin"
+  "github.com/gin-gonic/gin"
 )
 
 func main() {
-	router := gin.Default()
-	// Set a lower memory limit for multipart forms (default is 32 MiB)
-	router.MaxMultipartMemory = 2 << 23 // 8 MiB
-	router.POST("/upload", func(c *gin.Context) {
-		file, err := c.FormFile("file")
-		if err != nil {
-			c.String(http.StatusBadRequest, "get form err: %s", err.Error())
-			return
-		}
-		filename := filepath.Base(file.Filename)
-		if err := c.SaveUploadedFile(file, filename); err != nil {
-			c.String(http.StatusBadRequest, "upload file err: %s", err.Error())
-			return
-		}
-		c.String(http.StatusOK, "File %s uploaded successfully.", file.Filename)
-	})
-	router.Run(":8080")
+  router := gin.Default()
+  // Set a lower memory limit for multipart forms (default is 32 MiB)
+  router.MaxMultipartMemory = 2 << 23 // 8 MiB
+  router.POST("/upload", func(c *gin.Context) {
+    file, err := c.FormFile("file")
+    if err != nil {
+      c.String(http.StatusBadRequest, "get form err: %s", err.Error())
+      return
+    }
+    filename := filepath.Base(file.Filename)
+    if err := c.SaveUploadedFile(file, filename); err != nil {
+      c.String(http.StatusBadRequest, "upload file err: %s", err.Error())
+      return
+    }
+    c.String(http.StatusOK, "File %s uploaded successfully.", file.Filename)
+  })
+  router.Run(":8080")
 }
 ```
+
 در این مثال ما در ابتدا یک router تعریف می‌کنیم و سپس یک endpoint برای post تعریف می‌کنیم در آدرس
 `/upload`.
 در خطی که
@@ -241,13 +262,15 @@ relative
 `SaveUploadedFile`
 فایل را در مسیر مشخص شده ذخیره می‌کنیم.
 
-## Middlewares
+### Middlewares
+
 Middlewareها
 توابعی هستند که قبل از اجرای تابع اصلی
 endpoint
 اجرا می‌شوند. این توابع می‌توانند که به عنوان مثال قبل از صدا کردن تابع اصلی، کاربر را حراز هویت کنند و user id کاربر را به تابع بعدی خود پاس دهند. Middlwareها قابلیت
 chain
 شدن دارند. بدین منظور که می‌توان چندین تابع را پشت سر هم صدا کرد و از نتیجه‌ی آنها در تابع بعدی استفاده کرد.
+
 ```go
 var userTokens = make(map[string]int)
 
@@ -284,6 +307,7 @@ func main() {
   r.Run(":8080")
 }
 ```
+
 در ابتدا یک
 middleware
 تعریف کرده‌ایم به اسم
@@ -293,7 +317,7 @@ middleware
 دستور بعدی در
 middlwareها
 را اجرا می‌کنیم.
-middleware بعدی که اجرا می‌شود 
+middleware بعدی که اجرا می‌شود
 `Auth`
 است. در این middleware
 ما مقدار هدر
@@ -328,7 +352,7 @@ context
 `interface{}`
 است. پس نیاز است که آنرا به
 int cast
-کنیم. در نهایت نیز این متغیر را چاپ می‌کنیم. بعد از تمام شدن این تابع و 
+کنیم. در نهایت نیز این متغیر را چاپ می‌کنیم. بعد از تمام شدن این تابع و
 middleware chain،
 تابع
 `Benchmark`
