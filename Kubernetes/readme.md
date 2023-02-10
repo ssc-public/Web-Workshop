@@ -45,7 +45,7 @@ replication) و مقیاس گذاری خودکار (auto scaling)، برنامه
 ![Capture](https://user-images.githubusercontent.com/59171005/218129016-87a5a472-6790-4097-954e-4d1243661dbc.PNG)
 
 
-### برخی از اصطلاحات رایج در Kubernetes :
+### برخی از اصطلاحات رایج در Kubernetes:
 
    
 * nodes:
@@ -104,7 +104,7 @@ replication) و مقیاس گذاری خودکار (auto scaling)، برنامه
 
 ![enter image description here](https://www.redhat.com/cms/managed-files/kubernetes_diagram-v3-770x717_0.svg)
 
- #### اجزای Master :
+ #### اجزای Master:
 
 یک سرور ارشد حکم هسته کنترلی در کلاستر‌ها را دارد و نقطه ارتباطی میان کاربران و مدیران است. اجزای سرور ارشد با یکدیگر کار می‌کنند تا درخواست کاربر را پذیرش کنند، بهترین زمان‌بندی را برای بار کاری کانتینرها تعیین کرده، وضعیت شبکه‌سازی کلاستر را تنظیم و مسئولیت مدیریت، مقیاس‌بندی و سلامتی را بر عهده داشته باشند. این اجزا می‌توانند در یک ماشین مجزا نصب شوند یا در چند سرور به‌صورت توزیع‌شده قرار گیرند. در ادامه نگاهی به هر یک از اجزایی که با سرور ارشد پیوند خورده‌اند، خواهیم داشت.
 
@@ -128,7 +128,7 @@ replication) و مقیاس گذاری خودکار (auto scaling)، برنامه
  
 زمان‌بند (Scheduler)، مسئول دنبال کردن ظرفیت‌های موجود در هر میزبان است تا مطمئن شود بار کاری در زمان خود، از منابع زیادی استفاده نمی‌کند. زمان‌بند باید مجموع ظرفیت‌ها و همچنین منابع تخصیص داده‌شده به هر سرور را بداند. 
 
-#### اجزای Node :
+#### اجزای Node:
 
 #### Container Runtime:
 
@@ -168,13 +168,24 @@ replication) و مقیاس گذاری خودکار (auto scaling)، برنامه
 
 ## نحوه‌‌ی راه‌اندازی یک برنامه با kubernetes
 
-در این قسمت با توضیحاتی که از بخش قبل خواندیم، یک برنامه ساده وب به زبان go را با کمک kubernetes اجرا می‌کنیم. 
-#### نصب ابزارهای لازم :
+در این قسمت با توضیحاتی که از بخش قبل خواندیم، یک برنامه ساده وب به زبان go را با کمک kubernetes اجرا می‌کنیم. در این قسمت با cli کار کرده و در قسمت بعدی با config file ها کار خواهیم کرد. 
+
+#### نصب ابزارهای لازم:
 
 
 
 #### Kubctel:
  یک رابط command line براي اجراي دستورات است که در خوشه هاي Kubernetes پردازش می شود. با استفاده از kubectl می توانید برنامه ها را deploy کنید ، منابع خوشه را بررسی و مدیریت کنید ، log مربوط را مشاهده کنید و غیره.
+ دیاگرامی که kubectl در قسمت cli قرار می گیرد را در تصویر زیر مشاهده می کنید.
+
+![10](https://user-images.githubusercontent.com/59171005/218161561-fab5f1cf-684a-4b92-8b65-7cbbf1948355.PNG)
+
+همانطور که مشاهده می کنید API Server موجود در هر node راه های مختلفی برای ارتباط دارد که یکی از آن ها command line interface بوده که kubectl قدرتمندترین ابزار در این قسمت است.
+
+![11](https://user-images.githubusercontent.com/59171005/218162023-ff912e60-a53e-4604-bf09-35a6d38eaff9.PNG)
+
+لازم به ذکر است همانطور که در تصویر بالا مشاهده می کنید برای محیط های cloud نیز قابل استفاده است.
+
 1. دانلود آخرین ورژن با دستور:
 <div dir="ltr">
 
@@ -185,6 +196,7 @@ replication) و مقیاس گذاری خودکار (auto scaling)، برنامه
 ```
 </div>
 
+از دستور brew install minikube نیز می توان استفاده کرد.
 (براي نصب یک ورژن خاص عبارت داخل پرانتز را ورژن مورد نظر جایگذاري کنید.)
 
 
@@ -205,7 +217,7 @@ chmod +x ./kubectl
 
 ```
 
-￼￼sudo mv ./kubectl /usr/local/bin/kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
 ```
 
 </div>
@@ -217,39 +229,53 @@ chmod +x ./kubectl
 
 ```
 
-￼￼kubectl version --client
+kubectl version --client
 ```
 
 </div>
 
+پیشنهاد می شود سایت خود minikube را نیز مشاهده کنید. 
+[minikube installation](https://minikube.sigs.k8s.io/docs/start/)
 
+برای استفاده از آن از درایور هایی نظیر داکر، virtualBox و ... موجود در سایت می توانید استفاده کنید که ترجیح بر استفاده از داکر است چرا که در هر سه سیستم linux، macos و windows قابل اجرا است.
+![12](https://user-images.githubusercontent.com/59171005/218163839-30598404-bb18-4684-95d4-e649207d8030.PNG)
+
+برای نصب داکر از سایت داکر اقدام کنید.
+[install docker](https://docs.docker.com/get-docker/)
 
 
 #### Minikube:
 محیط خوشه فیزیکی Kubernetes را در محیط شما ایجاد و پیاده سازي می کند.
 
+سناریوی موجود در تصویر زیر را در نظر بگیرید.
+
+![8](https://user-images.githubusercontent.com/59171005/218159294-785624b0-880d-4ab5-82d9-bbd4d3b99399.PNG)
+
+دو master node و چهار worker node وجود دارد. تست در محیط محلی چگونه صورت بگیرد؟ بالا آوردن یک خوشه (cluster) با منابع سخت افزاری محدود سخت می تواند باشد. Minikube راه حلی برای این مشکل است که متن باز بوده و یک خوشه دارد که master node processes و worker node processes در یک node اجرا می شوند. که در تصویر زیر آن را مشاهده می کنید.
+
+![9](https://user-images.githubusercontent.com/59171005/218160183-1c082b9d-b7ee-4026-b97e-9a0acc449c7a.PNG)
 
 
-1. به روزرسانی و آپدیت سیستم :
+1. به روزرسانی و آپدیت سیستم:
 
 
 <div dir="ltr">
 
 ```
 
-￼￼kubectl version --client
+kubectl version --client
 ```
 
 </div>
 
 
-2.بررسی پشتیابی لینوکس فعلی از مجازي سازي :
+2.بررسی پشتیابی لینوکس فعلی از مجازي سازي:
 
 <div dir="ltr">
 
 ```
 
-￼￼kubectl version --client
+kubectl version --client
 ```
 
 </div>
@@ -261,12 +287,12 @@ chmod +x ./kubectl
 
 ```
 
-￼￼kubectl version --client
+kubectl version --client
 ```
 
 </div>
 
-4. نصب minikube
+4. نصب minikube:
 
 
 <div dir="ltr">
@@ -280,7 +306,7 @@ chmod +x ./kubectl
 <div dir="ltr">
 
 ```
-￼cp minikube-linux-amd64 /usr/local/bin/minikube
+cp minikube-linux-amd64 /usr/local/bin/minikube
 ```
 </div>
 
@@ -295,13 +321,15 @@ chmod 755 /usr/local/bin/minikube
 <div dir="ltr">
 
 ```
-￼minikube version
+minikube version
 ```
 
 </div>
 
 
-### ساخت cluster :
+
+
+### ساخت cluster:
 
 
 اکنون میتوانیم با دستور minikube start و minikube status یک cluster بر روي ماشین مجازي بسازیم:
@@ -368,8 +396,7 @@ KubeDNS is running at https://192.168.99.100:8443/api/v1/namespaces/kube-system/
 
 
 
-همانطور که در بالا می بینیم ، ما با cluster خود ارتباط داریم و همچنین می توانیم اجزاي Kubernetes را به همراه سرور API نصب کنیم. همچنین می توانید با دستورminikube ssh به ماشین مجازي minikube متصل شوید تا ببینید
-چه فرآیندهایی در گره اجرا می شوند.
+همانطور که در بالا می بینیم ، ما با cluster خود ارتباط داریم و همچنین می توانیم اجزاي Kubernetes را به همراه سرور API نصب کنیم. همچنین می توانید با دستور minikube ssh به ماشین مجازي minikube متصل شوید تا ببینید چه فرآیندهایی در گره اجرا می شوند.
 
 
 اکنون می توانیم لیستی از گره هاي موجود را در خوشه بررسی کنیم:
@@ -531,7 +558,7 @@ Docker ps -a
 
 ## : ایجاد Deployment Controller
 
-در این مرحله باید یک Deployment Controller ساخته شود. وقتی Deployment Controller ساخته شود در kubernetes اربابان ) masters ( اطلاعاتی شامل اینکه کدام گره باید pod یا گروهی از pod ها را بسازد ارسال می کند. )در بخش قبل گفتیم که podها بیانگر اتصال یک یا چند container در یک گره هستند( .
+در این مرحله باید یک Deployment Controller ساخته شود. وقتی Deployment Controller ساخته شود در kubernetes اربابان ) masters ( اطلاعاتی شامل اینکه کدام گره باید pod یا گروهی از pod ها را بسازد ارسال می کند. )در بخش قبل گفتیم که pod ها بیانگر اتصال یک یا چند container در یک گره هستند( .
  
 Deployment Controller ها در kubernetes از دو راه زیر ایجاد میشوند:
 
@@ -576,14 +603,24 @@ spec:
 
 
 
-توضیحاتی در مورد فایل :
+همانطور که مشاهده می کنید این فایل به صورت declarative بوده و موارد زیر را شامل می شود:
 خط اول ورژن kubernetes را نشان می دهد.
 
--Kind بیانگر نوع object است (pod, deployment , …) 
+-Kind بیانگر نوع object است (pod, deployment , service) 
 
 -بخش template که تمام دستوراتی که در pod اجرا میشود را نشان میدهد.
 
--بخش spec که حاوی اطلاعات دقیق از pod هاست مانند اسم container است.
+-بخش spec که حاوی اطلاعات دقیق از pod هاست مانند اسم container است. در این بخش replicas مشاهده می شود که به معنی تعداد اپ یا pod هایی است که درون خود container مربوط به اپ را دارند(کپی برای افزایش قابلیت اطمینان سیستم)  
+
+
+به صورت کلی فایل yaml برای setup شامل سه بخش است:
+* metadata
+* specification:
+این قسمت با توجه به اینکه kind چه چیزی است، تغییر خواهد کرد برای مثال service دو بخش selector و ports را می خواهد و deployment سه بخش replicas، selector و template خواهد داشت.
+* status:
+معمولا توسط kubernetes ایجاد می شود. نمونه ای از آن را در تصویر زیر مشاهده می کنید. Etcd وضعیت (status) حال حاضر هر k8s component را نگهداری می کند.
+
+![6](https://user-images.githubusercontent.com/59171005/218158208-a204e2e2-9456-4faf-83f1-cacc23b24de4.PNG)
 
 
 سپس با کمک دستور  kubectl create ،  Deployment Controller را می سازیم:
