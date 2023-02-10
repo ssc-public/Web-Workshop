@@ -234,9 +234,6 @@ kubectl version --client
 
 </div>
 
-پیشنهاد می شود سایت خود minikube را نیز مشاهده کنید. 
-[minikube installation](https://minikube.sigs.k8s.io/docs/start/)
-
 برای استفاده از آن از درایور هایی نظیر داکر، virtualBox و ... موجود در سایت می توانید استفاده کنید که ترجیح بر استفاده از داکر است چرا که در هر سه سیستم linux، macos و windows قابل اجرا است.
 ![12](https://user-images.githubusercontent.com/59171005/218163839-30598404-bb18-4684-95d4-e649207d8030.PNG)
 
@@ -246,6 +243,8 @@ kubectl version --client
 
 #### Minikube:
 محیط خوشه فیزیکی Kubernetes را در محیط شما ایجاد و پیاده سازي می کند.
+پیشنهاد می شود سایت خود minikube را نیز مشاهده کنید. 
+[minikube installation](https://minikube.sigs.k8s.io/docs/start/)
 
 سناریوی موجود در تصویر زیر را در نظر بگیرید.
 
@@ -406,7 +405,7 @@ KubeDNS is running at https://192.168.99.100:8443/api/v1/namespaces/kube-system/
 <div dir="ltr">
 
 ```
-￼kubectl get nodes
+kubectl get nodes
 ```
 
 </div>
@@ -421,7 +420,7 @@ minikube   Ready    master   3m41s   v1.19.4
 </div>
 
 
-می توان این node را براي مدیریت بهتر label بزنیم :
+می توان این node را براي مدیریت بهتر label بزنیم:
 
 
 
@@ -558,12 +557,12 @@ Docker ps -a
 
 ## : ایجاد Deployment Controller
 
-در این مرحله باید یک Deployment Controller ساخته شود. وقتی Deployment Controller ساخته شود در kubernetes اربابان ) masters ( اطلاعاتی شامل اینکه کدام گره باید pod یا گروهی از pod ها را بسازد ارسال می کند. )در بخش قبل گفتیم که pod ها بیانگر اتصال یک یا چند container در یک گره هستند( .
+در این مرحله باید یک Deployment Controller ساخته شود. وقتی Deployment Controller ساخته شود در kubernetes اربابان (master nodes) اطلاعاتی شامل اینکه کدام گره باید pod یا گروهی از pod ها را بسازد ارسال می کند (در بخش قبل گفتیم که pod ها بیانگر اتصال یک یا چند container در یک گره هستند).
  
 Deployment Controller ها در kubernetes از دو راه زیر ایجاد میشوند:
 
--  دستور kubectl run 
-نوشتن YAML فایل ( این روش توصیه می شود)
+* دستور kubectl run 
+* نوشتن YAML فایل (این روش توصیه می شود)
 
 ما از روش دوم استفاده می‌کنیم:
 
@@ -606,28 +605,37 @@ spec:
 همانطور که مشاهده می کنید این فایل به صورت declarative بوده و موارد زیر را شامل می شود:
 خط اول ورژن kubernetes را نشان می دهد.
 
--Kind بیانگر نوع object است (pod, deployment , service) 
+* Kind
+<p dir="rtl">
+ بیانگر نوع object است (pod, deployment , service) 
+</p>
 
--بخش template که تمام دستوراتی که در pod اجرا میشود را نشان میدهد.
+* Template
+<p dir="rtl">
+تمام دستوراتی که در pod اجرا میشود را نشان میدهد.
+</p>
 
--بخش spec که حاوی اطلاعات دقیق از pod هاست مانند اسم container است. در این بخش replicas مشاهده می شود که به معنی تعداد اپ یا pod هایی است که درون خود container مربوط به اپ را دارند(کپی برای افزایش قابلیت اطمینان سیستم)  
-
+* Spec
+<p dir="rtl">
+حاوی اطلاعات دقیق از pod هاست مانند اسم container است. در این بخش replicas مشاهده می شود که به معنی تعداد اپ یا pod هایی است که درون خود container مربوط به اپ را دارند (کپی برای افزایش قابلیت اطمینان سیستم)  
+</p>
 
 به صورت کلی فایل yaml برای setup شامل سه بخش است:
 * metadata
 * specification:
+<p dir="rtl">
 این قسمت با توجه به اینکه kind چه چیزی است، تغییر خواهد کرد برای مثال service دو بخش selector و ports را می خواهد و deployment سه بخش replicas، selector و template خواهد داشت.
-* status:
-معمولا توسط kubernetes ایجاد می شود. نمونه ای از آن را در تصویر زیر مشاهده می کنید. Etcd وضعیت (status) حال حاضر هر k8s component را نگهداری می کند.
+</p>
 
+* status:
+<p dir="rtl">
+معمولا توسط kubernetes ایجاد می شود. نمونه ای از آن را در تصویر زیر مشاهده می کنید. Etcd وضعیت (status) حال حاضر هر k8s component را نگهداری می کند.
+</p>
+    
 ![6](https://user-images.githubusercontent.com/59171005/218158208-a204e2e2-9456-4faf-83f1-cacc23b24de4.PNG)
 
 
 سپس با کمک دستور  kubectl create ،  Deployment Controller را می سازیم:
-
-
-
-
 
 
 
@@ -649,9 +657,6 @@ deployment.apps/hw1-go-deployment.yaml created
 ```
 
 </div>
-
-
-
 
 
 
@@ -679,8 +684,7 @@ hw1-go-deployment-586ff56c7f-m7vzs    1/1     ErrImagePull        0          42m
 </div>
 
 
-می بینیم که pod ما ساخته شده است 
-اما اگر این دستور را سه بار دیگر اجرا کنیم می بینیم که وضعیت (status) این pod به حالتهای ImagePullBackOff تغییر میکند که علت آن این است که pod نمی تواند image را دانلود کند برای همین باید image را برای ماشین مجازی که minikube از آن استفاده میکند  available کنیم. 
+می بینیم که pod ما ساخته شده است; اما اگر این دستور را سه بار دیگر اجرا کنیم می بینیم که وضعیت (status) این pod به حالتهای ImagePullBackOff تغییر میکند که علت آن این است که pod نمی تواند image را دانلود کند برای همین باید image را برای ماشین مجازی که minikube از آن استفاده میکند  available کنیم. 
 
 
 
@@ -767,4 +771,194 @@ eval $(minikube docker-env -u)
 ```
 
 </div>
+
+
+ضمن تشکر از nanajanashia می توان از فایل های yaml ایجاد شده و container آماده webapp استفاده کرد و سایت آماده آن را deploy کرد و آن را مشاهده کرد.
+
+این فایل ها در گیت هاب قرار دارد و لینک آن را مشاهده می کنید. 
+[configFile](https://github.com/rezasoumi/kubernetes_config_files/tree/main)
+
+فایل ها را به ترتیب بررسی می کنیم.
+
+* MongoConfig.yaml
+
+<div dir="ltr">
+
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-config
+data:
+  mongo-url: mongo-service
+
+```
+
+</div>
+
+کد بالا یک configMap برای پایگاه داده mongo مان درست می کند که داده آن به mongo-service مپ می شود.
+
+* MongoSecret.yaml
+
+<div dir="ltr">
+
+```
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mongo-secret
+type: Opaque
+data:
+  mongo-user: cmV6YQ==
+  mongo-password: c291bWk=
+
+```
+
+</div>
+
+کد بالا یک Secret برای اتصال app به پایگاه داده درست می کند. username و password به صورت plain text نبوده و توسط دستور زیر کدگذاری شده است.
+<div dir="ltr">
+
+```
+username: echo -n reza | base64
+password: echo -n soumi | base64
+```
+
+</div>
+
+
+* Mongo.yaml
+
+<div dir="ltr">
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+  labels:
+    app: mongo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:5.0
+        ports:
+        - containerPort: 27017  
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-user
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+spec:
+  selector:
+    app: mongo
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 27017
+```
+
+</div>
+
+دیپلوی پایگاه داده را در کد بالا مشاهده می کنید. mongo-user و mongo-password از فایل قبلی استخراج می شود. label ها ست شده اند تا هر node به یک key خاص (لیبل) مپ شود تا پاد ها که تعداد آن 3 تا هستند بتوانند به app مربوطه به label خاص متصل شوند. تعداد replica سه در نظر گرفته شده است. همچنین یک سرویس در نظر گرفته شده است تا از بیرون با استفاده از پروتکل TCP داده ها را به پورت 27017 که برنامه ها در این پورت استقرار یافته اند متصل شود. 
+
+
+* webapp.yaml
+
+<div dir="ltr">
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deployment
+  labels:
+    app: webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - name: webapp
+        image: nanajanashia/k8s-demo-app:v1.0
+        ports:
+        - containerPort: 3000  
+        env:
+        - name: USER_NAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-user
+        - name: USER_PWD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-password
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: mongo-config
+              key: mongo-url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  type: NodePort
+  selector:
+    app: webapp
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30100
+```
+
+</div>
+
+
+همانند دیپلوی و سرویس پایگاه داده خواهد بود. این سرویس روی پورت 3000 گوش خواهد داد و به همین پورت متصل می کند. nodePort مربوط به اتصال کاربر در صفحه خود است که این پورت را وارد می کند. این برنامه به پایگاه داده با username و password رمزگذاری شده متصل می شود.
+
+در نهایت برای کار کردن این موارد دستورات زیر را در ترمینال وارد کنید.
+
+<div dir="ltr">
+
+```
+kubectl apply -f mongo-config.yaml
+kubectl apply -f mongo-secret.yaml
+kubectl apply -f mongo.yaml
+kubectl apply -f webapp.yaml
+kubectl get all
+```
+
+</div>
+
+
 </div>
