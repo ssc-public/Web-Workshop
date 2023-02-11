@@ -118,9 +118,19 @@ type Context struct {
 }
 ```
 
-### Parameters in path
+### Parameters
 
-حالات مختلفی برای ارسال پارامتر در path وجود دارد:
+انواع مختلفی از پارامترها در هر ریکوئست HTTP
+وجود دارد که عبارتند از:
+
+* Path Parameters
+* Query Parameters
+* Header Fields
+* Body Fields
+
+#### Path Parameters
+
+حالات مختلفی برای ارسال پارامتر در path وجود دارد که از متد `Param` تایپ `gin.Context` استفاده می‌کنند.
 
 ```go
 func main() {
@@ -158,9 +168,9 @@ func main() {
 }
 ```
 
-### Querystring parameters
+#### Query Parameters
 
-دسترسی و استفاده از کوئری پارامترها در این فریمورک به صورت زیر است:
+دسترسی و استفاده از کوئری پارامترها در gin به صورت زیر و معمولا با استفاده از متد `Query` تایپ `gin.Context` است:
 
 ```go
 func main() {
@@ -178,9 +188,58 @@ func main() {
 }
 ```
 
+#### Header Fields
+
+برای خواندن مقدار Headerهای HTTP از ریکوئست می‌توانیم از متد `GetHeader` تایپ `gin.Context` استفاده کنیم.
+
+```go
+func main() {
+  router := gin.Default()
+
+  // Reading request `User-Agent` header and returning it to user
+  router.GET("/whoami", func(c *gin.Context) {
+    agent := c.GetHeader("User-Agent")
+
+    c.String(http.StatusOK, "You are %s", agent)
+  })
+  router.Run(":8080")
+}
+```
+
+#### Body Fields
+
+هم‌چنین gin به ما امکان خواندن فیلدهای گوناگون از body ریکوئست به فرمت‌های گوناگون JSON و XML و ... را می‌دهد.
+بهترین راه برای این کار، binding این مقادیر به یک تایپ golang است.
+
+در زیر نمونه‌ای را مشاهده می‌کنید:
+
+```go
+// Body Fields
+type User struct {
+    Name string `json:"name" binding:"required"`
+    Age int `json:"age" binding:"required"`
+}
+
+func main() {
+  router := gin.Default()
+
+  // Reading `name` and `age` fields from request body
+  router.GET("/welcome", func(c *gin.Context) {
+    var user User
+    if err := c.BindJSON(&user); err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        return
+    }
+
+    c.String(http.StatusOK, "Welcome %s you are %d years old", user.Name, user.Age)
+  })
+  router.Run(":8080")
+}
+```
+
 ### Grouping Routes
 
-برای دسته بندی مسیرها و تمیز‌تر شدن کد، می‌توان از قابلیت گروه‌بندی استفاده کرد:
+برای دسته بندی مسیرها و ورژن‌بندی APIها می‌توان از قابلیت گروه‌بندی استفاده کرد:
 
 ```go
 func main() {
