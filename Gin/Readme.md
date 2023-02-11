@@ -422,3 +422,55 @@ middleware chain،
 کار خود را بعد از تابع
 `c.Next()`
 ادامه می‌دهد که باعث می‌شود که زمان گذشته برای انجام درخواست چاپ شود.
+
+### HTML Template
+
+gin از template engineهای گوناگونی مانند HTML/template (که یک پکیج استاندارد golang است) به‌همراه Mustache و Jet پشتیبانی می‌کند.
+
+در زیر یک نمونه ساده را نشان می‌دهیم که مانند مثال‌های قبلی اطلاعات کاربر را از body ریکوئست او می‌خواند و آن‌ها را در یک فایل HTML به او نشان می‌دهد. در این مثال ما از پکیج استاندارد golang استفاده می‌کنیم.
+
+ابتدا فایل template را با نام `hello.html` در پوشه‌ای با نام `templates` در مسیر پروژه می‌سازیم:
+
+```jinja
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ .Title }}</title>
+</head>
+<body>
+  <h1>Welcome, {{ .Name }}!</h1>
+  <p>Your age is {{ .Age }}.</p>
+</body>
+</html>
+```
+
+حالا باید از کد golang خود این فایل template‍ را صدا بزنیم و با داده‌های کاربر پر کنیم. در ابتدا لازم است با فراخوانی متد `LoadHTMLGlob` این templateها را در روتر خود لود کنیم. حالا مانند مثال قبل اطلاعات کاربر را از ریکوئست می‌خوانیم و در متغیر `user` نگه می‌داریم. در نهایت کافی‌ست با متد `HTML` عملیات rendering را انجام دهیم.
+
+```go
+// Body Fields
+type User struct {
+    Name string `json:"name" binding:"required"`
+    Age int `json:"age" binding:"required"`
+}
+
+func main() {
+  router := gin.Default()
+  router.LoadHTMLGlob("templates/*.html")
+
+  // Reading `name` and `age` fields from request body
+  router.GET("/welcome", func(c *gin.Context) {
+    var user User
+    if err := c.BindJSON(&user); err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        return
+    }
+
+    c.HTML(http.StatusOK, "hello.html", gin.H{
+      "Title": "Hello!",
+      "Name": user.Name,
+      "Age": user.Age,
+    })
+  })
+  router.Run(":8080")
+}
+```
