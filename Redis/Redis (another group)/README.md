@@ -27,7 +27,7 @@
     </ul>   
 </div>
 
-# نصب
+# نصب و تنظیمات
 
 ## نصب بر روی اوبونتو
 
@@ -38,7 +38,7 @@ $sudo apt-get update
 $sudo apt-get install redis-server
 ```
 
-سپس برای شروع دستور زیر را وارد می‌کنیم:
+سپس برای شروع، دستور زیر را وارد می‌کنیم:
 
 ```
 $redis-server
@@ -67,6 +67,23 @@ PONG
 
 برای نصب ردیس روی ویندوز کافیست redis-server.exe را پس از دانلود، اجرا کنیم. سپس می‌توانیم مانند بخش قبل، برای بررسی عملکرد آن، دستور ping را اجرا کنیم و ببینیم در پاسخ PONG دریافت خواهیم کرد یا خیر.
 
+## تنظیمات
 
+تنظیمات ردیس بر روی فایل redis.conf در دسترسند. البته علاوه بر این فایل، می‌توان از دستورات CONFIG GET و CONFIG SET برای تغییر و یا بررسی تنظیمات استفاده کرد.
 
+```
+redis 127.0.0.1:6379> CONFIG GET CONFIG_SETTING_NAME
+redis 127.0.0.1:6379> CONFIG SET CONFIG_SETTING_NAME NEW_CONFIG_VALUE
+```
 
+برای حالت GET، می‌توان جای CONFIG_SETTING_NAME، * بذاریم تا تمام تنظیمات را ببینیم.
+
+یک مثال از استفاده‌ی این دستورات به شکل زیر خواهد بود:
+
+```
+redis 127.0.0.1:6379> CONFIG SET loglevel "notice" 
+OK 
+redis 127.0.0.1:6379> CONFIG GET loglevel  
+1) "loglevel" 
+2) "notice" 
+```
