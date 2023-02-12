@@ -61,7 +61,7 @@ connection.query(query, 5, function(error, article){
 ### مثال از پیاده‌سازی با استفاده از Sequelize<sup>[۲]</sup>
 در این بخش، به بیان جزئیات کد زیر و نحوه‌ی استفاده از `Sequelize`
 نمی‌پردازیم و آن را به بخش‌های جلوتر موکول می‌کنیم. فعلاً صرفاً می‌خواهیم یک مثال برای انتقال شهودی از تفاوت استفاده  و عدم استفاده
-از  آن را بیان کنیم. کافی است در کد جاوااسکریبپ خود بنویسیم:
+از  آن را بیان کنیم. کافی است در کد جاوااسکریپت خود بنویسیم:
 ```js
 // instantiate sequelize
 const Sequelize = require('sequelize');
@@ -696,12 +696,15 @@ Post.findAll({
 |Table | جدول|
 |Framework|چارچوب|
 |DataType|داده‌گونه|
+|Query|درخواست|
 |Relational (DataBase)|<span dir="rtl">(پایگاه‌داده‌ی) رابطه‌ای</span>|
 |Sequelize | سیکوئلایز|
+|Object|شئ|
 |(function) call|فراخوانی (تابع)|
 |Primary Key|کلید اوّلیه|
 |Foreign Key|کلید بیرونی|
 |Option|گزینه|
+|Module|ماژول|
 |OpenSource|متن‌باز|
 |Model | مدل|
 |Parameter | مشخّصه|
