@@ -289,7 +289,7 @@ sequelize.define('User', {
 
 <div dir="rtl" align="right">
 
-- حالت ۱ : `User.sync()` : اگر جدول وجود ندارد، آن را می‌سازد و اگر هست، کاری نمی‌کند.
+- حالت ۱ : <span dir='ltr'>`User.sync()`</span> : اگر جدول وجود ندارد، آن را می‌سازد و اگر هست، کاری نمی‌کند.
 - حالت ۲ : `User.sync({force: true})` : (اگر جدول وجود دارد نخست آن را دور می‌ریزد و سپس دوباره از نو) جدول را می‌سازد.
 - حالت ۳ : `User.sync({alter: true})` : بررسی می‌کند و تغییرات لازم را
 در پایگاه‌داده اعمال می‌کند.
@@ -567,7 +567,7 @@ SELECT * FROM users;
 ```
 و برای گزیدن برخی از ستون‌ها، کافی است همانند مثال زیر در ورودی تابع `findAll` یک شئ شمال آرایه‌ای به نام `attributes` بدهیم که نام
 ستون‌های بازیابی شونده را تعیین می‌کند.
-```
+```js
 User.findAll({
   attributes: ['fname', 'lname', 'username', 'id']
 });
@@ -660,7 +660,7 @@ Post.findAll({
       // In Postgres, Op.like/Op.iLike/Op.notLike can be combined to Op.any:
       [Op.like]: { [Op.any]: ['cat', 'hat'] }  // LIKE ANY (ARRAY['cat', 'hat'])
 
-      // There are more postgres-only range operators, see below
+      // There are more postgres-only range operators, see the reference
     }
   }
 });
