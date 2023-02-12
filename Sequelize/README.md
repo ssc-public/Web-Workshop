@@ -30,7 +30,7 @@ Sequelize در ادامه می‌بینیم و شما می‌توانید مقا
 ### مثال پیاده‌سازی عادّی (بی استفاده از Sequelize)<sup>[۲]</sup>
 نخست باید در برنامه‌ی پایگاه داده، این جدول را ایجاد کنیم.
 این کار را با یک درخواست SQL انجام می‌دهیم.
-``` postgresql
+``` sql
 -- create a database table
 CREATE TABLE articles(
     id          INT AUTO_INCREMENT,
@@ -684,7 +684,7 @@ Post.findAll({
 ## واژه‌نامه
 <!-- TODO: مرتّب‌سازی و افزودن فارسی به انگلیسی و انگلیسی به فارسی -->
 
-<div dir="rtl" align="center">
+<div dir="ltr" align="center">
 
 |English | فارسی|
 |:--- | ---:|
