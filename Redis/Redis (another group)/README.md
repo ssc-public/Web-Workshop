@@ -466,7 +466,14 @@ redis-benchmark [option] [option value]
 
 
 
+برای مثال می‌توان داشت:
 
+```
+redis-benchmark -h 127.0.0.1 -p 6379 -t set,lpush -n 100000 -q  
+
+SET: 146198.83 requests per second 
+LPUSH: 145560.41 requests per second  
+```
 
 
 
