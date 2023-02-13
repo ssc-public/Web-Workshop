@@ -264,9 +264,9 @@ Reading messages... (press Ctrl-C to quit)
 حال دو کلاینت، پیام‌هایی را در کانال chat منتشر می‌کنند و کلاینت فوق که اشتراک chat را داشت، در حال دریافت پیام است.
 
 ```
-redis 127.0.0.1:6379> PUBLISH chat "Redis is great "  
+redis 127.0.0.1:6379> PUBLISH chat "Redis is great"  
 (integer) 1  
-redis 127.0.0.1:6379> PUBLISH redisChat "Learning redis step by step
+redis 127.0.0.1:6379> PUBLISH redisChat "Learning redis step by step"
 (integer) 1   
 1) "message" 
 2) "chat" 
@@ -388,6 +388,97 @@ OK
 redis 127.0.0.1:6379> PING 
 PONG
 ```
+
+## پشتیبان (backup)
+
+از دستور زیر برای ایجاد نسخه‌ی پشتیبان از پایگاه‌داده‌ی فعلی ردیس استفاده می‌شود. 
+
+```
+127.0.0.1:6379> SAVE  
+OK 
+```
+
+بعد از اجرای این دستور، یک فایل dump.rdb در directory ردیس ایجاد می‌شود.
+
+برای دسترسی به directory ردیس، دستور زیر را اجرا می‌کنیم:
+
+```
+127.0.0.1:6379> CONFIG get dir  
+1) "dir" 
+2) "/user/tutorial/redis-2.8.13/src" 
+```
+
+## سنجش (benchmark)
+
+سنجش در ردیس، ابزاری برای بررسی عملکرد ردیس با اجرای همزمان چندین دستور است.
+
+```
+redis-benchmark [option] [option value] 
+```
+
+چند نمونه از گزینه‌های موجود برای سنجش ردیس عبارتند از:
+
+<div align='center'>
+    <table>
+        <thead>
+            <tr>
+                <th align='center'>گزینه</th>
+                <th align='center'>توضیح</th>
+                <th align='center'>مقدار پیش‌فرض</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>-h</code></td>
+                <td align='right'>نام host سرور را مشخص می‌کنیم.</td>
+                <td align='left'>127.0.0.1</td>
+            </tr>
+            <tr>
+                <td><code>-p</code></td>
+                <td align='right'>مشخص می‌کنیم به چه portای وصل شویم.</td>
+                <td align='left'>6379</td>
+            </tr>
+            <tr>
+                <td><code>-t</code></td>
+                <td align='right'>فقط لیست تست‌هایی که مشخص شده را اجرا کند.</td>
+                <td align='left'></td>
+            </tr>
+            <tr>
+                <td><code>-n</code></td>
+                <td align='right'>مجموع تعداد درخواست‌ها</td>
+                <td align='left'>10000</td>
+            </tr>
+            <tr>
+                <td><code>-q</code></td>
+                <td align='right'>فقظ مقدارهای کوئری بر ثانیه را نشان می‌دهد.</td>
+                <td align='left'></td>
+            </tr>
+            <tr>
+                <td><code>--csv</code></td>
+                <td align='right'>ذخیره خروجی در یک فایل csv</td>
+                <td align='left'></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
