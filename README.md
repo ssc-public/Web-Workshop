@@ -1,4 +1,3 @@
-
 <h1 align="center">
 کارگاه برنامه‌سازی وب دانشگاه صنعتی شریف
 </h1>
@@ -45,7 +44,7 @@
   - JavaScript Frameworks (React, Vue, Angular, ...)
 ```
 </div>
- 
+
 
 
 # Back-end developer
@@ -149,7 +148,10 @@
 - [محمدهومان کشوری](https://github.com/bigwhoman)
 - [سجاد فقفور مغربی](https://github.com/sfmqrb)
 - [سیدپارسا نشایی](https://github.com/spneshaei)
-
+- [آرش یادگاری](https://github.com/Arash1381-y)
+- [ایمان محمدی](https://github.com/Imanm02)
+- [هستی کریمی](https://github.com/HastiKarimi)
+    
 # نحوه مشارکت
 
 - ابتدا باید این ریپازیتوری را fork کنید.
@@ -166,7 +168,7 @@ Type: {Dev, Author}
 ```
 </div>
  نام فولدرها یکی از فولدرهای ریپازیتوری است و منظور از Type، توسعه‌ی بخش پیاده‌سازی (Dev) و یا بخش آموزش (Author) است. 
-  
+
   برای نمونه یک کامیت در ادامه آمده است.
 
 <div dir="ltr">
