@@ -2,7 +2,7 @@
 
 # Webpack
 
-<p align=center><img src="./images/icon.svg" width="25%" height="25%"></p>
+<p align=center><img src="./images/icon.jpeg" width="80%" height="80%"></p>
 
 ## فهرست مطالب
 - [مقدمه](#مقدمه)
