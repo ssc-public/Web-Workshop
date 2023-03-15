@@ -41,7 +41,7 @@ browser
 
 </br>
 
-<p align=center><img src="./images/Webpack-prosite.jpg" ></p>
+<p align=center><img src="./images/webpack-prosite.jpg"></p>
 
 ## تاریخچه
 <p align=right style="text-align: justify;">
