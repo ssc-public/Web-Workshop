@@ -11,20 +11,13 @@
     
 </p>
 
-
-
-
-
-
-
-
 <body dir="rtl">
     
 ## مقدمه
 
 <span dir = "rtl">Jest</span>
- یک framework بر پایه جاواسکریپت است که توسط فیس‌بوک تولید شده و می‌توان هرگونه برنامه بر پایه جاواسکریپت مانند React و React Native را با آن تست کرد. Jest کار نوشتن تست برای Frontend را بسیار برای توسعه‌دهندگان سریع‌تر و راحت‌‌تر کرده.
-    
+یک framework بر پایه جاواسکریپت است که توسط فیس‌بوک تولید شده و می‌توان هرگونه برنامه بر پایه جاواسکریپت مانند React و React Native را با آن تست کرد. Jest کار نوشتن تست برای Frontend را بسیار برای توسعه‌دهندگان سریع‌تر و راحت‌‌تر کرده.
+
 از Jest می‌توان در زمینه‌هایی فراتر از Frontend استفاده کرد. قابلیت‌های Jest دیگر جنبه‌های جاواسکریپت، از جمله browser rendering، را نیز در بر دارد. با داشتن ویژگی‌هایی نظیر ماژول‌های auto-mocking، coverage thresholds و mapperها، Jest تبدیل به یک ابزار تست full-stack بسیار معروف در دسترس شده‌است.
 
 <h2>
@@ -707,7 +700,6 @@ test('the data is peanut butter', () => {
 
  </div>
 
-
 <div dir="rtl">
 
 ## تنظیم و جمع آوری
@@ -719,26 +711,17 @@ Jest توابع کمک کننده ای برای این کار ها در اختی
 
 اگر کارهایی هست که مکررا باید قبل و بعد تست ها انجام دهید، میتوانید از قلاب های
 `beforeEach` و `afterEach`
-استفاده کنید. 
+استفاده کنید.
 
 <span dir="ltr"></span>
 
 مثلا، فرض کنید که چند تست دارید که قرار است با یک پایگاه داده از شهرها در تعامل باشد.
-شما باید قبل از هر تست تابع 
+شما باید قبل از هر تست تابع
 <span dir="ltr">initializeCityDatabase() </span>
-را صدا بزنید، و وقتی که تست انجام شد، باید تابع 
+را صدا بزنید، و وقتی که تست انجام شد، باید تابع
 <span dir="ltr">clearCityDatabase()</span>
 را صدا بزنید تا تغییرات انجام شده در تست را پاک کند.
 این کار را میتوانید به صورت زیر انجام دهید:
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
 <div dir="ltr">
 
@@ -751,20 +734,21 @@ afterEach(() => {
   clearCityDatabase();
 });
 
-test('city database has Vienna', () => {
-  expect(isCity('Vienna')).toBeTruthy();
+test("city database has Vienna", () => {
+  expect(isCity("Vienna")).toBeTruthy();
 });
 
-test('city database has San Juan', () => {
-  expect(isCity('San Juan')).toBeTruthy();
+test("city database has San Juan", () => {
+  expect(isCity("San Juan")).toBeTruthy();
 });
 ```
+
 </div>
 
 `beforeEach` و `afterEach`
-میتوانند همانند تست ها، کد آسنکرون را اجرا کنند - 
-یعنی میتوانند یا یک پارامتر 
-done 
+میتوانند همانند تست ها، کد آسنکرون را اجرا کنند -
+یعنی میتوانند یا یک پارامتر
+done
 بگیرند یا یک promise برگردانند.
 به عنوان مثال اگر تابع `initializeCityDatabase` یک promise برگرداند که وقتی دیتابیس شروع به کار کرد reslove شود،
 ما باید promise را برگردانیم:
@@ -776,15 +760,16 @@ beforeEach(() => {
   return initializeCityDatabase();
 });
 ```
+
 </div>
 
-### تنظیمات یک-باره 
+### تنظیمات یک-باره
 
 در بعضی از حالات، لازم است که یک بار تنظیمات را در ابتدای فایل انجام دهیم.
 این کار میتواند دردسرزا باشد مخصوصا اگر تنظیمات آسنکرون باشند، چون نمیتوان به صورت inline آنها را انجام داد.
 در این شرایط میتوان از قلاب های `beforeAll` و `afterAll` استفاده کرد.
 
-به عنوان مثال اگز هر توابع `initializeCityDatabase` و `clearCityDatabase`  هردو promise برگرداندند،
+به عنوان مثال اگز هر توابع `initializeCityDatabase` و `clearCityDatabase` هردو promise برگرداندند،
 و پایگاه داده شهر ها میتوانست بین تست ها مشترکا استفاده شود، میتوانیم کد تست را به صورت زیر تغییر دهیم:
 
 <div dir="ltr">
@@ -798,17 +783,18 @@ afterAll(() => {
   return clearCityDatabase();
 });
 
-test('city database has Vienna', () => {
-  expect(isCity('Vienna')).toBeTruthy();
+test("city database has Vienna", () => {
+  expect(isCity("Vienna")).toBeTruthy();
 });
 
-test('city database has San Juan', () => {
-  expect(isCity('San Juan')).toBeTruthy();
+test("city database has San Juan", () => {
+  expect(isCity("San Juan")).toBeTruthy();
 });
 ```
+
 </div>
 
-### دید 
+### دید
 
 قلاب های سظح بالای `before` و `after` بر روی تمام تست های فایل اعمال میشوند.
 قلاب هایی که در بلوک `descibe` تعریف شده باشند تنها بر روی تست هایی که در همان بلوک `describe` هستند تعریف میشوند.
@@ -824,52 +810,52 @@ beforeEach(() => {
   return initializeCityDatabase();
 });
 
-test('city database has Vienna', () => {
-  expect(isCity('Vienna')).toBeTruthy();
+test("city database has Vienna", () => {
+  expect(isCity("Vienna")).toBeTruthy();
 });
 
-test('city database has San Juan', () => {
-  expect(isCity('San Juan')).toBeTruthy();
+test("city database has San Juan", () => {
+  expect(isCity("San Juan")).toBeTruthy();
 });
 
-describe('matching cities to foods', () => {
+describe("matching cities to foods", () => {
   // Applies only to tests in this describe block
   beforeEach(() => {
     return initializeFoodDatabase();
   });
 
-  test('Vienna <3 veal', () => {
-    expect(isValidCityFoodPair('Vienna', 'Wiener Schnitzel')).toBe(true);
+  test("Vienna <3 veal", () => {
+    expect(isValidCityFoodPair("Vienna", "Wiener Schnitzel")).toBe(true);
   });
 
-  test('San Juan <3 plantains', () => {
-    expect(isValidCityFoodPair('San Juan', 'Mofongo')).toBe(true);
+  test("San Juan <3 plantains", () => {
+    expect(isValidCityFoodPair("San Juan", "Mofongo")).toBe(true);
   });
 });
 ```
+
 </div>
 
 توجه داشته باشید که `beforeEach` در سطح بالا، قبل از `beforeEach` داخل بلوک `descibe` اجر میشود.
 کد زیر میتواند ترتیب اجرای قلاب ها را به خوبی نمایش دهد:
 
-
 <div dir="ltr">
 
 ```javascript
-beforeAll(() => console.log('1 - beforeAll'));
-afterAll(() => console.log('1 - afterAll'));
-beforeEach(() => console.log('1 - beforeEach'));
-afterEach(() => console.log('1 - afterEach'));
+beforeAll(() => console.log("1 - beforeAll"));
+afterAll(() => console.log("1 - afterAll"));
+beforeEach(() => console.log("1 - beforeEach"));
+afterEach(() => console.log("1 - afterEach"));
 
-test('', () => console.log('1 - test'));
+test("", () => console.log("1 - test"));
 
-describe('Scoped / Nested block', () => {
-  beforeAll(() => console.log('2 - beforeAll'));
-  afterAll(() => console.log('2 - afterAll'));
-  beforeEach(() => console.log('2 - beforeEach'));
-  afterEach(() => console.log('2 - afterEach'));
+describe("Scoped / Nested block", () => {
+  beforeAll(() => console.log("2 - beforeAll"));
+  afterAll(() => console.log("2 - afterAll"));
+  beforeEach(() => console.log("2 - beforeEach"));
+  afterEach(() => console.log("2 - afterEach"));
 
-  test('', () => console.log('2 - test'));
+  test("", () => console.log("2 - test"));
 });
 
 // 1 - beforeAll
@@ -885,12 +871,13 @@ describe('Scoped / Nested block', () => {
 // 2 - afterAll
 // 1 - afterAll
 ```
+
 </div>
 
-### ترتیب اجرا 
+### ترتیب اجرا
 
 <span dir = "rtl"> Jest </span>
-، تمام هندلر های describe یک فایل تست را 
+، تمام هندلر های describe یک فایل تست را
 <i>قبل</i>
 از تست ها اجرا میکند.
 به همین دلیل، بهتر است که تنظیم و جمع آوری تست ها در هندلر های `before` و `after` انجام شود،
@@ -900,30 +887,29 @@ describe('Scoped / Nested block', () => {
 
 برای درک بهتر این ترتیب، به تست زیر دقت کنید:
 
-
 <div dir="ltr">
 
 ```javascript
-describe('describe outer', () => {
-  console.log('describe outer-a');
+describe("describe outer", () => {
+  console.log("describe outer-a");
 
-  describe('describe inner 1', () => {
-    console.log('describe inner 1');
+  describe("describe inner 1", () => {
+    console.log("describe inner 1");
 
-    test('test 1', () => console.log('test 1'));
+    test("test 1", () => console.log("test 1"));
   });
 
-  console.log('describe outer-b');
+  console.log("describe outer-b");
 
-  test('test 2', () => console.log('test 2'));
+  test("test 2", () => console.log("test 2"));
 
-  describe('describe inner 2', () => {
-    console.log('describe inner 2');
+  describe("describe inner 2", () => {
+    console.log("describe inner 2");
 
-    test('test 3', () => console.log('test 3'));
+    test("test 3", () => console.log("test 3"));
   });
 
-  console.log('describe outer-c');
+  console.log("describe outer-c");
 });
 
 // describe outer-a
@@ -935,6 +921,7 @@ describe('describe outer', () => {
 // test 2
 // test 3
 ```
+
 </div>
     
 <span dir = "rtl">Jest</span>
@@ -942,23 +929,22 @@ describe('describe outer', () => {
 توجه داشته باشید که قلاب های `after` دیدی که در آن قرار دارند، زودتر فراخوانی می شوند.
 به طور مثال، به صورت زیر می توانید منابعی را که به یک دیگر نیاز دارند تنظیم و جمع آوری کنید:
 
-
 <div dir="ltr">
 
 ```javascript
-beforeEach(() => console.log('connection setup'));
-beforeEach(() => console.log('database setup'));
+beforeEach(() => console.log("connection setup"));
+beforeEach(() => console.log("database setup"));
 
-afterEach(() => console.log('database teardown'));
-afterEach(() => console.log('connection teardown'));
+afterEach(() => console.log("database teardown"));
+afterEach(() => console.log("connection teardown"));
 
-test('test 1', () => console.log('test 1'));
+test("test 1", () => console.log("test 1"));
 
-describe('extra', () => {
-  beforeEach(() => console.log('extra database setup'));
-  afterEach(() => console.log('extra database teardown'));
+describe("extra", () => {
+  beforeEach(() => console.log("extra database setup"));
+  afterEach(() => console.log("extra database teardown"));
 
-  test('test 2', () => console.log('test 2'));
+  test("test 2", () => console.log("test 2"));
 });
 
 // connection setup
@@ -975,32 +961,32 @@ describe('extra', () => {
 // database teardown
 // connection teardown
 ```
+
 </div>
 
 ### توصیه های عمومی
 
 اگر تستی رد می شود، قبل از هر کاری باید چک کنیم که آیا آن تست وقتی به تنهایی اجرا شود هم رد می شود یا خیر.
-برای این که فقط یک تست را اجرا کنیم، میتوانیم دستور `test` را به طور موقت با دستور  `test.only` جایگزین کنیم:
-
+برای این که فقط یک تست را اجرا کنیم، میتوانیم دستور `test` را به طور موقت با دستور `test.only` جایگزین کنیم:
 
 <div dir="ltr">
 
 ```javascript
-test.only('this will be the only test that runs', () => {
+test.only("this will be the only test that runs", () => {
   expect(true).toBe(false);
 });
 
-test('this test will not run', () => {
-  expect('A').toBe('A');
+test("this test will not run", () => {
+  expect("A").toBe("A");
 });
 ```
+
 </div>
 
 اگر تستی دارید که معمولا وقتی در کنار تست های دیگر اجرا می شود، رد می شود، ولی وقتی به تنهایی آن را اجرا کنید رد نمی شود،
 میتوان حدس زد که تست دیگری وجود دارد که با آن تست تداخل دارد.
 این مشکل را معمولا میتوان با پاک کردن برخی داده ها که با `beforeEach` مشترک است رفع کرد.
-اگر مطمپن نیستید که آیا چنین تداخلی وجود دارد یا خیر، میتوانید `beforeEach`، لاگ بگیرید 
-
+اگر مطمپن نیستید که آیا چنین تداخلی وجود دارد یا خیر، میتوانید `beforeEach`، لاگ بگیرید
 
 ## توابع قلابی
 
@@ -1025,6 +1011,7 @@ export function forEach(items, callback) {
   }
 }
 ```
+
 </div>
 
 برای تست کردن این تابع می توانیم از یک تابع قلابی استفاده کنیم، سپس بررسی کنیم که آیا callback به درستی صدا زده شده یا خیر:
@@ -1032,11 +1019,11 @@ export function forEach(items, callback) {
 <div dir="ltr">
 
 ```javascript
-const forEach = require('./forEach');
+const forEach = require("./forEach");
 
-const mockCallback = jest.fn(x => 42 + x);
+const mockCallback = jest.fn((x) => 42 + x);
 
-test('forEach mock function', () => {
+test("forEach mock function", () => {
   forEach([0, 1], mockCallback);
 
   // The mock function was called twice
@@ -1052,11 +1039,12 @@ test('forEach mock function', () => {
   expect(mockCallback.mock.results[0].value).toBe(42);
 });
 ```
+
 </div>
 
 ### صفت mock.
- 
-تمام توابع قلابی یک صفت ویژه به نام `mock.` دارند که اطلاعاتی در مورد این که تابع چگونه صدا زده شده و 
+
+تمام توابع قلابی یک صفت ویژه به نام `mock.` دارند که اطلاعاتی در مورد این که تابع چگونه صدا زده شده و
 چیزی برگردانده را در خود نگه می دارد. همچنین این صفت، مقدار `this` را برای هر فراخوانی نگه می دارد.
 پس میتوان چیز هایی مانند مثال زیر را بررسی کرد:
 
@@ -1075,6 +1063,7 @@ bound();
 console.log(myMock2.mock.contexts);
 // > [ <b> ]
 ```
+
 </div>
 
 همان طور که گفته شد، با استفاده از این ويژگی می توان نحوه صدا زده شدن توابع، ایجاد شدن آنها و نتیچه ی برگشته شده از آنها را بررسی کرد:
@@ -1086,13 +1075,13 @@ console.log(myMock2.mock.contexts);
 expect(someMockFunction.mock.calls).toHaveLength(1);
 
 // The first arg of the first call to the function was 'first arg'
-expect(someMockFunction.mock.calls[0][0]).toBe('first arg');
+expect(someMockFunction.mock.calls[0][0]).toBe("first arg");
 
 // The second arg of the first call to the function was 'second arg'
-expect(someMockFunction.mock.calls[0][1]).toBe('second arg');
+expect(someMockFunction.mock.calls[0][1]).toBe("second arg");
 
 // The return value of the first call to the function was 'return value'
-expect(someMockFunction.mock.results[0].value).toBe('return value');
+expect(someMockFunction.mock.results[0].value).toBe("return value");
 
 // The function was called with a certain `this` context: the `element` object.
 expect(someMockFunction.mock.contexts[0]).toBe(element);
@@ -1102,11 +1091,12 @@ expect(someMockFunction.mock.instances.length).toBe(2);
 
 // The object returned by the first instantiation of this function
 // had a `name` property whose value was set to 'test'
-expect(someMockFunction.mock.instances[0].name).toBe('test');
+expect(someMockFunction.mock.instances[0].name).toBe("test");
 
 // The first argument of the last call to the function was 'test'
-expect(someMockFunction.mock.lastCall[0]).toBe('test');
+expect(someMockFunction.mock.lastCall[0]).toBe("test");
 ```
+
 </div>
 
 ### نتیجه قلابی تابع
@@ -1120,16 +1110,17 @@ const myMock = jest.fn();
 console.log(myMock());
 // > undefined
 
-myMock.mockReturnValueOnce(10).mockReturnValueOnce('x').mockReturnValue(true);
+myMock.mockReturnValueOnce(10).mockReturnValueOnce("x").mockReturnValue(true);
 
 console.log(myMock(), myMock(), myMock(), myMock());
 // > 10, 'x', true, true
 ```
+
 </div>
 
-توابع قلابی در کدهایی که به طور مستمر پارامتر ها را به تابع تحویل می دهند هم مثمر ثمر هستند. 
+توابع قلابی در کدهایی که به طور مستمر پارامتر ها را به تابع تحویل می دهند هم مثمر ثمر هستند.
 برای کد هایی با این ویژگی، تست نوشتن راحت تر است چون لازم نیست برای شبیه سازی عمل کرد کد کار زیادی بکنیم،
- در عوض، مقداری که تابع قرار است برگرداند را در همانجا که لازم داریم به طور مستقیم وارد کد می کنیم:
+در عوض، مقداری که تابع قرار است برگرداند را در همانجا که لازم داریم به طور مستقیم وارد کد می کنیم:
 
 <div dir="ltr">
 
@@ -1140,76 +1131,79 @@ const filterTestFn = jest.fn();
 // and `false` for the second call
 filterTestFn.mockReturnValueOnce(true).mockReturnValueOnce(false);
 
-const result = [11, 12].filter(num => filterTestFn(num));
+const result = [11, 12].filter((num) => filterTestFn(num));
 
 console.log(result);
 // > [11]
 console.log(filterTestFn.mock.calls[0][0]); // 11
 console.log(filterTestFn.mock.calls[1][0]); // 12
 ```
+
 </div>
 
 در اکثر استفاده های واقعی، شما می خواهید که یک تابع قلابی از کامپوننتی وابسته داشته باشید و آن را تنظیم کنید، ولی روش کار مشابه همین کار است.
 در این شرایط بهتر است تا جای ممکن در توابعی که به طور مستقیم آن ها را تست نمی کنید، هیچ گونه منطقی پیاده نکنید.
 
-### ماژول قلابی 
+### ماژول قلابی
 
-فرض کنید کلاسی داریم که کاربران را از API فراخوانی می کند. این کلاس با استفاده از 
+فرض کنید کلاسی داریم که کاربران را از API فراخوانی می کند. این کلاس با استفاده از
 [axios](https://github.com/axios/axios)
- API را صدا می کند و صفت 
+API را صدا می کند و صفت
 `data` که شامل تمام کاربران است را بر می گرداند:
 
 <div dir="ltr">
 
 ```javascript
 // users.js:
-import axios from 'axios';
+import axios from "axios";
 
 class Users {
   static all() {
-    return axios.get('/users.json').then(resp => resp.data);
+    return axios.get("/users.json").then((resp) => resp.data);
   }
 }
 
 export default Users;
 ```
+
 </div>
 
 حال، برای این که این تابع را بدون وصل شدن به API
 (که باعث کند و نامطمین شدن تست ها می شود)،
-می توانیم از تابع 
+می توانیم از تابع
 <span dir = "ltr">
 `jest.mock(...)`
 </span>
 استفاده کنیم تا یک نمونه قلابی از ماژول axios داشته باشیم.
 
-با داشتن ماژول قلابی، می توانیم یک mockResolvedValue برای 
-<span dir = "ltr"> `.get`</span> 
+با داشتن ماژول قلابی، می توانیم یک mockResolvedValue برای
+<span dir = "ltr"> `.get`</span>
 داشته باشیم که بتوانیم نتیجه تست را با آن مقایسه کنیم.
-در حقیقت، می خواهیم که 
-<span dir = "ltr"> `axios.get('/users.json')`</span> 
+در حقیقت، می خواهیم که
+<span dir = "ltr"> `axios.get('/users.json')`</span>
 یک پاسخ قلابی برگرداند.
 
 <div dir="ltr">
 
 ```javascript
 // users.test.js:
-import axios from 'axios';
-import Users from './users';
+import axios from "axios";
+import Users from "./users";
 
-jest.mock('axios');
+jest.mock("axios");
 
-test('should fetch users', () => {
-  const users = [{name: 'Bob'}];
-  const resp = {data: users};
+test("should fetch users", () => {
+  const users = [{ name: "Bob" }];
+  const resp = { data: users };
   axios.get.mockResolvedValue(resp);
 
   // or you could use the following depending on your use case:
   // axios.get.mockImplementation(() => Promise.resolve(resp))
 
-  return Users.all().then(data => expect(data).toEqual(users));
+  return Users.all().then((data) => expect(data).toEqual(users));
 });
 ```
+
 </div>
     
 ### partial های تقلبی
@@ -1220,62 +1214,61 @@ test('should fetch users', () => {
 
 ```javascript
 // foo-bar-baz.js:
-export const foo = 'foo';
-export const bar = () => 'bar';
-export default () => 'baz';
+export const foo = "foo";
+export const bar = () => "bar";
+export default () => "baz";
 ```
+
 </div>
-
-
 
 <div dir="ltr">
 
 ```javascript
 //test.js
-import defaultExport, {bar, foo} from '../foo-bar-baz';
+import defaultExport, { bar, foo } from "../foo-bar-baz";
 
-jest.mock('../foo-bar-baz', () => {
-  const originalModule = jest.requireActual('../foo-bar-baz');
+jest.mock("../foo-bar-baz", () => {
+  const originalModule = jest.requireActual("../foo-bar-baz");
 
   //Mock the default export and named export 'foo'
   return {
     __esModule: true,
     ...originalModule,
-    default: jest.fn(() => 'mocked baz'),
-    foo: 'mocked foo',
+    default: jest.fn(() => "mocked baz"),
+    foo: "mocked foo",
   };
 });
 
-test('should do a partial mock', () => {
+test("should do a partial mock", () => {
   const defaultExportResult = defaultExport();
-  expect(defaultExportResult).toBe('mocked baz');
+  expect(defaultExportResult).toBe("mocked baz");
   expect(defaultExport).toHaveBeenCalled();
 
-  expect(foo).toBe('mocked foo');
-  expect(bar()).toBe('bar');
+  expect(foo).toBe("mocked foo");
+  expect(bar()).toBe("bar");
 });
 ```
+
 </div>
 
-### پیاده سازی قلابی 
+### پیاده سازی قلابی
 
 گاهی وقت ها نیاز است که به جای تغییر دادن مقدار بازگشتی تابع تقلبی، پیاده سازی دیگری به جای آن بگذاریم.
-این کار را می توان با 
-<span dir = "ltr"> </span> 
-یا 
+این کار را می توان با
+<span dir = "ltr"> </span>
+یا
 بر روی توابع قلابی انجام داد.
 
 <div dir="ltr">
 
 ```javascript
-const myMockFn = jest.fn(cb => cb(null, true));
+const myMockFn = jest.fn((cb) => cb(null, true));
 
 myMockFn((err, val) => console.log(val));
 // > true
 ```
+
 </div>
-
-
 
 <div dir="ltr">
 
@@ -1285,6 +1278,7 @@ module.exports = function () {
   // some implementation;
 };
 ```
+
 </div>
 
 از `mockImplementation` می توان برای تابع قلابی که قرار است در یک ماژول دیگر ساخته شود، پیاده سازی پیش فرض تعیین کرد.
@@ -1293,14 +1287,15 @@ module.exports = function () {
 
 ```javascript
 // test.js:
-jest.mock('../foo'); // this happens automatically with automocking
-const foo = require('../foo');
+jest.mock("../foo"); // this happens automatically with automocking
+const foo = require("../foo");
 
 // foo is a mock function
 foo.mockImplementation(() => 42);
 foo();
 // > 42
 ```
+
 </div>
 
 وقتی نیاز است که رفتار تابع تقلبی را در شرایطی پیچیده بررسی کنید، مثلا وقتی که چند بار صدا زده شدن تابع چند خروجی متفاوت داشته باشد،
@@ -1311,8 +1306,8 @@ foo();
 ```javascript
 const myMockFn = jest
   .fn()
-  .mockImplementationOnce(cb => cb(null, true))
-  .mockImplementationOnce(cb => cb(null, false));
+  .mockImplementationOnce((cb) => cb(null, true))
+  .mockImplementationOnce((cb) => cb(null, false));
 
 myMockFn((err, val) => console.log(val));
 // > true
@@ -1320,25 +1315,27 @@ myMockFn((err, val) => console.log(val));
 myMockFn((err, val) => console.log(val));
 // > false
 ```
+
 </div>
 
-وقتی تمام پیاده سازی هایی که با `mockImplementationOnce` تعریف کرده ایم تمام شوند، از دفعه بعد، پیاده سازی پیش فرض که با 
+وقتی تمام پیاده سازی هایی که با `mockImplementationOnce` تعریف کرده ایم تمام شوند، از دفعه بعد، پیاده سازی پیش فرض که با
 `jest.fn` (در صورتی که وجود داشته باشد):
 
 <div dir="ltr">
 
 ```javascript
 const myMockFn = jest
-  .fn(() => 'default')
-  .mockImplementationOnce(() => 'first call')
-  .mockImplementationOnce(() => 'second call');
+  .fn(() => "default")
+  .mockImplementationOnce(() => "first call")
+  .mockImplementationOnce(() => "second call");
 
 console.log(myMockFn(), myMockFn(), myMockFn(), myMockFn());
 // > 'first call', 'second call', 'default', 'default'
 ```
+
 </div>
 
-برای حالاتی که متد ها به صورت زنجیره ای فراخوانی می شوند (و همواره نیاز دارند که `this`) را برگردانند، می توان به راحتی از 
+برای حالاتی که متد ها به صورت زنجیره ای فراخوانی می شوند (و همواره نیاز دارند که `this`) را برگردانند، می توان به راحتی از
 <span dir="ltr">`.mockReturnThis()`</span>
 استفاده کرد که در API ارایه شده برای همه توابع تقلبی وجود دارد.
 
@@ -1357,15 +1354,16 @@ const otherObj = {
   }),
 };
 ```
+
 </div>
 
-### نام های تقلبی 
+### نام های تقلبی
 
-اگر بخواهید، می توانید برای توابع قلابی، نام بگذارید. این نام به جای 
+اگر بخواهید، می توانید برای توابع قلابی، نام بگذارید. این نام به جای
 <span dir="ltr">`jest.fn`</span>
 در خروجی error ها نشان داده خواهد شد.
 اگر می خواهید به راحتی تابع قلابی که خطا می دهد را شناسایی کنید، از
-<span dir="ltr"> ```.mockName()```</span>
+<span dir="ltr"> `.mockName()`</span>
 استفاده کنید.
 
 <div dir="ltr">
@@ -1373,10 +1371,11 @@ const otherObj = {
 ```javascript
 const myMockFn = jest
   .fn()
-  .mockReturnValue('default')
-  .mockImplementation(scalar => 42 + scalar)
-  .mockName('add42');
+  .mockReturnValue("default")
+  .mockImplementation((scalar) => 42 + scalar)
+  .mockName("add42");
 ```
+
 </div>
 
 ### Custom Matchers
@@ -1398,13 +1397,13 @@ expect(mockFunc).toHaveBeenLastCalledWith(arg1, arg2);
 // All calls and the name of the mock is written as a snapshot
 expect(mockFunc).toMatchSnapshot();
 ```
+
 </div>
 
 با استفاده از این mathcer ها می توان به راحتی صفت
 <span dir="ltr">`.mock`</span>
 را بررسی کرد.
 البته اگر می خواهید چیز خاصی را چک کنید یا به این نحوه نگارش عادت ندارید، می توانید این کار را به صورت دستی انجام دهید.
-
 
 <div dir="ltr">
 
@@ -1428,345 +1427,13 @@ expect(mockFunc.mock.calls[mockFunc.mock.calls.length - 1][0]).toBe(42);
 // A snapshot will check that a mock was invoked the same number of times,
 // in the same order, with the same arguments. It will also assert on the name.
 expect(mockFunc.mock.calls).toEqual([[arg1, arg2]]);
-expect(mockFunc.getMockName()).toBe('a mock name');
+expect(mockFunc.getMockName()).toBe("a mock name");
 ```
+
 </div>
 
 برای مشاهده لیست کاملی از matcher ها، می توانید به
 [مستندات](https://jestjs.io/docs/expect)
 مراجعه کنید.
 
-## زمانبندهای قلابی
-
-توابع زمانبند موجود در جاواسکریپت (setTimeout، setInterval،...) وابسته به گذر واقعی زمان هستند و عملکرد آنها برای محیط تست مناسب نیست. Jest می‌تواند این توابع را با توابع دیگری که می‌توانند گذر زمان را کنترل کنند جایگزین کند. به این توابع جایگزین به اصطلاح "fake timer" می‌گویند.
-
-استفاده از این توابع با استفاده از `jest.useFakeTimers()` انجام می‌شود. در مثال زیر نمونه کد اولیه‌ای از فعالسازی زمانبندهای قلابی است.
-
-<div dir="ltr">
-
-```js
-function timerGame(callback) {
-  console.log("Ready....go!");
-  setTimeout(() => {
-    console.log("Time's up -- stop!");
-    callback && callback();
-  }, 1000);
-}
-
-module.exports = timerGame;
-```
-
-```js
-jest.useFakeTimers();
-jest.spyOn(global, "setTimeout");
-
-test("waits 1 second before ending the game", () => {
-  const timerGame = require("../timerGame");
-  timerGame();
-
-  expect(setTimeout).toHaveBeenCalledTimes(1);
-  expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
-});
-```
-
-</div>
-
-### اجرای تمامی زمانبندها
-
-مثال بخش قبل را در نظر بگیرید. این بار یک تابع callback را به `timerGame` ارسال می‌کنیم. میخواهیم تستی بنویسیم که از فراخوانی callback پس از یک ثانیه اطمینان حاصل کنیم.
-
-از `runAllTimers` استفاده می‌کنیم تا در میانه تست زمان را به سرعت جلو ببریم.
-
-<div dir="ltr">
-
-```js
-jest.useFakeTimers();
-test("calls the callback after 1 second", () => {
-  const timerGame = require("../timerGame");
-  const callback = jest.fn();
-
-  timerGame(callback);
-
-  // At this point in time, the callback should not have been called yet
-  expect(callback).not.toBeCalled();
-
-  // Fast-forward until all timers have been executed
-  jest.runAllTimers();
-
-  // Now our callback should have been called!
-  expect(callback).toBeCalled();
-  expect(callback).toHaveBeenCalledTimes(1);
-});
-```
-
-</div>
-
-نحوه عملکرد `runAllTimers` بدین صورت است که تمامی macrotaskها (تسک‌های async ناشی از setTimeout و setInterval) و microtaskها (تسک‌های async ناشی از promiseها) را اجرا می‌کند. حتی اگر این تسک‌ها تسک جدیدی را ایجاد کنند، آنها را نیز اجرا می‌کند تا callback queue خالی شود.
-
-### اجرای زمانبندهای در انتظار
-
-در حالت‌هایی که یک زمانبند بازگشتی داشته باشیم (زمانبندی که در callback خود زمانبند دیگری را تنظیم می‌کند) اجرای تمامی این زمانبندها منجر به یک چرخه بی‌انتها می‌شود.
-
-در این حالت برای رفع مشکل از `runOnlyPendingTimers` استفاده می‌کنیم. تفاوت `runOnlyPendingTimers` با `runAllTimers` در این است که تنها تسک‌هایی را که تا لحظه فراخوانی آن در callback queue بوده‌اند را اجرا می‌کند و اگر هر تسک، تسک جدیدی را به صف اضافه کند، آن را اجرا نمی‌کند.
-
-مثال:
-
-<div dir="ltr">
-
-```js
-function infiniteTimerGame(callback) {
-  console.log("Ready....go!");
-
-  setTimeout(() => {
-    console.log("Time's up! 10 seconds before the next game starts...");
-    callback && callback();
-
-    // Schedule the next game in 10 seconds
-    setTimeout(() => {
-      infiniteTimerGame(callback);
-    }, 10000);
-  }, 1000);
-}
-
-module.exports = infiniteTimerGame;
-```
-
-```js
-jest.useFakeTimers();
-jest.spyOn(global, "setTimeout");
-
-describe("infiniteTimerGame", () => {
-  test("schedules a 10-second timer after 1 second", () => {
-    const infiniteTimerGame = require("../infiniteTimerGame");
-    const callback = jest.fn();
-
-    infiniteTimerGame(callback);
-
-    // At this point in time, there should have been a single call to
-    // setTimeout to schedule the end of the game in 1 second.
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
-
-    // Fast forward and exhaust only currently pending timers
-    // (but not any new timers that get created during that process)
-    jest.runOnlyPendingTimers();
-
-    // At this point, our 1-second timer should have fired its callback
-    expect(callback).toBeCalled();
-
-    // And it should have created a new timer to start the game over in
-    // 10 seconds
-    expect(setTimeout).toHaveBeenCalledTimes(2);
-    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 10000);
-  });
-});
-```
-
-</div>
-
-### پیش‌برد زمانبندها براساس زمان
-
-یک گزینه دیگر برای کنترل بیشتر بر زمانبند‌ها استفاده از تابع `jest.advanceTimersByTime(msToRun)` است. هنگام فراخوانی این تابع تمامی زمانبندها به مقدار `msToRun` پیشروی می‌کنند. در این بازه زمانی، تمامی macrotaskهای درون task queue و دیگر macrotaskهای ناشی از آنها اجرا می‌شوند.
-
-<div dir="ltr">
-
-```js
-function timerGame(callback) {
-  console.log("Ready....go!");
-  setTimeout(() => {
-    console.log("Time's up -- stop!");
-    callback && callback();
-  }, 1000);
-}
-
-module.exports = timerGame;
-```
-
-```js
-jest.useFakeTimers();
-it("calls the callback after 1 second via advanceTimersByTime", () => {
-  const timerGame = require("../timerGame");
-  const callback = jest.fn();
-
-  timerGame(callback);
-
-  // At this point in time, the callback should not have been called yet
-  expect(callback).not.toBeCalled();
-
-  // Fast-forward until all timers have been executed
-  jest.advanceTimersByTime(1000);
-
-  // Now our callback should have been called!
-  expect(callback).toBeCalled();
-  expect(callback).toHaveBeenCalledTimes(1);
-});
-```
-
-</div>
-
-### تخلیه زمانبندها
-
-گاهی ممکن است در تست‌ها مفید باشد که تمامی زمانبندها را متوقف کنیم. در این هنگام از تابع `jest.clearAllTimers()` استفاده می‌کنیم.
-    
-## snapshot testing
-
-<span dir = "rtl">snapshot test</span>
- مقوله‌ای است که معمولا در تست کردن UI برنامه‌ها استفاده می‌شود و ابزاری است برای اطمینان از اینکه در UI برنامه تغییر غیرمنتظره‌ای ایجاد نمی‌شود.
-
-به طور معمولا یک تست snapshot از فایل snapshotای که از قبل از یک کامپوننت ذخیره شده به عنوان مرجع استفاده می‌کند. پس از render شدن کامپوننت، یک snapshot دیگر از آن گرفته می‌شود و با فایل snapshot قبلی مقایسه می‌شود. در صورتی که این دو snapshot مشابه یکدیگر نباشند، تست با شکست مواجه می‌شود.
-
-### مثال snapshot testing
-
-مثالی از استفاده از snapshot testing با jest را در React به نمایش می‌گذاریم. از پکیچی به نام test renderer متعلق به React استفاده می‌کنیم تا به جای بارگذاری کل برنامه، که بار زیادی را ایجاد می‌کند، تنها کامپوننت مورد نظر را بارگذاری کنیم.
-
-کامپوننت Link را در نظر بگیرید:
-
-<div dir="ltr">
-
-```js
-import { useState } from "react";
-
-const STATUS = {
-  HOVERED: "hovered",
-  NORMAL: "normal",
-};
-
-export default function Link({ page, children }) {
-  const [status, setStatus] = useState(STATUS.NORMAL);
-
-  const onMouseEnter = () => {
-    setStatus(STATUS.HOVERED);
-  };
-
-  const onMouseLeave = () => {
-    setStatus(STATUS.NORMAL);
-  };
-
-  return (
-    <a
-      className={status}
-      href={page || "#"}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
-      {children}
-    </a>
-  );
-}
-```
-
-</div>
-
-می‌توان تست snapshot زیر را برای این کامپوننت نوشت:
-
-<div dir="ltr">
-
-```js
-import renderer from "react-test-renderer";
-import Link from "../Link";
-
-it("renders correctly", () => {
-  const tree = renderer
-    .create(<Link page="http://www.facebook.com">Facebook</Link>)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
-});
-```
-
-</div>
-
-بار اولی که این تست اجرا شود فایل snapshot مرجع ایجاد می‌شود. در دفعات بعد jest این فایل را با خروجی render مقایسه می‌کند. شکست خوردن تست به این معنا است که پیاده سازی این کامپوننت به طور غیرمنتظره‌ای تغییر کرده یا خطایی در render این کامپوننت وجود داشته.
-
-> هشدار:warning::  فایل snapshot ایجاد شده باید همراه پروژه کامیت شود! مخصوصا که از نسخه 20 به بعد Jest فرایند تولید اتوماتیک snapshot در CI انجام نمی‌شود.
-
-    
-### نکات تکمیلی
-
-#### 1. با تست snapshot مانند کد برخورد کنید
-
-بهتر است کامیت‌های مربوط به آنها بازبینی شوند. snapshotها باید کوتاه و متمرکز باشند و تحت تست‌هایی با استفاده از ابزارهایی مانند eslint قرار گیرند.
-
-#### 2. تست‌های snapshot باید قطعی باشند
-
-هربار اجرای تست بر کامپوننتی که تغییری نکرده باید نتیجه یکسان بدهد. در صورت استفاده از توابع غیرقطعی مانند `Date.now()` می‌توان آنها را Mock کرد.
-
-#### 3. تست snapshot جایگزین unit test نیست
-
-علاوه بر این با سیسات‌های test-driven development نیز سازگار نیست.
-
-## تغییر DOM
-
-وظیفه نوعی از توابع ایجاد نوعی تغییر در DOM است. این نوع تست‌ها می‌توانند چالش برانگیز باشند. این توابع ممکن است عملیات Async انجام دهند یا فراخوانی به دیگر توابعی داشته باشند که عملکرد آنها نیاز به mock داشته باشد.
-
-یک مثال را بررسی می‌کنیم. نمونه
-
-<div dir="ltr">
-
-```js
-"use strict";
-
-const $ = require("jquery");
-const fetchCurrentUser = require("./fetchCurrentUser.js");
-
-$("#button").click(() => {
-  fetchCurrentUser((user) => {
-    const loggedText = "Logged " + (user.loggedIn ? "In" : "Out");
-    $("#username").text(user.fullName + " - " + loggedText);
-  });
-});
-```
-
-</div>
-
-در این مثال پس کلیک از یک رخداد کلیک، داده‌هایی به صورت async دریافت می‌شوند و سپس محتوای یک المان تغییر می‌کند.
-
-می‌توان تستی به شکل زیر را برای آن نوشت.
-
-<div dir="ltr">
-
-```js
-"use strict";
-
-jest.mock("../fetchCurrentUser");
-
-test("displays a user after a click", () => {
-  // Set up our document body
-  document.body.innerHTML =
-    "<div>" +
-    '  <span id="username" />' +
-    '  <button id="button" />' +
-    "</div>";
-
-  // This module has a side-effect
-  require("../displayUser");
-
-  const $ = require("jquery");
-  const fetchCurrentUser = require("../fetchCurrentUser");
-
-  // Tell the fetchCurrentUser mock function to automatically invoke
-  // its callback with some data
-  fetchCurrentUser.mockImplementation((cb) => {
-    cb({
-      fullName: "Johnny Cash",
-      loggedIn: true,
-    });
-  });
-
-  // Use jquery to emulate a click on our button
-  $("#button").click();
-
-  // Assert that the fetchCurrentUser function was called, and that the
-  // #username span's inner text was updated as we'd expect it to.
-  expect(fetchCurrentUser).toBeCalled();
-  expect($("#username").text()).toBe("Johnny Cash - Logged In");
-});
-```
-
-</div>
-
-در این تست تابع `fetchCurrentUser` تقلید شده است تا به جای یک درخواست واقعی به شبکه، داده‌ها به صورت محلی دریافت شوند.
-
-همچنین تابعی که آن را تست می‌کنیم به DOM ارجاع دارد. به همین دلیل لازم است که DOM را به درستی پیاده‌سازی کرده باشیم.
-
-    
 </div>
