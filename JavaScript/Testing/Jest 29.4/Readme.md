@@ -1436,4 +1436,335 @@ expect(mockFunc.getMockName()).toBe("a mock name");
 [مستندات](https://jestjs.io/docs/expect)
 مراجعه کنید.
 
+## زمانبندهای قلابی
+
+توابع زمانبند موجود در جاواسکریپت (setTimeout، setInterval،...) وابسته به گذر واقعی زمان هستند و عملکرد آنها برای محیط تست مناسب نیست. Jest می‌تواند این توابع را با توابع دیگری که می‌توانند گذر زمان را کنترل کنند جایگزین کند. به این توابع جایگزین به اصطلاح "fake timer" می‌گویند.
+
+استفاده از این توابع با استفاده از `jest.useFakeTimers()` انجام می‌شود. در مثال زیر نمونه کد اولیه‌ای از فعالسازی زمانبندهای قلابی است.
+
+<div dir="ltr">
+
+```js
+function timerGame(callback) {
+  console.log("Ready....go!");
+  setTimeout(() => {
+    console.log("Time's up -- stop!");
+    callback && callback();
+  }, 1000);
+}
+
+module.exports = timerGame;
+```
+
+```js
+jest.useFakeTimers();
+jest.spyOn(global, "setTimeout");
+
+test("waits 1 second before ending the game", () => {
+  const timerGame = require("../timerGame");
+  timerGame();
+
+  expect(setTimeout).toHaveBeenCalledTimes(1);
+  expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
+});
+```
+
+</div>
+
+### اجرای تمامی زمانبندها
+
+مثال بخش قبل را در نظر بگیرید. این بار یک تابع callback را به `timerGame` ارسال می‌کنیم. میخواهیم تستی بنویسیم که از فراخوانی callback پس از یک ثانیه اطمینان حاصل کنیم.
+
+از `runAllTimers` استفاده می‌کنیم تا در میانه تست زمان را به سرعت جلو ببریم.
+
+<div dir="ltr">
+
+```js
+jest.useFakeTimers();
+test("calls the callback after 1 second", () => {
+  const timerGame = require("../timerGame");
+  const callback = jest.fn();
+
+  timerGame(callback);
+
+  // At this point in time, the callback should not have been called yet
+  expect(callback).not.toBeCalled();
+
+  // Fast-forward until all timers have been executed
+  jest.runAllTimers();
+
+  // Now our callback should have been called!
+  expect(callback).toBeCalled();
+  expect(callback).toHaveBeenCalledTimes(1);
+});
+```
+
+</div>
+
+نحوه عملکرد `runAllTimers` بدین صورت است که تمامی macrotaskها (تسک‌های async ناشی از setTimeout و setInterval) و microtaskها (تسک‌های async ناشی از promiseها) را اجرا می‌کند. حتی اگر این تسک‌ها تسک جدیدی را ایجاد کنند، آنها را نیز اجرا می‌کند تا callback queue خالی شود.
+
+### اجرای زمانبندهای در انتظار
+
+در حالت‌هایی که یک زمانبند بازگشتی داشته باشیم (زمانبندی که در callback خود زمانبند دیگری را تنظیم می‌کند) اجرای تمامی این زمانبندها منجر به یک چرخه بی‌انتها می‌شود.
+
+در این حالت برای رفع مشکل از `runOnlyPendingTimers` استفاده می‌کنیم. تفاوت `runOnlyPendingTimers` با `runAllTimers` در این است که تنها تسک‌هایی را که تا لحظه فراخوانی آن در callback queue بوده‌اند را اجرا می‌کند و اگر هر تسک، تسک جدیدی را به صف اضافه کند، آن را اجرا نمی‌کند.
+
+مثال:
+
+<div dir="ltr">
+
+```js
+function infiniteTimerGame(callback) {
+  console.log("Ready....go!");
+
+  setTimeout(() => {
+    console.log("Time's up! 10 seconds before the next game starts...");
+    callback && callback();
+
+    // Schedule the next game in 10 seconds
+    setTimeout(() => {
+      infiniteTimerGame(callback);
+    }, 10000);
+  }, 1000);
+}
+
+module.exports = infiniteTimerGame;
+```
+
+```js
+jest.useFakeTimers();
+jest.spyOn(global, "setTimeout");
+
+describe("infiniteTimerGame", () => {
+  test("schedules a 10-second timer after 1 second", () => {
+    const infiniteTimerGame = require("../infiniteTimerGame");
+    const callback = jest.fn();
+
+    infiniteTimerGame(callback);
+
+    // At this point in time, there should have been a single call to
+    // setTimeout to schedule the end of the game in 1 second.
+    expect(setTimeout).toHaveBeenCalledTimes(1);
+    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 1000);
+
+    // Fast forward and exhaust only currently pending timers
+    // (but not any new timers that get created during that process)
+    jest.runOnlyPendingTimers();
+
+    // At this point, our 1-second timer should have fired its callback
+    expect(callback).toBeCalled();
+
+    // And it should have created a new timer to start the game over in
+    // 10 seconds
+    expect(setTimeout).toHaveBeenCalledTimes(2);
+    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 10000);
+  });
+});
+```
+
+</div>
+
+### پیش‌برد زمانبندها براساس زمان
+
+یک گزینه دیگر برای کنترل بیشتر بر زمانبند‌ها استفاده از تابع `jest.advanceTimersByTime(msToRun)` است. هنگام فراخوانی این تابع تمامی زمانبندها به مقدار `msToRun` پیشروی می‌کنند. در این بازه زمانی، تمامی macrotaskهای درون task queue و دیگر macrotaskهای ناشی از آنها اجرا می‌شوند.
+
+<div dir="ltr">
+
+```js
+function timerGame(callback) {
+  console.log("Ready....go!");
+  setTimeout(() => {
+    console.log("Time's up -- stop!");
+    callback && callback();
+  }, 1000);
+}
+
+module.exports = timerGame;
+```
+
+```js
+jest.useFakeTimers();
+it("calls the callback after 1 second via advanceTimersByTime", () => {
+  const timerGame = require("../timerGame");
+  const callback = jest.fn();
+
+  timerGame(callback);
+
+  // At this point in time, the callback should not have been called yet
+  expect(callback).not.toBeCalled();
+
+  // Fast-forward until all timers have been executed
+  jest.advanceTimersByTime(1000);
+
+  // Now our callback should have been called!
+  expect(callback).toBeCalled();
+  expect(callback).toHaveBeenCalledTimes(1);
+});
+```
+
+</div>
+
+### تخلیه زمانبندها
+
+گاهی ممکن است در تست‌ها مفید باشد که تمامی زمانبندها را متوقف کنیم. در این هنگام از تابع `jest.clearAllTimers()` استفاده می‌کنیم.
+
+## snapshot testing
+
+<span dir = "rtl">snapshot test</span>
+مقوله‌ای است که معمولا در تست کردن UI برنامه‌ها استفاده می‌شود و ابزاری است برای اطمینان از اینکه در UI برنامه تغییر غیرمنتظره‌ای ایجاد نمی‌شود.
+
+به طور معمولا یک تست snapshot از فایل snapshotای که از قبل از یک کامپوننت ذخیره شده به عنوان مرجع استفاده می‌کند. پس از render شدن کامپوننت، یک snapshot دیگر از آن گرفته می‌شود و با فایل snapshot قبلی مقایسه می‌شود. در صورتی که این دو snapshot مشابه یکدیگر نباشند، تست با شکست مواجه می‌شود.
+
+### مثال snapshot testing
+
+مثالی از استفاده از snapshot testing با jest را در React به نمایش می‌گذاریم. از پکیچی به نام test renderer متعلق به React استفاده می‌کنیم تا به جای بارگذاری کل برنامه، که بار زیادی را ایجاد می‌کند، تنها کامپوننت مورد نظر را بارگذاری کنیم.
+
+کامپوننت Link را در نظر بگیرید:
+
+<div dir="ltr">
+
+```js
+import { useState } from "react";
+
+const STATUS = {
+  HOVERED: "hovered",
+  NORMAL: "normal",
+};
+
+export default function Link({ page, children }) {
+  const [status, setStatus] = useState(STATUS.NORMAL);
+
+  const onMouseEnter = () => {
+    setStatus(STATUS.HOVERED);
+  };
+
+  const onMouseLeave = () => {
+    setStatus(STATUS.NORMAL);
+  };
+
+  return (
+    <a
+      className={status}
+      href={page || "#"}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      {children}
+    </a>
+  );
+}
+```
+
+</div>
+
+می‌توان تست snapshot زیر را برای این کامپوننت نوشت:
+
+<div dir="ltr">
+
+```js
+import renderer from "react-test-renderer";
+import Link from "../Link";
+
+it("renders correctly", () => {
+  const tree = renderer
+    .create(<Link page="http://www.facebook.com">Facebook</Link>)
+    .toJSON();
+  expect(tree).toMatchSnapshot();
+});
+```
+
+</div>
+
+بار اولی که این تست اجرا شود فایل snapshot مرجع ایجاد می‌شود. در دفعات بعد jest این فایل را با خروجی render مقایسه می‌کند. شکست خوردن تست به این معنا است که پیاده سازی این کامپوننت به طور غیرمنتظره‌ای تغییر کرده یا خطایی در render این کامپوننت وجود داشته.
+
+> هشدار:warning:: فایل snapshot ایجاد شده باید همراه پروژه کامیت شود! مخصوصا که از نسخه 20 به بعد Jest فرایند تولید اتوماتیک snapshot در CI انجام نمی‌شود.
+
+### نکات تکمیلی
+
+#### 1. با تست snapshot مانند کد برخورد کنید
+
+بهتر است کامیت‌های مربوط به آنها بازبینی شوند. snapshotها باید کوتاه و متمرکز باشند و تحت تست‌هایی با استفاده از ابزارهایی مانند eslint قرار گیرند.
+
+#### 2. تست‌های snapshot باید قطعی باشند
+
+هربار اجرای تست بر کامپوننتی که تغییری نکرده باید نتیجه یکسان بدهد. در صورت استفاده از توابع غیرقطعی مانند `Date.now()` می‌توان آنها را Mock کرد.
+
+#### 3. تست snapshot جایگزین unit test نیست
+
+علاوه بر این با سیسات‌های test-driven development نیز سازگار نیست.
+
+## تغییر DOM
+
+وظیفه نوعی از توابع ایجاد نوعی تغییر در DOM است. این نوع تست‌ها می‌توانند چالش برانگیز باشند. این توابع ممکن است عملیات Async انجام دهند یا فراخوانی به دیگر توابعی داشته باشند که عملکرد آنها نیاز به mock داشته باشد.
+
+یک مثال را بررسی می‌کنیم. نمونه
+
+<div dir="ltr">
+
+```js
+"use strict";
+
+const $ = require("jquery");
+const fetchCurrentUser = require("./fetchCurrentUser.js");
+
+$("#button").click(() => {
+  fetchCurrentUser((user) => {
+    const loggedText = "Logged " + (user.loggedIn ? "In" : "Out");
+    $("#username").text(user.fullName + " - " + loggedText);
+  });
+});
+```
+
+</div>
+
+در این مثال پس کلیک از یک رخداد کلیک، داده‌هایی به صورت async دریافت می‌شوند و سپس محتوای یک المان تغییر می‌کند.
+
+می‌توان تستی به شکل زیر را برای آن نوشت.
+
+<div dir="ltr">
+
+```js
+"use strict";
+
+jest.mock("../fetchCurrentUser");
+
+test("displays a user after a click", () => {
+  // Set up our document body
+  document.body.innerHTML =
+    "<div>" +
+    '  <span id="username" />' +
+    '  <button id="button" />' +
+    "</div>";
+
+  // This module has a side-effect
+  require("../displayUser");
+
+  const $ = require("jquery");
+  const fetchCurrentUser = require("../fetchCurrentUser");
+
+  // Tell the fetchCurrentUser mock function to automatically invoke
+  // its callback with some data
+  fetchCurrentUser.mockImplementation((cb) => {
+    cb({
+      fullName: "Johnny Cash",
+      loggedIn: true,
+    });
+  });
+
+  // Use jquery to emulate a click on our button
+  $("#button").click();
+
+  // Assert that the fetchCurrentUser function was called, and that the
+  // #username span's inner text was updated as we'd expect it to.
+  expect(fetchCurrentUser).toBeCalled();
+  expect($("#username").text()).toBe("Johnny Cash - Logged In");
+});
+```
+
+</div>
+
+در این تست تابع `fetchCurrentUser` تقلید شده است تا به جای یک درخواست واقعی به شبکه، داده‌ها به صورت محلی دریافت شوند.
+
+همچنین تابعی که آن را تست می‌کنیم به DOM ارجاع دارد. به همین دلیل لازم است که DOM را به درستی پیاده‌سازی کرده باشیم.
+
 </div>
