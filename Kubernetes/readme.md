@@ -537,7 +537,7 @@ RUN go build -o server .
 
 </div>
 
-پس از نصب داکر با دستور ساده اي از داکر dockerfile را build میکنیم:
+پس از نصب داکر با دستور ساده اي از داکر dockerfile را build می‌کنیم:
 
 <div dir="ltr">
 
@@ -610,7 +610,7 @@ Deployment Controller ها در kubernetes از دو راه زیر ایجاد م
 
 ما از روش دوم استفاده می‌کنیم:
 
-ابتدا برای سرور go یک فایل deployment ایجاد میکنیم:
+ابتدا برای سرور go یک فایل deployment ایجاد می‌کنیم:
 
 <div dir="ltr">
 
@@ -818,7 +818,7 @@ spec:
 	  image: nginx:latest
 ```
 
-کد بالا را در فایل nginx.yaml ذخیره میکنیم و سپس دستور زیر را اجرا میکنیم.
+کد بالا را در فایل nginx.yaml ذخیره می‌کنیم و سپس دستور زیر را اجرا می‌کنیم.
 
 ```
 $ kubectl apply -f nginx.yaml

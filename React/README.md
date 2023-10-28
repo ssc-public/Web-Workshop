@@ -581,7 +581,7 @@ class SomeComponent extends Component {
 
 # State
 
-تا اینجای کار، یاد گرفتیم که صفحه هایی بسازیم و در آنها اجزایی قرار دهیم که با استفاده از props، میتوانستیم این اجزا و چگونگی قرار گرفتن آنها در صفحه را مشخص کنیم. امروزه سایت های زیادی را مشاهده میکنیم که بخش های مختلف سایت، طبق عملیات های کاربر تغییر میکنند و به اصطلاح interactive اند.
+تا اینجای کار، یاد گرفتیم که صفحه هایی بسازیم و در آنها اجزایی قرار دهیم که با استفاده از props، میتوانستیم این اجزا و چگونگی قرار گرفتن آنها در صفحه را مشخص کنیم. امروزه سایت های زیادی را مشاهده می‌کنیم که بخش های مختلف سایت، طبق عملیات های کاربر تغییر میکنند و به اصطلاح interactive اند.
 
 از این رو احساس نیاز ما برای اینکه صفحه مان حالات مختلفی داشته باشد که بنابر اطلاعات و عمل های مختلف کاربر تغییر کنند. در React، state ها این وظیفه را بر عهده دارند. state را میتوان به شکل یک object در نظر گرفت که وضعیت صفحه را مشخص میکند. برای مثال اگر بخواهیم یک جزء لامپ داشته باشیم که روشن یا خاموش باشد، در state متغیری به نام isLit در state میگیریم و به آن مقادیر True و False میدهیم.
 
@@ -666,7 +666,7 @@ function Example() {
 
 وقتی که Component مورد نظر از DOM خارج میشود (دیگر در صفحه حاظر نیست)، فاز Unmounting اجرا میشود و تابع componentWillUnmount صدا زده میشود.
 
-هنگامی که از functional Component ها و Hooks استفاده میکنیم، بجای تمام توابع componentDidMount، componentDidUpdate و componentWillUnmount می‌توانیم تنها از useEffect استفاده کنیم:
+هنگامی که از functional Component ها و Hooks استفاده می‌کنیم، بجای تمام توابع componentDidMount، componentDidUpdate و componentWillUnmount می‌توانیم تنها از useEffect استفاده کنیم:
 
 <div dir="ltr">
 
@@ -953,7 +953,7 @@ class MainRoute extends Component {
 
 #Higher Order Component(HOC)
 
-گاهی اوقات ما یک Component را به کمک Component دیگری Wrap میکنیم و به کمک آن تعدادی prop به props آن اضافه خواهیم کرد به این Component که در نقش Wrapper ضاهر میشود، Higher Order Component یا به اختصار HOC گفته میشود.
+گاهی اوقات ما یک Component را به کمک Component دیگری Wrap می‌کنیم و به کمک آن تعدادی prop به props آن اضافه خواهیم کرد به این Component که در نقش Wrapper ضاهر میشود، Higher Order Component یا به اختصار HOC گفته میشود.
 
 * در حالت کلی HOC ها معمولا در نقش یک تابع ظاهر میشوند که Component اولیه را به عنوان ورودی میگیرند و آن را به صورت Wrap شده خروجی میدهند
 
