@@ -16,7 +16,7 @@ in linux
 $ sudo apt install
 $ nodejs npm
 ```
-<p dir = 'rtl'>سپس با دستور زیر با استفاده از npm پکیج eslint را نصب میکنیم</p>
+<p dir = 'rtl'>سپس با دستور زیر با استفاده از npm پکیج eslint را نصب می‌کنیم</p>
 
 ```
 npm init @eslint/config

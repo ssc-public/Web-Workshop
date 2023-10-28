@@ -7,7 +7,7 @@
 <img src="../Statics/kubernetes.png" alt="Sharif Web Programming Workshop" width="200px">
 
 <p align="center">
-    تحقیق پایان ترم برنامه سازی وب، دانشگاه صنعتی شریف
+    تحقیق پایان ترم برنامه‌سازی وب، دانشگاه صنعتی شریف
     <br/>
     استاد درس: جناب آقای امید جعفری نژاد
     <br/>
@@ -413,7 +413,7 @@ minikube version
 
 ### ساخت cluster:
 
-اکنون میتوانیم با دستور minikube start و minikube status یک cluster بر روي ماشین مجازي بسازیم:
+اکنون می‌توانیم با دستور minikube start و minikube status یک cluster بر روي ماشین مجازي بسازیم:
 
 <div dir="ltr">
 
@@ -537,7 +537,7 @@ RUN go build -o server .
 
 </div>
 
-پس از نصب داکر با دستور ساده اي از داکر dockerfile را build میکنیم:
+پس از نصب داکر با دستور ساده اي از داکر dockerfile را build می‌کنیم:
 
 <div dir="ltr">
 
@@ -610,7 +610,7 @@ Deployment Controller ها در kubernetes از دو راه زیر ایجاد م
 
 ما از روش دوم استفاده می‌کنیم:
 
-ابتدا برای سرور go یک فایل deployment ایجاد میکنیم:
+ابتدا برای سرور go یک فایل deployment ایجاد می‌کنیم:
 
 <div dir="ltr">
 
@@ -696,7 +696,7 @@ deployment.apps/hw1-go-deployment.yaml created
 
 </div>
 
-اکنون با کمک دستور kubectl get pods میتوانیم pod ای که ساختیم را مشاهده کنیم:
+اکنون با کمک دستور kubectl get pods می‌توانیم pod ای که ساختیم را مشاهده کنیم:
 
 <div dir="ltr">
 
@@ -716,7 +716,7 @@ hw1-go-deployment-586ff56c7f-m7vzs    1/1     ErrImagePull        0          42m
 ```
 
 </div>
-همینطور میتوانیم لیست pods هایی با یک اسم مشخص را خروجی بگریم:
+همینطور می‌توانیم لیست pods هایی با یک اسم مشخص را خروجی بگریم:
 <div dir="ltr">
 
 ```
@@ -818,7 +818,7 @@ spec:
 	  image: nginx:latest
 ```
 
-کد بالا را در فایل nginx.yaml ذخیره میکنیم و سپس دستور زیر را اجرا میکنیم.
+کد بالا را در فایل nginx.yaml ذخیره می‌کنیم و سپس دستور زیر را اجرا می‌کنیم.
 
 ```
 $ kubectl apply -f nginx.yaml

@@ -487,7 +487,7 @@ Redis Server
 
 در فایل
 docker-compose.yml
-خطوط زیر رو پاک میکنیم و می خواهیم از سرور
+خطوط زیر رو پاک می‌کنیم و می خواهیم از سرور
 PHP
 بهش
 Request
@@ -561,7 +561,7 @@ Apache
 Dockerfile
 مون دستور
 `RUN a2enmod rewrite`
-رو اضافه میکنیم.
+رو اضافه می‌کنیم.
 
 در نهایت محتوای `php/Dockerfile` به صورت زیر خواهد بود:
 
@@ -736,7 +736,7 @@ POST
 `GET`
 عمل می کنیم با این تفاوت که
 PostData
-رو ست میکنیم و به
+رو ست می‌کنیم و به
 aspnetcore
 مون
 Request
