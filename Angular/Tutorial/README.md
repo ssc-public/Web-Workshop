@@ -190,7 +190,7 @@ console.log(this.route.snapshot.fragment)
 ```
 </div>  
 
-✅دو بخش قبل یعنی queryparams و fragment در واقع برای خواندن در سمت component بودند؛ اما برای ارسال از طریق component هم میتوان از آنها استفاده کرد. در واقع در تگی که اطلاعات و routerlink را قرار میدهیم، می‌توانیم queryparams و fragment را هم قرار دهیم:
+✅دو بخش قبل یعنی queryparams و fragment در واقع برای خواندن در سمت component بودند؛ اما برای ارسال از طریق component هم می‌توان از آنها استفاده کرد. در واقع در تگی که اطلاعات و routerlink را قرار میدهیم، می‌توانیم queryparams و fragment را هم قرار دهیم:
 <div dir="ltr">
 
 ```typescript
@@ -210,7 +210,7 @@ url ? course=webprogramming & university=sharif #loading
 توجه داشته باشیم که queryparams و fragment هم آبجکتی از نوع observable هستند و باید subscribe را برای آنها بنویسیم.
 <br>
 
-✅ فرض کنید میخواهیم پس از انجام پروسه ای با زدن یک دکمه به یک route خاص برویم. علاوه بر آن میخواهیم queryparams و fragment را هم ارسال کنیم. برای این کار تابعی را برای event کلیک قرار میدهیمو در typescript مینویسیم. همچنین در constructor، باید router را از نوع Router و بصورت private بسازیم. در نهایت در تابع نوشته شده باید از navigate استفاده کنیم :
+✅ فرض کنید می‌خواهیم پس از انجام پروسه ای با زدن یک دکمه به یک route خاص برویم. علاوه بر آن می‌خواهیم queryparams و fragment را هم ارسال کنیم. برای این کار تابعی را برای event کلیک قرار میدهیمو در typescript مینویسیم. همچنین در constructor، باید router را از نوع Router و بصورت private بسازیم. در نهایت در تابع نوشته شده باید از navigate استفاده کنیم :
 <div dir="ltr">
 
 ```typescript
@@ -280,7 +280,7 @@ export class AppComponent {
 <br>
 
 ### توضیحات تکمیلی
-  - اگر در بخش Selector، نام را درون [] بگذاریم، دیگر بصورت قبل نمیتوان از آن استفاده کرد و باید بعنوان Attribute ازآن استفاده کرد و دیگر بصورت `<name></name>` ازآن استفاده کرد.
+  - اگر در بخش Selector، نام را درون [] بگذاریم، دیگر بصورت قبل نمی‌توان از آن استفاده کرد و باید بعنوان Attribute ازآن استفاده کرد و دیگر بصورت `<name></name>` ازآن استفاده کرد.
   - در بخش templateurl، فقط یک آدرس html می‌توانیم بنویسیم. اگر تعداد خط های html ما به قدری کم باشد که ساخت کلاس جدید برای آن منطقی نباشد، می‌توانیم به جای templateUrl از template استفاده کنیم و بصورت مستقیم کد html را درون آن بنویسیم. باید توجه داشته باشیم که بجای 'url' باید از `` استفاده کنیم.
   - در بخش styleUrls، همانطور که از اسمش مشخص است، می‌توانیم چند کلاس css را داشته باشیم. همچنین این امکان را داریم به مانند Template، در این بخش از styles[] استفاده کنیم و کد های scss را درون آن بنویسیم.
   - در دکوراتور component، استفاده از templateUrl نسبت به template ارجحیت دارد و اگر همزمان هر دو وجود داشته باشند، Templateurl بررسی میشود.
@@ -293,7 +293,7 @@ export class AppComponent {
 ng generate component my-component
 ```
 </div>
-به اختصار از دستور زیر میتوان استفاده کرد:
+به اختصار از دستور زیر می‌توان استفاده کرد:
 <div dir="ltr">
 
 ```
@@ -443,7 +443,7 @@ ng g c my-component
 @ HostListener(my-event) function_name() {...}
 ```
 </div>
-** توجه داشته باشید که event میتواند مواردی مانند 'click' یا 'hover' باشد.
+** توجه داشته باشید که event می‌تواند مواردی مانند 'click' یا 'hover' باشد.
 
 
 ## اینترفیس(Interface)
@@ -451,7 +451,7 @@ ng g c my-component
 <br>
 ✅ hook : منظور متدی است که به واسطه حضور interface در کلاس مدنظر پیاده سازی میشود.
 <br>
-✅ ترتیب تقریبی اجرای hookها را میتوان به شکل زیر پیاده سازی کرد:
+✅ ترتیب تقریبی اجرای hookها را می‌توان به شکل زیر پیاده سازی کرد:
  - constructor
  - ngOnChanges
  - ngOnInit
