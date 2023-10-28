@@ -413,7 +413,7 @@ minikube version
 
 ### ساخت cluster:
 
-اکنون میتوانیم با دستور minikube start و minikube status یک cluster بر روي ماشین مجازي بسازیم:
+اکنون می‌توانیم با دستور minikube start و minikube status یک cluster بر روي ماشین مجازي بسازیم:
 
 <div dir="ltr">
 
@@ -696,7 +696,7 @@ deployment.apps/hw1-go-deployment.yaml created
 
 </div>
 
-اکنون با کمک دستور kubectl get pods میتوانیم pod ای که ساختیم را مشاهده کنیم:
+اکنون با کمک دستور kubectl get pods می‌توانیم pod ای که ساختیم را مشاهده کنیم:
 
 <div dir="ltr">
 
@@ -716,7 +716,7 @@ hw1-go-deployment-586ff56c7f-m7vzs    1/1     ErrImagePull        0          42m
 ```
 
 </div>
-همینطور میتوانیم لیست pods هایی با یک اسم مشخص را خروجی بگریم:
+همینطور می‌توانیم لیست pods هایی با یک اسم مشخص را خروجی بگریم:
 <div dir="ltr">
 
 ```

@@ -563,7 +563,7 @@ type Query {
 }
 ```
 <p dir="rtl" style="position:right;">
-سپس میتوانیم query مورد نظر را بنویسیم:
+سپس می‌توانیم query مورد نظر را بنویسیم:
 </p>
 
 ```graphql
