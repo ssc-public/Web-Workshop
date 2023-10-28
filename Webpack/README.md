@@ -51,7 +51,7 @@ browser
 Webpack مزیت های بیشتری هم دارداز جمله آنکه bundling و transfer فایل های non javascript را هم انجام میدهد. همچینین api های ساده تری نسبت به bundler های پیش از خود ارائه میدهد.( البته bundler های امروزی api  های ساده تری پیاده کرده اند.)
 </p>
 <p align=right style="text-align: justify;">
-امروزه ابزار های بسیاری از قبیل create-react-app و next.js ازWebpack استفاده میکنند.
+امروزه ابزار های بسیاری از قبیل create-react-app و next.js ازWebpack استفاده می‌کنند.
 </p>
 </br>
 
