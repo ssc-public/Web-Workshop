@@ -1482,7 +1482,7 @@ d3.json("/data/users.json", function(error, data) {
        .text(function (d) { return d; });
   
  ```
-خروچی قطعه کد بالا به صورت زیر میباشد:
+خروچی قطعه کد بالا به صورت زیر می‌باشد:
  
  ![](./assets/scale_output.png)
 
