@@ -112,7 +112,7 @@ GraphQl به کلاینت این اجازه را می‌دهد که request خو
 </ol>
  
  # End of the journey?
- <p dir="rtl" style="position:right;">برای مشاهده‌ی توضیحات بیش‌تر در همین ریپازیتوری لینک‌های زیر را مشاهده نمایید:
+ <p dir="rtl" style="position:right;">برای مشاهده‌ی توضیحات بیشتر در همین ریپازیتوری لینک‌های زیر را مشاهده نمایید:
  </p>
  
 + [GraphQl core concepts](./core.md)
