@@ -723,7 +723,7 @@ hw1-go-deployment-586ff56c7f-m7vzs    1/1     ErrImagePull        0          42m
 kubectl get pods -n demo
 ```
 
-منظور از demo اسمی است که میخواهیم شامل باشد
+منظور از demo اسمی است که می‌خواهیم شامل باشد
 
 </div>
 <div dir="ltr">

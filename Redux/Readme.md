@@ -83,7 +83,7 @@ reducer ها, pure function هستند. بدین معنی که state فعلی ب
 
 ۳. صدا‌کردن function هایی که pure نیستند. مانند <span dir = 'ltr'> ``` Math.random()``` </span>
 
-حال میخواهیم یک reducer بسازیم. در ابتدا initialState تعریف می‌کنیم که حالت اولیه state را نشان می‌دهد. در واقع در ابتدای کار , state تعریف‌نشده است و در این حالت, initialState را باز‌می‌گردانیم.
+حال می‌خواهیم یک reducer بسازیم. در ابتدا initialState تعریف می‌کنیم که حالت اولیه state را نشان می‌دهد. در واقع در ابتدای کار , state تعریف‌نشده است و در این حالت, initialState را باز‌می‌گردانیم.
 
 <div dir = 'ltr'>
 

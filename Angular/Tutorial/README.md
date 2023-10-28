@@ -210,7 +210,7 @@ url ? course=webprogramming & university=sharif #loading
 توجه داشته باشیم که queryparams و fragment هم آبجکتی از نوع observable هستند و باید subscribe را برای آنها بنویسیم.
 <br>
 
-✅ فرض کنید میخواهیم پس از انجام پروسه ای با زدن یک دکمه به یک route خاص برویم. علاوه بر آن میخواهیم queryparams و fragment را هم ارسال کنیم. برای این کار تابعی را برای event کلیک قرار میدهیمو در typescript مینویسیم. همچنین در constructor، باید router را از نوع Router و بصورت private بسازیم. در نهایت در تابع نوشته شده باید از navigate استفاده کنیم :
+✅ فرض کنید می‌خواهیم پس از انجام پروسه ای با زدن یک دکمه به یک route خاص برویم. علاوه بر آن می‌خواهیم queryparams و fragment را هم ارسال کنیم. برای این کار تابعی را برای event کلیک قرار میدهیمو در typescript مینویسیم. همچنین در constructor، باید router را از نوع Router و بصورت private بسازیم. در نهایت در تابع نوشته شده باید از navigate استفاده کنیم :
 <div dir="ltr">
 
 ```typescript
