@@ -160,7 +160,7 @@ describe("Different Methods of Expect Block",function () {
 
 <li>تابع ()toBeCloseTo : برای سنجش وجود مقدار تست در یک بازه یا به عبارتی نزدیک بودن آن با 
 مقدار مورد انتظار با یک میزان خطای قابل قبول است. نمونه زیر نزدیک بودن عدد به ۱۲ را با 
-خطای ۱ چک میکند:</li>
+خطای ۱ چک می‌کند:</li>
 <br>
 <div dir="ltr">
 
@@ -190,7 +190,7 @@ describe("Different Methods of Expect Block",function () {
 <br>
 
 
-<li>تابع ()toBeDefined و ()toBeUndefined : چک میکند که آیا متغیر قبال در این کد تعریف شده 
+<li>تابع ()toBeDefined و ()toBeUndefined : چک می‌کند که آیا متغیر قبال در این کد تعریف شده 
 است یا نه:</li>
 <br>
 <div dir="ltr">
