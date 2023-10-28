@@ -245,8 +245,6 @@ git clone https://github.com/YOUR-GITHUB-ACCOUNT-NAME/simple-node-js-react-npm-a
     کد زیر را درون این فایل متنی بنویسید:
 </p>
 
-
-
 ```shell
 pipeline {
     agent {
@@ -263,12 +261,7 @@ pipeline {
         }
     }
 }
-
 ```
-
-
-
-
 
 <p dir = "RTL">
     بخش‌های مختلف این کد بدین صورت هستند:
