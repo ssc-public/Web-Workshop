@@ -7,7 +7,7 @@
 <img src="../Statics/kubernetes.png" alt="Sharif Web Programming Workshop" width="200px">
 
 <p align="center">
-    تحقیق پایان ترم برنامه سازی وب، دانشگاه صنعتی شریف
+    تحقیق پایان ترم برنامه‌سازی وب، دانشگاه صنعتی شریف
     <br/>
     استاد درس: جناب آقای امید جعفری نژاد
     <br/>
