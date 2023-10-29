@@ -345,14 +345,14 @@ Django (1.11, 2.0, 2.1, 2.2, 3.0)
 #Function views
 
 معرفی Function View :
-در واقع Function View یک تابع است که یک HttpRequest را در ورودی میگیرد (به همراه تعدادی ورودی دلخواه دیگر) و یک HttpResponse را در خروجی می دهد .
+در واقع Function View یک تابع است که یک HttpRequest را در ورودی میگیرد (به همراه تعدادی ورودی دلخواه دیگر) و یک HttpResponse را در خروجی می‌دهد .
 
 <h2 dir = "RTL">
     یک Function View نمونه:
 </h2>   
 
 <p dir = "RTL">
-    کد زیر زمان کنونی را در قالب HTML خروجی می دهد.
+    کد زیر زمان کنونی را در قالب HTML خروجی می‌دهد.
 </p>
 
 ``` bash
@@ -428,7 +428,7 @@ urlpatterns = [
 ```
 
 <p dir = "RTL">
-    استفاده از class based امکانات داشتن کلاس مانند داشتن method ها و attribute ها را به ما می دهد.
+    استفاده از class based امکانات داشتن کلاس مانند داشتن method ها و attribute ها را به ما می‌دهد.
 </p>
 <h1 dir = "RTL">
     معرفی APIView
