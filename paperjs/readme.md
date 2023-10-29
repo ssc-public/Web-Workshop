@@ -168,7 +168,7 @@ console.log(rect.point); // { x: 10, y: 20 }
 console.log(rect.size); // { width: 200, height: 100 }
 </div>
 ```
-در مثال زیر مستطیل را به یک باره هنگام ساختن مقدار دهی کرده ایم.
+در مثال زیر مستطیل را به یک باره هنگام ساختن مقدار دهی کرده‌ایم.
 ```JS	
 <div dir="rtl">
 var rect = new Rectangle(10, 20, 200, 100);
@@ -336,7 +336,7 @@ decagon.selected = true;
 <img width="301" alt="polygon " src="https://user-images.githubusercontent.com/45296744/212534164-2dd3d584-0013-4664-8203-51aa807aa59b.png">
  </div>
    
-در قسمت زیر یک مثلث ایجاد کرده ایم و با دستور fillColor آن را به رنگ قرمز درآورده ایم.
+در قسمت زیر یک مثلث ایجاد کرده‌ایم و با دستور fillColor آن را به رنگ قرمز درآورده ایم.
 ```JS
 var myPath = new Path({
 	segments: [[40, 115], [80, 180], [200, 20]],
