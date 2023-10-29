@@ -143,7 +143,7 @@ Worker Node
 
 ![3](https://user-images.githubusercontent.com/59171005/218135940-34e1d180-e5a7-4121-8c86-c7e8cad4f0f5.PNG)
 
-همانطور که در تصویر بالا مشاهده می کنید معمولا دو master node در نظر می گیرند تا هرگاه یکی از آن ها down شود دیگری وجود داشته باشد.
+همانطور که در تصویر بالا مشاهده می کنید معمولا دو master node در نظر می گیرند تا هرگاه یکی از آن‌ها down شود دیگری وجود داشته باشد.
 
 <hr>
 
@@ -268,7 +268,7 @@ CoreDNS (برای سرور DNS): CoreDNS به عنوان یک سرور DNS در 
 
 ![10](https://user-images.githubusercontent.com/59171005/218161561-fab5f1cf-684a-4b92-8b65-7cbbf1948355.PNG)
 
-همانطور که مشاهده می کنید API Server موجود در هر node راه های مختلفی برای ارتباط دارد که یکی از آن ها command line interface بوده که kubectl قدرتمندترین ابزار در این قسمت است.
+همانطور که مشاهده می کنید API Server موجود در هر node راه های مختلفی برای ارتباط دارد که یکی از آن‌ها command line interface بوده که kubectl قدرتمندترین ابزار در این قسمت است.
 
 ![11](https://user-images.githubusercontent.com/59171005/218162023-ff912e60-a53e-4604-bf09-35a6d38eaff9.PNG)
 
