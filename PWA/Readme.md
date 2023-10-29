@@ -167,7 +167,7 @@ const htmlResponse = new Response("<b>HTML</b> content", options)
 </div>
 
 
-همچنین از آن جایی که api cache کلید ها را به صورت url و مقادیر را به صورت http response همراه با header ها و body ذخیره می کند می توان به شکل زیر از cache برای به دست آوردن response استفاده کرد.
+همچنین از آن جایی که api cache کلید ها را به صورت url و مقادیر را به صورت http response همراه با header ها و body ذخیره می‌کند می توان به شکل زیر از cache برای به دست آوردن response استفاده کرد.
 
 
 
@@ -308,7 +308,7 @@ Icons
  آرایه ای از object های ایکون است که دارای property های src و type و sizes هستند.
 
 #### Start_url
-این ویژگی url ای را تعیین می کند که با اجرای  PWA نصب شده برنامه از آن جا شروع می شود. اگر این ویژگی در manifest نباشد به صورت پیشفرض برابر با url صفحه ای می شود که PWA از آن جا نصب شده است.
+این ویژگی url ای را تعیین می‌کند که با اجرای  PWA نصب شده برنامه از آن جا شروع می شود. اگر این ویژگی در manifest نباشد به صورت پیشفرض برابر با url صفحه ای می شود که PWA از آن جا نصب شده است.
 Display
 یکی از حالت های fullscreen, standalone, minimal-ui, browser را دارد که اکثرا به حالت standalone قرار می گیرد.
 
