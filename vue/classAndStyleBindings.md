@@ -35,7 +35,7 @@ data() {
   :class="{ active: isActive, 'text-danger': hasError }"
 ></div>
 ```	
-و کد به صورت زیر رندر میشود:
+و کد به صورت زیر رندر می‌شود:
 ```vue
 <div class="static active"></div>
 ```
