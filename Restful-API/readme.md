@@ -506,7 +506,7 @@ class ListUsers(APIView):
 </p>
 
 <p dir = "RTL">
-    این عمل در اولین مراحل پردازش request  دریافتی انجام می شود و پس از این مرحله request.user حاوی نتیجه این بخش(user ای که این request را فرستاده است) می باشد.
+    این عمل در اولین مراحل پردازش request  دریافتی انجام می‌شود و پس از این مرحله request.user حاوی نتیجه این بخش(user ای که این request را فرستاده است) می باشد.
 </p>
 
 
@@ -565,7 +565,7 @@ REST_FRAMEWORK = {
 
 
 <p dir = "RTL">
-    در این روش از token-based HTTP Authentication استفاده می شود.برای استفاده از  این روش در ابتدا باید'rest_framework.authtoken' را به INSTALLED_APPS اضافه کنید. سپس باید migration انجام دهید.
+    در این روش از token-based HTTP Authentication استفاده می‌شود.برای استفاده از  این روش در ابتدا باید'rest_framework.authtoken' را به INSTALLED_APPS اضافه کنید. سپس باید migration انجام دهید.
 </p>
 
 
@@ -633,7 +633,7 @@ class ExampleView(APIView):
     
     
 <p dir = "RTL">
-    در صورتی جواب داده می شود که همه permission class ها برقرار باشند.
+    در صورتی جواب داده می‌شود که همه permission class ها برقرار باشند.
 </p>
 
 
