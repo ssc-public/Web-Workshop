@@ -160,7 +160,7 @@ _.camelCase('__GET_TEXT__');
 ```
 
 ### تابع escape
-گاهی نیاز داریم تا کاراکترهایی چون "&" ، ">" ، "'" را به رشته‌ای قابل فهم در HTML تبدیل کند.
+گاهی نیاز داریم تا کاراکترهایی چون "&"، ">"، "'" را به رشته‌ای قابل فهم در HTML تبدیل کند.
 ```
 _.escape('change & and < to HTML entities');
 // => 'change &amp; and &lt; to HTML entities'
