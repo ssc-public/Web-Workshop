@@ -811,7 +811,7 @@ sudo rabbitmqctl list_queues
   ## Fair dispatch
   شاید متوجه شده باشید که 
   dispatching
-  هنوز دقیقاً همانطور که می خواهیم کار نمی‌کند. به عنوان مثال در شرایطی که دو 
+  هنوز دقیقاً همان‌طور که می خواهیم کار نمی‌کند. به عنوان مثال در شرایطی که دو 
   worker
   کار می‌کنند ، وقتی همه 
   message
@@ -1229,7 +1229,7 @@ amqp.connect('amqp://localhost', function(error0, connection) {
 
 [کد emit_log.js](https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/javascript-nodejs/src/emit_log.js)
 
-همانطور که می‌بینید بعد از ایجاد
+همان‌طور که می‌بینید بعد از ایجاد
 connection
 ما یک 
 exchange

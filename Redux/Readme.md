@@ -437,7 +437,7 @@ render(
 ## Connect
 برای استفاده از store در کامپوننت بعد از انجام مراحل قبل به چیز دیگری نیاز نداریم زیرا store آماده است و در context در دسترس است(برای اطلاعات بیشتر راجع به این کار <a href='https://github.com/reduxjs/react-redux/issues/281'>این لینک</a> را مشاهده کنید)
 
-اما همانطور که ممکن است در لینک بالا مشاهده کرده باشید این کار سخت و کمی هم کثیف(!) است. راه استاندارد برای استفاده از state و subscribe کردن به store و dispatch کردن action ها، همگی با استفاده از تابعی به نام connect است. استفاده از این تابع بسیار ساده است:
+اما همان‌طور که ممکن است در لینک بالا مشاهده کرده باشید این کار سخت و کمی هم کثیف(!) است. راه استاندارد برای استفاده از state و subscribe کردن به store و dispatch کردن action ها، همگی با استفاده از تابعی به نام connect است. استفاده از این تابع بسیار ساده است:
 
 <div dir='ltr'>
 
@@ -494,7 +494,7 @@ export default connect(
 ## Async actions
 اگر به نحوه ی استفاده از action creator ها در قسمت قبل توجه کنید در می یابید که استفاده از آنها برای انجام فعالیت های async مثل fetch کردن داده از سرور دشوار است زیرا داخل promise بازگردانده شده از fetch نمی‌توانید action ساخته شده را return کنید به خارج از تابع action creator بنابراین باید dispatch را که از mapDispatchToProps گرفته اید به action creator به عنوان ورودی بدهید تا در آنجا بتوانید داخل تابع resolve که به promise بازگردانده شده از fetch می دهید از dispatch استفاده کنید و action dispatch کنید! اما این راه هم مشکل دارد زیرا در هر حال action creator شما باید یک action بازگرداند که در این صورت شما باید یک action با type مثلا fetching بازگردانید و برنامه را مطلع کنید که شما در حال انجام عمل async هستید تا مثلا یک loading به کاربر نشان داده شود.
 
-همانطور که دقت کردید فرایند توضیح داده شده در بالا مقدار زیادی کد اضافی دارد، مثلا اینکه شما باید در تمام ورودی های action creator ها خود تابع dispatch را اضافه کنیم و در mapDispatchToProps آن را به action creator ورودی بدهیم.
+همان‌طور که دقت کردید فرایند توضیح داده شده در بالا مقدار زیادی کد اضافی دارد، مثلا اینکه شما باید در تمام ورودی های action creator ها خود تابع dispatch را اضافه کنیم و در mapDispatchToProps آن را به action creator ورودی بدهیم.
 
 ## Thunk
 
@@ -517,7 +517,7 @@ export const actionCreatorUsingThunk = (actionCreatorInput) => (dispatch,getStat
 
 ## Middleware
 
-همانطور که گفته بودیم middleware ها در واقع توابعی هستند که به جای dispatch در store قرار می گیرند و می‌توانند در روند dispatch شدن یک action سرویس هایی به ما ارائه کنند. یک نمونه از middleware یعنی thunk را دیدیم. حال می خواهیم یک middleware خودمان بنویسیم:
+همان‌طور که گفته بودیم middleware ها در واقع توابعی هستند که به جای dispatch در store قرار می گیرند و می‌توانند در روند dispatch شدن یک action سرویس هایی به ما ارائه کنند. یک نمونه از middleware یعنی thunk را دیدیم. حال می خواهیم یک middleware خودمان بنویسیم:
 
 <div dir='ltr'>
 
