@@ -1012,7 +1012,7 @@ var svg = paper.project.exportSVG({asString:true});
 await writeFile('result.svg', svg);
 ```
 
-توجه کنید که در محیط Nodejs شما به قابلیت های PaperScript دسترسی ندارید و برای مثال همان طور که در نمونه کد بالا می بینید باید از
+توجه کنید که در محیط Nodejs شما به قابلیت های PaperScript دسترسی ندارید و برای مثال همان‌طور که در نمونه کد بالا می بینید باید از
 `start.add([100, -50])`
 به جای
 `start + [100, -50]`
