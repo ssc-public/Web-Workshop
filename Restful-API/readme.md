@@ -365,7 +365,7 @@ def current_datetime(request):
 ```
 
 <p dir = "RTL">
-     ریسپانس می تواند HTML یا یک تصویر یا یک متن json یا ... باشد. 
+     ریسپانس می‌تواند HTML یا یک تصویر یا یک متن json یا ... باشد. 
 </p>
     
 <p dir = "RTL">
@@ -530,7 +530,7 @@ class ExampleView(APIView):
 ```
 
 <p dir = "RTL">
-    می توان با تغیراتی در settings.py یک دیفالت برای Authentication class ها معرفی کرد.
+    می‌توان با تغیراتی در settings.py یک دیفالت برای Authentication class ها معرفی کرد.
 </p>
 
 
@@ -544,7 +544,7 @@ REST_FRAMEWORK = {
 ```
 
 <p dir = "RTL">
-    شما برای Authentication class می توانید از مقادیر آماده زیر استفاده کنید و یا در صورت لزوم یک Authentication class برای پروژه تان طراحی کنید.
+    شما برای Authentication class می‌توانید از مقادیر آماده زیر استفاده کنید و یا در صورت لزوم یک Authentication class برای پروژه تان طراحی کنید.
 </p>
 
 <ul>
@@ -689,7 +689,7 @@ class CustomerAccessPermission(permissions.BasePermission):
 
 
 <p dir = "RTL">
-    شما می توانید مثلا از APIView به شیوه زیر نیز استفاده کنید.
+    شما می‌توانید مثلا از APIView به شیوه زیر نیز استفاده کنید.
 </p>
 
 ``` bash
