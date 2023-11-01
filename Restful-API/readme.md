@@ -4,7 +4,7 @@
 
 تعریف :  `RESTful API‍‍` واسطی میان اپلیکیشن و برنامه `Application Program Interface`است که با استفاده از ریکوست های `HTTP` می‌تواند داده ای ایجاد کند ‌‍‍`POST` یا ویرایش کند `PUT` یا حذف کند `DELETE` یا ان را بخواند `GET`
 
-ابزار پیشنهادی ما : `Django REST framework` :یک ابزار قدرتمند و انعطاف پذیر برای ساختن API های وب
+ابزار پیشنهادی ما : `Django REST framework` :یک ابزار قدرتمند و انعطاف‌پذیر برای ساختن API های وب
   
   
 #Requirements
