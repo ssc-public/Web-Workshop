@@ -557,7 +557,7 @@ RewriteEngine On
 `htaccess`
 مون بتونه کار کنه و
 Apache
-این اجازه رو بده ، توی
+این اجازه رو بده، توی
 Dockerfile
 مون دستور
 `RUN a2enmod rewrite`
