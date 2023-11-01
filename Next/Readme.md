@@ -33,7 +33,7 @@
 
 
 
-## راه اندازی اولیه
+## راه‌اندازی اولیه
 برای ایجاد پروژه نیازمند [node.js][node.js] خواهید بود.
 <br/>
 پس از نصب node به سادگی می‌توانید با دستورات زیر پروژه Next خود را بسازید:
@@ -361,7 +361,7 @@ def get_user(user_id):
 flask run
 ```
 </div>
-پس از راه اندازی سرور می‌توانید در http://localhost:5000/users و http://localhost:5000/users/id به داده های موجود دسترسی داشته باشید.
+پس از راه‌اندازی سرور می‌توانید در http://localhost:5000/users و http://localhost:5000/users/id به داده های موجود دسترسی داشته باشید.
 <br/>
 
 ## تابع getStaticProps (Static Generation)
