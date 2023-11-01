@@ -268,7 +268,7 @@ store, آبجکتی است که این‌ها را کنار هم می‌آورد
 ۱. قابلیت دسترسی به state برنامه با استفاده از `()getState`
 ۲. قابلیت به‌روز‌رسانی state برنامه بااستفاده از <span dir = 'ltr'> `dispatch(action)` </span>
 ۳. قابلیت گوش دادن (subscribe) بعد از هر به‌روز‌‌رسانی state برنامه با استفاده از <span dir = 'ltr'> `subscribe(listener)` </span> که listener, تابع می‌باشد.
-۴. غیر فعال‌کردن subscribe تعریف‌‌ شده
+۴. غیرفعال‌کردن subscribe تعریف‌‌ شده
 
 در صورت داشتن reducer, ساختن store راحت خواهد بود. از قسمت reducer, می‌دانیم بااستفاده از <span dir = 'ltr'> `combineReducer()` </span> می‌توان چندین reducer را ترکیب کرد و یک reducer واحد ساخت. در اینجا آبجکت todoApp که بااستفاده از ()combineReducers ساخته‌شده‌است را import می‌کنیم.
 

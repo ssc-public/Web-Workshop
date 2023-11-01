@@ -793,7 +793,7 @@ Starting server at port 3000
 سرور مان اکنون در پورت 3000 قابل دسترسی است.
 
 نکته :
-برای غیر فعال کردن Minikube Docker host دستور زیرا را در shell فعلی وارد کنید:
+برای غیرفعال کردن Minikube Docker host دستور زیرا را در shell فعلی وارد کنید:
 
 <div dir="ltr">
 
