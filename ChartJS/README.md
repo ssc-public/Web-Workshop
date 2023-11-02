@@ -39,7 +39,7 @@ Chart.js یک کتاب‌خانه متن باز برای بصری سازی و ن
 
 </div>
 
-سپس با استفاده از یک بلوک از کد های JS می‌توانیم محتوای این نمودار را کنترل کنیم. به عنوان مثال:
+سپس با استفاده از یک بلوک از کدهای JS می‌توانیم محتوای این نمودار را کنترل کنیم. به عنوان مثال:
 
 <div dir="ltr">
 
@@ -63,7 +63,7 @@ let chart = new Chart(ctx, {
 
 </div>
 
-خروجی کد های فوق برابر خواهد بود با: (مثال 1)
+خروجی کدهای فوق برابر خواهد بود با: (مثال 1)
 <img title="Example 1" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex1/ex1.png" alt="Example 1">
 
 ## نصب و ادغام 
@@ -1365,7 +1365,7 @@ type: 'scatter'
 
 </div>
 
-خروجی کد های فوق برابر خواهد بود با: (مثال مسی و رونالدو)
+خروجی کدهای فوق برابر خواهد بود با: (مثال مسی و رونالدو)
 
 <p align="center">
 <img title="Example Messi vs Ronaldo Plot" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_messiVsRonaldo/ex_messiVsRonaldo.png" alt="Example Messi vs Ronaldo Plot">
