@@ -504,7 +504,7 @@ single thread
 JavaScript
 و رایج بودن 
 asynchronous programming
-در این زبان، احتیاج به ابزاری داریم که بتوانیم کد های
+در این زبان، احتیاج به ابزاری داریم که بتوانیم کدهای
 asynchronous
  را تست کنیم.
  Jest
@@ -876,7 +876,7 @@ test('city database has San Juan', () => {
 `beforeEach`
 و
 `afterEach`
-می‌توانند کد هارا به همان شیوه‌ی
+می‌توانند کدهارا به همان شیوه‌ی
 [test can handle asynchronous code TODO](#testing-asynchronous-code)
 و به صورت ناهمگام
 (asynchronous)
