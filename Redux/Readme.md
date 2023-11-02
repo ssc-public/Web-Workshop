@@ -371,7 +371,7 @@ redux
 framework
 خاصی تعلق ندارد.
 <br/>
-اکنون می خواهیم از
+اکنون می‌خواهیم از
 redux
 در
 react
@@ -400,7 +400,7 @@ react
 </div>
 حال به توضیح آن می پردازیم:
 
-خط ۱: در این جا یک آرایه از middleware هایی که می خواهیم به store اضافه کنیم را می بینیم. جلوتر با عملکرد دقیق middleware ها آشنا خواهیم شد.
+خط ۱: در این جا یک آرایه از middleware هایی که می‌خواهیم به store اضافه کنیم را می بینیم. جلوتر با عملکرد دقیق middleware ها آشنا خواهیم شد.
 
 خط ۲: از آرایه ی middleware ها یک enhancer ساخته ایم.  یک enhancer صرفا یک تابع است که یک store باز می گرداند که هم reducer، initState  و  enhancer های دیگر آن را خودش تعیین کرده است. حال اگر بیشتر از یک enhancer داشته باشیم چگونه آن‌ها را ترکیب می کنیم تا در نهایت یک store داشته باشیم که تمام ویژگی‌ها آن‌ها را داشته باشد؟ این را جلوتر در خط ۴ خواهیم دید.
 
@@ -498,7 +498,7 @@ export default connect(
 
 ## Thunk
 
-در قسمت createStore با استفاده کردن از thunk در ساختن store آشنا شدیم حال می خواهیم نحوه استفاده از آن را بیاموزیم.
+در قسمت createStore با استفاده کردن از thunk در ساختن store آشنا شدیم حال می‌خواهیم نحوه استفاده از آن را بیاموزیم.
 
 thunk یک middleware برای ساده سازی استفاده از action creator های async است. امکانی که thunk به ما ارائه می‌دهد این است که در action creator ها به جای اینکه حتما یک object بازگردانیم که همان action ماست، می‌توانیم یک تابع بازگردانیم. حال thunk با این تابع چه می‌کند؟ (سوالی که در این بین مطرح می‌شود ممکن است این باشد که اصلا thunk در این میان چه کاره است و چطور مقدار بازگشتی از action provider به آن می رسد؟! در این باره جلوتر در middleware ها صحبت خواهیم کرد. کلیت موضوع اینگونه است که thunk را می‌توانیم یک تابع در نظر بگیریم که جایگزین dispatch در store می‌شود و هر گاه یک action را به dispatch می دهیم در واقع داریم به thunk می دهیم) thunk آن تابع را با دو ورودی dispatch و getState صدا می زند. dispatch همان dispatch اصلی store است که action ها را به reducer ها می برد و getState هم یک تابع است که با صدا زدن آن state آن لحظه ی store را دریافت می کنیم.
 
@@ -517,7 +517,7 @@ export const actionCreatorUsingThunk = (actionCreatorInput) => (dispatch,getStat
 
 ## Middleware
 
-همان‌طور که گفته بودیم middleware ها در واقع توابعی هستند که به جای dispatch در store قرار می گیرند و می‌توانند در روند dispatch شدن یک action سرویس هایی به ما ارائه کنند. یک نمونه از middleware یعنی thunk را دیدیم. حال می خواهیم یک middleware خودمان بنویسیم:
+همان‌طور که گفته بودیم middleware ها در واقع توابعی هستند که به جای dispatch در store قرار می گیرند و می‌توانند در روند dispatch شدن یک action سرویس هایی به ما ارائه کنند. یک نمونه از middleware یعنی thunk را دیدیم. حال می‌خواهیم یک middleware خودمان بنویسیم:
 
 <div dir='ltr'>
 
