@@ -126,7 +126,7 @@ RabbitMQ
 
 <p align="center"><img src="https://www.rabbitmq.com/img/tutorials/python-one.png"/></p>
 
-> **کتابخانه‌ی 
+> **کتاب‌خانه‌ی 
 > amqp.node clint**
 > 
 > RabbitMQ
@@ -168,7 +168,7 @@ RabbitMQ
 
 در
 [``send.js``](https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/javascript-nodejs/src/send.js)
-ابتدا کتابخانه را اضافه می‌کنیم.
+ابتدا کتاب‌خانه را اضافه می‌کنیم.
 
 <div dir='ltr' align='justify'>
 
@@ -275,7 +275,7 @@ RabbitMQ
 ([``receive.js``](https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/javascript-nodejs/src/receive.js))
 مانند
 ``send``
-به کتابخانه‌ی یکسانی نیاز دارد.
+به کتاب‌خانه‌ی یکسانی نیاز دارد.
 
 
 <div dir='ltr' align='justify'>
