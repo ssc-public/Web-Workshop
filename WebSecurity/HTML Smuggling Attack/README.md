@@ -67,7 +67,7 @@
   <img src="https://www.microsoft.com/security/blog/uploads/securityprod/2021/11/Fig3-attack-chain-Mekotio-campaign.png" width="70%" alt=""/>
 </div>
   </br>
-  در این حمله، از وب سایت مخرب hxxp://poocardy[.]net/diretorio/ برای پیاده سازی تکنیک HTML Smuggling و حذف فایل دانلودکننده مخرب استفاده می‌شود (این لینک را باز نکنید!). تصویر زیر یک صفحه HTML Smuggling را هنگام رندر شدن در مرورگر نشان می‌دهد.
+  در این حمله، از وب‌سایت مخرب hxxp://poocardy[.]net/diretorio/ برای پیاده سازی تکنیک HTML Smuggling و حذف فایل دانلودکننده مخرب استفاده می‌شود (این لینک را باز نکنید!). تصویر زیر یک صفحه HTML Smuggling را هنگام رندر شدن در مرورگر نشان می‌دهد.
    </br>
   <div align="center" style="text-align:center" >
   <img src="https://www.microsoft.com/security/blog/uploads/securityprod/2021/11/Fig4-HTML-page.png" width="70%" alt=""/>
