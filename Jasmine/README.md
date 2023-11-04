@@ -29,7 +29,7 @@ Jasmine برپایه ی رفتار توسعه محور (Behavior Driven Developm
 <ol>
 
 <br>
-<li>ابتدا از <a href="https://jasmine.github.io/">اینجا</a> به وب سایت رسمی رفته و یکی از ورژن های آن را انتخاب کنید تا به صفحه آن منتقل شوید.</li>
+<li>ابتدا از <a href="https://jasmine.github.io/">اینجا</a> به وب‌سایت رسمی رفته و یکی از ورژن های آن را انتخاب کنید تا به صفحه آن منتقل شوید.</li>
 <br>
 <li>در قسمت downloads روی standalone release  کلیک کنید.</li>
 <br>
