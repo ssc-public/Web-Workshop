@@ -85,7 +85,7 @@ export default {
 <div :style="{ color: activeColor, fontSize: fontSize + 'px' }"></div>
 ```
 بایند کردن با آرایه ها:
-می‌توانیم <code>style:</code> را با آرایه‌ای از چندین شیء استایل متصل کنیم. این اشیاء ادغام می شوند و روی همان عنصر اعمال می شوند:
+می‌توانیم <code>style:</code> را با آرایه‌ای از چندین شیء استایل متصل کنیم. این اشیاء ادغام می‌شوند و روی همان عنصر اعمال می‌شوند:
 ```vue
 <div :style="[baseStyles, overridingStyles]"></div>
 ```
