@@ -338,7 +338,7 @@ kubectl version --client
 
 ![8](https://user-images.githubusercontent.com/59171005/218159294-785624b0-880d-4ab5-82d9-bbd4d3b99399.PNG)
 
-دو master node و چهار worker node وجود دارد. تست در محیط محلی چگونه صورت بگیرد؟ بالا آوردن یک خوشه (cluster) با منابع سخت افزاری محدود سخت می‌تواند باشد. Minikube راه حلی برای این مشکل است که متن باز بوده و یک خوشه دارد که master node processes و worker node processes در یک node اجرا می‌شوند. که در تصویر زیر آن را مشاهده می کنید.
+دو master node و چهار worker node وجود دارد. تست در محیط محلی چگونه صورت بگیرد؟ بالا آوردن یک خوشه (cluster) با منابع سخت افزاری محدود سخت می‌تواند باشد. Minikube راه‌حلی برای این مشکل است که متن باز بوده و یک خوشه دارد که master node processes و worker node processes در یک node اجرا می‌شوند. که در تصویر زیر آن را مشاهده می کنید.
 
 ![9](https://user-images.githubusercontent.com/59171005/218160183-1c082b9d-b7ee-4026-b97e-9a0acc449c7a.PNG)
 
