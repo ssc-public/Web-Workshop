@@ -541,7 +541,7 @@ this.subscription.unsubscribe();
 <br>
 ✅ انگولار بعنوان یک فریم ورک، سرویسی را برای ارسال و دریافت بر بستر http دارد. برای همین در app.module.ts باید HttpClientModule را import کنیم و در []imports  هم قرار دهیم. این ماژول در ارسال درخواست های http به ما کمک می‌کند.
 <br>
-✅ برای ارسال دیتا، ابتدا در typescript مدنظر، در constructor، یک property بنام http از نوع private و تایپ HttpClient میسازیم. حال برای ارسال دیتا لازم است آدرس api را داشته باشیم. (یا از بک اند میگیریم یا فایربیس)
+✅ برای ارسال دیتا، ابتدا در typescript مدنظر، در constructor، یک property بنام http از نوع private و تایپ HttpClient میسازیم. حال برای ارسال دیتا لازم است آدرس api را داشته باشیم. (یا از بک‌اند میگیریم یا فایربیس)
 <br>
 توجه کنید که http.post برای ارسال دیتا می‌باشد. ورودی آن ابتدا api و سپس data می‌باشد. اگر بخواهیم Data در folder یا آرایه ای جدا ذخیره شود، در آخر آدرس url که برای api مینویسیم، array-name.json/ را مینویسیم. همچنین post.، یک observable می‌باشد و برای ثبت دیتا در api، باید یک observer هم برای آن ست کنیم.
 <br>
