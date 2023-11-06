@@ -740,7 +740,7 @@ sudo rabbitmqctl list_queues
   ## Message durability
   ما یاد گرفته ایم که چگونه اطمینان حاصل کنیم حتی در صورت مرگ 
   consumer
- ، 
+ ،
   task
   از دست نمی رود. اما اگر سرور 
   RabbitMQ
@@ -1541,7 +1541,7 @@ exchange
   log
   می‌تواند یکی از مقادیر 
   info
-   ، warning
+  ، warning
     یا 
     error
     باشد.
@@ -1682,7 +1682,7 @@ exchange
   و به عنوان مثال، برای انتشار یک 
   log
   error
- ، فقط تایپ کنید:
+ ،فقط تایپ کنید:
   <div  dir='ltr'  align='justify'>
 
   ```bash
