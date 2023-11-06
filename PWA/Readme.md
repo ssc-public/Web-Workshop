@@ -188,7 +188,7 @@ let response = caches.open("pwa-assets").then(cache => {
 
 ### Cache first
 
-در این روش service worker ابتدا در cache دنبال request می گردد، اگر وجود داشت response ای که cache شده است را برمی گرداند و در غیر این صورت به سرور درخواست می زند. در این روش سرعت را به به‌روز بودن داده ترجیح می دهیم.
+در این روش service worker ابتدا در cache دنبال request می گردد، اگر وجود داشت response ای که cache شده است را برمی‌گرداند و در غیر این صورت به سرور درخواست می زند. در این روش سرعت را به به‌روز بودن داده ترجیح می دهیم.
 
 <div dir="ltr">
 
