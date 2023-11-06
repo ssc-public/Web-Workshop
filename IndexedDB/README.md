@@ -292,7 +292,7 @@ request → transaction → database
 
 <br/>
 
-آبجکت‌های ```IDBKeyRange``` با روش‌های زیر ساخته می‌شوند:
+آبجکت‌های ```IDBKeyRange``` با روش‌های زیرساخته می‌شوند:
 
 - ```IDBKeyRange.lowerBound(lower, [open])```: ‍‍‍```≥lower``` (or ```>lower``` if ```open``` is true)
 
