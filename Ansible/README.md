@@ -180,7 +180,7 @@ ansible-galaxy role init "role-name"
 در چنین مواقعی بهترین گزینه ansible ad-hoc است که به شما اجازه می‌دهد از طریق ترمینال یک module خاص را بر روی ماشین‌های مقصد اجرا کنید!
 
 <p dir="rtl" style="position:right;">
-مثالی از یک ansible ad-hoc که بررسی می‌کند آیا port 2181 بر روی ماشین‌هایی که بر روی آنها apache zookeeper نصب شده است در حال listen شدن می‌باشد یا نه:
+مثالی از یک ansible ad-hoc که بررسی می‌کند آیا port 2181 بر روی ماشین‌هایی که بر روی آن‌ها apache zookeeper نصب شده است در حال listen شدن می‌باشد یا نه:
 
 ```
 ansible zookeepers -m raw -a "netstat -nltp | grep 2181"
