@@ -99,7 +99,8 @@
 
 # ✍️ توسعه‌دهندگان
 
-اسامی توسعه‌دهندگان به ترتیب حروف الفبا به شرح زیر است:
+اسامی توسعه‌دهندگان به ترتیب حروف الفبا (برای فامیل هر کدوم از افراد) به شرح زیر است:
+
 - [آرین احدی نیا](https://github.com/AryanAhadinia)
 - [عرشیا اخوان](https://github.com/ArshiAAkhavan)
 - [ابوالفضل اسد](https://github.com/abolfazlasad)
@@ -119,8 +120,9 @@
 - [محمدطه جهانی‌نژاد](https://github.com/TahaJahani)
 - [بهار خدابخشیان](https://github.com/baharkhd)
 - [علی‌رضا دیزجی](https://github.com/alirezadizaji)
-- [بهراد ذبیحی](https://github.com/8ehrad)
 - [امیر مهدی دیگبری](https://github.com/amdigbari)
+- [بهراد ذبیحی](https://github.com/8ehrad)
+- [عطا رحیم زاده](https://github.com/atarhz)
 - [پارسا رستمی](https://github.com/parsarsm)
 - [آرمان زارعی](https://github.com/ArmanZarei)
 - [سپهر زمانی](https://github.com/sepzame)
@@ -136,21 +138,20 @@
 - [مهدی عبدی](https://github.com/itsmehdiabdi)
 - [محمد فتاح](https://github.com/mohammad-fattah)
 - [عرفان فرهادی](https://github.com/farhadi-erfan)
+- [سجاد فقفور مغربی](https://github.com/sfmqrb)
 - [امیررضا قاسمی ویسی](https://github.com/amirzgh)
 - [مصطفی قدیمی](https://github.com/mostafaghadimi)
 - [محمدحسین قیصریه](https://github.com/mhgheisarieh)
 - [محمدامین لطفی اوریمی](https://github.com/aminlotfi)
+- [ایمان محمدی](https://github.com/Imanm02)
 - [امیر معینی](https://github.com/amir-mi)
 - [سید محمد پوریا ممتاز اصفهانی](https://github.com/pourya-momtaz)
 - [امیرمهدی نامجو](https://github.com/titansarus)
-- [امیرحسین نقی رازلیقی](https://github.com/AmirHossein-nr)
-- [عطا رحیم زاده](https://github.com/atarhz)
-- [محمدهومان کشوری](https://github.com/bigwhoman)
-- [سجاد فقفور مغربی](https://github.com/sfmqrb)
 - [سیدپارسا نشایی](https://github.com/spneshaei)
-- [آرش یادگاری](https://github.com/Arash1381-y)
-- [ایمان محمدی](https://github.com/Imanm02)
+- [امیرحسین نقی رازلیقی](https://github.com/AmirHossein-nr)
 - [هستی کریمی](https://github.com/HastiKarimi)
+- [محمدهومان کشوری](https://github.com/bigwhoman)
+- [آرش یادگاری](https://github.com/Arash1381-y)
     
 # نحوه مشارکت
 
