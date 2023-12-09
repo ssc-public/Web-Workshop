@@ -1710,3 +1710,284 @@ Redis یک پلت فرم FPC ارائه می‌دهد که کار کردن با 
 >>>>>>> ceab26348c14de4009c285d2c3b5ce69bacca0c0
 
 </div>
+
+
+<div dir="rtl">
+<h2> RedisBloom </h2>
+ردیس علاوه بر داده ساختار‌های گفته شده داده ساختار‌های احتمالی را نیز برای ما فراهم می‌کند.
+این داده ساختار‌ها علاوه بر کاهش استفاده از مموری هزینه‌های CPU و ... را نیز کاهش می‌دهد.
+<br>
+این داده ساختار‌ها قرار است به سوالاتی مشخص برای داده‌های ما پاسخ دهند.
+از این داده‌ساختار‌ها برای پاسخ به سوالات زیر استفاده می‌کنیم:
+<ul>
+    <li>HyperLogLog: چه تعداد مقدار یکتا در دیتاست خود داریم</li>
+    <li>Bloom filter و Cuckoo filter: آیا یک مقدار خاص در دیتاست ما وجود دارد یا خیر</li>
+    <li>Count-min sketch: چند بار یک مقدار خاص در دیتاست ما وجود دارد</li>
+    <li>Top-K: در دیتاست ما k تعداد از مقادیر بیشتر از همه وجود دارند این مقادیر کدام‌ها هستند.</li>
+</ul>
+
+برای پاسخ به سوالات بالا باید از مقدار زیادی مموری استفاده کنیم.
+برای همین از داده‌ساختار‌های احتمالی استفاده می‌کنیم.
+در این صورت دقت خود را کم می‌کنیم ولی از مموری خیلی کمتر 
+برای این مورد استفاده می‌کنیم.
+> تفاوت بین Bloom و Cuckoo بین این است که 
+> Bloom در داده‌ها با حجم بسیار بالا و عملکرد بهتری دارد و اسکیل‌پذیر‌تر است
+> در حالی که Cuckoo سریعتر بوده و همچنین امکان حذف داده‌ها را به ما می‌دهد همچنین قابلیت ساخت باکت برای داده‌های خود دارد..
+
+ردیس به کمک داده ساختار‌های خود به ما کمک می‌کند که به این سوالات پاسخ دهیم، در ادامه به معرفی چند 
+دستور می‌پردازیم:
+
+</div>
+
+<h3>
+Bloom Filter
+</h3>
+
+
+<div dir="rtl">
+ساخت یک دیتاست از نوع Bloom.
+پارامتر‌های ورودی:
+
+- key نام دیتاست
+- error_rate مشخص می‌کند تا چه اندازه می‌توانیم خطا داشته باشیم.
+- capacity تعداد المان‌هایی که می‌توانند به دیتاست اضافه شوند.
+
+پارامتر‌های اختیاری:
+
+- NONSCALING اجازه نمی‌دهد تا اگر ظرفیت پر شد باز آیتمی به دیتاست اضافه شود.
+- EXPANSION زمانی که ظرفیت دیتاست پر شد یک sub-filter جدید می‌سازد. ظرفیت این sub-filter برابر با <code>expansion</code> برابر ظرفیت sub-filter قبلی خواهد.
+
+</div>
+
+```bash
+BF.RESERVE key error_rate capacity [EXPANSION expansion] [NONSCALING]
+```
+
+<div dir="rtl">
+اضافه کردن یک آیتم به دیتاست. 
+</div>
+
+```bash
+BF.ADD key item
+```
+
+
+<div dir="rtl">
+اضافه کردن چند آیتم به دیتاست. 
+</div>
+
+```bash
+BF.MADD key item [item ...]
+```
+
+
+<div dir="rtl">
+چک کردن اینکه یک آیتم در دیتاست وجود دارد یا خیر
+در صورت وجود داشتن خروجی برابر با <code>1</code> و در غیر  اینصورت برابر با <code>0</code>
+است.
+</div>
+
+```bash
+BF.EXISTS key item
+```
+
+
+
+<div dir="rtl">
+همان دستور <code>BF.EXISTS</code>
+است صرفا با این تفاوت که خروجی‌های
+<code>0</code> و
+<code>1</code>
+رابه ترتیب نشان می‌دهد.
+</div>
+
+```bash
+BF.MEXISTS key item [item ...]
+```
+
+
+<div dir="rtl">
+این دستور ترکیب دو دستور 
+<code>BF.RESERVE</code> و
+<code>BF.ADD</code>
+می‌باشد. در صورتی که این دیتاست با این نام وجود نداشته باشد
+آن را می‌سازد.
+تا آرگومان
+<code>ITEMS</code>
+همان ورودی‌های 
+<code>BF.RESERVE</code>
+است و پس از آن آیتم‌های دیتاست را اضافه می‌کنیم.
+
+توجه کنید آرگومان
+<code>NOCREATE</code>
+در صورتی که چنین دیتاستی وجود نداشته باشد آن را نمی‌سازد
+و ردیس به ما ارور می‌دهد.
+</div>
+
+```bash
+BF.INSERT key [CAPACITY capacity] [ERROR error]
+  [EXPANSION expansion] [NOCREATE] [NONSCALING] ITEMS item [item
+  ...]
+```
+
+
+
+<h3>
+Cuckoo Filter
+</h3>
+
+<div dir="rtl">
+ساخت یک دیتاست از نوع Cuckoo.
+پارامتر‌های ورودی:
+
+- key نام دیتاست
+- capacity تعداد المان‌هایی که می‌توانند به دیتاست اضافه شوند.
+
+> ظرفیت به توان nام بعدی ۲ گرد می‌شود
+
+
+پارامتر‌های اختیاری:
+
+- bucketsize بتعداد آیتم‌ها را در هر باکت مشخص می‌کند. هر چه سایز بیشتر باشد با اینکه fill rate بیشتری خواهیم داشت ولی همچنین از نظر پرفورمنسی و همچنین افزایش ارور ریت منجر می‌شود.
+- maxiterations تعداد تلاش‌ها برای swap کردن آیتم‌ها بین باکت‌ها قبل از اینکه بخواهد بگوید آیا این دیتاست ما پر شده است یا خیر. مقدار کمتر این پارامتر برای ما پرفورمنس بهتری خواهد داشت.
+- expansion همانند expansion در Bloom عمل می‌کند با همان شرطی که به توان nام بعدی ۲  رند می‌کند. 
+</div>
+
+```bash
+CF.RESERVE key capacity [BUCKETSIZE bucketsize] [MAXITERATIONS maxiterations] [EXPANSION expansion]
+```
+
+
+<div dir="rtl">
+یک آیتم را به دیتاست ما اضافه می‌کند.
+</div>
+
+```bash
+CF.ADD key item
+
+```
+<div dir="rtl">
+تعداد یک آیتم در دیتاست ما را مشخص می‌کند.
+</div>
+
+```bash
+CF.COUNT key item
+```
+
+<div dir="rtl">
+یک آیتم را از دیتاست ما حذف می‌کند.
+</div>
+
+```bash
+CF.DEL key item
+```
+
+<div dir="rtl">
+مانند 
+<code>BF.EXISTS</code>
+است
+</div>
+
+```bash
+CF.EXISTS key item
+```
+
+<div dir="rtl">
+مانند 
+<code>BF.MEXISTS</code>
+است
+
+</div>
+
+```bash
+CF.MEXISTS key item [item ...]
+```
+
+<h3 dir="rtl"> 
+تست چند دستور
+</h3>
+
+<div dir="rtl">
+در این قسمت چند دستور از Bloom Filter ردیس را تست می‌کنیم:
+</div> 
+
+```bash
+ 127.0.0.1:6379> BF.ADD bloom kirk
+ 1) (integer) 1
+ 127.0.0.1:6379> BF.ADD bloom redis
+ 1) (integer) 1
+ 127.0.0.1:6379> BF.EXISTS bloom kirk
+ (integer) 1
+ 127.0.0.1:6379> BF.EXISTS bloom redis
+ (integer) 1
+ 127.0.0.1:6379> BF.EXISTS bloom nonexist
+ (integer) 0
+ 127.0.0.1:6379> BF.EXISTS bloom que?
+ (integer) 0
+ 127.0.0.1:6379>
+ 127.0.0.1:6379> BF.MADD bloom elem1 elem2 elem3
+ 1) (integer) 1
+ 2) (integer) 1
+ 3) (integer) 1
+ 127.0.0.1:6379> BF.MEXISTS bloom elem1 elem2 elem3
+ 1) (integer) 1
+ 2) (integer) 1
+ 3) (integer) 1
+```
+
+<div dir="rtl">
+همچنین می‌توانید دیتا‌ست‌ها و فیلتر‌های مخصوص به خودتان را نیز بسازید.
+</div> 
+
+```bash
+ 127.0.0.1:6379> BF.RESERVE largebloom 0.0001 1000000
+ OK
+ 127.0.0.1:6379> BF.ADD largebloom kirk
+ 1) (integer) 1
+  127.0.0.1:6379> BF.ADD largebloom redis
+ 1) (integer) 1
+ 127.0.0.1:6379> BF.EXISTS largebloom kirk
+ (integer) 1
+ 127.0.0.1:6379> BF.EXISTS largebloom redis
+ (integer) 1
+ 127.0.0.1:6379> BF.EXISTS largebloom nonexist
+ (integer) 0
+
+```
+
+<div dir="rtl">
+حال چند دستور دیگر را بررسی می‌کنیم:
+</div> 
+
+```bash
+127.0.0.1:6379> BF.MEXISTS largebloom redis nonexist
+1) (integer) 1
+2) (integer) 0
+```
+
+<div dir="rtl">
+در این قسمت چند دستور از Cuckoo Filter ردیس را تست می‌کنیم:
+</div> 
+
+
+```bash
+127.0.0.1:6379> CF.ADD newcuckoo redis
+(integer) 1
+127.0.0.1:6379> CF.EXISTS newcuckoo redis
+(integer) 1
+127.0.0.1:6379> CF.COUNT newcuckoo redis
+(integer) 1
+127.0.0.1:6379> CF.EXISTS newcuckoo notpresent
+(integer) 0
+127.0.0.1:6379> CF.MEXISTS newcuckoo redis notpresent
+1) (integer) 1
+2) (integer) 0
+127.0.0.1:6379> CF.DEL newcuckoo redis
+(integer) 1
+127.0.0.1:6379> CF.EXISTS newcuckoo redis
+(integer) 0
+127.0.0.1:6379> CF.COUNT newcuckoo redis
+(integer) 0
+```
+
+> توضیحات این دستورات در قسمت‌های قبلی مشخص هستند و همچنین عملکرد هر کدام توضیح داده شده‌اند.
