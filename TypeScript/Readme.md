@@ -61,25 +61,26 @@
 
 <div dir="ltr">
 	
-   	// JS🟨
-	class User {
-	    #name
-	    constructor(name) {
-	        this.#name = name;
-	    }
-	}
-	const user = new User('Tom');
-	
-	// TS🟦
-	class User {
-	    #name: string 
-	    constructor(name: string) {
-	        this.#name = name;
-	    }
-	}
-	const user = new User('Tom')
-
-	
+```javascript
+// JS
+class User {
+    #name
+    constructor(name) {
+        this.#name = name;
+    }
+}
+const user = new User('Tom');
+```
+```typescript
+// TS
+class User {
+    #name: string 
+    constructor(name: string) {
+        this.#name = name;
+    }
+}
+const user = new User('Tom')
+```
 </div>
 
 تنها تفاوت در تعریف متغیر name است که در ts باید نوع آن‌را مشخص کرد.
@@ -90,66 +91,54 @@
 
 <div dir="ltr">
 
-TS:
-
-</div>
-
-<div dir="ltr">
-
-    s = "ali";
-    console.log(s); // error s not defined
-    s = 12;
-    console.log(s); // error s not defined
-
-</div>
-
-<div dir="ltr">
-
-Js:
-
-</div>
-
-<div dir="ltr">
-
-    s = "ali";
-    console.log(s); //ali
-    s = 12;
-    console.log(s); //12
-
+```typescript
+// TS
+s = "ali";
+console.log(s); // error s not defined
+s = 12;
+console.log(s); // error s not defined
+```
+```javascript
+// JS
+s = "ali";
+console.log(s); //ali
+s = 12;
+console.log(s); //12
+```
 </div>
 
 - در ts ما برای annotation به شکل زیر عمل میکنیم:
 
 <div dir="ltr">
 
-    var variableName: TypeAnnotation = value;  
-
+```typescript
+var variableName: TypeAnnotation = value;  
+```
 </div>
 
 مثلا: 
 
 <div dir="ltr">
 
-    var age: number = 44;         // number variable  
-    var name: string = "Ali";     // string variable  
-
-
+```typescript
+var age: number = 44;         // number variable  
+var name: string = "Ali";     // string variable  
+```
 </div>
 
 اگر در ادامه به متغیر name مقداری عددی تخصیص دهیم به ارور میخوریم ولی در js این ویژگی وجود ندارد.
 
 <div dir="ltr">
 
-    // JS🟨
-    var name = “Ali”;
-    name = 44 ; // valid
+```typescript
+// JS
+var name = “Ali”;
+name = 44 ; // valid
 
-    // TS🟦
-    var name = “Ali”;
-    name = 44 ; // error
-
-
-
+// TS
+var name = “Ali”;
+name = 44 ; // error
+```
 </div>
 
 # TypeScript basic syntax
@@ -170,20 +159,22 @@ Js:
 
 <div dir="ltr">
 
-    //this is single line comment 
-	 
-    /* This is a  
-    Multi-line comment 
-    */
-
+```typescript
+//this is single line comment 
+    
+/* This is a  
+Multi-line comment 
+*/
+```
 </div>
 
 - برای پرینت یک پیام از سینتکس زیر استفاده میشود:
 
 <div dir="ltr">
 	
-    console.log("hello world")
-    
+```typescript
+console.log("hello world")
+```
 </div>
 
 # type
@@ -208,8 +199,9 @@ Js:
 
 <div dir="ltr">
 	
-    var score: number = 50;
-    
+```typescript
+var score: number = 50;
+```
 </div>
 
 # Condition و Loop
@@ -218,12 +210,13 @@ Js:
 
 <div dir="ltr">
 	
-    if (num % 2==0) { 
-        console.log("Even"); 
-    } else {
-        console.log("Odd"); 
-    }
-    
+```typescript
+if (num % 2==0) { 
+    console.log("Even"); 
+} else {
+    console.log("Odd"); 
+}
+```
 </div>
 
 ۳ روش برای ایجاد حلقه در جهت اجرای چند باره یک بخش از کد وجود دارد:
@@ -231,31 +224,34 @@ Js:
 - for loop:
 
 <div dir="ltr">
-	
-    for (initial_count_value; termination-condition; step) {
-        //statements 
-    }
-    
+
+```typescript	
+for (initial_count_value; termination-condition; step) {
+    //statements 
+}
+```
 </div>
     
 - while loop:
 
 <div dir="ltr">
-	
-    while(condition) { 
-        // statements if the condition is true 
-    }
 
+```typescript
+while(condition) { 
+    // statements if the condition is true 
+}
+```
 </div>
 
 - do… while:
 
 <div dir="ltr">
-	
-    do {
-        //statements 
-    } while(condition)
-    
+
+```typescript
+do {
+    //statements 
+} while(condition)
+```
 </div>	
 
 # Function
@@ -266,10 +262,11 @@ Js:
 
 <div dir="ltr">
 
-    function func_name( param1 [:datatype], param2 [:datatype]…) { 
-        // function body   
-    }
-
+```typescript
+function func_name( param1 [:datatype], param2 [:datatype]…) { 
+    // function body   
+}
+```
 </div>
 
 که وجود پارامتر ها اختیاری است.
@@ -278,23 +275,25 @@ Js:
 
 <div dir="ltr">
 
-    function_name(param1 , param2…)
-
+```typescript
+function_name(param1 , param2…)
+```
 </div>
 
 -یک نمونه کد برای ایجاد یک فانکشن و صدا زدن آن:
 
 <div dir="ltr">
 
-    function disp_details(id, name, mail_id) {
-        console.log("ID:", id);
-        console.log("Name", name);
-	
-    if (mail_id != undefined)
-        console.log("Email Id", mail_id);
-    }
-    disp_details(123, "John");
+```typescript
+function disp_details(id, name, mail_id) {
+    console.log("ID:", id);
+    console.log("Name", name);
 
+if (mail_id != undefined)
+    console.log("Email Id", mail_id);
+}
+disp_details(123, "John");
+```
 </div>
 
 ### توابع بازگشتی:
@@ -305,15 +304,16 @@ Js:
 
 <div dir="ltr">
 
-    function factorial(number) {
-        if (number <= 0) {         // termination case
-            return 1; 
-        } else {     
-            return (number * factorial(number - 1));     // function invokes itself
-        } 
-    }; 
-    console.log(factorial(6));      // outputs 720 
-
+```typescript
+function factorial(number) {
+    if (number <= 0) {         // termination case
+        return 1; 
+    } else {     
+        return (number * factorial(number - 1));     // function invokes itself
+    } 
+}; 
+console.log(factorial(6));      // outputs 720 
+```
 </div>
 
 # Numbers
@@ -324,8 +324,9 @@ TypeScript مانند JavaScript مقادیر عددی را بصورت اشیا 
 
 <div dir="ltr">
 
-    var var_name = new Number(value)
-
+```typescript
+var var_name = new Number(value)
+```
 </div>
 
 -بعضی از property های شی Number در زیر لیست شده اند:
@@ -351,17 +352,21 @@ TypeScript مانند JavaScript مقادیر عددی را بصورت اشیا 
 
 <div dir="ltr">
 
-    var var_name = new String(string);
-
+```typescript
+var var_name = new String(string);
+```
 </div>
 
 -یک مثال کد از کاربرد این شی همراه با متد دسترسی به طول رشته:
 
 
 <div dir="ltr">
+
+```typescript
     var uname = new String("Hello World") 
     console.log(uname) 
     console.log("Length "+uname.length) 
+```
 </div>
 
 -برخی method های شی String در زیر لیست شده اند:
@@ -383,9 +388,10 @@ TypeScript مانند JavaScript مقادیر عددی را بصورت اشیا 
 
 <div dir="ltr">
 
-    var array_name[:datatype];        //declaration 
-    array_name = [val1,val2,valn..]   //initialization
-
+```typescript
+var array_name[:datatype];        //declaration 
+array_name = [val1,val2,valn..]   //initialization
+```
 </div>
 
 برخی از method هایی که در TypeScript برای آرایه وجود دارند در زیر لیست شده اند:
@@ -426,26 +432,29 @@ Tuple ها برای زمانی که احتیاج داریم یک مجموعه ا
 
 <div dir="ltr">
 
-    var tuple_name = [value1,value2,value3,…value n]
-
+```typescript
+var tuple_name = [value1,value2,value3,…value n]
+```
 </div>
 
 -مثال:
 
 <div dir="ltr">
-	
-    var mytuple = [10,"Hello"];
-    
+
+```typescript
+var mytuple = [10,"Hello"];
+```
 </div>
 
 دسترسی به اعضای tuple هم به شکل زیر صورت میگیرد:
 
 <div dir="ltr">
 	
-    var tup = [] 
-    tup[0] = 12 
-    tup[1] = 23 
-    
+```typescript
+var tup = [] 
+tup[0] = 12 
+tup[1] = 23 
+```
 </div>
 
 -دو تا از عملگر هایی که روی یک tuple قابل انجام است در زیر توضیح داده شده اند:
@@ -459,11 +468,12 @@ Tuple ها برای زمانی که احتیاج داریم یک مجموعه ا
 
 <div dir="ltr">
 	
-    var a =[10,"hello"] 
-    var [b,c] = a 
-    console.log( b )   //10 
-    console.log( c )   //hello
-    
+```typescript
+var a =[10,"hello"] 
+var [b,c] = a 
+console.log( b )   //10 
+console.log( c )   //hello
+```
 </div>
 
 # Union
@@ -474,7 +484,9 @@ TypeScript این قابلیت را به برنامه میدهد که یک یا 
 
 <div dir="ltr">
 
-    Type1|Type2|Type3 
+```typescript
+Type1|Type2|Type3 
+```
 
 </div>
 
@@ -482,52 +494,55 @@ TypeScript این قابلیت را به برنامه میدهد که یک یا 
 
 <div dir="ltr">
 
-    var val:string|number 
-    val = 12 
-    console.log("numeric value of val "+val) 
-    val = "This is a string" 
-    console.log("string value of val "+val)
-
+```typescript
+var val:string|number 
+val = 12 
+console.log("numeric value of val "+val) 
+val = "This is a string" 
+console.log("string value of val "+val)
+```
 </div>
 
 -یک مورد استفاده دیگر union type ها به عنوان پارامتر فانکشن هاست:
 
 <div dir="ltr">
 
-    function disp(name:string|string[]) { 
-        if(typeof name == "string") { 
-            console.log(name) 
-        } else { 
-            var i; 
-      
-            for(i = 0;i<name.length;i++) { 
-                console.log(name[i])
-            } 
+```typescript
+function disp(name:string|string[]) { 
+    if(typeof name == "string") { 
+        console.log(name) 
+    } else { 
+        var i; 
+    
+        for(i = 0;i<name.length;i++) { 
+            console.log(name[i])
         } 
     } 
-
+} 
+```
 </div>
 
 Union تایپ ها همچنین میتوانند در آرایه ها یا اینترفیس ها مورد استفاده واقع شوند:
 
 <div dir="ltr">
 
-    var arr:number[]|string[]; 
-    var i:number; 
-    arr = [1,2,4] 
-    console.log("**numeric array**")  
+```typescript
+var arr:number[]|string[]; 
+var i:number; 
+arr = [1,2,4] 
+console.log("**numeric array**")  
 
-    for(i = 0;i<arr.length;i++) { 
-        console.log(arr[i]) 
-    }  
+for(i = 0;i<arr.length;i++) { 
+    console.log(arr[i]) 
+}  
 
-    arr = ["Mumbai","Pune","Delhi"] 
-    console.log("**string array**")  
+arr = ["Mumbai","Pune","Delhi"] 
+console.log("**string array**")  
 
-    for(i = 0;i<arr.length;i++) { 
-        console.log(arr[i]) 
-    } 
-
+for(i = 0;i<arr.length;i++) { 
+    console.log(arr[i]) 
+} 
+```
 </div>
 
 در این قطعه کد اعضای آرایه میتوانند از نوع رشته یا عددی باشند.
@@ -546,29 +561,32 @@ Union تایپ ها همچنین میتوانند در آرایه ها یا ای
 
 <div dir="ltr">
 
-    interface interface_name { 
-        ...
-    }
-
+```typescript
+interface interface_name { 
+    ...
+}
+```
 </div>
 
 -یک مثال از تعریف و پیاده سازی یک اینترفیس توسط یک کلاس:
 
 <div dir="ltr">
 
-    interface IPerson { 
-        firstName:string, 
-        lastName:string, 
-        sayHi: ()=>string 
-    } 
+```typescript
+interface IPerson { 
+    firstName:string, 
+    lastName:string, 
+    sayHi: ()=>string 
+} 
 
-    var customer:IPerson = { 
-        firstName:"Tom",
-        lastName:"Hanks", 
-        sayHi: ():string =>{return "Hi there"} 
-    } 
-
+var customer:IPerson = { 
+    firstName:"Tom",
+    lastName:"Hanks", 
+    sayHi: ():string =>{return "Hi there"} 
+} 
+```
 </div>
+پس از کامپایل شدن رد پایی از interface ها در جاوااسکریپت باقی نمی ماند و تنها برای تایپ چکینگ در هنگام کامپایل کاربرد دارد.
 
 # Class
 
@@ -576,86 +594,476 @@ TypeScript درواقع همان JavaScript است که شی گرایی را س�
 
 <div dir="ltr">
 	
-    class class_name {
-        //class scope 
-    }
-
+```typescript
+class class_name {
+    //class scope 
+}
+```
 </div>
 
 یک کلاس میتواند ۳ بخش زیر را شامل شود:
 
 1. Fields
 2. Constructors
-3. Functions
+3. Methods
 
 -یک مثال از یک کلاس که شامل هر ۳ این اعضا است در زیر آمده است:
 
 <div dir="ltr">
 
-    class Car { 
-        //field 
-        engine:string; 
- 
-        //constructor 
-        constructor(engine:string) { 
-            this.engine = engine 
-        }  
+```typescript
+class Car { 
+    //field 
+    engine:string; 
 
-        //function 
-        disp():void { 
-            console.log("Engine is  :   "+this.engine) 
-        } 
+    //constructor 
+    constructor(engine:string) { 
+        this.engine = engine 
+    }  
+
+    //method 
+    disp():void { 
+        console.log("Engine is  :   "+this.engine) 
+    } 
+}
+```
+</div>
+
+اعضای کلاس در می توانند public یا protected یا private باشند. به صورت پیش فرض اعضا public هستند و تمام کد های خارج از کلاس به آن ها دسترسی دارند. اعضای protected توسط بچه های ان کلاس قابل دسترس هستند و اعضای private تنها توسط خود کلاس قابل دسترسی است.
+
+از آنجا که TypeScript زبان کامپایلی است در نتیجه پس از تبدیل به JavaScript دیگر اثری از این محدودکننده های دسترسی نیست و در کد های JavaScript دیگرُ اعضای کلاس ما علی رغم private بودن قابل دسترسی هستند و حتی در خود TypeScript هم با اشاره به صورت رشته ای قابل دسترس است.
+
+<div dir="ltr">
+
+```typescript
+class Test {
+    private cantCMe: string = "now you can!";
+}
+
+let test: Test = new Test();
+console.log(test["cantCMe"]); // prints "now you can"
+console.log(test.cantCMe); // error
+// Property 'cantCMe' is private and only accessible within class 'Test'
+```
+</div>
+این مشکل برای مشخصه های private جاوا اسکریپتی که با # تعیین می شوند وجود ندارد.
+
+<div dir="ltr">
+
+```typescript
+class Test {
+    #cantCMe: string = "now you can!";
+}
+
+let test: Test = new Test();
+console.log(test["#cantCMe"]); // Property '#cantCMe' does not exist on type 'Test'.
+console.log(test.#cantCMe); // error
+// Property '#cantCMe' is not accessible outside class 'Test' because it has a private identifier.
+```
+</div>
+جالب است که شما کلاس ها را نیز می توانید علاوه بر extend همانند interface ها implement کنید و با این کار در واقع با کلاس همانند interface رفتار کرده اید و ملزم به پیاده سازی تمامی متد های آن هستید. از آنجا که تمامی interface ها پس از کامپایل از بین می روند می توان از این قابلیت برای Dependency Injection استفاده کرد و با implment کردن abstract class ها از آن ها به عنوان interface استفاده کنیم.
+
+برای اعضای کلاس می توان getter و setter نیز به سبک زیر نوشت که نحوه دسترسی به آن اعضا رو تعیین می کند.
+
+<div dir="ltr">
+
+```typescript
+class Test {
+    private _even: number = 0;
+
+    public get even(): number {
+        return this._even * 2;
     }
 
+    public set even(x: number) {
+        if (x % 2 == 0) {
+            this._even = x / 2;
+        } else {
+            throw new Error("Odd value!");
+        }
+    }
+}
+
+let test: Test = new Test();
+test.even = 10; // sets _even = 5
+console.log(test.even); // prints 10
+test.even = 11; // error
+```
 </div>
+
 
 # Object
 
-یک object یک نمونه است که شامل مجموعه ای از کلید ها و مقدار هاست. این مقدار ها میتوانند عددی، فانکشن یا حتی آرایه از شی های دیگر باشند.
+یک object یک نمونه است که شامل مجموعه ای از کلید ها و مقدار هاست. این مقدار ها میتوانند عددی، تابع یا حتی آرایه از شی های دیگر باشند.
 
 - سینتکس object بصورت زیر است:
 
 <div dir="ltr">
 
-    var object_name = { 
-        key1: “value1”, //scalar value 
-        key2: “value”,  
-        key3: function() {
-             //functions 
-        }, 
-        key4:[“content1”, “content2”] //collection  
-    };
-
+```typescript
+var object_name = { 
+    key1: “value1”, //scalar value 
+    key2: “value”,  
+    key3: function() {
+            //functions 
+    }, 
+    key4:[“content1”, “content2”] //collection  
+};
+```
 </div>
 
 -یک نمونه کد برای تعریف یک object و دسترسی به اعضای آن:
 
 <div dir="ltr">
 
-    var person = { 
-        firstname:"Tom", 
-        lastname:"Hanks" 
-    }; 
-    //access the object values 
-    console.log(person.firstname) 
-    console.log(person.lastname)
-
+```typescript
+var person = { 
+    firstname:"Tom", 
+    lastname:"Hanks" 
+}; 
+//access the object values 
+console.log(person.firstname) 
+console.log(person.lastname)
+```
 </div>
 
 همچنین در صورتی که بخواهیم مقادیری را به object اضافه کنیم. TypeScript با استفاده از تعریف یک method template این اجازه را به ما میدهد. مثلا در قطعه کد زیر ما یک فانکشن را به شی person اضافه میکنیم:
 
 <div dir="ltr">
 
-    var person = {
-        firstName:"Tom", 
-        lastName:"Hanks", 
-        sayHello:function() {  }  //Type template 
-    } 
-    person.sayHello = function() {  
-        console.log("hello "+person.firstName)
-    } 
-
+```typescript
+var person = {
+    firstName:"Tom", 
+    lastName:"Hanks", 
+    sayHello:function() {  }  //Type template 
+} 
+person.sayHello = function() {  
+    console.log("hello "+person.firstName)
+} 
+```
 </div>
+
+# Generics
+با استفاده از Generic ها می توان کد های منعطفی تولید کرد.
+
+<div dir="ltr">
+
+```typescript
+function getRandomNumber(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomNumericElement<T extends number>(elements: T[]): T {
+    if (elements.length) {
+        return elements[getRandomNumber(0, elements.length)];
+    }
+    throw new Error("Empty Array");
+}
+
+let scores = [20, 18, 16, 17, 19];
+console.log(getRandomNumericElement(scores));
+
+let scoresString = ["20", "18", "16", "17", "19"];
+console.log(getRandomNumericElement(scoresString));
+// Argument of type 'string[]' is not assignable to parameter of type 'number[]'.
+// Type 'string' is not assignable to type 'number'.
+// can be solved if T extends (number|string)
+```
+</div>
+
+در اینجا تابعی با جنریک ها ساختیم که تنها به شرطی که آرایه ورودی از نوع عددی یا کلاس هایی که از ان ارث بری می کنند باشد یک عنصر تصادفی از آن را خروجی دهد.
+
+ترکیب جنریک ها با union type ها و ابزار های دیگر تایپ که در ادامه با آن ها آشنا می شویم از نقاط منعطف TypeScript است.
+
+# Type Aliases
+
+از آنجا که بسیار پیش می آید که بخواهیم از تایپی که یک جا تعریف می کنیم در جای دیگر استفاده کنیم می توانیم به آن تایپ ها نام بدهیم.
+
+نکته: رشته ها (یا به صورت کلی دیگر مقادیر) می توانند به عنوان تایپ استفاده شوند.
+
+<div dir="ltr">
+
+```typescript
+let one : 1 = 1;
+let skill : "full-stack" = "full-stack";
+let evenNumber: 0 | 2 | 4 | 6 | 8 = 5;
+// Type '5' is not assignable to type '0 | 2 | 4 | 6 | 8'
+
+type odd = 1 | 3 | 5 | 7 | 9;
+type nationality = "iranian" | "chinese" | "american" | "russian";
+let me : nationality = "iranian";
+```
+</div>
+در اینجا با استفاده از union type توانستیم یک تایپ منعطف جدید بسازیم  اما کار همینجا تمامم نمی شود.
+
+<div dir="ltr">
+
+```typescript
+type odd = 1 | 3 | 5 | 7 | 9;
+type nationality = "iranian" | "chinese" | "american" | "russian";
+type skills = "front-end" | "back-end" | "full-stack";
+type mixed = `${odd | nationality} ${skills} developer`;
+let test: mixed = "iranian full-stack developer";
+let test2: mixed = "2 back-end developer"; // error
+```
+</div>
+در اینجا از تایپ ها در ساخت یک تایپ رشته ای جدید استفاده کردیم که ترکیبی از union type های مختلف است .
+
+<div dir="ltr">
+
+```typescript
+type Request = {
+    body: string;
+    method: "GET" | "POST";
+    url: string;
+};
+
+function handle(request: Request) {
+    console.log("request handled");
+}
+
+const req = {
+    body : "",
+    method: "POST" as "POST",
+    url: "google.com"
+}
+handle(req)
+```
+</div>
+
+در اینجا برای اینکه POST به عنوان تایپ POST حساب شود نه string از عبارت POST as استفاده کردیم. همانطور که بنظر می آید شباهت های زیادی بین type alias و interface وجود دارد. در اینجا چند تفاوت از آن ها را نام می بریم.
+
+1- شبیه به union type می توان با استفاده از & از intersection type استفاده کرد که  می توان به تایپ ها کلید جدید اضافه کرد اما در interface ها کافی است آن را extend کنیم.
+
+2- در interface ها براحتی می توان کلید جدید به خود interface اصلی اضافه کرد اما در تایپ ها پس از تعریف نمی توان در ان تغییری ایجاد کرد.
+
+# Utility Types
+
+## String Manipulation Types
+
+اول با ۴ تا تایپ کمکی مخصوص رشته آشنا می شویم.
+
+1. Uppercase
+
+2. Lowercase
+
+این ۲ تایپ کمکی از نام خود معلوم هستند برای بزرگ کردن و کوچک کردن حروف تایپ استفاده می شود.
+
+3. Capitalize
+
+4. Uncapitalize
+
+این ۲ تایپ در نقش متصضاد همدیگر هستند و Capitalize حرف اول تایپ را بزرگ می کند.
+
+<div dir="ltr">
+
+```typescript
+type odd = 1 | 3 | 5 | 7 | 9;
+type nationality = "iranian" | "chinese" | "american" | "russian";
+type skills = "front-end" | "back-end" | "full-stack";
+type mixed = `${odd | nationality} ${skills} developer`;
+let test: Uppercase<mixed> = "IRANIAN FULL-STACK DEVELOPER";
+let test2: Lowercase<mixed> = "iranian full-stack developer";
+let test3: Capitalize<mixed> = "Iranian full-stack developer";
+```
+</div>
+
+## Nullability Types
+
+با استفاده از **?** می توانیم فیلد های تایپ را nullable کنیم.
+
+* Partial
+* Required
+
+<div dir="ltr">
+
+```typescript
+type Student = {
+    id: number
+    name: string
+    score?: number
+}
+type FullStudent = Required<Student>
+type HalfStudent = Partial<Student>
+let student: Student = {
+    id: 1,
+    name: "Ali"
+}
+let emptyStudent: HalfStudent = {
+    id: 2
+}
+let happyStudent: FullStudent = {
+    id: 3,
+    name: "Ali",
+    score: 19
+}
+```
+</div>
+این دو تایپ متضاد یکدیگر هستند و یکی از آن ها تمام فیلد ها را اجباری می کند و دیگری تمام فیلد ها را اختیاری.
+
+## Readonly Types
+
+* Readonly
+
+با استفاده از این تایپ می توانیم یک تایپ جدید بسازیم که تمامی فیلد های ان readonly هستند.
+
+## Others
+
+* Record
+
+با استفاده از این تایپ کمکی می توانید تایپ جدید با استفاده از  کلید های داده شده بسازید.
+
+<div dir="ltr">
+
+``` typescript
+type Student = {
+    id: number
+    name: string
+    score: string
+}
+type StudentPrime = Record<"normal" | "gifted" | "suspended", Student>;
+let student: StudentPrime =  {
+    normal: {id: 1, name: "mamal", score: 16}, 
+    gifted: {id: 2, name: "ali", score: 19},
+    suspended: {id: 3, name: "siavash", score: 12}
+}
+```
+</div>
+
+* Pick
+* Omit
+
+با استقفاده از تایپ Pick می توانیم تعداد از کلید های تایپ اولیه را انتخاب کنیم و با استفاده از ان ها تایپ جدیدی بسازیم.
+
+با استفاده از تایپ Omit می توانیم از تایپ اولیه تعدادی کلید را حذف کنیم و با استفاده از آن تایپ جدیدی بسازیم.
+
+<div dir="ltr">
+
+```typescript
+type Student = {
+    id: number
+    name: string
+    score: number
+}
+type StudentAlpha = Pick<Student, "id" | "score">;
+type StudentBeta = Omit<Student, "name">;
+let student: StudentAlpha = {
+    id: 1,
+    score: 18
+}
+function handle(student: StudentBeta) {
+    console.log(student.id);
+}
+handle(student);
+```
+</div>
+
+* Extract
+* Exclude
+
+با استفاده از Extract می توانید تایپ هایی را که از بخش اول زیر مجموعه تایپ هایی که ثانیوه هستند را استخراج کنیم.
+
+با استفاده از Exclude می توانید تایپ هایی را که از بخش اول زیر مجموعه تایپ هایی که ثانیوه هستند را خارج کنیم.
+
+<div dir="ltr">
+
+```typescript
+type ExtractTest = Extract<"a" | "b" | "c", "a" | "f">; // = "a"
+type ExcludeTest = Exclude<"a" | "b" | "c", "a" | "f">; // = "b" | "c"
+
+```
+</div>
+
+در آخر نیز یک تکه کد جالب از کار با تایپ ها اضافه می کنم.
+
+<div dir="ltr">
+
+```typescript
+const nations = [
+    {name: "iran", code: "IR"},
+    {name: "china", code: "PRC"},
+    {name: "america", code: "US"},
+    {name: "england", code: "UK"}
+] as const;
+type Monoset = typeof nations[number];
+type Superset = {
+    [P in keyof Monoset]: Capitalize<Monoset[P]>;
+}
+const item: Superset = {name: "Iran", code: "US"}
+```
+</div>
+
+در اینجا کلید های آرایه nations را گرفته و مقادیر آن ها را Capitalize کردیم و به تایپی رسیده ایم که تنها به ازای نام Capitalize شده و کد کشور یکی از مقادیر داخل آرایه معتبر به حساب می آید.
+
+در آخر پیشنهاد می کنم برای برررسی میزان یادگیری این تایپ هاُ تایپ Omit را با استفاده از تایپ های Pick و Exclude پیاده سازی کنید.
+
+# tsconfig.json
+
+با استفاده از دستور
+
+<div dir="ltr">
+
+```
+tsc
+```
+</div>
+می توان کد های تایپ اسکریپت موجود در فولدر را کامپایل کرد اما همواره خروجی که می دهد مد نظر ما نیست و گاهی اوقات نیاز است در داخل ان تغییراتی دهیم که توانایی برآورده کردن خواسته های ما را داشته باشد. برای اینکار یک فایل tsconfing.json در داخله فولدر  قرار می دهیم  و در داخل آن تنظیمات مورد نظر را اعمال می کنیم.
+در اینجا به برخی از تنظیمات آن می پردازیم.
+
+## files
+فایل های مد نظرمان که می خواهیم کامپایل شوند را می توانیم در آرایه ای به اسم files ذخیره کنیم.
+
+## extends
+با استفاده از این مقدار می توانیم از فایل کانفیگ دیگری ارث ببریم.
+
+## include & exclude
+با استفاده از این ۲ تا اگر الگویی از آدرس فایل ها بدهیم آن ها را به پروژه اضافه کنیم یا اگر فایلی در دستور include به اشتباهی آمده است آن را حذف کنیم.
+
+در این الگو های یک ستاره به معنای هر تعداد کاراکتر در یک سطح از فولدر ها هست. یک علامت سوال به معنای یک کاراکتر است و دو ستاره به معنای هر لولی از فولدر ها می باشد.
+
+<div dir="ltr">
+
+    src/**/domain/*
+</div>
+به معنای هر تعدادی از فولدر های درون هم که در انتها به فولدر domain ختم شوند و تمام محتوای آن فولدر مورد انتخاب قرار می گیرد.
+
+## outDir
+در حالت پیش فرض فایل ها در همان جایی که .ts آن ها قرار دارد کامپایل و فایل .js آن ها قرار داده می شود. با استفاده از outDir می توان آن ها را به فولدر خاصی هدایت کرد.
+
+## target
+با استفاده از این می توانید نسخه JavaScript خروجی را معین کنید و علاوه بر اینکه بعضی قابلیت ها حداقل نسخه مخصوص دارند. قابلیت هایی که ندارند نیز خروجی ها متفاوتی ممکن است بدهد. برای مثال استفاده از مشخصه private خود Javascript که با # تعیین می شود نیازمند حداقل target معادل es2015 است. اما مولفه private خود typescript این محدودیت را ندارد.
+
+## strict
+ تایپ چکینگ سخت گیرانه تری را فعال سازی می کند.
+
+ ## alwaysStrict
+ در تمامی فایل های کامپایل شده اول آن ها عبارت "use strict" قرار گرفته شده باشد.
+
+ ## allowUnreachableCode
+ وجود کد هایی که هرگز اجرا نمی شوند یا اجازه می دهد مانند کد های پس از return تابع
+
+ ## allowUnusedLabels
+ اجازه وجود لیبل هایی که بعدا از آن ها استفاده ای نشده است را می دهد.
+
+ ## noFallthroughCasesInSwitch
+ اجازه وجود کیس غیر خالی که در آن ها break یا return ای نیست به شما نمی دهد.
+
+ ## noImplicitAny
+ اجازه وجود نوع any بدون انوتیشن تعریفی آن را به ما نمی دهد.
+
+ ## noImplicitOverride
+اجازه اورراید کردن تابع پدر بدون استفاده از کلیدواژه override را به ما نمی دهد.
+
+در آخر نیز تعدادی فایل tsconfig پیشنهادی و پیشفرض هستند که در اینجا لینک آن ها را قرار می دهیم.
+
+* [پیشنهادی](https://www.npmjs.com/package/@tsconfig/recommended)
+* [Node 12](https://www.npmjs.com/package/@tsconfig/node12)
+* [React Native](https://www.npmjs.com/package/@tsconfig/react-native)
+* [Svelte](https://www.npmjs.com/package/@tsconfig/svelte)
+
+برای استفاده از TypeScript برای Node نصب @types/node فراموش نشود.
+
+<div dir="ltr">
 
 # Testing With Jest :
 - در برنامه نویسی TypeScript هم مانند سایر زبان ها ، یکی از مهمترین نکات ، نوشتن تست برای برنامه جهت اطمینان از Quality برنامه است تا برخی باگ ها قبل از release مشخص و برطرف شوند.
