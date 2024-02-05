@@ -3,7 +3,7 @@
 
 <p align=center>
 
-![Neo4j](/Neo4j-logo_color.png)
+![Neo4j](./Neo4j-logo_color.png)
 
 </p>
 
