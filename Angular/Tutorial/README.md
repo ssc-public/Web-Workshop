@@ -208,7 +208,7 @@
 
 همچنین، می‌توانیم آن را در `constructor` یا متدها اعلام کنیم. همانطور که در زیر می‌بینید:
 
-<div dir="ltr">
+
 ```typescript
 userName: string;
 mobileNo: number;
@@ -219,7 +219,6 @@ constructor() {
   this.mobileNo = 9898343434;
   this.emailId = 'ankit@ngdevelop.tech';
 }
-</div>
 
 
 
