@@ -10,5 +10,7 @@
 
 این الگو برای طراحی برنامه‌های وب بسیار محبوب شده است. برخی از زبان‌های برنامه‌نویسی محبوب دارای چارچوب‌های MVC هستند که پیاده‌سازی این الگو را تسهیل می‌کنند.
 
+<img src="../images/Angular_React_comparison.jpg" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+
 
 </div>
