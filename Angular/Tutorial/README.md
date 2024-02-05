@@ -209,8 +209,11 @@
 همچنین، می‌توانیم آن را در `constructor` یا متدها اعلام کنیم. همانطور که در زیر می‌بینید:
 
 `userName: string;`
+
 `mobileNo: number;`
+
 `emailId: string;`
+
 `constructor() {`
  ` this.userName = 'Ankit';`
   `this.mobileNo = 9898343434;`
@@ -220,7 +223,7 @@
 
 برای دسترسی به ویژگی سطح کلاس در سازنده یا متد، باید از کلمه کلیدی `this` استفاده کنیم.
 ### تعامل رشته‌ای
-به `app.component.html` بروید (الگوی پیش‌فرض `AppComponent`) 
+به `app.component.html` بروید ( الگوی پیش‌فرض `AppComponent` ) 
 در معماری Data Binding Angular بحث کردیم، برای نمایش هر ویژگی روی صفحه، باید از تعامل رشته‌ای استفاده کنیم.
 
 سینتکس تعامل رشته‌ای {{ }} است:
@@ -236,7 +239,7 @@
 <h2>Arithmetic Operation :</h2>
 <h3> <strong ngNonBindable> {{(5*5+1)/2}} </strong> : {{(5*5+1)/2}}</h3>
 <hr>
-<h3>Built In Pipes : {{ userName | uppercase }}</h3>
+<h3>Built In Pipes : {{ userName | uppercase }}</h3>```
 
 
 خروجی زیر را به شما نشان خواهد داد:
@@ -251,7 +254,7 @@
 
 ```hTML
 <h3>Built In Pipes : {{ userName | uppercase }}</h3>
-AI-generated code. Review and use carefully. More info on FAQ.
+AI-generated code. Review and use carefully. More info on FAQ.```
 همانطور که در کد می‌بینید، شما می‌توانید `userName` را با استفاده از `uppercase pipe` با تعامل رشته‌ای نمایش دهید.
 
 
