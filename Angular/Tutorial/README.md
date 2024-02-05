@@ -242,8 +242,8 @@ constructor() {
 <h2>Arithmetic Operation :</h2>
 <h3> <strong ngNonBindable> {{(5*5+1)/2}} </strong> : {{(5*5+1)/2}}</h3>
 <hr>
-<h3>Built In Pipes : {{ userName | uppercase }}</h3>```
-
+<h3>Built In Pipes : {{ userName | uppercase }}</h3>
+```
 
 خروجی زیر را به شما نشان خواهد داد:
 
