@@ -219,7 +219,7 @@ constructor() {
   this.mobileNo = 9898343434;
   this.emailId = 'ankit@ngdevelop.tech';
 }
-
+```
 
 
 همانطور که در بالا می‌بینید، `userName`، `mobileNo` و `emailId` در `constructor` مقداردهی اولیه شده‌اند.
