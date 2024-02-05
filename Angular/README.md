@@ -12,6 +12,6 @@
   
 
 
-<p align=center><img width=500 src="./Angular.png" /></p>
+<p align=center><img width=500 src="./angular.png" /></p>
 
 </div>
