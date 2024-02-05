@@ -332,6 +332,77 @@ skills using *ngFor:
 حالا بیایید قابلیت اضافه کردن یک عنصر به آرایه را اضافه کنیم.
 
 شما می‌توانید input box و یک button برای تولید یک رویداد ایجاد کنید. اما شما باید این رویداد را با کنترل کننده رویداد کامپوننت، متصل کنید.در اینجا استفاده از پیوند رویداد مطرح می‌شود.
+### پیوند رویداد(event binding)
+
+پیوند رویداد برای اتصال رویداد کنترل HTML به کنترل کننده رویداد یک کامپوننت استفاده می‌شود.
+
+```html
+<h2>پیوند رویداد</h2>
+<div>
+  <label for="skill">مهارت جدید</label>
+  <input type="text" name="skill" #Skill>
+  <button (click)="addSkill(Skill.value)">افزودن</button>
+</div>
+```
+
+همانطور که در کد بالا می‌بینید، يك input box با نام `skill` و یک buttom ایجاد کرده‌ام.
+
+رویداد کلیک buttom با متد `()addSkill` کامپوننت نگاشت شده است.
+
+همانطور که می‌بینید ما در کنترل ورودی از `Skill#` استفاده کرده‌ایم، این یک متغیر مرجع الگو است. این به input box اشاره می‌کند، بنابراین شما می‌توانید با استفاده از `Skill.value` در رویداد کلیک، به مقدار جعبه ورودی دسترسی پیدا کنید.
+
+حالا برای کنترل این رویداد، ما باید یک کنترل کننده رویداد در `app.component.ts` بنویسیم.
+
+```typeScript
+
+addSkill(skill: string) {
+    this.skills.push(skill);
+}
+```
+### مدل دامنه(domain model)
+
+```typescript
+export class User {
+    userName: string;
+    mobileNo: number;
+    emailId: string;
+    skills: string[] = ['Java', 'Angular'];
+    constructor() {
+    }
+    addSkill(skill: string) {
+        this.skills.push(skill);
+    }
+}
+```
+
+همانطور که در بالا نشان داده شده، من یک مدل دامنه ایجاد کرده‌ام که تمام ویژگی‌ها را در یک کلاس ترکیب می‌کند. به طور کلی، ما باید مدل دامنه را در یک فایل جداگانه ایجاد کنیم.
+
+من این مدل را در فایل `user.ts` ایجاد کرده‌ام.
+
+برای استفاده از این کلاس باید آن را در کامپوننت وارد کنیم. با استفاده از:
+
+```typeScript
+
+import { User } from './user';
+```
+شما می‌توانید از افزونه `AutoImport` استفاده کنید، اگر نمی‌خواهید این خط را به صورت دستی داخل کنید.
+
+حالا یک شیء از این کلاس را در `app.component.ts` ایجاد می‌کنیم با استفاده از:
+
+```typeScript
+
+user: User;
+```
+ما این شیء را در سازنده کامپوننت مقداردهی اولیه خواهیم کرد و همچنین مقادیر userName، mobileNo، emailId را به شیء کاربر اختصاص خواهیم داد. همانطور که در زیر نشان داده شده است:
+
+```typeScript
+
+this.user = new User();
+this.user.userName = 'Ankit';
+this.user.mobileNo = 9898343434;
+this.user.emailId = 'ankit@ngdevelop.tech';
+```
+در الگوی `app.component.html` ما باید `{{userName}}` را با `{{user.userName}}`، `{{mobileNo}}` را با `{{user.mobileNo}}` و غیره جایگزین کنیم…
 
 
 
