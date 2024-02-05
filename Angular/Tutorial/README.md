@@ -96,7 +96,12 @@
 
 
 
-<img src="./Angular-Architecture.jpg"/>
+
+
+<img src="./Angular_Architecture.jpg"/>
+
+
+
 
 
 
