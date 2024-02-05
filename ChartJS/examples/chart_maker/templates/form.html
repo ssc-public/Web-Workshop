@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="" method="POST">
+    {% csrf_token %}
+  <label for="namad">namad:</label><br>
+  <input type="text" id="namad" name="namad" required=""><br>
+    <label for="days">days:</label><br>
+  <input type="text" id="days" name="days" required=""><br>
+    <input type="radio" id="one" name="one" value="one">
+    <label for="one">حجم - قدرت سرانه</label><br>
+    <input type="radio" id="two" name="two" value="two">
+    <label for="two">حجم - ورود پول</label><br>
+  <input type="submit" value="submit">
+</form>
+</body>
+</html>
