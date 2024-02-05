@@ -208,17 +208,17 @@
 
 همچنین، می‌توانیم آن را در `constructor` یا متدها اعلام کنیم. همانطور که در زیر می‌بینید:
 
-`userName: string;`
+```userName: string;
 
-`mobileNo: number;`
+mobileNo: number;
 
-`emailId: string;`
+emailId: string;
 
-`constructor() {`
- ` this.userName = 'Ankit';`
-  `this.mobileNo = 9898343434;`
- ` this.emailId = 'ankit@ngdevelop.tech;`
-`}
+constructor() {
+  this.userName = 'Ankit';
+  this.mobileNo = 9898343434;
+  this.emailId = 'ankit@ngdevelop.tech;
+}```
 همانطور که در بالا می‌بینید، `userName`، `mobileNo` و `emailId` در `constructor` مقداردهی اولیه شده‌اند.
 
 برای دسترسی به ویژگی سطح کلاس در سازنده یا متد، باید از کلمه کلیدی `this` استفاده کنیم.
