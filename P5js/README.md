@@ -12,7 +12,7 @@
 
 ## مقدمه
 
-### Processing و P5js
+### [Processing](https://processing.org/) و [P5js](https://p5js.org/)
 
 کتابخانه Processing پروژه ایست که در سال ۲۰۰۱ توسط دو دانشجو در MIT شروع شد. هدف این پروژه ساخت ابزاری برای طراحان و برنامه‌نویسان بود که به کمک آن بتوانند ایده‌ها و تصاویر ذهنی خود را از طریق برنامه‌نویسی مصور کنند. Processing در ابتدا در زبان برنامه‌نویسی Java نوشته شد. یکی از دلایل انتخاب این زبان، امکان قرار دادن این مصورسازی‌ها در وب (بوسیله applet ها) بود.
 
@@ -281,5 +281,11 @@ noStroke; // خاموش کردن حاشیه
 ### loadPixels
 
 تابع loadPixels پیکسل‌های تصویر را لود می‌کند و در متغیری داخل p5.Image قرار می‌دهد.
+
+## منابع
+
+[رفرنس p5js](https://p5js.org/reference/#/p5)
+
+[کانال The Coding Train](https://www.youtube.com/channel/UCvjgXvBlbQiydffZU7m1_aw)
 
 </div>
