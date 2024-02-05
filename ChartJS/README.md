@@ -1944,4 +1944,5 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
  جنگو در این بخش قرار میدهم که با دریافت اطلاعات از API 
  بازار بورس
  نمودار های مورد نیاز برای تحلیل سهام به ما میدهد
- 
+ [لینک پروژه]( https://github.com/farbodhma/Web-Workshop/tree/master/ChartJS/examples/chart_maker)
+
