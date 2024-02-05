@@ -3,11 +3,12 @@
 ## angular
 
 ### فهرست📝
-  - [آشنایی با مفاهیم مقدماتی](./Introduction)
-  - [آموزش گام به گام فریم‌ورک](./Tutorial)
+  - [مقدمه](./Introduction)
+  - [آموزش ](./Tutorial)
 
 ### نویسندگان✍️
   - محمدامين پورتوانايي(https://github.com/aminpt)
+    
   
 
 
