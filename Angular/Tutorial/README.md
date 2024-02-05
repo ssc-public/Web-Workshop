@@ -337,7 +337,7 @@ skills using *ngFor:
 پیوند رویداد برای اتصال رویداد کنترل HTML به کنترل کننده رویداد یک کامپوننت استفاده می‌شود.
 
 ```html
-<h2>پیوند رویداد</h2>
+<h2>event binding</h2>
 <div>
   <label for="skill">مهارت جدید</label>
   <input type="text" name="skill" #Skill>
