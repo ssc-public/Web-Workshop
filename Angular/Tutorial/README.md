@@ -174,7 +174,7 @@
 
 
 همانطور که در بالا نشان داده شده، تکه کد سرویس شامل یک متد ()addUser و یک متد ()getUsers است که از فراخوانی سرویس وب HTTP get استفاده می‌کند.
-### براي اطلاع از ساير قسمت ها به سايت<a target="_blank" href="https://angular.io">انگولار</a> مراجعه شود
+### براي اطلاع از ساير قسمت ها به <a target="_blank" href="https://angular.io">انگولار</a> مراجعه شود
 
 ## موضوعات ابتدايي در Angular
 
@@ -196,11 +196,63 @@
 
 در اینجا ما سه ویژگی userName، mobileNo و emailId را ایجاد خواهیم کرد:
 
-`userName: string = 'Ankit';
+`userName: string = 'Ankit';`
 
-mobileNo: number = 9898343434;
+`mobileNo: number = 9898343434;`
 
-emailId: string = 'ankit@ngdevelop.tech';`
+`emailId: string = 'ankit@ngdevelop.tech';`
+
+### مقداردهی اولیه ویژگی در Constructor
+
+همانطور که در بالا دیدیم، می‌توانیم ویژگی را در زمان اعلام مقداردهی اولیه کنیم.
+
+همچنین، می‌توانیم آن را در `constructor` یا متدها اعلام کنیم. همانطور که در زیر می‌بینید:
+
+`userName: string;`
+`mobileNo: number;`
+`emailId: string;`
+`constructor() {`
+ ` this.userName = 'Ankit';`
+  `this.mobileNo = 9898343434;`
+ ` this.emailId = 'ankit@ngdevelop.tech;`
+`}
+همانطور که در بالا می‌بینید، `userName`، `mobileNo` و `emailId` در `constructor` مقداردهی اولیه شده‌اند.
+
+برای دسترسی به ویژگی سطح کلاس در سازنده یا متد، باید از کلمه کلیدی `this` استفاده کنیم.
+### تعامل رشته‌ای
+به `app.component.html` بروید (الگوی پیش‌فرض `AppComponent`) 
+در معماری Data Binding Angular بحث کردیم، برای نمایش هر ویژگی روی صفحه، باید از تعامل رشته‌ای استفاده کنیم.
+
+سینتکس تعامل رشته‌ای {{ }} است:
+```html
+<h1>{{title}}</h1>
+<hr>
+<ul>
+  <li>User Name : {{userName}}</li>
+  <li>Mobile No : {{mobileNo}}</li>
+  <li>Email ID : {{emailId}}</li>
+</ul>
+<hr>
+<h2>Arithmetic Operation :</h2>
+<h3> <strong ngNonBindable> {{(5*5+1)/2}} </strong> : {{(5*5+1)/2}}</h3>
+<hr>
+<h3>Built In Pipes : {{ userName | uppercase }}</h3>
+
+
+خروجی زیر را به شما نشان خواهد داد:
+
+
+
+
+
+همانطور که در کد می‌بینید، تعامل رشته‌ای همچنین می‌تواند محاسبه ریاضی انجام دهد. مانند `{{(5*5+1)/2}}` که نتیجه 13 را به شما می‌دهد.
+
+شما می‌توانید قدرت تعامل رشته‌ای را با استفاده از `angular pipes` افزایش دهید. شما می‌توانید ورودی را با استفاده از pipes به فرمت‌های مختلف تبدیل کنید مانند uppercase، lowercase، date و غیره.
+
+```hTML
+<h3>Built In Pipes : {{ userName | uppercase }}</h3>
+AI-generated code. Review and use carefully. More info on FAQ.
+همانطور که در کد می‌بینید، شما می‌توانید `userName` را با استفاده از `uppercase pipe` با تعامل رشته‌ای نمایش دهید.
 
 
 
