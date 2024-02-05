@@ -229,7 +229,7 @@ constructor() {
 به `app.component.html` بروید ( الگوی پیش‌فرض `AppComponent` ) 
 در معماری Data Binding Angular بحث کردیم، برای نمایش هر ویژگی روی صفحه، باید از تعامل رشته‌ای استفاده کنیم.
 
-سینتکس تعامل رشته‌ای {{ }} است:
+سینتکس تعامل رشته‌ای `{{ }}` است:
 ```html
 <h1>{{title}}</h1>
 <hr>
@@ -248,7 +248,7 @@ constructor() {
 خروجی زیر را به شما نشان خواهد داد:
 
 
-
+<img src="./String-Interpolation.jpg"/>
 
 
 همانطور که در کد می‌بینید، تعامل رشته‌ای همچنین می‌تواند محاسبه ریاضی انجام دهد. مانند `{{(5*5+1)/2}}` که نتیجه 13 را به شما می‌دهد.
@@ -257,7 +257,7 @@ constructor() {
 
 ```hTML
 <h3>Built In Pipes : {{ userName | uppercase }}</h3>
-AI-generated code. Review and use carefully. More info on FAQ.```
+```
 همانطور که در کد می‌بینید، شما می‌توانید `userName` را با استفاده از `uppercase pipe` با تعامل رشته‌ای نمایش دهید.
 
 
