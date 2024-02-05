@@ -1,6 +1,6 @@
 <div dir="rtl">
-
-## angular
+  
+## آنگولار
 
 ### فهرست📝
   - [مقدمه](./Introduction)
