@@ -211,16 +211,14 @@
 <div dir="ltr">
 ```typescript
 userName: string;
-
 mobileNo: number;
-
 emailId: string;
 
 constructor() {
   this.userName = 'Ankit';
   this.mobileNo = 9898343434;
-  this.emailId = 'ankit@ngdevelop.tech;
-}```
+  this.emailId = 'ankit@ngdevelop.tech';
+}
 </div>
 
 
