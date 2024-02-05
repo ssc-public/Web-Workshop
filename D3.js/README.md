@@ -1,188 +1,132 @@
-<div dir='rtl' align='justify'>
-<p align="center"><img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*1HC_tkU_Kt-VjAgCd7fdRA.png"/></p>
-  
-<p align="center">
-    گردآوردندگان:  درسا قبادی - امیرحسین عزیزی  
-</p>
- 
-
-
-  # عناوین
-
-- [What is D3.js](#what-is-d3js)
-
-- [Web Standards](#web-standards)
- 
-- [Install D3.js](#install-d3js)
-
-- [Select DOM Element](#select-dom-element)
-
-- [DOM Manipulation](#dom-manipulation)
-
-- [Method Chaining](#method-chaining)
-
-- [Function of Data](#function-of-data)
-
-- [Event Handling](#event-handling)
-
-- [Animation](#animation)
-
-- [Data Binding](#data-binding)
-
-- [Load Data from File](#load-data-from-file)
-
-<!-- - [Scales](#scales) -->
-
-- [Axes](#axes)
-
-- [Create Bar Chart](#create-bar-chart)
-
-- [Create Animated Bar Chart](#create-animated-bar-chart)
-
-- [Resources](#resources)
-
-
-  
-# What is D3.js
-اسم D3 مخفف Data-Driven Doccuments بوده و یک کتابخانه opensource برای JavaScript است و برای تصویر سازی دیتا در مرورگر با استفاده از SVG, HTML و CSS نوشته شده است.
-
-با توجه به حجم عظیمی از دیتا که امروزه تولید می شود، ارتباط برقرار کردن و انتقال اطلاعات با آن مشکل شده است.
-نمایش تصویری دیتا موثر ترین روش برای این هدف است. کتابخانه D3 ابزار های زیادی برای این کار را در اختیار ما قرار می دهد.
-
-<br>
-
-
-### ویژگی های مثبت D3 را می توان به صورت خلاصه چنین بیان کرد:
--	برای تجسم و به تصویر کشاندن داده ها از ابزار های استاندارد روز مانند HTML و CSS و SVG استفاده می کند. به همین علت کنترل کامل ویژگی های بصری در اختیار شما قرار دارد.
-
-- کاملا مبتنی بر داده است. به عبارتی هم می تواند داده های استاتیک و پیشفرض را استفاده کند و هم از یک سرور داده ها را به صورت های مختلفی چون Array، Objects، Json یا XML بارگیری کرده و برای کشیدن نمودار ها یا دیگر داده های گرافیکی استفاده کند.
-
-- یکی از قدرتمند ترین ابزار D3 تابع ```()transition``` است که برای یافتن ارتباطات و تعاملات داخلی داده های شما و همچنین پیدا کردن تناوب های داده های شما استفاده می شود
-
-- کتابخانه D3  برای فهم و شهود بهتر، توابع انیمیشنی زیادی را معرفی می کند که از جمله آن ها می توان به ```()delay```، ```()ease``` یا ```()duration``` اشاره کرد.
-
-<br>
-
-### نمونه نمودار ها و تصویر سازی هایی که می توان با D3 انجام داد:
-<br>
-
-Bar Chart:
-
-<p align="center"><img src="https://gist.githubusercontent.com/mbostock/4062085/raw/d422852a871bf88dffb4fcc5fd5ac913ec3cea3a/thumbnail.png"/></p>
-
-
-
-Bubble Chart:
-
-
-<p align="center"><img src="https://gist.githubusercontent.com/mbostock/4063269/raw/b0ae046c99cc70205a659e902d32740758c4dc8f/thumbnail.png"/></p>
-
-
-
-Circle Packing:
-
-<p align="center"><img src="https://gist.githubusercontent.com/mbostock/4063530/raw/3d8c87f265a03da8b76e24d0eb2512eee334dcbb/thumbnail.png"/></p>
-
-
-Stream Graph:
-
-<p align="center"><img src="https://gist.githubusercontent.com/mbostock/4060954/raw/381b350b27ca2df1864d02c3f08130fdcef4ab6a/preview.jpg"/></p>
-
-در انتها با نحوه رسم Bar Chart آشنا می شویم.
-
-<br>
-<br>
-
-# Web Standards
-
-قبل از این که کار با D3 را شروع کنیم نیاز داریم با Web Standard ها آشنا باشیم.
-
-موارد زیر در D3  به مقدار زیادی استفاده شده و به طور خلاصه به آن ها می پردازیم:
-
-- HTML
-
-- DOM
-
-- CSS 
-
-- SVG
-
-- JavaScript
-
-<br>
-
-## HTML
-
-HTML = HyperText Markup Language
-
-برای ساختار بخشیدن به محتوای یک صفحه وب استفاده می شود. 
-
-یک نمونه خیلی ساده از یک فایل HTML به شکل زیر است:
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
-  ```
-  </div>
-
-<br>
-
-  ## DOM 
-  DOM = Document Object Model
-
-وقتی که برای صفحه خود  کد HTML می نویسید، در مرورگر شما به یک ساختار سلسله مراتبی تبدیل می شود. هر تگ  HTML شما به یک element در DOM تبدیل شده که دارای ساختار سلسله مراتبی پدر-فرزندی است. وقتی که این ساختار شکل بگیرد، دستکاری کردن هر DOM element راحت تر می شود.
-
-<br>
-
-## CSS
-
-CSS = Cascading Style Sheets
-
-در حالی که HTML باعث اضافه شدن ساخنار به صفحه شما می شود، CSS باعث اضافه شدن style به صفحه شما شده و آن را زیبا تر می کند. در واقع CSS نحوه  render شدن اجزا را تعیین می کند.
-
-<br>
-
-## SVG
-
-SVG = Scalable Vector Graphics
-
-یک روش تولید تصویر با استفده از text است. در واقع یک راه برای render کردن تصویر روی صفحه شما است.
-
-<br>
-
-## JavaScript
-
-یک زبان Scripting است که در سمت کلاینت اجرا شده و می تواند با HTML element ها یا DOM element ها ارتباط برقرار کند.
-
-
-
-<br>
-<br>
-
-# Install D3.js
-
-برای استفاده از D3  کار های زیر را انجام دهید:
-- به وبسایت D3 مراجعه کنید.
-- آخرین ورژن از d3 (d3.zip) را دانلود کنید.
-
-<p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/d3js.png"/></p>
-
-- حال فایلی که در مرحله قبل دانلود کردید را unzip کرده و در از فایل های ایجاد شده، دنبال فایل d3.min.js بگردید و آن را در دایرکتوری root پروژه خود قرار دهید.
-- برای استفاده از آن، d3.miin.js را در فایل HTML خود include کنید:
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
+<div dir="rtl">
+
+# D3
+![](./assets/d3_logo.png)
+
+## فهرست
+  - [مقدمه](#مقدمه)
+  - [پیشنیاز‌ها](#پیشنیاز‌ها)
+  - [معرفی](#معرفی)
+  - [ویژگی‌ها](#ویژگی‌ها)
+  - [نمونه](#نمونه)
+  - [نصب](#نصب)
+    - [مستقیم](#مستقیم)
+    - [cdn](#cdn)
+  - [انتخاب DOM](#انتخاب-DOM)
+    - [انتخاب تگ d3.select](#انتخاب-تگ-3.select)
+    - [انتخاب تمام DOMها d3.selectAll](#انتخاب-تمام-DOMها-d3.selectAll)
+    - [انتخاب با id](#انتخاب-با-id)
+    - [انتخاب با اسم کلاس](#انتخاب-با-اسم-کلاس)
+    - [انتخاب تو در تو](#انتخاب-تو-در-تو)
+  - [تغییر DOM](#تغییر-DOM)
+    - [تابع text](#text)
+    - [تابع append](#append)
+    - [تابع insert](#insert)
+    - [تابع remove](#remove)
+    - [تابع html](#html)
+    - [تابع attr](#attr)
+    - [تابع property](#property)
+    - [تابع style](#style)
+    - [تابع classed](#classed)
+  - [ زنجیر کردن تابع‌ها](#زنجیر-کردن-تابع‌ها)
+  - [ تابع روی دیتا](#تابع-روی-دیتا)
+    - [مقدار داینامیک](#مقدار-داینامیک)
+  - [Events handling](#Events-handling)
+  - [انیمیشن](#انیمیشن)
+    - [transition](#transition)
+    - [ease](#ease)
+    - [delay](#delay)
+  - [Data Binding](#data-binding)
+    - [تابع ()data](#تابع-data)
+    - [تابع ()enter](#تابع-enter)
+    - [تابع ()exit](#تابع-exit)
+    - [تابع ()datum](#تابع-datum)
+  - [خواندن داده‌ها از فایل در D3](#خواندن-دادهها-از-فایل-در-d3)
+    - [تابع ()d3.csv](#تابع-d3csv)
+    - [تابع ()d3.json](#تابع-d3json)
+    - [تابع ()d3.tsv](#تابع-d3tsv)
+    - [تابع ()d3.xml](#تابع-d3xml)
+    - [بایند کردن داده‌های Load شده](#بایند-کردن-دادههای-load-شده)
+    - [مدیریت خطاها](#مدیریت-خطاها)
+  - [آشنایی با SVG](#آشنایی-با-SVG)
+    - [ویژگی های SVG](#ویژگی-های-SVG)
+    - [خط](#خط)
+    - [مستطیل](#مستطیل)
+    - [دایره](#دایره)
+    - [بیضی](#بیضی)
+    - [متن](#متن)
+  - [مدل دادن به المان های SVG](#مدل-دادن-به-المان-های-SVG)
+  - [مقیاس در D3](#مقیاس-در-D3)
+    - [تابع ()d3.scaleLinear](#تابع-()d3.scaleLinear)
+  - [محور‌های نمودار در D3](#محور‌های-نمودار-در-D3)
+    - [تابع d3.axisTop](#تابع-d3.axisTop)
+    - [تابع d3.axisRight](#تابع-d3.axisRight)
+    - [تابع d3.axisBottom](#تابع-d3.axisBottom)
+    - [تابع d3.axisLeft](#تابع-d3.axisLeft)
+  - [ساختن نمودار میله‌ای](#ساختن-نمودار-میله‌ای)
+  - [رسم نمودار دایره‌ای با D3](#رسم-نمودار-دایره‌ای-با-D3)
+    - [مسیر در SVG](#مسیر-در-SVG)
+    - [تابع d3.scaleOrdinal](#تابع-d3.scaleOrdinal)
+    - [تابع d3.pie](#تابع-d3.pie)
+    - [تابع d3.arc](#تابع-d3.arc)
+  - [منابع](#منابع)
+
+## ️نویسندگان
+  - [سید مهدی صادق شبیری](https://github.com/SmsS4)
+  - [محمدصادق سلیمی](https://github.com/SMSadegh19)
+  - [علیرضا حسین پور](https://github.com/doctorhoseinpour)
+<hr>
+
+## مقدمه
+نامِ D3 مخففِ Data-Driven Documents است. این کتاب‌خانه‌ی متن‌باز توسط Mike Bostock توسعه داده شده است. هدفِ این کتاب‌خانه کمک به ساختِ مصورسازی‌های تعاملی داده‌ها در دنیای وب است. این کتاب‌خانه از HTML ،SVG و CSS برای ساخت نمودارها، نقشه‌ها و … استفاده می‌کند.  
+در این صفحه ما می‌خواهیم شروع کار با D3 و پایه‌های آن را یاد بگیریم؛ هم‌چنین چند مثال از دنیای واقعی را با هم بررسی کنیم.
+
+## پیشنیاز‌ها
+برای یادگیری D3 به دانش اولیه از CSS ،HTML و JavaScript نیاز داریم.
+
+## معرفی
+نامِ D3 مخففِ Data-Driven Documents است. این کتاب‌خانه‌ی متن‌باز توسط Mike Bostock توسعه داده شده است. هدفِ این کتاب‌خانه کمک به ساختِ مصورسازی‌های تعاملی داده‌ها در دنیای وب است. این کتاب‌خانه از HTML ،SVG و CSS برای ساخت نمودارها، نقشه‌ها و … استفاده می‌کند.   
+با حجم انبوه داده که امروزه تولید می‌شود، درک داده‌ها و بررسی آن‌ها مشکل شده است. مصورسازی داده‌ها از بهترین راه‌های انتقال اطلاعات  بامعناست؛ در این راستا D3 سهولت و انعطاف‌پذیری بالایی را برای مصورسازی داده‌ها فراهم می‌آورد؛ پویا و شهودی است و تلاش کمی برای یادگیری نیاز دارد.  
+از لحاظ مفهومی، این کتاب‌خانه شبیه Protovis است اما Protovis بیشتر برای مصورسازی‌های ثابت (Static) استفاده می‌شود در حالی که D3 بیشتر جنبه‌ی تعاملی دارد و بر روی انیمیشن‌ها و تبدیل‌های گرافیکی تمرکز دارد.  
+سایت رسمی این کتاب‌خانه از [این لینک](https://d3js.org/) و سورس‌کد آن از [این لینک](https://github.com/d3/d3) قابل دسترس است.  
+
+## ویژگی‌ها
+- **از استانداردهای وب استفاده می‌کند**  
+D3 ابزار به شدت قدرتمندی برای ساخت مصورسازی‌های تعاملی از داده‌هاست. این کتاب‌خانه از استانداردهای مدرن وب نظیر HTML، SVG و CSS برای ساخت نمودارها بهره می‌گیرد.
+- **D3 داده‌محور است**  
+در این کتاب‌خانه می‌توانیم برای ساخت انواع مختلف شکل‌ها با داده‌های static کار کنیم یا داده‌ها را از سرور در فرمت‌های مختلفی چون آرایه‌ها، آبجکت‌ها، CSV، JSON، XML و … fetch کنیم.
+- **دستکاری DOM**  
+با D3 می‌توانید مدل شیءگرای سند (DOM) را بر اساس داده‌هایتان دستکاری کنید.
+- **عناصر داده‌محور**  
+D3 شما را قادر می‌سازد تا به صورت پویا عناصر را تولید کنید و استایل‌های مورد نظرتان را بر آن‌ها اعمال کنید؛ خواه یک جدول باشد، خواه یک گراف، HTML element یا گروهی از عناصر.
+- **ویژگی‌های پویا**  
+کتاب‌خانه D3 امکان دادن ویژگی‌های داینامیمک به تابع‌ها را می‌دهد. برای مثال دیتای مورد نمایش می‌تواند استایل تعریف شده توسط شما را داشته باشد.
+- **انواع مصورسازی**  
+با D3 می‌توانید انواع مختلف مصور سازی از نمودارهای ساده تا نمودارهای پیچیده جغرافیایی  استفاده کنید.
+- **کنترل مصورسازی**  
+با D3 کنترل کامل بر روی مصور سازی دارید.
+- **انیمیشن**  
+امکان ایجاد انیمیشن برای مصور سازی
+
+
+## نمونه
+![](./assets/bar-chart-d3.png.png)
+![](./assets/bubble-chart-d3.png)
+![](./assets/circle-packing-d3.png)
+![](./assets/streamgraph-d3.png)
+
+
+## نصب
+برای دانلود کتاب‌خانه دو روش دارید:
+
+### مستقیم
+می‌توانید از خود[ سایت D3]( https://d3js.org) کتاب‌خانه را دانلود کنید و فایل `d3.min.js` کنار پروژه قرار دهید.  
+برای مثال اگر فایل در مسیر 
+<code dir="ltr">../d3.min.js</code> باشد کدتان این شکلی می‌شود:
+
+<div dir="ltr">
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -195,96 +139,125 @@ SVG = Scalable Vector Graphics
 </script>
 </body>
 </html>
-  ```
-  </div>
+```
+</div>
 
-<br>
+### cdn
+با قطعه کد زیر نیز می‌توانید لایبری را از cdn بگیرید:
 
-<br>
+<div dir="ltr">
 
-# Select DOM Element
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
 
-برای اینکه بتوانبم DOM element ها را دستکاری کنیم ابتدا باید بتوان آن ها را انتخاب کرد. کتابخانه D3 متد هایی برای این کار را دارد که به آن ها می پردازیم.
+<script>
+    // write your d3 code here.. 
+</script>
+</body>
+</html>
+```
+</div>
 
-## d3.select(css-selector)
 
-این متد اولین element را بر اساس css-selector ورودی، خروجی می دهد.
+## انتخاب DOM
 
-### Select Element By Name
+به طور خلاصه هر تگ در یک صفحه html یک Document Object Model یا همان DOM می‌شود که یک پدر دارد و ممکن است صفر، یک یا چند فرزند نیز داشته باشد.
 
-به مثال زیر دقت کنید:
+### انتخاب تگ d3.select
 
-<div  dir='ltr'  align='justify'>
 
-  ```html
+با استفاده از دستور 
+<code dir="ltr">d3.select()</code>
+می‌توانید یک DOM را انتخاب و سپس استایل (css) آن را عوض کنید.
+
+برای مثال کد زیر صرفا دوتا پاراگراف است.
+
+
+<div dir="ltr">
+
+```html
+<p>First paragraph</p>
+<p>Second paragraph</p>
+```
+</div>
+
+با دستور 
+<code dir="ltr"> d3.select("p").style("color", "green"); </code>
+می‌توانید پاراگر اول را سبز کنید. دستور 
+<code dir="ltr"> d3.select("p") </code> 
+اولین DOM که تگ آن `p` است را بر می‌گرداند و سپس با
+<code dir="ltr"> style("color", "green")</code> 
+می‌توانید مقدار color آن را به green تغییر دهید.
+
+مثال:
+<div dir="ltr">
+
+```html
 <p>First paragraph</p>
 <p>Second paragraph</p>
 
 <script>
     d3.select("p").style("color", "green");
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-1)
+```
+</div>
 
-  </div>
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-1)
 
-در مثال بالا ```d3.select("p")``` اولین ```<p>``` را بر می گرداند، سپس  ```style("color","green").``` رنگ آن را تغییر می دهد، به عبارت دیگر color attribute آن را برابر با green قرار می دهد.
+### انتخاب تمام DOMها d3.selectAll
 
-<p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/d3js-dom1.png"/></p>
+اگر بخواهید تمام DOM ها با تگ p را پیدا کنید باید از 
+<code dir="ltr"> d3.selectAll("p") </code>
+استفاده کنید. مثلا کد زیر را اجرا کنید:
 
 
-### Select Element By ID
+<div dir="ltr">
 
-به مثال زیر دقت کنید:
+```html
+<p>First paragraph</p>
+<p>Second paragraph</p>
+<script>
+    d3.selectAll("p").style("color", "green");
+</script>
+```
+</div>
 
-<div  dir='ltr'  align='justify'>
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-3)
 
-  ```html
+### انتخاب با id
+
+کد زیر را ببینید:
+
+<div dir="ltr">
+
+```html
 <p id="p1">First paragraph</p>
 <p id="p2">Second paragraph</p>
 
 <script>
     d3.select("#p2").style("color", "green");
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-2)
+```
+</div>
 
-  </div>
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-2)
 
-در مثال بالا متد ```d3.select("#p2")``` تنها element ای را انتخاب می کند که id آن برابر با p2 باشد. ادامه فرایند هم مثل مورد قبل است.
+این کد DOM ای که آي‌دی آن p2 است را انتخاب می‌کند و css آن را تغییر می‌دهد. پس با گذاشتن # در ابتدای ورودی مشخص می‌کند که دنبال DOM با id مشخص شده بگرد.  
 
-<br>
+###  انتخاب با اسم کلاس
 
-## d3.selectAll(css-selector)
+اگر بخواهید تمام DOMهایی که اسم کلاسشان `myclass` است را پیدا کنید با دستور 
+<code dir="ltr"> d3.selectAll(".myclass") </code> 
+ می‌توانید اینکارا انجام دهید. در واقع `.` ابتدای ورودی مشخص می‌کند دنبال کلاس باشد.  
+مثال:
+<div dir="ltr">
 
-این متد همه element هایی که شرایط css-selector مشخص شده را داشته باشند را بر می گرداند.
-
-به مثال زیر دقت کنید:
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
-<p>First paragraph</p>
-<p>Second paragraph</p>
-<script>
-    d3.selectAll("p").style("color", "green");
-</script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-3)
-
-  </div>
-
-  در مثال بالا ```d3.selectAll("p")``` همه ```<p>``` ها را خروجی می دهد و در ادامه رنگ آن ها به شکل مثال های قبل تغییر می کند.
-
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/d3js-dom3.png"/></p>
-
-  ### Select All Elements by CSS Class Name
-
-به مثال زیر دقت کنید:
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```html
 <style>
     .myclass{
         color:'red'
@@ -297,23 +270,51 @@ SVG = Scalable Vector Graphics
 <script>
     d3.selectAll(".myclass ").style('color','green');
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-4)
+```
+</div>
 
-  </div>
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-4)
 
-  در مثال بالا ```d3.selectAll(".myclass")``` همه element هایی که  css class آن ها برابر با "myclass" باشد را بر می گرداند و در ادامه تغییر رنگ آن ها مشابه مثال های قبل است.
+###  انتخاب تو در تو
 
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/d3js-dom4.png"/></p>
+کد زیر را نگاه کنید:
+<div dir="ltr">
 
+```html
+<table>
+<tr>
+    <td>
+        One
+    </td>
+    <td>
+        Two
+    </td>
+</tr>
+<tr>
+    <td>
+        Three
+    </td>
+    <td>
+        Four
+    </td>
+</tr>
+</table>
+```
+</div>
 
-### Select Nested Elements
+این کد یک جدول است. فرض کنید می‌خواهید استایل تمام tdهای سطر اول را عوض کنید. این کار با استفاده از دستور select و selectAll تو در تو ممکن است.  
+کد زیر را نگاه کنید:
+<code dir="ltr"> d3.select("tr").selectAll("td").style('background-color','yellow'); </code>  
+در این کد، قسمت اول با دستور
+<code dir="ltr"> d3.select("tr") </code>
+اولین tr را انتخاب کرده است و سپس با دستور 
+<code dir="ltr"> selectAll("td") </code> 
+روی tr ای که پیدا کرده تمام td‌های آن را پیدا کرده است.
 
-متد های ```()d3.select``` و ```()d3.selectAll``` می توانند برای انتخاب element های تو در تو استفاده شوند:
+مثال:
+<div dir="ltr">
 
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```html
 <table>
 <tr>
     <td>
@@ -336,52 +337,44 @@ SVG = Scalable Vector Graphics
 <script>
     d3.select("tr").selectAll("td").style('background-color','yellow');
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-5)
-
-  </div>
-
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/d3js-dom5.png"/></p>
-
-در مثال بالا ```d3.select("tr)``` اولین تگ ```<tr>``` را انتخاب کرده، سپس ```selectAll("td")``` همه تگ های ```<td>``` موجود در آن را بر می گرداند. در نهایت متد ```()style.``` رنگ بکگراند آن ```<td>``` ها را به رنگ زرد در می آورد.
-
-<br>
-<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# DOM Manipulation
-
-
-در بخش های قبل یاد گرفتیم چگونه DOM elementها را با استفاده از D3 انتخاب کنیم. در این بخش یاد خواهیم گرفت چگونه DOM elementها را تغییر دهیم.
-
-<div dir='rtl' align='right'>
-
-کتابخانه D3 شیوه های تغییر DOM زیر را شامل می شود، که می توانید بعد از انتخاب کردن elementها با استفاده از ```()d3.select``` یا ```()d3.selectAll``` از آن ها استفاده کنید.
+```
 </div>
 
-<br>
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-5)
 
-## text("content") 
-از ```()d3.selection.text``` برای اضافه کردن یا تغییر دادن محتوای یک element انتخاب شده استفاده کنید:
-<div  dir='ltr'  align='justify'>
 
-  ```html
+## تغییر DOM
+
+تا الان یاد گرفتیم چطور یک DOM را با استفاده از تگ، اسم کلاس و یا id انتخاب کنیم.
+
+<div dir="ltr">
+
+```html
+d3.select("tag_name")
+d3.select("#id")
+d3.select(".class_name")
+```
+</div>
+
+حالا می‌خواهیم بعد از انتخاب DOM آن را تغییر دهیم. به طور خلاصه در جدول زیر انواع مختلف تغییرات نوشته شده است:
+
+| تابع                       | توضیح                                            |
+|----------------------------|--------------------------------------------------|
+| text("content")            | تغییر متن                                        |
+| append("element name")     | یک DOM به قبل از آخر DOM انتخاب شده اضافه می‌کند. |
+| insert("element name")     | یک DOM به DOM انتخاب شده اضافه می‌کند.            |
+| remove()                   | یک DOM را پاک می‌کند.                             |
+| html("content")            | محتوای html یک DOM را عوض می‌کند.                 |
+| attr("name", "value")      | مقدار یک ویژگی (attribute) را عوض می‌کند.         |
+| property("name", "value")  | مقدار یک صفت (property) را عوض می‌کند.            |
+| style("name", "value")     | استایل DOM انتخاب شده را عوض می‌کند.              |
+| classed("css class", bool) | یک کلاس را به DOM اضافه یا حذف می‌کند.            |
+
+### text
+
+<div dir="ltr">
+
+```html
 <div>
     <p></p>
 </div>
@@ -389,57 +382,61 @@ SVG = Scalable Vector Graphics
 <script>
     d3.select("p").text("This is paragraph.")
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-6)
-  </div>
+```
+</div>
 
-  در کد بالا ابتدا با استفاده از ```d3.select("p")``` اولین ```<p>``` را انتخاب کردیم، سپس```text("This is paragraph.").``` عبارت "This is Parapraph" را به پاراگراف انتخاب شده اضافه می کند.
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-6)
 
+در کد بالا ابتدا به وسیله
+<code dir="ltr"> d3.select("p") </code> 
+اولین DOM را انتخاب کردیم. دقت کنید که اولین DOM از نوع p داخل div قرار دارد.  
+سپس با استفاده از دستور 
+<code dir="ltr"> text("This is paragraph.") </code> 
+متن آن را عوض کردیم.
 
-توجه کنید که اگر از ```()d3.selectall``` استفاده می کردیم، عبارت را به همه عبارت های ```<p>``` اضافه می کرد.
+اگر به جای `select` از `selectAll` استفاده می‌کردیم متن به هر دو DOM اضافه می‌شد.
 
-<br>
+### append
 
-## append("element name")
- از ```()d3.selection.append``` استفاده کنید تا یک DOM element جدید را ساخته و آن را به انتهای DOM element انتخاب شده استفاده کند.
- <div  dir='ltr'  align='justify'>
+دستور append یک DOM جدید می‌سازد و آن را در آخر DOM انتخاب شده اضافه می‌کند.
 
-  ```html
+<div dir="ltr">
+
+```html
 <p>First paragraph</p>
 <p>Second paragraph</p>
 
 <script>
     d3.select("body").append("p");
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-7)
-  </div>
+```
+</div>
 
-  در مثال بالا ```d3.select("body")``` یک body element را برمی گرداند و ```.append("p")``` یک ```<p>``` جدید را ساخته و آن را به انتهای ```<body>``` اضافه می کند.
+کد بالا تگ `p` را به `body` اضافه می‌کند. حالا اگر بخواهیم به تگ `p` متن نیز بدهیم باید روی خروجی append تابع text را اعمال کنیم.
 
-  شما می توانید به شکل زیر با استفاده از ```()text``` متنی را اضافه کنید.
 
-<div  dir='ltr'  align='justify'>
+<div dir="ltr">
 
-  ```html
+```html
 <p>First paragraph</p>
 <p>Second paragraph</p>
 
 <script>
     d3.select("body").append("p").text("Third paragraph.");
-</script>>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-8)
-  </div>
+</script>
+```
+</div>
 
-  در مثال بالا D3 یک ```<p>``` جدید را با متن "Third paragraph" ساخته و آن را به انتهای تگ ```<body/>``` اضافه می کند.
-<br>
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-8)
 
-## insert("element name")
-با استفاده از ```()d3.selection.insert``` می توانید یک element جدید راساخته و آن را انتهای element انتخاب شده اضافه کنید.
-<div  dir='ltr'  align='justify'>
 
-  ```html
+### insert
+
+دستور insert یک DOM جدید می‌سازد و آن راقبل از پایان DOM انتخاب شده اضافه می‌کند.
+
+<div dir="ltr">
+
+```html
 <div style="border:1px solid" >
     <p>First paragraph.</p>
 </div>
@@ -447,59 +444,65 @@ SVG = Scalable Vector Graphics
 <script>
     d3.select("div").insert("p").text("Second paragraph.");
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-9)
-  </div>
+```
+</div>
 
-  در مثال بالا ```d3.select("div")``` آن div را انتخاب کرده سپس ```insert("p").``` یک ```<p>``` جدید را به انتهای آن اضافه می کند. ```insert("Second paragraph.")``` متن آن را تعیین می کند.
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-9)
 
-<br>
+### remove
 
-## remove()
-از ```()d3.selection.remove``` برای پاک کردن DOM element های انتخاب شده می توانید استفاده کنید.
+با دستور remove می‌توانید یک DOM را حذف کنید.
 
-<div  dir='ltr'  align='justify'>
 
-  ```html
+<div dir="ltr">
+
+```html
 <p>First paragraph</p>
 <p>Second paragraph</p>
 
 <script>
     d3.select("p").remove();
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-10)
-  </div>
+```
+</div>
 
-  در مثال بالا ```d3.select("p")``` اولین ```<p>```  را بر میگرداند و ```()remove.``` آن را پاک می کند.
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-10)
 
-<br>
+مثلا در کد بالا ابتدا با 
+<code dir="ltr"> d3.select("p") </code>
+اولین p انتخاب شده و سپس حذف شده است.  
+اگر به جای `select` از `selectAll` استفاده می‌شد تمام pها حذف می‌شدند.
 
-## html("content")
- این متد بخش inner html را در element مشخص شده تعیین می کند.
+### html
 
- <div  dir='ltr'  align='justify'>
+با استفاده از این تابع می‌توانید html یک DOM را عوض کنید.  
+به صورت عادی باید با تغییر innerHTML این کار را انجام دهید.
 
-  ```html
+
+<div dir="ltr">
+
+```html
 <p>First paragraph</p>
 <script>
     d3.select("p").html("<span>This is new inner html.</span>");
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-11)
+```
+</div>
 
-  </div>
+[اجرای کد
+](https://www.tutorialsteacher.com/codeeditor?cid=d3-11)
 
-  در مثال بالا ```html(This was added in HTML ").``` عبارت inner html  را در ```<p>``` تغییر می دهد.
+برای مثال کد بالا html تگ p را عوض کرده و یک span به آن اضافه کرده است.
 
-<br>
 
-## attr("name", "value")
-از این متد برای اضافه کردن attributeها به DOM elementهای مشخص شده می توانید استفاده کنید.
+### attr
 
-<div  dir='ltr'  align='justify'>
+با استفاده از `attr` می‌توانید attributeها یا همان ویژگی‌های یک DOM را عوض کنید.  
+برای مثال در کد زیر ویژگی class عوض شده و مقدار آن به error تغییر پیدا کرده است.
 
-  ```html
+<div dir="ltr">
+
+```html
 <style>
     .error {
         color: red
@@ -511,59 +514,67 @@ SVG = Scalable Vector Graphics
         d3.select("p").attr("class","error");
     </script>
 </body>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-12)
-  </div>
+```
+</div>
 
-  در مثال بالا ```attr("class", "error").```، باعث اضافه شدن class attribute به ```<p>``` می شود.
-  
-  <br>
+[اجرای کد
+](https://www.tutorialsteacher.com/codeeditor?cid=d3-12)
 
-  ## property("name", "value")
-در مواردی که نمی شوداز attr استفاده کرد، می توان از این متد استفاده کرد برای اضافه کردن attribute
 
-<div  dir='ltr'  align='justify'>
+### property
 
-  ```html
+بعضی ویژگی‌های تگ‌ها مانند تیک خوردن checkbox یا مقدار یک radio button را نمی‌شود با `attr` عوض کرد.  
+برای این جور ویژگی‌ها از `property` باید استفاده شود.
+
+<div dir="ltr">
+
+```html
 <p>D3</label><input type="checkbox" />
 <p>jQuery</label><input type="checkbox" />
 
 <script>
     d3.select("input").property("checked",true);
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-13)
-  </div>
+```
+</div>
 
-در مثال بالا```d3.select("input")``` اولین input را مشخص کرده سپس```property("checked", true)``` مقدار آن را به true تغییر می دهد.
+[اجرای کد
+](https://www.tutorialsteacher.com/codeeditor?cid=d3-13)
 
-<br>
+برای مثال کد بالا ابتدا با
+<code dir="ltr"> d3.select("input") </code>
+اولین input را پیدا کرده و سپس با 
+`property("checked",true)`
+مقدار آن را به true عوض کرده است.
 
-## style("name", "value")
-از این متد می توان برای تغییر استایل یک DOM استفاده کرد.
 
-<div  dir='ltr'  align='justify'>
+### style
 
-  ```html
+این تابع در قسمت قبل نیز توضیح داده شده بود با استفاده از آن می‌توانید استایل یک DOM را عوض کنید.
+
+<div dir="ltr">
+
+```html
 <p>Error: This is dummy error.</p>
 <script>
     d3.select("p").style("color", "red")
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-14)
-  </div>
+```
+</div>
 
-  در مثال بالا ```style("color", "red")``` با اضافه شدن رنگ فونت red به ```<p>``` می شود.
+[اجرای کد
+](https://www.tutorialsteacher.com/codeeditor?cid=d3-14)
 
-<br>
+برای مثال کد بالا مقدار `color` را به `red` تغییر داده است.
 
-## classed("css class", bool)
+### classed
 
- با استفاده از این متد می توان class attribute ها را مشخص کرد.
+با استفاده از `classed` می‌توانید یک کلاس را به DOM اضافه یا حذف کنید.
 
-<div  dir='ltr'  align='justify'>
 
-  ```html
+<div dir="ltr">
+
+```html
 <style>
     .error {
         color: red
@@ -576,173 +587,103 @@ SVG = Scalable Vector Graphics
         d3.select("p").classed('error', true);
     </script>
 </body>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-15)
-  </div>
+```
+</div>
 
-در مثال بالا ```classed('error', true)``` باعث اضافه شدن کلاس error به ```<p>``` می شود.
-ورودی دوم بولین است که اگر true باشد باعث اضافه شدن class شده در غیر این صورت باعث حذف شدن آن می شود.
+[اجرای کد
+](https://www.tutorialsteacher.com/codeeditor?cid=d3-15)
 
-<br>
-<br>
+برای مثال کد بالا کلاس `error` را به `p` انتخاب شده اضافه می‌کند. اگر مقدار `true` را به `false`تغییر بدهیم آن کلاس را از DOM حذف می‌کند. مانند مثال زیر
 
-# Method Chaining
+<div dir="ltr">
 
- در بخش های قبل تابع های خود را با استفاده از نقطه به هم وصل کردیم، به این کار "chain syntax" گفته می شود. اگر با JQuery آشنا باشید کد زیر برایتان آشناست:
-
-<div  dir='ltr'  align='justify'>
-
-  ```javascript
-$("#myDiv").text("Some text").attr("style", "color:red")
-  ```
-  </div>
-
- کتابخانه D3 از تکنیک مشابهی برای chain  کردن متد ها استفاده می کند:
-
-<div  dir='ltr'  align='justify'>
-
-  ```javascript
-d3.select("body").append("p").text("Hello World!");
-  ```
-  </div>
-
- خروجی متد اول به عنوان ورودی متد بعدی وارد آن می شود.
-
-
-
- ما می توانسیتیم D3 code خود را به شکل زیر بنویسیم:
-
- <div  dir='ltr'  align='justify'>
-
-  ```javascript
-var bodyElement = d3.select("body");
-
-var paragraph = bodyElement.append("p");
-
-paragraph.text("Hello World!");
-  ```
-  </div>
-
-
- اما استفاده از method chaining کد ما را کوتاه تر و تمیز تر می کند:
-
-<div  dir='ltr'  align='justify'>
-
-  ```javascript
-d3.select("body").append("p").text("Hello World!");
-  ```
-  </div>
-
-
- در کد بالا ```d3.select("body")``` باعث انتخاب شده body element شده و یک رفرنس از آن را برمیگرداند و به متد بعدی می دهد که ```()append``` است.
-
-
- حال متد ```append("p")``` رفرنس body element را دریافت کرده و یک ```p>``` element> جدید را ساخته و آن را به element ای که دریافت کرده اضافه می کند و رفرنس این element جدید را به متد بعدی می دهد.
-
-
- متد ```text("Hello World!")``` آن paragraph element را از متد قبل دریافت کرده و متن را به آن اضافه می کند.
-
-
- دقت کنید می توان chained method ها را در یک فرمت خوانا تر نوشت:
-
-<div  dir='ltr'  align='justify'>
-
-  ```javascript
-d3.select("body")
-  .append("p")
-  .text("Third paragraph");
-  ```
-  </div>
-
-<br>
-<br>
-
-# Function of Data
-
- در قسمت DOM manipulation با تابع هایی آشنا شدیم . هر کدام از این تابع می توانند به عنوان پارامتر ورودی یک مقدار ثابت یا یک تابع بگیرند. این تابع، تابعی از دیتا است. برای مثال:
-
-<div  dir='ltr'  align='justify'>
-
-  ```javascript
-.text(function(d) {
-    return d;
-});
-  ```
-  </div>
-
- در این تابع ورودی می توانیم هر منظقی برای دستکاری دیتا قرار دهیم. این ها anonymous function هستند، یعنی این تابع ها نامی ندارند.
-
- به غیر از پارامتر data یا (d) دو نوع پارامتر دیگر برای ما فراهم شده است:
-
-<div  dir='ltr'  align='justify'>
-
-  ```javascript
-.text(function (d, i) {
-    console.log(d); // the data element
-    console.log(i); // the index element
-    console.log(this); // the current DOM object
-
-    return d;
-});
-  ```
-  </div>
-
-
- به مثال زیر دقت کنید:
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
-<!doctype html>
-<html>
-<head>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-</head>
+```html
+<style>
+    .error {
+        color: red
+    }
+</style>
 <body>
-    <p></p>
-    <p></p>
-    <p></p>
-
+    <p class="error">This is error.</p>
     <script>
-        var data = [100, 200, 300];
-        var paragraph = d3.select("body")
-                .selectAll("p")
-                .data(data)
-                .text(function (d, i) {
-                    console.log("d: " + d);
-                    console.log("i: " + i);
-                    console.log("this: " + this);
-
-                    return d;
-                });
+        d3.select("p").classed('error', false);
     </script>
 </body>
-</html>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-16)
-  </div>
+```
+</div>
 
- در مثال بالا پارامتر "d" به شما data element را می دهد، "i" به شما ایندکس آن را در آرایه می دهد و ```this``` یک رفرنس به DOM element کنونی است که در اینجا یک paragraph element است.
-
-<br>
-
-## Dynamic Properties
-
-همزمان با دستکاری  DOM element شاید بخواهیم ویژگی ها یا attribute های مشخصی را به آن اضافه کنیم.
+دقت کنید اگر DOM کلاس را نداشت و آن را حذف کردید یا کلاس را داشت و دوباره آن را اضافه کردید به مشکل نمی‌خورید.
 
 
-تابع های دیتا برای مشخص کردن این ویژگی ها به شکل dynamic خوب هستند.
+## زنجیر کردن تابع‌ها
 
-برای مثال اگر می خواهید رنگ پاراگرافتان بر اساس محتوای آن باشد می توانید آن را به صورت زیر انجام دهید:
+همانطور که در قسمت‌های قبل دیدید متدهای D3 که مربوط یه انتخاب یا تغییر بودند به صورت زنجیر وار صدا می‌شدند.  
+این نوع طراحی در JQuery نیز دیده می‌شود. برای مثال:
 
-<div  dir='ltr'  align='justify'>
+<code dir="ltr"> $("#myDiv").text("Some text").attr("style", "color:red") </code>
 
-  ```html
+این کد ابتدا DOM ای که ای‌دی‌اش برابر myDiv است را انتخاب می‌کند و سپس متن آن را عوض می‌کند و درنهایت استایل آن را عوض میکند.  
+معادل این کد با D3 به شکل زیر است.
+
+<code dir="ltr"> d3.select("#myDiv").text("Some text").style("color", "red") </code>
+
+بهتر است برای خوانایی بیشتر هر قسمت را در یک خط بنویسید مانند مثال زیر:
+
+<div dir="ltr">
+
+```html
+d3.select("#myDiv")
+  .text("Some text")
+  .style("color", "red")
+```
+</div>
+
+## تابع روی دیتا
+
+فرض کنید ۳ تا تگ p دارید و یک آرایه به طول ۳ از ۱۰۰، ۲۰۰ و ۳۰۰ و می‌خواهید این ۳ مقدار را در ۳ پاراگراف (p) قرار بدهید.
+
+برای اینکار ابتدا با دستور 
+`selectAll("p")`
+باید تمام pها را انتخاب کنید. سپس با دستور زیر می‌توانید کار گفته شده را انجام دهید:
+
+<div dir="ltr">
+
+```html
+var data = [100, 200, 300];
+selectAll("p")
+.data(data)
+.text(function (d, i) {
+    console.log("d: " + d);
+    console.log("i: " + i);
+    console.log("this: " + this);
+
+    return d;
+});
+```
+</div>
+
+[اجرای کد
+](https://www.tutorialsteacher.com/codeeditor?cid=d3-16)
+
+در کل بالا تابع داخل text روی تمام اعضای data و p به ترتیب اجرا می‌شود.  
+یعنی دیتای اول برای اولین p، دیتای دوم برای دومین p و ...  
+داخل تابع d برابر مقدار data است و i اندیس دیتای داخل آرایه و در نهایت this به پاراگراف اشاره می‌کند.
+
+در قسمت‌های بعد توضیحات بیشتری راجع به تابع data داده خواهد شد.
+
+#### مقدار داینامیک
+
+فرض کنید چند پاراگراف دارید و می‌خواهید اگر کلمه `Error` داخل آن بود رنگش را قرمز و اگر کلمه `Warning` داخل آن بود زرد کنید.  
+برای اینکار باید از تابع `style` استفاده کرد با این تفاوت که به جای مقدار ثابت باید به آن تابع ورودی داد. به شکل زیر:
+
+<div dir="ltr">
+
+```html
 <p>Error: This is error.</p>
 <p>Warning:This is warning.</p>
 
 <script>
-    d3.selectAll("p").style("color", function(d, i) {
+    d3.selectAll("p").style("color", function() {
             var text = this.innerText;
         
             if (text.indexOf("Error") >= 0) {
@@ -752,45 +693,26 @@ d3.select("body")
             }
     });
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-17)
-  </div>
+```
+</div>
+
+[اجرای کد
+](https://www.tutorialsteacher.com/codeeditor?cid=d3-17)
+
+در کد بالا ورودی `style` به جای مقدار ثابت یک تابع است لایبری d3 برای هر پاراگراف آن را به تابع می‌دهد  
+متغیر this به پاراگرافی که تابع روش صدا زده شده رفرنس داده شده است.
 
 
-در مثال بالا ```d3.selectAll("p")``` همه ```<p>``` را انتخاب کرده و متد ```()style``` به آن ها color attribute بر اساس خروجی تابع دیتا اضافه می کند.
+## Events handling
 
-منطق این تابع به این گونه است که هرگاه در element انتخاب شده کلمات کلیدی "Error" یا "Warning" باشد، رنگ قرمز را برمی گرداند در غیر این صورت رنگ زرد را بر می گرداند.
+فرض کنید می‌خواهید زمانی که موس بر روی یک DOM رفت تغییر مشخصی در DOMها بدهید.  
+در واقع به اینکار Event handling می‌گویند. یعنی زمانی که یک اتفاق یا event رخ داد عملیات مشخصی انجام دهیم.  
+این کار با استفاده از تابع`on` در d3 ممکن است.  
+مثال:
 
-بنابراین تابع های دیتا در D3.js بسیار مهم هستند.
+<div dir="ltr">
 
-
-<br>
-<br>
-
-
-# Event Handling
-
-کتابخانه D3 مانند دیگر کتابخانه ها انواع event ها را پشتیبانی می کند. ما می توانیم با استفاده از متد ```()d3.selection.on``` هر یک از DOM element ها را به یک event listener وصل کنیم.
-
-
-سینتکس آن:
-
-<div  dir='ltr'  align='justify'>
-
-  ```javascript
-d3.selection.on(type[, listener[, capture]]);
-  ```
-  </div>
-
-
-متد ```()on``` یک event listener  را به همه DOM element های انتخاب شده اضافه می کند. اولین پارامتر event type است مانند "click" یا "mouseover". پارامتر دوم یک تابع است که در زمان اتفاق افتادن event اجرا می شود. 
-
-
-مثال زیر کنترل کردن event های mouseover یا mouseout را نشان می دهد:
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```html
 <!doctype html>
 <html>
 <head>
@@ -825,39 +747,48 @@ d3.selection.on(type[, listener[, capture]]);
 </script>
 </body>
 </html>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-18)
-  </div>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-18)
+
+در این کد ابتدا با `d3.selectAll("div")` تمام divها انتخاب شدند.  
+سپس با دستور `on("mouseover", f)` زمانی که موس روی divها قرار بگیرد تابع f را صدا می‌زند.  
+تابع f به صورت inline تعریف شده و به شکل زیر است:  
+<div dir="ltr">
+
+```js
+function(){
+  d3.select(this)
+    .style("background-color", "orange");
+
+  // Get current event info
+  console.log(d3.event);
+  
+  // Get x & y co-ordinates
+  console.log(d3.mouse(this));
+}
+```
+</div>
+
+در کد بالا this رفرنس به divای است که موس روش رفته‌است و با `d3.select(this)` آن را انتخاب کرده و با `style("background-color", "orange")` رنگ بکگراندش را نارنجی کرده‌است.  
+با `d3.event` اطلاعات اتفاق رخ داده شده را می‌توان به دست آورد.  
+با `d3.mouse(this)` مختصات موس  را بر می‌گرداند.
 
 
-در مثال بالا دو div element داریم و با استفاده از متد ```selection.on(event)``` برای همه آن ها event های mouseover و mouseout را دریافت می کنیم و تابع های event listener رابه هرکدام اضافه می کنیم. که این تابع ها style را تغییر می دهند.
 
-برای اطلاعات بیشتر در مورد Event handling می توانید [D3 documentation](https://github.com/d3/d3-selection/blob/master/README.md#handling-events) مربوط به آن را بخوانید.
+## انیمیشن
 
-<br>
-<br>
+#### transition
+با استفاده از تابع `transition` می‌توانید یک تغییر در DOM انجام دهید.  
+همچنین با استفاده از دستور `duration` نیز می‌توانید زمان یک انیمیشن را مشخص کنید.
 
-
-# Animation
-
-در این بخش ساختن animation ها را با استفاده از D3 یاد می گیریم.
-
-کتابخانه D3 پروسه ساختن animationها را با استفاده از transitionها ساده می کند. transitionها از DOM selectionها با استفاده از متد ```()selection.transition``` ساخته می شوند.
+مثال:
 
 
-این animation ها چیزی جز transition از یک فرم به فرم دیگر نیستند. در اینجا یک animation در واقع یک transition از حالت ابتدایی به حالت انتهایی یک DOM element است.
+<div dir="ltr">
 
-<br>
-
-## transtion()
-
-متد ```()d3.selection.transition``` نشان دهنده شروع transition است و سپس تابع های transition متفاوت می توانند به elementهای انتخاب شده اعمال شوند.
-
-مثال زیر تغییر رنگ بک گراند یک div element را با استفاده از animation ها نشان می دهد:
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```html
 <!doctype html>
 <html>
 <head>
@@ -880,48 +811,69 @@ d3.selection.on(type[, listener[, capture]]);
           .style("background-color", "red");
     </script>
 </body>
-</html>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-19)
-  </div>
+```
+</div>
 
-در مثال بالا از تابع ```()transition``` برای ایجاد یک transition استفاده می کنیم که رنگ container' element' را از مشکی به قرمز تغییر می دهد. سپس تابع ```()duration``` را فراخواندیم تا مدت این تغییر را مشخص کنیم.
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-19)
 
+در کد بالا ابتدا div سیاه است (به خاطر css) و در طول ۱۰۰۰ میلی ثانیه قرمز می‌شود.  
+با استفاده از `d3.select("#container")` دیو انتخاب شده است. سپس با `transition` مشخص شده است که انیمیشنی قرار است رخ بدهد و مدت زمانش نیز با دستور `duration` مشخص می‌شود. برای مثال `duration(1000)` یعنی در مدت ۱۰۰۰ میلی‌ثانیه تغییر انجام شود. در آخر نیز تغیییری که قرار است انجام شود گذاشته شده است.
 
-شما همچنین می توانید یک transition را ساخته و آن را در یک متغیر قرار داده سپس از آن برای اضافه کردن animation  به element های مختلف استفاده کنید.
+#### ease
 
-<div  dir='ltr'  align='justify'>
+با استفاده از دستور `ease` می‌توانید سرعت و شتاب تغییر را مشخص کنید.  
+مثال:
 
-  ```javascript
-var t = d3.transition()
-        .duration(500)
+<div dir="ltr">
 
-    d3.select("#container")
-      .transition(t)
-      .style("background-color", "red");
-  ```
-  </div>
+```html
+<!doctype html>
+<html>
+<head>
+<style>
+    #container {
+        height: 100px;
+        width: 100px;
+        background-color: black;
+    }
+</style>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+</head>
+<body>
+    <div id="container"></div>
 
-<br>
+    <script>
+        d3.select("#container")
+          .transition()
+          .duration(1000)
+          .ease(d3.easeCircle)
+          .style("background-color", "red");
+    </script>
+</body>
+```
+</div>
 
-## transition.ease()
+تغییری که نسبت به کد قبل شده است وجود `ease(d3.easeCircle)`است که باعث می‌شود ابتدا و انتهای تغییر کند و وسط تغییر تندتر باشد. (هرچند در نهایت باز ۱۰۰۰ میلی ثانیه طول می‌کشد)
 
-تابع ```ease()``` برای مشخص و کنترل کردن جنبش یک transition استفاده می شود.
+تعدادی از easeهای مختلف در لیست زیر آمده است.
+- d3.easeElastic
+- d3.easeBounce
+- d3.easeLinear
+- d3.easeSin
+- d3.easeQuad
+- d3.easeCubic
+- d3.easePoly
+- d3.easeCircle
+- d3.easeExp
+- d3.easeBack
 
-برای اطلاع از تابع های متفاوت ease می توانید به [اینجا](https://bl.ocks.org/d3noob/1ea51d03775b9650e8dfd03474e202fe) مراجه کنید.
+#### delay
+با استفاده از تابع `delay` می‌توانید انیمیشن را با تاخیر شروع کنید.  
+مثال:
 
-<br>
+<div dir="ltr">
 
-## transition.delay()
-
-تابع ```()delay``` مدت تاخیر را برای هر کدام از elementهایی که transition روی آن ها اعمال می شود را تعیین می کند. آن transition بعد از مدت مشخص شده شروع می شود.
-
-
-در مثال زیر دو bar را animate می کنیم. اول، ارتفاع bar اول را از 20px به 100px تغییر می دهیم. سپس با تاخیر 2000 میلی ثانیه برای bar  دوم همین کار را انجام می دهیم.
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```html
 <body>
 <script>
     var svg = d3.select("body")
@@ -960,42 +912,39 @@ function update() {
 }
 </script>
 </body>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-20)
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-20)
+
+در کد بالا به خاطر وجود `delay(2000)` در انیمیشن دوم، ۲ ثانیه (۲۰۰۰ میلی ثانیه) دیرتر اجرا می‌شود.  
+در هر دو اینیمیشن ease برابر `d3.easeLinear` دارند که یعنی خطی است و با سرعت ثابت انیمیشن انجام می‌شود.
+
+
+</div>
   
-  </div>
 
-در کد بالا ابتدا دو مستطیل را به SVG اضافه کردیم. bar اول در مکان [20, 100] قرار گرفته و bar دوم در مکان [20, 120] قرار می گیرد که هر دو دارای ارتفاع 20px و عرض 10px هستند.
+## Data Binding
 
-در تابع update ابتدا bar اول را با استفاده از linear ease ارتفاعش را به 100px افزایش می دهیم و مدت این animation را برابر با 2000ms قرار می دهیم. همین کار را برای bar دوم هم انجام می دهیم اما این بار با 2000ms تاخیر.
+در این بخش می‌خواهیم یاد بگیریم که چگونه داده‌ها را به عناصر DOM متصل (bind) کنیم و بر اساس داده‌مان عناصر جدید بسازیم.
 
-می توانید transition function های فراهم شده در D3 را در [D3 API Documentation](https://github.com/d3/d3/blob/master/API.md#transitions-d3-transition) ببینید.
+کتاب‌خانه D3 شامل توابع مهم زیر برای bind کردن داده‌هاست:
 
-
-<br>
-<br>
-
-# Data Binding
-
-در این بخش یاد می گیرید چگونه دیتا را به DOM element ها وصل کنید و element های جدید را بر اساس دیتای خود بسازید.
-
-کتابخانه D3 متد های زیر را برای Data Binding دارد.
+ - data()
+ - enter()
+ - exit()
+ - datum()
 
 
-<br>
+### تابع ()data
 
-## data()
+تابع data برای متصل کردن آرایه‌ای از داده‌ها به عنصرِ DOM انتخاب‌شده استفاده می‌شود و بخش انتخاب شده را آپدیت و return کند. D3 با انواع داده‌هایی نظیر آرایه‌ها، CSV, TSV, JSON, XML و … کار می‌کند.
 
-تابع ```()data``` برای متصل کردن آرایه‌ای از داده‌ها به DOM element انتخاب‌شده استفاده می‌شود و بخش انتخاب شده را آپدیت و return می کند. D3 با انواع داده‌هایی نظیر آرایه‌ها، CSV, TSV, JSON, XML و … کار می‌ کند.
+ما می‌توانیم دو نوع داده‌ی مختلف را به تابع data ورودی دهیم: یک آرایه‌ای از اعداد/آبجکت‌ها یا یک [function of data](#تابع-روی-دیتا)
 
-می توانید دو نوع مقدار را به تابع ```()data``` وارد کنید، آرایه ای از مقادیر و یا تابعی از دیتا که قبل تر با آن آشنا شدیم.
+مثال پیش رو نشان می‌دهد که چگونه یک آرایه را در عنصر موجود در DOM با استفاده از تابع data جایگزین کنیم:
 
-مثال زیر اتصال دیتا به شکل آرایه را به DOM element موجود با استفاده از تابع ```()data``` نشان می دهد:
-
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```
 <p>D3 Tutorials</p>
 
 <script>
@@ -1008,53 +957,30 @@ function update() {
                 return d;
             });
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-21)
+```
+
+در مثال بالا، یک پاراگراف داریم:
+```<p>D3 Tutorials</p>```
+
+سپس یک آرایه به اسم myData ساختیم که می‌خواهیم آن را در عنصر <p> جایگزین کنیم. کد بالا این گونه کار می‌کند:
+
+ابتدا
+```d3.select("body")```
+عنصر body را انتخاب می‌کند. سپس 
+```selectAll("p")```
+همه‌ی p های موجود را برمی‌گرداند. سپس 
+```data(myData)```
+آرایه‌ی myData را به عناصر انتخاب‌شده bind می‌کند. این جا یک p بیشتر نداریم. لذا اولین عنصر آرایه به اولین p بایند می‌شود.
+
+سپس کد 
+```text(function(d, i) { return d; })```
+به ازای هر عنصر آرایه (d) مشخص می‌کند که چه خروجی‌ای روی عناصر p قرار بگیرد.
   
-  </div>
+توجه داشته باشید که حتما باید آرایه‌ای از داده‌ها را به عنوان myData به تابع بدهید. اگر یک مقدار constant بدهید، کار نمی‌کند.
 
-در مثال بالا یک آرایه دیتا به نام 'MyData' با استفاده از یک استرینگ "Hello World" ساختیم و می خواهیم آن را به ```<p>``` وصل کنیم.
-نحوه کارکرد آن به شکل زیر است:
-
-تابع ```d3.select("body")``` آن HTML Body element را انتخاب می کند.
-
-
-تابع ```selectAll("p").``` آن paragraph element را انتخاب می کند.
-
-تابع ```data(myData).``` آرایه دیتا 'MyData' را به موارد انتخاب شده توسط متد  های قبل وصل می کند.
-
-تابع ```;text(function(d, i) { return d; }).``` دیتا را به صورت متنی به هر کدام از element های انتخاب شده اضافه می کند. در این مورد متن اولیه که 'D3 tutorial' بود با 'Hello World' جایگزین می شود.
-
-به یاد داشته باشید که ورودی تابع ```()data``` باید آرایه باشد. اگر یک مقدار ثابت را به عنوان ورودی بدهید کاری نمی کند.
-
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
-<p> </p>
-<script>
-    var myData = 100;
-     
-        var p = d3.select("body")
-                .selectAll("p")
-                .data(myData)
-                .text(function (d, i) {
-                    return d;
-                });
-</script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-22)
+مثال بعدی نشان می‌دهد که چگونه داده‌ها را به چند عنصر متصل کنیم:
   
-  </div>
-
-در مثال بالا چیزی را نمایش نمی دهد چون تابع ```()data``` یک آرایه نیاز دارد.
-
-
-مثال زیر وصل کردن دیتا را برای دستکاری کردن چند element نشان می دهد.
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```
 <p> </p>
 <p> </p>
 <p> </p>
@@ -1068,21 +994,13 @@ function update() {
                     return d;
                 });
 </script>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-23)
-  
-  </div>
+```
 
+در مثال بالا اولین عنصر p مقدار اولین عنصر آرایه را می‌گیرد. دومین p دومین مقدار را می‌گیرد و سومین p نیز سومین مقدار.
 
-  در مثال بالا سه ```<p>``` وجود دارد و آرایه دیتا myData نیز سه مقدار دارد. بنابراین تابع ```()data``` سه مقدار را به سه  ```<p>```  مشخص شده وصل می کند. سپس تابع ```()text``` آن ها را به صورت متن نمایش می دهد.
+مثال دیگری را با هم ببینیم:
 
-
-<br>
-
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```
 <body>
     <p>D3 Tutorials </p>
 
@@ -1097,28 +1015,24 @@ function update() {
                     });
     </script>
 </body>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-24)
-  
-  </div>
-  
-در این مثال آرایه ۵ عضو دارد ولی ما فقط یک ```<p>``` داریم. در این حالت اولین عنصر سر جای خودش قرار می‌گیرد و بقیه‌ی عناصر نادیده گرفته می‌ شوند.
+```
 
-<br>
+در این مثال آرایه ۵ عضو دارد ولی ما فقط یک p داریم. در این حالت اولین عنصر سر جای خودش قرار می‌گیرد و بقیه‌ی عناصر نادیده گرفته می‌شوند.
+ 
+برای چنین مواردی که از تعداد داده‌ها در dataset و تعداد عناصر DOM آگاه نیستیم، D3 تابع enter را در اختیار ما قرار می‌دهد. در بخش بعدی این تابع را با هم بررسی می‌کنیم.
 
-## enter()
 
-در مثال بالا دیدیم که ممکن است که تناظر یک به یک میان element ها و اعضای آرایه برقرار نشود و تعداد یکی از اعضای آرایه یا عناصر DOM بیشتر از دیگری باشد.
+### تابع ()enter
 
-تابع enter به صورت پویا placeholder هایی را برای داده‌ ها می ‌سازد. خروجی تابع enter می‌ تواند وارد تابع  append شود. تابع append برای داده‌هایی که element متناظر در DOM ندارند،  DOM element می‌سازد.
+در مثال بالا در مورد این صحبت کردیم که ممکن است که تناظر یک به یک میان عناصر و اعضای آرایه برقرار نشود و تعداد یکی از اعضای آرایه یا عناصر DOM بیشتر از دیگری باشد. حتی ممکن است هیچ عنصری در DOM انتخاب نشود.
 
-اگر تناظر وجود نداشت و ما از تابع enter استفاده نکردیم مانند مورد قبل عمل کرده و آن element هایی که وجود ندارند انجام نمی شود.
+تابع enter به صورت پویا placeholder هایی را برای داده‌ها می‌سازد. خروجی تابع enter می‌تواند توسط تابع append تغذیه شود. تابع append برای داده‌هایی که عنصری متناظر در DOM ندارند، عنصر DOM می‌سازد.
 
-در مثال زیر آرایه‌ی ما شش عضو دارد. تابع enter، شش رفرنس placeholder می‌سازد و سپس تابع append شش  span element می‌سازد.
+اگر در صورت عدم وجود تناظر یک به یک از enter استفاده نکنیم چه می‌شود؟ صرفا آپدیتی برای عناصری که وجود ندارند رخ نمی‌دهد. (هم‌چون مثال قبلی)
 
-<div  dir='ltr'  align='justify'>
+در مثال پیش رو آرایه‌ی ما ۶ عضو دارد. تابع enter، شش رفرنس placeholder می‌سازد و سپس تابع append شش عنصر span می‌سازد.
 
-  ```html
+```
 <body>
 <script>
     var data = [4, 1, 6, 2, 8, 9];
@@ -1130,33 +1044,35 @@ function update() {
                 .text(function(d) { return d + " "; });
 </script>
 </body>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-25)
-  
-  </div>
+```
 
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/data-binding3.png"/></p>
-در این مثال همانند قبل یک آرایه با شش عضو به شکل [4,1,6,2,8,9] گرفتیم و برنامه ما به شکل زیر کار می کند:
+![image](https://user-images.githubusercontent.com/45296858/147223833-587889a5-0701-4d0b-93c1-e4587ed773c1.png)
 
-تابع ```d3.select("body")``` بخش HTML body را انتخاب می کند.
+ببینیم در مثال بالا چه اتفاقی می‌افتد:
 
-تابع ```selectAll("span").``` چون تا الان هیچ span elementای وجود ندارد یک آرایه خالی برمی گرداند.
+ابتدا
+```d3.select("body")```
+عنصر body را انتخاب می‌کند. سپس 
+```selectAll("span")```
+همه‌ی spanها را انتخاب می‌کند. هیچ spanی وجود ندارد. پس یک آرایه‌ی خالی بر می‌گرداند. سپس با 
+```data(data)```
+آرایه را بایند می‌کنیم. آرایه ۶ عضو دارد. پس کد بعد از این، به ازای هر عنصر اجرا خواهد شد. (۶ بار)
 
-سپس با تابع ```data(data).``` آرایه دیتای خود را به ```()data``` می دهیم. 
+سپس تابع
+```enter()```
+می‌آید span ها را چک می‌کند. به آن تعدادی که span متناظر وجود ندارد، اضافه می‌کند.
 
-تابع ```()enter.``` دنبال element های ```<span>``` می گردد. چون چیزی را پیدا نمی کند، یک span برای هر کدام از پنج عضو آرایه می سازد.
+سپس
+```append("span")```
+آن span هایی که در بالا ساخته شد را درون body اضافه می‌کند.
 
-تابع ```append("span")``` آن span هایی که در مرحله قبل ساخته شد را به body اضافه می کند.
+در نهایت
+```text(function(d) { return d + " "; });```
+مقادیر d از آرایه را به همراه یک کاراکتر فاصله برمی‌گرداند و آن‌ها در spanها قرار می‌گیرند.
 
-در نهایت تابع ```;text(function(d, i) { return d; }).``` هر کدام از اعداد درون آرایه را به شکل text به هرکدام از span های انتخاب شده اضافه کرده و آن ها را چاپ می کند.
+خب در مثال بعدی کمی کار پیچیده‌تری انجام می‌دهیم و می‌خواهیم بسته به زوج یا فرد بودن اعداد آرایه، رنگ spanها قرمز یا سبز شوند.
 
-<br>
-
-حال منطق را به برنامه خود اضافه کرده و اعداد را اگر زوج بودند به رنگ سبز و در غیر این صورت به رنگ قرمز در می آوریم
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```
 <body>
 <script>
     var data = [4, 1, 6, 2, 8, 9];
@@ -1174,72 +1090,17 @@ function update() {
                  .text(function(d) { return d + " "; });
 </script>
 </body>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-26)
-  
-  </div>
+```
 
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/data-binding4.png"/></p>
+![image](https://user-images.githubusercontent.com/45296858/147224187-aa5bbf1a-94b2-46e0-b12a-a5c823e59da1.png)
 
-  چیزی که اضافه کردیم تابع ```()style``` به همراه منطق خود است.
+در مثال بالا تابع style روی هر عنصر DOM به ازای هر مقدار آرایه اجرا می‌شود و مقدار color را بسته به زوج یا فرد بودن عدد مشخص می‌کند.
 
-  تابع ```()style``` روی هر  DOM element به ازای هر مقدار آرایه اجرا می‌ شود و مقدار color را بسته به زوج یا فرد بودن عدد مشخص می‌ کند.
+### تابع ()exit
 
-<br>
+تابع enter در صورت کمبود عناصر در DOM، عناصر جدیدی را اضافه می‌کرد. حال اگر عناصر DOM تعدادشان زیاد باشد و تعدادی از آن‌ها اضافه باشند، می‌توانیم از تابع exit استفاده کنیم. تابع exit عناصر اضافی را پردازش می‌کند و آن‌ها را مشخص می‌کند. تابع remove نیز عناصری که مشخص شده‌اند را حذف می‌کند. در مثال زیر می‌بینیم که ابتدا exit صدا زده می‌شود و سپس با remove آن‌ها حذف می‌شوند.
 
-همانطور که گفتیم ورودی تابع ```()data``` می تواند یک تابع باشد:
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
-<body>
-    <script>
-        var matrix = [
-                        [1, 2, 3, 4],
-                        [5, 6, 7, 8],
-                        [9, 10, 11, 12],
-                        [13, 14, 15, 16]
-                    ];
-
-        var tr = d3.select("body")
-            .append("table")  // adds <table>
-            .selectAll("tr")  // selects all <tr>
-            .data(matrix)      // joins matrix array 
-            .enter()           // create placeholders for each row in the array
-            .append("tr");// create <tr> in each placeholder
-
-        var td = tr.selectAll("td")
-            .data(function (d) {    // joins inner array of each row
-                console.log(d);
-                return d;
-            })
-            .enter()    // create placeholders for each element in an inner array
-            .append("td") // creates <td> in each placeholder
-            .text(function (d) {
-                console.log(d);
-                return d; // add value of each inner array as a text in <td>
-            });
-    </script>
-</body>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-27)
-  
-  </div>
-
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/data-binding7.png"/></p>
-
-
-در مثال بالا تابع ```tr.selectAll("td)``` تعدادی ```<td>``` را به ازای انتخاب هر ```<tr>``` خروجی می دهد و گروه های متفاوت ```<tr><td></td></tr>``` ساخته می شوند. پارامتر d در تابع ```text(function(d))``` نشان دهنده یک element تکی از یک ردیف است که توسط تابع ```()data``` قبلی خروجی داده شده است.
-
-<br>
-
-## exit()
-
-تابع ```()enter``` در صورت کمبود element ها در element، DOM های جدیدی را اضافه می‌کرد. حال اگر  DOM elemnt ها تعدادشان زیاد باشد و تعدادی از آن‌ها اضافه باشند، می‌ توانیم از تابع ```()exit``` استفاده کنیم. تابع exit عناصر اضافی را پردازش می‌ کند و آن‌ها را مشخص می‌ کند. تابع remove نیز element هایی که مشخص شده‌ اند را حذف می‌ کند. در مثال زیر می‌ بینیم که ابتدا ```()exit``` فرا خوانده  می‌ شود و سپس با ```()remove``` آن‌ها حذف می‌ شوند.
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```
 <body>
     <p>D3 Tutorials</p>
     <p></p>
@@ -1258,24 +1119,20 @@ function update() {
                 .remove();
     </script>
 </body>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-28)
-  
-  </div>
+```
 
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/data-binding1.png"/></p>
+![image](https://user-images.githubusercontent.com/45296858/147225787-44cfd847-9731-4ddb-bddc-bce9db4529e4.png)
 
-  در این مثال آرایه ما تنها یک عضو دارد در حالی که دو ```<p>``` داریم بنابراین ```()exit().remove.``` آن  ```<p>``` اضافه را حذف می کند.
+در مثال بالا ۳ تگ p داشتیم و آرایه تنها یک عضو داشت. پس ۲ عدد p اضافه هستند. با اجرای
+```exit().remove()```
+آن‌ها حذف می‌شوند.
 
-  <br>
 
-  ## datum()
+### تابع ()datum
 
-تابع ```()datum``` برای visualization های static استفاده می شود که نیازی به update ندارند و مستقیم دیتا را به یک element وصل می کند.
+تابع datum() برای مصورسازی‌های ثابت (static) استفاده می‌شود که به آپدیت نیاز ندارند. این تابع داده را مستقیم به یک عنصر bind می‌کند.
 
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```
 <body>
     <p>D3 Tutorials</p>
     <script>
@@ -1288,53 +1145,39 @@ function update() {
         });
     </script>
 </body>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-29)
-  
-  </div>
+```
 
-  برای اطلاعات بیشتر در مورد Data Joining در D3 به [اینجا](https://github.com/d3/d3-selection/blob/master/README.md#joining-data)
-   مراجعه کنید.
+برای کسب اطلاعات بیشتر در مورد اتصال داده‌ها به عناصر DOM، می‌توانید [این بخش از مستندات D3](https://github.com/d3/d3-selection/blob/master/README.md#joining-data) را مطالعه کنید.
 
-   <br>
-   <br>
 
-   # Load Data from File
+## خواندن داده‌ها از فایل در D3
 
-   در این بخش یاد می گیریم چگونه دیتا را از انواع مختلف فایل load کرده و آن ها را به DOM element ها وصل کنیم.
+در بخش قبلی کار کردن با داده‌ها و متغیرهای محلی را یاد گرفتیم. در این بخش load کردن داده‌ها از نوع فایل‌های مختلف و bind کردن آن‌ها به عناصر DOM را یاد می‌گیریم.
 
-   کتابخانه D3 متد های متفاوتی را برای load کردن نوع های مختلف دیتا دارد:
+کتاب‌خانه D3 توابعِ csv, json, tsv و xml را در اختیار ما قرار می‌دهد.
 
-   ## d3.csv()
+### تابع ()d3.csv
 
-   ما می توانیم یک csv file را با استفاده از این متد load کنیم:
+ما می‌توانیم یک فایل csv را با این تابع load کنیم.
 
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```
+Signature:
 d3.csv(url[, row, callback]);
-  ```  
-  </div>
+```
 
-  در اینجا اولین پارامتر، url مربوط به فایل csv یا webapi یا webservice است که دیتا csv بر می گرداند. دومین پارامتر که اختیاری است، یک تابع conversion است که با آن می توانیم نمایش  آن دیتا را تغییر دهیم. سومین پارامتر که اختیاری است، یک تابع callback است که هرگاه فابل ما load شد اجرا می شود و به عنوان ورودی data object که parse شده است را دریاف می کند.
+پارامتر اول آدرسِ فایل csv یا web api یا web serviceی است که csv بر می‌گرداند. پارامتر دوم و سوم اختیاری هستند. پارامتر دوم، یک تابع است که به شما اجازه می‌دهد شیوه‌ی نمایش داده‌ها را عوض کنید. پارامتر سوم، یک تابع callback است که هنگامی که load شدن داده‌ی شما به پایان می‌رسد اجرا می‌شود. دیتای load شده نیز به عنوان یک پارامتر به تابع callback ورودی داده می‌شود.
 
-  <br>
+یک مثال را با هم بررسی می‌کنیم.
 
-  حال به نحوه load شدن یک فایل csv با محتویات زیر به نام employees.csv می پردازیم.
-  <div  dir='ltr'  align='justify'>
-
-  ```csv
+```
 Name, Age
 John, 30
 Jane, 32
-  ```  
-  </div>
+```
 
-  <br>
+فرض کنید نوشته‌ی بالا را درون فایل csv به نام employees قرار دادیم. سپس کد زیر را اجرا می‌کنیم.
 
-  <div  dir='ltr'  align='justify'>
-
-  ```html
+```
 <script>
 d3.csv("/data/employees.csv", function(data) {
     for (var i = 0; i < data.length; i++) {
@@ -1343,58 +1186,53 @@ d3.csv("/data/employees.csv", function(data) {
     }
 });
 </script>
-  ```  
-  </div>
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/loading-csv-data.png"/></p>
+```
 
-  در مثال بالا تابع ```()d3.csv``` نام فایل را به عنوان ورودی دریافت می کند.و آن را به صورت آرایه ای از object ها load می کند. دقت کنید که اولین ردیف از فایل csv چاپ نشده است، این به این دلیل است که اولین ردیف از فایل های csv به عنوان نام ستون ها در نظر گرفته می شود. data objectای که load شده نام ستون ها را به را به عنوان object key دارد.
+نتیجه به این صورت خواهد بود:
 
-  حال اگر loop را با تابع ```()console.log``` جایگزین کنیم:
+![image](https://user-images.githubusercontent.com/45296858/147279472-13a563e6-c2fd-45f4-be0f-574fd3ec0e9e.png)
 
-   <div  dir='ltr'  align='justify'>
+توجه کنید که سطر اول فایل csv چاپ نمی‌شود؛ زیرا آیتم‌های سطر اول نشان‌دهنده‌ی نام هر ستون هستند و به عنوان key در آرایه‌ی لود شده در نظر گرفته می‌شود.
 
-  ```js
+اگر به جای حلقه‌ی for، صرفا یک بار کل data را چاپ کنیم، چه چیزی را مشاهده خواهیم کرد؟
+
+```
 d3.csv("/data/employees.csv", function(data) {
     console.log(data);
 });
-  ```  
-  </div>
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/loading-csv-data2.png"/></p>
+```
 
-  تابع ```()d3.csv``` دیتا را به صورت یک object بر می گرداند. این object آرایه ای از object ها است که از فایل csv شما load شده است که هر کدام از آن ها نشان دهنده یک ردیف هستند.
+![image](https://user-images.githubusercontent.com/45296858/147279656-f3d53806-9e5c-48bd-a557-61e8e6cf080c.png)
 
-  همچنین کد بالا معادل زیر است:
+خروجی به شکل بالا خواهد بود. تابع d3.csv() داده را به صورت یک object برمی‌گرداند. این object یک آرایه از objectهاست که هر کدام از آن‌ها نشان‌دهنده‌ی یک سطر از فایل csv است.
 
-   <div  dir='ltr'  align='justify'>
+کدی که در بالا مشاهده کردیم
+```
+d3.csv("/data/employees.csv", function(data) { }
+```
+معادل کد زیر است:
 
-  ```js
+```
 d3.csv("/data/employees.csv")
   .get(function(data) {
         console.log(data);
   });
-  ```  
-  </div>
+```
 
-  شما می توانید به جای ```()d3.csv``` از ```()d3.request``` استفاده کنید:
+هم‌چنین می‌توانیم به جای d3.csv از d3.request() هم استفاده کنیم:
 
- <div  dir='ltr'  align='justify'>
-
-  ```js
+```
 d3.request("/data/employees.csv")
   .mimeType("text/csv")
   .response(function (xhr) { return d3.csvParse(xhr.responseText); })
   .get(function(data) {
       console.log(data);
   });
-  ```  
-  </div>
+```
 
+با پارامتر یا تابع row می‌توانیم نمایش خروجی داده‌های لودشونده را عوض کنیم، در مثال زیر همه‌ی نام‌ها را upper case می‌کنیم.
 
-  همچنین می توانید از پارامتر row برای تغییر نمایش دیتا اسنفاده کنید. برای مثال مورد زیر name ها را uppercase می کند:
-
- <div  dir='ltr'  align='justify'>
-
-  ```js
+```
 d3.csv("/data/employees.csv")
   .row(function(d) {
         return {
@@ -1405,34 +1243,21 @@ d3.csv("/data/employees.csv")
   .get(function(data) {
       console.log(data);
   });
-  ```  
-  </div>
+```
 
-  <br>
+### تابع ()d3.json
 
-  ## d3.json()
+داده‌ی json می‌تواند یک آبجکت تنها یا آرایه‌ای از json object ها باشد:
 
-  دیتای  JSON می تواند یک object تکی یا آرایه ای از JSON object ها باشد:
-  
-  JSON object:
-
- <div  dir='ltr'  align='justify'>
-
-  ```json
+```
 var nameObj = {
     "name": "John",
     "age": 30,
     "city": "New York"
 };
-  ```  
-  </div>
+```
 
-
-  JSON Array:
-
- <div  dir='ltr'  align='justify'>
-
-  ```json
+```
 var nameArray = [{
     "name": "John",
     "age": 30,
@@ -1443,27 +1268,20 @@ var nameArray = [{
     "age": 20,
     "city": "San Francisco"
 }];
-  ```  
-  </div>
+```
 
-  تابع ```()d3.json``` یک فایل JSON را به عنوان ورودی گرفته و آن را به آرایه ای از object ها تبدیل می کند.
+فایل json نیز مشابه csv کار می‌کند.
 
-   <div  dir='ltr'  align='justify'>
-
-  ```js
+```
+Signature:
 d3.json(url, callback);
-  ```  
-  </div>
+```
 
-  اولین پارامتر url یک فایل JSON است و دومین پارامتر یک تابع callback است که مانند تابع callback در ```()d3.csv``` عمل می کند.
+پارامتر اول آدرس فایل و پارامتر دوم، یک callback است که هنگامی که لود شدن فایل json به پایان می‌رسد، یک بار اجرا می‌شود. دیتای لود شده نیز به عنوان ورودی به تابع callback داده می‌شود.
 
-  
-  حال به نحوه load شدن یک فایل JSON با محتویات زیر به نام users.json می پردازیم.
-  
+یک مثال را بررسی کنیم. فرض کنید نوشته‌ی زیر را در فایل users.json قرار دادیم.
 
-  <div  dir='ltr'  align='justify'>
-
-  ```json
+```
 [{
     "name": "John",
     "age": 30,
@@ -1474,87 +1292,48 @@ d3.json(url, callback);
     "age": 20,
     "city": "San Francisco"
 }];
-  ```  
-  </div>
+```
 
-  حال این فایل را با استفاده از تابع ```d3.json``` دریافت  می کنیم:
-
-  <div  dir='ltr'  align='justify'>
-
-  ```js
+```
 d3.json("/data/users.json", function(data) {
     console.log(data);
 });
-  ```
-  
-  </div>
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/loading-json-data.png"/></p>
+```
 
-  همانطور که می بینید آرایه ای از object ها با ویژگی های name, city, age ساخته شد.
+خروجی به صورت زیر نمایش می‌یابد.
 
-  <br>
-
-  ## d3.tsv()
-
-  <div  dir='ltr'  align='justify'>
-
-  ```
-d3.tsv(url, callback);
-  ```  
-  </div>
-
-اولین پارامتر url یک فایل tsv است و دومین پارامتر یک تابع callback است که مانند تابع callback در ```()d3.csv``` عمل می کند.
+![image](https://user-images.githubusercontent.com/45296858/147280577-9674b431-a91d-47dc-8e5c-caa80ffc09c2.png)
 
 
-  حال به نحوه load شدن یک فایل tsv با محتویات زیر به نام employees.tsv می پردازیم.
+### تابع ()d3.tsv 
 
-  <div  dir='ltr'  align='justify'>
+به طریق مشابه csv، تابع d3.tsv یک فایل tsv را ورودی می‌گیرد و بعد از پردازش فایل، یک object را برمی‌گرداند. به طور مثال کار با یک فایل به آدرس employees.tsv را می‌بینید.
 
-  ```tsv
+```
 Name    Age
 John    30
 Jane    32
-  ```
-  
-  </div>
+```
 
-
-  حال این فایل را با استفاده از تابع ```()d3.tsv``` دریافت می کنیم:
-
-<div  dir='ltr'  align='justify'>
-
-  ```js
+```
 d3.tsv("/data/employees.tsv", function(data) {
     for (var i = 0; i < data.length; i++) {
         console.log(data[i].Name);
         console.log(data[i].Age);
     }
 });
-  ```  
-  </div>
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/loading-tsv-data.png"/></p>
+```
 
-  <br>
+![image](https://user-images.githubusercontent.com/45296858/147280909-5344cbd1-6be4-4a46-b31d-a521b982730e.png)
 
 
+### تابع ()d3.xml
 
-  ## d3.xml
+تابع d3.xml نیز فایل را می‌خواند و یک object را پس از پردازش برمی‌گرداند.
 
-<div  dir='ltr'  align='justify'>
+به عنوان یک مثال فرض کنید فایل زیر به آدرس employees.xml موجود است.
 
-  ```
-d3.xml(url, callback);
-  ```  
-  </div>
-
-اولین پارامتر url یک فایل xml است و دومین پارامتر یک تابع callback است که مانند تابع callback در ```()d3.csv``` عمل می کند.
-
-
-  حال به نحوه load شدن یک فایل xml با محتویات زیر به نام employees.xml می پردازیم.
-
-  <div  dir='ltr'  align='justify'>
-
-  ```xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
 <row>
@@ -1566,44 +1345,31 @@ d3.xml(url, callback);
     <Age>32</Age>
 </row>
 </root>
-  ```  
-  </div>
+```
 
-  حال این فایل را با استفاده از تابع ```()d3.xml``` دریافت می کنیم:
-
-  <div  dir='ltr'  align='justify'>
-
-  ```js
+```
 d3.xml("/data/employees.xml", function(data) {
         console.log(data);
 });
-  ```
-  </div>
+```
 
-  همچنین می توانید به شکل زیر این فایل را parse و traverse کنید:
+ما می‌توانیم پس از parse کردن xml بالا، ساختار درختی آن را نیز به صورت زیر پیمایش کنیم. (با توابع مربوط به documentElement)
 
-   <div  dir='ltr'  align='justify'>
-
-  ```js
+```
 d3.xml("\data\employees.xml", function(data) {
         console.log(xml.documentElement.getElementsByTagName("Name", "));
 });
-  ```  
-  </div>
+```
 
-این کد همه تگ هایی که tag name آن ها برابر یا "Name" باشد را به شما می دهد.
+در خروجی می‌توانیم tag های name را مشاهده کنیم:
 
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/loading-xml-data.png"/></p>
+![image](https://user-images.githubusercontent.com/45296858/147281713-c6142bbc-e397-4f2c-8627-81840d93f7a7.png)
 
-  <br>
+### بایند کردن داده‌های Load شده
 
-  ## Bind Loaded Data
+با یک مثال شروع به توضیح می‌کنیم. فرض کنیم آرایه‌ای از userها را درون یک فایل json داریم:
 
-  برای ادامه این بخش با فایل JSON زیر کار می کنیم:
-
-   <div  dir='ltr'  align='justify'>
-
-  ```json
+```
 [{
     "name": "Jon",
     "age": 30,
@@ -1624,15 +1390,11 @@ d3.xml("\data\employees.xml", function(data) {
     "age": 40,
     "location": "Kings Landing "
 }]
-  ```  
-  </div>
+```
 
-  این یک آرایه از person object ها است که هر object دارای name, age, location است.
-  
-  حال آن را load کرده و به DOM element ها وصل می کنیم:
-   <div  dir='ltr'  align='justify'>
+حال می‌خواهیم با استفاده از d3.json آن را لود کنیم و داده‌مان را به عناصر وب bind کنیم:
 
-  ```js
+```
 d3.json("/data/users.json", function(error, data) {
     
     d3.select("body")
@@ -1645,40 +1407,19 @@ d3.json("/data/users.json", function(error, data) {
         });
 
 });
-  ```  
-  </div>
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/bind-loaded-data.png"/></p>
+```
 
+نتیجه به صورت زیر مشاهده می‌شود:
 
-  در ابتدا فایل را با استفاده از تابع ```d3.json()``` لود کردیم. این تابع یک data object  برمی گرداند.
+![image](https://user-images.githubusercontent.com/45296858/147282888-13104982-8847-47ae-a847-6fc06459096a.png)
 
-  با استفاده از تابع ```d3.select("body")``` آن body element را انتخاب کرده و آن را به تابع بعدی پاس می دهیم.
+نحوه‌ی اجرای این کد را در قسمت Data Binding با هم بررسی کردیم. پارامتر error نکته‌ی جدیدی است که در بخش بعد آن را بررسی می‌کنیم.
 
-  تابع ```selectAll("p").``` همه تگ های ```<p>``` را انتخاب کرده و رفرنس آن ها را به تابع بعدی پاس می دهد.
+### مدیریت خطاها
 
+کتاب‌خانه D3 هنگام لود کردن داده از منبع خارجی (external)، یک آرگومان error برمی‌گرداند که با بررسی آن می‌توانیم بفهمیم که داده به درستی لود شده یا خیر.
 
-
-
-
-
-
-  تابع ```data(data).``` مفادیر دیتا را از دیتاست ما به متد بعدی در این زنجیره پاس می دهد.
-
-  تایع ```()enter.``` مقادیر دیتا را از تابع ```()data.``` گرفته و چون تعداد تگ های ```<p>``` ما کافی نیست ، این تابع placeholde reference های خالی را به element های جدید بر می گرداند. (همانطور که در بخش Data Binding  دیدیم)
-
-تابع ```append("p")``` این رفرنس ها را دریافت کرده و element های جدید را به DOM اضافه می کند.
- 
-  درانتها نیز تابع ```()text.``` فراخوانده می شود و با توجه به تابعی کع به عنوان ورودی گرفته، یک concatenation از name , location از data object را چاپ می کند.
-
-  <br>
-
-  ## Error Handling
-
-هنگامی که دیتا را load می کنیم، تابع مورد نظر یک argument  دیگر به نام "error" بر می گرداند که ما می توانیم از آن برای بررسی موفقیت آمیز بودن load شدن دیتا استفاده کنیم:
-
-<div  dir='ltr'  align='justify'>
-
-  ```js
+```
 d3.json("/data/users.json", function(error, data) {
     
     if (error) {
@@ -1694,119 +1435,318 @@ d3.json("/data/users.json", function(error, data) {
                 return d.name + ", " + d.location;
             });
     });
-  ```  
-  </div>
-  اگر مشکلی هنگام load کردن دیتا وجود داشته باشد D3  یک error object  برمی گرداند.
+```
 
+ممکن است فایل مورد نظر وجود نداشته باشد یا داده‌ها بدشکل باشند و طبق فرمت خواسته شده نباشند. در این صورت می‌توانیم با این پارامتر آگاه شویم و تصمیم بگیریم.
 
-# Axes
+<div dir="rtl">
 
- در این بخش با نحوه ایجاد محور ها در D3 آشنا می شویم.
+## آشنایی با SVG
+<hr>
+به طور کلی ، Scalable Vector Graphics (SVG) اشکال مختلفی مانند خطوط، مستطیل ها، دایره ها، بیضی ها و غیره را ارائه می دهد. از این رو، طراحی تجسم ها با SVG به شما انعطاف پذیری و قدرت بیشتری در آنچه می توانید به دست آورید می دهد.
 
+### ویژگی های SVG :
+-یک عکس برپایه متن است.
 
-نمودار های 2 بعدی، 2 محور دارند، یک محور افقی یا محور x و یک محور عمودی یا محور y.
+-در ساختار مشابه با html است.
 
-کتابخانه D3 تابع های زیر را برای رسم محور ها فراهم می کند:
+-در DOM مینشیند.
 
- - تابع ```()d3.axisTop``` : محور افقی بالا را رسم می کند.
- - تابع ```()d3.axisRight``` : محور عمودی راست را رسم می کند.
- - تابع ```()d3.axisBottom``` : محور افقی پایین را رسم می کند.
- - تابع ```()d3.axisLeft``` : محور عمودی چپ را رسم می کند.
+-ویژگی های آن (properties ) میتوانند در قالب attribute مشخص شوند.
 
+-باید مختصات مطلق نسبت به مبدا (0,0)داشته باشند.
 
+مثال زیر یک مستطیل را در SVG نشان می دهد:
 
-حال نحوه اضافه شدن محور به نمودار را بررسی می کنیم:
+<div dir="ltr">
 
-
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
+```html
 <body>
 <script>
-    var width = 400,
-        height = 100;
+    <svg width="500" height="500">
+    <rect x="0" y="0" width="200" height="200"></rect>
+</svg>
+</script>
+</body>
+```
+</div>
 
-    var data = [10, 15, 20, 25, 30];
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-30)
+
+<br>
+ما در اینجا یک تگ <svg> داریم. SVG را به عنوان یک بوم نقاشی برای نقاشی در نظر بگیرید (و آن را با HTML <canvas> اشتباه نگیرید - این یک عنصر متفاوت است!). شما باید یک عرض و ارتفاع برای بوم خود مشخص کنید. و تمام عناصر SVG شما مانند <rect>، <line>، <circle>، <text> داخل این تگ <svg> قرار می گیرند.
+
+هر عنصر SVG دارای ویژگی های خاص خود است - که شامل ویژگی های هندسه و سبک می شود. همه ویژگی‌ها را می‌توان به‌عنوان ویژگی‌ها تنظیم کرد، اما به طور کلی، ما ویژگی‌های هندسه را به عنوان ویژگی و ویژگی‌های استایل را به عنوان سبک ارائه می‌کنیم. و از آنجایی که SVG در DOM قرار دارد، می‌توانیم از ()attr و ()append درست مانند عناصر HTML استفاده کنیم.
+
+بیایید مثال هایی از برخی از پرکاربردترین عناصر SVG در تجسم ها و نحوه ایجاد و اعمال استایل بر روی آنها با استفاده از کتابخانه D3 را ببینیم.
+
+### خط
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    <svg width="500" height="500">
+    <line x1="100" y1="50" x2="500" y2="50" stroke="black"/>
+</svg>
+</script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-31)
+
+
+### مستطیل
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    <svg width="500" height="500">
+    <rect x="0" y="0" width="200" height="200"></rect>
+</svg>
+</script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-30)
+
+
+
+
+### دایره
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    <svg width="500" height="500">
+    <circle cx="250" cy="50" r="50"/>
+</svg>
+</script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-36)
+
+
+### بیضی
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    <svg width="500" height="500">
+    <ellipse cx="250" cy="25" rx="100" ry="25"/>
+</svg>
+</script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-38)
+
+
+
+### متن
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    var width = 500;
+    var height = 500;
+
+    //Create SVG element
+    var svg = d3.select("body")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
     
-    // Append SVG 
-    var svg = d3.select("body")
-                .append("svg")
-                .attr("width", width)
-                .attr("height", height);
+    //Create group element
+    var g = svg.append("g")
+               .attr("transform", function(d, i) {
+                        return "translate(0,0)";
+               });
 
-    // Create scale
-    var scale = d3.scaleLinear()
-                  .domain([d3.min(data), d3.max(data)])
-                  .range([0, width - 100]);
+    //Create and append ellipse element into group
+    var ellipse = g.append("ellipse")
+                   .attr("cx", 250)
+                   .attr("cy", 50)
+                   .attr("rx", 150)
+                   .attr("ry", 50)
+                   .append("text")
 
-    // Add scales to axis
-    var x_axis = d3.axisBottom()
-                   .scale(scale);
-
-    //Append group and insert axis
-    svg.append("g")
-       .call(x_axis);
-
+    //Create and append text element into group
+    g.append("text")
+     .attr("x", 150)
+     .attr("y", 50)
+     .attr("stroke", "#fff")
+     .text("This is an ellipse!");
 </script>
 </body>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-46)
-  </div>
-  مثال بالا نتیجه پایین را می دهد:
+```
+</div>
 
-<p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/x-axes.png"/></p>
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-40)
+</div>
 
-
-در کد بالا با استفاده از ```;var width = 400, height = 100``` میزان طول و عرض SVG را مشخص کردیم. سپس با استفاده از ```;var data = [10, 15, 20, 25, 30]``` دیتاست خود را مشخص کردیم.
-سپس SVG element خود را ساختیم. سپس یک linear scale ساخته و دامنه و بازه آن را مشخص کردیم. در نهایت با استفاده از ```()d3.axisBottom``` یک محور افقی را ایجاد کرده و scale ای که ساختیم را به آن می دهیم.
-
-<br>
-
-به شکل مشابهی می توان یک محور عمودی  رسم کرد:
+## مدل دادن به المان های SVG
+<hr>
+<div dir="rtl">
+شاید متوجه شده باشید که در مثال های بالا هیچ رنگی را مشخص نکرده ایم. با این حال عناصر ما با رنگ سیاه رنگ آمیزی شده بودند. این به این دلیل است که رنگ پیش‌فرض SVG پر سیاه و بدون ضربه است.
 
 
-<div  dir='ltr'  align='justify'>
+  ویژگی استایل                       | توضیح                                            |
+|----------------------------|--------------------------------------------------------------|
+| Fill                       | .این رنگ پر شده برای عنصر شما است                            |
+| Stroke                     | .این رنگ لبه ها مرز های شکل است                              |
+| stroke-width               | .پهنای خطوط مرزی را مشخص می کند                              |
+| opacity                    | .یک عدد شفافیت را مشخص می کند. 0 کاملا شفاف و 1 کاملا مات است  |
+| font-family                | .برای متن می توانیم خانواده فونت را مشخص کنیم                |
+| font-size                  | .ما همچنین می توانیم اندازه فونت را برای عناصر متن مشخص کنیم |
 
-  ```html
+
+
+
+تمام ویژگی های فوق را می توان به طور مستقیم یا با استفاده از CSS اعمال کرد.
+
+بیایید مثال بیضی خود را بازنویسی کنیم و برخی از ویژگی های سبک دیگر را به عناصر بیضی و متن اضافه کنیم.
+
+
+<div dir="ltr">
+
+```html
 <body>
 <script>
-    var width = 400, height = 400;
-
-    var data = [10, 15, 20, 25, 30];
+    var width = 500;
+    var height = 500;
+    
     var svg = d3.select("body")
                 .append("svg")
                 .attr("width", width)
                 .attr("height", height);
 
-    var scale = d3.scaleLinear()
-                  .domain([d3.min(data), d3.max(data)])
-                  .range([height/2, 0]);
+    var g = svg.append("g")
+                .attr("transform", function(d, i) {
+                        return "translate(0,0)";
+                });
 
-    var y_axis = d3.axisLeft()
-                  .scale(scale);
+    var ellipse = g.append("ellipse")
+                    .attr("cx", 250)
+                    .attr("cy", 50)
+                    .attr("rx", 150)
+                    .attr("ry", 50)
+                    .attr("fill", "green")
+                    .attr("opacity", 0.5)
 
-    svg.append("g")
-       .attr("transform", "translate(50, 10)")
-       .call(y_axis);
-
+    g.append("text")
+     .attr("x", 140)
+     .attr("y", 50)
+     .attr("stroke", "steelblue")
+     .attr("font-family", "sans-serif")
+     .attr("font-size", "24px")
+     .text("I am a pretty ellipse!");
 </script>
 </body>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-47)
-  </div>
-  مثال بالا نتیجه پایین را می دهد:
+```
+</div>
 
-<p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/y-axis.png"/></p>
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-41)
+</div>
 
 <br>
 
-حال به شکل زیر می توان هر دو محور را با هم رسم کرد:
+## مقیاس در D3`
+<hr>
+  
+در این قسمت یاد میگیریم که چگونه با استفاده از D3 برای نمودارهایمان مقیاس تعریف کرده و با این کار مقادیر داده‌هایمان را به مقادیری که بهتر نشانداده میشوند ،map کنیم.
+  
+ برای مثال فرض کنید دامنه‌ی داده‌های ما از ۱۰۰ تا ۱۰۰۰ باشد اما دامنه‌ی قابل نشان‌دادن ما از ۵۰ تا ۵۰۰ پیکسل باشد، در اینجا قابلیت scale کردن به ما کمک میکند.
+ 
+ ### تابع ()d3.scaleLinear
+  
+ بیایید با استفاده از تابع ()d3.scaleLinear برای مقادیر [100, 400, 300, 900, 850, 1000] نمودار میل‌ای مقیاس بندی شده رسم کنیم:
+  
+ ```
+ <body>
+<script>
+    var data = [100, 400, 300, 900, 850, 1000]
 
-<div  dir='ltr'  align='justify'>
+    var width = 500,
+        barHeight = 20,
+        margin = 1;
 
-  ```html
-<body>
+    var scale = d3.scaleLinear()
+                 .domain([d3.min(data), d3.max(data)])
+                 .range([50, 500]);
+
+    var svg = d3.select("body")
+                  .append("svg")
+                  .attr("width", width)
+                  .attr("height", barHeight * data.length);
+
+    var g = svg.selectAll("g")
+                  .data(data)
+                  .enter()
+                  .append("g")
+                  .attr("transform", function (d, i) {
+                      return "translate(0," + i * barHeight + ")";
+                  });
+
+    g.append("rect")
+       .attr("width", function (d) {
+           return scale(d);
+       })
+       .attr("height", barHeight - margin)
+
+    g.append("text")
+       .attr("x", function (d) { return (scale(d)); })
+       .attr("y", barHeight / 2)
+       .attr("dy", ".35em")
+       .text(function (d) { return d; });
+  
+ ```
+خروچی قطعه کد بالا به صورت زیر میباشد:
+ 
+ ![](./assets/scale_output.png)
+
+## محور‌های نمودار در D3
+  <hr>
+ در این قسمت یاد میگیریم که چگونه با استفاده از D3 برای نمودار های خود محور هایی با scale مناسب تعریف کنیم
+ 
+ توابع این قسمت عبارتند از:
+  
+### تابع d3.axisTop
+  
+  یک محور افقی برای بالا درست میکند
+  
+### تابع d3.axisRight
+  
+  یک محور عمودی برای راست تولید میکند
+  
+### تابع d3.axisBottom
+  
+  یک محور افقی برای پایین تولید میکند
+  
+### تابع d3.axisLeft
+  
+  یک محور عمودی برای چپ تولید میکند
+  
+  
+### مثال:
+ 
+  در این مثال میخواهیم دو محور x و y را تولید کنیم:
+ 
+```<body>
 <script>
 var width = 400, height = 100;
 
@@ -1842,266 +1782,20 @@ var xAxisTranslate = height/2 + 10;
 
 </script>
 </body>
-  ```
-  [امتحان کردن کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-48)
-  </div>
-  مثال بالا نتیجه پایین را می دهد:
-
-<p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/axes-in-d3.png"/></p>
-
-<br>
-
-برای مطالعه بیشتر در مورد محور ها در D3 به [اینجا](https://github.com/d3/d3-axis) مراجعه کنید.
-
-
-<br>
-<br>
-
-# Create Bar Chart
-
- در این بخش یاد می گیریم چگونه Bar chart را با استفاده از کتابخانه D3 بسازیم.
-
- در این بخش از دیتاست زیر استفاده می کنیم که ارزش یک کمپانی را در طول چند سال نشان می دهد:
-
- <div  dir='ltr'  align='justify'>
-
-  ```csv
-year,value
-2011,45
-2012,47
-2013,52
-2014,70
-2015,75
-2016,78
-  ```  
-  </div>
-
-  قدم اول: با ساختن یک SVG element و قرار دادن Scale برای آن شروع می کنیم:
-
-  <div  dir='ltr'  align='justify'>
-
-  ```html
-<body>
-<svg width="600" height="500"></svg>
-<script>
-
-    var svg = d3.select("svg"),
-        margin = 200,
-        width = svg.attr("width") - margin,
-        height = svg.attr("height") - margin;
-
-
-    var xScale = d3.scaleBand().range ([0, width]).padding(0.4),
-        yScale = d3.scaleLinear().range ([height, 0]);
-
-    var g = svg.append("g")
-               .attr("transform", "translate(" + 100 + "," + 100 + ")");
-
-</script>
-</body>
-  ```  
-  </div>
-
-  <br>
-
-  قدم دوم: دیتای خود را از فایل csv لود کرده و محور ها را به SVG که در مرحله قبل ساختیم اضافه می کنیم:
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
-<body>
-<svg width="600" height="500"></svg>
-<script>
-
-    var svg = d3.select("svg"),
-        margin = 200,
-        width = svg.attr("width") - margin,
-        height = svg.attr("height") - margin;
-
-
-    var xScale = d3.scaleBand().range ([0, width]).padding(0.4),
-        yScale = d3.scaleLinear().range ([height, 0]);
-
-    var g = svg.append("g")
-               .attr("transform", "translate(" + 100 + "," + 100 + ")");
-
-    d3.csv("XYZ.csv", function(error, data) {
-        if (error) {
-            throw error;
-        }
-
-        xScale.domain(data.map(function(d) { return d.year; }));
-        yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
-
-        g.append("g")
-         .attr("transform", "translate(0," + height + ")")
-         .call(d3.axisBottom(xScale));
-
-        g.append("g")
-         .call(d3.axisLeft(yScale).tickFormat(function(d){
-             return "$" + d;
-         }).ticks(10))
-         .append("text")
-         .attr("y", 6)
-         .attr("dy", "0.71em")
-         .attr("text-anchor", "end")
-         .text("value");
-});
-</script>
-</body>
-  ```  
-  </div>
-
-  <br>
-
-  خروجی تا اینجا به شکل زیر است:
-
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/bar-chart2.png"/></p>
-
-<br>
-
-قدم سوم: میله ها (bars) هایی که به مقادیر دیتای ما وابسته هستند را می سازیم:
-
-<div  dir='ltr'  align='justify'>
-
-  ```html
-<!doctype html>
-<html>
-<head>
-    <style>
-        .bar {
-            fill: steelblue;
-        }
-    </style>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-</head>
-<body>
-<svg width="600" height="500"></svg>
-<script>
-var svg = d3.select("svg"),
-            margin = 200,
-            width = svg.attr("width") - margin,
-            height = svg.attr("height") - margin
-
-
-var xScale = d3.scaleBand().range([0, width]).padding(0.4),
-            yScale = d3.scaleLinear().range([height, 0]);
-
-var g = svg.append("g")
-            .attr("transform", "translate(" + 100 + "," + 100 + ")");
-
-    d3.csv("XYZ.csv", function(error, data) {
-        if (error) {
-            throw error;
-        }
-
-        xScale.domain(data.map(function(d) { return d.year; }));
-        yScale.domain([0, d3.max(data, function(d) { return d.value; })]);
-
-        g.append("g")
-         .attr("transform", "translate(0," + height + ")")
-         .call(d3.axisBottom(xScale));
-
-        g.append("g")
-         .call(d3.axisLeft(yScale).tickFormat(function(d){
-             return "$" + d;
-         }).ticks(10));
-
-
-        g.selectAll(".bar")
-         .data(data)
-         .enter().append("rect")
-         .attr("class", "bar")
-         .attr("x", function(d) { return xScale(d.year); })
-         .attr("y", function(d) { return yScale(d.value); })
-         .attr("width", xScale.bandwidth())
-         .attr("height", function(d) { return height - yScale(d.value); });
-    });
-</script>
-</body>
-</html>
-  ```  
-  </div>
-
-  <br>
-
-حال خروجی به شکل زیر است:
-
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/bar-chart3.png"/></p>
-
-<br>
-
-<br>
-
-## Add Labels to Bar Chart
-
-برای اضافه کردن label  باید به SVG خود text element هایی را اضافه کنیم.
-
-برای اضافه کردن عنوان این گونه عمل می کنیم:
-
-<div  dir='ltr'  align='justify'>
-
-  ```js
-svg.append("text")
-   .attr("transform", "translate(100,0)")
-   .attr("x", 50)
-   .attr("y", 50)
-   .attr("font-size", "24px")
-   .text("XYZ Foods Stock Price")
-  ```  
-  </div>
-
-  <br>
-
-  برای محور افقی، به شکل زیر text element را به x-axis group element اضافه می کنیم:
-
-<div  dir='ltr'  align='justify'>
-
-  ```js
-g.append("g")
- .attr("transform", "translate(0," + height + ")")
- .call(d3.axisBottom(xScale))
- .append("text")
- .attr("y", height - 250)
- .attr("x", width - 100)
- .attr("text-anchor", "end")
- .attr("stroke", "black")
- .text("Year");
-  ```  
-  </div>
-
-  <br>
-
-  برای محور عمودی، به شکل زیر text element را به y-axis group element اضافه می کنیم:
-
-<div  dir='ltr'  align='justify'>
-
-  ```js
-g.append("g")
- .call(d3.axisLeft(yScale)
- .tickFormat(function(d){
-     return "$" + d;
- }).ticks(10))
- .append("text")
- .attr("transform", "rotate(-90)")
- .attr("y", 6)
- .attr("dy", "-5.1em")
- .attr("text-anchor", "end")
- .attr("stroke", "black")
- .text("Stock Price");
-  ```  
-  </div>
-
-
-  <br>
-  <br>
   
-  در نهایت همه کد ساختن یک Bar chart:
-
-  <div  dir='ltr'  align='justify'>
-
-  ```html
-<!doctype html>
+```
+  خروچی کد بالا به صورت زیر است:
+  
+  
+  ![](./assets/axes_x_y.png)
+  
+## ساختن نمودار میله‌ای
+  <hr>
+  
+  در این قسمت میخواهیم با استفاده از توابعی که تا به اینجا یاد گرفتیم یک نمودار میله‌ای با مقیاس و محور مناسب تولید کنیم
+  
+  ```
+  <!doctype html>
 <html>
 <head>
     <style>
@@ -2175,164 +1869,192 @@ g.append("g")
 </script>
 </body>
 </html>
-  ```  
-  </div>
+  ```
+  
+ در نهایت خروجی به شکل زیر خواهد شد:
+  
+  ![](./assets/bar_chart.png)
+  
+ 
+ ## رسم نمودار دایره‌ای با D3
+ <hr>
+  
+  میخواهیم به صورت مرحله‌ای یک نمودار دایره‌ای را از اول رسم کنیم
+  
+  ### مسیر در SVG
+  
+  SVG path یک سری دستور برای کشیدن مسیر در SVG را میگیرد:
+  
+  ```
+  <body>
+    <svg height="210" width="400">
+        <path d="M150 0 L75 200 L225 200 Z" />
+    </svg>
+</body>
+  ```
+  
+  ### تابع d3.scaleOrdinal
+  
+  این تابع یک مقیاس وصفی با دامنه‌ی خالی و برد مخص شده را تعریف میکند:
+  
+  ```
+  <body>
+<script>
+    var color = d3.scaleOrdinal(['#4daf4a','#377eb8','#ff7f00','#984ea3','#e41a1c']);
+    console.log(color(0))
+    console.log(color(1))
+    console.log(color(2))
+    console.log(color(3))
+    console.log(color(4))
+    console.log(color(5))
+</script>
+</body>
+  ```
+  
+  ### تابع d3.pie
+  
+  این تابع با گرفتن مجموعه داده‌های ورودی به ما اطلاعاتی نظیر درجه‌ی شروع و پایان هر قطعه از نمودار  دایره‌ای را میدهد و ما با استفاده از این اطلاعات نمودار را رسم میکنیم
+  
+  ```
+  <script>
 
-  کد بالا، نمودار زیر را نتیجه می دهد:
+    var data = [2, 4, 8, 10];
+    var pie = d3.pie()
+    console.log(pie(data))
 
-  <p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/bar-chart-in-d3.png"/></p>
+</script>
+  ```
+  
+  ### تابع d3.arc
+  
+  این تابع منحنی تولید میکند و هر منحنی یک درجه‌ی درونی و یک درجه‌ی بیرونی نیاز دارد و برای اینکه نمودار ما دایره‌ای شود باید درجه‌ی درونی را ۰ وارد کنیم
+  و با وارد کردن داده‌هایی که از چند تابع دیگر به دست آورده‌ایم نمودار را رسم میکنیم
+  
+  ```
+  <body>
+<svg width="300" height="200"> </svg>
+<script>
+    var data = [2, 4, 8, 10];
 
-<br>
-<br>
+    var svg = d3.select("svg"),
+        width = svg.attr("width"),
+        height = svg.attr("height"),
+        radius = Math.min(width, height) / 2,
+        g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+    var color = d3.scaleOrdinal(['#4daf4a','#377eb8','#ff7f00','#984ea3','#e41a1c']);
 
-# Create Animated Bar Chart
+    // Generate the pie
+    var pie = d3.pie();
 
-حال می توان با استفاده از آنچه از قبل یاد گرفتیم، animation ها را به نموداری که در مرحله قبل ساختیم اضافه کنیم:
+    // Generate the arcs
+    var arc = d3.arc()
+                .innerRadius(0)
+                .outerRadius(radius);
 
-<div  dir='ltr'  align='justify'>
+    //Generate groups
+    var arcs = g.selectAll("arc")
+                .data(pie(data))
+                .enter()
+                .append("g")
+                .attr("class", "arc")
 
-  ```js
-<!doctype html>
+    //Draw arc paths
+    arcs.append("path")
+        .attr("fill", function(d, i) {
+            return color(i);
+        })
+        .attr("d", arc);
+</script>
+</body>
+  ```
+  
+  کد نهایی عبارت است از:
+  
+  ```
+  <!DOCTYPE html>
 <html>
 <head>
     <style>
-        .bar {
-            fill: steelblue;
+        .arc text {
+            font: 10px sans-serif;
+            text-anchor: middle;
         }
 
-        .highlight {
-            fill: orange;
+        .arc path {
+            stroke: #fff;
         }
-</style>
+
+        .title {
+            fill: teal;
+            font-weight: bold;
+        }
+    </style>
     <script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 <body>
-<svg width="600" height="500"></svg>
-<script>
+    <svg width="500" height="400"></svg>
+    <script>
 
-    var svg = d3.select("svg"),
-        margin = 200,
-        width = svg.attr("width") - margin,
-        height = svg.attr("height") - margin;
+        var svg = d3.select("svg"),
+            width = svg.attr("width"),
+            height = svg.attr("height"),
+            radius = Math.min(width, height) / 2;
+        
+        var g = svg.append("g")
+                   .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-    svg.append("text")
-       .attr("transform", "translate(100,0)")
-       .attr("x", 50)
-       .attr("y", 50)
-       .attr("font-size", "24px")
-       .text("XYZ Foods Stock Price")
+        var color = d3.scaleOrdinal(['#4daf4a','#377eb8','#ff7f00','#984ea3','#e41a1c']);
 
-    var x = d3.scaleBand().range([0, width]).padding(0.4),
-        y = d3.scaleLinear().range([height, 0]);
+        var pie = d3.pie().value(function(d) { 
+                return d.percent; 
+            });
 
-    var g = svg.append("g")
-            .attr("transform", "translate(" + 100 + "," + 100 + ")");
+        var path = d3.arc()
+                     .outerRadius(radius - 10)
+                     .innerRadius(0);
 
-    d3.csv("xyz.csv", function(error, data) {
-        if (error) {
-            throw error;
-        }
+        var label = d3.arc()
+                      .outerRadius(radius)
+                      .innerRadius(radius - 80);
 
-        x.domain(data.map(function(d) { return d.year; }));
-        y.domain([0, d3.max(data, function(d) { return d.value; })]);
+        d3.csv("browseruse.csv", function(error, data) {
+            if (error) {
+                throw error;
+            }
+            var arc = g.selectAll(".arc")
+                       .data(pie(data))
+                       .enter().append("g")
+                       .attr("class", "arc");
 
-        g.append("g")
-         .attr("transform", "translate(0," + height + ")")
-         .call(d3.axisBottom(x))
-         .append("text")
-         .attr("y", height - 250)
-         .attr("x", width - 100)
-         .attr("text-anchor", "end")
-         .attr("stroke", "black")
-         .text("Year");
+            arc.append("path")
+               .attr("d", path)
+               .attr("fill", function(d) { return color(d.data.browser); });
+        
+            console.log(arc)
+        
+            arc.append("text")
+               .attr("transform", function(d) { 
+                        return "translate(" + label.centroid(d) + ")"; 
+                })
+               .text(function(d) { return d.data.browser; });
+            });
 
-        g.append("g")
-         .call(d3.axisLeft(y).tickFormat(function(d){
-             return "$" + d;
-         }).ticks(10))
-         .append("text")
-         .attr("transform", "rotate(-90)")
-         .attr("y", 6)
-         .attr("dy", "-5.1em")
-         .attr("text-anchor", "end")
-         .attr("stroke", "black")
-         .text("Stock Price");
-
-        g.selectAll(".bar")
-         .data(data)
-         .enter().append("rect")
-         .attr("class", "bar")
-         .on("mouseover", onMouseOver) //Add listener for the mouseover event
-         .on("mouseout", onMouseOut)   //Add listener for the mouseout event
-         .attr("x", function(d) { return x(d.year); })
-         .attr("y", function(d) { return y(d.value); })
-         .attr("width", x.bandwidth())
-         .transition()
-         .ease(d3.easeLinear)
-         .duration(400)
-         .delay(function (d, i) {
-             return i * 50;
-         })
-         .attr("height", function(d) { return height - y(d.value); });
-    });
-    
-    //mouseover event handler function
-    function onMouseOver(d, i) {
-        d3.select(this).attr('class', 'highlight');
-        d3.select(this)
-          .transition()     // adds animation
-          .duration(400)
-          .attr('width', x.bandwidth() + 5)
-          .attr("y", function(d) { return y(d.value) - 10; })
-          .attr("height", function(d) { return height - y(d.value) + 10; });
-
-        g.append("text")
-         .attr('class', 'val') 
-         .attr('x', function() {
-             return x(d.year);
-         })
-         .attr('y', function() {
-             return y(d.value) - 15;
-         })
-         .text(function() {
-             return [ '$' +d.value];  // Value of the text
-         });
-    }
-
-    //mouseout event handler function
-    function onMouseOut(d, i) {
-        // use the text label class to remove label on mouseout
-        d3.select(this).attr('class', 'bar');
-        d3.select(this)
-          .transition()     // adds animation
-          .duration(400)
-          .attr('width', x.bandwidth())
-          .attr("y", function(d) { return y(d.value); })
-          .attr("height", function(d) { return height - y(d.value); });
-
-        d3.selectAll('.val')
-          .remove()
-    }
-
-</script>
+            svg.append("g")
+               .attr("transform", "translate(" + (width / 2 - 120) + "," + 20 + ")")
+               .append("text")
+               .text("Browser use statistics - Jan 2017")
+               .attr("class", "title")
+    </script>
 </body>
 </html>
-  ```  
-  </div>
+  ```
+  
+ نمودار تولید شده:
+  
+  ![](./assets/pie.png)
+  
+## منابع
 
-<br>
 
-  نتیجه کد بالا:
-
-<p align="center"><img src="https://www.tutorialsteacher.com/Content/images/d3js/bar-chart-animation.png"/></p>
-
-
-<br>
-
-<br>
-
-# Resources
--   [tutorialsteacher.com](https://www.tutorialsteacher.com/d3js)
-
-</div>
+- https://www.tutorialsteacher.com/d3js/ 
