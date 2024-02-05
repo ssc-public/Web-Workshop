@@ -48,6 +48,14 @@
     - [تابع ()d3.xml](#تابع-d3xml)
     - [بایند کردن داده‌های Load شده](#بایند-کردن-دادههای-load-شده)
     - [مدیریت خطاها](#مدیریت-خطاها)
+  - [آشنایی با SVG](#آشنایی-با-SVG)
+    - [ویژگی های SVG](#ویژگی-های-SVG)
+    - [خط](#خط)
+    - [مستطیل](#مستطیل)
+    - [دایره](#دایره)
+    - [بیضی](#بیضی)
+    - [متن](#متن)
+  - [مدل دادن به المان های SVG](#مدل-دادن-به-المان-های-SVG)
   - [مقیاس در D3](#مقیاس-در-D3)
     - [تابع ()d3.scaleLinear](#تابع-()d3.scaleLinear)
   - [محور‌های نمودار در D3](#محور‌های-نمودار-در-D3)
@@ -1431,6 +1439,231 @@ d3.json("/data/users.json", function(error, data) {
 
 ممکن است فایل مورد نظر وجود نداشته باشد یا داده‌ها بدشکل باشند و طبق فرمت خواسته شده نباشند. در این صورت می‌توانیم با این پارامتر آگاه شویم و تصمیم بگیریم.
 
+<div dir="rtl">
+
+## آشنایی با SVG
+<hr>
+به طور کلی ، Scalable Vector Graphics (SVG) اشکال مختلفی مانند خطوط، مستطیل ها، دایره ها، بیضی ها و غیره را ارائه می دهد. از این رو، طراحی تجسم ها با SVG به شما انعطاف پذیری و قدرت بیشتری در آنچه می توانید به دست آورید می دهد.
+
+### ویژگی های SVG :
+-یک عکس برپایه متن است.
+
+-در ساختار مشابه با html است.
+
+-در DOM مینشیند.
+
+-ویژگی های آن (properties ) میتوانند در قالب attribute مشخص شوند.
+
+-باید مختصات مطلق نسبت به مبدا (0,0)داشته باشند.
+
+مثال زیر یک مستطیل را در SVG نشان می دهد:
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    <svg width="500" height="500">
+    <rect x="0" y="0" width="200" height="200"></rect>
+</svg>
+</script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-30)
+
+<br>
+ما در اینجا یک تگ <svg> داریم. SVG را به عنوان یک بوم نقاشی برای نقاشی در نظر بگیرید (و آن را با HTML <canvas> اشتباه نگیرید - این یک عنصر متفاوت است!). شما باید یک عرض و ارتفاع برای بوم خود مشخص کنید. و تمام عناصر SVG شما مانند <rect>، <line>، <circle>، <text> داخل این تگ <svg> قرار می گیرند.
+
+هر عنصر SVG دارای ویژگی های خاص خود است - که شامل ویژگی های هندسه و سبک می شود. همه ویژگی‌ها را می‌توان به‌عنوان ویژگی‌ها تنظیم کرد، اما به طور کلی، ما ویژگی‌های هندسه را به عنوان ویژگی و ویژگی‌های استایل را به عنوان سبک ارائه می‌کنیم. و از آنجایی که SVG در DOM قرار دارد، می‌توانیم از ()attr و ()append درست مانند عناصر HTML استفاده کنیم.
+
+بیایید مثال هایی از برخی از پرکاربردترین عناصر SVG در تجسم ها و نحوه ایجاد و اعمال استایل بر روی آنها با استفاده از کتابخانه D3 را ببینیم.
+
+### خط
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    <svg width="500" height="500">
+    <line x1="100" y1="50" x2="500" y2="50" stroke="black"/>
+</svg>
+</script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-31)
+
+
+### مستطیل
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    <svg width="500" height="500">
+    <rect x="0" y="0" width="200" height="200"></rect>
+</svg>
+</script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-30)
+
+
+
+
+### دایره
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    <svg width="500" height="500">
+    <circle cx="250" cy="50" r="50"/>
+</svg>
+</script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-36)
+
+
+### بیضی
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    <svg width="500" height="500">
+    <ellipse cx="250" cy="25" rx="100" ry="25"/>
+</svg>
+</script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-38)
+
+
+
+### متن
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    var width = 500;
+    var height = 500;
+
+    //Create SVG element
+    var svg = d3.select("body")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+    
+    //Create group element
+    var g = svg.append("g")
+               .attr("transform", function(d, i) {
+                        return "translate(0,0)";
+               });
+
+    //Create and append ellipse element into group
+    var ellipse = g.append("ellipse")
+                   .attr("cx", 250)
+                   .attr("cy", 50)
+                   .attr("rx", 150)
+                   .attr("ry", 50)
+                   .append("text")
+
+    //Create and append text element into group
+    g.append("text")
+     .attr("x", 150)
+     .attr("y", 50)
+     .attr("stroke", "#fff")
+     .text("This is an ellipse!");
+</script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-40)
+</div>
+
+## مدل دادن به المان های SVG
+<hr>
+<div dir="rtl">
+شاید متوجه شده باشید که در مثال های بالا هیچ رنگی را مشخص نکرده ایم. با این حال عناصر ما با رنگ سیاه رنگ آمیزی شده بودند. این به این دلیل است که رنگ پیش‌فرض SVG پر سیاه و بدون ضربه است.
+
+
+  ویژگی استایل                       | توضیح                                            |
+|----------------------------|--------------------------------------------------------------|
+| Fill                       | .این رنگ پر شده برای عنصر شما است                            |
+| Stroke                     | .این رنگ لبه ها مرز های شکل است                              |
+| stroke-width               | .پهنای خطوط مرزی را مشخص می کند                              |
+| opacity                    | .یک عدد شفافیت را مشخص می کند. 0 کاملا شفاف و 1 کاملا مات است  |
+| font-family                | .برای متن می توانیم خانواده فونت را مشخص کنیم                |
+| font-size                  | .ما همچنین می توانیم اندازه فونت را برای عناصر متن مشخص کنیم |
+
+
+
+
+تمام ویژگی های فوق را می توان به طور مستقیم یا با استفاده از CSS اعمال کرد.
+
+بیایید مثال بیضی خود را بازنویسی کنیم و برخی از ویژگی های سبک دیگر را به عناصر بیضی و متن اضافه کنیم.
+
+
+<div dir="ltr">
+
+```html
+<body>
+<script>
+    var width = 500;
+    var height = 500;
+    
+    var svg = d3.select("body")
+                .append("svg")
+                .attr("width", width)
+                .attr("height", height);
+
+    var g = svg.append("g")
+                .attr("transform", function(d, i) {
+                        return "translate(0,0)";
+                });
+
+    var ellipse = g.append("ellipse")
+                    .attr("cx", 250)
+                    .attr("cy", 50)
+                    .attr("rx", 150)
+                    .attr("ry", 50)
+                    .attr("fill", "green")
+                    .attr("opacity", 0.5)
+
+    g.append("text")
+     .attr("x", 140)
+     .attr("y", 50)
+     .attr("stroke", "steelblue")
+     .attr("font-family", "sans-serif")
+     .attr("font-size", "24px")
+     .text("I am a pretty ellipse!");
+</script>
+</body>
+```
+</div>
+
+[اجرای کد](https://www.tutorialsteacher.com/codeeditor?cid=d3-41)
+</div>
+
+<br>
 
 ## مقیاس در D3`
 <hr>
