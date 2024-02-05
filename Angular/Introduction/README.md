@@ -15,7 +15,7 @@
 <img src="./angular-connections.png" style="display: block;margin-left: auto;margin-right: auto;">
 
 ## تاریخچه
-- در زير به تاريخچه Angular مي پردازيم
+در زير به تاريخچه Angular مي پردازيم
 
 - **Angular 2.0**: این نسخه در کنفرانس ng-Europe در 22-23 اکتبر 2014 معرفی شد. تغییرات عمده در نسخه 2.0 باعث ایجاد بحث‌های زیادی در بین توسعه‌دهندگان شد.
 - **نسخه Developer Preview**: در 30 آوریل 2015، توسعه‌دهندگان Angular اعلام کردند که Angular 2 از مرحله Alpha به Developer Preview رفته است.
