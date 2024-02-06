@@ -5,6 +5,8 @@
 ### فهرست📝
   - [آشنایی با مفاهیم مقدماتی](./Introduction)
   - [آموزش گام به گام فریم‌ورک](./Tutorial)
+  - [مقدمه](./Introduction_amin)
+  - [آموزش ](./Tutorial_amin)
 
 ### نویسندگان✍️
   - [علیرضا تاجمیرریاحی](https://github.com/AlirezaT99)
@@ -13,6 +15,7 @@
   - [امیرمحمد افلاطونیان](https://github.com/am-afl)
   - [معین مددی](https://github.com/moein72002)
   - [عرفان اسدی](https://github.com/erfanasadi)
+  - [محمد امین پورتوانایی](https://github.com/aminpt)
 
 
 <p align=center><img width=500 src="./Introduction/images/Angular-logo.png" /></p>
