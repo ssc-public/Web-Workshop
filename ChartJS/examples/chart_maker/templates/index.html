@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>نمودار</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "iransans";
+      }
+
+      {% load static %}
+
+      @font-face {
+        font-family: "iransans";
+        src: url("{% static 'font/IRANSansWeb(FaNum).woff'%}") format("woff");
+      }
+      .chartMenu {
+        width: 100vw;
+        height: 40px;
+        background: #1a1a1a;
+        color: rgba(54, 162, 235, 1);
+      }
+      .chartMenu p {
+        padding: 10px;
+        font-size: 20px;
+      }
+      .chartCard {
+        width: 100vw;
+        height: calc(100vh - 40px);
+        background: rgba(54, 162, 235, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .chartBox {
+        width: 78vw;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px rgba(54, 162, 235, 1);
+        background: white;
+        text-align: center;
+
+      }
+      p {
+        color: #606059;
+        font-size: 30px;
+        font-weight: 1000;
+        margin-bottom: 10px;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <div class="chartCard">
+      <div class="chartBox">
+          <p id="name"></p>
+          <canvas id="myChart2"></canvas>
+        <canvas id="myChart"></canvas>
+
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"
+    ></script>
+    <script>
+
+      //Data
+      var da = JSON.parse("{{data|escapejs}}");
+      namad = da['namad']
+      tarikh = da['tarikh']
+      hajm = da['hajm']
+      sarane= da['sar']
+      poch = [0,0,0,0,0,0,0,0,0,0]
+
+      document.getElementById('name').innerHTML = namad;
+      // setup
+      const data = {
+        labels: tarikh,
+        datasets: [
+            {
+            label: "(سرانه قدرت خریدار حقیقی (میلیون تومان",
+            data: sarane,
+            backgroundColor: "rgba(255, 192, 0, 0.9)",
+            borderColor: "rgba(255, 195, 81, 0.9)",
+            type: "line",
+            yAxisID: "quantity",
+          },
+          {
+            label: "حجم (میلیارد تومان)",
+            data: hajm,
+            backgroundColor: "rgba(4, 30, 90, 0.8)",
+            borderColor: "rgba(4, 30, 90, 0.8)",
+            borderWidth: 1,
+            borderSkipped: false,
+          },
+
+
+        ],
+      };
+      const data2 ={
+        labels: tarikh,
+        datasets: [
+            {
+            label: "(سرانه قدرت خریدار حقیقی (میلیون تومان",
+            data: sarane,
+            backgroundColor: "rgba(255, 192, 0, 0.9)",
+            borderColor: "rgba(255, 195, 81, 0.9)",
+            type: "line",
+            yAxisID: "quantity",
+          },
+          {
+            label: "حجم (میلیارد تومان)",
+            data: hajm,
+            backgroundColor: "rgba(4, 30, 90, 0.8)",
+            borderColor: "rgba(4, 30, 90, 0.8)",
+            borderWidth: 1,
+            borderSkipped: false,
+          },
+
+
+        ],
+      };
+
+      Chart.defaults.font.family = "iransans";
+      Chart.defaults.font.size = 16;
+      Chart.defaults.color = "#606059";
+      // config
+      const config = {
+        type: "bar",
+        data,
+        options: {
+          scales: {
+            x: {
+              stacked: true,
+              grid: {
+                display: false,
+              },
+                title: {
+          display: true,
+          text: 'تاریخ',
+        }
+
+            },
+            y: {
+              beginAtZero: true,
+                title: {
+                  display: true,
+                  text: "حجم (میلیارد تومان)",
+                    color: "rgba(4, 30, 90, 1)"
+              },
+            },
+            quantity: {
+              beginAtZero: true,
+              type: "linear",
+              position: "right",
+                title: {
+                  display: true,
+                  text: 'سرانه قدرت خریدار حقیقی (میلیون تومان)',
+                    color: "rgba(236,180,10,1)"
+              },
+              grid: {
+
+                display: false,
+              },
+            },
+          },
+        },
+      };
+      const config2 = {
+        type: "bar",
+        data2,
+        options: {
+          scales: {
+            x: {
+              stacked: true,
+              grid: {
+                display: false,
+              },
+                title: {
+          display: true,
+          text: 'تاریخ',
+        }
+
+            },
+            y: {
+              beginAtZero: true,
+                title: {
+                  display: true,
+                  text: "",
+
+              },
+            },
+            quantity: {
+              beginAtZero: true,
+              type: "linear",
+              position: "right",
+                title: {
+                  display: true,
+                  text: '',
+
+              },
+              grid: {
+
+                display: false,
+              },
+            },
+          },
+        },
+      };
+
+      // render init block
+      const myChart = new Chart(document.getElementById("myChart"), config);
+      const myChart2 = new Chart(document.getElementById("myChart2"), config2);
+
+
+
+    </script>
+  </body>
+</html>
+
