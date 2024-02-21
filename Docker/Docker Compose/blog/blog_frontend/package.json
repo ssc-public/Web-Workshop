@@ -9,7 +9,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.3.3",
-    "axios": "^0.21.2",
+    "axios": "^0.28.0",
     "build": "^0.1.4",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
