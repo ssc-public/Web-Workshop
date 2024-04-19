@@ -28,9 +28,8 @@ require (
 	github.com/sirupsen/logrus v1.7.0 // indirect
 	github.com/stretchr/testify v1.5.1 // indirect
 	github.com/vektah/gqlparser/v2 v2.1.0
-	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9
-	golang.org/x/net v0.0.0-20201029221708-28c70e62bb1d // indirect
-	golang.org/x/sys v0.0.0-20201029080932-201ba4db2418 // indirect
+	golang.org/x/crypto v0.21.0
+	golang.org/x/net v0.23.0 // indirect
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	google.golang.org/genproto v0.0.0-20201030142918-24207fddd1c3 // indirect
