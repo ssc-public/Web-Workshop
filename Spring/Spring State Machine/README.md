@@ -1,5 +1,5 @@
 # ماشین حالت در Spring Boot
-
+نگارنده: آرمان بابائی (98110349)
 ## صورت مسئله
 مسئله‌ای که قرار است با استفاده از ماشین‌های حالت در Spring Boot حل شود، به مدیریت پیچیدگی و بهبود خوانایی و نگهداری کد در پروژه‌های نرم‌افزاری مربوط می‌شود. در بسیاری از پروژه‌ها، با افزایش تعداد شرایط و تصمیم‌گیری‌ها در منطق برنامه، کدها به مرور زمان به شکلی بسیار پیچیده و نامرتب در می‌آیند که به اصطلاح "کد اسپگتی" نامیده می‌شود. [1] این ساختار پیچیده باعث می‌شود فهم، دیباگ و توسعه‌ی بیشتر برنامه بسیار مشکل شود. استفاده از ماشین‌های حالت به ما این امکان را می‌دهد که وضعیت‌های مختلف برنامه را به صورت مجزا تعریف کرده و انتقال بین این وضعیت‌ها را بر اساس تریگرها یا رویدادها مدیریت کنیم. [2]
 
@@ -259,8 +259,13 @@ public class LoggingMashineListener implements StateMachineListener<BookStates, 
 
 ## مراجع
 [1] https://en.wikipedia.org/wiki/Spaghetti_code
-[2] https://docs.spring.io/spring-statemachine/docs/current/reference/#background
-[3] https://docs.spring.io/spring-statemachine/docs/current/reference/#background
+
+[2] https://docs.spring.io/spring-statemachine/docs/current/reference/
+#background
+
+[3] https://docs.spring.io/spring-statemachine/docs/current/reference/#usage-scenarios
+
 [4] https://en.wikipedia.org/wiki/Finite-state_machine
+
 [5] https://codeburst.io/spring-state-machine-what-is-it-and-do-you-need-it-e894c78f5d84
 
