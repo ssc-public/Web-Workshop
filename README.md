@@ -92,8 +92,8 @@ const GetData = () => {
     <div>
       <h2>Posts:</h2>
       <ul>
-        {data.map((post) => (
-          <li key={post.id}>{post.title}</li>
+        {post.map( (item) => (
+          <li key={item.id} > {item.title} </li>
         ))}
       </ul>
     </div>
