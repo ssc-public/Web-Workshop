@@ -83,7 +83,7 @@ const GetData = () => {
   if (error) {
     return (
       <div>
-        {error}
+        {error.message}
       </div>
     );
   }
@@ -165,7 +165,7 @@ const AddPost = () => {
       const response = await axios.post("https://jsonplaceholder.typicode.com/posts", postData);
       alert("New Post has been created")
     } catch (error) {
-      setError("Connection Error. " + error);
+      setError("Connection Error. " + error.message);
     }
   };
 
@@ -215,7 +215,7 @@ export default AddPost;
       const response = await axios.post("https://jsonplaceholder.typicode.com/posts", postData);
       alert("New Post has been created")
     } catch (error) {
-      setError("Connection Error. " + error);
+      setError("Connection Error. " + error.message);
     }
   };
 ```
