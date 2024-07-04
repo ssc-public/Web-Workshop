@@ -163,9 +163,9 @@ const AddPost = () => {
     event.preventDefault();
     try {
       const response = await axios.post("https://jsonplaceholder.typicode.com/posts", postData);
-      alert("New Post has been created")
+      alert("New Post is added. ")
     } catch (error) {
-      setError("Connection Error. " + error.message);
+      setError("Connection Lost: " + error.message);
     }
   };
 
@@ -199,13 +199,13 @@ export default AddPost;
 
 <h5> بررسی مثال بالا </h5>
 <p>
-    در این مثال یک form داریم که اطلاعات یک شی Post را از کاربر دریافت میکند. با submit کردن فرم تابع handleSubmit فراخوانی شده، اطلاعات Post جدید را ارسال کرده و پیامی را به کاربر alert میکند. 
+    در این مثال یک form داریم که اطلاعات یک شی Post را از کاربر دریافت میکند. با submit کردن فرم تابع handleSubmit فراخوانی شده، اطلاعات Post جدید را ارسال کرده و پیامی را به کاربر alert میکند. در غیر این صورت state ارور ( error ) با پیام خطای رخ داده آپدیت می شود.
     در این فرآیند از یک state به نام postData استفاده می شود که اطلاعات هر ورودی فرم در صورت تغییر با استفاده از handleChange در آن ذخیره می شود. برای آشنایی بیشتر با فرآیند ذخیره داده در state به فرم آرایه می توانید از لینک زیر بازدید کنید :
     https://www.dhiwise.com/post/react-append-to-state-array-understanding-immutability
 </p>
 
 <h3>
-    postData
+    AddPost
 </h3>
 
 ```jsx
@@ -221,8 +221,8 @@ export default AddPost;
 ```
 
 <p>
-    همانطور که واضح است شاهد مقدار زیادی مشابهت با فرآیند ارسال درخواست GET هستیم و این یکی از نقاط قوت و برتری Axios بر سایر روش ها است. 
-    اما از جمله تفاوت های میان ارسال درخواست POST و GET میتوان اشاره کرد به قرار گرفتن body درخواست POST هنگام ارسال درخواست.
+    همانطور که واضح است شاهد مقدار زیادی مشابهت با فرآیند ارسال درخواست GET هستیم و این یکی از نقاط قوت و برتری Axios بر سایر روش ها است. ضمنا برای اطمینان از انجام فرآیند ارسال و دریافت داده از سرور پیامی را در صورت انجام بدون اشکال کار به کاربر alert میکنیم. در غیر این صورت نیز در state دیگری به نام error پیام اشکالی که رخ داده است را ذخیره کرده و در ادامه آن را به کاربر نمایش می دهیم.
+    اما از جمله تفاوت های میان ارسال درخواست POST و GET میتوان اشاره کرد به قرار گرفتن body درخواست POST هنگام ارسال درخواست. علاوه بر این با استفاده از این کتابخانه Header نیز می توانیم برای درخواست قرار دهیم.
 
 </p>
 
