@@ -1,0 +1,270 @@
+{
+  "uuid": "4e74ad51-9859-4ae4-a6e2-20e11bd59665",
+  "lastMigration": 32,
+  "name": "WP FProject",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3002,
+  "hostname": "",
+  "folders": [],
+  "routes": [
+    {
+      "uuid": "994af166-de89-44be-9800-2bd3875ba624",
+      "type": "http",
+      "documentation": "[admin] activate or deactivate user",
+      "method": "put",
+      "endpoint": "usersListBtn",
+      "responses": [
+        {
+          "uuid": "a89f599e-28b2-4a0a-bf66-04dbe411dd8c",
+          "body": "{\n  \"message\": \"ok!\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "1ea2a309-ef07-42ee-960a-1ff1cc533ca1",
+      "type": "http",
+      "documentation": "",
+      "method": "post",
+      "endpoint": "user/api-tokens",
+      "responses": [
+        {
+          "uuid": "74be0035-590b-4243-a5ef-803e7b8c2a4e",
+          "body": "{\n  \"name\": \"my-token-1\",\n  \"expire_date\": \"2025-01-01T23:59:59Z\",\n  \"token\": \"API ierkse325dfgawmd9hbwppp\"\n}",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "c2cee816-b318-4154-a395-251fa3a544bd",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "user/api-tokens",
+      "responses": [
+        {
+          "uuid": "afb7c3f9-d5fc-43c1-b3e6-6fe0e64a97b6",
+          "body": "{\n  \"tokens\": [\n    {\n      \"name\": \"my-token-1\",\n      \"expire_date\": \"2025-01-01T23:59:59Z\",\n      \"token\": \"API ***\"\n    },\n    {\n      \"name\": \"my-token-2\",\n      \"expire_date\": \"2025-01-01T23:59:59Z\",\n      \"token\": \"API ***\"\n    },\n    {\n      \"name\": \"my-token-3\",\n      \"expire_date\": \"2025-01-01T23:59:59Z\",\n      \"token\": \"API ***\"\n    }\n  ],\n  \"count\": 3\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "5734ec85-381a-4301-815f-ad93084f54de",
+      "type": "http",
+      "documentation": "",
+      "method": "delete",
+      "endpoint": "user/api-tokens",
+      "responses": [
+        {
+          "uuid": "2f336041-6b7f-47dd-b0ca-22c184a53b2b",
+          "body": "{\r\n    \"deleted\": true\r\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "0ae1a3ea-0370-4c50-a277-c11eec13f6fc",
+      "type": "http",
+      "documentation": "[admin] list users",
+      "method": "get",
+      "endpoint": "admin/users",
+      "responses": [
+        {
+          "uuid": "c1bbef38-b115-4156-a711-36b7bf941547",
+          "body": "{\n  \"users\": [\n    {\n      \"username\": \"negarnegma\",\n      \"registration_date\": \"2020-01-01T23:59:59Z\",\n      \"is_active\": true\n    }\n  ],\n  \"count\": 1\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    },
+    {
+      "uuid": "4a219cbf-376b-4908-86cc-1490afb19989",
+      "type": "http",
+      "documentation": "[user] register user",
+      "method": "post",
+      "endpoint": "user/register",
+      "responses": [
+        {
+          "uuid": "72d669d5-72da-43dc-bb04-e469c838a192",
+          "body": "{\r\n  \"message\": \"User registered successfully!\",\r\n  \"user\": {\r\n    \"username\": \"{{body.username}}\",\r\n    \"registration_date\": \"{{now}}\",\r\n    \"is_active\": false\r\n  }\r\n}\r\n",
+          "latency": 0,
+          "statusCode": 201,
+          "label": "",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "994af166-de89-44be-9800-2bd3875ba624"
+    },
+    {
+      "type": "route",
+      "uuid": "0ae1a3ea-0370-4c50-a277-c11eec13f6fc"
+    },
+    {
+      "type": "route",
+      "uuid": "1ea2a309-ef07-42ee-960a-1ff1cc533ca1"
+    },
+    {
+      "type": "route",
+      "uuid": "c2cee816-b318-4154-a395-251fa3a544bd"
+    },
+    {
+      "type": "route",
+      "uuid": "5734ec85-381a-4301-815f-ad93084f54de"
+    },
+    {
+      "type": "route",
+      "uuid": "4a219cbf-376b-4908-86cc-1490afb19989"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": [
+    {
+      "uuid": "04f6b738-57c3-423f-bd65-120aceb4b11d",
+      "id": "p3pw",
+      "name": "Accounts",
+      "documentation": "",
+      "value": "[\n  {{#repeat 10}}\n    {\n      \"id\": \"{{faker 'string.uuid'}}\",\n      \"name\": \"{{faker 'company.name'}}\",\n      \"balance\": {{faker 'finance.amount'}},\n      \"isActive\": {{faker 'datatype.boolean'}}\n    }\n  {{/repeat}}\n]"
+    }
+  ],
+  "callbacks": []
+}
