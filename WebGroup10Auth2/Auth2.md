@@ -1,3 +1,5 @@
+<div dir="rtl">
+
 # مقدمه ای بر Auth2 و احراز هویت کاربران با استفاده از Keycloak در Spring Boot
 
 ## نویسندگان
@@ -21,7 +23,7 @@
 
 ## ۲. معرفی کلی OAuth2 و Keycloak
 
-### OAuth2:
+## معرفی OAuth2 :
 - **تاریخچه و تعریف**: OAuth2 در سال ۲۰۱۲ معرفی شد و پروتکلی برای احراز هویت و اعطای مجوز است. این پروتکل به برنامه‌ها اجازه می‌دهد بدون نیاز به اشتراک‌گذاری اعتبارنامه‌های کاربران، به منابع آنها دسترسی پیدا کنند.
   
 - **مفاهیم کلیدی**:
@@ -54,64 +56,64 @@
 ### یکپارچه‌سازی با Spring Boot:
 - **افزودن وابستگی‌ها به فایل `pom.xml`**:
   
-  ```xml
-  <dependency>
-      <groupId>org.keycloak</groupId>
-      <artifactId>keycloak-spring-boot-starter</artifactId>
-      <version>11.0.3</version>
-  </dependency>
-  ```
+```xml
+<dependency>
+    <groupId>org.keycloak</groupId>
+    <artifactId>keycloak-spring-boot-starter</artifactId>
+    <version>11.0.3</version>
+</dependency>
+```
 
 ### پیکربندی اولیه:
 - **تنظیمات فایل `application.properties`**: در این فایل، تنظیمات مورد نیاز برای اتصال به Keycloak را اضافه می‌کنیم.
   
-  ```properties
-  keycloak.realm=myrealm
-  keycloak.auth-server-url=http://localhost:8080/auth
-  keycloak.resource=myclient
-  keycloak.credentials.secret=mysecret
-  keycloak.security-constraints[0].authRoles[0]=user
-  keycloak.security-constraints[0].securityCollections[0].patterns[0]=/*
-  ```
+```properties
+keycloak.realm=myrealm
+keycloak.auth-server-url=http://localhost:8080/auth
+keycloak.resource=myclient
+keycloak.credentials.secret=mysecret
+keycloak.security-constraints[0].authRoles[0]=user
+keycloak.security-constraints[0].securityCollections[0].patterns[0]=/*
+```
 
 ### نوشتن کلاس‌های اصلی:
 - **کلاس Main Application**:
   
-  ```java
-  @SpringBootApplication
-  public class MyApplication {
-      public static void main(String[] args) {
-          SpringApplication.run(MyApplication.class, args);
-      }
-  }
-  ```
+```java
+@SpringBootApplication
+public class MyApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MyApplication.class, args);
+    }
+}
+```
 
 - **کلاس Security Configuration**: در این کلاس تنظیمات امنیتی مربوط به Keycloak را انجام می‌دهیم.
   
-  ```java
-  @Configuration
-  @EnableWebSecurity
-  public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
-      @Autowired
-      public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-          auth.authenticationProvider(keycloakAuthenticationProvider());
-      }
+```java
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(keycloakAuthenticationProvider());
+    }
 
-      @Bean
-      @Override
-      protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
-          return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
-      }
+    @Bean
+    @Override
+    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
+        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
+    }
 
-      @Override
-      protected void configure(HttpSecurity http) throws Exception {
-          super.configure(http);
-          http.authorizeRequests()
-              .antMatchers("/admin/*").hasRole("admin")
-              .anyRequest().permitAll();
-      }
-  }
-  ```
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        super.configure(http);
+        http.authorizeRequests()
+            .antMatchers("/admin/*").hasRole("admin")
+            .anyRequest().permitAll();
+    }
+}
+```
 
 ## ۴. نتیجه‌گیری و منابع
 
@@ -123,6 +125,6 @@
 ### منابع و لینک‌ها:
 1. [مستندات رسمی OAuth2](https://oauth.net/2/)
 2. [مستندات رسمی Keycloak](https://www.keycloak.org/documentation.html)
-3. [آموزش Keycloak و Spring Boot](https://www.baeldung.com/keycloak-spring-boot)
-4. [کتاب جامع OAuth2](https://oauth2simplified.com/)
+3. [کتاب جامع OAuth2](https://oauth2simplified.com/)
 
+</div>
