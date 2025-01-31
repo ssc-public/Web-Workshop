@@ -254,3 +254,7 @@ https://qalified.com/blog/postman-for-api-testing/
 https://www.geeksforgeeks.org/introduction-postman-api-development/
 
 https://www.postman.com/product/what-is-postman/
+
+https://apidog.com/blog/what-is-postman/
+
+https://www.geeksforgeeks.org/api-testing-software-testing/
