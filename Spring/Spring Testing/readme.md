@@ -1,7 +1,6 @@
-` `**بسمه تعالی**
+**بسمه تعالی**
 
-
-` `**تحقیق درس برنامه سازی وب آزمون نویسی در Spring Boot**  
+**تحقیق درس برنامه سازی وب آزمون نویسی در Spring Boot**  
 
 استاد:  
 یحیی پورسلطانی  
@@ -11,7 +10,7 @@
 رضا وحیدی مجد 99102491 - مهدی صابر 99105526 - آرمین ثقفیان 99105345 
  
 
-**مقدمه  **
+**مقدمه**
 در دنیای توسعه نرم‌افزار، آزمون ‌نویسی یکی از مهم ‌ترین جنبه ‌های تضمین کیفیت کد محسوب می‌شود. در چارچوب Spring Boot، روش‌ های مختلفی برای نوشتن و اجرای تست‌ ها وجود دارد که به توسعه ‌دهندگان کمک می‌کند از صحت عملکرد برنامه ‌های خود اطمینان حاصل کنند. این تحقیق به بررسی انواع آزمون‌نویسی در Spring Boot، ابزارهای مرتبط و بهترین روش‌های نوشتن تست‌های موثر می‌پردازد.
 
 **اهمیت آزمون نویسی در Spring Boot**  
@@ -89,14 +88,13 @@
 
 **منابع **
 
-` `[ https://spring.io/guides/gs/testing-web ](https://spring.io/guides/gs/testing-web) [ https://spring.io/guides/gs/serving-web-content](https://spring.io/guides/gs/serving-web-content)
+[ https://spring.io/guides/gs/testing-web ](https://spring.io/guides/gs/testing-web) [ https://spring.io/guides/gs/serving-web-content](https://spring.io/guides/gs/serving-web-content)
 
 [https://docs.spring.io/spring-boot/reference/testing/spring -](https://docs.spring.io/spring-boot/reference/testing/spring-boot-applications.html)
 
-` `[ boot-applications.html](https://docs.spring.io/spring-boot/reference/testing/spring-boot-applications.html)
+[ boot-applications.html](https://docs.spring.io/spring-boot/reference/testing/spring-boot-applications.html)
 
-` `[ /https://www.arhohuttunen.com/spring-boot-webmvctest](https://www.arhohuttunen.com/spring-boot-webmvctest/)
+[ /https://www.arhohuttunen.com/spring-boot-webmvctest](https://www.arhohuttunen.com/spring-boot-webmvctest/)
 
-` `[ /https://reflectoring.io/spring-boot-web-controller-test](https://reflectoring.io/spring-boot-web-controller-test/)
+[ /https://reflectoring.io/spring-boot-web-controller-test](https://reflectoring.io/spring-boot-web-controller-test/)
 
-[ref1]: Aspose.Words.3ede0fae-47c1-4de0-9d72-37e7b72e45ea.001.png
