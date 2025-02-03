@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چت بات هوشمند</title>
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen flex flex-col relative"></body>
+<div class="container mx-auto p-4 flex-1 flex flex-col">
+    <header class="mb-6 text-center">
+        <h1 class="text-3xl font-bold text-gray-800">چت بات دوره وب شریف</h1>
+        <h2 class="text-xl mb-2 text-gray-700">پاییز ۲۰۲۴</h2>
+        <h3 class="text-lg text-gray-600">مدرس: یحیی پورسلطانی</h3>
+    </header>
+
+    <div class="flex-1 overflow-y-auto mb-4 p-4 bg-white rounded-lg shadow">
+        <pre id="chat-messages" class="whitespace-pre-wrap break-words overflow-x-auto">
+            <!-- پیام‌های چت در اینجا اضافه می‌شوند -->
+        </pre>
+    </div>
+
+    <form hx-post="/chat" hx-target="#chat-messages" hx-swap="beforeend" class="flex items-center">
+        <input
+                type="text"
+                name="message"
+                placeholder="پیام خود را تایپ کنید..."
+                class="flex-1 p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+        >
+        <button
+                type="submit"
+                class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            ارسال
+        </button>
+    </form>
+</div>
+
+<!-- Dark Mode Toggle Button -->
+<!-- <button id="dark-mode-toggle" class="fixed top-4 left-4 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 p-2 rounded-full shadow-md hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none">
+    حالت تاریک
+</button> -->
+
+<script>
+    htmx.on("htmx:afterRequest", function (evt) {
+        if (evt.detail.elt.tagName === "FORM") {
+            evt.detail.elt.reset();
+            const chatMessages = document.getElementById('chat-messages');
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    });
+
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    toggleButton.addEventListener('click', function () {
+        document.documentElement.classList.toggle('dark');
+    });
+
+    // تنظیم حالت تاریک براساس سیستم کاربر در ابتدا
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+    }
+</script>
+</body>
+</html>
