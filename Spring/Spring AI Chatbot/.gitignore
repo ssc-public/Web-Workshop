@@ -1,0 +1,34 @@
+# Maven target directory
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Gradle build directory
+/gradle/
+/build/
+
+# Spring Boot development
+spring-boot-devtools.properties
+
+# IDEs and editors
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Eclipse
+.project
+.classpath
+.settings/
+.loadpath
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
