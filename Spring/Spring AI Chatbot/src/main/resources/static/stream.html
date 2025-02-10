@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چت بات هوشمند</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+        }
+        .message-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .message-content code {
+            background-color: #f0f0f0;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-800 h-screen flex flex-col">
+<div class="container mx-auto p-4 flex-1 flex flex-col">
+    <header class="mb-6 text-center">
+        <h1 class="text-3xl font-bold text-white">چت بات دوره وب شریف</h1>
+        <h2 class="text-xl mb-2 text-gray-300">پاییز ۲۰۲۴</h2>
+        <h3 class="text-lg text-gray-400">مدرس: یحیی پورسلطانی</h3>
+    </header>
+    
+    <div class="flex-1 overflow-y-auto mb-4 p-4 bg-white dark:bg-gray-700 rounded-lg shadow">
+        <div id="chat-messages" class="space-y-4"></div>
+    </div>
+
+    <form id="chat-form" class="flex items-center">
+        <input
+            type="text"
+            id="message-input"
+            name="message"
+            placeholder="پیام خود را وارد کنید..."
+            class="flex-1 p-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+        >
+        <button
+            type="submit"
+            class="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+            ارسال
+        </button>
+    </form>
+</div>
+
+<script>
+    const chatForm = document.getElementById('chat-form');
+    const messageInput = document.getElementById('message-input');
+    const chatMessages = document.getElementById('chat-messages');
+
+    chatForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const message = messageInput.value;
+        if (!message) return;
+
+        // افزودن پیام کاربر به گفتگو
+        addMessageToChat('کاربر', message);
+
+        // پاکسازی ورودی
+        messageInput.value = '';
+
+        // دریافت داده‌های استریم از سرور با تکرار تلاش در صورت شکست
+        try {
+            const response = await fetchStreamWithRetry('/stream?message=' + encodeURIComponent(message));
+            const reader = response.body.getReader();
+            let botMessageElement = addMessageToChat('ربات', '');
+            let contentElement = botMessageElement.querySelector('.message-content');
+            await processStream(reader, contentElement);
+        } catch (error) {
+            console.error('خطا در دریافت پاسخ چت بات:', error);
+            addMessageToChat('سیستم', 'خطایی در دریافت پاسخ رخ داده است. لطفاً دوباره تلاش کنید.');
+        }
+    });
+
+    async function fetchStreamWithRetry(url, retries = 3) {
+        for (let i = 0; i < retries; i++) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`خطای HTTP! وضعیت: ${response.status}`);
+                return response;
+            } catch (e) {
+                console.error(`تلاش ${i + 1} شکست خورد: ${e.message}`);
+                if (i === retries - 1) throw e;
+                await new Promise(resolve => setTimeout(resolve, 1000)); // 1 ثانیه انتظار
+            }
+        }
+    }
+
+    async function processStream(reader, contentElement) {
+        const decoder = new TextDecoder("utf-8");
+        try {
+            while (true) {
+                const {done, value} = await reader.read();
+                if (done) break;
+                contentElement.innerHTML += decoder.decode(value, {stream: true});
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        } catch (error) {
+            console.error('خطا در پردازش استریم:', error);
+            contentElement.innerHTML += '<br>[خطا: استریم قطع شده است. لطفاً دوباره تلاش کنید.]';
+        }
+    }
+
+    function addMessageToChat(sender, content) {
+        const messageElement = document.createElement('div');
+        const bgClass = sender === 'کاربر' ? 'bg-blue-100' : 'bg-gray-100';
+        const textClass = sender === 'کاربر' ? 'text-blue-600' : 'text-green-600';
+        messageElement.className = `${sender.toLowerCase()}-message ${bgClass} p-3 rounded-lg`;
+        messageElement.innerHTML = `
+            <div class="font-bold ${textClass}">${sender}:</div>
+            <div class="message-content">${content}</div>
+        `;
+        chatMessages.appendChild(messageElement);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return messageElement;
+    }
+</script>
+
+<!-- Dark Mode Toggle Button -->
+<!-- <button id="dark-mode-toggle" class="fixed bottom-4 left-4 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 p-2 rounded-full shadow-md hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none">
+    حالت تاریک
+</button> -->
+
+<script>
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    toggleButton.addEventListener('click', function() {
+        document.documentElement.classList.toggle('dark');
+    });
+
+    // تنظیم حالت تاریک بر اساس تنظیمات سیستم در اولین بار
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+    }
+</script>
+
+</body>
+</html>
