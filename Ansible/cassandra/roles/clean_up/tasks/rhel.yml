@@ -1,8 +1,0 @@
----
-- name: .:(RHEL):. unistalling the cassandra
-  yum:
-    name: cassandra
-    state: removed
-  ignore_errors: yes
-    
-
