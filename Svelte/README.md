@@ -39,7 +39,7 @@
 توسعه‌دهندگان محسوب می‌شود. در میان فریم‌ورک‌های مختلفی که در سال‌های اخیر ظهور کرده‌اند، **Svelte** با رویکردی متفاوت و
 نوآورانه توجه بسیاری از توسعه‌دهندگان را به خود جلب کرده است.
 
-Svelte نه تنها یک فریم‌ورک JavaScript، بلکه یک **کامپایلر** است که کد شما را در زمان build به کد JavaScript بهینه تبدیل
+<span dir="ltr">Svelte</span> نه تنها یک فریم‌ورک JavaScript، بلکه یک **کامپایلر** است که کد شما را در زمان build به کد JavaScript بهینه تبدیل
 می‌کند. این رویکرد باعث شده تا Svelte در مقایسه با سایر فریم‌ورک‌های معروف مانند React، Vue و Angular عملکرد بهتری داشته
 باشد و bundle size کوچک‌تری تولید کند.
 
@@ -51,7 +51,7 @@ Svelte نه تنها یک فریم‌ورک JavaScript، بلکه یک **کام�
 
 ## تاریخچه و پیدایش Svelte
 
-Svelte در سال **2016** توسط **ریچ هریس (Rich Harris)**، روزنامه‌نگار و توسعه‌دهنده نیویورک تایمز، ایجاد شد. هریس که پیش
+فریم‌ورک Svelte در سال **2016** توسط **ریچ هریس (Rich Harris)**، روزنامه‌نگار و توسعه‌دهنده نیویورک تایمز، ایجاد شد. هریس که پیش
 از این روی پروژه‌های متن‌بازی مانند **Rollup** کار کرده بود، با چالش‌هایی که در توسعه اپلیکیشن‌های تعاملی برای روزنامه
 مواجه شده بود، تصمیم گرفت رویکردی متفاوت از فریم‌ورک‌های موجود ارائه دهد.
 
@@ -69,19 +69,19 @@ SvelteKit** به‌عنوان فریم‌ورک تمام‌عیار برای ت�
 
 ## مفاهیم اصلی Svelte
 
-### کامپایل‌محور بودن
+### Compile-Based
 
 بزرگ‌ترین تمایز Svelte رویکرد **compile-time** آن است. به‌جای ارسال کد فریم‌ورک به مرورگر، Svelte در زمان build کد شما
 را تحلیل و به JavaScript خالص و بهینه تبدیل می‌کند.
 
 ### Reactive Programming
 
-Svelte از مفهوم **reactivity** برای مدیریت state استفاده می‌کند. هرگاه داده‌ای تغییر کند، تمام قسمت‌های وابسته در UI
+<span dir="ltr">Svelte</span> از مفهوم **reactivity** برای مدیریت state استفاده می‌کند. هرگاه داده‌ای تغییر کند، تمام قسمت‌های وابسته در UI
 به‌طور خودکار به‌روزرسانی می‌شوند.
 
 ### Component-Based Architecture
 
-Svelte نیز مانند فریم‌ورک‌های مدرن، مبتنی بر **کامپوننت** است. هر کامپوننت یک فایل `.svelte` شامل HTML، CSS و JavaScript
+<span dir="ltr">Svelte</span> نیز مانند فریم‌ورک‌های مدرن، مبتنی بر **کامپوننت** است. هر کامپوننت یک فایل `svelte.` شامل HTML، CSS و JavaScript
 است.
 
 ### No Virtual DOM
@@ -105,7 +105,7 @@ Svelte نیز مانند فریم‌ورک‌های مدرن، مبتنی بر *
 
 ### Svelte vs React
 
-React از Virtual DOM و JSX استفاده می‌کند؛ Svelte مستقیماً DOM را تغییر می‌دهد و syntax نزدیک‌تری به HTML دارد. از نظر
+<span dir="ltr">React</span> از Virtual DOM و JSX استفاده می‌کند؛ Svelte مستقیماً DOM را تغییر می‌دهد و syntax نزدیک‌تری به HTML دارد. از نظر
 عملکرد، Svelte غالباً سریع‌تر است؛ اما React اکوسیستم بزرگ‌تری دارد.
 
 ### Svelte vs Vue
@@ -115,7 +115,7 @@ React از Virtual DOM و JSX استفاده می‌کند؛ Svelte مستقیم
 
 ### Svelte vs Angular
 
-Angular یک فریم‌ورک کامل و مناسب پروژه‌های بزرگ با **TypeScript** است. Svelte ساده‌تر و سبک‌تر است (و از TS هم پشتیبانی
+<span dir="ltr">Angular</span> یک فریم‌ورک کامل و مناسب پروژه‌های بزرگ با **TypeScript** است. Svelte ساده‌تر و سبک‌تر است (و از TS هم پشتیبانی
 می‌کند) اما امکانات out-of-the-box کمتری نسبت به Angular دارد.
 
 ---
@@ -124,9 +124,9 @@ Angular یک فریم‌ورک کامل و مناسب پروژه‌های بزر
 
 ### فرآیند کامپایل
 
-Svelte compiler کد `svelte.` شما را دریافت و پردازش می‌کند:
+<span dir="ltr">Svelte compiler</span> کد `svelte.` شما را دریافت و پردازش می‌کند:
 
-1. **Parsing**: تجزیه فایل به AST
+1. **<span dir="ltr">Parsing</span>**: تجزیه فایل به AST
 2. **Analysis**: تحلیل وابستگی‌ها و reactivity
 3. **Code Generation**: تولید JavaScript بهینه
 4. **Optimization**: بهینه‌سازی نهایی
@@ -153,7 +153,7 @@ Lifecycle hooks مهم:
 
 - **Node.js 14+**
 
-### ایجاد پروژه جدید
+### ایجاد پروژه‌ی جدید
 
 ```bash
 npx sv create myapp
@@ -164,7 +164,7 @@ npm run dev
 
 ### ساختار پروژه
 
-```text
+```
 my-svelte-app/
 ├── src/
 │   ├── lib/
@@ -399,11 +399,11 @@ export const count = createCount();
 
 ---
 
-## SvelteKit و اکوسیستم
+## اکوسیستم SvelteKit
 
 ### معرفی SvelteKit
 
-**SvelteKit** فریم‌ورک رسمی برای ساخت اپلیکیشن‌های وب با Svelte است: routing، SSR، SSG، endpoints، code splitting خودکار
+**<span dir="ltr">SvelteKit</span>** فریم‌ورک رسمی برای ساخت اپلیکیشن‌های وب با Svelte است: routing، SSR، SSG، endpoints، code splitting خودکار
 و HMR را فراهم می‌کند.
 
 ### ویژگی‌ها
@@ -417,7 +417,7 @@ export const count = createCount();
 
 ### ساختار Routing
 
-```text
+```
 src/routes/
 ├── +page.svelte          # /
 ├── about/
@@ -530,12 +530,12 @@ export async function load({fetch, params}) {
 
 ### Dashboard تحلیلی
 
-Svelte برای ساخت داشبوردهای تعاملی بسیار مناسب است. با استفاده از کتابخانه‌هایی مانند **D3.js** می‌توان نمودارهای پیچیده
+<span dir="ltr">Svelte</span> برای ساخت داشبوردهای تعاملی بسیار مناسب است. با استفاده از کتابخانه‌هایی مانند **D3.js** می‌توان نمودارهای پیچیده
 ایجاد کرد.
 
 ### Progressive Web App (PWA)
 
-SvelteKit امکان ساخت PWA با قابلیت‌هایی مانند **offline support** و **push notifications** را فراهم می‌کند.
+<span dir="ltr">SvelteKit</span> امکان ساخت PWA با قابلیت‌هایی مانند **offline support** و **push notifications** را فراهم می‌کند.
 
 ---
 
@@ -562,7 +562,7 @@ SvelteKit امکان ساخت PWA با قابلیت‌هایی مانند **offl
 
 ## نتیجه‌گیری
 
-Svelte با رویکرد نوآورانه خود جایگاه ویژه‌ای در دنیای فریم‌ورک‌های JavaScript پیدا کرده است. **کامپایل‌محور بودن، عملکرد
+<span dir="ltr">Svelte</span> با رویکرد نوآورانه خود جایگاه ویژه‌ای در دنیای فریم‌ورک‌های JavaScript پیدا کرده است. **کامپایل‌محور بودن، عملکرد
 بالا، bundle کوچک و syntax ساده** از مزایای کلیدی آن هستند. هرچند اکوسیستم آن کوچک‌تر از رقباست، اما رشد سریع محبوبیت
 و **SvelteKit** به‌عنوان راه‌حل جامع، آینده‌ای روشن را رقم می‌زنند.
 
