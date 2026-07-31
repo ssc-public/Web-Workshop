@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Chat Application Demo</title>
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    Please check the console.
+</body>
+<script>
+    // creates new WebSocket object with a ws/wss URI as the parameter
+    const socket = new WebSocket('ws://localhost:8888');
+
+    let sendMessage = () => {
+        console.error('please wait until connection is established');
+    }
+
+    // the event triggered when a connection with a WebSocket is opened
+    socket.onopen = function () {
+        sendMessage = message => {
+            socket.send(message);
+        }
+    };
+
+    // the event triggered when data is received through a WebSocket
+    socket.onmessage = function (event) {
+        console.log(`NEW MESSAGE: ${event.data}`);
+    };
+
+    // the event triggered when a connection with a WebSocket is closed
+    socket.onclose = function (event) {
+        console.warn('the connection has been closed');
+        sendMessage = () => {
+            console.error('the connection is closed');
+        }
+    };
+
+    // the event triggered when a connection with a WebSocket has been closed because of an error
+    socket.onerror = function (event) {
+        console.warn('the connection has been closed because of an error');
+        sendMessage = () => {
+            console.error('the connection is closed because of an error');
+        }
+    };
+</script>
+
+</html>
