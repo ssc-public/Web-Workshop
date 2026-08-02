@@ -94,8 +94,8 @@ spring-github-auth
          client:
            registration:
              github:
-               client-id: <YOUR_CLIENT_ID>
-               client-secret: <YOUR_CLIENT_SECRET>
+               client-id: ${GITHUB_CLIENT_ID}
+               client-secret: ${GITHUB_CLIENT_SECRET}
                scope: read:user
                redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
                client-name: GitHub
@@ -107,12 +107,12 @@ spring-github-auth
    server:
      port: 8080
    ```
-   > **نکته:** مقدار `<YOUR_CLIENT_ID>` و `<YOUR_CLIENT_SECRET>` را با مقادیر واقعی که از GitHub گرفتید جایگزین کنید.
+   > **نکته:** مقدار واقعی Client ID و Client Secret را در متغیرهای محیطی `GITHUB_CLIENT_ID` و `GITHUB_CLIENT_SECRET` قرار دهید و آن‌ها را در فایل‌های پروژه commit نکنید.
 
    اگر از `application.properties` استفاده می‌کنید، همین تنظیمات را به شکل کلید-مقدار وارد نمایید: <br>
 ```properties
-spring.security.oauth2.client.registration.github.client-id=<YOUR_CLIENT_ID>
-spring.security.oauth2.client.registration.github.client-secret=<YOUR_CLIENT_SECRET>
+spring.security.oauth2.client.registration.github.client-id=${GITHUB_CLIENT_ID}
+spring.security.oauth2.client.registration.github.client-secret=${GITHUB_CLIENT_SECRET}
 spring.security.oauth2.client.registration.github.scope=read:user
 spring.security.oauth2.client.registration.github.redirect-uri={baseUrl}/login/oauth2/code/{registrationId}
 spring.security.oauth2.client.registration.github.client-name=GitHub
@@ -209,6 +209,12 @@ server.port=8080
 
 3. **آموزش ورود با OAuth2 در Spring Security (Baeldung)**  
    [https://www.baeldung.com/spring-security-5-oauth2-login](https://www.baeldung.com/spring-security-5-oauth2-login)
+
+4. **Spring Boot Externalized Configuration**
+   [https://docs.spring.io/spring-boot/reference/features/external-config.html](https://docs.spring.io/spring-boot/reference/features/external-config.html)
+
+5. **Spring Security OAuth2 Client Registration**
+   [https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html](https://docs.spring.io/spring-security/reference/servlet/oauth2/login/core.html)
 
 
 ---
