@@ -23,13 +23,13 @@ class HelloControllerTest_Integration {
     void hello() throws Exception {
         RequestBuilder request = get("/hello");
         MvcResult result = mvc.perform(request).andReturn();
-        assertEquals("Hello a", result.getResponse().getContentAsString());
+        assertEquals("Hello Reza", result.getResponse().getContentAsString());
     }
 
     @Test
     void hello_name() throws Exception {
         RequestBuilder request = get("/hello?name=Ali");
         MvcResult result = mvc.perform(request).andReturn();
-        assertEquals("Hello Reza", result.getResponse().getContentAsString());
+        assertEquals("Hello Ali", result.getResponse().getContentAsString());
     }
 }
