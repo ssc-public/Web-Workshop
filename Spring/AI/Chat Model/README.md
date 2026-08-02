@@ -13,6 +13,8 @@
 علی مقدسی، مائده حیدری، علیرضا میرشفیعیان
 </p>
 
+> یادداشت نگهداری: پروژه نمونه داخل پوشه `Simple-Chatbot` با کلاینت `com.theokanning.openai-gpt3-java` نوشته شده است، نه Spring AI. برای پیاده‌سازی جدید Spring AI، مستندات نسخه 2.0.0 از وابستگی `spring-ai-starter-model-openai` و کلید `spring.ai.openai.api-key` استفاده می‌کند.
+
 
 ## مقدمه
 
@@ -95,7 +97,7 @@ Message ساختاری است که شامل:
 - تنظیم پارامترهای کنترلی
 - تعیین محدودیت‌های خروجی
 
-![تنظیمات چت](https://docs.spring.io/spring-ai/reference/_images/chat-options-flow.jpg)
+برای فهرست گزینه‌های قابل تنظیم، به بخش OpenAI Chat در مستندات Spring AI مراجعه کنید.
 
 ### چرخه کار
 
@@ -204,7 +206,7 @@ Spring AI امکان استفاده از سرویس‌های مختلف هوش �
 ```xml
 <dependency>
     <groupId>org.springframework.ai</groupId>
-    <artifactId>spring-ai-openai-spring-boot-starter</artifactId>
+    <artifactId>spring-ai-starter-model-openai</artifactId>
 </dependency>
 ```
 </div>
@@ -220,7 +222,7 @@ ChatResponse response = chatModel.call(
     new Prompt(
         "your text",
         OpenAiChatOptions.builder()
-            .model("gpt-4-o")
+            .model("gpt-4o")
             .temperature(0.4)
         .build()
     ));
