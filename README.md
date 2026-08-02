@@ -1,37 +1,21 @@
-
 <h1 align="center">
-کارگاه برنامه‌نویسی وب دانشگاه صنعتی شریف
+کارگاه برنامه‌سازی وب دانشگاه صنعتی شریف
 </h1>
 
 
 <div align="center">
 
 
-<img src="./Statics/web_workshop.png" alt="Sharif Web Programming Workshop"> 
-<div dir="rtl">
-    اساتید:  
-    <a href="https://github.com/behnamhatami">
-    بهنام حاتمی ورزنه
-    </a>،
-    <a href="https://github.com/YumcoderCom">
-    امید جعفرنژاد
-    </a>
-</div>
+<img src="./Statics/web_workshop.png" alt="Sharif Web Programming Workshop">
 
-<div dir="rtl">
-دستیار آموزشی: مصطفی قدیمی
-</div>
-
-[![Web_Workshop](https://img.shields.io/badge/web-workshop-orange.svg)](https://github.com/mostafaghadimi/web_workshop)
+[![Web_Workshop](https://img.shields.io/badge/web-workshop-orange.svg)](https://github.com/ssc-public/Web-Workshop)
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/mostafaghadimi/web_workshop.svg)](https://github.com/mostafaghadimi/web_workshop/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/mostafaghadimi/web_workshop.svg)](https://github.com/mostafaghadimi/web_workshop/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/ssc-public/Web-Workshop.svg)](https://github.com/ssc-public/Web-Workshop/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/ssc-public/Web-Workshop.svg)](https://github.com/ssc-public/Web-Workshop/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
-[![Github Stars](https://img.shields.io/github/stars/mostafaghadimi/web_workshop?style=social)]([https://](https://github.com/mostafaghadimi/web_workshop/stargazers))
+[![Github Stars](https://img.shields.io/github/stars/ssc-public/Web-Workshop?style=social)]([https://](https://github.com/ssc-public/Web-Workshop/stargazers))
+
 </div>
-
-
-
 
 <div dir="rtl">
 
@@ -60,7 +44,7 @@
   - JavaScript Frameworks (React, Vue, Angular, ...)
 ```
 </div>
- 
+
 
 
 # Back-end developer
@@ -77,6 +61,7 @@
   - ...
 ```
 </div>
+
 هم‌چنین دو ساختار برای توسعه‌ی آن‌ها وجود دارد که RestFul و GraphQL است. 
 
 
@@ -114,11 +99,14 @@
 
 # ✍️ توسعه‌دهندگان
 
-اسامی توسعه‌دهندگان به ترتیب حروف الفبا به شرح زیر است:
+اسامی توسعه‌دهندگان به ترتیب حروف الفبا (برای فامیل هر کدوم از افراد) به شرح زیر است:
+
 - [آرین احدی نیا](https://github.com/AryanAhadinia)
 - [عرشیا اخوان](https://github.com/ArshiAAkhavan)
 - [ابوالفضل اسد](https://github.com/abolfazlasad)
 - [رضا امینی‌مجد](https://github.com/rezaaminimajd)
+- [مهدی تیموری انار](https://github.com/mahditeymoorianar)
+- [حسام اثنی عشری](https://github.com/hessamasna)
 - [اسماعیل پاهنگ](https://github.com/esmaeil1377)
 - [علی پورقاسمی](https://github.com/sh3rLock3d)
 - [مبینا پورنعمت](https://github.com/Mobinapournemat)
@@ -129,30 +117,42 @@
 - [محمد جمشیدی](https://github.com/jamshidi799)
 - [مهدی جوان‌مردی غریب‌دوستی](https://github.com/Mjg79)
 - [علی جوانی](https://github.com/AliJavanJ1)
+- [محمدطه جهانی‌نژاد](https://github.com/TahaJahani)
 - [بهار خدابخشیان](https://github.com/baharkhd)
 - [علی‌رضا دیزجی](https://github.com/alirezadizaji)
-- [بهراد ذبیحی](https://github.com/8ehrad)
 - [امیر مهدی دیگبری](https://github.com/amdigbari)
+- [بهراد ذبیحی](https://github.com/8ehrad)
+- [عطا رحیم زاده](https://github.com/atarhz)
 - [پارسا رستمی](https://github.com/parsarsm)
 - [آرمان زارعی](https://github.com/ArmanZarei)
 - [سپهر زمانی](https://github.com/sepzame)
 - [آتنا ساقی](https://github.com/atenasadat)
 - [احمد سلیمی](https://github.com/ahmadsalimi)
 - [علی‌رضا شاطری](https://github.com/ShAlireza)
+- [شایان شعبان زاده](https://github.com/Shayan-Shabanzadeh)
 - [مهرداد صابری](https://github.com/Sa1378)
 - [پرهام صارمی](https://github.com/parhamsaremi)
 - [سپهر صفری](https://github.com/sepehrs1378)
 - [علیرضا ضیائی](https://github.com/alrz1999)
 - [محمدرضا عبدی](https://github.com/baharkhd)
+- [مهدی عبدی](https://github.com/itsmehdiabdi)
 - [محمد فتاح](https://github.com/mohammad-fattah)
 - [عرفان فرهادی](https://github.com/farhadi-erfan)
+- [سجاد فقفور مغربی](https://github.com/sfmqrb)
+- [امیررضا قاسمی ویسی](https://github.com/amirzgh)
 - [مصطفی قدیمی](https://github.com/mostafaghadimi)
+- [محمدحسین قیصریه](https://github.com/mhgheisarieh)
+- [محمدامین لطفی اوریمی](https://github.com/aminlotfi)
+- [ایمان محمدی](https://github.com/Imanm02)
 - [امیر معینی](https://github.com/amir-mi)
 - [سید محمد پوریا ممتاز اصفهانی](https://github.com/pourya-momtaz)
 - [امیرمهدی نامجو](https://github.com/titansarus)
-
-
-
+- [سیدپارسا نشایی](https://github.com/spneshaei)
+- [امیرحسین نقی رازلیقی](https://github.com/AmirHossein-nr)
+- [هستی کریمی](https://github.com/HastiKarimi)
+- [محمدهومان کشوری](https://github.com/bigwhoman)
+- [آرش یادگاری](https://github.com/Arash1381-y)
+    
 # نحوه مشارکت
 
 - ابتدا باید این ریپازیتوری را fork کنید.
@@ -169,7 +169,7 @@ Type: {Dev, Author}
 ```
 </div>
  نام فولدرها یکی از فولدرهای ریپازیتوری است و منظور از Type، توسعه‌ی بخش پیاده‌سازی (Dev) و یا بخش آموزش (Author) است. 
-  
+
   برای نمونه یک کامیت در ادامه آمده است.
 
 <div dir="ltr">
