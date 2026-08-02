@@ -5,6 +5,8 @@
 پارسا رستمی، سید علی‌رضا هاشمی، ساعی سعادت، آرمان محمدی، علی پورقاسمی، اسماعیل پاهنگ و محمد فتاح‌پور
 </div>
 
+گزارش PDF اضافه‌شده درباره Docker: [Docker Author Report](Docker-Author-Report.pdf)
+
 <div dir = 'rtl' style='text-align:justify'>
 
 # Docker (بخش اول)
