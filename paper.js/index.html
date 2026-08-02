@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        :root {
+            --list-scroll-bck-color: #343a40;
+            --list-scroll-crn-color: black;
+            --list-scroll-thumb-color: #4285F4;
+            --list-scroll-thumb-active-color: red;
+        }
+
+        .s-hover:hover {
+            box-shadow: 0 0 4px 4px #3f4f4f;
+            transition: box-shadow 0.4s ease-in-out;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: red;
+        }
+
+        .btn-circle {
+            background-color: #73A1C2;
+            color: white;
+            border-width: 0;
+            width: 2rem;
+            height: 2rem;
+            text-align: center;
+            line-height: 1.428571429;
+            border-radius: 50%;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .btn-circle.btn-lg {
+            width: 50px;
+            height: 50px;
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.33;
+            border-radius: 25px;
+        }
+
+        .btn-circle.btn-xl {
+            width: 70px;
+            height: 70px;
+            padding: 10px 16px;
+            font-size: 24px;
+            line-height: 1.33;
+            border-radius: 35px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            transform: rotateX(180deg);
+            width: 12px;
+            height: 12px;
+            cursor: grab;
+            background-color: var(--list-scroll-bck-color);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-corner {
+            background-color: var(--list-scroll-crn-color);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+            background-color: var(--list-scroll-thumb-color);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:horizontal:active {
+            background-color: var(--list-scroll-thumb-active-color);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:vertical:active {
+            background-color: var(--list-scroll-thumb-active-color);
+        }
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="lib/bootstrap.css" rel="stylesheet">
+
+</head>
+<body class="bg-info">
+
+<form class="position-absolute d-flex flex-column justify-content-around w-25"
+      style="background-color: maroon  ;left: 37.5%; top: 5%;height: 90%">
+    <div class="row mb-2 mt-3 row-cols-2 row-cols-md-2 justify-content-around overflow-hidden"
+         id="selected-avatars">
+        <div class="form-group col-md-5">
+            <img src="res/avatars/unknown.svg" class="card-img-top" id="p1-avatar" alt="...">
+        </div>
+        <div class="form-group col-md-5">
+            <img src="res/avatars/unknown.svg" class="card-img-top" id="p2-avatar" alt="...">
+        </div>
+    </div>
+    <div class="row justify-content-around">
+        <div class="form-group col-md-5">
+            <input type="text" class="form-control text-light bg-dark border-primary" id="inputName1" maxlength="10"
+                   placeholder="Player1 Name">
+        </div>
+        <div class="form-group col-md-5">
+            <input type="text" class="form-control text-light bg-dark border-primary" id="inputName2" maxlength="10"
+                   placeholder="Player2 Name">
+        </div>
+    </div>
+    <div id="supin-buttons" class="btn-group btn-group-lg btn-group-toggle bg-transparent mt-3" data-toggle="buttons"
+         style="background-color: #343a40">
+        <input type="radio" class="btn-check" name="options" id="radio1" checked onchange="setPlayer(1)" autocomplete="off">
+        <label class="btn btn-primary rounded-0 w-100 me-1" for="radio1">
+            Choose Avatar
+        </label>
+        <input type="radio" class="btn-check" name="options" id="radio2" onchange="setPlayer(2)" autocomplete="off">
+        <label class="btn btn-primary rounded-0 w-100 ms-1" for="radio2">
+            Choose Avatar
+        </label>
+    </div>
+    <div class="row row-cols-3 m-0 mt-2 w-100 h-50 overflow-auto bg-success custom-scrollbar"
+         id="avatars">
+        <!--
+        <div class="col mb-4">
+            <div class="card">
+                <img src="res/p1Avatar.svg" class="card-img-top" alt="...">
+            </div>
+        </div>-->
+    </div>
+    <div id="alert" class="alert alert-primary my-0 d-flex justify-content-between fade rounded-0"
+         role="alert">
+        <strong id="error-message">Please Enter Name!</strong>
+        <button type="button" class="btn-circle float-right"
+                aria-hidden="true" id="alert-close"
+                onclick="document.getElementById('alert').classList.remove('show');">
+            <strong>&times;</strong>
+        </button>
+    </div>
+    <button type="submit" class="btn btn-primary" onclick="start();return false;">Start</button>
+</form>
+
+<script src="lib/jquery-3.5.1.slim.min.js"></script>
+<script src="lib/bootstrap.bundle.js"></script>
+
+
+<script>
+    let currPlayer = 1;
+    let playersAvatar = [0, 0];
+
+    function setPlayer(p) {
+        currPlayer = p;
+    }
+
+    let errMsg = document.getElementById('error-message');
+
+    function validateStart() {
+        document.getElementById('alert').classList.add('show');
+        if (document.getElementById('inputName1').value === '' || document.getElementById('inputName2').value === '') {
+            errMsg.innerHTML = 'Please Enter Name.';
+        } else if (document.getElementById('inputName1').value === document.getElementById('inputName2').value) {
+            errMsg.innerHTML = 'Can\'t have same names.';
+        } else {
+            if (playersAvatar[0] === 0 || playersAvatar[1] === 0) {
+                errMsg.innerHTML = 'Please Choose Avatar.';
+            } else {
+                document.getElementById('alert').classList.remove('show');
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function start() {
+        if (!validateStart())
+            return;
+        let p1Name = document.getElementById('inputName1').value;
+        let p2Name = document.getElementById('inputName2').value;
+        let url = `game.html?p1=${encodeURIComponent(p1Name)}&p2=${encodeURIComponent(p2Name)}&a1=${playersAvatar[0]}&a2=${playersAvatar[1]}`;
+        document.location.href = url;
+    }
+
+    function createCard(path) {
+        let div = document.createElement('div');
+        div.classList.add('col');
+        div.classList.add('mb-4');
+        div.classList.add('mt-3');
+
+        let card = document.createElement('div');
+        card.className = 'card';
+        card.classList.add('s-hover');
+
+        let img = document.createElement('img');
+        img.src = path;
+        img.className = 'card-img';
+        card.appendChild(img);
+        div.appendChild(card);
+        return div;
+    }
+
+    let container = document.getElementById('avatars');
+
+    for (let i = 1; i < 14; i++) {
+        let path = 'res/avatars/avatar' + i.toString() + '.svg';
+        let div = createCard(path);
+        div.onclick = () => {
+            let el = document.getElementById('p' + currPlayer + '-avatar');
+            el.src = path;
+            playersAvatar[currPlayer - 1] = i;
+        };
+        container.appendChild(div);
+    }
+
+</script>
+
+</body>
+</html>
