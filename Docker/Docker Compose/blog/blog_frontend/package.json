@@ -22,6 +22,10 @@
     "run": "^1.4.0",
     "serve": "^11.3.2"
   },
+  "resolutions": {
+    "@babel/traverse": "7.23.2",
+    "cipher-base": "1.0.5"
+  },
   "scripts": {
     "dev": "chmod +x ./env.sh && ./env.sh && cp env-config.js ./public/ && react-scripts start",
     "start": "react-scripts start",
