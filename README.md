@@ -1,4 +1,3 @@
-
 <h1 align="center">
 کارگاه برنامه‌سازی وب دانشگاه صنعتی شریف
 </h1>
@@ -45,7 +44,7 @@
   - JavaScript Frameworks (React, Vue, Angular, ...)
 ```
 </div>
- 
+
 
 
 # Back-end developer
@@ -100,11 +99,14 @@
 
 # ✍️ توسعه‌دهندگان
 
-اسامی توسعه‌دهندگان به ترتیب حروف الفبا به شرح زیر است:
+اسامی توسعه‌دهندگان به ترتیب حروف الفبا (برای فامیل هر کدوم از افراد) به شرح زیر است:
+
 - [آرین احدی نیا](https://github.com/AryanAhadinia)
 - [عرشیا اخوان](https://github.com/ArshiAAkhavan)
 - [ابوالفضل اسد](https://github.com/abolfazlasad)
 - [رضا امینی‌مجد](https://github.com/rezaaminimajd)
+- [مهدی تیموری انار](https://github.com/mahditeymoorianar)
+- [حسام اثنی عشری](https://github.com/hessamasna)
 - [اسماعیل پاهنگ](https://github.com/esmaeil1377)
 - [علی پورقاسمی](https://github.com/sh3rLock3d)
 - [مبینا پورنعمت](https://github.com/Mobinapournemat)
@@ -118,31 +120,39 @@
 - [محمدطه جهانی‌نژاد](https://github.com/TahaJahani)
 - [بهار خدابخشیان](https://github.com/baharkhd)
 - [علی‌رضا دیزجی](https://github.com/alirezadizaji)
-- [بهراد ذبیحی](https://github.com/8ehrad)
 - [امیر مهدی دیگبری](https://github.com/amdigbari)
+- [بهراد ذبیحی](https://github.com/8ehrad)
+- [عطا رحیم زاده](https://github.com/atarhz)
 - [پارسا رستمی](https://github.com/parsarsm)
 - [آرمان زارعی](https://github.com/ArmanZarei)
 - [سپهر زمانی](https://github.com/sepzame)
 - [آتنا ساقی](https://github.com/atenasadat)
 - [احمد سلیمی](https://github.com/ahmadsalimi)
 - [علی‌رضا شاطری](https://github.com/ShAlireza)
+- [شایان شعبان زاده](https://github.com/Shayan-Shabanzadeh)
 - [مهرداد صابری](https://github.com/Sa1378)
 - [پرهام صارمی](https://github.com/parhamsaremi)
 - [سپهر صفری](https://github.com/sepehrs1378)
 - [علیرضا ضیائی](https://github.com/alrz1999)
 - [محمدرضا عبدی](https://github.com/baharkhd)
+- [مهدی عبدی](https://github.com/itsmehdiabdi)
 - [محمد فتاح](https://github.com/mohammad-fattah)
 - [عرفان فرهادی](https://github.com/farhadi-erfan)
+- [سجاد فقفور مغربی](https://github.com/sfmqrb)
+- [امیررضا قاسمی ویسی](https://github.com/amirzgh)
 - [مصطفی قدیمی](https://github.com/mostafaghadimi)
 - [محمدحسین قیصریه](https://github.com/mhgheisarieh)
+- [محمدامین لطفی اوریمی](https://github.com/aminlotfi)
+- [ایمان محمدی](https://github.com/Imanm02)
 - [امیر معینی](https://github.com/amir-mi)
 - [سید محمد پوریا ممتاز اصفهانی](https://github.com/pourya-momtaz)
 - [امیرمهدی نامجو](https://github.com/titansarus)
-- [امیرحسین نقی رازلیقی](https://github.com/AmirHossein-nr)
-- [محمدهومان کشوری](https://github.com/bigwhoman)
-- [سجاد فقفور مغربی](https://github.com/sfmqrb)
 - [سیدپارسا نشایی](https://github.com/spneshaei)
-
+- [امیرحسین نقی رازلیقی](https://github.com/AmirHossein-nr)
+- [هستی کریمی](https://github.com/HastiKarimi)
+- [محمدهومان کشوری](https://github.com/bigwhoman)
+- [آرش یادگاری](https://github.com/Arash1381-y)
+    
 # نحوه مشارکت
 
 - ابتدا باید این ریپازیتوری را fork کنید.
@@ -159,7 +169,7 @@ Type: {Dev, Author}
 ```
 </div>
  نام فولدرها یکی از فولدرهای ریپازیتوری است و منظور از Type، توسعه‌ی بخش پیاده‌سازی (Dev) و یا بخش آموزش (Author) است. 
-  
+
   برای نمونه یک کامیت در ادامه آمده است.
 
 <div dir="ltr">
