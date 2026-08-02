@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl"></html>
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-100 h-screen flex flex-col relative"></body>
+<body class="bg-gray-100 h-screen flex flex-col relative">
 <div class="container mx-auto p-4 flex-1 flex flex-col">
     <header class="mb-6 text-center">
         <h1 class="text-3xl font-bold text-gray-800">چت بات دوره وب شریف</h1>
@@ -57,9 +57,11 @@
     });
 
     const toggleButton = document.getElementById('dark-mode-toggle');
-    toggleButton.addEventListener('click', function () {
-        document.documentElement.classList.toggle('dark');
-    });
+    if (toggleButton) {
+        toggleButton.addEventListener('click', function () {
+            document.documentElement.classList.toggle('dark');
+        });
+    }
 
     // تنظیم حالت تاریک براساس سیستم کاربر در ابتدا
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {

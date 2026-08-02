@@ -100,12 +100,12 @@
             while (true) {
                 const {done, value} = await reader.read();
                 if (done) break;
-                contentElement.innerHTML += decoder.decode(value, {stream: true});
+                contentElement.textContent += decoder.decode(value, {stream: true});
                 chatMessages.scrollTop = chatMessages.scrollHeight;
             }
         } catch (error) {
             console.error('خطا در پردازش استریم:', error);
-            contentElement.innerHTML += '<br>[خطا: استریم قطع شده است. لطفاً دوباره تلاش کنید.]';
+            contentElement.textContent += '\n[خطا: استریم قطع شده است. لطفاً دوباره تلاش کنید.]';
         }
     }
 
@@ -114,10 +114,15 @@
         const bgClass = sender === 'کاربر' ? 'bg-blue-100' : 'bg-gray-100';
         const textClass = sender === 'کاربر' ? 'text-blue-600' : 'text-green-600';
         messageElement.className = `${sender.toLowerCase()}-message ${bgClass} p-3 rounded-lg`;
-        messageElement.innerHTML = `
-            <div class="font-bold ${textClass}">${sender}:</div>
-            <div class="message-content">${content}</div>
-        `;
+        const senderElement = document.createElement('div');
+        senderElement.className = `font-bold ${textClass}`;
+        senderElement.textContent = `${sender}:`;
+
+        const contentElement = document.createElement('div');
+        contentElement.className = 'message-content';
+        contentElement.textContent = content;
+
+        messageElement.append(senderElement, contentElement);
         chatMessages.appendChild(messageElement);
         chatMessages.scrollTop = chatMessages.scrollHeight;
         return messageElement;
@@ -131,9 +136,11 @@
 
 <script>
     const toggleButton = document.getElementById('dark-mode-toggle');
-    toggleButton.addEventListener('click', function() {
-        document.documentElement.classList.toggle('dark');
-    });
+    if (toggleButton) {
+        toggleButton.addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark');
+        });
+    }
 
     // تنظیم حالت تاریک بر اساس تنظیمات سیستم در اولین بار
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {

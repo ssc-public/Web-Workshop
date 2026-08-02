@@ -37,7 +37,7 @@
 
    - صادر کردن کلید API OpenAI: 
       ```
-      export OPENAI_API_KEY <YOUR_KEY>
+      export OPENAI_API_KEY=<YOUR_KEY>
       ```
    - فایل `application.properties` را در دایرکتوری `src/main/resources` پیدا کنید
 
@@ -76,9 +76,9 @@ http --stream :8080/stream message=="وب برنامه نویسی چیست؟"
 
 همچنین برای دسترسی به صفحهٔ فرانت‌اند آماده شده و چت با آن، می‌توانید به آدرس‌های زیر مراجعه کنید:
 
-- برای چت سنتی: `<locathost-or-server>/index.html`
+- برای چت سنتی: `<localhost-or-server>/index.html`
 
-- برای چت Streaming: `<locathost-or-server>/stream.html`
+- برای چت Streaming: `<localhost-or-server>/stream.html`
 
 
 # منابع
