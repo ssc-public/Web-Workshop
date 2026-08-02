@@ -10,7 +10,7 @@ services:
       # هنگامی که دستور بیلد داده شد، آرگومان‌های زیر را به محیط کانتینرِ بک پاس بده
       args:
         DJANGO_ALLOWED_HOSTS: localhost, api
-        DJANGO_SECRET_KEY: 'A_RANDOM_SECRET_KEY'
+        DJANGO_SECRET_KEY: "${DJANGO_SECRET_KEY:?Set DJANGO_SECRET_KEY before running docker compose}"
         DJANGO_CORS_ORIGIN_WHITELIST: http://localhost
     # پس از بیلد شدنِ کانتینرِ بک‌اند، دستور زیر را اجرا کن 
     command: gunicorn blog_backend.wsgi --bind 0.0.0.0:8000

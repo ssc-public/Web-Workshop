@@ -79,7 +79,7 @@ services:
       # هنگامی که دستور بیلد داده شد، آرگومان‌های زیر را به محیط کانتینرِ بک پاس بده
       args:
         DJANGO_ALLOWED_HOSTS: localhost, api
-        DJANGO_SECRET_KEY: 'A_RANDOM_SECRET_KEY'
+        DJANGO_SECRET_KEY: "${DJANGO_SECRET_KEY:?Set DJANGO_SECRET_KEY before running docker compose}"
         DJANGO_CORS_ORIGIN_WHITELIST: http://localhost
     # پس از بیلد شدنِ کانتینرِ بک‌اند، دستور زیر را اجرا کن 
     command: gunicorn blog_backend.wsgi --bind 0.0.0.0:8000
@@ -116,7 +116,7 @@ volumes:
 
 همان‌طور که می‌بینید، چهار آرگومان در فایل `docker-compose.yml` وجود دارند که می‌توانیم با توجه نیازمان، به آن‌ها مقدار بدهیم؛
 مثلاً در این جا، چون هر سه سرویسِ بک، فرانت و nginx بر روی `localhost` قرار دارند، بنابراین مقدار این آرگومان‌ها را برابر `localhost` قرار داده‌ایم.
-البته مقدار آرگومان `DJANGO_SECRET_KEY` می‌تواند هر چیز دلخواهی باشد.
+مقدار واقعی آرگومان `DJANGO_SECRET_KEY` را در shell یا فایل `.env` کنار `docker-compose.yml` قرار دهید و آن را در فایل‌های پروژه commit نکنید.
 
 در نهایت با اجرای دستور `docker-compose build`، سرویس جامع‌تر از روی دستورات نوشته شده در `docker-compose.ymp` اقدام به ساختن containerها می‌کند
 
@@ -129,5 +129,6 @@ volumes:
 
 ## منبع
 <div dir='rtl'>
+<strong> مستندات متغیرهای Compose: <a href="https://docs.docker.com/reference/compose-file/interpolation/"> Docker Compose interpolation </a> </strong> <br/>
 <strong> کد این پروژه و اکثر توضیحاتِ داده‌شده از<a href="https://medium.com/@cakmak.ok/how-to-deploy-django-rest-framework-and-react-redux-application-with-docker-fa902a611abf"> این مقاله </a> گرفته شده است. </strong> <br/>
 </div>
