@@ -865,20 +865,20 @@ metadata:
   name: mongo-secret
 type: Opaque
 data:
-  mongo-user: cmV6YQ==
-  mongo-password: c291bWk=
+  mongo-user: ZXhhbXBsZS11c2Vy
+  mongo-password: ZXhhbXBsZS1wYXNzd29yZA==
 
 ```
 
 </div>
 
-کد بالا یک Secret برای اتصال app به پایگاه داده درست می کند. username و password به صورت plain text نبوده و توسط دستور زیر کدگذاری شده است.
+کد بالا یک Secret برای اتصال app به پایگاه داده درست می کند. username و password به صورت plain text نبوده و توسط دستور زیر کدگذاری شده است. دقت کنید که base64 رمزگذاری نیست و هر کسی که به Secret دسترسی خواندن داشته باشد می‌تواند مقدار را برگرداند. برای این نکته، مستندات رسمی Kubernetes را ببینید: [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
 
 <div dir="ltr">
 
 ```
-username: echo -n reza | base64
-password: echo -n soumi | base64
+username: echo -n example-user | base64
+password: echo -n example-password | base64
 ```
 
 </div>
@@ -998,7 +998,7 @@ spec:
 
 </div>
 
-همانند دیپلوی و سرویس پایگاه داده خواهد بود. این سرویس روی پورت 3000 گوش خواهد داد و به همین پورت متصل می کند. nodePort مربوط به اتصال کاربر در صفحه خود است که این پورت را وارد می کند. این برنامه به پایگاه داده با username و password رمزگذاری شده متصل می شود.
+همانند دیپلوی و سرویس پایگاه داده خواهد بود. این سرویس روی پورت 3000 گوش خواهد داد و به همین پورت متصل می کند. nodePort مربوط به اتصال کاربر در صفحه خود است که این پورت را وارد می کند. این برنامه به پایگاه داده با username و password کدگذاری‌شده متصل می شود.
 
 در نهایت برای کار کردن این موارد دستورات زیر را در ترمینال وارد کنید.
 
