@@ -1326,7 +1326,7 @@ type: 'scatter'
 نمودار های مربوط به امتیاز بندی این دو بزرگوار زمین فوتبال را تحت نمودار راداری و نمودار ستونی رسم کنید.
 
 <p align="center">
-<img title="Example Messi vs Ronaldo" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_messiVsRonaldo/image.png" alt="Example Messi vs Ronaldo">
+<img title="Example Messi vs Ronaldo" src="examples/ex_messiVsRonaldo/image.png" alt="Example Messi vs Ronaldo">
 </p>
 نمودار راداری
 <div dir="ltr">
@@ -1407,7 +1407,7 @@ type: 'scatter'
 خروجی کد های فوق برابر خواهد بود با: (مثال مسی و رونالدو)
 
 <p align="center">
-<img title="Example Messi vs Ronaldo Plot" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_messiVsRonaldo/ex_messiVsRonaldo.png" alt="Example Messi vs Ronaldo Plot">
+<img title="Example Messi vs Ronaldo Plot" src="examples/ex_messiVsRonaldo/ex_messiVsRonaldo.png" alt="Example Messi vs Ronaldo Plot">
 </p>
 
 همان طور که مشاهده می کنید، میتوانیم به یک نمودار چند dataset اضافه کنیم.
@@ -1531,7 +1531,7 @@ type: 'scatter'
 </div>
 
 <p align="center">
-<img title="Example Cars" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_cars/ex_cars.png" alt="Example Cars">
+<img title="Example Cars" src="examples/ex_cars/ex_cars.png" alt="Example Cars">
 </p>
 
 همان طور که مشاهده می کنید، در این مثال font را نیز تغییر دادیم.
@@ -1585,7 +1585,7 @@ new Chart(ctx, conf);
 نتیجه
 
 <p align="center">
-<img title="Example Math" src="https://github.com/AryanAhadinia/web_workshop/blob/master/ChartJS/examples/ex_math/ex_math.png" alt="Example Math">
+<img title="Example Math" src="examples/ex_math/ex_math.png" alt="Example Math">
 </p>
 
 

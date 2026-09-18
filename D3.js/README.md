@@ -110,7 +110,7 @@ D3 شما را قادر می‌سازد تا به صورت پویا عناصر �
 
 
 ## نمونه
-![](./assets/bar-chart-d3.png.png)
+![](./assets/bar-chart-d3.png)
 ![](./assets/bubble-chart-d3.png)
 ![](./assets/circle-packing-d3.png)
 ![](./assets/streamgraph-d3.png)
