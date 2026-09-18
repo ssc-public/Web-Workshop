@@ -1,6 +1,6 @@
 <div dir='rtl' align='justify'>
 <h2 align="center">Jest</h2>
-<p align="center"><img src="https://raw.githubusercontent.com/facebook/jest/master/website/static/img/jest-readme-headline.png" width="80%"/></p>
+<p align="center"><img src="jest-readme-headline.png" width="80%"/></p>
   
 # عناوین
 
