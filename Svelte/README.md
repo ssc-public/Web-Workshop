@@ -457,6 +457,8 @@ export async function load({fetch, params}) {
 
 ## کاربردهای عملی و نمونه پروژه
 
+نمونه پروژه کامل این آموزش: [svelte-example.zip](svelte-example.zip)
+
 ### اپلیکیشن Todo List
 
 ```svelte
