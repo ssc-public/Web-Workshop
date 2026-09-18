@@ -1,6 +1,6 @@
 <div dir='rtl' align='justify'>
 <h2 align="center">Jest</h2>
-<p align="center"><img src="https://github.com/facebook/jest/blob/master/website/static/img/jest-readme-headline.png" width="80%"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/facebook/jest/master/website/static/img/jest-readme-headline.png" width="80%"/></p>
   
 # عناوین
 
@@ -244,7 +244,7 @@ module.exports = {
 این‌قسمت به معرفی چند عدد از پرکاربردترین 
 Matcher
 ها می‌پردازد. برای دیدن لیست کامل به
-[`expect` API doc](ExpectAPI.md)
+[`expect` API doc](https://jestjs.io/docs/en/expect)
 مراجعه کنید.
 
 ## Matcher های رایج
