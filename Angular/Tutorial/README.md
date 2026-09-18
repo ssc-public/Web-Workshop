@@ -61,7 +61,7 @@ ng serve
 
 حال مرورگر خود را باز کنید و به آدرس localhost:4200 بروید و اولین پروژه انگولار خود را نظاره کنید!
 <br>
-<img src="https://github.com/AlirezaT99/web_workshop/blob/feature/tutorial/Angular/Tutorial/images/default-project.png"/>
+<img src="images/default-project.png"/>
 
 
 ## آشنایی با ساختار فایل‌ها و فولدربندی
@@ -87,7 +87,7 @@ ng serve
   - <b>فایل styles.scss:</b> استایل‌های عمومی برنامه (مانند فونت‌ها) را در این فایل تعریف می‌کنیم تا در تمام کامپونتت‌های برنامه دیده شوند.
   - <b>فایل test.ts:</b> در این فایل یونیت-تست‌ها نوشته می‌شوند.
 <br>
-<img src="https://github.com/AlirezaT99/web_workshop/blob/feature/tutorial/Angular/Tutorial/images/angular-files.png"/>
+<img src="images/angular-files.png"/>
 <br>
 در قسمت بعد به معرفی کلاس‌های تشکیل‌دهنده انگولار می‌پردازیم و بیشتر با محیط کد آشنا می‌شویم.
 

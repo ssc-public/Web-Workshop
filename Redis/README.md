@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/AryanAhadinia/web_workshop/blob/redis_article/Redis/public/redis_logo.svg" alt="Redis Logo">
+    <img src="public/redis_logo.svg" alt="Redis Logo">
 </p>
 
 <p align="center">
@@ -65,7 +65,7 @@ $ sudo nano /etc/redis/redis.conf
 یک فایل مشابه تصویر زیر باز خواهد شد. مقابل `supervised` عبارت `no` نوشته شده است. آن را به `systemd` تغییر دهید.
 این تغییر اجازه میدهد که سیستم به بتواند به عنوان یک سرویس با ردیس برخورد کند.
 
-<img src="https://github.com/AryanAhadinia/web_workshop/blob/redis_article/Redis/public/ubuntu/ubuntu_1.png" alt="ubuntu_1">
+<img src="public/ubuntu/ubuntu_1.png" alt="ubuntu_1">
 
 3. برای اعمال تغییرات اعمال شده در مرحله قبل دستور زیر را اجرا کنید.
 
@@ -131,7 +131,7 @@ $ sudo nano /etc/redis/redis.conf
 
 برای تنظیم رمزعبور، با حذف # آن را از حالت کامنت دربیاورید و عبارت foobared را با یک رمز عبور امن جایگزین کنید.
 
-<img src="https://github.com/AryanAhadinia/web_workshop/blob/redis_article/Redis/public/ubuntu/ubuntu_2.png" alt="ubuntu_2">
+<img src="public/ubuntu/ubuntu_2.png" alt="ubuntu_2">
 
 ##### توجه
 
@@ -223,7 +223,7 @@ $ sudo nano /etc/redis/redis.conf
 سپس در بخش امنیت، مشابه تصویر زیر به بخش تغییر نام دستورات بروید. آنجا میتوانید دستورات تغییر نام را مشابه تصویر بنویسید.
 توجه کنید که برای غیر فعال کردن، کافی است که نام آن را به یک رشته خالی تغییر دهید.
 
-<img src="https://github.com/AryanAhadinia/web_workshop/blob/redis_article/Redis/public/ubuntu/ubuntu_3.png" alt="ubuntu_3">
+<img src="public/ubuntu/ubuntu_3.png" alt="ubuntu_3">
 
 ### نصب در داکر
 
@@ -259,7 +259,7 @@ docker ps
 
 </div>
 
-<img src="https://github.com/AryanAhadinia/web_workshop/blob/redis_article/Redis/public/docker/docker_1.png" alt="docker_1">
+<img src="public/docker/docker_1.png" alt="docker_1">
 
 تمام شد! ردیس شما آماده است. میتوانید از طریق دستورات زیر به redis-cli در کامندلاین دسترسی پیدا کنید.
 
@@ -276,7 +276,7 @@ redis-cli
 
 4. میتوانید از دستور `ping` برای بررسی وجود اتصال مناسب استفاده کنید. در صورتی که اتصال برقرار باشد پاسخ `PONG` دریافت خواهد شد.
 
-<img src="https://github.com/AryanAhadinia/web_workshop/blob/redis_article/Redis/public/docker/docker_2.png" alt="docker_2">
+<img src="public/docker/docker_2.png" alt="docker_2">
 
 5. ممکن است که به هر دلیلی بخواهید ردیس با فایل کانفیگ دلخواه شما اجرا شود. این دلایل میتوانند دلایل امنیتی باشند که در مرحله 7 و 8 نصب در لینوکس توضیح دادیم.
    برای اجرای ردیس با فایل کانفیگ دلخواه، کافی است ردیس را با دستور زیر اجرا کنید.
@@ -1598,7 +1598,7 @@ CF.MEXISTS key item [item ...]
 
 
 <p align="center">
-    <img src="https://github.com/AryanAhadinia/web_workshop/blob/redis_article/Redis/public/redis_logo.svg" alt="Redis Logo">
+    <img src="public/redis_logo.svg" alt="Redis Logo">
 </p>
 
 <p align="center">
