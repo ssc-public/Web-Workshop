@@ -13,3 +13,19 @@
 *.key binary
 *.sqlite binary
 *.db binary
+
+*.eot binary
+*.gz binary
+*.jfif binary
+*.mp3 binary
+*.ttf binary
+*.vsdx binary
+*.wav binary
+*.woff binary
+
+*.sh text eol=lf
+mvnw text eol=lf
+gradlew text eol=lf
+Jenkinsfile text eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
