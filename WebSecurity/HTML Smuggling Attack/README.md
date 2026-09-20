@@ -14,7 +14,7 @@
   مهاجم به جای فرستادن یک فایل قابل اجرای مخرب به طور مستقیم از طریق یک شبکه، بدافزار را به صورت محلی پشت یک فایروال می‌سازد. تصویر پایین، شمای کلی طرح نفوذ را نشان می‌دهد:
   </br>
   <div align="center" style="text-align:center" >
-  <img src="https://www.microsoft.com/security/blog/uploads/securityprod/2021/11/Fig1-HTML-smuggling-overview.png" width="60%" alt=""/>
+  <img src="https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2021/11/Fig1-HTML-smuggling-overview.png" width="60%" alt=""/>
 </div>
   </br>
 این تکنیک بسیار گریزان است؛ یعنی می‌تواند کنترل‌های امنیتیِ محیطیِ استاندارد، مانند پروکسی‌های وب و gatewayهای ایمیل را که اغلب فقط پیوست‌های مشکوک (مثلاً EXE، ZIP یا DOCX) یا ترافیک را بر اساس امضاها و الگوها بررسی می‌کنند، دور بزند.
@@ -30,14 +30,14 @@
 
   </br>
   <div align="center" style="text-align:center" >
-  <img src="https://github.com/F-Shahali/HTML-smuggling/blob/main/2.png" width="80%" alt=""/>
+  <em>تصویر این نمونه کد در دسترس نیست. منبع اصلی در انتهای صفحه آمده است.</em>
 </div>
   </br>
 تگ anchor و ویژگی "دانلود" یک فایل نیز معادل‌های خود را در کد جاوا اسکریپت دارند، همانطور که در زیر مشاهده می کنید:
 </br>
   </br>
   <div align="center" style="text-align:center" >
-  <img src="https://github.com/F-Shahali/HTML-smuggling/blob/main/3.png" width="80%" alt=""/>
+  <em>تصویر این نمونه کد در دسترس نیست. منبع اصلی در انتهای صفحه آمده است.</em>
 </div>
   </br>
   
@@ -47,7 +47,7 @@
   می‌توان فایل مذکور را به صورت خودکار با استفاده از کدهای جاوا اسکریپت مانند موارد زیر دانلود و به صورت محلی  در سیستم هدف ساخت:
   </br>
   <div align="center" style="text-align:center" >
-  <img src="https://github.com/F-Shahali/HTML-smuggling/blob/main/4.png" width="80%" alt=""/>
+  <em>تصویر این نمونه کد در دسترس نیست. منبع اصلی در انتهای صفحه آمده است.</em>
 </div>
   </br>
   حملات امروزی از HTML Smuggling به دو صورت استفاده می‌کنند: پیوند به صفحه‌ی HTML Smuggling در پیام ایمیل قرار می‌گیرد یا خود صفحه به عنوان پیوست گنجانده می‌شود.
@@ -58,19 +58,19 @@
   در یکی از حمله‌های Mekotio (یک تروجان بانکی) مهاجمان ایمیل‌هایی را با یک پیوند مخرب ارسال کردند، همان طور که در تصویر زیر نشان داده شده است:
  </br>
   <div align="center" style="text-align:center" >
-  <img src="https://www.microsoft.com/security/blog/uploads/securityprod/2021/11/Fig2-HTML-smuggling-Mekotio-campaign.png" width="60%" alt=""/>
+  <img src="https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2021/11/Fig2-HTML-smuggling-Mekotio-campaign.png" width="60%" alt=""/>
 </div>
   </br>
   یک شِمای کلی از این حمله را در شکل زیر مشاهده می‌کنید که توضیحات مربوطه، بعد از آن به طور جزئی‌تر بیان شده‌اند:
   </br>
   <div align="center" style="text-align:center" >
-  <img src="https://www.microsoft.com/security/blog/uploads/securityprod/2021/11/Fig3-attack-chain-Mekotio-campaign.png" width="70%" alt=""/>
+  <img src="https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2021/11/Fig3-attack-chain-Mekotio-campaign.png" width="70%" alt=""/>
 </div>
   </br>
   در این حمله، از وب سایت مخرب hxxp://poocardy[.]net/diretorio/ برای پیاده سازی تکنیک HTML Smuggling و حذف فایل دانلودکننده مخرب استفاده می‌شود (این لینک را باز نکنید!). تصویر زیر یک صفحه HTML Smuggling را هنگام رندر شدن در مرورگر نشان می‌دهد.
    </br>
   <div align="center" style="text-align:center" >
-  <img src="https://www.microsoft.com/security/blog/uploads/securityprod/2021/11/Fig4-HTML-page.png" width="70%" alt=""/>
+  <img src="https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2021/11/Fig4-HTML-page.png" width="70%" alt=""/>
 </div>
   همان طور که ملاحظه می‌کنید، تگ "href" به یک JavaScript Blob از نوع octet/stream برای دانلود فایل ZIP مخرب لینک شده‌است.
   
@@ -85,7 +85,7 @@
 همانطور که قبلا ذکر شد، این فایل DLL به Mekotio، یک خانواده‌ی بدافزار از تروجان‌های بانکی که معمولاً در سیستم‌های ویندوز مستقر می‌شوند، نسبت داده می‌شود که از نیمه دوم سال ۲۰۱۶ صنایع آمریکای لاتین را هدف قرار داده‌اند. در ادامه، فایل جاوا اسکریپت مبهمی که در این حمله استفاده شده‌است را آورده‌ایم: 
    </br>
   <div align="center" style="text-align:center" >
-  <img src="https://www.microsoft.com/security/blog/uploads/securityprod/2021/11/Fig5-ZIP-file.png" width="70%" alt=""/>
+  <img src="https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2021/11/Fig5-ZIP-file.png" width="70%" alt=""/>
 </div>
    
 # استفاده از HTML smuggling در حملات هدفمند
@@ -97,15 +97,15 @@
 همانطور که در عکس پایین مشاهده می‌کنید، در این حمله، مهاجم یک صفحه HTML ساخته شده ویژه را به شکل پیوستِ یک ایمیل که ادعا می‌کند یک گزارش تجاری است، ارسال می‌کند.
   </br>
   <div align="center" style="text-align:center" >
-  <img src="https://www.microsoft.com/security/blog/uploads/securityprod/2021/11/Fig6-HTML-smuggling-Trickbot-page.png" width="60%" alt=""/>
+  <img src="https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2021/11/Fig6-HTML-smuggling-Trickbot-page.png" width="60%" alt=""/>
 </div>
   </br>
   هنگامی که کاربرِ هدف، پیوست HTML را در یک مرورگر وب باز می‌کند، یک فایل جاوا اسکریپت ساخته می‌شود و در پوشه پیش‌فرض دانلودهای سیستم هدف ذخیره می‌شود. این فایل جاوا اسکریپت، برای مقابله با کنترل‌های امنیتی آن سیستم، با رمز عبور محافظت می‌شود. بنابراین، کاربر باید برای باز کردن آن از رمز عبوری که در صفحه HTML پیوست‌شده قرار دارد، استفاده کند.
   </br>
   </br>
   <p align=center>
-    <img src="https://www.microsoft.com/security/blog/uploads/securityprod/2021/11/Fig7a-JavaScript.png" width="50%" alt=""/>
-    <img src="https://www.microsoft.com/security/blog/uploads/securityprod/2021/11/Fig7b-JavaScript.png" width="30%" alt=""/>
+    <img src="https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2021/11/Fig7a-JavaScript.png" width="50%" alt=""/>
+    <img src="https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2021/11/Fig7b-JavaScript.png" width="30%" alt=""/>
   </p>
   
   </br>
@@ -113,7 +113,7 @@
   </br>
   </br>
   <div align="center" style="text-align:center" >
-    <img src="https://www.microsoft.com/security/blog/uploads/securityprod/2021/11/Fig8-attack-chain-Trickbot-campaign.png" width="70%" alt=""/>
+    <img src="https://www.microsoft.com/en-us/security/blog/wp-content/uploads/2021/11/Fig8-attack-chain-Trickbot-campaign.png" width="70%" alt=""/>
   </div>
   </br>
   گروه DEV-0193 پس از به خطر انداختن یک سازمان، به عنوان یک نقطه اساسی و فعال کننده برای حملات باج افزار بعدی عمل می‌کند. بنابراین، هنگامی که این گروه یک سازمان را به خطر بیاندازد، به احتمال زیاد یک حمله باج افزار به دنبال خواهد داشت.
