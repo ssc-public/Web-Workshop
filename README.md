@@ -239,6 +239,7 @@
 - [امیرمهدی نامجو](https://github.com/titansarus)
 - [یحیی پورسلطانی](https://github.com/yahyaPoursoltani)
 - [علی جوانمرد](https://github.com/youngman08)
+- [زهرا حیدری فر](https://github.com/zahra520)
     
 # نحوه مشارکت
 
