@@ -46,7 +46,7 @@
       "responses": [
         {
           "uuid": "74be0035-590b-4243-a5ef-803e7b8c2a4e",
-          "body": "{\n  \"name\": \"my-token-1\",\n  \"expire_date\": \"2025-01-01T23:59:59Z\",\n  \"token\": \"API ierkse325dfgawmd9hbwppp\"\n}",
+          "body": "{\n  \"name\": \"my-token-1\",\n  \"expire_date\": \"2025-01-01T23:59:59Z\",\n  \"token\": \"API ***\"\n}",
           "latency": 0,
           "statusCode": 201,
           "label": "",
