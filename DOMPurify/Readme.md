@@ -28,7 +28,7 @@
 ## مقدمه
 
 اگر شما یک برنامه‌نویس باشید، احتمال زیادی داره که درباره‌ی Cross-site scripting مطالبی خوانده باشید. Cross-site
-scripting که معمولاً به اسم XSS شناخته می‌شود، به حملاتی گفته می‌شود که در آن اسکریپت‌های مخرب، به وب‌سایت های بزرگ و
+scripting که معمولاً به اسم XSS شناخته می‌شود، به حملاتی گفته می‌شود که در آن اسکریپت‌های مخرب، به وب‌سایت‌های بزرگ و
 معتبر تزریق می‌شوند.
 
 حملات Cross-site Scripting در HTML، Flash، ActiveX و CSS امکان پذیر هستند، با این حال چون بیشتر کاربران اینترنت از جاوا
@@ -119,12 +119,12 @@ user_name_box.innerHTML = username;
 
 ## Reflected XSS
 
-این نوع از حملات رایج ترین شکل از حملات XSS هستند. در این حملات یک کد قابل اجرا درون مرورگر به عنوان یک پارامتر درون یک
+این نوع از حملات رایج‌ترین شکل از حملات XSS هستند. در این حملات یک کد قابل اجرا درون مرورگر به عنوان یک پارامتر درون یک
 HTTP request قرار می‌گیرد. کد تزریق شده درون برنامه ذخیره نمی‌شود و تنها کاربرانی را آلوده می‌کند که بر روی URL
 آلوده‌شده کلیک کرده‌اند. برای درک بهتر به مثال زیر دقت کنید.
 
 فرض کنید یک وب اپلیکشین ساده طراحی کرده‌ایم که در آن یک پیام خوش‌آمد گویی و سپس یک لینک برای دریافت و یا دانلود یک
-برنامه‌ است.
+برنامه است.
 
 <p align=center><img  width=344 src="./assets/expBase.png"  alt="DOMPurify"/></p>
 
@@ -204,7 +204,7 @@ https://example.com/index.php?user=
 یکی از راه‌های جلوگیری از این نوع حملات استفاده از کتابخانه‌هایی هستند که می‌توانند درخواست‌های آلوده یا محتویات فایل‌های HTML‌ای که آلوده شده‌اند را پاکسازی کنند. DOM Purify یکی از محبوب‌ترین کتابخانه‌‌های مورد استفاده برای شناسایی و رفع آلودگی‌ها است تا از حملات احتمالی جلوگیری کند.
 
  ## DOM purify
-همانطور که از نام آن مشخص است، این کتابخانه می‌تواند با بررسی  مدل درختی، قسمت‌های آلوده را شناسایی و اصلاح کند. در ادامه چند مثال از نحوه عملکرد  DOM purify را مشاهده می‌کنید.
+همانطور که از نام آن مشخص است، این کتابخانه می‌تواند با بررسی مدل درختی، قسمت‌های آلوده را شناسایی و اصلاح کند. در ادامه چند مثال از نحوه عملکرد  DOM purify را مشاهده می‌کنید.
 
 ```javascript
 import DOMPurify from 'dompurify';
@@ -217,7 +217,7 @@ DOMPurify.sanitize('<UL><li><A HREF=//google.com>click</UL>'); // becomes <ul><l
 ```
 
 <div dir="rtl">
-URL‌ها یکی از محبوب‌ ترین اهداف برای انواع حملات هستند. در حملات reflected XSS و DOM-based XSS نمونه‌هایی از دستکاری URL را دیدیم.
+URL‌ها یکی از محبوب‌ترین اهداف برای انواع حملات هستند. در حملات reflected XSS و DOM-based XSS نمونه‌هایی از دستکاری URL را دیدیم.
 به کمک DOM purify می‌توانیم از آلوده نبودن URL اطمینان حاصل کنیم.
 
 
@@ -254,6 +254,6 @@ const clean = purify.sanitize('<b>hello there</b>');
 - [XSS: What it is, how it works, and how to prevent it](https://medium.com/codelighthouse/xss-what-it-is-how-it-works-and-how-to-prevent-it-454629e3a0da)
 - [XSS: Cross-site scripting](https://security.snyk.io/vuln/SNYK-JS-DOMPURIFY-2863266)
 - [Type of XSS](https://owasp.org/www-community/Types_of_Cross-Site_Scripting)
-- [Testing for Reflected XSS](https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/07-Input_Validation_Testing/01-Testing_for_Reflected_Cross_Site_Scripting.md)
+- [Testing for Reflected XSS](https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/07-Injection/01-Reflected_Cross_Site_Scripting.md)
 
 </div>

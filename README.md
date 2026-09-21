@@ -9,7 +9,7 @@
 <img src="./Statics/web_workshop.png" alt="Sharif Web Programming Workshop">
 
 [![Web_Workshop](https://img.shields.io/badge/web-workshop-orange.svg)](https://github.com/ssc-public/Web-Workshop)
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+![Status](https://img.shields.io/badge/status-active-success.svg)
 [![GitHub Issues](https://img.shields.io/github/issues/ssc-public/Web-Workshop.svg)](https://github.com/ssc-public/Web-Workshop/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/ssc-public/Web-Workshop.svg)](https://github.com/ssc-public/Web-Workshop/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
@@ -29,7 +29,7 @@
  - [یادگیری بک‌اند](#back-end-developer)
  - [یادگیری فول‌استک](#full-stack-developer)
  - [یادگیری DevOps](#devops-engineer)
- - [توسعه‌دهندگان](#✍️-توسعه‌دهندگان)
+ - [توسعه‌دهندگان](#️-توسعه‌دهندگان)
  - [نحوه مشارکت](#نحوه-مشارکت)
 
 
@@ -50,7 +50,7 @@
 
 # Back-end developer
 
-تکنولوژی‌ها و زبان‌های جدیدی برای  برنامه نویسی سمت سرور وجود دارد. مشهورترین زبان‌های و فریم‌ورک‌های امروزه، زبان‌های زیر هستند.
+تکنولوژی‌ها و زبان‌های جدیدی برای برنامه نویسی سمت سرور وجود دارد. مشهورترین زبان‌های و فریم‌ورک‌های امروزه، زبان‌های زیر هستند.
 
 <div dir="ltr">
 
@@ -83,7 +83,7 @@
 
 # DevOps Engineer 
 
-مجموعه‌ای از تمرین‌ و رویه‌ها است که توسعه و ایجاد نرم‌افزار را با عملیات‌های فناوری اطلاعات (Development and Operations) را با هدف کوتاه کردن چرخه تولید نرم‌افزار با کیفیت بالا ترکیب می‌کند.
+مجموعه‌ای از تمرین و رویه‌ها است که توسعه و ایجاد نرم‌افزار را با عملیات‌های فناوری اطلاعات (Development and Operations) را با هدف کوتاه کردن چرخه تولید نرم‌افزار با کیفیت بالا ترکیب می‌کند.
 
 <div dir="ltr">
 
@@ -115,7 +115,7 @@
 - [علی‌رضا دیزجی](https://github.com/alirezadizaji)
 - [علیرضا تاجمیرریاحی](https://github.com/AlirezaT99)
 - [علی ثالثی](https://github.com/AlisaLC)
-- [علیرضا ضیائی](https://github.com/alrz1999)
+- [علیرضا ضیایٔی](https://github.com/alrz1999)
 - [امیرمحمد افلاطونیان](https://github.com/am-afl)
 - [امیر مهدی دیگبری](https://github.com/amdigbari)
 - [محمدامین لطفی اوریمی](https://github.com/aminlotfi)

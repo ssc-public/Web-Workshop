@@ -52,7 +52,7 @@ computed: {
 ```
 </div>
 
-#Composition API
+# Composition API
 
 در مقابل Options API، Composition API اجازه می‌دهد تا منطق کامپوننت‌ها را بهتر سازماندهی و قابل استفاده مجدد کنیم.
 استفاده از Composition API
@@ -69,7 +69,7 @@ const count = ref(0)
 ```
 </div>
 
-#کامپوننت‌های داخلی
+# کامپوننت‌های داخلی
 
 Vue کامپوننت‌های داخلی مانند <Transition> و <KeepAlive> را ارائه می‌دهد برای بهبود تجربه کاربری و بهینه‌سازی عملکرد.
 Transition
@@ -86,7 +86,7 @@ Transition
 ```
 </div>
 
-#Transition Classes
+# Transition Classes
 
 کلاس‌های CSS مختلفی در زمان‌های مختلف انیمیشن اعمال می‌شوند:
 

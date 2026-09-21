@@ -260,8 +260,7 @@ public class LoggingMashineListener implements StateMachineListener<BookStates, 
 ## مراجع
 [1] https://en.wikipedia.org/wiki/Spaghetti_code
 
-[2] https://docs.spring.io/spring-statemachine/docs/current/reference/
-#background
+[2] https://docs.spring.io/spring-statemachine/docs/current/reference/#background
 
 [3] https://docs.spring.io/spring-statemachine/docs/current/reference/#usage-scenarios
 

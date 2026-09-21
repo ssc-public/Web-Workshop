@@ -74,7 +74,7 @@ A-Frame یک فریم‌ورک واقعیت مجازی وب مبتنی بر Thre
 <p dir="rtl" style="position:right;">
 2.	از طریق CDN
 
-##<p dir="rtl" style="position:right;">نصب از طریق npm 
+## <p dir="rtl" style="position:right;">نصب از طریق npm 
 </p>
 <p dir="rtl" style="position:right;">
 در پوشه پروژه خود،trminal را باز کرده و دستور زیر را وارد کنید.
@@ -94,9 +94,9 @@ npm install --save-dev vite
 npx vite
 ```
 <p dir="rtl" style="position:right;">
-اگر همه مراحل بالا به درستی انجام شود، یک URL همانند http://localhost:3000 در ترمینال ظاهر می شود که با ورود به آن، می توانید وب اپلیکیشن خود را مشاهده کنید.
+اگر همه مراحل بالا به درستی انجام شود، یک URL همانند http://localhost:3000 در ترمینال ظاهر می‌شود که با ورود به آن، می‌توانید وب اپلیکیشن خود را مشاهده کنید.
 <p dir="rtl" style="position:right;">
-همچنین به کمک دستور زیر می توانید در فایل خود آن را اضافه کنید:
+همچنین به کمک دستور زیر می‌توانید در فایل خود آن را اضافه کنید:
 
 ```toml
 // Option 1: Import the entire three.js core library.
@@ -111,7 +111,7 @@ npx vite
 
  const scene = new Scene();
 ```
-##<p dir="rtl" style="position:right;">نصب از طریق CDN 
+## <p dir="rtl" style="position:right;">نصب از طریق CDN 
 </p>
 <p dir="rtl" style="position:right;">
 استفاده از کتابخانه three.js بدون نیاز به راه‌اندازی سیستم خاصی یا آپلود فایل‌ها به وب‌سرور به کمک CDN امکان‌پذیر است.بدین منظور، کافی است کد زیر را به کد خود اضافه کنید:
@@ -132,12 +132,12 @@ npx vite
 ```toml
 npx serve .
 ```
-##<p dir="rtl" style="position:right;">آموزش های اولیه
+## <p dir="rtl" style="position:right;">آموزش های اولیه
 </p>
 <p dir="rtl" style="position:right;">
 در این بخش به توضیح سه مهارت پایه‌ای در کدنویسی three.js می‌پردازیم: نخست نحوه ایجاد صحنه با حلقه‌ی رندر را آموزش می‌دهیم تا انیمیشن‌های مورد نظر به درستی اجرا شوند. دوم چگونگی رسم خطوط در فضای سه بعدی صحنه را توضیح خواهیم داد. سپس به مدل‌سازی اشیاء ساده‌ی سه بعدی مانند جعبه، هرم و کره با ابزارهای موجود در three.js می‌پردازیم. 
 
-##<p dir="rtl" style="position:right;">ایجاد یک صحنه
+## <p dir="rtl" style="position:right;">ایجاد یک صحنه
 </p>
 <p dir="rtl" style="position:right;">
 ما با راه‌اندازی یک صحنه با یک مکعب چرخان شروع خواهیم کرد.
@@ -189,7 +189,7 @@ animate();
 <p dir="rtl" style="position:right;">
 در اینجا یک صحنه، یک دوربین، یک رندر، یک هندسه (geometry) برای مکعب، و یک متریال برای رنگ‌آمیزی مکعب ایجاد شده است. سپس با اعمال حلقه تکرار animate، صحنه با دوربین رندر می‌شود و انیمیشن چرخش به مکعب اعمال می‌شود.
 
-##<p dir="rtl" style="position:right;">بررسی سازگاری با WebGL
+## <p dir="rtl" style="position:right;">بررسی سازگاری با WebGL
 </p>
 <p dir="rtl" style="position:right;">
 بعضی دستگاه‌ها یا مرورگرها ممکن است هنوز از WebGL پشتیبانی نکنند. متد زیر به شما این امکان را می‌دهد که بررسی کنید که آیا پشتیبانی از WebGL وجود دارد یا خیر
@@ -211,7 +211,7 @@ if (WebGL.isWebGLAvailable()) {
 }
 
 ```
-##<p dir="rtl" style="position:right;">رسم خط
+## <p dir="rtl" style="position:right;">رسم خط
 </p>
 <p dir="rtl" style="position:right;">
 فرض کنید می‌خواهید یک خط یا یک دایره رسم کنید، نه یک مش وایرفریم. ابتدا باید رندرر، صحنه و دوربین را راه‌اندازی کنیم .
@@ -260,7 +260,7 @@ const line = new THREE.Line(geometry, material);
 scene.add(line);
 renderer.render(scene, camera);
 ```
-##<p dir="rtl" style="position:right;">بارگذاری مدل‌های سه‌بعدی
+## <p dir="rtl" style="position:right;">بارگذاری مدل‌های سه‌بعدی
 </p>
 <p dir="rtl" style="position:right;">
 مدل‌های سه‌بعدی در صدها فرمت فایل مختلف در دسترس هستند، هرکدام با اهداف مختلف، ویژگی‌های متنوع و پیچیدگی‌های متفاوت. با این حال، three.js از بارگذارهای متعددی برخوردار است، اما انتخاب فرمت و جریان کار مناسب زمان و انرژی را ذخیره می‌کند. برخی از فرمت‌ها سخت برای کار با آنها هستند، برای تجربه‌های زمان واقعی ناکارآمد هستند یا در حال حاضر به طور کامل پشتیبانی نمی‌شوند.
@@ -302,7 +302,7 @@ loader.load('path/to/model.glb', function (gltf) {
 
 });
 ```
-#<p dir="rtl" style="position:right;">منابع
+# <p dir="rtl" style="position:right;">منابع
 </p>
 
 ```toml
@@ -310,7 +310,7 @@ https://threejs.work/all-course/
 https://threejs.org/docs/#manual/en/introduction/WebGL-compatibility-check
 https://en.wikipedia.org/wiki/Three.js
 ```
-##<p dir="rtl" style="position:right;">لینک های مفید برای آموزش پیشرفته تر:
+## <p dir="rtl" style="position:right;">لینک های مفید برای آموزش پیشرفته تر:
 </p>
 
 ```toml
@@ -318,9 +318,9 @@ https://threejs.org/manual/#en/fundamentals
 https://codepen.io/rachsmith/post/beginning-with-3d-webgl-pt-1-the-scene
 https://www.august.com.au/blog/animating-scenes-with-webgl-three-js/
 ```
-##<p dir="rtl" style="position:right;">پرسش و پاسخ
+## <p dir="rtl" style="position:right;">پرسش و پاسخ
 </p>
-در صورت هر گونه سوال یا مشکل از طریق ایمیل زیر با ما در ارتباط باشید:
+در صورت هر گونه سؤال یا مشکل از طریق ایمیل زیر با ما در ارتباط باشید:
 
 ```toml
 ramtinmahnoosh@gmail.com

@@ -10,7 +10,7 @@
 قبل از هر چیزی باید تعریف unified graph را ذکر کنیم:
 <br>
 <p dir="rtl" style="position:right;">
-زیرساخت Apollo به شما این امکان را می دهد که یک unified graph را بسازید، ازش query بگیرید و در کل مدیریتش کنید. 
+زیرساخت Apollo به شما این امکان را می‌دهد که یک unified graph را بسازید، ازش query بگیرید و در کل مدیریتش کنید. 
 <br>
 درواقع unified graph یک لایه‌ای از داده‌ها است که کمک می‌کند برنامه‌ها با داده تعامل داشته باشند. (داده‌هایی از محموعه داده‌های متصل به پایگاه‌های داده و APIهای خارجی)
 <br>
@@ -33,7 +33,7 @@
 ### Build graph with Apollo Server
 
 <p dir="rtl" style="position:right;">
-گراف شما به سرویسی برای پردازش عملیات‌های GraphQl از کاربرهای برنامه دارد. این سرویس با پایگاه داده‌های بک-اندمان ارتباط برقرار می‌کند تا داده‌ها را برحسب نیاز واکشش(fetch) و اصلاح کند. برای ساختن این سرویس می توان از <a href="https://www.apollographql.com/docs/apollo-server/">Apollo Server</a> کمک گرفت.
+گراف شما به سرویسی برای پردازش عملیات‌های GraphQl از کاربرهای برنامه دارد. این سرویس با پایگاه داده‌های بک-اندمان ارتباط برقرار می‌کند تا داده‌ها را برحسب نیاز واکشش(fetch) و اصلاح کند. برای ساختن این سرویس می‌توان از <a href="https://www.apollographql.com/docs/apollo-server/">Apollo Server</a> کمک گرفت.
 </p>
 
 #### Apollo Server
@@ -78,7 +78,7 @@ Apollo Server یک سرور open-source و گسترش‌پذیز بر پایه j
 #### Apollo Cient
 
 <p dir="rtl" style="position:right;">
-Apollo Client یک کاربر javaScript GraphQl دارای قابلیت customization است. Apollo Client به توسعه‌دهنده‌ها این امکان را می‌دهد که queryهایشان را  در UI مورد استفاده‌شان تعریف کنن و از آنها استفاده کنند. 
+Apollo Client یک کاربر javaScript GraphQl دارای قابلیت customization است. Apollo Client به توسعه‌دهنده‌ها این امکان را می‌دهد که queryهایشان را در UI مورد استفاده‌شان تعریف کنن و از آنها استفاده کنند. 
 </p>
 
 ### Apollo Federation

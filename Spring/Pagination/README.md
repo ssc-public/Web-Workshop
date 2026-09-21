@@ -1,6 +1,6 @@
 <div align="center">
 تهیه‌کنندگان:
-مهدی علیزاده،‌ محمد مشتاقی‌فر
+مهدی علیزاده، محمد مشتاقی‌فر
 </div>
 
 <div dir = 'rtl' style='text-align:justify'>
@@ -94,7 +94,7 @@ Repository
 `PageRequest`
 به تابع
 Repository،
-خروجی تابع می‌تواند به عنوان شیء‌ از جنس
+خروجی تابع می‌تواند به عنوان شیء از جنس
 `<Page<T`
 یا
 `<Slice<T`
