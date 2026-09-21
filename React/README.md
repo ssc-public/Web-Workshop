@@ -898,7 +898,7 @@ class NameForm extends React.Component {
 
 </div>
 
-#Single Page Application(SPA) and React Router
+# Single Page Application(SPA) and React Router
 
 ری‌اکت یک ابزار قدرتمند برای ساخت SPA میباشد اما SPA به چه معناست؟
 
@@ -951,7 +951,7 @@ class MainRoute extends Component {
  باید این را بدانید که‌BrowserRouter کافیست تنها پدر و یا یکی از اجداد یک Route باشد تا Route به درستی کارکند
 بنابر این کافیست در ابتدا فقط یکبار پدر تمام Component ها را به کمک آن Wrap کنیم و سپس در هر جایی که بخواهیم میتوانیم از Route استفاده کنیم
 
-#Higher Order Component(HOC)
+# Higher Order Component(HOC)
 
 گاهی اوقات ما یک Component را به کمک Component دیگری Wrap میکنیم و به کمک آن تعدادی prop به props آن اضافه خواهیم کرد به این Component که در نقش Wrapper ضاهر میشود، Higher Order Component یا به اختصار HOC گفته میشود.
 

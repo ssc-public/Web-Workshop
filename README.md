@@ -9,7 +9,7 @@
 <img src="./Statics/web_workshop.png" alt="Sharif Web Programming Workshop">
 
 [![Web_Workshop](https://img.shields.io/badge/web-workshop-orange.svg)](https://github.com/ssc-public/Web-Workshop)
-[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+![Status](https://img.shields.io/badge/status-active-success.svg)
 [![GitHub Issues](https://img.shields.io/github/issues/ssc-public/Web-Workshop.svg)](https://github.com/ssc-public/Web-Workshop/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/ssc-public/Web-Workshop.svg)](https://github.com/ssc-public/Web-Workshop/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)

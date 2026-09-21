@@ -1,13 +1,13 @@
 <div dir="rtl">
 
-#Introduction   
+# Introduction   
 
 تعریف :  `RESTful API‍‍` واسطی میان اپلیکیشن و برنامه `Application Program Interface`است که با استفاده از ریکوست‌های `HTTP` میتواند داده ای ایجاد کند‌‍‍`POST` یا ویرایش کند `PUT` یا حذف کند `DELETE` یا ان را بخواند `GET`
 
 ابزار پیشنهادی ما : `Django REST framework` :یک ابزار قدرتمند و انعطاف پذیر برای ساختن API های وب
   
   
-#Requirements
+# Requirements
 
 
 <div dir="ltr">
@@ -17,7 +17,7 @@ Django (1.11, 2.0, 2.1, 2.2, 3.0)
 </div>
 
 
-#Installation 
+# Installation 
 
 
 با استفاده از `pip`:
@@ -49,7 +49,7 @@ Django (1.11, 2.0, 2.1, 2.2, 3.0)
 
 
 
-#Requests
+# Requests
 
 
 کلاس `Request`  در Rest Framework از کلاس HttpRequest های استاندارد extend میکند.
@@ -111,7 +111,7 @@ Django (1.11, 2.0, 2.1, 2.2, 3.0)
 
 
 
-#Responses
+# Responses
 
 
 <div dir="ltr">
@@ -158,7 +158,7 @@ Django (1.11, 2.0, 2.1, 2.2, 3.0)
  
  
  
-#Serializer
+# Serializer
 
 
 سؤال : serializer چیست؟
@@ -220,7 +220,7 @@ Django (1.11, 2.0, 2.1, 2.2, 3.0)
  
  ‍
  
-#Serializer fields
+# Serializer fields
 
 
 هر فیلد در serializer نه تنها مسوول validate داده است بلکه داده را به یک فرمت ثابتی نیز normalize میکند.
@@ -267,7 +267,7 @@ Django (1.11, 2.0, 2.1, 2.2, 3.0)
  </div>
  
 
-#Serializer relations
+# Serializer relations
 
 
 میدانیم که مدل‌ها سه نوع رابطه میتوانند با هم داشته باشند که برای یادآوری از هر کدام مثالی ذکر میکنیم:
@@ -342,7 +342,7 @@ Django (1.11, 2.0, 2.1, 2.2, 3.0)
 
 </div>
 
-#Function views
+# Function views
 
 معرفی Function View :
 در واقع Function View یک تابع است که یک HttpRequest را در ورودی میگیرد (به همراه تعدادی ورودی دلخواه دیگر) و یک HttpResponse را در خروجی می‌دهد .
@@ -381,7 +381,7 @@ def my_view(request):
     pass
 ```
 
-#Class-based Views
+# Class-based Views
 
 <h1 dir = "RTL">
     معرفی Class-based Views
@@ -495,7 +495,7 @@ class ListUsers(APIView):
 </ul>
 
 
-#Authentication
+# Authentication
 
 <h2 dir = "RTL">
     معرفی اجمالی Authentication
@@ -609,7 +609,7 @@ urlpatterns += [
 Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b
 ```
 
-#Permissions
+# Permissions
 
 <h2 dir = "RTL">
     معرفی اجمالی Permissions

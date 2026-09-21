@@ -106,7 +106,7 @@ Spring MVC یکی از محبوب‌ترین فریمورک‌های توسعه 
 
 <div dir="rtl" align="right">
 
-##نویسندگان:
+## نویسندگان:
 1. دنیا روشن ضمیر
 
 2. علیرضا فرودنیا
@@ -116,7 +116,7 @@ Spring MVC یکی از محبوب‌ترین فریمورک‌های توسعه 
 
 <div dir="rtl" align="right">
 
-##لینک ویدیو آموزش 
+## لینک ویدیو آموزش 
 </div>
 
 https://drive.google.com/file/d/1rdWIPE0jTJ5_F8g2ZeqdA9Y_Sbnj1t7z/view?usp=sharing

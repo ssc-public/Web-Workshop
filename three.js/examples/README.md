@@ -1,7 +1,7 @@
 <p dir="rtl" style="position:right;">
 این کد یک سند HTML ساده است که از کتابخانه Three.js برای ایجاد یک صحنه سه‌بعدی با یک سیلندر چرخان (شبیه یک فنجان) استفاده می‌کند. اکنون اجزا و سطوح مختلف ایجاد در این کد را تجزیه و تحلیل می‌کنیم:
 
-#<p dir="rtl" style="position:right;">ساختن صحنه (Scene):
+# <p dir="rtl" style="position:right;">ساختن صحنه (Scene):
 
 ```toml
 const scene = new THREE.Scene();
@@ -11,7 +11,7 @@ scene.background = new THREE.Color(0x333); // پس‌زمینه تیره
 
 در این قسمت یک صحنه Three.js ایجاد می‌شود و پس‌زمینه آن به رنگ تیره (hex: 0x333) تنظیم می‌شود.
 
-#<p dir="rtl" style="position:right;">افزودن نورها (Lights):
+# <p dir="rtl" style="position:right;">افزودن نورها (Lights):
 
 ```toml
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);
@@ -25,12 +25,12 @@ scene.add(pointLight);
 <p dir="rtl" style="position:right;">
 یک نور محیطی و یک نور نقطه‌ای به صحنه اضافه می‌شوند تا صحنه را روشن کنند. مکان نور نقطه‌ای هم تنظیم می‌شود.
 
-#<p dir="rtl" style="position:right;">تعریف دوربین (Camera):
+# <p dir="rtl" style="position:right;">تعریف دوربین (Camera):
 
 <p dir="rtl" style="position:right;">
 یک دوربین دورنگار با زاویه دید ۷۰ درجه و نسبت ابعاد مطابق با ابعاد پنجره ایجاد می‌شود. مکان دوربین هم تنظیم می‌شود.
 
-#<p dir="rtl" style="position:right;">تعریف رندرر (Renderer):
+# <p dir="rtl" style="position:right;">تعریف رندرر (Renderer):
 
 ```toml
 const renderer = new THREE.WebGL1Renderer({ antialias: true });
@@ -42,7 +42,7 @@ renderer.render(scene, camera);
 <p dir="rtl" style="position:right;">
 یک رندرر با استفاده از WebGL ایجاد می‌شود، اندازه آن به ابعاد پنجره تنظیم می‌شود، و سپس به سند اضافه می‌شود. همچنین، اولین رندر صحنه انجام می‌شود.
 
-#<p dir="rtl" style="position:right;">ایجاد هندسه و متریال (Geometry and Material):
+# <p dir="rtl" style="position:right;">ایجاد هندسه و متریال (Geometry and Material):
 
 ```toml
 
@@ -52,7 +52,7 @@ const material = new THREE.MeshStandardMaterial({ color: 0xffffff, map: texture 
 <p dir="rtl" style="position:right;">
 یک هندسه سیلندر و یک متریال با رنگ سفید و تکسچر از کانوس ایجاد می‌شود.
 
-#<p dir="rtl" style="position:right;">ایجاد مش (Mesh):
+# <p dir="rtl" style="position:right;">ایجاد مش (Mesh):
 
 ```toml
 
@@ -62,7 +62,7 @@ scene.add(mesh);
 <p dir="rtl" style="position:right;">
 هندسه و متریال با هم ترکیب شده و یک مش ایجاد می‌شود که به صحنه اضافه می‌شود.
 
-#<p dir="rtl" style="position:right;">پاسخگویی به تغییر اندازه پنجره:
+# <p dir="rtl" style="position:right;">پاسخگویی به تغییر اندازه پنجره:
 
 ```toml
 window.addEventListener('resize', () => {
@@ -77,7 +77,7 @@ window.addEventListener('resize', () => {
 <p dir="rtl" style="position:right;">
 یک گوشه‌گیر رویداد برای تغییر اندازه پنجره ایجاد شده است که در صورت تغییر ابعاد پنجره، دوربین و رندرر را به‌روز می‌کند و صحنه را مجدداً رندر می‌کند.
 
-#<p dir="rtl" style="position:right;">انیمیشن:
+# <p dir="rtl" style="position:right;">انیمیشن:
 
 ```toml
 function animate() {
