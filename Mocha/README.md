@@ -329,7 +329,7 @@ package.json افزود.
 چندتا از این ابزارها می‌پردازیم:  
 
 <ul>
-    <li><a href="https://www.jetbrains.com/idea/features/nodejs.html"
+    <li><a href="https://www.jetbrains.com/help/idea/nodejs.html"
     >افزونه‌ی NodeJs plugin</a>
     برای IDEهای JetBrains مانند WebStrom
     </li>

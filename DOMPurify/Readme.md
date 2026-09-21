@@ -254,6 +254,6 @@ const clean = purify.sanitize('<b>hello there</b>');
 - [XSS: What it is, how it works, and how to prevent it](https://medium.com/codelighthouse/xss-what-it-is-how-it-works-and-how-to-prevent-it-454629e3a0da)
 - [XSS: Cross-site scripting](https://security.snyk.io/vuln/SNYK-JS-DOMPURIFY-2863266)
 - [Type of XSS](https://owasp.org/www-community/Types_of_Cross-Site_Scripting)
-- [Testing for Reflected XSS](https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/07-Input_Validation_Testing/01-Testing_for_Reflected_Cross_Site_Scripting.md)
+- [Testing for Reflected XSS](https://github.com/OWASP/wstg/blob/master/document/4-Web_Application_Security_Testing/07-Injection/01-Reflected_Cross_Site_Scripting.md)
 
 </div>

@@ -543,7 +543,7 @@ type Mail {
 در ادامه با انواع  type های موجود در graphql آشنا خواهیم شد:
 </p>
 
- - [Query, Mutation and Subscription Types](#query-and-mutation-and-subscription-types)
+ - [Query, Mutation and Subscription Types](#query-mutation-and-subscription-types)
  - [Scalar Types](#scalar-types)
  - [Enumeration types](#enumeration-types)
  - [Lists And Null](#lists-and-null)

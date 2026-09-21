@@ -27,7 +27,7 @@
 اول یه مشت چیز میز باید نصب کنید.
 
 - [rustc, rustup, cargo](https://www.rust-lang.org/tools/install)
-- [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/)
+- [wasm-pack](https://rustwasm.github.io/docs/wasm-pack/quickstart.html)
 - cargo-generate: `cargo install cargo-generate`
 - [npm](https://docs.npmjs.com/try-the-latest-stable-version-of-npm)
 

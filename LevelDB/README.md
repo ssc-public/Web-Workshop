@@ -189,7 +189,7 @@ extern bool ConsumeDecimalNumber(Slice* in, uint64_t* val);
 برای مقایسه سرعت عملکرد LevelDB، گوگل آن را با پایگاه داده‌های 
 [SQLite3](https://www.sqlite.org/index.html) ورژن 3.7.6.3
 و
-[Kyoto Cabinet's](http://fallabs.com/kyotocabinet/spex.html) ورژن 1.2.67 مورد آزمون قرار داد که نتایج آن به شرح زیر است:
+[Kyoto Cabinet's](https://dbmx.net/kyotocabinet/spex.html) ورژن 1.2.67 مورد آزمون قرار داد که نتایج آن به شرح زیر است:
 ## 1. عملکرد پایه (Baseline Performance)
 
 شرایط آزمایش:  
