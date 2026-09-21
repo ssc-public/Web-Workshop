@@ -402,7 +402,7 @@ node app.js
 - [Memcached](https://memcached.org/)
 - [What is Memcached?](https://medium.com/swlh/what-is-memcached-d1498623db3b)
 - [What is Memcached?](https://www.keycdn.com/support/what-is-memcached)
-- [Memcached Command-Line Options](https://docs.oracle.com/cd/E17952_01/mysql-5.6-en/ha-memcached-cmdline-options.html)
+- Memcached Command-Line Options
 - [Node.js Memcached Client](https://iamrohit.in/nodejs-with-memcached-tutorial-for-beginner/)
 - [Memcached npm](https://www.npmjs.com/package/memcached)
 - [Redis vs Memcached](https://aws.amazon.com/elasticache/redis-vs-memcached/)
