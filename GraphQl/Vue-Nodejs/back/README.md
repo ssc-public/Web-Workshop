@@ -52,7 +52,7 @@ const foods = [
   }
 ];
 ```
-6. یک resolver تعریف می‌کنیم. در واقع resolver به Apollo GraphQl می گوید که چگونه داده های مرتبط با یک نوع داده خاص را fetch کند.
+6. یک resolver تعریف می‌کنیم. در واقع resolver به Apollo GraphQl می‌گوید که چگونه داده‌های مرتبط با یک نوع داده خاص را fetch کند.
 ```
 const resolvers = {
   Query: {

@@ -94,9 +94,9 @@ npm install --save-dev vite
 npx vite
 ```
 <p dir="rtl" style="position:right;">
-اگر همه مراحل بالا به درستی انجام شود، یک URL همانند http://localhost:3000 در ترمینال ظاهر می شود که با ورود به آن، می توانید وب اپلیکیشن خود را مشاهده کنید.
+اگر همه مراحل بالا به درستی انجام شود، یک URL همانند http://localhost:3000 در ترمینال ظاهر می‌شود که با ورود به آن، می‌توانید وب اپلیکیشن خود را مشاهده کنید.
 <p dir="rtl" style="position:right;">
-همچنین به کمک دستور زیر می توانید در فایل خود آن را اضافه کنید:
+همچنین به کمک دستور زیر می‌توانید در فایل خود آن را اضافه کنید:
 
 ```toml
 // Option 1: Import the entire three.js core library.
@@ -320,7 +320,7 @@ https://www.august.com.au/blog/animating-scenes-with-webgl-three-js/
 ```
 ##<p dir="rtl" style="position:right;">پرسش و پاسخ
 </p>
-در صورت هر گونه سوال یا مشکل از طریق ایمیل زیر با ما در ارتباط باشید:
+در صورت هر گونه سؤال یا مشکل از طریق ایمیل زیر با ما در ارتباط باشید:
 
 ```toml
 ramtinmahnoosh@gmail.com
