@@ -24,7 +24,7 @@
 9. [مدیریت State و Reactivity](#مدیریت-state-و-reactivity)
 10. [کامپوننت‌ها و Props](#کامپوننت‌ها-و-props)
 11. [Event Handling و Binding](#event-handling-و-binding)
-12. [SvelteKit و اکوسیستم](#sveltekit-و-اکوسیستم)
+12. [SvelteKit و اکوسیستم](#اکوسیستم-sveltekit)
 13. [کاربردهای عملی و نمونه پروژه](#کاربردهای-عملی-و-نمونه-پروژه)
 14. [چالش‌ها و محدودیت‌ها](#چالش‌ها-و-محدودیت‌ها)
 15. [آینده Svelte](#آینده-svelte)

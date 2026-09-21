@@ -16,11 +16,11 @@ Playbook Variables
 
 there are two key variable set that needs to be set in this playe book
 
-1) cassandra-hosts.txt wich contains the informations about nodes IP_address, dataCenter, rack, and the seed nodes 
+1) cassandra-hosts.txt which contains the informations about nodes IP_address, dataCenter, rack, and the seed nodes 
 
-2) roles/config/vars/main.yml witch contains the cluster information such as cluster name and ...
+2) roles/config/vars/main.yml which contains the cluster information such as cluster name and ...
 
-3) roles/prerequisites/vars/main.yml witch contains switches and essential data for things that needs to be done before we start deploying the cluster
+3) roles/prerequisites/vars/main.yml which contains switches and essential data for things that needs to be done before we start deploying the cluster
 
 
 Dependencies

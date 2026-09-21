@@ -16,11 +16,11 @@ Playbook Variables
 
 there are two key variable set that needs to be set in this playe book
 
-1) mongo-hosts.txt wich contains the informations about nodes IP_address and theyr priority
+1) mongo-hosts.txt which contains the informations about nodes IP_address and their priority
 
-2) roles/config/vars/main.yml witch contains the replicaSet information such as replname and ...
+2) roles/config/vars/main.yml which contains the replicaSet information such as replname and ...
 
-3) roles/prerequisites/vars/main.yml witch contains switches and essential data for things that needs to be done before we start deploying the cluster
+3) roles/prerequisites/vars/main.yml which contains switches and essential data for things that needs to be done before we start deploying the cluster
 
 Dependencies
 ------------

@@ -614,8 +614,8 @@ Chart.defaults.line
 | borderJoinStyle           | string   | بله          | خیر         | miter              |
 | borderWidth               | number   | بله          | خیر         | 3                  |
 | cubicInterpolationMode    | string   | بله          | خیر         | default            |
-| clip                      | number   | object       | خیر         | خیر                | borderWidth / 2 |
-| fill                      | boolean  | string       | بله         | خیر                | TRUE            |
+| clip                      | `number\|object` | خیر         | خیر                | borderWidth / 2 |
+| fill                      | `boolean\|string` | بله         | خیر                | TRUE            |
 | hoverBackgroundColor      | Color    | بله          | خیر         | undefined          |
 | hoverBorderCapStyle       | string   | بله          | خیر         | undefined          |
 | hoverBorderColor          | Color    | بله          | خیر         | undefined          |
@@ -636,10 +636,10 @@ Chart.defaults.line
 | pointHoverRadius          | number   | بله          | بله         | 4                  |
 | pointRadius               | number   | بله          | بله         | 3                  |
 | pointRotation             | number   | بله          | بله         | 0                  |
-| pointStyle                | string   | Image        | بله         | بله                | Circle          |
+| pointStyle                | `string\|Image` | بله         | بله                | Circle          |
 | showLine                  | boolean  | خیر          | خیر         | undefined          |
 | spanGaps                  | boolean  | خیر          | خیر         | undefined          |
-| steppedLine               | boolean  | string       | خیر         | خیر                | FALSE           |
+| steppedLine               | `boolean\|string` | خیر         | خیر                | FALSE           |
 | xAxisID                   | string   | خیر          | خیر         | first x axis       |
 | yAxisID                   | string   | خیر          | خیر         | first y axis       |
 
@@ -760,7 +760,7 @@ Chart.defaults.radar
 | hoverBorderDashOffset     | number   | بله          | خیر         | undefined          |
 | hoverBorderJoinStyle      | string   | بله          | خیر         | undefined          |
 | hoverBorderWidth          | number   | بله          | خیر         | undefined          |
-| fill                      | boolean  | string       | بله         | خیر                | TRUE   |
+| fill                      | `boolean\|string` | بله         | خیر                | TRUE   |
 | label                     | string   | خیر          | خیر         | empty string       |
 | order                     | number   | خیر          | خیر         | 0                  |
 | lineTension               | number   | خیر          | خیر         | 0                  |
@@ -774,7 +774,7 @@ Chart.defaults.radar
 | pointHoverRadius          | number   | بله          | بله         | 4                  |
 | pointRadius               | number   | بله          | بله         | 3                  |
 | pointRotation             | number   | بله          | بله         | 0                  |
-| pointStyle                | string   | Image        | بله         | بله                | circle |
+| pointStyle                | `string\|Image` | بله         | بله                | circle |
 | spanGaps                  | boolean  | خیر          | خیر         | undefined          |
 
 توضیحات بیشتر درباره موارد فوق را میتوانید در جداول زیر مشاهده کنید.
@@ -1224,7 +1224,7 @@ Chart.defaults.horizontalBar
 | backgroundColor      | Color         | بله          | بله         | rgba(0, 0, 0, 0.1) |
 | borderColor          | Color         | بله          | بله         | rgba(0, 0, 0, 0.1) |
 | borderSkipped        | string        | بله          | بله         | bottom             |
-| borderWidth          | number|object | بله          | بله         | 0                  |
+| borderWidth          | `number\|object` | بله          | بله         | 0                  |
 | data                 | object[]      | خیر          | خیر         | required           |
 | hoverBackgroundColor | Color         | خیر          | بله         | undefined          |
 | hoverBorderColor     | Color         | خیر          | بله         | undefined          |
@@ -1793,7 +1793,7 @@ let chart = new Chart(ctx, {
 | fontFamily                      | string   | "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif" | نام فونت                                   |
 | padding                         | number   | 10                                                   | حاشیه‌درونی جعبه                           |
 | generateLabels                  | function |                                                      | برای هر حاشیه‌نویسی یک برچسب تشکیل می‌دهد. |
-| filter                          | function | null                                                 | حاشیه نویسی‌ها را فیلتر می‌کند.
+| filter                          | function | null                                                 | حاشیه نویسی‌ها را فیلتر می‌کند. |
 
 ### عنوان گذاری 
 #### تنظیمات عنوان گذاری
@@ -1867,7 +1867,7 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
 | نام              | نوع          | حالت پیشفرض          | توضیحات                            |
 |------------------|--------------|----------------------|------------------------------------|
 | radius           | number       | 3                    | شعاع نقطه                          |
-| pointStyle       | string|Image | 'circle'             | استایل نقطه                        |
+| pointStyle       | `string\|Image` | 'circle'             | استایل نقطه                        |
 | rotation         | number       | 0                    | چرخش نقطه                          |
 | backgroundColor  | Color        | 'rgba(0, 0, 0, 0.1)' | رنگ درونی نقطه                     |
 | borderWidth      | number       | 1                    | ضخامت خط دور نقطه                  |
@@ -1904,9 +1904,7 @@ Chart.defaults.global.elements.rectangle.borderWidth = 2;
 | borderDash       | number[]       | []                   | حاشیه خط‌چین                                      |
 | borderDashOffset | number         | 0                    | میزان Offset خط                                   |
 | borderJoinStyle  | string         | 'miter'              | نحوه پیوستن خط‌ها                                 |
-| fill             | boolean|string | TRUE                 | نحوه پر شدن ناحیه زیر خط                          |
-| stepped          | boolean        | FALSE                | در صورت فعال بودن خط به سورت پله‌ای کشیده می‌شود. |
-| fill             | boolean|string | TRUE                 | نحوه پر شدن ناحیه زیر خط                          |
+| fill             | `boolean\|string` | TRUE                 | نحوه پر شدن ناحیه زیر خط                          |
 | stepped          | boolean        | FALSE                | در صورت فعال بودن خط به سورت پله‌ای کشیده می‌شود. |
 
 
