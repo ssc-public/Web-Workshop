@@ -197,8 +197,8 @@ class MyApp extends StatelessWidget {
 
 توجه کنید که اگر در این مرحله مشکلی دارید احتمالا به دلیل غلط‌های املایی‌ست. برای دیباگ کردن از [DevTools](https://flutter.dev/docs/development/tools/devtools) استفاده کنید و در صورت نیاز می‌توانید کدها را از این دو لینک بردارید:
 
-- [pubspec.yaml](https://raw.githubusercontent.com/flutter/codelabs/master/startup_namer/step2_use_package/pubspec.yaml)
-- [lib\main.dart](https://raw.githubusercontent.com/flutter/codelabs/master/startup_namer/step2_use_package/lib/main.dart)
+- pubspec.yaml
+- lib\main.dart
 
 ## شخصی‌سازی برنامه
 پیش از این که وارد موارد پیشرفته‌تر مانند ویجت وضعیت‌دار شویم، لحظه‌ای توقف کنیم و کمی برنامه را شخصی‌سازی کنیم که با ساختار فلاتر آشناتر شویم. به نمونه کد زیر نگاه کنید (این کد هیچ ارتباطی به برنامه‌ی فعلی ندارد. صرفاً به عنوان مثال آنرا نوشتم.)
@@ -349,7 +349,7 @@ Widget _buildRow(WordPair pair) {
 ### مشکلات
 مانند قبل اگر برنامه ما درست اجرا نشود، باید به دنبال اشکالات تایپی بگردیم. اگر می‌خواهید بعضی از ابزار debugging فلاتر را 
 
-امتحان کنید، می‌توان از این [لینک](https://flutter.dev/docs/development/tools/devtools) استفاده کرد و در صورتی که نیاز شد از این [قطعه](https://raw.githubusercontent.com/flutter/codelabs/master/startup_namer/step3_stateful_widget/lib/main.dart)[ ](https://raw.githubusercontent.com/flutter/codelabs/master/startup_namer/step3_stateful_widget/lib/main.dart)[کد](https://raw.githubusercontent.com/flutter/codelabs/master/startup_namer/step3_stateful_widget/lib/main.dart) برای برگشتن به مسیر بهره برد.
+امتحان کنید، می‌توان از این [لینک](https://flutter.dev/docs/development/tools/devtools) استفاده کرد و در صورتی که نیاز شد از این قطعه کد برای برگشتن به مسیر بهره برد.
 
 ## گام‌های بعدی
 تا به حال شما یک نرم‌افزار فلاتر تعاملی نوشته‌اید که هم روی iOS و هم روی Android اجرا می‌شود. در این آموزش شما:

@@ -2,7 +2,7 @@
 
 This folder keeps the submitted Auth2 presentation.
 
-- Slides: `pdf.pdf` and `slides.key`
+- Slides: `slides.pdf` and `slides.key`
 - Recording: the Google Drive link in `record.url`
 
 Author: Mohammad Zareabidaki

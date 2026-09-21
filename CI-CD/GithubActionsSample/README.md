@@ -198,7 +198,7 @@
         می‌توانید وضعیت Pipeline
         را در هر لحظه مشاهده کنید:
 
-        ![](Images/‌BuildBadge.png)
+        ![](Images/BuildBadge.png)
     
     1. افزودن مشاهده وضعیت code coverage:
 

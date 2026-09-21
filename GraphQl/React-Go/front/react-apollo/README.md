@@ -34,7 +34,7 @@ Then, follow these steps in the interactive CLI wizard:
  <summary>Alternative: Run Prisma locally via Docker</summary>
 
 1. Ensure you have Docker installed on your machine. If not, you can get it from [here](https://store.docker.com/search?offering=community&type=edition).
-1. Create `docker-compose.yml` for MySQL (see [here](https://www.prisma.io/docs/prisma-server/database-connector-POSTGRES-jgfr/) for Postgres):
+1. Create `docker-compose.yml` for MySQL (see here for Postgres):
     ```yml
     version: '3'
     services:

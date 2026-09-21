@@ -27,7 +27,8 @@ Dependencies
 
 no special dependencies is required for this playbook
 
-note that this playbook only deploys the cluster on Debian and RHEL based systems
+note that this playbook deploys the cluster on RHEL based systems only.
+Debian support is declared in the install role but its task file is empty, so a Debian run installs nothing
 
 How To Use
 ----------------

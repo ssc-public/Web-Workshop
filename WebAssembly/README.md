@@ -12,7 +12,7 @@
 
 وب‌اسمبلی این امکان رو فراهم می‌کنه که برنامه‌مون رو به هر زبان دلخواهی که خواستیم مثل rust یا c++ بنویسیم و بعد اون رو به وب‌اسمبلی کامپایل کنیم و در نهایت در وب ازش استفاده کنیم. 
 
-![Untitled](Web%20Assembly%20with%20Rust/Untitled.png)
+![نمای کلی وب‌اسمبلی](Web%20Assembly%20with%20Rust/webassembly-overview.png)
 
 ## حالا Rust چیه؟
 
@@ -103,7 +103,7 @@ pub fn greet() {
 
  داخل فایل hello-world/www/package.json کنار devDependency یک ردیف dependency اضافه کنید و داخلش `"hello-world": "file:../pkg"` رو بنویسید. این قسمت فایل باید این شکلی بشه:
 
-![Untitled](Web%20Assembly%20with%20Rust/Untitled%201.png)
+![package.json](Web%20Assembly%20with%20Rust/package-json-dependency.png)
 
 حالا فایل indes.js رو تغییر می‌دیم تا به جای hello-wasm-pack از hello-world ما ایمپورت رو انجام بده:
 
