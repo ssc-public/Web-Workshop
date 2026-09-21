@@ -51,8 +51,8 @@ hello-world/
 ├── LICENSE_MIT
 ├── [README.md](http://readme.md/)
 └── src
-├── [lib.rs](http://lib.rs/)
-└── [utils.rs](http://utils.rs/)
+├── lib.rs
+└── utils.rs
 
 - cargo.toml: فایل وابستگی‌ها و تنظیمات بیلد پروژه
 - src/lib.rs: فایل اصلی پروژه

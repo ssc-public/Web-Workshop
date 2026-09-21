@@ -358,7 +358,7 @@ ng g c my-component
 <div *ngIf="ali.age >= 18">Ali is {{ali.age}} years old and can drive a car!</div>
 ```
 </div>
-برای زمانی که به else نیاز داشته باشیم باید با <`ng-template> کار کنیم. این تگ هیچ موقع به شکل مستقیم اجرا نمیشود و باید یک refrence به آن قرار دهیم و در ادامه ngif* به شکل مقابل عمل کنیم:
+برای زمانی که به else نیاز داشته باشیم باید با <`ng-template> کار کنیم. این تگ هیچ موقع به شکل مستقیم اجرا نمیشود و باید یک reference به آن قرار دهیم و در ادامه ngif* به شکل مقابل عمل کنیم:
 <div dir="ltr">
 
 ```typescript
@@ -367,7 +367,7 @@ ng g c my-component
 </div>
 در صورتی که state = false باشد، <`ng-template> که #refrence_name درون آن قرار دارد اجرا میشود و تگ اولیه اجرا نمیشود. 
 
-طریقه refrence دادن در html بصورت name# در قسمت attribute یک تگ میباشد:
+طریقه reference دادن در html بصورت name# در قسمت attribute یک تگ میباشد:
 <div dir="ltr">
 
 ```typescript
@@ -375,7 +375,7 @@ ng g c my-component
 ```
 </div>
 <br>
-اگر بخواهیم از refrence در همین کامپوننت استفاده کنیم باید از دکوراتور ViewChild@ استفاده کنیم :
+اگر بخواهیم از reference در همین کامپوننت استفاده کنیم باید از دکوراتور ViewChild@ استفاده کنیم :
 <div dir="ltr">
 
 ```typescript

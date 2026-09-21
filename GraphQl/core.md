@@ -309,7 +309,7 @@ query giveUser($key: ID!) {
 }
 ``` 
 <p dir="rtl" style="position:right;">
-در مثال بالا giveUser یک operation name و query یک operation type میباشد همچنبن ورودی یک variable به نام key و خروجی از تایپ User میباشد.
+در مثال بالا giveUser یک operation name و query یک operation type میباشد همچنین ورودی یک variable به نام key و خروجی از تایپ User میباشد.
 </p>
 
 ## Variables
