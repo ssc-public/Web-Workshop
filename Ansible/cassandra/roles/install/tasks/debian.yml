@@ -1,5 +1,5 @@
 - name: .:(Debian):. installing java-jre version 1.8.0
-  yum:
+  apt:
     name: openjdk-8-jdk
     state: present
 
@@ -19,4 +19,4 @@
   apt:
     name: datastax-ddc
     update_cache: yes
-    stat: present 
+    state: present 
