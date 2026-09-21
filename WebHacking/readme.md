@@ -9,7 +9,7 @@
 - علی اسلامی نژاد
 
 # مقدمه
-<img src="https://images.ctfassets.net/cnu0m8re1exe/2xRAmTZcLS7Jvkn3LM9l9N/803ce7c7dbff02a369c885e02cd74054/shutterstock_1378498457.jpg" style="display: block;padding:5px; auto;padding-top:10px; width: 90%; margin-left: auto;margin-right: auto;">
+<em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://images.ctfassets.net/cnu0m8re1exe/2xRAmTZcLS7Jvkn3LM9l9N/803ce7c7dbff02a369c885e02cd74054/shutterstock_1378498457.jpg -->
 <br>
 
 ### هکینگ چیست؟

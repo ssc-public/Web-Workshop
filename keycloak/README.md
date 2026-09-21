@@ -314,7 +314,7 @@ tar -xvzf keycloak.zip
 تا به اینجا توضیحاتی راجع‌به اینکه ابزار keycloak چیست و چه کارایی‌ای دارد و همچین نصب آن را مطرح کردیم. همچنین به سوال اول بحث یعنی اینکه چگونه می‌توان SSO را برای یک کاربر نیز فعال کرد را با استفاده از یک مثال و ساخت کلاینت و کاربر به نمایش گذاشتیم. حال به پیکربندی این ابزار می‌پردازیم.
 
 <div align="center">
-    <img src="https://media.licdn.com/dms/image/D4D12AQFp65xBKhqUvw/article-cover_image-shrink_720_1280/0/1693463267031?e=2147483647&v=beta&t=od-vVPrD2JQUxmKT4OtMNK99G8XVRW6IUaNHRoxOfWk">
+    <em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://media.licdn.com/dms/image/D4D12AQFp65xBKhqUvw/article-cover_image-shrink_720_1280/0/1693463267031?e=2147483647&v=beta&t=od-vVPrD2JQUxmKT4OtMNK99G8XVRW6IUaNHRoxOfWk -->
 </div>
 
 مطابق عکس همانگونه که مشخص است، این ابزار با استفاده از message brokerهای متفاوت به providerهای متفاوت متصل می‌شود. این ابزار نیز به یک sotrage نیاز دارد که به آن متصل شود تا stateها را در آن ذخیره کند. مانند لیست کاربران، کلاینت‌ها، Realmها وغیره. این ابزار با استفاده از پروتکل‌های ODIC و SAML نیز موارد مربوط به Single Sign On را انجام می‌دهد.

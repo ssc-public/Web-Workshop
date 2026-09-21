@@ -1,5 +1,5 @@
 <div dir='rtl' align='justify'>
-<p align="center"><img src="https://www.rabbitmq.com/img/logo-rabbitmq.svg"/></p>
+<p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/logo-rabbitmq.svg --></p>
   
 <p align="center">
     گردآوردندگان: علیرضا ضیائی، ابوالفضل اسد
@@ -38,7 +38,7 @@
   - [Message durability](#message-durability)
   - [Fair dispatch](#fair-dispatch)
   - [Putting it all together](#putting-it-all-together-1)
-- [Publish/Subscribe](#PublishSubscribe)
+- [Publish/Subscribe](#publishsubscribe)
   - [Exchanges](#exchanges)
   - [Temporary queues](#temporary-queues)
   - [Bindings](#bindings)
@@ -68,7 +68,7 @@ RabbitMQ:
 
 + پیام (Message) داده‌ای است که قرار است ارسال شود.
 + تولید کردن (producing) چیزی جز ارسال پیام نیست. یک برنامه که پیام ارسال می‌کند یک تولیدکننده (producer) است.
-<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/producer.png"/></p>
+<p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/producer.png --></p>
 
 + یک صف (queue) یک نام برای صندوق پستی است که در داخل 
 RabbitMq
@@ -78,14 +78,14 @@ RabbitMq
 این صف‌ها اصولا یک بافر بزرگ از پیام‌ها می‌باشند.تولید‌کنندگان مختلف پیام‌های خود را در یک صف می‌گذارند و مصرف‌کنندگان 
 (consumers)
 مختلف آن‌ها را دریافت می‌کنند.
-<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/queue.png"/></p>
+<p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/queue.png --></p>
 
 + مصرف‌کردن
 (consuming)
 مانند دریافت پیام می‌باشد.یک مصرف‌کننده
 (consumer)
 یک برنامه است که معمولا صبر می‌کند تا یک پیام را دریافت کند.
-<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/consumer.png"/></p>
+<p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/consumer.png --></p>
 
 
 توجه شود که تولید‌کننده
@@ -124,7 +124,7 @@ javascript
 RabbitMQ
 به عنوان بافر در پیش از مصرف‌کننده نگه می‌دارد.
 
-<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/python-one.png"/></p>
+<p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/python-one.png --></p>
 
 > **کتابخانه‌ی 
 > amqp.node clint**
@@ -269,7 +269,7 @@ setTimeout(function() {
 RabbitMQ
 بگیرد. پس در اینجا برخلاف ارسال کننده که فقط یک پیام را ارسال می‌کرد،در این جا ما به دریافت ادامه می‌دهیم تا هر پیامی که وجود دارد را دریاف کند و آن را چاپ کند.
 
-<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/receiving.png"/></p>
+<p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/receiving.png --></p>
 
 کد
 ([``receive.js``](https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/javascript-nodejs/src/receive.js))
@@ -404,7 +404,7 @@ sudo rabbitmqctl list_queues
 
 
   # Work Queues
-  <p align="center"><img src="https://www.rabbitmq.com/img/tutorials/python-two.png"/></p>
+  <p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/python-two.png --></p>
 
 در قسمت قبل برنامه‌هایی نوشتیم تا پیام‌ها را به یک صف با نام مشخص ارسال کنیم و در برنامه‌ی دیگر این پیام‌ها را از این صف دریافت کنیم. در این قسمت میخواهیم یک
   Work Queue
@@ -828,7 +828,7 @@ sudo rabbitmqctl list_queues
   امین 
   consumer
   ارسال می کند.
-  <p align="center"><img src="https://www.rabbitmq.com/img/tutorials/prefetch-count.png"/></p>
+  <p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/prefetch-count.png --></p>
   برای مقابله با این مشکل می توانیم از تابع 
   `prefetch`
   با مقدار`1` استفاده کنیم. این به 
@@ -988,7 +988,7 @@ exchange
 exchange
 مشخص می‌شود.
 
-<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/exchanges.png"/></p>
+<p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/exchanges.png --></p>
 
 چندین نوع برای
 exchange
@@ -1137,7 +1137,7 @@ connection
 
 ## bindings
 
-<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/bindings.png"/></p>
+<p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/bindings.png --></p>
 
 ما تا این جا یک
 exchange
@@ -1179,7 +1179,7 @@ rabbitmqctl list_bindings
 
 ## putting it all together
 
-<p align="center"><img src="https://www.rabbitmq.com/img/tutorials/bindings.png"/></p>
+<p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/bindings.png --></p>
 
 برنامه‌ی تولید کننده
 (producer)
@@ -1448,7 +1448,7 @@ exchange
     پیام مطابقت دارد.
 
   برای نشان دادن این ، تنظیمات زیر را در نظر بگیرید:
-  <p align="center"><img src="https://www.rabbitmq.com/img/tutorials/direct-exchange.png"/></p>
+  <p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/direct-exchange.png --></p>
  
 
   در این تنظیمات ، می توان 
@@ -1476,7 +1476,7 @@ exchange
     ارسال می شوند. همه پیام های دیگر کنار گذاشته می شوند و از دست می‌روند.
 
   ## Multiple bindings
-  <p align="center"><img src="https://www.rabbitmq.com/img/tutorials/direct-exchange-multiple.png"/></p>
+  <p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/direct-exchange-multiple.png --></p>
   
   اتصال صف های متعدد با 
   binding key
@@ -1562,7 +1562,7 @@ exchange
 
   ## Putting it all together
 
-  <p align="center"><img src="https://www.rabbitmq.com/img/tutorials/python-four.png"/></p>
+  <p align="center"><em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://www.rabbitmq.com/img/tutorials/python-four.png --></p>
 
   کد نهایی
   `emit_log_direct.js`:

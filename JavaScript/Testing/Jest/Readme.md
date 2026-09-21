@@ -4,11 +4,11 @@
   
 # عناوین
 
-- [راه‌اندازی و شروع](#راهاندازی-و-شروع)
+- [راه‌اندازی و شروع](#راه‌اندازی-و-شروع)
 - [اجرا از طریق command line](#اجرا-از-طریق-command-line)
 - [تنظیمات اضافی](#تنظیمات-اضافی)
   - [ایجاد فایل با تنظیمات اولیه](#ایجاد-یک-فایل-تنظیمات-اولیه)
-  - [اضافه‌کردن Babel](#اضافهکردن-babel)
+  - [اضافه‌کردن Babel](#اضافه‌کردن-babel)
 - [Matchers](#matchers)
   - [Matcher های رایج](#matcher-های-رایج)
   - [truthiness](#truthiness)
@@ -22,20 +22,20 @@
   - [Promises](#promises)
   - [resolves / rejects](#resolves--rejects)
   - [Async/Await](#asyncawait)
-- [Setup and Teardown](#Setup-and-Teardown)
-  - [Repeating Setup For Many Tests](#Repeating-Setup-For-Many-Tests)
-  - [one-Time Setup](#one-Time-Setup)
-  - [Scoping](#Scoping)
-  - [Order of execution of describe and test blocks](#Order-of-execution-of-describe-and-test-blocks)
-  - [General Advice](#General-Advice)
-- [Mock Functions](#Mock-Functions)
+- [Setup and Teardown](#setup-and-teardown)
+  - [Repeating Setup For Many Tests](#repeating-setup-for-many-tests)
+  - [one-Time Setup](#one-time-setup)
+  - [Scoping](#scoping)
+  - [Order of execution of describe and test blocks](#order-of-execution-of-describe-and-test-blocks)
+  - [General Advice](#general-advice)
+- [Mock Functions](#mock-functions)
   - [استفاده از mock function](#استفاده-از-mock-function)
   - [mock property](#mock-property)
-  - [Mock Return Values](#Mock-Return-Values)
-  - [Mocking Modules](#Mocking-Modules)
-  - [Mock Implementations](#Mock-Implementations)
-  - [Mock Names](#Mock-Names)
-  - [Custom Matchers](#Custom-Matchers)
+  - [Mock Return Values](#mock-return-values)
+  - [Mocking Modules](#mocking-modules)
+  - [Mock Implementations](#mock-implementations)
+  - [Mock Names](#mock-names)
+  - [Custom Matchers](#custom-matchers)
   
 # راه‌اندازی و شروع
 در ابتدا 
@@ -140,7 +140,7 @@ Jest
 برای آشنایی با دیگر توابع
 Jest
 که امکان تست کردن را به ما می‌دهند می‌توانید به قسمت
-[Matchers](#Matchers)
+[Matchers](#matchers)
 مراجعه کنید.
 
 # اجرا از طریق command line

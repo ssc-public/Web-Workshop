@@ -181,7 +181,7 @@ Spring AI امکان استفاده از سرویس‌های مختلف هوش �
 
 ## پیاده‌سازی با OpenAI Chat
 
-![Spring AI Chat Model API](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/OpenAI_Logo.svg/1280px-OpenAI_Logo.svg.png)
+<em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/OpenAI_Logo.svg/1280px-OpenAI_Logo.svg.png -->
 
 برای استفاده از OpenAI در پروژه، مراحل زیر را باید طی کرد:
 
