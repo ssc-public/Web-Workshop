@@ -13,7 +13,7 @@
 [![GitHub Issues](https://img.shields.io/github/issues/ssc-public/Web-Workshop.svg)](https://github.com/ssc-public/Web-Workshop/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/ssc-public/Web-Workshop.svg)](https://github.com/ssc-public/Web-Workshop/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
-[![Github Stars](https://img.shields.io/github/stars/ssc-public/Web-Workshop?style=social)]([https://](https://github.com/ssc-public/Web-Workshop/stargazers))
+[![Github Stars](https://img.shields.io/github/stars/ssc-public/Web-Workshop?style=social)](https://github.com/ssc-public/Web-Workshop/stargazers)
 
 </div>
 

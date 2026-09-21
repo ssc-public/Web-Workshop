@@ -68,7 +68,7 @@ if ('serviceWorker' in navigator) {
 
 همچنین service worker های نصب شده را می توانید در قسمت devtools مشاهده کنید.
 
-![Registered service workers](https://web-dev.imgix.net/image/RK2djpBgopg9kzCyJbUSjhEGmnw1/QMsYbKeQ6OJSm0FeqFxG.png?auto=format&w=1252)
+<em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://web-dev.imgix.net/image/RK2djpBgopg9kzCyJbUSjhEGmnw1/QMsYbKeQ6OJSm0FeqFxG.png?auto=format&w=1252 -->
 
 
 <br/>
@@ -277,7 +277,7 @@ self.addEventListener("fetch", event => {
 - یک fetch event handler در service worker برای اطمینان از درستی 
 کارکرد برنامه به صورت آفلاین
 
-![PWA installation](https://web-dev.imgix.net/image/RK2djpBgopg9kzCyJbUSjhEGmnw1/aNv7ezpI3iO6YpIlHt9J.png?auto=format&w=1252)
+<em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://web-dev.imgix.net/image/RK2djpBgopg9kzCyJbUSjhEGmnw1/aNv7ezpI3iO6YpIlHt9J.png?auto=format&w=1252 -->
 
 نصب PWA برای desktop با google chrome و microsoft edge بر روی windows و linux و mac Os امکان پذیر است ولی توسط firefox پشتیبانی نمی شود.
 

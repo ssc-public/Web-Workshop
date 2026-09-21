@@ -44,7 +44,7 @@
 - یک REST API که واسط کاربری نرم افزار ها برای ارتباط و دادن دستورات به deamon است.
 - یک کلاینت Command Line Interface (CLI)
 
-![enter image description here](https://docs.docker.com/engine/images/engine-components-flow.png)
+<em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://docs.docker.com/engine/images/engine-components-flow.png -->
 
 CLI از REST API داکر برای کنترل و یا ارتباط با Deamon به وسیله نوشتن اسکریپت و یا دستورات مستقیم CLI استفاده میکند.
 
@@ -128,7 +128,7 @@ Docker همچنین هماهنگی رفتارهای بین کانتینرها ر
 ## معماری داکر
 داکر از یک معماری کلاینت-سرور استفاده میکند. کلاینت داکر با Deamon در ارتباط است که ساخت و اجرا و پخش کردن کانتینر های داکر را بر عهده دارد. بخش کلاینت و سرور ( Deamon ) داکر میتوانند روی یک کامپیوتر باشند یا به صورت Remote  روی سیستم های مجزا با یکدیگر در ارتباط باشند. در هر صورت ارتباط میان این دو همانطور که قبلا توضیح داده شد توسط یک REST API انجام می شود.
 
-![enter image description here](https://docs.docker.com/engine/images/architecture.svg)
+<em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://docs.docker.com/engine/images/architecture.svg -->
 
 
 ### (Dockerd) Deamon داکر 
@@ -224,9 +224,9 @@ Container یک Instance قابل اجرای  یک Image است. میتوان ی�
 یک کانتینر به صورت native روی لینوکس اجرا میشود و به صورت مشترک با سیستم عامل از کرنل استفاده میکند. کانتیر یک پروسه مجزا را اجرا میکند و مانند یک پروسه معمولی حجم کمی از RAM  را میگیرد.
 در مقابل، VM یک سیستم عامل کامل مجازی guest را با دسترسی مجازی و شبیه سازی شده به منابع اصلی سیستم  را توسط یک hypervisor اجرا میکند. VM ها مقدار بسیار زیادی سربار نسبت به حجم پروسه مورد نیاز ما برای سیستم ایجاد میکنند.
 
-![enter image description here](https://docs.docker.com/images/Container@2x.png)
+<em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://docs.docker.com/images/Container@2x.png -->
 
-![enter image description here](https://docs.docker.com/images/VM@2x.png)
+<em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://docs.docker.com/images/VM@2x.png -->
 
 <br/>
 

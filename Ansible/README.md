@@ -3,7 +3,7 @@
 
 <p align=center>
 
-![Ansible](https://cdn.freebiesupply.com/logos/large/2x/ansible-logo-png-transparent.png)
+<em>تصویر این بخش در منبع بیرونی دیگر در دسترس نیست.</em> <!-- https://cdn.freebiesupply.com/logos/large/2x/ansible-logo-png-transparent.png -->
 
 </p>
 
